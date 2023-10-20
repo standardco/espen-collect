@@ -19,7 +19,7 @@ package org.odk.collect.android.tasks;
 import android.net.Uri;
 import android.os.AsyncTask;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.listeners.InstanceUploaderListener;
 import org.odk.collect.android.utilities.InstanceAutoDeleteChecker;
 import org.odk.collect.android.utilities.InstancesRepositoryProvider;
@@ -66,7 +66,7 @@ public abstract class InstanceUploaderTask extends AsyncTask<Long, Integer, Inst
                     }
 
                     Stream<Instance> instancesToDelete = instanceIds.stream()
-                            .map(id -> new InstancesRepositoryProvider(Collect.getInstance()).get().get(Long.parseLong(id)))
+                            .map(id -> new InstancesRepositoryProvider(EspenCollect.getInstance()).get().get(Long.parseLong(id)))
                             .filter(instance -> instance.getStatus().equals(Instance.STATUS_SUBMITTED))
                             .filter(instance -> InstanceAutoDeleteChecker.shouldInstanceBeDeleted(formsRepository, isFormAutoDeleteOptionEnabled, instance));
 

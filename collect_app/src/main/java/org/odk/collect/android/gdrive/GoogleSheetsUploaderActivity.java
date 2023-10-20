@@ -360,7 +360,7 @@ public class GoogleSheetsUploaderActivity extends LocalizedActivity implements I
                     return true;
                 }
             } catch (UserRecoverableAuthException e) {
-                // Collect is not yet authorized to access current account, so request for authorization
+                // EspenCollect is not yet authorized to access current account, so request for authorization
                 runOnUiThread(() -> startActivityForResult(e.getIntent(), REQUEST_AUTHORIZATION));
             } catch (IOException | GoogleAuthException e) {
                 // authorization failed

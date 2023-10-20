@@ -10,7 +10,7 @@ import androidx.test.core.app.ApplicationProvider;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.Reference;
 import org.javarosa.core.reference.ReferenceManager;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.injection.DaggerUtils;
 import org.odk.collect.android.injection.config.AppDependencyComponent;
 import org.odk.collect.android.injection.config.AppDependencyModule;
@@ -63,12 +63,12 @@ public final class CollectHelpers {
                 .application(ApplicationProvider.getApplicationContext())
                 .appDependencyModule(appDependencyModule)
                 .build();
-        ((Collect) ApplicationProvider.getApplicationContext()).setComponent(testComponent);
+        ((EspenCollect) ApplicationProvider.getApplicationContext()).setComponent(testComponent);
         return testComponent;
     }
 
     public static void resetProcess(AppDependencyModule dependencies) {
-        Collect application = ApplicationProvider.getApplicationContext();
+        EspenCollect application = ApplicationProvider.getApplicationContext();
 
         application.getState().clear();
 

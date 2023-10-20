@@ -56,7 +56,7 @@ import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.odk.collect.android.BuildConfig;
 import org.odk.collect.android.R;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.support.rules.BlankFormTestRule;
 import org.odk.collect.android.support.rules.TestRuleChain;
 import org.odk.collect.androidtest.RecordedIntentsRule;
@@ -256,6 +256,6 @@ public class IntentGroupTest {
     }
 
     private Uri getUriForFile(File file) {
-        return FileProvider.getUriForFile(Collect.getInstance(), BuildConfig.APPLICATION_ID + ".provider", file);
+        return FileProvider.getUriForFile(EspenCollect.getInstance(), BuildConfig.APPLICATION_ID + ".provider", file);
     }
 }

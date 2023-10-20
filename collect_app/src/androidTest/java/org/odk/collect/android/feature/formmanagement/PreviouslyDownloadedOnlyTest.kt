@@ -46,7 +46,7 @@ class PreviouslyDownloadedOnlyTest {
         testDependencies.scheduler.runDeferredTasks()
 
         notificationDrawerRule.open()
-            .assertNotification("ODK Collect", "Form updates available", Project.DEMO_PROJECT_NAME)
+            .assertNotification("ODK EspenCollect", "Form updates available", Project.DEMO_PROJECT_NAME)
             .clearAll()
 
         testDependencies.server.addForm(
@@ -58,9 +58,9 @@ class PreviouslyDownloadedOnlyTest {
         testDependencies.scheduler.runDeferredTasks()
 
         notificationDrawerRule.open()
-            .assertNotification("ODK Collect", "Form updates available", Project.DEMO_PROJECT_NAME)
+            .assertNotification("ODK EspenCollect", "Form updates available", Project.DEMO_PROJECT_NAME)
             .clickNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Form updates available",
                 GetBlankFormPage()
             )
@@ -87,12 +87,12 @@ class PreviouslyDownloadedOnlyTest {
 
         notificationDrawerRule.open()
             .assertNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Forms download succeeded",
                 "All downloads succeeded!"
             )
             .clickNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Forms download succeeded",
                 FillBlankFormPage()
             )
@@ -121,12 +121,12 @@ class PreviouslyDownloadedOnlyTest {
 
         notificationDrawerRule.open()
             .assertNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Forms download failed",
                 "1 of 1 downloads failed!"
             )
             .clickNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Forms download failed",
                 ErrorPage()
             )

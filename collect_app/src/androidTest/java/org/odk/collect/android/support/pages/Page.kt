@@ -39,7 +39,7 @@ import org.hamcrest.core.StringEndsWith.endsWith
 import org.junit.Assert
 import org.odk.collect.android.BuildConfig
 import org.odk.collect.android.R
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.android.storage.StoragePathProvider
 import org.odk.collect.android.support.ActivityHelpers
 import org.odk.collect.android.support.CollectHelpers
@@ -254,11 +254,11 @@ abstract class Page<T : Page<T>> {
     }
 
     fun getTranslatedString(id: Int?, vararg formatArgs: Any): String {
-        return ApplicationProvider.getApplicationContext<Collect>().getLocalizedString(id!!, *formatArgs)
+        return ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(id!!, *formatArgs)
     }
 
     fun getTranslatedQuantityString(id: Int?, quantity: Int, vararg formatArgs: Any): String {
-        return ApplicationProvider.getApplicationContext<Collect>().getLocalizedQuantityString(id!!, quantity, *formatArgs)
+        return ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedQuantityString(id!!, quantity, *formatArgs)
     }
 
     fun clickOnAreaWithIndex(clazz: String?, index: Int): T {
@@ -455,7 +455,7 @@ abstract class Page<T : Page<T>> {
         // kill
         device.pressRecentApps()
         device
-            .findObject(UiSelector().descriptionContains("Collect"))
+            .findObject(UiSelector().descriptionContains("EspenCollect"))
             .swipeUp(10).also {
                 CollectHelpers.simulateProcessRestart() // the process is not restarted automatically (probably to keep the test running) so we have simulate it
             }

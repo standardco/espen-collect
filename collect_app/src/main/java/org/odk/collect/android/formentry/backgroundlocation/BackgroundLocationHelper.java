@@ -5,7 +5,7 @@ import static org.odk.collect.settings.keys.ProjectKeys.KEY_BACKGROUND_LOCATION;
 import android.location.Location;
 
 import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.formentry.audit.AuditConfig;
 import org.odk.collect.android.formentry.audit.AuditEvent;
 import org.odk.collect.android.javarosawrapper.FormController;
@@ -46,7 +46,7 @@ public class BackgroundLocationHelper {
     }
 
     boolean arePlayServicesAvailable() {
-        return new PlayServicesChecker().isGooglePlayServicesAvailable(Collect.getInstance().getApplicationContext());
+        return new PlayServicesChecker().isGooglePlayServicesAvailable(EspenCollect.getInstance().getApplicationContext());
     }
 
     /**

@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.odk.collect.android.R;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.external.InstanceProvider;
 import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
 
@@ -31,7 +31,7 @@ public class InstanceUploaderAdapter extends CursorAdapter {
     public InstanceUploaderAdapter(Context context, Cursor cursor, Consumer<Long> onItemCheckboxClickListener) {
         super(context, cursor);
         this.onItemCheckboxClickListener = onItemCheckboxClickListener;
-        Collect.getInstance().getComponent().inject(this);
+        EspenCollect.getInstance().getComponent().inject(this);
     }
 
     @Override

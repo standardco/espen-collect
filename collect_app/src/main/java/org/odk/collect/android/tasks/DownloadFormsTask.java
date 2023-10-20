@@ -19,7 +19,7 @@ import static java.util.Collections.emptyMap;
 
 import android.os.AsyncTask;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.formmanagement.FormDownloadException;
 import org.odk.collect.android.formmanagement.FormDownloader;
 import org.odk.collect.android.formmanagement.FormsDataService;
@@ -62,7 +62,7 @@ public class DownloadFormsTask extends
                 publishProgress(serverFormDetails.getFormName(), currentFormNumber, totalForms);
 
                 formDownloader.downloadForm(serverFormDetails, count -> {
-                    String message = getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.form_download_progress,
+                    String message = getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.form_download_progress,
                             serverFormDetails.getFormName(),
                             String.valueOf(count),
                             String.valueOf(serverFormDetails.getManifest().getMediaFiles().size())

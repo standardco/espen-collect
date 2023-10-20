@@ -17,7 +17,7 @@ package org.odk.collect.android.injection;
 import android.app.Activity;
 import android.content.Context;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.injection.config.AppDependencyComponent;
 
 public final class DaggerUtils {
@@ -25,10 +25,10 @@ public final class DaggerUtils {
     private DaggerUtils() {}
 
     public static AppDependencyComponent getComponent(Activity activity) {
-        return ((Collect) activity.getApplication()).getComponent();
+        return ((EspenCollect) activity.getApplication()).getComponent();
     }
 
     public static AppDependencyComponent getComponent(Context context) {
-        return ((Collect) context.getApplicationContext()).getComponent();
+        return ((EspenCollect) context.getApplicationContext()).getComponent();
     }
 }

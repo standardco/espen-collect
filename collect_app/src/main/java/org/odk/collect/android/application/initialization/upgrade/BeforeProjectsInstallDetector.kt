@@ -8,7 +8,7 @@ import org.odk.collect.upgrade.InstallDetector
 import java.io.File
 
 /**
- * Implementation of [InstallDetector] that looks for signs that a version of Collect
+ * Implementation of [InstallDetector] that looks for signs that a version of EspenCollect
  * is installed from before Projects were introduced (< v2021.2). [AppUpgrader] was
  * introduced in that release as well so it and versions after it can use [AppUpgrader]'s
  * built in version tracking.

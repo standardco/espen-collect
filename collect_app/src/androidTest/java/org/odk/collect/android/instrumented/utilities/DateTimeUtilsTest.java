@@ -24,7 +24,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.logic.DatePickerDetails;
 import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils;
 import org.odk.collect.testshared.TimeZoneSetter;
@@ -61,7 +61,7 @@ public class DateTimeUtilsTest {
         myanmarDatePickerDetails = new DatePickerDetails(DatePickerDetails.DatePickerType.MYANMAR, DatePickerDetails.DatePickerMode.SPINNERS);
         persianDatePickerDetails = new DatePickerDetails(DatePickerDetails.DatePickerType.PERSIAN, DatePickerDetails.DatePickerMode.SPINNERS);
 
-        context = Collect.getInstance();
+        context = EspenCollect.getInstance();
         defaultLocale = Locale.getDefault();
         defaultTimezone = TimeZone.getDefault();
     }

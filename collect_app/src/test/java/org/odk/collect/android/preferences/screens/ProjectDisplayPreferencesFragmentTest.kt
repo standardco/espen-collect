@@ -14,7 +14,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.android.application.initialization.AnalyticsInitializer
 import org.odk.collect.android.application.initialization.MapsInitializer
 import org.odk.collect.android.injection.config.AppDependencyModule
@@ -79,7 +79,7 @@ class ProjectDisplayPreferencesFragmentTest {
             assertThat(
                 it.findPreference<EditTextPreference>(ProjectDisplayPreferencesFragment.PROJECT_NAME_KEY)!!.title,
                 `is`(
-                    ApplicationProvider.getApplicationContext<Collect>().getLocalizedString(
+                    ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(
                         org.odk.collect.strings.R.string.project_name
                     )
                 )
@@ -117,7 +117,7 @@ class ProjectDisplayPreferencesFragmentTest {
                 it.findPreference<EditTextPreference>(ProjectDisplayPreferencesFragment.PROJECT_ICON_KEY)!!.title,
                 `is`(
 
-                    ApplicationProvider.getApplicationContext<Collect>().getLocalizedString(
+                    ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(
                         org.odk.collect.strings.R.string.project_icon
                     )
                 )
@@ -154,7 +154,7 @@ class ProjectDisplayPreferencesFragmentTest {
             assertThat(
                 it.findPreference<Preference>(ProjectDisplayPreferencesFragment.PROJECT_COLOR_KEY)!!.title,
                 `is`(
-                    ApplicationProvider.getApplicationContext<Collect>().getLocalizedString(
+                    ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(
                         org.odk.collect.strings.R.string.project_color
                     )
                 )

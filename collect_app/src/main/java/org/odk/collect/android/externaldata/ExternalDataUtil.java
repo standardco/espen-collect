@@ -29,7 +29,7 @@ import org.javarosa.xpath.XPathParseTool;
 import org.javarosa.xpath.expr.XPathExpression;
 import org.javarosa.xpath.expr.XPathFuncExpr;
 import org.javarosa.xpath.parser.XPathSyntaxException;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.exception.ExternalDataException;
 import org.odk.collect.android.externaldata.handler.ExternalDataHandlerSearch;
 import org.odk.collect.android.javarosawrapper.FormController;
@@ -129,33 +129,33 @@ public final class ExternalDataUtil {
                                 || xpathFuncExpr.args.length == 6) {
                             return xpathFuncExpr;
                         } else {
-                            Toast.makeText(Collect.getInstance(),
-                                    getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_arguments_error),
+                            Toast.makeText(EspenCollect.getInstance(),
+                                    getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_arguments_error),
                                     Toast.LENGTH_SHORT).show();
-                            Timber.i(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_arguments_error));
+                            Timber.i(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_arguments_error));
                             return null;
                         }
                     } else {
                         // this might mean a problem in the regex above. Unit tests required.
-                        Toast.makeText(Collect.getInstance(),
-                                getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_function_error, xpathFuncExpr.id.name),
+                        Toast.makeText(EspenCollect.getInstance(),
+                                getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_function_error, xpathFuncExpr.id.name),
                                 Toast.LENGTH_SHORT).show();
-                        Timber.i(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_function_error, xpathFuncExpr.id.name));
+                        Timber.i(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_function_error, xpathFuncExpr.id.name));
                         return null;
                     }
                 } else {
                     // this might mean a problem in the regex above. Unit tests required.
-                    Toast.makeText(Collect.getInstance(),
-                            getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_bad_function_error, function),
+                    Toast.makeText(EspenCollect.getInstance(),
+                            getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_bad_function_error, function),
                             Toast.LENGTH_SHORT).show();
-                    Timber.i(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_bad_function_error, function));
+                    Timber.i(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_bad_function_error, function));
                     return null;
                 }
             } catch (XPathSyntaxException e) {
-                Toast.makeText(Collect.getInstance(),
-                        getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_generic_error, appearance),
+                Toast.makeText(EspenCollect.getInstance(),
+                        getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_generic_error, appearance),
                         Toast.LENGTH_SHORT).show();
-                Timber.i(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_generic_error, appearance));
+                Timber.i(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_generic_error, appearance));
                 return null;
             }
         } else {
@@ -186,7 +186,7 @@ public final class ExternalDataUtil {
                     //                    }
 
                     ExternalDataManager externalDataManager =
-                            Collect.getInstance().getExternalDataManager();
+                            EspenCollect.getInstance().getExternalDataManager();
                     FormInstance formInstance = formController.getFormDef().getInstance();
                     EvaluationContext baseEvaluationContext = new EvaluationContext(formInstance);
                     EvaluationContext evaluationContext = new EvaluationContext(
@@ -205,7 +205,7 @@ public final class ExternalDataUtil {
                         }
                     } else {
                         throw new ExternalDataException(
-                                getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_return_error,
+                                getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_return_error,
                                         eval.getClass().getName()));
                     }
                 }

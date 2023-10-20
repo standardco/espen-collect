@@ -100,7 +100,7 @@ public class InstanceDatabaseMigrator implements DatabaseMigrator {
     private void upgradeToVersion5(SQLiteDatabase db) {
         String temporaryTableName = INSTANCES_TABLE_NAME + "_tmp";
 
-        // onDowngrade in Collect v1.22 always failed to clean up the temporary table so remove it now.
+        // onDowngrade in EspenCollect v1.22 always failed to clean up the temporary table so remove it now.
         // Going from v1.23 to v1.22 and back to v1.23 will result in instance status information
         // being lost.
         SQLiteUtils.dropTable(db, temporaryTableName);

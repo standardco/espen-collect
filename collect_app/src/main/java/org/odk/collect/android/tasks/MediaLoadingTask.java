@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 
 import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.injection.DaggerUtils;
 import org.odk.collect.android.utilities.ContentUriHelper;
 import org.odk.collect.android.utilities.FileUtils;
@@ -48,7 +48,7 @@ public class MediaLoadingTask extends AsyncTask<Uri, Void, File> {
             String extension = ContentUriHelper.getFileExtensionFromUri(uris[0]);
 
             File newFile = FileUtils.createDestinationMediaFile(instanceFile.getParent(), extension);
-            FileUtils.saveAnswerFileFromUri(uris[0], newFile, Collect.getInstance());
+            FileUtils.saveAnswerFileFromUri(uris[0], newFile, EspenCollect.getInstance());
             QuestionWidget questionWidget = formFillingActivity.get().getWidgetWaitingForBinaryData();
 
             // apply image conversion if the widget is an image widget

@@ -32,7 +32,7 @@ public class GoogleApiProvider {
         googleAccountCredential.setSelectedAccountName(account);
 
         return new GoogleSheetsApi(new Sheets.Builder(new NetHttpTransport(), gsonFactory, googleAccountCredential)
-                .setApplicationName("ODK-Collect")
+                .setApplicationName("ODK-EspenCollect")
                 .build());
     }
 
@@ -45,7 +45,7 @@ public class GoogleApiProvider {
         googleAccountCredential.setSelectedAccountName(account);
 
         return new GoogleDriveApi(new Drive.Builder(new NetHttpTransport(), gsonFactory, googleAccountCredential)
-                .setApplicationName("ODK-Collect")
+                .setApplicationName("ODK-EspenCollect")
                 .build());
     }
 }

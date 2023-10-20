@@ -1,6 +1,6 @@
 package org.odk.collect.android.utilities
 
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.shared.strings.StringUtils.isBlank
 import java.util.Locale
 import java.util.TreeMap
@@ -26,7 +26,7 @@ object LocaleHelper {
     @JvmStatic
     fun getLocale(localeCode: String?): Locale {
         val sanitizedLocaleCode =
-            if (localeCode == null || isBlank(localeCode)) Collect.defaultSysLanguage else localeCode
+            if (localeCode == null || isBlank(localeCode)) EspenCollect.defaultSysLanguage else localeCode
 
         return if (sanitizedLocaleCode.contains("_")) {
             val args = sanitizedLocaleCode.split("_").toTypedArray()

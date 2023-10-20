@@ -31,7 +31,7 @@ import org.odk.collect.settings.SettingsProvider
 import javax.inject.Inject
 
 /**
- * Allows the user to create desktop shortcuts to any form currently available to Collect
+ * Allows the user to create desktop shortcuts to any form currently available to EspenCollect
  */
 class AndroidShortcutsActivity : AppCompatActivity() {
     @Inject

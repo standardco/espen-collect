@@ -4,7 +4,7 @@ import android.net.Uri;
 
 import androidx.loader.content.CursorLoader;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
 import org.odk.collect.android.external.InstancesContract;
 import org.odk.collect.android.projects.ProjectsDataService;
@@ -138,7 +138,7 @@ public class CursorLoaderFactory {
         Uri uri = InstancesContract.getUri(projectsDataService.getCurrentProject().getUuid());
 
         return new CursorLoader(
-                Collect.getInstance(),
+                EspenCollect.getInstance(),
                 getUriWithAnalyticsParam(uri),
                 null,
                 selection,

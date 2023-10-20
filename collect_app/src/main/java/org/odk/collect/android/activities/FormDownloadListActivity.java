@@ -83,7 +83,7 @@ import timber.log.Timber;
  * 401
  * and you'll have to hit 'refresh' where it will ask for credentials again. Technically a server
  * could point at other servers requiring authentication to download the forms, but the current
- * implementation in Collect doesn't allow for that. Mostly this is just because it's a pain in the
+ * implementation in EspenCollect doesn't allow for that. Mostly this is just because it's a pain in the
  * butt to keep track of which forms we've downloaded and where we're needing to authenticate. I
  * think we do something similar in the instanceuploader task/activity, so should change the
  * implementation eventually.

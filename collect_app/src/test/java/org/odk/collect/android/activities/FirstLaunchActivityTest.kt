@@ -18,7 +18,7 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.kotlin.whenever
 import org.odk.collect.android.R
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.android.injection.config.AppDependencyModule
 import org.odk.collect.android.projects.ManualProjectCreatorDialog
 import org.odk.collect.android.projects.QrCodeProjectCreatorDialog
@@ -84,7 +84,7 @@ class FirstLaunchActivityTest {
             verify(versionInformation).versionToDisplay
             onView(
                 withText(
-                    ApplicationProvider.getApplicationContext<Collect>().getLocalizedString(
+                    ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(
                         org.odk.collect.strings.R.string.collect_app_name
                     ) + " vfake"
                 )

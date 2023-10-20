@@ -2,7 +2,7 @@ package org.odk.collect.android.support
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.android.injection.DaggerUtils
 import org.odk.collect.android.injection.config.AppDependencyComponent
 import org.odk.collect.android.injection.config.AppDependencyModule
@@ -12,7 +12,7 @@ import org.odk.collect.settings.keys.ProjectKeys
 
 object CollectHelpers {
     fun overrideAppDependencyModule(appDependencyModule: AppDependencyModule): AppDependencyComponent {
-        val application = ApplicationProvider.getApplicationContext<Collect>()
+        val application = ApplicationProvider.getApplicationContext<EspenCollect>()
         val testComponent = DaggerAppDependencyComponent.builder()
             .application(application)
             .appDependencyModule(appDependencyModule)
@@ -22,7 +22,7 @@ object CollectHelpers {
     }
 
     fun simulateProcessRestart(appDependencyModule: AppDependencyModule? = null) {
-        ApplicationProvider.getApplicationContext<Collect>().getState().clear()
+        ApplicationProvider.getApplicationContext<EspenCollect>().getState().clear()
 
         val newComponent =
             overrideAppDependencyModule(appDependencyModule ?: AppDependencyModule())

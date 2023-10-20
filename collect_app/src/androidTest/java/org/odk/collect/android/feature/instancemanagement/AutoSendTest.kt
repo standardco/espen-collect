@@ -43,9 +43,9 @@ class AutoSendTest {
 
         notificationDrawerRule
             .open()
-            .assertNotification("ODK Collect", "Forms upload succeeded", "All uploads succeeded!")
+            .assertNotification("ODK EspenCollect", "Forms upload succeeded", "All uploads succeeded!")
             .clickNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Forms upload succeeded",
                 MainMenuPage()
             )
@@ -72,9 +72,9 @@ class AutoSendTest {
 
         notificationDrawerRule
             .open()
-            .assertNotification("ODK Collect", "Forms upload failed", "1 of 1 uploads failed!")
+            .assertNotification("ODK EspenCollect", "Forms upload failed", "1 of 1 uploads failed!")
             .clickAction(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Show details",
                 ErrorPage()
             )
@@ -82,7 +82,7 @@ class AutoSendTest {
         notificationDrawerRule
             .open()
             .clickNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Forms upload failed",
                 SendFinalizedFormPage()
             )
@@ -106,9 +106,9 @@ class AutoSendTest {
 
         notificationDrawerRule
             .open()
-            .assertNotification("ODK Collect", "Forms upload succeeded", "All uploads succeeded!")
+            .assertNotification("ODK EspenCollect", "Forms upload succeeded", "All uploads succeeded!")
             .clickNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Forms upload succeeded",
                 MainMenuPage()
             )
@@ -134,9 +134,9 @@ class AutoSendTest {
 
         notificationDrawerRule
             .open()
-            .assertNotification("ODK Collect", "Forms upload failed", "1 of 1 uploads failed!")
+            .assertNotification("ODK EspenCollect", "Forms upload failed", "1 of 1 uploads failed!")
             .clickNotification(
-                "ODK Collect",
+                "ODK EspenCollect",
                 "Forms upload failed",
                 SendFinalizedFormPage()
             )

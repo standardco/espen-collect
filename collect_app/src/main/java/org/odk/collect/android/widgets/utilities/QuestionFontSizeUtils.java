@@ -2,7 +2,7 @@ package org.odk.collect.android.widgets.utilities;
 
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_FONT_SIZE;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.injection.DaggerUtils;
 import org.odk.collect.shared.settings.Settings;
 
@@ -54,7 +54,7 @@ public final class QuestionFontSizeUtils {
     @Deprecated
     public static int getQuestionFontSize() {
         try {
-            int fontSize = Integer.parseInt(DaggerUtils.getComponent(Collect.getInstance()).settingsProvider().getUnprotectedSettings().getString(KEY_FONT_SIZE));
+            int fontSize = Integer.parseInt(DaggerUtils.getComponent(EspenCollect.getInstance()).settingsProvider().getUnprotectedSettings().getString(KEY_FONT_SIZE));
             return fontSize + HEADLINE_6_DIFF;
         } catch (Exception | Error e) {
             return DEFAULT_FONT_SIZE;

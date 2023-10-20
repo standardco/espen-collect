@@ -17,7 +17,7 @@ package org.odk.collect.android.upload;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.formmanagement.InstancesAppState;
 import org.odk.collect.android.injection.DaggerUtils;
 import org.odk.collect.android.utilities.InstancesRepositoryProvider;
@@ -37,7 +37,7 @@ public abstract class InstanceUploader {
     InstancesAppState instancesAppState;
 
     public InstanceUploader() {
-        DaggerUtils.getComponent(Collect.getInstance()).inject(this);
+        DaggerUtils.getComponent(EspenCollect.getInstance()).inject(this);
     }
 
     public static final String FAIL = "Error: ";

@@ -19,7 +19,7 @@ import android.net.Uri;
 import org.apache.commons.io.FileUtils;
 import org.odk.collect.android.analytics.AnalyticsEvents;
 import org.odk.collect.android.analytics.AnalyticsUtils;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.exception.EncryptionException;
 import org.odk.collect.android.external.InstancesContract;
 import org.odk.collect.android.injection.DaggerUtils;
@@ -68,8 +68,8 @@ public class InstanceDiskSynchronizer {
 
     public InstanceDiskSynchronizer(SettingsProvider settingsProvider) {
         this.settingsProvider = settingsProvider;
-        instancesRepository = new InstancesRepositoryProvider(Collect.getInstance()).get();
-        AppDependencyComponent component = DaggerUtils.getComponent(Collect.getInstance());
+        instancesRepository = new InstancesRepositoryProvider(EspenCollect.getInstance()).get();
+        AppDependencyComponent component = DaggerUtils.getComponent(EspenCollect.getInstance());
         projectsDataService = component.currentProjectProvider();
     }
 
@@ -118,7 +118,7 @@ public class InstanceDiskSynchronizer {
                         try {
                             // TODO: optimize this by caching the previously found form definition
                             // TODO: optimize this by caching unavailable form definition to skip
-                            List<Form> forms = new FormsRepositoryProvider(Collect.getInstance()).get().getAllByFormId(instanceFormId);
+                            List<Form> forms = new FormsRepositoryProvider(EspenCollect.getInstance()).get().getAllByFormId(instanceFormId);
 
                             if (!forms.isEmpty()) {
                                 Form form = forms.get(0);
@@ -147,7 +147,7 @@ public class InstanceDiskSynchronizer {
                     }
                 }
                 if (counter > 0) {
-                    currentStatus += getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.instance_scan_count, counter);
+                    currentStatus += getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.instance_scan_count, counter);
                 }
             }
         } finally {

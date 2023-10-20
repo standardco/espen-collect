@@ -21,7 +21,7 @@ import static org.odk.collect.settings.keys.ProjectKeys.KEY_GOOGLE_SHEETS_URL;
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import org.odk.collect.analytics.Analytics;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.tasks.InstanceUploaderTask;
 import org.odk.collect.android.upload.FormUploadException;
 import org.odk.collect.android.utilities.FormsRepositoryProvider;
@@ -58,18 +58,18 @@ public class InstanceGoogleSheetsUploaderTask extends InstanceUploaderTask {
 
             if (isCancelled()) {
                 outcome.messagesByInstanceId.put(instance.getDbId().toString(),
-                        getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.instance_upload_cancelled));
+                        getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.instance_upload_cancelled));
                 return outcome;
             }
 
             publishProgress(i + 1, instancesToUpload.size());
 
             // Get corresponding blank form and verify there is exactly 1
-            List<Form> forms = new FormsRepositoryProvider(Collect.getInstance()).get().getAllByFormIdAndVersion(instance.getFormId(), instance.getFormVersion());
+            List<Form> forms = new FormsRepositoryProvider(EspenCollect.getInstance()).get().getAllByFormIdAndVersion(instance.getFormId(), instance.getFormVersion());
 
             if (forms.size() != 1) {
                 outcome.messagesByInstanceId.put(instance.getDbId().toString(),
-                        getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.not_exactly_one_blank_form_for_this_form_id));
+                        getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.not_exactly_one_blank_form_for_this_form_id));
             } else {
                 try {
                     String destinationUrl = uploader.getUrlToSubmitTo(instance, null, null, settingsProvider.getUnprotectedSettings().getString(KEY_GOOGLE_SHEETS_URL));
@@ -77,7 +77,7 @@ public class InstanceGoogleSheetsUploaderTask extends InstanceUploaderTask {
                         uploader.uploadOneSubmission(instance, destinationUrl);
                         outcome.messagesByInstanceId.put(instance.getDbId().toString(), DEFAULT_SUCCESSFUL_TEXT);
 
-                        Analytics.log(SUBMISSION, "HTTP-Sheets", Collect.getFormIdentifierHash(instance.getFormId(), instance.getFormVersion()));
+                        Analytics.log(SUBMISSION, "HTTP-Sheets", EspenCollect.getFormIdentifierHash(instance.getFormId(), instance.getFormVersion()));
                     } else {
                         outcome.messagesByInstanceId.put(instance.getDbId().toString(), SPREADSHEET_UPLOADED_TO_GOOGLE_DRIVE);
                     }

@@ -39,7 +39,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.odk.collect.analytics.Analytics;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
 import org.odk.collect.android.exception.EncryptionException;
 import org.odk.collect.android.external.InstancesContract;
@@ -110,7 +110,7 @@ public class SaveFormToDisk {
     public SaveToDiskResult saveForm(FormSaver.ProgressListener progressListener) {
         SaveToDiskResult saveToDiskResult = new SaveToDiskResult();
 
-        progressListener.onProgressUpdate(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_validating_message));
+        progressListener.onProgressUpdate(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_validating_message));
 
         try {
             ValidationResult validationResult = formController.validateAnswers(shouldFinalize);
@@ -132,7 +132,7 @@ public class SaveFormToDisk {
         }
 
         // close all open databases of external data.
-        Collect.getInstance().getExternalDataManager().close();
+        EspenCollect.getInstance().getExternalDataManager().close();
 
         // if there is a meta/instanceName field, be sure we are using the latest value
         // just in case the validate somehow triggered an update.
@@ -212,7 +212,7 @@ public class SaveFormToDisk {
             uri = InstancesContract.getUri(currentProjectId, newInstance.getDbId());
         } else {
             Timber.i("No instance found, creating");
-            Form form = new FormsRepositoryProvider(Collect.getInstance()).get().get(ContentUriHelper.getIdFromUri(uri));
+            Form form = new FormsRepositoryProvider(EspenCollect.getInstance()).get().get(ContentUriHelper.getIdFromUri(uri));
 
             // add missing fields into values
             instanceBuilder.instanceFilePath(instancePath);
@@ -333,7 +333,7 @@ public class SaveFormToDisk {
      * other methods.
      */
     private Instance exportData(boolean markCompleted, FormSaver.ProgressListener progressListener) throws IOException, EncryptionException {
-        progressListener.onProgressUpdate(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_collecting_message));
+        progressListener.onProgressUpdate(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_collecting_message));
 
         ByteArrayPayload payload = formController.getFilledInFormXml();
         // write out xml
@@ -343,7 +343,7 @@ public class SaveFormToDisk {
             mediaUtils.deleteMediaFile(fileName);
         }
 
-        progressListener.onProgressUpdate(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_saving_message));
+        progressListener.onProgressUpdate(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_saving_message));
 
         writeFile(payload, instancePath);
 
@@ -375,7 +375,7 @@ public class SaveFormToDisk {
             // write out submission.xml -- the data to actually submit to aggregate
 
             progressListener.onProgressUpdate(
-                    getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_finalizing_message));
+                    getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_finalizing_message));
 
             writeFile(payload, submissionXml.getAbsolutePath());
 
@@ -387,7 +387,7 @@ public class SaveFormToDisk {
                 // and encrypt the submission (this is a one-way operation)...
 
                 progressListener.onProgressUpdate(
-                        getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_encrypting_message));
+                        getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_encrypting_message));
 
                 EncryptionUtils.generateEncryptedSubmission(instanceXml, submissionXml, formInfo);
                 isEncrypted = true;
@@ -452,7 +452,7 @@ public class SaveFormToDisk {
      * that the instance with the given uri is an instance of.
      */
     private static String getGeometryXpathForInstance(Instance instance) {
-        Form form = new FormsRepositoryProvider(Collect.getInstance()).get().getLatestByFormIdAndVersion(instance.getFormId(), instance.getFormVersion());
+        Form form = new FormsRepositoryProvider(EspenCollect.getInstance()).get().getLatestByFormIdAndVersion(instance.getFormId(), instance.getFormVersion());
         if (form != null) {
             return form.getGeometryXpath();
         } else {

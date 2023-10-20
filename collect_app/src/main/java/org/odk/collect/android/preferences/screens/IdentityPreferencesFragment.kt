@@ -58,7 +58,7 @@ class IdentityPreferencesFragment : BaseProjectPreferencesFragment() {
             if (versionInformation.isBeta) {
                 PreferencesUtils.displayDisabled(analyticsPreference, true)
                 analyticsPreference.summary =
-                    analyticsPreference.summary.toString() + " Usage data collection cannot be disabled in beta versions of Collect."
+                    analyticsPreference.summary.toString() + " Usage data collection cannot be disabled in beta versions of EspenCollect."
             } else {
                 analyticsPreference.onPreferenceClickListener =
                     Preference.OnPreferenceClickListener {

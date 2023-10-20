@@ -6,7 +6,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class SQLiteUtilsTest {
     public void doesColumnExistTest() {
         String tableName = "testTable";
 
-        SQLiteDatabase db = Collect.getInstance().openOrCreateDatabase("testDatabase", MODE_PRIVATE, null);
+        SQLiteDatabase db = EspenCollect.getInstance().openOrCreateDatabase("testDatabase", MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE " + tableName + " (id integer, column1 text);");
 
         assertTrue(SQLiteUtils.doesColumnExist(db, tableName, "id"));
@@ -36,7 +36,7 @@ public class SQLiteUtilsTest {
         final String tableName = "testTable";
         final String columnName = CustomSQLiteQueryBuilder.quoteIdentifier("col");
 
-        SQLiteDatabase db = Collect.getInstance().openOrCreateDatabase("testDatabase", MODE_PRIVATE, null);
+        SQLiteDatabase db = EspenCollect.getInstance().openOrCreateDatabase("testDatabase", MODE_PRIVATE, null);
 
         assertFalse(SQLiteUtils.doesTableExist(db, tableName));
 

@@ -15,7 +15,7 @@ import org.odk.collect.android.activities.InstanceChooserList;
 import org.odk.collect.android.instancemanagement.send.InstanceUploaderActivity;
 import org.odk.collect.android.instancemanagement.send.InstanceUploaderListActivity;
 import org.odk.collect.android.adapters.InstanceUploaderAdapter;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.application.initialization.ApplicationInitializer;
 import org.odk.collect.android.application.initialization.ExistingProjectMigrator;
 import org.odk.collect.android.audio.AudioRecordingControllerFragment;
@@ -139,7 +139,7 @@ public interface AppDependencyComponent {
         AppDependencyComponent build();
     }
 
-    void inject(Collect collect);
+    void inject(EspenCollect collect);
 
     void inject(AboutActivity aboutActivity);
 

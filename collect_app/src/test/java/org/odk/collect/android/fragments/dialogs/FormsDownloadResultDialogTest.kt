@@ -18,8 +18,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.R
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.android.formmanagement.FormDownloadException
 import org.odk.collect.android.formmanagement.ServerFormDetails
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
@@ -62,7 +61,7 @@ class FormsDownloadResultDialogTest {
         scenario.onFragment {
             assertThat(
                 (it.dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE).text,
-                `is`(ApplicationProvider.getApplicationContext<Collect>().getString(org.odk.collect.strings.R.string.ok))
+                `is`(ApplicationProvider.getApplicationContext<EspenCollect>().getString(org.odk.collect.strings.R.string.ok))
             )
         }
     }
@@ -164,7 +163,7 @@ class FormsDownloadResultDialogTest {
         launcherRule.launch(FormsDownloadResultDialog::class.java, args)
         onView(
             withText(
-                ApplicationProvider.getApplicationContext<Collect>()
+                ApplicationProvider.getApplicationContext<EspenCollect>()
                     .getString(org.odk.collect.strings.R.string.some_downloads_failed, "1", "1")
             )
         ).inRoot(isDialog()).check(matches(isDisplayed()))
@@ -188,7 +187,7 @@ class FormsDownloadResultDialogTest {
             assertThat(
                 (it.dialog as AlertDialog).getButton(AlertDialog.BUTTON_NEGATIVE).text,
                 `is`(
-                    ApplicationProvider.getApplicationContext<Collect>()
+                    ApplicationProvider.getApplicationContext<EspenCollect>()
                         .getString(org.odk.collect.strings.R.string.show_details)
                 )
             )
@@ -228,12 +227,12 @@ class FormsDownloadResultDialogTest {
             assertThat(Shadows.shadowOf(it.dialog).title, `is`(""))
             assertThat(
                 (it.dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE).text,
-                `is`(ApplicationProvider.getApplicationContext<Collect>().getString(org.odk.collect.strings.R.string.ok))
+                `is`(ApplicationProvider.getApplicationContext<EspenCollect>().getString(org.odk.collect.strings.R.string.ok))
             )
             assertThat(
                 (it.dialog as AlertDialog).getButton(AlertDialog.BUTTON_NEGATIVE).text,
                 `is`(
-                    ApplicationProvider.getApplicationContext<Collect>()
+                    ApplicationProvider.getApplicationContext<EspenCollect>()
                         .getString(org.odk.collect.strings.R.string.show_details)
                 )
             )
@@ -245,12 +244,12 @@ class FormsDownloadResultDialogTest {
             assertThat(Shadows.shadowOf(it.dialog).title, `is`(""))
             assertThat(
                 (it.dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE).text,
-                `is`(ApplicationProvider.getApplicationContext<Collect>().getString(org.odk.collect.strings.R.string.ok))
+                `is`(ApplicationProvider.getApplicationContext<EspenCollect>().getString(org.odk.collect.strings.R.string.ok))
             )
             assertThat(
                 (it.dialog as AlertDialog).getButton(AlertDialog.BUTTON_NEGATIVE).text,
                 `is`(
-                    ApplicationProvider.getApplicationContext<Collect>()
+                    ApplicationProvider.getApplicationContext<EspenCollect>()
                         .getString(org.odk.collect.strings.R.string.show_details)
                 )
             )

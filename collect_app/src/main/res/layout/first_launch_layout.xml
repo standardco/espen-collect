@@ -13,12 +13,14 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="60dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginBottom="219dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/collect_app_name"
-            android:src="@drawable/odk_logo"
+            android:src="@drawable/espen_logo2"
+            app:layout_constraintBottom_toTopOf="@+id/center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

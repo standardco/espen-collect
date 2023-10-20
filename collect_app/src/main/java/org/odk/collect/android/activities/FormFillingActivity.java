@@ -85,7 +85,7 @@ import org.joda.time.LocalDateTime;
 import org.odk.collect.analytics.Analytics;
 import org.odk.collect.android.R;
 import org.odk.collect.android.analytics.AnalyticsUtils;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.audio.AMRAppender;
 import org.odk.collect.android.audio.AudioControllerView;
 import org.odk.collect.android.audio.AudioRecordingControllerFragment;
@@ -421,7 +421,7 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
             }
         }
 
-        Collect.getInstance().getComponent().inject(this);
+        EspenCollect.getInstance().getComponent().inject(this);
 
         if (savedInstanceState == null) {
             sessionId = formSessionRepository.create();
@@ -721,7 +721,7 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
         }
 
         if (uriMimeType != null && uriMimeType.equals(InstancesContract.CONTENT_ITEM_TYPE)) {
-            Instance instance = new InstancesRepositoryProvider(Collect.getInstance()).get().get(ContentUriHelper.getIdFromUri(uri));
+            Instance instance = new InstancesRepositoryProvider(EspenCollect.getInstance()).get().get(ContentUriHelper.getIdFromUri(uri));
 
             instancePath = instance.getInstanceFilePath();
 
@@ -1308,7 +1308,7 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
 
             if (saveName == null && uriMimeType != null
                     && uriMimeType.equals(InstancesContract.CONTENT_ITEM_TYPE)) {
-                Instance instance = new InstancesRepositoryProvider(Collect.getInstance()).get().get(ContentUriHelper.getIdFromUri(instanceUri));
+                Instance instance = new InstancesRepositoryProvider(EspenCollect.getInstance()).get().get(ContentUriHelper.getIdFromUri(instanceUri));
                 if (instance != null) {
                     saveName = instance.getDisplayName();
                 }
@@ -2085,7 +2085,7 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
             t.cancel();
             t.destroy();
 
-            Collect.getInstance().setExternalDataManager(task.getExternalDataManager());
+            EspenCollect.getInstance().setExternalDataManager(task.getExternalDataManager());
 
             // Set the language if one has already been set in the past
             String[] languageTest = formController.getLanguages();
@@ -2109,7 +2109,7 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
             // it can be a normal flow for a pending activity result to restore from a savepoint
             // (the call flow handled by the above if statement). For all other use cases, the
             // user should be notified, as it means they wandered off doing other things then
-            // returned to ODK Collect and chose Edit Saved Form, but that the savepoint for
+            // returned to ODK EspenCollect and chose Edit Saved Form, but that the savepoint for
             // that form is newer than the last saved version of their form data.
             boolean hasUsedSavepoint = task.hasUsedSavepoint();
 

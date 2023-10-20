@@ -2,8 +2,7 @@ package org.odk.collect.android.formmanagement
 
 import android.database.SQLException
 import org.javarosa.xform.parse.XFormParser
-import org.odk.collect.android.R
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.android.utilities.FileUtils
 import org.odk.collect.androidshared.utils.Validator
 import org.odk.collect.forms.Form
@@ -174,7 +173,7 @@ object LocalFormUseCases {
                 statusMessage = errors.toString()
             } else {
                 Timber.d(
-                    Collect.getInstance()
+                    EspenCollect.getInstance()
                         .getLocalizedString(org.odk.collect.strings.R.string.finished_disk_scan)
                 )
             }
@@ -231,7 +230,7 @@ object LocalFormUseCases {
             builder.displayName(title)
         } else {
             throw IllegalArgumentException(
-                Collect.getInstance()
+                EspenCollect.getInstance()
                     .getLocalizedString(
                         org.odk.collect.strings.R.string.xform_parse_error,
                         formDefFile!!.name,
@@ -244,7 +243,7 @@ object LocalFormUseCases {
             builder.formId(formid)
         } else {
             throw IllegalArgumentException(
-                Collect.getInstance()
+                EspenCollect.getInstance()
                     .getLocalizedString(
                         org.odk.collect.strings.R.string.xform_parse_error,
                         formDefFile!!.name,
@@ -262,7 +261,7 @@ object LocalFormUseCases {
                 builder.submissionUri(submission)
             } else {
                 throw IllegalArgumentException(
-                    Collect.getInstance().getLocalizedString(
+                    EspenCollect.getInstance().getLocalizedString(
                         org.odk.collect.strings.R.string.xform_parse_error,
                         formDefFile!!.name,
                         "submission url"

@@ -26,7 +26,7 @@ import android.widget.EditText;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.odk.collect.android.R;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.preferences.dialogs.ServerAuthDialogFragment;
 import org.odk.collect.metadata.PropertyManager;
 
@@ -49,7 +49,7 @@ public class AuthDialogUtility {
     PropertyManager propertyManager;
 
     public AuthDialogUtility() {
-        Collect.getInstance().getComponent().inject(this);
+        EspenCollect.getInstance().getComponent().inject(this);
     }
 
     /**

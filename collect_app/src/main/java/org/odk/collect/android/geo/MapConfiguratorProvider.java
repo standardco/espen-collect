@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.maps.GoogleMap;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.application.MapboxClassInstanceCreator;
 import org.odk.collect.googlemaps.GoogleMapConfigurator;
 import org.odk.collect.googlemaps.GoogleMapConfigurator.GoogleMapTypeOption;
@@ -182,8 +182,8 @@ public class MapConfiguratorProvider {
         return sourceOptions[0];
     }
 
-    private static Collect getApplication() {
-        return Collect.getInstance();
+    private static EspenCollect getApplication() {
+        return EspenCollect.getInstance();
     }
 
     private static class SourceOption {

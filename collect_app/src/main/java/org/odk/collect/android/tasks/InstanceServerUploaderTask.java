@@ -15,7 +15,7 @@
 package org.odk.collect.android.tasks;
 
 import org.odk.collect.analytics.Analytics;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.android.openrosa.OpenRosaHttpInterface;
 import org.odk.collect.android.upload.InstanceServerUploader;
@@ -53,7 +53,7 @@ public class InstanceServerUploaderTask extends InstanceUploaderTask {
     private String customPassword;
 
     public InstanceServerUploaderTask() {
-        Collect.getInstance().getComponent().inject(this);
+        EspenCollect.getInstance().getComponent().inject(this);
     }
 
     @Override
@@ -77,9 +77,9 @@ public class InstanceServerUploaderTask extends InstanceUploaderTask {
                 String destinationUrl = uploader.getUrlToSubmitTo(instance, deviceId, completeDestinationUrl, null);
                 String customMessage = uploader.uploadOneSubmission(instance, destinationUrl);
                 outcome.messagesByInstanceId.put(instance.getDbId().toString(),
-                        customMessage != null ? customMessage : getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.success));
+                        customMessage != null ? customMessage : getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.success));
 
-                Analytics.log(SUBMISSION, "HTTP", Collect.getFormIdentifierHash(instance.getFormId(), instance.getFormVersion()));
+                Analytics.log(SUBMISSION, "HTTP", EspenCollect.getFormIdentifierHash(instance.getFormId(), instance.getFormVersion()));
             } catch (FormUploadAuthRequestedException e) {
                 outcome.authRequestingServer = e.getAuthRequestingServer();
                 // Don't add the instance that caused an auth request to the map because we want to

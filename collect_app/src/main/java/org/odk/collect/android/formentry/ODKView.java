@@ -55,7 +55,7 @@ import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.odk.collect.android.R;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.audio.AudioHelper;
 import org.odk.collect.android.exception.ExternalParamsException;
 import org.odk.collect.android.exception.JavaRosaException;
@@ -411,8 +411,8 @@ public class ODKView extends SwipeHandler.View implements OnLongClickListener, W
             Map<String, String> parameters = ExternalAppsUtils.extractParameters(intentString);
 
             Intent i = new Intent(intentName);
-            if (i.resolveActivity(Collect.getInstance().getPackageManager()) == null) {
-                Intent launchIntent = Collect.getInstance().getPackageManager().getLaunchIntentForPackage(intentName);
+            if (i.resolveActivity(EspenCollect.getInstance().getPackageManager()) == null) {
+                Intent launchIntent = EspenCollect.getInstance().getPackageManager().getLaunchIntentForPackage(intentName);
 
                 if (launchIntent != null) {
                     // Make sure FLAG_ACTIVITY_NEW_TASK is not set because it doesn't work with startActivityForResult

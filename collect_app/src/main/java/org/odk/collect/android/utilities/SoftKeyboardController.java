@@ -21,7 +21,7 @@ import androidx.annotation.NonNull;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 
 public class SoftKeyboardController {
     public void showSoftKeyboard(@NonNull View view) {
@@ -35,6 +35,6 @@ public class SoftKeyboardController {
     }
 
     private InputMethodManager getInputMethodManager() {
-        return (InputMethodManager) Collect.getInstance().getSystemService(Context.INPUT_METHOD_SERVICE);
+        return (InputMethodManager) EspenCollect.getInstance().getSystemService(Context.INPUT_METHOD_SERVICE);
     }
 }

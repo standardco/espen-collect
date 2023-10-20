@@ -2,7 +2,7 @@ package org.odk.collect.android.instancemanagement
 
 import org.odk.collect.analytics.Analytics
 import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.android.gdrive.GoogleAccountsManager
 import org.odk.collect.android.gdrive.GoogleApiProvider
 import org.odk.collect.android.gdrive.InstanceGoogleSheetsUploader
@@ -94,7 +94,7 @@ class InstanceSubmitter(
     }
 
     private fun setUpODKUploader(): InstanceUploader {
-        val httpInterface = Collect.getInstance().component.openRosaHttpInterface()
+        val httpInterface = EspenCollect.getInstance().component.openRosaHttpInterface()
         return InstanceServerUploader(
             httpInterface,
             WebCredentialsUtils(generalSettings),
@@ -113,15 +113,15 @@ class InstanceSubmitter(
         // communicated to the user. Maybe successful delete should also be communicated?
         if (InstanceAutoDeleteChecker.shouldInstanceBeDeleted(formsRepository, generalSettings.getBoolean(ProjectKeys.KEY_DELETE_AFTER_SEND), instance)) {
             InstanceDeleter(
-                InstancesRepositoryProvider(Collect.getInstance()).get(),
-                FormsRepositoryProvider(Collect.getInstance()).get()
+                InstancesRepositoryProvider(EspenCollect.getInstance()).get(),
+                FormsRepositoryProvider(EspenCollect.getInstance()).get()
             ).delete(instance.dbId)
         }
     }
 
     private fun logUploadedForm(instance: Instance) {
         val key = if (isGoogleSheetsProtocol()) "HTTP-Sheets auto" else "HTTP auto"
-        val value = Collect.getFormIdentifierHash(instance.formId, instance.formVersion)
+        val value = EspenCollect.getFormIdentifierHash(instance.formId, instance.formVersion)
 
         Analytics.log(AnalyticsEvents.SUBMISSION, key, value)
     }

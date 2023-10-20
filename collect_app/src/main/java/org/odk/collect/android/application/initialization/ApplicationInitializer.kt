@@ -14,7 +14,7 @@ import org.javarosa.xform.parse.XFormParserFactory
 import org.javarosa.xform.util.XFormUtils
 import org.odk.collect.analytics.Analytics
 import org.odk.collect.android.BuildConfig
-import org.odk.collect.android.application.Collect
+import org.odk.collect.android.application.EspenCollect
 import org.odk.collect.android.application.initialization.upgrade.UpgradeInitializer
 import org.odk.collect.android.logic.actions.setgeopoint.CollectSetGeopointActionHandler
 import org.odk.collect.metadata.PropertyManager
@@ -59,7 +59,7 @@ class ApplicationInitializer(
     }
 
     private fun initializeLocale() {
-        Collect.defaultSysLanguage = Locale.getDefault().language
+        EspenCollect.defaultSysLanguage = Locale.getDefault().language
     }
 
     private fun initializeJavaRosa() {
@@ -72,7 +72,7 @@ class ApplicationInitializer(
         PrototypeManager.registerPrototypes(CoreModelModule.classNames)
         XFormsModule().registerModule()
 
-        // When registering prototypes from Collect, a proguard exception also needs to be added
+        // When registering prototypes from EspenCollect, a proguard exception also needs to be added
         PrototypeManager.registerPrototype("org.odk.collect.android.logic.actions.setgeopoint.CollectSetGeopointAction")
         XFormParser.registerActionHandler(
             CollectSetGeopointActionHandler.ELEMENT_NAME,

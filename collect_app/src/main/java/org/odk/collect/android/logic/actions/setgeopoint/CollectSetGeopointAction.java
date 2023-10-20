@@ -24,7 +24,7 @@ import com.google.android.gms.location.LocationListener;
 
 import org.javarosa.core.model.actions.setgeopoint.SetGeopointAction;
 import org.javarosa.core.model.instance.TreeReference;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.injection.DaggerUtils;
 import org.odk.collect.android.location.client.MaxAccuracyWithinTimeoutLocationClientWrapper;
 import org.odk.collect.androidshared.system.PlayServicesChecker;
@@ -67,13 +67,13 @@ public class CollectSetGeopointAction extends SetGeopointAction implements Locat
     public void requestLocationUpdates() {
         // Do initialization on first location request so the client doesn't need to be serialized
         if (maxAccuracyLocationClient == null) {
-            maxAccuracyLocationClient = new MaxAccuracyWithinTimeoutLocationClientWrapper(new GoogleFusedLocationClient(Collect.getInstance()), this);
+            maxAccuracyLocationClient = new MaxAccuracyWithinTimeoutLocationClientWrapper(new GoogleFusedLocationClient(EspenCollect.getInstance()), this);
         }
 
-        // Only start acquiring location if the Collect preference allows it and Google Play
+        // Only start acquiring location if the EspenCollect preference allows it and Google Play
         // Services are available. If it's not allowed, leave the target field blank.
         if (isBackgroundLocationEnabled()
-            && new PlayServicesChecker().isGooglePlayServicesAvailable(Collect.getInstance().getApplicationContext())) {
+            && new PlayServicesChecker().isGooglePlayServicesAvailable(EspenCollect.getInstance().getApplicationContext())) {
             maxAccuracyLocationClient.requestLocationUpdates(SECONDS_TO_CONSIDER_UPDATES);
         }
     }
@@ -100,7 +100,7 @@ public class CollectSetGeopointAction extends SetGeopointAction implements Locat
 
     private boolean isBackgroundLocationEnabled() {
         return DaggerUtils
-                .getComponent(Collect.getInstance())
+                .getComponent(EspenCollect.getInstance())
                 .settingsProvider()
                 .getUnprotectedSettings()
                 .getBoolean(KEY_BACKGROUND_LOCATION);

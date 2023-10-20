@@ -16,7 +16,7 @@ package org.odk.collect.android.utilities;
 
 import androidx.annotation.NonNull;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.exception.BadUrlException;
 
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
@@ -33,10 +33,10 @@ public final class UrlUtils {
         final String googleHeader = "docs.google.com/spreadsheets/d/";
         if (urlString == null || urlString.isEmpty()) {
             throw new BadUrlException(
-                    getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.missing_submission_url));
+                    getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.missing_submission_url));
         } else if (urlString.length() < googleHeader.length()) {
             throw new BadUrlException(
-                    getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.invalid_sheet_id, urlString));
+                    getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.invalid_sheet_id, urlString));
         } else {
             int start = urlString.indexOf(googleHeader) + googleHeader.length();
             int end = urlString.indexOf('/', start);
@@ -46,7 +46,7 @@ public final class UrlUtils {
             }
             if (start == -1) {
                 throw new BadUrlException(
-                        getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.invalid_sheet_id, urlString));
+                        getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.invalid_sheet_id, urlString));
             }
             return urlString.substring(start, end);
         }

@@ -85,7 +85,7 @@ public class SheetsHelper {
         sheetsAPI.batchUpdate(spreadsheetId, requests);
     }
 
-    // Force a locale that correctly interprets dates sent by Collect, unlike en_US
+    // Force a locale that correctly interprets dates sent by EspenCollect, unlike en_US
     public void updateSpreadsheetLocaleForNewSpreadsheet(String spreadsheetId, String mainSheetTitle) {
        try {
            if (!isNewSpreadsheet(spreadsheetId, mainSheetTitle)) {

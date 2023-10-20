@@ -37,7 +37,7 @@ import androidx.preference.Preference;
 
 import org.jetbrains.annotations.NotNull;
 import org.odk.collect.android.R;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.backgroundwork.FormUpdateScheduler;
 import org.odk.collect.android.backgroundwork.InstanceSubmitScheduler;
 import org.odk.collect.settings.keys.ProjectKeys;
@@ -56,7 +56,7 @@ public class FormManagementPreferencesFragment extends BaseProjectPreferencesFra
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Collect.getInstance().getComponent().inject(this);
+        EspenCollect.getInstance().getComponent().inject(this);
     }
 
     @Override

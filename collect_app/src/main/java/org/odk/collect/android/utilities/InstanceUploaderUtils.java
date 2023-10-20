@@ -18,7 +18,7 @@ package org.odk.collect.android.utilities;
 
 import android.content.Context;
 
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;
 
@@ -77,7 +77,7 @@ public final class InstanceUploaderUtils {
 
     private static String localizeDefaultAggregateSuccessfulText(String text) {
         if (text != null && text.equals(DEFAULT_SUCCESSFUL_TEXT)) {
-            text = getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.success);
+            text = getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.success);
         }
         return text;
     }

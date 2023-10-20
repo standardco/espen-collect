@@ -20,7 +20,7 @@ import org.javarosa.core.model.actions.setgeopoint.SetGeopointAction;
 import org.javarosa.core.model.actions.setgeopoint.SetGeopointActionHandler;
 
 /**
- * Handler for Collect's implementation of the odk:setgeopoint action.
+ * Handler for EspenCollect's implementation of the odk:setgeopoint action.
  */
 public class CollectSetGeopointActionHandler extends SetGeopointActionHandler {
     public SetGeopointAction getSetGeopointAction() {

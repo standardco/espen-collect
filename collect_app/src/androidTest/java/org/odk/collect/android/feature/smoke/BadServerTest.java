@@ -48,7 +48,7 @@ public class BadServerTest {
 
     @Test
     /*
-     A server that doesn't return hashes correctly for media files would fool Collect into thinking
+     A server that doesn't return hashes correctly for media files would fool EspenCollect into thinking
      there was a new one each time. This happens because we would compare the existing file's
      (computed) hash with the server one assuming there is a prefix and end up comparing against
      a substring.
@@ -66,7 +66,7 @@ public class BadServerTest {
     @Test
     /*
      A server that doesn't return hashes based on the md5 of the file for media files
-     would fool Collect into thinking there was a new one each time. Collect should still redownload
+     would fool EspenCollect into thinking there was a new one each time. EspenCollect should still redownload
      the file in this case (there's nothing else it can do), but it should only identify the form
      as being updated if the file actually changed.
     */

@@ -24,7 +24,7 @@ import android.database.sqlite.SQLiteDatabase;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.condition.EvaluationContext;
 import org.javarosa.xpath.expr.XPathFuncExpr;
-import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.application.EspenCollect;
 import org.odk.collect.android.exception.ExternalDataException;
 import org.odk.collect.android.externaldata.ExternalDataManager;
 import org.odk.collect.android.externaldata.ExternalDataUtil;
@@ -101,7 +101,7 @@ public class ExternalDataHandlerSearch extends ExternalDataHandlerBase {
             // we should never get here since it is already handled in ExternalDataUtil
             // .getSearchXPathExpression(String appearance)
             throw new ExternalDataException(
-                    getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_arguments_error));
+                    getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_search_wrong_arguments_error));
         }
 
         String searchType = null;
@@ -183,7 +183,7 @@ public class ExternalDataHandlerSearch extends ExternalDataHandlerBase {
                 c = db.query(ExternalDataUtil.EXTERNAL_DATA_TABLE_NAME, sqlColumns, selection,
                         selectionArgs, null, null, ExternalDataUtil.SORT_COLUMN_NAME);
             } catch (Exception e) {
-                Timber.e(new Error(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.ext_import_csv_missing_error, dataSetName, dataSetName)));
+                Timber.e(new Error(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.ext_import_csv_missing_error, dataSetName, dataSetName)));
                 c = db.query(ExternalDataUtil.EXTERNAL_DATA_TABLE_NAME, sqlColumns, selection,
                         selectionArgs, null, null, null);
             }
