@@ -6,6 +6,7 @@ import org.odk.collect.android.storage.StorageSubdirectory
 import org.odk.collect.android.utilities.ChangeLockProvider
 import org.odk.collect.android.utilities.FormsRepositoryProvider
 import org.odk.collect.android.utilities.InstancesRepositoryProvider
+import org.odk.collect.android.utilities.LookUpRepositoryProvider
 import org.odk.collect.settings.SettingsProvider
 
 /**
@@ -17,6 +18,7 @@ data class ProjectDependencyProvider(
     val settingsProvider: SettingsProvider,
     val formsRepositoryProvider: FormsRepositoryProvider,
     val instancesRepositoryProvider: InstancesRepositoryProvider,
+    val lookupRepositoryProvider: LookUpRepositoryProvider,
     val storagePathProvider: StoragePathProvider,
     val changeLockProvider: ChangeLockProvider,
     val formSourceProvider: FormSourceProvider
@@ -24,6 +26,7 @@ data class ProjectDependencyProvider(
     val generalSettings by lazy { settingsProvider.getUnprotectedSettings(projectId) }
     val formsRepository by lazy { formsRepositoryProvider.get(projectId) }
     val instancesRepository by lazy { instancesRepositoryProvider.get(projectId) }
+    val lookupRepository by lazy { lookupRepositoryProvider.get(projectId) }
     val formSource by lazy { formSourceProvider.get(projectId) }
     val formsLock by lazy { changeLockProvider.getFormLock(projectId) }
     val formsDir by lazy { storagePathProvider.getOdkDirPath(StorageSubdirectory.FORMS, projectId) }
@@ -34,6 +37,7 @@ class ProjectDependencyProviderFactory(
     private val settingsProvider: SettingsProvider,
     private val formsRepositoryProvider: FormsRepositoryProvider,
     private val instancesRepositoryProvider: InstancesRepositoryProvider,
+    private val lookupRepositoryProvider: LookUpRepositoryProvider,
     private val storagePathProvider: StoragePathProvider,
     private val changeLockProvider: ChangeLockProvider,
     private val formSourceProvider: FormSourceProvider
@@ -42,7 +46,7 @@ class ProjectDependencyProviderFactory(
         projectId,
         settingsProvider,
         formsRepositoryProvider,
-        instancesRepositoryProvider,
+        instancesRepositoryProvider, lookupRepositoryProvider,
         storagePathProvider,
         changeLockProvider,
         formSourceProvider

@@ -40,6 +40,7 @@ import org.odk.collect.android.widgets.items.LabelWidget;
 import org.odk.collect.android.widgets.items.LikertWidget;
 import org.odk.collect.android.widgets.items.ListMultiWidget;
 import org.odk.collect.android.widgets.items.ListWidget;
+import org.odk.collect.android.widgets.items.LookUpWidget;
 import org.odk.collect.android.widgets.items.RankingWidget;
 import org.odk.collect.android.widgets.items.SelectMultiImageMapWidget;
 import org.odk.collect.android.widgets.items.SelectMultiMinimalWidget;
@@ -174,6 +175,9 @@ public class WidgetFactory {
                         break;
                     case Constants.DATATYPE_TEXT:
                         String query = prompt.getQuestion().getAdditionalAttribute(null, "query");
+
+                        boolean isLookUp = prompt.getBindAttributes().stream().filter(e-> e.getName().equals("db_get")).count() > 0;
+
                         if (query != null) {
                             questionWidget = getSelectOneWidget(appearance, questionDetails);
                         } else if (appearance.startsWith(Appearances.PRINTER)) {
@@ -188,7 +192,10 @@ public class WidgetFactory {
                             questionWidget = new StringNumberWidget(activity, questionDetails);
                         } else if (appearance.equals(Appearances.URL)) {
                             questionWidget = new UrlWidget(activity, questionDetails, new ExternalWebPageHelper());
-                        } else {
+                        } else if(isLookUp){
+                            questionWidget = new LookUpWidget(activity, questionDetails, false, formController, formEntryViewModel);
+                        }
+                        else {
                             questionWidget = new StringWidget(activity, questionDetails);
                         }
                         break;

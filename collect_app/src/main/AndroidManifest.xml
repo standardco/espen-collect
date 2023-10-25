@@ -219,11 +219,15 @@ the specific language governing permissions and limitations under the License.
 
         <provider
             android:name=".external.FormsProvider"
-            android:authorities="org.odk.collect.android.provider.odk.forms"
+            android:authorities="com.espen.provider.odk.v2.forms"
             android:exported="true" />
         <provider
             android:name=".external.InstanceProvider"
-            android:authorities="org.odk.collect.android.provider.odk.instances"
+            android:authorities="com.espen.provider.odk.v2.instances"
+            android:exported="true" />
+        <provider
+            android:name=".external.LookupProvider"
+            android:authorities="com.espen.provider.odk.v2.lookup"
             android:exported="true" />
 
         <activity-alias

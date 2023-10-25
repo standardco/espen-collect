@@ -47,6 +47,7 @@ class StoragePathProvider(
             StorageSubdirectory.SHARED_LAYERS -> odkRootDirPath + File.separator + subdirectory.directoryName
             StorageSubdirectory.FORMS,
             StorageSubdirectory.INSTANCES,
+            StorageSubdirectory.LOOKUPS,
             StorageSubdirectory.CACHE,
             StorageSubdirectory.METADATA,
             StorageSubdirectory.LAYERS,

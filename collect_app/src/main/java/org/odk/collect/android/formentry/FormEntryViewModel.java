@@ -30,6 +30,7 @@ import org.odk.collect.androidshared.livedata.MutableNonNullLiveData;
 import org.odk.collect.androidshared.livedata.NonNullLiveData;
 import org.odk.collect.async.Cancellable;
 import org.odk.collect.async.Scheduler;
+import org.odk.collect.lookup.LookUpRepository;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -49,6 +50,8 @@ public class FormEntryViewModel extends ViewModel implements SelectChoiceLoader 
             validationResult = new MutableLiveData<>(new Consumable<>(null));
     @NonNull
     private final FormSessionRepository formSessionRepository;
+    @NonNull
+    private final LookUpRepository lookUpRepository;
     private final String sessionId;
 
     @Nullable
@@ -63,11 +66,11 @@ public class FormEntryViewModel extends ViewModel implements SelectChoiceLoader 
     private final Cancellable formSessionObserver;
 
     @SuppressWarnings("WeakerAccess")
-    public FormEntryViewModel(Supplier<Long> clock, Scheduler scheduler, FormSessionRepository formSessionRepository, String sessionId) {
+    public FormEntryViewModel(Supplier<Long> clock, Scheduler scheduler, FormSessionRepository formSessionRepository,LookUpRepository lookUpRepository, String sessionId) {
         this.clock = clock;
         this.scheduler = scheduler;
         this.formSessionRepository = formSessionRepository;
-
+        this.lookUpRepository = lookUpRepository;
         this.sessionId = sessionId;
         formSessionObserver = observe(formSessionRepository.get(this.sessionId), formSession -> {
             this.formController = formSession.getFormController();
@@ -275,7 +278,7 @@ public class FormEntryViewModel extends ViewModel implements SelectChoiceLoader 
     @NonNull
     @Override
     public List<SelectChoice> loadSelectChoices(@NonNull FormEntryPrompt prompt) throws FileNotFoundException, XPathSyntaxException, ExternalDataException {
-        return SelectChoiceUtils.loadSelectChoices(prompt, formController);
+        return SelectChoiceUtils.loadSelectChoices(prompt, formController, lookUpRepository);
     }
 
     @Override

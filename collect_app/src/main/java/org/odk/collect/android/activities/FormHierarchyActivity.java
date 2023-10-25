@@ -62,6 +62,7 @@ import org.odk.collect.android.utilities.ApplicationConstants;
 import org.odk.collect.android.utilities.FormEntryPromptUtils;
 import org.odk.collect.android.utilities.HtmlUtils;
 import org.odk.collect.android.utilities.InstancesRepositoryProvider;
+import org.odk.collect.android.utilities.LookUpRepositoryProvider;
 import org.odk.collect.android.utilities.MediaUtils;
 import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder;
@@ -177,7 +178,8 @@ public class FormHierarchyActivity extends LocalizedActivity implements DeleteRe
 
     @Inject
     public InstancesRepositoryProvider instancesRepositoryProvider;
-
+    @Inject
+    public LookUpRepositoryProvider lookupRepositoryProvider;
     protected final OnBackPressedCallback onBackPressedCallback = new OnBackPressedCallback(true) {
         @Override
         public void handleOnBackPressed() {
@@ -209,7 +211,8 @@ public class FormHierarchyActivity extends LocalizedActivity implements DeleteRe
                 fusedLocationClient,
                 permissionsProvider,
                 autoSendSettingsProvider,
-                instancesRepositoryProvider
+                instancesRepositoryProvider,
+                lookupRepositoryProvider
         );
 
         this.getSupportFragmentManager().setFragmentFactory(new FragmentFactoryBuilder()

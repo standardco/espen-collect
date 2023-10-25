@@ -12,6 +12,9 @@ public final class DatabaseConstants {
     // Please always test upgrades manually when you change this value
     public static final int INSTANCES_DATABASE_VERSION = 6;
 
+    public static final String LOOKUP_DATABASE_NAME = "lookups.db";
+    public static final String LOOKUP_TABLE_NAME = "lookups";
+    public static final int LOOKUP_DATABASE_VERSION = 5;
     private DatabaseConstants() {
 
     }

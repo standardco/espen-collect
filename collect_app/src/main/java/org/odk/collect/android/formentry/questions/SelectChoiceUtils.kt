@@ -1,6 +1,7 @@
 package org.odk.collect.android.formentry.questions
 
 import org.javarosa.core.model.SelectChoice
+import org.javarosa.core.model.instance.TreeElement
 import org.javarosa.form.api.FormEntryPrompt
 import org.javarosa.xpath.parser.XPathSyntaxException
 import org.odk.collect.android.exception.ExternalDataException
@@ -9,19 +10,30 @@ import org.odk.collect.android.fastexternalitemset.ItemsetDao
 import org.odk.collect.android.fastexternalitemset.ItemsetDbAdapter
 import org.odk.collect.android.fastexternalitemset.XPathParseTool
 import org.odk.collect.android.javarosawrapper.FormController
+import org.odk.collect.lookup.LookUpRepository
 import java.io.FileNotFoundException
 
 object SelectChoiceUtils {
 
     @JvmStatic
     @Throws(FileNotFoundException::class, XPathSyntaxException::class, ExternalDataException::class)
-    fun loadSelectChoices(prompt: FormEntryPrompt, formController: FormController): List<SelectChoice> {
+    fun loadSelectChoices(prompt: FormEntryPrompt, formController: FormController, lookupRepository: LookUpRepository): List<SelectChoice> {
         return when {
+            isLookUpUsed(prompt) -> readLookupRepository(prompt, formController, lookupRepository)
             isFastExternalItemsetUsed(prompt) -> readFastExternalItems(prompt, formController)
             isSearchPulldataItemsetUsed(prompt) -> readSearchPulldataItems(prompt, formController)
             else -> prompt.selectChoices
         }
     }
+
+    private fun readLookupRepository(prompt: FormEntryPrompt, formController: FormController, lookupRepository: LookUpRepository): List<SelectChoice> {
+        return ExternalDataUtil.populateLookupChoices(prompt,formController, lookupRepository, )
+    }
+
+    private fun isLookUpUsed(prompt: FormEntryPrompt): Boolean {
+        return prompt.bindAttributes.filter { e-> e.name.equals("db_get") }.isNotEmpty()
+    }
+
 
     private fun isFastExternalItemsetUsed(prompt: FormEntryPrompt): Boolean {
         val questionDef = prompt.question

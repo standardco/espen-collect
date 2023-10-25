@@ -12,6 +12,7 @@ import org.odk.collect.android.activities.FormFillingActivity;
 import org.odk.collect.android.activities.FormHierarchyActivity;
 import org.odk.collect.android.activities.FormMapActivity;
 import org.odk.collect.android.activities.InstanceChooserList;
+import org.odk.collect.android.external.LookupProvider;
 import org.odk.collect.android.instancemanagement.send.InstanceUploaderActivity;
 import org.odk.collect.android.instancemanagement.send.InstanceUploaderListActivity;
 import org.odk.collect.android.adapters.InstanceUploaderAdapter;
@@ -48,6 +49,7 @@ import org.odk.collect.android.fragments.SavedFormListFragment;
 import org.odk.collect.android.fragments.dialogs.FormsDownloadResultDialog;
 import org.odk.collect.android.fragments.dialogs.SelectMinimalDialog;
 import org.odk.collect.android.gdrive.GoogleSheetsUploaderActivity;
+import org.odk.collect.android.utilities.LookUpRepositoryProvider;
 import org.odk.collect.googlemaps.GoogleMapFragment;
 import org.odk.collect.android.mainmenu.MainMenuActivity;
 import org.odk.collect.android.openrosa.OpenRosaHttpInterface;
@@ -234,6 +236,8 @@ public interface AppDependencyComponent {
     void inject(FormsProvider formsProvider);
 
     void inject(InstanceProvider instanceProvider);
+
+    void inject(LookupProvider lookupProvider);
 
     void inject(BackgroundAudioPermissionDialogFragment backgroundAudioPermissionDialogFragment);
 

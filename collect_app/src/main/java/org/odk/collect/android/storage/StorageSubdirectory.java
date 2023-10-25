@@ -8,8 +8,9 @@ public enum StorageSubdirectory {
     LAYERS("layers"),
     SETTINGS("settings"),
     PROJECTS("projects"),
-    SHARED_LAYERS("layers");
+    SHARED_LAYERS("layers"),
 
+    LOOKUPS("lookups");
     private final String directoryName;
 
     StorageSubdirectory(String directoryName) {

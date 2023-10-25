@@ -98,6 +98,7 @@ import org.odk.collect.android.utilities.FileProvider;
 import org.odk.collect.android.utilities.FormsRepositoryProvider;
 import org.odk.collect.android.utilities.ImageCompressionController;
 import org.odk.collect.android.utilities.InstancesRepositoryProvider;
+import org.odk.collect.android.utilities.LookUpRepositoryProvider;
 import org.odk.collect.android.utilities.MediaUtils;
 import org.odk.collect.android.utilities.ProjectResetter;
 import org.odk.collect.android.utilities.SoftKeyboardController;
@@ -481,7 +482,10 @@ public class AppDependencyModule {
     public InstancesRepositoryProvider providesInstancesRepositoryProvider(Context context, StoragePathProvider storagePathProvider) {
         return new InstancesRepositoryProvider(context, storagePathProvider);
     }
-
+    @Provides
+    public LookUpRepositoryProvider providesLookUpRepositoryProvider(Context context, StoragePathProvider storagePathProvider) {
+        return new LookUpRepositoryProvider(context, storagePathProvider);
+    }
     @Provides
     public ProjectPreferencesViewModel.Factory providesProjectPreferencesViewModel(AdminPasswordProvider adminPasswordProvider) {
         return new ProjectPreferencesViewModel.Factory(adminPasswordProvider);
@@ -630,8 +634,8 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public ProjectDependencyProviderFactory providesProjectDependencyProviderFactory(SettingsProvider settingsProvider, FormsRepositoryProvider formsRepositoryProvider, InstancesRepositoryProvider instancesRepositoryProvider, StoragePathProvider storagePathProvider, ChangeLockProvider changeLockProvider, FormSourceProvider formSourceProvider) {
-        return new ProjectDependencyProviderFactory(settingsProvider, formsRepositoryProvider, instancesRepositoryProvider, storagePathProvider, changeLockProvider, formSourceProvider);
+    public ProjectDependencyProviderFactory providesProjectDependencyProviderFactory(SettingsProvider settingsProvider, FormsRepositoryProvider formsRepositoryProvider, InstancesRepositoryProvider instancesRepositoryProvider, LookUpRepositoryProvider lookupRepositoryProvider, StoragePathProvider storagePathProvider, ChangeLockProvider changeLockProvider, FormSourceProvider formSourceProvider) {
+        return new ProjectDependencyProviderFactory(settingsProvider, formsRepositoryProvider, instancesRepositoryProvider, lookupRepositoryProvider, storagePathProvider, changeLockProvider, formSourceProvider);
     }
 
     @Provides

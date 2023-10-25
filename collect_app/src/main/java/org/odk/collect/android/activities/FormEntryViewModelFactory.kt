@@ -22,6 +22,7 @@ import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvi
 import org.odk.collect.android.projects.ProjectsDataService
 import org.odk.collect.android.utilities.ApplicationConstants
 import org.odk.collect.android.utilities.InstancesRepositoryProvider
+import org.odk.collect.android.utilities.LookUpRepositoryProvider
 import org.odk.collect.android.utilities.MediaUtils
 import org.odk.collect.async.Scheduler
 import org.odk.collect.audiorecorder.recording.AudioRecorder
@@ -46,7 +47,9 @@ class FormEntryViewModelFactory(
     private val fusedLocationClient: LocationClient,
     private val permissionsProvider: PermissionsProvider,
     private val autoSendSettingsProvider: AutoSendSettingsProvider,
-    private val instancesRepositoryProvider: InstancesRepositoryProvider
+    private val instancesRepositoryProvider: InstancesRepositoryProvider,
+    private val lookupRepositoryProvider: LookUpRepositoryProvider,
+
 ) : AbstractSavedStateViewModelFactory(owner, null) {
 
     override fun <T : ViewModel> create(
@@ -61,6 +64,7 @@ class FormEntryViewModelFactory(
                 System::currentTimeMillis,
                 scheduler,
                 formSessionRepository,
+                    lookupRepositoryProvider.get(projectId),
                 sessionId
             )
 
@@ -75,7 +79,8 @@ class FormEntryViewModelFactory(
                     projectsDataService,
                     formSessionRepository.get(sessionId),
                     entitiesRepositoryProvider.get(projectId),
-                    instancesRepositoryProvider.get(projectId)
+                    instancesRepositoryProvider.get(projectId),
+                        lookupRepositoryProvider.get(projectId)
                 )
             }
 

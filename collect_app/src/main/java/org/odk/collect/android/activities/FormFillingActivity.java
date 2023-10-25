@@ -160,6 +160,7 @@ import org.odk.collect.android.utilities.ControllableLifecyleOwner;
 import org.odk.collect.android.utilities.ExternalAppIntentProvider;
 import org.odk.collect.android.utilities.FormsRepositoryProvider;
 import org.odk.collect.android.utilities.InstancesRepositoryProvider;
+import org.odk.collect.android.utilities.LookUpRepositoryProvider;
 import org.odk.collect.android.utilities.MediaUtils;
 import org.odk.collect.androidshared.system.PlayServicesChecker;
 import org.odk.collect.android.utilities.ScreenContext;
@@ -371,6 +372,8 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
     @Inject
     public InstancesRepositoryProvider instancesRepositoryProvider;
 
+    @Inject
+    public LookUpRepositoryProvider lookupRepositoryProvider;
     private final LocationProvidersReceiver locationProvidersReceiver = new LocationProvidersReceiver();
 
     private SwipeHandler swipeHandler;
@@ -443,7 +446,9 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
                 fusedLocatonClient,
                 permissionsProvider,
                 autoSendSettingsProvider,
-                instancesRepositoryProvider
+                instancesRepositoryProvider,
+                lookupRepositoryProvider
+
         );
 
         this.getSupportFragmentManager().setFragmentFactory(new FragmentFactoryBuilder()

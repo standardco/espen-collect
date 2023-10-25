@@ -18,32 +18,44 @@
 
 package org.odk.collect.android.externaldata;
 
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.condition.EvaluationContext;
 import org.javarosa.core.model.instance.FormInstance;
+import org.javarosa.core.model.instance.TreeElement;
+import org.javarosa.core.model.instance.TreeReference;
 import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryPrompt;
+import org.javarosa.model.xform.XPathReference;
 import org.javarosa.xpath.XPathParseTool;
 import org.javarosa.xpath.expr.XPathExpression;
 import org.javarosa.xpath.expr.XPathFuncExpr;
 import org.javarosa.xpath.parser.XPathSyntaxException;
 import org.odk.collect.android.application.EspenCollect;
+import org.odk.collect.android.database.lookups.DatabaseLookupRepository;
 import org.odk.collect.android.exception.ExternalDataException;
 import org.odk.collect.android.externaldata.handler.ExternalDataHandlerSearch;
 import org.odk.collect.android.javarosawrapper.FormController;
+import org.odk.collect.lookup.LookUpRepository;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -166,6 +178,7 @@ public final class ExternalDataUtil {
     public static ArrayList<SelectChoice> populateExternalChoices(FormEntryPrompt formEntryPrompt,
             XPathFuncExpr xpathfuncexpr, FormController formController) throws FileNotFoundException {
         try {
+
             List<SelectChoice> selectChoices = formEntryPrompt.getSelectChoices();
             ArrayList<SelectChoice> returnedChoices = new ArrayList<>();
             for (SelectChoice selectChoice : selectChoices) {
@@ -228,6 +241,90 @@ public final class ExternalDataUtil {
         }
     }
 
+    public static ArrayList<SelectChoice> populateLookupChoices(FormEntryPrompt formEntryPrompt, FormController formController, LookUpRepository lookupRepository){
+        ArrayList<SelectChoice> returnedChoices = new ArrayList<>();
+
+        String projectColumn = null;
+        List<TreeElement> attrs = formEntryPrompt.getBindAttributes();
+
+        HashMap<String, String> selectionClause = new HashMap<String, String>();
+        for (int i = 0; i < attrs.size(); i++) {
+            if ("db_get".equalsIgnoreCase(attrs.get(i).getName())) {
+                projectColumn = attrs.get(i).getAttributeValue();
+            } else if (attrs.get(i).getName() != null
+                    && attrs.get(i).getName().startsWith("db_filter_by_col_")) {
+                String col = attrs
+                        .get(i)
+                        .getName()
+                        .substring("db_filter_by_col_".length(),
+                                attrs.get(i).getName().length());
+                String value = attrs.get(i).getAttributeValue();
+                selectionClause.put(col, value);
+            }
+        }
+
+        StringBuilder selectionBuilder = new StringBuilder();
+        String[] selectionArgs = new String[selectionClause.size() + 1];
+
+        // always only select non-null columns
+        selectionBuilder.append(projectColumn + "<>? and ");
+        selectionArgs[0] = "NULL";
+
+        // have to put this before the while statement below
+        // in case a nodeset is wrong
+        //rg = new RadioGroup(context);
+
+        // at this point, we have a map of col/nodeset, what we want is
+        // col/answer
+        // so use the nodesets, get the answers, and replace the nodesets in the
+        // map
+        // iterate through the "filter by" statements and build
+        Iterator<String> itr = selectionClause.keySet().iterator();
+        int i = 1;
+        while (itr.hasNext()) {
+            String key = itr.next();
+            selectionBuilder.append("col_" + key + "=? and ");
+
+            String nodeset = selectionClause.get(key);
+
+            try {
+                TreeReference th = XPathReference.getPathExpr(nodeset)
+                        .getReference();
+                FormIndex filter_answer = new FormIndex(1, th);
+
+                FormEntryPrompt filter_prompt = formController.getQuestionPrompt(filter_answer);
+                selectionClause.put(key, filter_prompt.getAnswerText());
+            } catch (NullPointerException e) {
+            }
+
+            selectionArgs[i] = selectionClause.get(key);
+            if(selectionArgs[i] == null){
+                selectionArgs[i] = "NULL";
+            }
+            i++;
+        }
+        String selection = selectionBuilder.toString();
+        // remove the extra " and " added by the loop
+        if (selection != null && selection.lastIndexOf(" and ") != -1) {
+            // remove the trailing comma if one exists
+            selection = selection.substring(0, selection.lastIndexOf(" and "));
+        }
+
+        String s = formEntryPrompt.getAnswerText();
+        if (selection.length() == 0) {
+            selection = null;
+            selectionArgs = null;
+        }
+        var result = lookupRepository.getBySearchQuery(projectColumn, selection, selectionArgs);
+        int index = 0;
+        for (var value : result) {
+            SelectChoice selectChoice = new SelectChoice(null, value, value, false);
+            selectChoice.setIndex(index);
+            returnedChoices.add(selectChoice);
+            index++;
+        }
+        return returnedChoices;
+    }
     /**
      * We could simple return new String(displayColumns + "," + valueColumn) but we want to handle
      * the cases

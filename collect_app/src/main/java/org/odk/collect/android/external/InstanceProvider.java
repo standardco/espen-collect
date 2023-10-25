@@ -200,6 +200,7 @@ public class InstanceProvider extends ContentProvider {
                     while (cursor.moveToNext()) {
                         long id = cursor.getLong(cursor.getColumnIndex(_ID));
                         new InstanceDeleter(instancesRepositoryProvider.get(projectId), formsRepositoryProvider.get(projectId)).delete(id);
+
                     }
 
                     count = cursor.getCount();
