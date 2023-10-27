@@ -41,15 +41,15 @@
   <string name="no_items_display_sent_forms">لا شيء متاح للعرض./n/n حاول إرسال الاستمارات المكتملة قبل العرض.</string>
   <string name="not_granted_permission">النشاط الذي تحاول بدء القيام به يحتاج إلى إذن لم تحصل عليه بعد.</string>
   <string name="storage_runtime_permission_denied_title">أذونات التخزين</string>
-  <string name="storage_runtime_permission_denied_desc">بدون هذه الأذونات لا يمكن لبرنامج ODK Collect الوصول إلى الاستمارات أو حفظ الإجابات. أعد فتح التطبيق عندما تكون مستعدًا لمنحهم.</string>
+  <string name="storage_runtime_permission_denied_desc">بدون هذه الأذونات لا يمكن لبرنامج ESPEN Collect الوصول إلى الاستمارات أو حفظ الإجابات. أعد فتح التطبيق عندما تكون مستعدًا لمنحهم.</string>
   <string name="location_runtime_permissions_denied_title">الأذونات الخاصة بالموقع</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
   <string name="camera_runtime_permission_denied_title">إذن الكاميرا</string>
-  <string name="camera_runtime_permission_denied_desc">بدون هذا الإذن لا يمكن لبرنامج ODK Collect الوصول إلى الكاميرا. يرجى المحاولة مرة أخرى عندما تكون مستعدًا لمنحه.</string>
+  <string name="camera_runtime_permission_denied_desc">بدون هذا الإذن لا يمكن لبرنامج ESPEN Collect الوصول إلى الكاميرا. يرجى المحاولة مرة أخرى عندما تكون مستعدًا لمنحه.</string>
   <string name="record_audio_runtime_permission_denied_title">إذن تسجيل الصوت</string>
-  <string name="record_audio_runtime_permission_denied_desc">بدون هذا الإذن لا يمكن لبرنامج ODK Collect الوصول إلى الميكروفون. يرجى المحاولة مرة أخرى عندما تكون مستعدًا لمنحه.</string>
+  <string name="record_audio_runtime_permission_denied_desc">بدون هذا الإذن لا يمكن لبرنامج ESPEN Collect الوصول إلى الميكروفون. يرجى المحاولة مرة أخرى عندما تكون مستعدًا لمنحه.</string>
   <string name="get_accounts_runtime_permission_denied_title">الحصول على إذن الحسابات</string>
-  <string name="get_accounts_runtime_permission_denied_desc">بدون هذا الإذن لا يمكن لبرنامج ODK Collect الوصول إلى الحسابات. يرجى المحاولة مرة أخرى عندما تكون مستعدًا لمنحه.</string>
+  <string name="get_accounts_runtime_permission_denied_desc">بدون هذا الإذن لا يمكن لبرنامج ESPEN Collect الوصول إلى الحسابات. يرجى المحاولة مرة أخرى عندما تكون مستعدًا لمنحه.</string>
   <!--##############################################
     # FILL BLANK FORM
     ##############################################-->
@@ -733,8 +733,8 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">حول التطبيق</string>
-  <string name="tell_your_friends">مشاركة رابط ODK Collect</string>
-  <string name="tell_your_friends_msg">هل ما زال زملائك يجمعون البيانات على الورق؟ شارك ODK Collect معهم.</string>
+  <string name="tell_your_friends">مشاركة رابط ESPEN Collect</string>
+  <string name="tell_your_friends_msg">هل ما زال زملائك يجمعون البيانات على الورق؟ شارك ESPEN Collect معهم.</string>
   <string name="leave_a_review">اترك تقييم في Play Store</string>
   <string name="leave_a_review_msg">تقييمك (الذي نأمل أن يكون إيجابيا) يزيد من رؤية التطبيق في Play Store.</string>
   <string name="odk_website">زيارة موقع ODK</string>
@@ -827,7 +827,7 @@
     ##############################################-->
   <!--Section title in settings-->
   <!--Option provided in the Developer tools settings to force an application crash-->
-  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
   <!--##############################################
     # Form saved Snackbar
     ##############################################-->

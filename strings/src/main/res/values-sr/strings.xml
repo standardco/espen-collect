@@ -43,7 +43,7 @@
   <string name="storage_runtime_permission_denied_title">Dozvola za pristup memoriji</string>
   <string name="storage_runtime_permission_denied_desc">Bez ovih dozvola Collent ne može pristupiti formularima ili sačuvati odgovore. Ponovo otvorite aplikaciju kada budete spremni da dozvolite pristup.</string>
   <string name="location_runtime_permissions_denied_title">Pristup lokaciji</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
   <string name="camera_runtime_permission_denied_title">Pristup kameri</string>
   <string name="camera_runtime_permission_denied_desc">Bez ovih dozvola Collect ne može pristupiti kameri. Molim ponovo pokušajte kada budete spremni da dozvolite pristup.</string>
   <string name="record_audio_runtime_permission_denied_title">Dozvola za snimanje audija</string>
@@ -642,7 +642,7 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">Informacije </string>
-  <string name="tell_your_friends">Podijeli ODK Collect</string>
+  <string name="tell_your_friends">Podijeli ESPEN Collect</string>
   <string name="tell_your_friends_msg">Da li tvoje kolege i dalje prikupljaju podatke na papiru? Podijeli ODK sa njima</string>
   <string name="leave_a_review">Napiši Play Store recenziju</string>
   <string name="leave_a_review_msg">Vaša (nadamo se pozitivna) recenzija povećava vidljivost aplikacije u Play Storu.</string>
@@ -727,7 +727,7 @@
     ##############################################-->
   <!--Section title in settings-->
   <!--Option provided in the Developer tools settings to force an application crash-->
-  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
   <!--##############################################
     # Form saved Snackbar
     ##############################################-->

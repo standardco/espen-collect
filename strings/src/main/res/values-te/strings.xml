@@ -43,7 +43,7 @@
   <string name="storage_runtime_permission_denied_title">నిల్వ ఉంచటానికి అనుమతులు</string>
   <string name="storage_runtime_permission_denied_desc">ఈ అనుమతులు లేకుండా మీ ఫారమ్‌లను యాక్సెస్ చేయలేరు లేదా సమాధానాలను సేవ్ చేయలేరు. మీరు వాటిని మంజూరు చేయడానికి సిద్ధంగా ఉన్నప్పుడు ఆప్ ని తిరిగి తెరవండి.</string>
   <string name="location_runtime_permissions_denied_title">ప్రదేశ అనుమతులు</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
   <string name="camera_runtime_permission_denied_title">కెమెరా అనుమతి</string>
   <string name="camera_runtime_permission_denied_desc">ఈ అనుమతి లేకుండా కెమెరాను యాక్సెస్ చేయలేరు. మీరు మంజూరు చేయడానికి సిద్ధంగా ఉన్నప్పుడు దయచేసి మళ్ళీ ప్రయత్నించండి.</string>
   <string name="record_audio_runtime_permission_denied_title">ఆడియో అనుమతి రికార్డ్ చేయండి</string>
@@ -685,7 +685,7 @@
      ##############################################-->
   <string name="about_preferences">ODK గురించి</string>
   <string name="tell_your_friends">ODK కలెక్ట్ ని షేర్ చెయ్యండి</string>
-  <string name="tell_your_friends_msg">మీ సహచరులు ఇప్పటికీ కాగితంపై డేటాను సేకరిస్తున్నారా? వారితో ODK Collect పంచుకోండి </string>
+  <string name="tell_your_friends_msg">మీ సహచరులు ఇప్పటికీ కాగితంపై డేటాను సేకరిస్తున్నారా? వారితో ESPEN Collect పంచుకోండి </string>
   <string name="leave_a_review">ప్లే స్టోర్ విమర్షని ఇక్కడ రాయండి</string>
   <string name="leave_a_review_msg">మీ ( సానుకూల) సమీక్ష Play Store లో ఈ App గురించి ఎక్కువ మందికి తెలిసేలా చేస్తుంది </string>
   <string name="odk_website">ODK వెబ్‌సైట్‌ను సందర్శించండి</string>
@@ -773,7 +773,7 @@
     ##############################################-->
   <!--Section title in settings-->
   <!--Option provided in the Developer tools settings to force an application crash-->
-  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
   <!--##############################################
     # Form saved Snackbar
     ##############################################-->

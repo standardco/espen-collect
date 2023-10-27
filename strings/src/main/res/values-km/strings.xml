@@ -52,7 +52,7 @@
   <string name="storage_runtime_permission_denied_title">សិទ្ធិក្នុងការផ្ទុក</string>
   <string name="storage_runtime_permission_denied_desc">បើគ្មានការអនុញ្ញាតទាំងនេះ Collect មិនអាចចូលប្រើទម្រង់របស់អ្នក ឬរក្សាទុកចម្លើយ​បើក​កម្មវិធី​ឡើង​វិញ​នៅ​ពេល​អ្នក​រួចរាល់​ដើម្បី​ផ្តល់​សិទ្ធិ​ទាំងនេះ។</string>
   <string name="location_runtime_permissions_denied_title">ការអនុញ្ញាតទីតាំង</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
   <!--##############################################
     # FILL BLANK FORM
     ##############################################-->
@@ -645,8 +645,8 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">អំពី</string>
-  <string name="tell_your_friends">ចែក​រំលែក​ ODK Collect</string>
-  <string name="tell_your_friends_msg">តើ​សហការី​របស់​អ្នក​នៅ​តែ​ប្រមូល​ទិន្នន័យ​នៅ​លើ​ក្រដាស​មែន​ទេ? ចែក​រំលែក ODK Collect ជាមួយពួកគេ។</string>
+  <string name="tell_your_friends">ចែក​រំលែក​ ESPEN Collect</string>
+  <string name="tell_your_friends_msg">តើ​សហការី​របស់​អ្នក​នៅ​តែ​ប្រមូល​ទិន្នន័យ​នៅ​លើ​ក្រដាស​មែន​ទេ? ចែក​រំលែក ESPEN Collect ជាមួយពួកគេ។</string>
   <string name="leave_a_review">ទុកមតិនៅក្នុងហាង Play</string>
   <string name="leave_a_review_msg">ការ​ផ្តល់​មតិ​ (សង្ឃឹមថាជាវិជ្ជមាន) របស់​អ្នក​បង្កើន​ភាព​មើល​ឃើញ​នៃ​កម្មវិធី​នៅ​ក្នុង Play Store ។</string>
   <string name="odk_website">ចូលទៅកាន់គេហទំព័រ ODK</string>
@@ -730,7 +730,7 @@
     ##############################################-->
   <!--Section title in settings-->
   <!--Option provided in the Developer tools settings to force an application crash-->
-  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
   <!--##############################################
     # Form saved Snackbar
     ##############################################-->

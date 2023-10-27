@@ -44,7 +44,7 @@
   <string name="storage_runtime_permission_denied_title">مجوزهای برای ذخیره سازی</string>
   <string name="storage_runtime_permission_denied_desc">بدون مجوزها، مجموعه نمی‌تواند به فرم‌های شما دسترسی داشته باشد یا پاسخ‌ها را ذخیره کند. زمانی که برای اعطای برنامه آماده شدید، دوباره آن را باز کنید.</string>
   <string name="location_runtime_permissions_denied_title">مجوز مکان</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
   <string name="camera_runtime_permission_denied_title">مجوز کامره</string>
   <string name="camera_runtime_permission_denied_desc">بدون این مجوز Collect نمی تواند به دوربین دسترسی داشته باشد. لطفاً هنگامی که آماده اعطای آن هستید دوباره امتحان کنید.</string>
   <string name="record_audio_runtime_permission_denied_title">ثبت مجوز صوتی</string>
@@ -738,8 +738,8 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">در باره</string>
-  <string name="tell_your_friends">ODK Collect را به اشتراک بگذارید</string>
-  <string name="tell_your_friends_msg">آیا همکاران شما هنوز در حال جمع آوری معلومات بر روی کاغذ هستند؟ ODK Collect را با آنها به اشتراک بگذارید.</string>
+  <string name="tell_your_friends">ESPEN Collect را به اشتراک بگذارید</string>
+  <string name="tell_your_friends_msg">آیا همکاران شما هنوز در حال جمع آوری معلومات بر روی کاغذ هستند؟ ESPEN Collect را با آنها به اشتراک بگذارید.</string>
   <string name="leave_a_review">نظریه خود را راجع به Play Store بنویسید</string>
   <string name="leave_a_review_msg"> (امیدوارم) بررسی ما باعث افزایش دید برنامه در  Play Store می شود.</string>
   <string name="odk_website">به وبسایت ODK مراجعه کنید</string>
@@ -845,9 +845,9 @@
   <string name="try_demo">نسخه ی نمایشی را امتحان کنید</string>
   <string name="scan_configuration_qr_code"> QR کد پیکربندی را اسکن کنید</string>
   <!--Error shown when a user tries to open a form that's in a different project-->
-  <string name="wrong_project_selected_for_form">برای باز کردن این فرم، ابتدا باید ODK Collect را باز کنید و به پروژه ای که مربوط آن است بروید.</string>
+  <string name="wrong_project_selected_for_form">برای باز کردن این فرم، ابتدا باید ESPEN Collect را باز کنید و به پروژه ای که مربوط آن است بروید.</string>
   <!--Error shown when a user tries to open a form when there are no projects-->
-  <string name="app_not_configured">او دی کی کلیکت تنظیم نگردیده است، کوشش کنید تا او دی کی کلیکت را باز کنید و آنرا تنظیم کنید. اگر شما بالای میانبر فشار وارد کنید، پس از تنظیم کردن ODK collect شما نیاز پیدا خواهد کرد تا انرا دوباره ایجاد کنید.</string>
+  <string name="app_not_configured">او دی کی کلیکت تنظیم نگردیده است، کوشش کنید تا او دی کی کلیکت را باز کنید و آنرا تنظیم کنید. اگر شما بالای میانبر فشار وارد کنید، پس از تنظیم کردن ESPEN collect شما نیاز پیدا خواهد کرد تا انرا دوباره ایجاد کنید.</string>
   <!--##############################################
     # Errors
     ##############################################-->
@@ -869,7 +869,7 @@
     ##############################################-->
   <!--Section title in settings-->
   <!--Option provided in the Developer tools settings to force an application crash-->
-  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
   <!--##############################################
     # Form saved Snackbar
     ##############################################-->

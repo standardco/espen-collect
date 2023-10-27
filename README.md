@@ -1,17 +1,17 @@
-# ODK Collect
+# ESPEN Collect
 ![Platform](https://img.shields.io/badge/platform-Android-blue.svg)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build status](https://circleci.com/gh/getodk/collect.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/getodk/collect)
 [![Slack](https://img.shields.io/badge/chat-on%20slack-brightgreen)](https://slack.getodk.org)
 
-ODK Collect is an Android app for filling out forms. It is designed to be used in resource-constrained environments with challenges such as unreliable connectivity or power infrastructure. ODK Collect is part the ODK project, a free and open-source set of tools which help organizations author, field, and manage mobile data collection solutions. Learn more about ODK and its history [here](https://getodk.org/) and read about example ODK deployments [here](https://forum.getodk.org/c/showcase).
+ESPEN Collect is an Android app for filling out forms. It is designed to be used in resource-constrained environments with challenges such as unreliable connectivity or power infrastructure. ESPEN Collect is part the ODK project, a free and open-source set of tools which help organizations author, field, and manage mobile data collection solutions. Learn more about ODK and its history [here](https://getodk.org/) and read about example ODK deployments [here](https://forum.getodk.org/c/showcase).
 
-ODK Collect renders forms that are compliant with the [ODK XForms standard](https://getodk.github.io/xforms-spec/), a subset of the [XForms 1.1 standard](https://www.w3.org/TR/xforms/) with some extensions. The form parsing is done by the [JavaRosa library](https://github.com/getodk/javarosa) which Collect includes as a dependency.
+ESPEN Collect renders forms that are compliant with the [ODK XForms standard](https://getodk.github.io/xforms-spec/), a subset of the [XForms 1.1 standard](https://www.w3.org/TR/xforms/) with some extensions. The form parsing is done by the [JavaRosa library](https://github.com/getodk/javarosa) which Collect includes as a dependency.
 
 Please note that the `master` branch reflects ongoing development and is not production-ready.
 
 ## Table of Contents
-* [Learn more about ODK Collect](#learn-more-about-odk-collect)
+* [Learn more about ESPEN Collect](#learn-more-about-odk-collect)
 * [Release cycle](#release-cycle)
 * [Downloading builds](#downloading-builds)
 * [Suggesting new features](#suggesting-new-features)
@@ -27,9 +27,9 @@ Please note that the `master` branch reflects ongoing development and is not pro
   * [Troubleshooting](#troubleshooting)
 * [Creating signed releases for Google Play Store](#creating-signed-releases-for-google-play-store)
 
-## Learn more about ODK Collect
+## Learn more about ESPEN Collect
 * ODK website: [https://getodk.org](https://getodk.org)
-* ODK Collect usage documentation: [https://docs.getodk.org/collect-intro/](https://docs.getodk.org/collect-intro/)
+* ESPEN Collect usage documentation: [https://docs.getodk.org/collect-intro/](https://docs.getodk.org/collect-intro/)
 * ODK forum: [https://forum.getodk.org](https://forum.getodk.org)
 * ODK developer Slack chat: [https://slack.getodk.org](https://slack.getodk.org)
 
@@ -46,15 +46,15 @@ At the beginning of each release cycle, [@grzesiek2010](https://github.com/grzes
 ## Downloading builds
 Per-commit debug builds can be found on [CircleCI](https://circleci.com/gh/getodk/collect). Login with your GitHub account, click the build you'd like, then find the APK in the Artifacts tab.
 
-If you are looking to use ODK Collect, we strongly recommend using the [Play Store build](https://play.google.com/store/apps/details?id=org.odk.collect.android). Current and previous production builds can be found in [Releases](https://github.com/getodk/collect/releases).
+If you are looking to use ESPEN Collect, we strongly recommend using the [Play Store build](https://play.google.com/store/apps/details?id=org.odk.collect.android). Current and previous production builds can be found in [Releases](https://github.com/getodk/collect/releases).
 
 ## Suggesting new features
 We try to make sure that all issues in the issue tracker are as close to fully specified as possible so that they can be closed by a pull request. Feature suggestions should be described [in the forum Features category](https://forum.getodk.org/c/features) and discussed by the broader user community. Once there is a clear way forward, issues should be filed on the relevant repositories. More controversial features will be discussed as part of the Technical Steering Committee's [roadmapping process](https://github.com/getodk/governance/blob/master/TSC-1/STANDARD-OPERATING-PROCEDURES.md#roadmap).
 
 ## Contributing code
-Any and all contributions to the project are welcome. ODK Collect is used across the world primarily by organizations with a social purpose so you can have real impact!
+Any and all contributions to the project are welcome. ESPEN Collect is used across the world primarily by organizations with a social purpose so you can have real impact!
 
-Issues tagged as [good first issue](https://github.com/getodk/collect/labels/good%20first%20issue) should be a good place to start. There are also currently many issues tagged as [needs reproduction](https://github.com/getodk/collect/labels/needs%20reproduction) which need someone to try to reproduce them with the current version of ODK Collect and comment on the issue with their findings.
+Issues tagged as [good first issue](https://github.com/getodk/collect/labels/good%20first%20issue) should be a good place to start. There are also currently many issues tagged as [needs reproduction](https://github.com/getodk/collect/labels/needs%20reproduction) which need someone to try to reproduce them with the current version of ESPEN Collect and comment on the issue with their findings.
 
 If you're ready to contribute code, see [the contribution guide](docs/CONTRIBUTING.md).
 
@@ -101,7 +101,7 @@ If you have finished testing a pull request, please use a template from [Testing
 
 1. Use Android Studio to import the project from its Gradle settings. To run the project, click on the green arrow at the top of the screen.
 
-1. Windows developers: continue configuring Android Studio with the steps in this document: [Developing ODK Collect on Windows](docs/WINDOWS-DEV-SETUP.md).
+1. Windows developers: continue configuring Android Studio with the steps in this document: [Developing ESPEN Collect on Windows](docs/WINDOWS-DEV-SETUP.md).
 
 1. Make sure you can run unit tests by running everything under `collect_app/src/test/java` in Android Studio or on the command line:
 
@@ -138,13 +138,13 @@ When you first run Collect, it is set to download forms from [https://demo.getod
 	adb push my_form.xml /sdcard/Android/data/org.odk.collect.android/files/forms
 	```
 
-1. Launch ODK Collect and tap `Fill Blank Form`. The new form will be there.
+1. Launch ESPEN Collect and tap `Fill Blank Form`. The new form will be there.
 
 ## Using APIs for local development
 
-Certain functions in ODK Collect depend on cloud services that require API keys or authorization steps to work.  Here are the steps you need to take in order to use these functions in your development builds.
+Certain functions in ESPEN Collect depend on cloud services that require API keys or authorization steps to work.  Here are the steps you need to take in order to use these functions in your development builds.
 
-**Google Drive and Sheets APIs**: When the "Google Drive, Google Sheets" option is selected in the "Server" settings, ODK Collect uses these APIs to store submitted form data in Google Sheets and submitted media in Google Drive.  To enable these APIs:
+**Google Drive and Sheets APIs**: When the "Google Drive, Google Sheets" option is selected in the "Server" settings, ESPEN Collect uses these APIs to store submitted form data in Google Sheets and submitted media in Google Drive.  To enable these APIs:
   1. Create and configure a Google API project for Google Sign-in using the "Configure Project" button found [here](https://developers.google.com/identity/sign-in/android/start).
       1. Choose whatever you'd like for the project and product name
       1. Select "Android" for "What are you calling from?"
@@ -154,14 +154,14 @@ Certain functions in ODK Collect depend on cloud services that require API keys 
   1. [Enable the Google Drive API](https://console.developers.google.com/apis/api/drive.googleapis.com).
   1. [Enable the Google Sheets API](https://console.developers.google.com/apis/api/sheets.googleapis.com).
 
-**Google Maps API**: When the "Google Maps SDK" option is selected in the "User interface" settings, ODK Collect uses the Google Maps API for displaying maps in the geospatial widgets (GeoPoint, GeoTrace, and GeoShape).  To enable this API:
+**Google Maps API**: When the "Google Maps SDK" option is selected in the "User interface" settings, ESPEN Collect uses the Google Maps API for displaying maps in the geospatial widgets (GeoPoint, GeoTrace, and GeoShape).  To enable this API:
   1. [Get a Google Maps API key](https://developers.google.com/maps/documentation/android-api/signup).  Note that this requires a credit card number, though the card will not be charged immediately; some free API usage is permitted.  You should carefully read the terms before providing a credit card number.
   1. Edit or create `secrets.properties` and set the `GOOGLE_MAPS_API_KEY` property to your API key.  You should end up with a line that looks like this:
     ```
     GOOGLE_MAPS_API_KEY=AIbzvW8e0ub...
     ```
 
-**Mapbox Maps SDK for Android**: When the "Mapbox SDK" option is selected in the "User interface" settings, ODK Collect uses the Mapbox SDK for displaying maps in the geospatial widgets (GeoPoint, GeoTrace, and GeoShape).  To enable this API:
+**Mapbox Maps SDK for Android**: When the "Mapbox SDK" option is selected in the "User interface" settings, ESPEN Collect uses the Mapbox SDK for displaying maps in the geospatial widgets (GeoPoint, GeoTrace, and GeoShape).  To enable this API:
   1. [Create a Mapbox account](https://www.mapbox.com/signup/).  Note that signing up with the "Pay-As-You-Go" plan does not require a credit card.  Mapbox provides free API usage up to the monthly thresholds documented at [https://www.mapbox.com/pricing](https://www.mapbox.com/pricing).  If your usage exceeds these thresholds, you will receive e-mail with instructions on how to add a credit card for payment; services will remain live until the end of the 30-day billing term, after which the account will be deactivated and will require a credit card to reactivate.
   2. Find your access token on your [account page](https://account.mapbox.com/) - it should be in "Tokens" as "Default public token".
   3. Edit or create `secrets.properties` and set the `MAPBOX_ACCESS_TOKEN` property to your access token.  You should end up with a line that looks like this:

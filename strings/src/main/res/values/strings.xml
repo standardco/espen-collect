@@ -68,7 +68,7 @@
     <string name="storage_runtime_permission_denied_title">Storage permissions</string>
     <string name="storage_runtime_permission_denied_desc">Without these permissions Collect can\'t access your forms or save answers. Reopen the app when you are ready to grant them.</string>
     <string name="location_runtime_permissions_denied_title">Location permissions</string>
-    <!-- Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted. -->
+    <!-- Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted. -->
     <string name="location_runtime_permissions_denied_desc">Without the <b>Precise Location</b> permission Collect can\'t record your location. Please try again when you are ready to grant it.</string>
     <string name="camera_runtime_permission_denied_title">Camera permission</string>
     <string name="camera_runtime_permission_denied_desc">Without this permission Collect can\'t access the camera. Please try again when you are ready to grant it.</string>
@@ -1003,8 +1003,8 @@
      ##############################################
      -->
     <string name="about_preferences">About</string>
-    <string name="tell_your_friends">Share ODK Collect</string>
-    <string name="tell_your_friends_msg">Are your colleagues still collecting data on paper? Share ODK Collect with them.</string>
+    <string name="tell_your_friends">Share ESPEN Collect</string>
+    <string name="tell_your_friends_msg">Are your colleagues still collecting data on paper? Share ESPEN Collect with them.</string>
     <string name="leave_a_review">Leave a Play Store review</string>
     <string name="leave_a_review_msg">Your (hopefully positive) review increases the visibility of the App in the Play Store.</string>
     <string name="odk_website">Visit the ODK website</string>
@@ -1133,9 +1133,9 @@
     <string name="scan_configuration_qr_code">Scan configuration QR code</string>
 
     <!-- Error shown when a user tries to open a form that's in a different project -->
-    <string name="wrong_project_selected_for_form">To open this form, you must first open ODK Collect and switch to the project that contains it.</string>
+    <string name="wrong_project_selected_for_form">To open this form, you must first open ESPEN Collect and switch to the project that contains it.</string>
     <!-- Error shown when a user tries to open a form when there are no projects -->
-    <string name="app_not_configured">ODK Collect has not been configured. Try to open ODK Collect and configure it.\n\nIf you tapped on a shortcut, you might need to recreate it after configuring ODK Collect.</string>
+    <string name="app_not_configured">ESPEN Collect has not been configured. Try to open ESPEN Collect and configure it.\n\nIf you tapped on a shortcut, you might need to recreate it after configuring ESPEN Collect.</string>
     <!-- Error shown when a user tries to start a new form in a Google Drive project -->
     <string name="cannot_start_new_forms_in_google_drive_projects">New forms cannot be started in Google Drive projects.</string>
 
@@ -1187,12 +1187,12 @@
     <string name="dev_tools">Developer tools</string>
     <!-- Option provided in the Developer tools settings to force an application crash -->
     <string name="crash_app">Crash app</string>
-    <!-- An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close -->
+    <!-- An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close -->
     <string name="crash_app_summary">Force an uncaught exception causing the app to crash</string>
     <string name="predicate_caching">Predicate caching</string>
 
     <string name="permission_dialog_title">About permissions</string>
-    <string name="permission_dialog_text">You will be asked to allow ODK Collect access to the features below, select “allow” if you want to use them.</string>
+    <string name="permission_dialog_text">You will be asked to allow ESPEN Collect access to the features below, select “allow” if you want to use them.</string>
     <string name="notifications">Notifications</string>
     <string name="required_for_notifications">Required for showing updates when forms are downloaded, updated and sent.</string>
 

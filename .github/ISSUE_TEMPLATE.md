@@ -1,6 +1,6 @@
 <!-- 
 
-Thank you for taking the time to report an ODK Collect issue!
+Thank you for taking the time to report an ESPEN Collect issue!
 
 This space is for bugs that have clear reproduction steps and expected behavior. For unexpected behavior that is unclear how to address, general usage questions, form design questions, and to ask about the source code, please visit the ODK forum: https://forum.getodk.org
 
@@ -10,7 +10,7 @@ Feature suggestions should be described [in the forum Features category](https:/
 
 -->
 
-#### ODK Collect version
+#### ESPEN Collect version
 
 #### Android version
 

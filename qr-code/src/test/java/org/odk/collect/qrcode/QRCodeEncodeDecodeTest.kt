@@ -37,13 +37,13 @@ class QRCodeEncodeDecodeTest {
     }
 
     @Test
-    fun `Decoding a QR code that is a screenshot from ODK Collect does not throw any exception`() {
+    fun `Decoding a QR code that is a screenshot from ESPEN Collect does not throw any exception`() {
         val imageStream: InputStream = ApplicationProvider.getApplicationContext<Application>().assets.open("qrScreenshotFromCollect.png")
         QRCodeDecoderImpl().decode(imageStream)
     }
 
     @Test
-    fun `Decoding a QR code that is shared via ODK Collect does not throw any exception`() {
+    fun `Decoding a QR code that is shared via ESPEN Collect does not throw any exception`() {
         val imageStream: InputStream = ApplicationProvider.getApplicationContext<Application>().assets.open("qrSharedViaCollect.png")
         QRCodeDecoderImpl().decode(imageStream)
     }

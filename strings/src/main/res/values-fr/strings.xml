@@ -53,7 +53,7 @@
   <string name="storage_runtime_permission_denied_title">Autorisations de stockage</string>
   <string name="storage_runtime_permission_denied_desc">Sans ces permissions Collect ne peut pas accéder à vos formulaires ou enregistrer des réponses. Ré-ouvrez l\'application quand vous êtes prêt à donner les permissions requises. </string>
   <string name="location_runtime_permissions_denied_title">Autorisations liées à la localisation</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
   <string name="location_runtime_permissions_denied_desc">Sans la permission de <b>Position Exacte</b>, Collect ne peut pas enregistrer votre localisation. Veuillez réessayer lorsque vous êtes prêt à l\'accorder.</string>
   <string name="camera_runtime_permission_denied_title">Autorisation d\'enregistrement vidéo</string>
   <string name="camera_runtime_permission_denied_desc">Sans cette permission, Collect ne peut pas accéder à la caméra. Veuillez réessayer lorsque vous êtes prêt à l\'accorder.</string>
@@ -825,8 +825,8 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">À propos</string>
-  <string name="tell_your_friends">Partager ODK Collect</string>
-  <string name="tell_your_friends_msg">Vos collègues continuent-ils à collecter des données sur papier ? Partagez ODK Collect avec eux.</string>
+  <string name="tell_your_friends">Partager ESPEN Collect</string>
+  <string name="tell_your_friends_msg">Vos collègues continuent-ils à collecter des données sur papier ? Partagez ESPEN Collect avec eux.</string>
   <string name="leave_a_review">Laissez un avis sur Play Store</string>
   <string name="leave_a_review_msg">Votre avis (ce qu\'on espère est positif) augmente la visibilité de l\'application dans le Play Store.</string>
   <string name="odk_website">Visiter le site web de Open Data Kit</string>
@@ -934,9 +934,9 @@
   <string name="try_demo">Essayer une démo</string>
   <string name="scan_configuration_qr_code">Scanner un QR Code de configuration</string>
   <!--Error shown when a user tries to open a form that's in a different project-->
-  <string name="wrong_project_selected_for_form">Pour ouvrir ce formulaire, vous devez d\'abord ouvrir ODK Collect et basculer sur le projet qui le contient.</string>
+  <string name="wrong_project_selected_for_form">Pour ouvrir ce formulaire, vous devez d\'abord ouvrir ESPEN Collect et basculer sur le projet qui le contient.</string>
   <!--Error shown when a user tries to open a form when there are no projects-->
-  <string name="app_not_configured">ODK Collect n\'a pas été configuré. Essayez d\'ouvrir ODK Collect et configure le.\n\nSi vous avez cliqué sur un raccourci, vous devrez le recréer après avoir configuré ODK Collect.</string>
+  <string name="app_not_configured">ESPEN Collect n\'a pas été configuré. Essayez d\'ouvrir ESPEN Collect et configure le.\n\nSi vous avez cliqué sur un raccourci, vous devrez le recréer après avoir configuré ESPEN Collect.</string>
   <!--##############################################
     # Errors
     ##############################################-->
@@ -965,11 +965,11 @@
   <string name="dev_tools">Outils pour développeurs</string>
   <!--Option provided in the Developer tools settings to force an application crash-->
   <string name="crash_app">Faire planter l\'application</string>
-  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
   <string name="crash_app_summary">Forcer une exception qui fera planter l\'application </string>
   <string name="predicate_caching">Mise en cache des prédicats</string>
   <string name="permission_dialog_title">A propos des permissions</string>
-  <string name="permission_dialog_text">Il vous sera demandé d\'autoriser ODK Collect à accéder aux fonctions ci-dessous, sélectionnez \"autoriser\" si vous souhaitez les utiliser.</string>
+  <string name="permission_dialog_text">Il vous sera demandé d\'autoriser ESPEN Collect à accéder aux fonctions ci-dessous, sélectionnez \"autoriser\" si vous souhaitez les utiliser.</string>
   <string name="notifications">Notifications</string>
   <string name="required_for_notifications">Requis pour afficher les mises à jours quand les formulaires sont téléchargés, mis à jour ou envoyés.</string>
   <!--##############################################

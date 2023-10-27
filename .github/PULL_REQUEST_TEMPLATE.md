@@ -1,7 +1,7 @@
 Closes #
 
 <!-- 
-Thank you for contributing to ODK Collect!
+Thank you for contributing to ESPEN Collect!
 
 Before sending this PR, please read
 https://github.com/getodk/collect/blob/master/docs/CONTRIBUTING.md

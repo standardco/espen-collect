@@ -43,7 +43,7 @@
   <string name="storage_runtime_permission_denied_title">Perizinan penyimpanan</string>
   <string name="storage_runtime_permission_denied_desc">Tanpa perizinan tadi, Collect tidak dapat mengakses formulir Anda atau pun menyimpan jawabannya. Buka ulang aplikasi jika Anda sudah yakin untuk memberikan izin.</string>
   <string name="location_runtime_permissions_denied_title">Izin untuk mengakses lokasi</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
   <string name="camera_runtime_permission_denied_title">Izin untuk mengakses Kamera</string>
   <string name="camera_runtime_permission_denied_desc">Tanpa perizinan tadi, Collect tidak dapat mengakses kamera. Buka ulang aplikasi jika Anda sudah yakin untuk memberikan izin.</string>
   <string name="record_audio_runtime_permission_denied_title">Izin untuk merekam suara</string>
@@ -494,9 +494,9 @@
     ##############################################-->
   <string name="report_to_project_lead">Jika anda terus mengalami masalah ini, laporkan ke orang yang meminta anda untuk mengumpulkan data.</string>
   <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
-  <string name="unreachable_error">ODK Collect tidak dapat menghubung server di %s. Apakah anda sudah memasukkan URL dengan benar?</string>
+  <string name="unreachable_error">ESPEN Collect tidak dapat menghubung server di %s. Apakah anda sudah memasukkan URL dengan benar?</string>
   <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
-  <string name="security_error">ODK Collect tidak dapat menghubung server di %s. Apakah anda sudah memasukkan URL dengan benar?</string>
+  <string name="security_error">ESPEN Collect tidak dapat menghubung server di %s. Apakah anda sudah memasukkan URL dengan benar?</string>
   <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
   <string name="server_error">Peladen %1$s rmengembalikan kode status %2$s.</string>
   <!--Displayed in error dialog for form downloads. Followed by instructions to talk to person who asked to collect data-->
@@ -754,8 +754,8 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">Tentang</string>
-  <string name="tell_your_friends">Bagikan ODK Collect</string>
-  <string name="tell_your_friends_msg">Apakah rekan Anda masih menggunakan kertas untuk pengumpulan data? Kabari mereka untuk menggunakan ODK Collect.</string>
+  <string name="tell_your_friends">Bagikan ESPEN Collect</string>
+  <string name="tell_your_friends_msg">Apakah rekan Anda masih menggunakan kertas untuk pengumpulan data? Kabari mereka untuk menggunakan ESPEN Collect.</string>
   <string name="leave_a_review">Berikan ulasan di Play Store</string>
   <string name="leave_a_review_msg">Ulasan Anda (semoga positif) dapat mempromosikan aplikasi ODK di Play Store.</string>
   <string name="odk_website">Kunjungi situs ODK </string>
@@ -858,7 +858,7 @@
   <string name="try_demo">Coba tampilan</string>
   <string name="scan_configuration_qr_code">Pindai kode QR konfigurasi</string>
   <!--Error shown when a user tries to open a form that's in a different project-->
-  <string name="wrong_project_selected_for_form">Untuk membuka formulir ini, Anda harus membuka ODK Collect dan beralih ke proyek yang memuatnya.</string>
+  <string name="wrong_project_selected_for_form">Untuk membuka formulir ini, Anda harus membuka ESPEN Collect dan beralih ke proyek yang memuatnya.</string>
   <!--Error shown when a user tries to open a form when there are no projects-->
   <!--##############################################
     # Errors
@@ -880,7 +880,7 @@
     ##############################################-->
   <!--Section title in settings-->
   <!--Option provided in the Developer tools settings to force an application crash-->
-  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
   <!--##############################################
     # Form saved Snackbar
     ##############################################-->

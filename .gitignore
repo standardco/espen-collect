@@ -42,7 +42,7 @@ collect_app/.settings/
 # Submodules
 javarosa/
 
-# Config for the official ODK Collect build
+# Config for the official ESPEN Collect build
 collect_app/src/odkCollectRelease/
 
 # Files generated during CI runs

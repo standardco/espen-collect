@@ -52,7 +52,7 @@
   <string name="storage_runtime_permission_denied_title">Povolení pro ukládání dat</string>
   <string name="storage_runtime_permission_denied_desc">Bez těchto oprávnění nelze přistupovat k formulářům nebo ukládat odpovědi. Opětovně otevřete aplikaci, až budete připraveni je udělit.</string>
   <string name="location_runtime_permissions_denied_title">Oprávnění umístění</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
   <string name="location_runtime_permissions_denied_desc">Bez povolení <b>Přesné lokace</b>Collect nemůže zaznamenávat vaši polohu. Zkuste to znovu, až budete připraveni povolení udělit.</string>
   <string name="camera_runtime_permission_denied_title">Oprávnění k fotoaparátu</string>
   <string name="camera_runtime_permission_denied_desc">Bez tohoto povolení nelze přistupovat k fotoaparátu. Zkuste to prosím znovu, když jste připraveni jej udělit.</string>
@@ -823,8 +823,8 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">Více o….</string>
-  <string name="tell_your_friends">Sdílet ODK Collect</string>
-  <string name="tell_your_friends_msg">Shromažďují vaši kolegové data jen na papíře? Sdílejte s nimi ODK Collect.</string>
+  <string name="tell_your_friends">Sdílet ESPEN Collect</string>
+  <string name="tell_your_friends_msg">Shromažďují vaši kolegové data jen na papíře? Sdílejte s nimi ESPEN Collect.</string>
   <string name="leave_a_review">Nechte recenzi v Play Store</string>
   <string name="leave_a_review_msg">Vaše recenze (snad pozitivní) zvyšuje viditelnost aplikace v Play Store.</string>
   <string name="odk_website">Navštivte web ODK</string>
@@ -932,9 +932,9 @@
   <string name="try_demo">Vyzkoušejte si demo</string>
   <string name="scan_configuration_qr_code">Naskenování konfiguračního kódu QR</string>
   <!--Error shown when a user tries to open a form that's in a different project-->
-  <string name="wrong_project_selected_for_form">Chcete-li otevřít tento formulář, musíte nejprve otevřít ODK Collect a přepnout na projekt, který jej obsahuje.</string>
+  <string name="wrong_project_selected_for_form">Chcete-li otevřít tento formulář, musíte nejprve otevřít ESPEN Collect a přepnout na projekt, který jej obsahuje.</string>
   <!--Error shown when a user tries to open a form when there are no projects-->
-  <string name="app_not_configured">ODK Collect nebyl nakonfigurován. Zkuste otevřít ODK Collect a nakonfigurovat jej.\n\nPokud jste klepli na zástupce, možná jej budete muset po konfiguraci ODK Collect znovu vytvořit.</string>
+  <string name="app_not_configured">ESPEN Collect nebyl nakonfigurován. Zkuste otevřít ESPEN Collect a nakonfigurovat jej.\n\nPokud jste klepli na zástupce, možná jej budete muset po konfiguraci ESPEN Collect znovu vytvořit.</string>
   <!--##############################################
     # Errors
     ##############################################-->
@@ -963,11 +963,11 @@
   <string name="dev_tools">Vývojářské nástroje</string>
   <!--Option provided in the Developer tools settings to force an application crash-->
   <string name="crash_app">Aplikace Crash</string>
-  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
   <string name="crash_app_summary">Vynucení nezachycené výjimky, která způsobí pád aplikace</string>
   <string name="predicate_caching">Předpokládané ukládání do mezipaměti</string>
   <string name="permission_dialog_title">O oprávněních</string>
-  <string name="permission_dialog_text">Budete požádáni o povolení přístupu ODK Collect k níže uvedeným funkcím, pokud je chcete používat, vyberte možnost \"povolit\".</string>
+  <string name="permission_dialog_text">Budete požádáni o povolení přístupu ESPEN Collect k níže uvedeným funkcím, pokud je chcete používat, vyberte možnost \"povolit\".</string>
   <string name="notifications">Oznámení</string>
   <string name="required_for_notifications">Vyžaduje se pro zobrazení aktualizací při stahování, aktualizaci a odesílání formulářů.</string>
   <!--##############################################
