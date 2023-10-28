@@ -1,4 +1,4 @@
-package org.odk.collect.androidshared.ui
+package org.espen.collect.androidshared.ui
 
 import android.text.Editable
 import android.text.TextWatcher

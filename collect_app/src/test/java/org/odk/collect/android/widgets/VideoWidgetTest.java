@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -16,18 +16,19 @@ import androidx.annotation.NonNull;
 
 import net.bytebuddy.utility.RandomString;
 
+import org.espen.collect.android.widgets.VideoWidget;
 import org.javarosa.core.model.data.StringData;
 import org.junit.Before;
 import org.junit.Test;
-import org.odk.collect.android.R;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.utilities.MediaUtils;
-import org.odk.collect.android.widgets.base.FileWidgetTest;
-import org.odk.collect.android.widgets.support.FakeQuestionMediaManager;
-import org.odk.collect.android.widgets.support.FakeWaitingForDataRegistry;
-import org.odk.collect.androidshared.system.IntentLauncher;
+import org.espen.collect.android.R;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.widgets.base.FileWidgetTest;
+import org.espen.collect.android.widgets.support.FakeQuestionMediaManager;
+import org.espen.collect.android.widgets.support.FakeWaitingForDataRegistry;
+import org.espen.collect.androidshared.system.IntentLauncher;
 import org.odk.collect.shared.TempFiles;
 
 /**

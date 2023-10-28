@@ -1,4 +1,4 @@
-package org.odk.collect.android.application;
+package org.espen.collect.android.application;
 
 import static android.os.Environment.MEDIA_MOUNTED;
 import static org.robolectric.Shadows.shadowOf;
@@ -7,8 +7,9 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.work.Configuration;
 import androidx.work.WorkManager;
 
-import org.odk.collect.android.database.DatabaseConnection;
-import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
+import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.database.DatabaseConnection;
+import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
 import org.odk.collect.crashhandler.CrashHandler;
 import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.shadows.ShadowEnvironment;

@@ -1,11 +1,10 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import org.odk.collect.android.R
 
 class QrCodeProjectCreatorDialogPage : Page<QrCodeProjectCreatorDialogPage>() {
     override fun assertOnPage(): QrCodeProjectCreatorDialogPage {

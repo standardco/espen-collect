@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -18,14 +18,16 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.viewmodel.CreationExtras;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.formentry.BackgroundAudioPermissionDialogFragment;
+import org.espen.collect.android.formentry.BackgroundAudioViewModel;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.fakes.FakePermissionsProvider;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder;
+import org.espen.collect.android.fakes.FakePermissionsProvider;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder;
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule;
 import org.odk.collect.permissions.PermissionsChecker;
 import org.odk.collect.permissions.PermissionsProvider;

@@ -18,7 +18,7 @@ Robolectric is a framework that sits on top of JUnit. It allows you to write tes
 
 ### Feature tests
 
-These tests live in `collect_app/src/androidTest/java/feature` and use the Android Espresso testing framework (which is similar to UI web testing frameworks like FluentLenium or Capybara). Espresso lets you write tests that carry out actions a user would like clicking on things, scrolling etc and then make assertions on what is on screen. The intention of these tests it "drive out" whole features in Collect. To make these tests easier to write and read we use a page objects (in the `org.odk.collect.android.support.pages` package) to abstract actions and assertions on different pages.
+These tests live in `collect_app/src/androidTest/java/feature` and use the Android Espresso testing framework (which is similar to UI web testing frameworks like FluentLenium or Capybara). Espresso lets you write tests that carry out actions a user would like clicking on things, scrolling etc and then make assertions on what is on screen. The intention of these tests it "drive out" whole features in Collect. To make these tests easier to write and read we use a page objects (in the `org.espen.collect.android.support.pages` package) to abstract actions and assertions on different pages.
 
 ### Regression tests
 

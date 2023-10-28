@@ -1,10 +1,10 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.Test
 import org.mockito.kotlin.mock
-import org.odk.collect.android.openrosa.OpenRosaFormSource
+import org.espen.collect.android.openrosa.OpenRosaFormSource
 import org.odk.collect.settings.InMemSettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys
 
@@ -20,7 +20,7 @@ class FormSourceProviderTest {
         settings.save(ProjectKeys.KEY_SERVER_URL, "http://example.com")
         settings.save(ProjectKeys.KEY_USERNAME, "user")
         settings.save(ProjectKeys.KEY_PASSWORD, "pass")
-        val formSource = formSourceProvider.get("projectId") as OpenRosaFormSource
+        val formSource = formSourceProvider.get("projectId") as org.espen.collect.android.openrosa.OpenRosaFormSource
 
         assertThat(formSource.serverURL, `is`("http://example.com"))
         assertThat(formSource.webCredentialsUtils.userNameFromPreferences, `is`("user"))

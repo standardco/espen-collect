@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.util.Pair;
 import android.view.View;
@@ -7,6 +7,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.tasks.MediaLoadingTask;
+import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.widgets.AudioWidget;
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
@@ -14,17 +17,17 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.audio.AudioControllerView;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.widgets.support.FakeQuestionMediaManager;
-import org.odk.collect.android.widgets.utilities.AudioFileRequester;
-import org.odk.collect.android.widgets.utilities.AudioPlayer;
-import org.odk.collect.android.widgets.utilities.RecordingRequester;
-import org.odk.collect.android.widgets.utilities.RecordingStatusHandler;
+import org.espen.collect.android.audio.AudioControllerView;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.widgets.support.FakeQuestionMediaManager;
+import org.espen.collect.android.widgets.utilities.AudioFileRequester;
+import org.espen.collect.android.widgets.utilities.AudioPlayer;
+import org.espen.collect.android.widgets.utilities.RecordingRequester;
+import org.espen.collect.android.widgets.utilities.RecordingStatusHandler;
 import org.odk.collect.audioclips.Clip;
 import org.odk.collect.testshared.RobolectricHelpers;
 
@@ -44,10 +47,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.odk.collect.testshared.RobolectricHelpers.setupMediaPlayerDataSource;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnly;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnlyAndAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnly;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnlyAndAnswer;
 import static org.robolectric.shadows.ShadowDialog.getLatestDialog;
 
 @RunWith(AndroidJUnit4.class)
@@ -234,9 +237,9 @@ public class AudioWidgetTest {
     }
 
     /**
-     * Currently choosing audio is locked into the {@link org.odk.collect.android.tasks.MediaLoadingTask}
+     * Currently choosing audio is locked into the {@link MediaLoadingTask}
      * flow and so we'd need to rip this apart to let us drop support for accepting File as data. In
-     * this case it will just grab the name off the file and use {@link org.odk.collect.android.utilities.QuestionMediaManager}
+     * this case it will just grab the name off the file and use {@link QuestionMediaManager}
      * to handle grabbing the actual file
      */
     @Test

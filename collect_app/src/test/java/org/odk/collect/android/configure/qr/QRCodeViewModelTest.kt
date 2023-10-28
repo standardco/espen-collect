@@ -1,4 +1,4 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
@@ -9,9 +9,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.R
-import org.odk.collect.android.TestSettingsProvider.getProtectedSettings
-import org.odk.collect.android.TestSettingsProvider.getUnprotectedSettings
+import org.espen.collect.android.TestSettingsProvider.getProtectedSettings
+import org.espen.collect.android.TestSettingsProvider.getUnprotectedSettings
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 import org.odk.collect.testshared.FakeScheduler

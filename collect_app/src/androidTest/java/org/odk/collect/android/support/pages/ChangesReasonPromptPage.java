@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -9,7 +9,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-import org.odk.collect.android.support.WaitFor;
+import org.espen.collect.android.support.WaitFor;
 
 import java.util.concurrent.Callable;
 

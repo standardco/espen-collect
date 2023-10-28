@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.range
+package org.espen.collect.android.widgets.range
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo

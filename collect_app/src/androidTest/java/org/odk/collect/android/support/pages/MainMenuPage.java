@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -12,9 +12,9 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.StringContains.containsString;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.StorageUtils;
-import org.odk.collect.android.support.WaitFor;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.StorageUtils;
+import org.espen.collect.android.support.WaitFor;
 
 import java.io.IOException;
 import java.util.List;

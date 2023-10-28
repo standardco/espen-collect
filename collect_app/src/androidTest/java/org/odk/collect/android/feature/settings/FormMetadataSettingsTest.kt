@@ -1,19 +1,18 @@
-package org.odk.collect.android.feature.settings
+package org.espen.collect.android.feature.settings
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.pages.ProjectSettingsPage
-import org.odk.collect.android.support.pages.SaveOrDiscardFormDialog
-import org.odk.collect.android.support.pages.UserAndDeviceIdentitySettingsPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.ResetStateRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.pages.ProjectSettingsPage
+import org.espen.collect.android.support.pages.SaveOrDiscardFormDialog
+import org.espen.collect.android.support.pages.UserAndDeviceIdentitySettingsPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.ResetStateRule
+import org.espen.collect.android.support.rules.TestRuleChain
 import org.odk.collect.metadata.InstallIDProvider
 import org.odk.collect.settings.SettingsProvider
 
@@ -26,7 +25,7 @@ class FormMetadataSettingsTest {
     var copyFormChain: RuleChain = TestRuleChain.chain()
         .around(
             ResetStateRule(
-                object : AppDependencyModule() {
+                object : org.espen.collect.android.injection.config.AppDependencyModule() {
                     override fun providesInstallIDProvider(settingsProvider: SettingsProvider): InstallIDProvider {
                         return installIDProvider
                     }

@@ -1,15 +1,15 @@
-package org.odk.collect.android.regression;
+package org.espen.collect.android.regression;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.pages.AccessControlPage;
-import org.odk.collect.android.support.pages.MainMenuPage;
-import org.odk.collect.android.support.pages.ProjectSettingsPage;
-import org.odk.collect.android.support.pages.SaveOrDiscardFormDialog;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.pages.AccessControlPage;
+import org.espen.collect.android.support.pages.MainMenuPage;
+import org.espen.collect.android.support.pages.ProjectSettingsPage;
+import org.espen.collect.android.support.pages.SaveOrDiscardFormDialog;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 //Issue NODK-243
 public class FormEntrySettingsTest {

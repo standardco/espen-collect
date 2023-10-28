@@ -1,4 +1,4 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`

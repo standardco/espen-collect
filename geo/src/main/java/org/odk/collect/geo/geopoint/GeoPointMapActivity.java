@@ -32,8 +32,8 @@ import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder;
-import org.odk.collect.androidshared.ui.ToastUtils;
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder;
+import org.espen.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.externalapp.ExternalAppUtils;
 import org.odk.collect.geo.GeoDependencyComponentProvider;
 import org.odk.collect.geo.GeoUtils;

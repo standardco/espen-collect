@@ -1,7 +1,7 @@
 package org.odk.collect.geo.support
 
 import android.app.Application
-import org.odk.collect.androidshared.ui.Animations
+import org.espen.collect.androidshared.ui.Animations
 import org.odk.collect.geo.GeoDependencyComponent
 import org.odk.collect.geo.GeoDependencyComponentProvider
 

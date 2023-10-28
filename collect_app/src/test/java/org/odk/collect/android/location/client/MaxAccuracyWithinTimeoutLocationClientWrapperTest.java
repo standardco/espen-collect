@@ -1,4 +1,4 @@
-package org.odk.collect.android.location.client;
+package org.espen.collect.android.location.client;
 
 import android.location.Location;
 
@@ -6,6 +6,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.google.android.gms.location.LocationListener;
 
+import org.espen.collect.android.location.client.MaxAccuracyWithinTimeoutLocationClientWrapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
@@ -7,12 +7,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.external.InstancesContract
-import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.android.version.VersionInformation
+import org.espen.collect.android.external.InstancesContract
+import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.version.VersionInformation
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.formstest.FormUtils
 import org.odk.collect.formstest.InMemFormsRepository
@@ -110,7 +109,7 @@ class MainMenuViewModelTest {
                 .build()
         )
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarType = viewModel.getFormSavedSnackbarDetails(uri)!!
         assertThat(formSavedSnackbarType.first, equalTo(org.odk.collect.strings.R.string.form_saved_as_draft))
         assertThat(formSavedSnackbarType.second, equalTo(org.odk.collect.strings.R.string.edit_form))
@@ -132,7 +131,7 @@ class MainMenuViewModelTest {
                 .build()
         )
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarType = viewModel.getFormSavedSnackbarDetails(uri)!!
         assertThat(formSavedSnackbarType.first, equalTo(org.odk.collect.strings.R.string.form_saved_as_draft))
         assertThat(formSavedSnackbarType.second, equalTo(org.odk.collect.strings.R.string.edit_form))
@@ -153,7 +152,7 @@ class MainMenuViewModelTest {
                 .build()
         )
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarType = viewModel.getFormSavedSnackbarDetails(uri)!!
         assertThat(formSavedSnackbarType.first, equalTo(org.odk.collect.strings.R.string.form_saved_as_draft))
         assertThat(formSavedSnackbarType.second, equalTo(org.odk.collect.strings.R.string.view_form))
@@ -175,7 +174,7 @@ class MainMenuViewModelTest {
                 .build()
         )
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarType = viewModel.getFormSavedSnackbarDetails(uri)!!
         assertThat(formSavedSnackbarType.first, equalTo(org.odk.collect.strings.R.string.form_saved_as_draft))
         assertThat(formSavedSnackbarType.second, equalTo(org.odk.collect.strings.R.string.view_form))
@@ -196,7 +195,7 @@ class MainMenuViewModelTest {
         )
         whenever(autoSendSettingsProvider.isAutoSendEnabledInSettings()).thenReturn(false)
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarDetails = viewModel.getFormSavedSnackbarDetails(uri)!!
         assertThat(formSavedSnackbarDetails.first, equalTo(org.odk.collect.strings.R.string.form_saved))
         assertThat(formSavedSnackbarDetails.second, equalTo(org.odk.collect.strings.R.string.view_form))
@@ -218,7 +217,7 @@ class MainMenuViewModelTest {
         )
         whenever(autoSendSettingsProvider.isAutoSendEnabledInSettings()).thenReturn(false)
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarDetails = viewModel.getFormSavedSnackbarDetails(uri)!!
         assertThat(formSavedSnackbarDetails.first, equalTo(org.odk.collect.strings.R.string.form_saved))
         assertThat(formSavedSnackbarDetails.second, equalTo(null))
@@ -240,7 +239,7 @@ class MainMenuViewModelTest {
 
         whenever(autoSendSettingsProvider.isAutoSendEnabledInSettings()).thenReturn(true)
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarDetails = viewModel.getFormSavedSnackbarDetails(uri)!!
         assertThat(formSavedSnackbarDetails.first, equalTo(org.odk.collect.strings.R.string.form_sending))
         assertThat(formSavedSnackbarDetails.second, equalTo(org.odk.collect.strings.R.string.view_form))
@@ -263,7 +262,7 @@ class MainMenuViewModelTest {
 
         whenever(autoSendSettingsProvider.isAutoSendEnabledInSettings()).thenReturn(true)
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarDetails = viewModel.getFormSavedSnackbarDetails(uri)!!
         assertThat(formSavedSnackbarDetails.first, equalTo(org.odk.collect.strings.R.string.form_sending))
         assertThat(formSavedSnackbarDetails.second, equalTo(null))
@@ -285,7 +284,7 @@ class MainMenuViewModelTest {
 
         whenever(autoSendSettingsProvider.isAutoSendEnabledInSettings()).thenReturn(true)
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarDetails = viewModel.getFormSavedSnackbarDetails(uri)
         assertThat(formSavedSnackbarDetails, equalTo(null))
     }
@@ -306,12 +305,12 @@ class MainMenuViewModelTest {
 
         whenever(autoSendSettingsProvider.isAutoSendEnabledInSettings()).thenReturn(true)
 
-        val uri = InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(Project.DEMO_PROJECT_ID, instance.dbId)
         val formSavedSnackbarDetails = viewModel.getFormSavedSnackbarDetails(uri)
         assertThat(formSavedSnackbarDetails, equalTo(null))
     }
 
     private fun createViewModelWithVersion(version: String): MainMenuViewModel {
-        return MainMenuViewModel(mock(), VersionInformation { version }, settingsProvider, mock(), mock(), formsRepositoryProvider, instancesRepositoryProvider, autoSendSettingsProvider)
+        return MainMenuViewModel(mock(), org.espen.collect.android.version.VersionInformation { version }, settingsProvider, mock(), mock(), formsRepositoryProvider, instancesRepositoryProvider, autoSendSettingsProvider)
     }
 }

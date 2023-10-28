@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formentry
+package org.espen.collect.android.feature.formentry
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
@@ -7,13 +7,13 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.support.StorageUtils
-import org.odk.collect.android.support.pages.AppClosedPage
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.FormHierarchyPage
-import org.odk.collect.android.support.pages.SaveOrDiscardFormDialog
-import org.odk.collect.android.support.rules.FormEntryActivityTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.StorageUtils
+import org.espen.collect.android.support.pages.AppClosedPage
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.FormHierarchyPage
+import org.espen.collect.android.support.pages.SaveOrDiscardFormDialog
+import org.espen.collect.android.support.rules.FormEntryActivityTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 @RunWith(AndroidJUnit4::class)
 class SavePointTest {

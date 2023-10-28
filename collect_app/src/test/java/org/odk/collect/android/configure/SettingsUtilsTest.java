@@ -1,4 +1,4 @@
-package org.odk.collect.android.configure;
+package org.espen.collect.android.configure;
 
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -10,9 +10,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.TestSettingsProvider;
-import org.odk.collect.android.preferences.utilities.FormUpdateMode;
-import org.odk.collect.android.preferences.utilities.SettingsUtils;
+import org.espen.collect.android.TestSettingsProvider;
+import org.espen.collect.android.preferences.utilities.FormUpdateMode;
+import org.espen.collect.android.preferences.utilities.SettingsUtils;
 import org.odk.collect.settings.keys.ProjectKeys;
 import org.odk.collect.shared.settings.Settings;
 

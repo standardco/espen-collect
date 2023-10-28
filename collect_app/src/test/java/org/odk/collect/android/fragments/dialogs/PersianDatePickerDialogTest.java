@@ -1,16 +1,17 @@
-package org.odk.collect.android.fragments.dialogs;
+package org.espen.collect.android.fragments.dialogs;
 
 import android.content.DialogInterface;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.fragments.dialogs.PersianDatePickerDialog;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.fragments.support.DialogFragmentHelpers;
-import org.odk.collect.android.logic.DatePickerDetails;
-import org.odk.collect.android.support.CollectHelpers;
+import org.espen.collect.android.fragments.support.DialogFragmentHelpers;
+import org.espen.collect.android.logic.DatePickerDetails;
+import org.espen.collect.android.support.CollectHelpers;
 import org.odk.collect.testshared.RobolectricHelpers;
 
 import static org.mockito.Mockito.when;

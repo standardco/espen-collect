@@ -1,19 +1,18 @@
-package org.odk.collect.android.feature.projects
+package org.espen.collect.android.feature.projects
 
 import android.Manifest
 import androidx.test.rule.GrantPermissionRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.R
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.EntitiesPage
-import org.odk.collect.android.support.pages.ExperimentalPage
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.pages.ProjectSettingsPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.EntitiesPage
+import org.espen.collect.android.support.pages.ExperimentalPage
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.pages.ProjectSettingsPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 class SwitchProjectTest {
 

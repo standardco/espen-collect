@@ -1,0 +1,49 @@
+package org.espen.collect.android.utilities
+
+import android.content.Context
+import org.espen.collect.android.R
+import org.espen.collect.android.widgets.QuestionWidget
+import org.espen.collect.androidshared.bitmap.ImageCompressor
+import timber.log.Timber
+
+class ImageCompressionController(private val imageCompressor: ImageCompressor) {
+    fun execute(
+            imagePath: String,
+            questionWidget: org.espen.collect.android.widgets.QuestionWidget,
+            context: Context,
+            imageSizeMode: String
+    ) {
+        var maxPixels: Int?
+        maxPixels = getMaxPixelsFromFormIfDefined(questionWidget)
+        if (maxPixels == null) {
+            maxPixels = getMaxPixelsFromSettings(context, imageSizeMode)
+        }
+        if (maxPixels != null && maxPixels > 0) {
+            imageCompressor.execute(imagePath, maxPixels)
+        }
+    }
+
+    private fun getMaxPixelsFromFormIfDefined(questionWidget: org.espen.collect.android.widgets.QuestionWidget): Int? {
+        for (bindAttribute in questionWidget.formEntryPrompt.bindAttributes) {
+            if ("max-pixels" == bindAttribute.name && org.espen.collect.android.utilities.ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE == bindAttribute.namespace) {
+                try {
+                    return bindAttribute.attributeValue.toInt()
+                } catch (e: NumberFormatException) {
+                    Timber.i(e)
+                }
+            }
+        }
+        return null
+    }
+
+    private fun getMaxPixelsFromSettings(context: Context, imageSizeMode: String): Int? {
+        val imageEntryValues = context.resources.getStringArray(R.array.image_size_entry_values)
+        return when (imageSizeMode) {
+            imageEntryValues[1] -> 640
+            imageEntryValues[2] -> 1024
+            imageEntryValues[3] -> 2048
+            imageEntryValues[4] -> 3072
+            else -> null
+        }
+    }
+}

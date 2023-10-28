@@ -7,7 +7,7 @@
     android:paddingStart="@dimen/margin_standard"
     android:paddingEnd="@dimen/margin_extra_large">
 
-    <org.odk.collect.android.views.CustomWebView
+    <org.espen.collect.android.views.CustomWebView
         android:id="@+id/image_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

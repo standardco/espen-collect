@@ -12,7 +12,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.androidshared.data.getState
+import org.espen.collect.androidshared.data.getState
 import org.robolectric.Robolectric
 import org.robolectric.Shadows.shadowOf
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import android.app.Application
 import android.graphics.Typeface
@@ -12,7 +12,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.robolectric.Robolectric
 
 @RunWith(AndroidJUnit4::class)

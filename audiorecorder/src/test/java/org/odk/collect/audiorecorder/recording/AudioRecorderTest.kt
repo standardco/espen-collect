@@ -3,7 +3,7 @@ package org.odk.collect.audiorecorder.recording
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
-import org.odk.collect.androidtest.getOrAwaitValue
+import org.espen.collect.androidtest.getOrAwaitValue
 import org.odk.collect.audiorecorder.recorder.Output
 import java.io.File
 import java.io.Serializable

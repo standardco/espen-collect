@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.CoreMatchers.`is`
@@ -14,12 +14,12 @@ import org.mockito.kotlin.mock
 @RunWith(AndroidJUnit4::class)
 class ExternalAppIntentProviderTest {
     private lateinit var formEntryPrompt: FormEntryPrompt
-    private lateinit var externalAppIntentProvider: ExternalAppIntentProvider
+    private lateinit var externalAppIntentProvider: org.espen.collect.android.utilities.ExternalAppIntentProvider
 
     @Before
     fun setup() {
         formEntryPrompt = mock()
-        externalAppIntentProvider = ExternalAppIntentProvider()
+        externalAppIntentProvider = org.espen.collect.android.utilities.ExternalAppIntentProvider()
         `when`(formEntryPrompt.index).thenReturn(mock())
     }
 

@@ -1,11 +1,11 @@
-package org.odk.collect.android.support
+package org.espen.collect.android.support
 
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
-import org.odk.collect.android.utilities.ScreenContext
+import org.espen.collect.android.utilities.ScreenContext
 
-class WidgetTestActivity : FragmentActivity(), ScreenContext {
+class WidgetTestActivity : FragmentActivity(), org.espen.collect.android.utilities.ScreenContext {
     @JvmField
     val viewsRegisterForContextMenu = mutableListOf<View>()
 

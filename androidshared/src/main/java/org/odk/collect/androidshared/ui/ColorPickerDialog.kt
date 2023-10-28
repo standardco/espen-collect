@@ -1,4 +1,4 @@
-package org.odk.collect.androidshared
+package org.espen.collect.androidshared
 
 import android.app.Dialog
 import android.graphics.Color
@@ -18,7 +18,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.androidshared.databinding.ColorPickerDialogLayoutBinding
+import org.espen.collect.androidshared.databinding.ColorPickerDialogLayoutBinding
 import java.lang.Exception
 
 class ColorPickerDialog : DialogFragment() {

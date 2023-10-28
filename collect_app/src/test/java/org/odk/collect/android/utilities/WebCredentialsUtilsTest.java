@@ -1,9 +1,10 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import org.espen.collect.android.utilities.WebCredentialsUtils;
 import org.junit.Test;
 import org.odk.collect.metadata.PropertyManager;
 import org.odk.collect.settings.keys.ProjectKeys;

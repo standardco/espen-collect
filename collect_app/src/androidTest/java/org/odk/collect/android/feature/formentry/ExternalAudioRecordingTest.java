@@ -1,8 +1,8 @@
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import static androidx.test.espresso.intent.Intents.intending;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasAction;
-import static org.odk.collect.android.utilities.FileUtils.copyFileFromResources;
+import static org.espen.collect.android.utilities.FileUtils.copyFileFromResources;
 
 import android.app.Activity;
 import android.app.Instrumentation;
@@ -16,11 +16,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.support.pages.MainMenuPage;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.RunnableRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
-import org.odk.collect.androidtest.RecordedIntentsRule;
+import org.espen.collect.android.support.pages.MainMenuPage;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.RunnableRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.androidtest.RecordedIntentsRule;
 
 import java.io.File;
 import java.io.IOException;

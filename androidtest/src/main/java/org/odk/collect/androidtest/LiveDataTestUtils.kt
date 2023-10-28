@@ -1,4 +1,4 @@
-package org.odk.collect.androidtest
+package org.espen.collect.androidtest
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

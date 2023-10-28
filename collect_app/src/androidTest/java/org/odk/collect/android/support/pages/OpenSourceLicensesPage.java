@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 class OpenSourceLicensesPage extends Page<OpenSourceLicensesPage> {
 

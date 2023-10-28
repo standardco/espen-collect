@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -9,8 +9,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.storage.StorageSubdirectory
 import org.odk.collect.formstest.InstanceUtils
 import org.odk.collect.shared.TempFiles
 
@@ -28,13 +28,13 @@ class InstancesRepositoryProviderTest {
         val storagePathProvider = mock<StoragePathProvider> {
             on {
                 getOdkDirPath(
-                    StorageSubdirectory.METADATA,
+                    org.espen.collect.android.storage.StorageSubdirectory.METADATA,
                     projectId
                 )
             } doReturn dbDir.absolutePath
             on {
                 getOdkDirPath(
-                    StorageSubdirectory.INSTANCES,
+                    org.espen.collect.android.storage.StorageSubdirectory.INSTANCES,
                     projectId
                 )
             } doReturn instancesDir.absolutePath

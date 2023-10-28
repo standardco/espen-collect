@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.support
+package org.espen.collect.android.widgets.support
 
 import org.javarosa.core.model.SelectChoice
 import org.javarosa.core.model.data.StringData

@@ -1,4 +1,4 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import org.junit.Test
 import org.mockito.kotlin.doReturn
@@ -7,7 +7,7 @@ import org.mockito.kotlin.only
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.version.VersionInformation
+import org.espen.collect.android.version.VersionInformation
 import org.odk.collect.settings.InMemSettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys
 
@@ -15,7 +15,7 @@ class AnalyticsInitializerTest {
 
     private val analytics = mock<Analytics>()
     private val settingsProvider = InMemSettingsProvider()
-    private val versionInformation = mock<VersionInformation> {
+    private val versionInformation = mock<org.espen.collect.android.version.VersionInformation> {
         on { isBeta } doReturn false
     }
 

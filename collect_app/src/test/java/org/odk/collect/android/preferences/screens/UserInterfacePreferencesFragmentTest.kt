@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import androidx.lifecycle.ViewModel
 import androidx.preference.Preference
@@ -11,11 +11,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
-import org.odk.collect.android.TestSettingsProvider
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.preferences.ProjectPreferencesViewModel
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.AdminPasswordProvider
+import org.espen.collect.android.TestSettingsProvider
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.preferences.ProjectPreferencesViewModel
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.AdminPasswordProvider
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.settings.keys.ProtectedProjectKeys
@@ -26,7 +26,7 @@ class UserInterfacePreferencesFragmentTest {
     private lateinit var generalSettings: Settings
     private lateinit var adminSettings: Settings
 
-    private val adminPasswordProvider = mock<AdminPasswordProvider> {
+    private val adminPasswordProvider = mock<org.espen.collect.android.utilities.AdminPasswordProvider> {
         on { isAdminPasswordSet } doReturn false
     }
     private val projectPreferencesViewModel = ProjectPreferencesViewModel(adminPasswordProvider)
@@ -36,8 +36,8 @@ class UserInterfacePreferencesFragmentTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
-            override fun providesProjectPreferencesViewModel(adminPasswordProvider: AdminPasswordProvider): ProjectPreferencesViewModel.Factory {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
+            override fun providesProjectPreferencesViewModel(adminPasswordProvider: org.espen.collect.android.utilities.AdminPasswordProvider): ProjectPreferencesViewModel.Factory {
                 return object : ProjectPreferencesViewModel.Factory(adminPasswordProvider) {
                     override fun <T : ViewModel> create(modelClass: Class<T>): T {
                         return projectPreferencesViewModel as T
@@ -55,8 +55,8 @@ class UserInterfacePreferencesFragmentTest {
     fun `Enabled preferences should be visible in Locked mode`() {
         projectPreferencesViewModel.setStateLocked()
 
-        val scenario = launcherRule.launch(UserInterfacePreferencesFragment::class.java)
-        scenario.onFragment { fragment: UserInterfacePreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_THEME)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_LANGUAGE)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FONT_SIZE)!!.isVisible, `is`(true))
@@ -73,8 +73,8 @@ class UserInterfacePreferencesFragmentTest {
 
         projectPreferencesViewModel.setStateLocked()
 
-        val scenario = launcherRule.launch(UserInterfacePreferencesFragment::class.java)
-        scenario.onFragment { fragment: UserInterfacePreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_THEME)!!.isVisible, `is`(false))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_LANGUAGE)!!.isVisible, `is`(false))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FONT_SIZE)!!.isVisible, `is`(false))
@@ -86,8 +86,8 @@ class UserInterfacePreferencesFragmentTest {
     fun `Enabled preferences should be visible in Unlocked mode`() {
         projectPreferencesViewModel.setStateUnlocked()
 
-        val scenario = launcherRule.launch(UserInterfacePreferencesFragment::class.java)
-        scenario.onFragment { fragment: UserInterfacePreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_THEME)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_LANGUAGE)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FONT_SIZE)!!.isVisible, `is`(true))
@@ -104,8 +104,8 @@ class UserInterfacePreferencesFragmentTest {
 
         projectPreferencesViewModel.setStateUnlocked()
 
-        val scenario = launcherRule.launch(UserInterfacePreferencesFragment::class.java)
-        scenario.onFragment { fragment: UserInterfacePreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_THEME)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_LANGUAGE)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FONT_SIZE)!!.isVisible, `is`(true))
@@ -117,8 +117,8 @@ class UserInterfacePreferencesFragmentTest {
     fun `Enabled preferences should be visible in NotProtected mode`() {
         projectPreferencesViewModel.setStateNotProtected()
 
-        val scenario = launcherRule.launch(UserInterfacePreferencesFragment::class.java)
-        scenario.onFragment { fragment: UserInterfacePreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_THEME)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_LANGUAGE)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FONT_SIZE)!!.isVisible, `is`(true))
@@ -135,8 +135,8 @@ class UserInterfacePreferencesFragmentTest {
 
         projectPreferencesViewModel.setStateNotProtected()
 
-        val scenario = launcherRule.launch(UserInterfacePreferencesFragment::class.java)
-        scenario.onFragment { fragment: UserInterfacePreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_THEME)!!.isVisible, `is`(false))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_APP_LANGUAGE)!!.isVisible, `is`(false))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FONT_SIZE)!!.isVisible, `is`(false))

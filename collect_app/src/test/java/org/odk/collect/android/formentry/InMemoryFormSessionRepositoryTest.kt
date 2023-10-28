@@ -1,8 +1,8 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Rule
-import org.odk.collect.android.formentry.support.InMemFormSessionRepository
+import org.espen.collect.android.formentry.support.InMemFormSessionRepository
 
 class InMemoryFormSessionRepositoryTest : FormSessionRepositoryTest() {
 

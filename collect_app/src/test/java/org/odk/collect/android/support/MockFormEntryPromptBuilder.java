@@ -1,4 +1,4 @@
-package org.odk.collect.android.support;
+package org.espen.collect.android.support;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;

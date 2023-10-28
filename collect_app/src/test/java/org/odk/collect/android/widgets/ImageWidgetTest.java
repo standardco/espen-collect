@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,19 +12,20 @@ import androidx.core.util.Pair;
 
 import net.bytebuddy.utility.RandomString;
 
+import org.espen.collect.android.widgets.ImageWidget;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.core.reference.ReferenceManager;
 import org.junit.Test;
-import org.odk.collect.android.R;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.utilities.QuestionMediaManager;
-import org.odk.collect.android.widgets.base.FileWidgetTest;
-import org.odk.collect.android.widgets.support.FakeQuestionMediaManager;
-import org.odk.collect.android.widgets.support.FakeWaitingForDataRegistry;
-import org.odk.collect.android.widgets.support.SynchronousImageLoader;
+import org.espen.collect.android.R;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.widgets.base.FileWidgetTest;
+import org.espen.collect.android.widgets.support.FakeQuestionMediaManager;
+import org.espen.collect.android.widgets.support.FakeWaitingForDataRegistry;
+import org.espen.collect.android.widgets.support.SynchronousImageLoader;
 import org.odk.collect.imageloader.ImageLoader;
 import org.odk.collect.shared.TempFiles;
 
@@ -39,7 +40,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.support.CollectHelpers.setupFakeReferenceManager;
+import static org.espen.collect.android.support.CollectHelpers.setupFakeReferenceManager;
 import static org.robolectric.Shadows.shadowOf;
 
 /**

@@ -1,4 +1,4 @@
-package org.odk.collect.android.support;
+package org.espen.collect.android.support;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;

@@ -1,4 +1,4 @@
-package org.odk.collect.android.fragments.support;
+package org.espen.collect.android.fragments.support;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,10 +18,10 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.testing.FragmentScenario;
 
 import org.joda.time.LocalDateTime;
-import org.odk.collect.android.R;
-import org.odk.collect.android.fragments.dialogs.CustomDatePickerDialog;
-import org.odk.collect.android.logic.DatePickerDetails;
-import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.fragments.dialogs.CustomDatePickerDialog;
+import org.espen.collect.android.logic.DatePickerDetails;
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils;
 import org.odk.collect.testshared.RobolectricHelpers;
 import org.robolectric.Robolectric;
 import org.robolectric.android.controller.ActivityController;

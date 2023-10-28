@@ -1,11 +1,11 @@
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 public class ContextMenuTest {
     private static final String STRING_WIDGETS_TEST_FORM = "string_widgets_in_field_list.xml";

@@ -1,8 +1,8 @@
 package org.odk.collect.audiorecorder.testsupport
 
 import android.app.Application
-import org.odk.collect.androidshared.data.AppState
-import org.odk.collect.androidshared.data.StateStore
+import org.espen.collect.androidshared.data.AppState
+import org.espen.collect.androidshared.data.StateStore
 import org.odk.collect.audiorecorder.AudioRecorderDependencyComponent
 import org.odk.collect.audiorecorder.AudioRecorderDependencyComponentProvider
 import org.odk.collect.audiorecorder.AudioRecorderDependencyModule

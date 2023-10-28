@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsNull.nullValue;
-import static org.odk.collect.android.utilities.FormNameUtils.normalizeFormName;
-import static org.odk.collect.android.utilities.FormNameUtils.formatFilenameFromFormName;
+import static org.espen.collect.android.utilities.FormNameUtils.normalizeFormName;
+import static org.espen.collect.android.utilities.FormNameUtils.formatFilenameFromFormName;
 
 public class FormNameUtilsTest {
 

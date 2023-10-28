@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
+import org.espen.collect.android.utilities.MyanmarDateUtils;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDateTime;
 import org.joda.time.tz.UTCProvider;

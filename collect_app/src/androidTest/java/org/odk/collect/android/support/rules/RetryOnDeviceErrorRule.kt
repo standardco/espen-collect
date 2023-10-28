@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
 import androidx.test.espresso.PerformException
 import org.junit.rules.TestRule

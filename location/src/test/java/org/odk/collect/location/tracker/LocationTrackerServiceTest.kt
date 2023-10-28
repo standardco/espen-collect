@@ -6,7 +6,7 @@ import org.hamcrest.Matchers.equalTo
 import org.hamcrest.Matchers.notNullValue
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.androidshared.ui.ReturnToAppActivity
+import org.espen.collect.androidshared.ui.ReturnToAppActivity
 import org.odk.collect.servicetest.ServiceScenario
 
 @RunWith(AndroidJUnit4::class)

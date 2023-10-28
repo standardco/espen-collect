@@ -1,4 +1,4 @@
-package org.odk.collect.androidshared.data
+package org.espen.collect.androidshared.data
 
 /**
  * Useful for values that are read multiple times but only used

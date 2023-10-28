@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -11,21 +11,21 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.widgets.QuestionWidget
-import org.odk.collect.androidshared.bitmap.ImageCompressor
+import org.espen.collect.android.widgets.QuestionWidget
+import org.espen.collect.androidshared.bitmap.ImageCompressor
 
 @RunWith(AndroidJUnit4::class)
 class ImageCompressionControllerTest {
 
     private val context = ApplicationProvider.getApplicationContext<Application>()
     private val formEntryPrompt = mock<FormEntryPrompt>()
-    private val questionWidget = mock<QuestionWidget>().also {
+    private val questionWidget = mock<org.espen.collect.android.widgets.QuestionWidget>().also {
         whenever(it.formEntryPrompt).thenReturn(formEntryPrompt)
     }
     private val treeElement = mock<TreeElement>().also {
         whenever(it.attributeValue).thenReturn("123")
         whenever(it.name).thenReturn("max-pixels")
-        whenever(it.namespace).thenReturn(ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE)
+        whenever(it.namespace).thenReturn(org.espen.collect.android.utilities.ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE)
     }
     private val imageCompressor = mock<ImageCompressor>()
     private val imageCompressionController = ImageCompressionController(imageCompressor)

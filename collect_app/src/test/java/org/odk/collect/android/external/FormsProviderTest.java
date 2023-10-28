@@ -1,4 +1,4 @@
-package org.odk.collect.android.external;
+package org.espen.collect.android.external;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -13,11 +13,11 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.utilities.FileUtils;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.utilities.FileUtils;
 import org.odk.collect.formstest.FormUtils;
 import org.odk.collect.projects.Project;
 import org.odk.collect.shared.strings.Md5;
@@ -29,18 +29,18 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isOneOf;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DATE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
-import static org.odk.collect.android.external.FormsContract.CONTENT_ITEM_TYPE;
-import static org.odk.collect.android.external.FormsContract.CONTENT_TYPE;
-import static org.odk.collect.android.external.FormsContract.getUri;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DATE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
+import static org.espen.collect.android.external.FormsContract.CONTENT_ITEM_TYPE;
+import static org.espen.collect.android.external.FormsContract.CONTENT_TYPE;
+import static org.espen.collect.android.external.FormsContract.getUri;
 
 @RunWith(AndroidJUnit4.class)
 public class FormsProviderTest {

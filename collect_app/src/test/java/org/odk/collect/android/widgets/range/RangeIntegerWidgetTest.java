@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.range;
+package org.espen.collect.android.widgets.range;
 
 import android.view.MotionEvent;
 import android.view.View;
@@ -6,14 +6,15 @@ import android.view.View;
 import androidx.test.core.view.MotionEventBuilder;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.widgets.range.RangeIntegerWidget;
 import org.javarosa.core.model.RangeQuestion;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
 
 import java.math.BigDecimal;
 
@@ -26,10 +27,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithQuestionDefAndAnswer;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnlyAndQuestionDef;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithQuestionDefAndAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnlyAndQuestionDef;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
 
 @RunWith(AndroidJUnit4.class)
 public class RangeIntegerWidgetTest {

@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.external
+package org.espen.collect.android.feature.external
 
 import android.content.Intent
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
@@ -8,13 +8,13 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.external.InstancesContract
-import org.odk.collect.android.support.ContentProviderUtils
-import org.odk.collect.android.support.pages.AppClosedPage
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.external.InstancesContract
+import org.espen.collect.android.support.ContentProviderUtils
+import org.espen.collect.android.support.pages.AppClosedPage
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 @RunWith(AndroidJUnit4::class)
 class FormEditActionTest {
@@ -32,7 +32,7 @@ class FormEditActionTest {
             .clickFillBlankForm() // Sync form
 
         val formId = ContentProviderUtils.getFormDatabaseId("DEMO", "one_question")
-        val uri = FormsContract.getUri("DEMO", formId)
+        val uri = org.espen.collect.android.external.FormsContract.getUri("DEMO", formId)
 
         val formIntent = Intent(Intent.ACTION_EDIT).also { it.data = uri }
         val result = rule.launchForResult(formIntent, FormEntryPage("One Question")) {
@@ -42,6 +42,6 @@ class FormEditActionTest {
         }
 
         val instanceId = ContentProviderUtils.getInstanceDatabaseId("DEMO", "one_question")
-        assertThat(result.resultData.data, equalTo(InstancesContract.getUri("DEMO", instanceId)))
+        assertThat(result.resultData.data, equalTo(org.espen.collect.android.external.InstancesContract.getUri("DEMO", instanceId)))
     }
 }

@@ -1,4 +1,4 @@
-package org.odk.collect.android.draw
+package org.espen.collect.android.draw
 
 import android.graphics.Color
 import androidx.test.ext.junit.runners.AndroidJUnit4

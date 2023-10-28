@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement
+package org.espen.collect.android.instancemanagement
 
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat

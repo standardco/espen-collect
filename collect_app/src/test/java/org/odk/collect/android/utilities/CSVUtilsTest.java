@@ -1,11 +1,11 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.odk.collect.android.utilities.CSVUtils.getEscapedValueForCsv;
+import static org.espen.collect.android.utilities.CSVUtils.getEscapedValueForCsv;
 
 public class CSVUtilsTest {
     @Test

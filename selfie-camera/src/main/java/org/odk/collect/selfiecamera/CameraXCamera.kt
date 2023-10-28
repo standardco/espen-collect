@@ -9,8 +9,8 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
-import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
-import org.odk.collect.androidshared.livedata.NonNullLiveData
+import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
+import org.espen.collect.androidshared.livedata.NonNullLiveData
 import java.io.File
 
 internal class CameraXCamera : Camera {

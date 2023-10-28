@@ -1,19 +1,19 @@
-package org.odk.collect.android.support
+package org.espen.collect.android.support
 
 import android.app.Application
 import android.provider.BaseColumns
 import androidx.test.core.app.ApplicationProvider
-import org.odk.collect.android.database.forms.DatabaseFormColumns
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.external.InstancesContract
+import org.espen.collect.android.database.forms.DatabaseFormColumns
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.external.InstancesContract
 
 object ContentProviderUtils {
 
     fun getFormDatabaseId(projectId: String, formId: String): Long {
         val contentResolver =
             ApplicationProvider.getApplicationContext<Application>().contentResolver
-        val uri = FormsContract.getUri(projectId)
+        val uri = org.espen.collect.android.external.FormsContract.getUri(projectId)
         return contentResolver.query(uri, null, null, null, null, null).use {
             if (it != null) {
                 var dbId: Long? = null
@@ -33,7 +33,7 @@ object ContentProviderUtils {
     fun getInstanceDatabaseId(projectId: String, formId: String): Long {
         val contentResolver =
             ApplicationProvider.getApplicationContext<Application>().contentResolver
-        val uri = InstancesContract.getUri(projectId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri(projectId)
         return contentResolver.query(uri, null, null, null, null, null).use {
             if (it != null) {
                 var dbId: Long? = null

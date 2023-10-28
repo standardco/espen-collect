@@ -1,4 +1,4 @@
-package org.odk.collect.android.backgroundwork
+package org.espen.collect.android.backgroundwork
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
@@ -12,22 +12,22 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.TestSettingsProvider
-import org.odk.collect.android.formmanagement.FormSourceProvider
-import org.odk.collect.android.formmanagement.InstancesAppState
-import org.odk.collect.android.gdrive.GoogleAccountsManager
-import org.odk.collect.android.gdrive.GoogleApiProvider
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
-import org.odk.collect.android.instancemanagement.autosend.InstanceAutoSender
-import org.odk.collect.android.notifications.Notifier
-import org.odk.collect.android.projects.ProjectDependencyProvider
-import org.odk.collect.android.projects.ProjectDependencyProviderFactory
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.ChangeLockProvider
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.TestSettingsProvider
+import org.espen.collect.android.formmanagement.FormSourceProvider
+import org.espen.collect.android.formmanagement.InstancesAppState
+import org.espen.collect.android.gdrive.GoogleAccountsManager
+import org.espen.collect.android.gdrive.GoogleApiProvider
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
+import org.espen.collect.android.instancemanagement.autosend.InstanceAutoSender
+import org.espen.collect.android.notifications.Notifier
+import org.espen.collect.android.projects.ProjectDependencyProvider
+import org.espen.collect.android.projects.ProjectDependencyProviderFactory
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
 import org.odk.collect.metadata.PropertyManager
 import org.odk.collect.permissions.PermissionsProvider
 import org.odk.collect.settings.SettingsProvider
@@ -45,16 +45,16 @@ class AutoSendTaskSpecTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
             override fun providesInstanceAutoSender(
-                autoSendSettingsProvider: AutoSendSettingsProvider?,
-                context: Context?,
-                notifier: Notifier?,
-                googleAccountsManager: GoogleAccountsManager?,
-                googleApiProvider: GoogleApiProvider?,
-                permissionsProvider: PermissionsProvider?,
-                instancesAppState: InstancesAppState?,
-                propertyManager: PropertyManager?
+                    autoSendSettingsProvider: AutoSendSettingsProvider?,
+                    context: Context?,
+                    notifier: Notifier?,
+                    googleAccountsManager: org.espen.collect.android.gdrive.GoogleAccountsManager?,
+                    googleApiProvider: org.espen.collect.android.gdrive.GoogleApiProvider?,
+                    permissionsProvider: PermissionsProvider?,
+                    instancesAppState: InstancesAppState?,
+                    propertyManager: PropertyManager?
             ): InstanceAutoSender {
                 return instanceAutoSender
             }

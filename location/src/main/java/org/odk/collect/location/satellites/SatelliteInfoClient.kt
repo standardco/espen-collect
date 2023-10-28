@@ -1,6 +1,6 @@
 package org.odk.collect.location.satellites
 
-import org.odk.collect.androidshared.livedata.NonNullLiveData
+import org.espen.collect.androidshared.livedata.NonNullLiveData
 
 interface SatelliteInfoClient {
 

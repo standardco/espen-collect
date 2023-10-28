@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formmanagement;
+package org.espen.collect.android.feature.formmanagement;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -6,9 +6,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;

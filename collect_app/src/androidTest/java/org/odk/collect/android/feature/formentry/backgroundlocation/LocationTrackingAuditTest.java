@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formentry.backgroundlocation;
+package org.espen.collect.android.feature.formentry.backgroundlocation;
 
 import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -9,11 +9,11 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.support.FakeLocationClient;
-import org.odk.collect.android.support.StorageUtils;
-import org.odk.collect.android.support.TestDependencies;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.support.FakeLocationClient;
+import org.espen.collect.android.support.StorageUtils;
+import org.espen.collect.android.support.TestDependencies;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 import org.odk.collect.location.LocationClient;
 import org.odk.collect.testshared.FakeLocation;
 

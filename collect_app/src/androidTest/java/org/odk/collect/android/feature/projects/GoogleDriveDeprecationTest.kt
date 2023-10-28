@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.projects
+package org.espen.collect.android.feature.projects
 
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
@@ -7,14 +7,14 @@ import org.hamcrest.CoreMatchers.allOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.activities.WebViewActivity
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.pages.OkDialog
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
-import org.odk.collect.androidtest.RecordedIntentsRule
+import org.espen.collect.android.activities.WebViewActivity
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.pages.OkDialog
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
+import org.espen.collect.androidtest.RecordedIntentsRule
 import org.odk.collect.projects.Project
 
 class GoogleDriveDeprecationTest {
@@ -66,7 +66,7 @@ class GoogleDriveDeprecationTest {
 
         intended(
             allOf(
-                hasComponent(WebViewActivity::class.java.name),
+                hasComponent(org.espen.collect.android.activities.WebViewActivity::class.java.name),
                 hasExtra("url", "https://forum.getodk.org/t/40097")
             )
         )

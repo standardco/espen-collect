@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.external
+package org.espen.collect.android.feature.external
 
 import android.content.Intent
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -7,10 +7,10 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.instancemanagement.send.InstanceUploaderActivity
-import org.odk.collect.android.support.pages.OkDialog
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.instancemanagement.send.InstanceUploaderActivity
+import org.espen.collect.android.support.pages.OkDialog
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 @RunWith(AndroidJUnit4::class)
 class InstanceUploadActionTest {
@@ -36,8 +36,8 @@ class InstanceUploadActionTest {
         This should really use `Intent(action: String)` but this seems to be broken right now:
         https://github.com/android/android-test/issues/496
          */
-        val intent = Intent(getApplicationContext(), InstanceUploaderActivity::class.java)
+        val intent = Intent(getApplicationContext(), org.espen.collect.android.instancemanagement.send.InstanceUploaderActivity::class.java)
         intent.putExtra("instances", instanceIds)
-        collectTestRule.launch<InstanceUploaderActivity>(intent)
+        collectTestRule.launch<org.espen.collect.android.instancemanagement.send.InstanceUploaderActivity>(intent)
     }
 }

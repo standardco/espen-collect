@@ -1,10 +1,10 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.CursorMatchers.withRowString;
 
-import org.odk.collect.android.database.forms.DatabaseFormColumns;
+import org.espen.collect.android.database.forms.DatabaseFormColumns;
 
 public class ViewSentFormPage extends Page<ViewSentFormPage> {
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.external
+package org.espen.collect.android.feature.external
 
 import android.content.Intent
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
@@ -8,11 +8,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.external.InstancesContract
-import org.odk.collect.android.support.ContentProviderUtils
-import org.odk.collect.android.support.pages.EditSavedFormPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.external.InstancesContract
+import org.espen.collect.android.support.ContentProviderUtils
+import org.espen.collect.android.support.pages.EditSavedFormPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 @RunWith(AndroidJUnit4::class)
 class InstancePickActionTest {
@@ -32,7 +32,7 @@ class InstancePickActionTest {
             .clickSaveAsDraft()
 
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = InstancesContract.CONTENT_TYPE
+        intent.type = org.espen.collect.android.external.InstancesContract.CONTENT_TYPE
         val result = rule.launchForResult(intent, EditSavedFormPage()) {
             it.clickOnFormClosingApp("One Question")
         }
@@ -40,7 +40,7 @@ class InstancePickActionTest {
         val instanceId = ContentProviderUtils.getInstanceDatabaseId("DEMO", "one_question")
         assertThat(
             result.resultData.data,
-            equalTo(InstancesContract.getUri("DEMO", instanceId))
+            equalTo(org.espen.collect.android.external.InstancesContract.getUri("DEMO", instanceId))
         )
     }
 }

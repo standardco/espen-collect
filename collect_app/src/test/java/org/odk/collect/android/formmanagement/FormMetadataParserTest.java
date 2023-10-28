@@ -1,10 +1,11 @@
-package org.odk.collect.android.formmanagement;
+package org.espen.collect.android.formmanagement;
 
 import com.google.common.io.Files;
 
+import org.espen.collect.android.formmanagement.FormMetadataParser;
 import org.junit.Before;
 import org.junit.Test;
-import org.odk.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.FileUtils;
 
 import java.io.File;
 import java.util.Map;

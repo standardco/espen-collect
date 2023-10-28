@@ -1,9 +1,9 @@
-package org.odk.collect.android.instrumented.tasks;
+package org.espen.collect.android.instrumented.tasks;
 
 import org.junit.Test;
-import org.odk.collect.android.formmanagement.ServerFormsDetailsFetcher;
-import org.odk.collect.android.tasks.DownloadFormListTask;
-import org.odk.collect.android.utilities.WebCredentialsUtils;
+import org.espen.collect.android.formmanagement.ServerFormsDetailsFetcher;
+import org.espen.collect.android.tasks.DownloadFormListTask;
+import org.espen.collect.android.utilities.WebCredentialsUtils;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;

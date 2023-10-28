@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.support
+package org.espen.collect.android.support
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.platform.app.InstrumentationRegistry
 import org.apache.commons.csv.CSVFormat
 import org.apache.commons.csv.CSVRecord
-import org.odk.collect.android.formmanagement.LocalFormUseCases
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.formmanagement.LocalFormUseCases
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.utilities.FileUtils
 import java.io.File
 import java.io.FileReader
 import java.io.IOException
@@ -55,9 +55,9 @@ object StorageUtils {
         }
 
         if (copyToDatabase) {
-            val component = DaggerUtils.getComponent(ApplicationProvider.getApplicationContext<Application>())
+            val component = org.espen.collect.android.injection.DaggerUtils.getComponent(ApplicationProvider.getApplicationContext<Application>())
             val formsRepository = component.formsRepositoryProvider().get()
-            val formsDir = component.storagePathProvider().getOdkDirPath(StorageSubdirectory.FORMS)
+            val formsDir = component.storagePathProvider().getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.FORMS)
             LocalFormUseCases.synchronizeWithDisk(formsRepository, formsDir)
         }
     }
@@ -85,7 +85,7 @@ object StorageUtils {
     fun copyInstance(instanceFileName: String, projectName: String) {
         val instanceDirPath = getInstancesDirPath(projectName) + instanceFileName.split("\\.".toRegex()).toTypedArray()[0]
         File(instanceDirPath).mkdir()
-        FileUtils.copyFileFromAssets(
+        org.espen.collect.android.utilities.FileUtils.copyFileFromAssets(
             InstrumentationRegistry.getInstrumentation().getContext(),
             "$instanceDirPath/$instanceFileName",
             "instances/$instanceFileName"
@@ -95,7 +95,7 @@ object StorageUtils {
     @Throws(IOException::class)
     private fun copyForm(formFilename: String, copyTo: String, projectName: String): String {
         val pathname = getFormsDirPath(projectName) + copyTo
-        FileUtils.copyFileFromResources(
+        org.espen.collect.android.utilities.FileUtils.copyFileFromResources(
             "forms/$formFilename",
             pathname
         )
@@ -104,10 +104,10 @@ object StorageUtils {
 
     @Throws(IOException::class)
     private fun copyFormMediaFiles(formFilename: String, mediaFilePaths: List<String>, projectName: String) {
-        val mediaPathName = getFormsDirPath(projectName) + formFilename.replace(".xml", "") + org.odk.collect.android.utilities.FileUtils.MEDIA_SUFFIX + "/"
-        org.odk.collect.android.utilities.FileUtils.checkMediaPath(File(mediaPathName))
+        val mediaPathName = getFormsDirPath(projectName) + formFilename.replace(".xml", "") + org.espen.collect.android.utilities.FileUtils.MEDIA_SUFFIX + "/"
+        org.espen.collect.android.utilities.FileUtils.checkMediaPath(File(mediaPathName))
         for (mediaFilePath in mediaFilePaths) {
-            FileUtils.copyFileFromResources(
+            org.espen.collect.android.utilities.FileUtils.copyFileFromResources(
                 "media/$mediaFilePath",
                 mediaPathName + getMediaFileName(mediaFilePath)
             )

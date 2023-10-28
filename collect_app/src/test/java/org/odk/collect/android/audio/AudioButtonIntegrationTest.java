@@ -1,9 +1,9 @@
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
-import static org.odk.collect.androidtest.LiveDataTestUtilsKt.getOrAwaitValue;
+import static org.espen.collect.androidtest.LiveDataTestUtilsKt.getOrAwaitValue;
 import static org.odk.collect.testshared.RobolectricHelpers.setupMediaPlayerDataSource;
 import static org.robolectric.Shadows.shadowOf;
 
@@ -13,10 +13,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LiveData;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.audio.AudioButton;
+import org.espen.collect.android.audio.AudioHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.androidtest.FakeLifecycleOwner;
+import org.espen.collect.androidtest.FakeLifecycleOwner;
 import org.odk.collect.audioclips.Clip;
 import org.odk.collect.testshared.FakeScheduler;
 import org.robolectric.Robolectric;

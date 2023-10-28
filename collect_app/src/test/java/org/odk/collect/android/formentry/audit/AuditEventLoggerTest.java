@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.formentry.audit;
+package org.espen.collect.android.formentry.audit;
 
 import android.location.Location;
 
+import org.espen.collect.android.formentry.audit.AuditConfig;
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.formentry.audit.AuditEventLogger;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,30 +36,30 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.BEGINNING_OF_FORM;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.CHANGE_REASON;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.CONSTRAINT_ERROR;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.DELETE_REPEAT;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.END_OF_FORM;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.FINALIZE_ERROR;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.FORM_FINALIZE;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.FORM_RESUME;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.FORM_SAVE;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.FORM_START;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.GOOGLE_PLAY_SERVICES_NOT_AVAILABLE;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.GROUP;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.HIERARCHY;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PERMISSIONS_GRANTED;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PERMISSIONS_NOT_GRANTED;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PROVIDERS_DISABLED;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PROVIDERS_ENABLED;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_TRACKING_DISABLED;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_TRACKING_ENABLED;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.PROMPT_NEW_REPEAT;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.QUESTION;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.REPEAT;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.SAVE_ERROR;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.UNKNOWN_EVENT_TYPE;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.BEGINNING_OF_FORM;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.CHANGE_REASON;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.CONSTRAINT_ERROR;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.DELETE_REPEAT;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.END_OF_FORM;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.FINALIZE_ERROR;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.FORM_FINALIZE;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.FORM_RESUME;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.FORM_SAVE;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.FORM_START;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.GOOGLE_PLAY_SERVICES_NOT_AVAILABLE;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.GROUP;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.HIERARCHY;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PERMISSIONS_GRANTED;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PERMISSIONS_NOT_GRANTED;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PROVIDERS_DISABLED;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PROVIDERS_ENABLED;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_TRACKING_DISABLED;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_TRACKING_ENABLED;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.PROMPT_NEW_REPEAT;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.QUESTION;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.REPEAT;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.SAVE_ERROR;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.UNKNOWN_EVENT_TYPE;
 
 public class AuditEventLoggerTest {
 

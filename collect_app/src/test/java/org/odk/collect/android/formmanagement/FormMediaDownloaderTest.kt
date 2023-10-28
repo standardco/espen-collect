@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo

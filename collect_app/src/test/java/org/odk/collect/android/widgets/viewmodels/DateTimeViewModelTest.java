@@ -1,11 +1,11 @@
-package org.odk.collect.android.widgets.viewmodels;
+package org.espen.collect.android.widgets.viewmodels;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.androidtest.LiveDataTestUtilsKt.getOrAwaitValue;
+import static org.espen.collect.androidtest.LiveDataTestUtilsKt.getOrAwaitValue;
 
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -14,13 +14,14 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.LiveData;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.widgets.viewmodels.DateTimeViewModel;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.utilities.DateTimeUtils;
+import org.espen.collect.android.utilities.DateTimeUtils;
 
 @RunWith(AndroidJUnit4.class)
 public class DateTimeViewModelTest {

@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.support;
+package org.espen.collect.android.widgets.support;
 
 import java.util.ArrayList;
 import java.util.Random;

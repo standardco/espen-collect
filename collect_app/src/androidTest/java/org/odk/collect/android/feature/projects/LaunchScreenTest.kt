@@ -1,18 +1,17 @@
-package org.odk.collect.android.feature.projects
+package org.espen.collect.android.feature.projects
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.support.StubBarcodeViewDecoder
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.ResetStateRule
-import org.odk.collect.android.support.rules.TestRuleChain
-import org.odk.collect.android.views.BarcodeViewDecoder
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.support.StubBarcodeViewDecoder
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.ResetStateRule
+import org.espen.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.views.BarcodeViewDecoder
 
 @RunWith(AndroidJUnit4::class)
 class LaunchScreenTest {
@@ -24,7 +23,7 @@ class LaunchScreenTest {
     @get:Rule
     val chain: RuleChain = TestRuleChain.chain()
         .around(
-            ResetStateRule(object : AppDependencyModule() {
+            ResetStateRule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
                 override fun providesBarcodeViewDecoder(): BarcodeViewDecoder {
                     return stubBarcodeViewDecoder
                 }

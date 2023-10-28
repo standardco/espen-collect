@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.utilities.DateTimeUtils;
 import org.javarosa.core.model.data.TimeData;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;

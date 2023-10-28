@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import androidx.preference.Preference;
 
-import org.odk.collect.androidshared.ui.PrefUtils;
+import org.espen.collect.androidshared.ui.PrefUtils;
 import org.odk.collect.maps.MapConfigurator;
 import org.odk.collect.maps.layers.MbtilesFile;
 import org.odk.collect.shared.settings.Settings;

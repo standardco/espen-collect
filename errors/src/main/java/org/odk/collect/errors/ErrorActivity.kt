@@ -17,10 +17,10 @@ class ErrorActivity : LocalizedActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_error)
         title = getLocalizedString(org.odk.collect.strings.R.string.errors)
-        val toolbar = findViewById<View>(org.odk.collect.androidshared.R.id.toolbar) as Toolbar
+        val toolbar = findViewById<View>(org.espen.collect.androidshared.R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        findViewById<Toolbar>(org.odk.collect.androidshared.R.id.toolbar).setNavigationOnClickListener { finish() }
+        findViewById<Toolbar>(org.espen.collect.androidshared.R.id.toolbar).setNavigationOnClickListener { finish() }
 
         val failures = intent.getSerializableExtra(EXTRA_ERRORS) as? List<ErrorItem>
         if (failures != null) {

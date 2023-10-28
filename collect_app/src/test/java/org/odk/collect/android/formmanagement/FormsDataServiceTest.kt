@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -18,15 +18,15 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.notifications.Notifier
-import org.odk.collect.android.projects.ProjectDependencyProvider
-import org.odk.collect.android.projects.ProjectDependencyProviderFactory
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.utilities.ChangeLockProvider
-import org.odk.collect.androidshared.data.AppState
-import org.odk.collect.androidtest.getOrAwaitValue
-import org.odk.collect.androidtest.recordValues
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.notifications.Notifier
+import org.espen.collect.android.projects.ProjectDependencyProvider
+import org.espen.collect.android.projects.ProjectDependencyProviderFactory
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.androidshared.data.AppState
+import org.espen.collect.androidtest.getOrAwaitValue
+import org.espen.collect.androidtest.recordValues
 import org.odk.collect.forms.FormListItem
 import org.odk.collect.forms.FormSource
 import org.odk.collect.forms.FormSourceException
@@ -43,7 +43,7 @@ class FormsDataServiceTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val application = ApplicationProvider.getApplicationContext<Application>()
-    private val component = DaggerUtils.getComponent(application)
+    private val component = org.espen.collect.android.injection.DaggerUtils.getComponent(application)
 
     private val formsRepositoryProvider = component.formsRepositoryProvider()
     private val storagePathProvider = component.storagePathProvider()
@@ -256,7 +256,7 @@ class FormsDataServiceTest {
     }
 
     private fun addFormLocally(project: Project.Saved, formId: String, formVersion: String) {
-        val formsDir = storagePathProvider.getOdkDirPath(StorageSubdirectory.FORMS, project.uuid)
+        val formsDir = storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.FORMS, project.uuid)
         val formsRepository = formsRepositoryProvider.get(project.uuid)
         formsRepository.save(
             FormUtils.buildForm(formId, formVersion, formsDir).build()

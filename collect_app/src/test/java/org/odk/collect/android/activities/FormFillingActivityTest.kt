@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.app.Activity
 import android.app.Activity.RESULT_OK
@@ -15,16 +15,16 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.formmanagement.FormFillingIntentFactory
-import org.odk.collect.android.injection.config.AppDependencyComponent
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.CollectHelpers.resetProcess
-import org.odk.collect.android.utilities.FileUtils
-import org.odk.collect.androidshared.ui.DialogFragmentUtils
-import org.odk.collect.androidtest.RecordedIntentsRule
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.formmanagement.FormFillingIntentFactory
+import org.espen.collect.android.injection.config.AppDependencyComponent
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.CollectHelpers.resetProcess
+import org.espen.collect.android.utilities.FileUtils
+import org.espen.collect.androidshared.ui.DialogFragmentUtils
+import org.espen.collect.androidtest.RecordedIntentsRule
 import org.odk.collect.async.Scheduler
 import org.odk.collect.externalapp.ExternalAppUtils
 import org.odk.collect.forms.Form
@@ -55,14 +55,14 @@ class FormFillingActivityTest {
     private val assertIntentsHelper = AssertIntentsHelper()
 
     private val scheduler = FakeScheduler()
-    private val dependencies = object : AppDependencyModule() {
+    private val dependencies = object : org.espen.collect.android.injection.config.AppDependencyModule() {
         override fun providesScheduler(workManager: WorkManager): Scheduler {
             return scheduler
         }
     }
 
     private val application = ApplicationProvider.getApplicationContext<Application>()
-    private lateinit var component: AppDependencyComponent
+    private lateinit var component: org.espen.collect.android.injection.config.AppDependencyComponent
 
     @Before
     fun setup() {
@@ -76,12 +76,12 @@ class FormFillingActivityTest {
         val form = setupForm("forms/two-question.xml")
         val intent = FormFillingIntentFactory.newInstanceIntent(
             application,
-            FormsContract.getUri(projectId, form!!.dbId),
-            FormFillingActivity::class
+            org.espen.collect.android.external.FormsContract.getUri(projectId, form!!.dbId),
+            org.espen.collect.android.activities.FormFillingActivity::class
         )
 
         // Start activity
-        val initial = activityControllerRule.build(FormFillingActivity::class.java, intent).setup()
+        val initial = activityControllerRule.build(org.espen.collect.android.activities.FormFillingActivity::class.java, intent).setup()
         scheduler.flush()
         assertText("Two Question")
         assertText("What is your name?")
@@ -96,7 +96,7 @@ class FormFillingActivityTest {
         }
 
         scheduler.flush()
-        assertIntentsHelper.assertNewIntent(FormHierarchyActivity::class)
+        assertIntentsHelper.assertNewIntent(org.espen.collect.android.activities.FormHierarchyActivity::class)
 
         // Return to FormFillingActivity from FormHierarchyActivity
         val hierarchyIntent = shadowOf(recreated.get()).nextStartedActivityForResult.intent
@@ -114,12 +114,12 @@ class FormFillingActivityTest {
         val form = setupForm("forms/two-question.xml")
         val intent = FormFillingIntentFactory.newInstanceIntent(
             application,
-            FormsContract.getUri(projectId, form!!.dbId),
-            FormFillingActivity::class
+            org.espen.collect.android.external.FormsContract.getUri(projectId, form!!.dbId),
+            org.espen.collect.android.activities.FormFillingActivity::class
         )
 
         // Start activity
-        val initial = activityControllerRule.build(FormFillingActivity::class.java, intent).setup()
+        val initial = activityControllerRule.build(org.espen.collect.android.activities.FormFillingActivity::class.java, intent).setup()
         scheduler.flush()
         assertText("Two Question")
         assertText("What is your name?")
@@ -129,7 +129,7 @@ class FormFillingActivityTest {
         assertText("What is your age?")
 
         clickOnContentDescription(R.string.view_hierarchy)
-        assertIntentsHelper.assertNewIntent(FormHierarchyActivity::class)
+        assertIntentsHelper.assertNewIntent(org.espen.collect.android.activities.FormHierarchyActivity::class)
 
         // Recreate and assert we start FormHierarchyActivity
         val recreated = activityControllerRule.add {
@@ -137,7 +137,7 @@ class FormFillingActivityTest {
         }
 
         scheduler.flush()
-        assertIntentsHelper.assertNewIntent(FormHierarchyActivity::class)
+        assertIntentsHelper.assertNewIntent(org.espen.collect.android.activities.FormHierarchyActivity::class)
 
         // Return to FormFillingActivity from FormHierarchyActivity
         val hierarchyIntent = shadowOf(recreated.get()).nextStartedActivityForResult.intent
@@ -155,12 +155,12 @@ class FormFillingActivityTest {
         val form = setupForm("forms/two-question.xml")
         val intent = FormFillingIntentFactory.newInstanceIntent(
             application,
-            FormsContract.getUri(projectId, form!!.dbId),
-            FormFillingActivity::class
+            org.espen.collect.android.external.FormsContract.getUri(projectId, form!!.dbId),
+            org.espen.collect.android.activities.FormFillingActivity::class
         )
 
         // Start activity
-        val initial = activityControllerRule.build(FormFillingActivity::class.java, intent).setup()
+        val initial = activityControllerRule.build(org.espen.collect.android.activities.FormFillingActivity::class.java, intent).setup()
         scheduler.flush()
         assertText("Two Question")
         assertText("What is your name?")
@@ -182,7 +182,7 @@ class FormFillingActivityTest {
         }
 
         scheduler.flush()
-        assertIntentsHelper.assertNewIntent(FormHierarchyActivity::class)
+        assertIntentsHelper.assertNewIntent(org.espen.collect.android.activities.FormHierarchyActivity::class)
 
         // Return to FormFillingActivity from FormHierarchyActivity
         val hierarchyIntent = shadowOf(recreated.get()).nextStartedActivityForResult.intent
@@ -200,12 +200,12 @@ class FormFillingActivityTest {
         val form = setupForm("forms/two-question-external.xml")
         val intent = FormFillingIntentFactory.newInstanceIntent(
             application,
-            FormsContract.getUri(projectId, form!!.dbId),
-            FormFillingActivity::class
+            org.espen.collect.android.external.FormsContract.getUri(projectId, form!!.dbId),
+            org.espen.collect.android.activities.FormFillingActivity::class
         )
 
         // Start activity
-        val initial = activityControllerRule.build(FormFillingActivity::class.java, intent).setup()
+        val initial = activityControllerRule.build(org.espen.collect.android.activities.FormFillingActivity::class.java, intent).setup()
         scheduler.flush()
         assertText("Two Question")
         assertText("What is your name?")
@@ -233,8 +233,8 @@ class FormFillingActivityTest {
     }
 
     private fun setupForm(testFormPath: String): Form? {
-        val formsDir = component.storagePathProvider().getOdkDirPath(StorageSubdirectory.FORMS)
-        val formFile = FileUtils.copyFileFromResources(
+        val formsDir = component.storagePathProvider().getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.FORMS)
+        val formFile = org.espen.collect.android.utilities.FileUtils.copyFileFromResources(
             testFormPath,
             File(formsDir, "two-question.xml")
         )

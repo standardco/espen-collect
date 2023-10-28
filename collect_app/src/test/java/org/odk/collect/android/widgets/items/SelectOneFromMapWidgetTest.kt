@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items
+package org.espen.collect.android.widgets.items
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
@@ -17,21 +17,21 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.fakes.FakePermissionsProvider
-import org.odk.collect.android.formentry.FormEntryViewModel
-import org.odk.collect.android.formentry.questions.QuestionDetails
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.preferences.GuidanceHint
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.MockFormEntryPromptBuilder
-import org.odk.collect.android.support.WidgetTestActivity
-import org.odk.collect.android.widgets.support.FormElementFixtures.selectChoice
-import org.odk.collect.android.widgets.support.NoOpMapFragment
-import org.odk.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener
-import org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils.FontSize
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
+import org.espen.collect.android.fakes.FakePermissionsProvider
+import org.espen.collect.android.formentry.FormEntryViewModel
+import org.espen.collect.android.formentry.questions.QuestionDetails
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.preferences.GuidanceHint
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.MockFormEntryPromptBuilder
+import org.espen.collect.android.support.WidgetTestActivity
+import org.espen.collect.android.widgets.support.FormElementFixtures.selectChoice
+import org.espen.collect.android.widgets.support.NoOpMapFragment
+import org.espen.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener
+import org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils.FontSize
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.maps.MapFragment
 import org.odk.collect.maps.MapFragmentFactory
 import org.odk.collect.permissions.PermissionsChecker
@@ -46,7 +46,7 @@ import org.robolectric.Robolectric
 class SelectOneFromMapWidgetTest {
 
     private val activityController = Robolectric.buildActivity(WidgetTestActivity::class.java)
-    private val formEntryViewModel = mock<FormEntryViewModel>()
+    private val formEntryViewModel = mock<org.espen.collect.android.formentry.FormEntryViewModel>()
 
     private val permissionsProvider = FakePermissionsProvider().also {
         it.setPermissionGranted(true)
@@ -54,12 +54,12 @@ class SelectOneFromMapWidgetTest {
 
     private val settingsProvider = InMemSettingsProvider().also {
         it.getUnprotectedSettings().save(ProjectKeys.KEY_FONT_SIZE, "12")
-        it.getUnprotectedSettings().save(ProjectKeys.KEY_GUIDANCE_HINT, GuidanceHint.YES.toString())
+        it.getUnprotectedSettings().save(ProjectKeys.KEY_GUIDANCE_HINT, org.espen.collect.android.preferences.GuidanceHint.YES.toString())
     }
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
             override fun providesPermissionsProvider(permissionsChecker: PermissionsChecker): PermissionsProvider =
                 permissionsProvider
 
@@ -81,12 +81,12 @@ class SelectOneFromMapWidgetTest {
         val settings = settingsProvider.getUnprotectedSettings()
         val widget = SelectOneFromMapWidget(
             activityController.get(),
-            QuestionDetails(promptWithAnswer(null))
+                org.espen.collect.android.formentry.questions.QuestionDetails(promptWithAnswer(null))
         )
 
         assertThat(
             widget.binding.button.textSize.toInt(),
-            equalTo(QuestionFontSizeUtils.getFontSize(settings, FontSize.LABEL_LARGE))
+            equalTo(org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils.getFontSize(settings, FontSize.LABEL_LARGE))
         )
     }
 
@@ -106,7 +106,7 @@ class SelectOneFromMapWidgetTest {
 
         val prompt = promptWithAnswer(null)
         val widget =
-            SelectOneFromMapWidget(activity, QuestionDetails(prompt))
+            SelectOneFromMapWidget(activity, org.espen.collect.android.formentry.questions.QuestionDetails(prompt))
         whenever(formEntryViewModel.getQuestionPrompt(prompt.index)).doReturn(prompt)
 
         widget.binding.button.performClick()
@@ -127,7 +127,7 @@ class SelectOneFromMapWidgetTest {
     fun `clicking button when location permissions denied does nothing`() {
         val widget = SelectOneFromMapWidget(
             activityController.get(),
-            QuestionDetails(promptWithAnswer(null))
+                org.espen.collect.android.formentry.questions.QuestionDetails(promptWithAnswer(null))
         )
 
         permissionsProvider.setPermissionGranted(false)
@@ -149,7 +149,7 @@ class SelectOneFromMapWidgetTest {
             .withAnswer(SelectOneData(choices[0].selection()))
             .build()
 
-        val widget = SelectOneFromMapWidget(activityController.get(), QuestionDetails(prompt))
+        val widget = SelectOneFromMapWidget(activityController.get(), org.espen.collect.android.formentry.questions.QuestionDetails(prompt))
         assertThat(widget.binding.answer.text, equalTo("A"))
     }
 
@@ -158,12 +158,12 @@ class SelectOneFromMapWidgetTest {
         val settings = settingsProvider.getUnprotectedSettings()
         val widget = SelectOneFromMapWidget(
             activityController.get(),
-            QuestionDetails(promptWithAnswer(null))
+                org.espen.collect.android.formentry.questions.QuestionDetails(promptWithAnswer(null))
         )
 
         assertThat(
             widget.binding.answer.textSize.toInt(),
-            equalTo(QuestionFontSizeUtils.getFontSize(settings, FontSize.HEADLINE_6))
+            equalTo(org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils.getFontSize(settings, FontSize.HEADLINE_6))
         )
     }
 
@@ -174,7 +174,7 @@ class SelectOneFromMapWidgetTest {
 
         val widget = SelectOneFromMapWidget(
             activityController.get(),
-            QuestionDetails(promptWithAnswer(answer))
+                org.espen.collect.android.formentry.questions.QuestionDetails(promptWithAnswer(answer))
         )
         assertThat(widget.answer, equalTo(answer))
     }
@@ -186,7 +186,7 @@ class SelectOneFromMapWidgetTest {
 
         val widget = SelectOneFromMapWidget(
             activityController.get(),
-            QuestionDetails(promptWithAnswer(answer))
+                org.espen.collect.android.formentry.questions.QuestionDetails(promptWithAnswer(answer))
         )
         widget.clearAnswer()
         assertThat(widget.answer, equalTo(null))
@@ -199,7 +199,7 @@ class SelectOneFromMapWidgetTest {
 
         val widget = SelectOneFromMapWidget(
             activityController.get(),
-            QuestionDetails(promptWithAnswer(answer))
+                org.espen.collect.android.formentry.questions.QuestionDetails(promptWithAnswer(answer))
         )
 
         val mockValueChangedListener = mockValueChangedListener(widget)
@@ -216,7 +216,7 @@ class SelectOneFromMapWidgetTest {
             .withAnswer(SelectOneData(choices[0].selection()))
             .build()
 
-        val widget = SelectOneFromMapWidget(activityController.get(), QuestionDetails(prompt))
+        val widget = SelectOneFromMapWidget(activityController.get(), org.espen.collect.android.formentry.questions.QuestionDetails(prompt))
 
         widget.clearAnswer()
         assertThat(widget.binding.answer.text, equalTo(""))
@@ -226,7 +226,7 @@ class SelectOneFromMapWidgetTest {
     fun `setData sets answer`() {
         val widget = SelectOneFromMapWidget(
             activityController.get(),
-            QuestionDetails(promptWithAnswer(null))
+                org.espen.collect.android.formentry.questions.QuestionDetails(promptWithAnswer(null))
         )
 
         val selectChoice = selectChoice(value = "a", index = 101)
@@ -244,7 +244,7 @@ class SelectOneFromMapWidgetTest {
                 mapOf(choices[0] to "A", choices[1] to "B")
             )
             .build()
-        val widget = SelectOneFromMapWidget(activityController.get(), QuestionDetails(prompt))
+        val widget = SelectOneFromMapWidget(activityController.get(), org.espen.collect.android.formentry.questions.QuestionDetails(prompt))
 
         widget.setData(SelectOneData(choices[1].selection()))
         assertThat(widget.binding.answer.text, equalTo("B"))
@@ -258,7 +258,7 @@ class SelectOneFromMapWidgetTest {
             .withSelectChoiceText(mapOf(choices[0] to "A"))
             .build()
 
-        val widget = SelectOneFromMapWidget(activityController.get(), QuestionDetails(prompt))
+        val widget = SelectOneFromMapWidget(activityController.get(), org.espen.collect.android.formentry.questions.QuestionDetails(prompt))
 
         val mockValueChangedListener = mockValueChangedListener(widget)
         widget.setData(SelectOneData(choices[0].selection()))
@@ -286,7 +286,7 @@ class SelectOneFromMapWidgetTest {
             .build()
 
         val widget =
-            SelectOneFromMapWidget(activity, QuestionDetails(prompt))
+            SelectOneFromMapWidget(activity, org.espen.collect.android.formentry.questions.QuestionDetails(prompt))
         widget.setData(SelectOneData(choices[1].selection()))
 
         whenever(formEntryViewModel.getQuestionPrompt(prompt.index)).doReturn(prompt)

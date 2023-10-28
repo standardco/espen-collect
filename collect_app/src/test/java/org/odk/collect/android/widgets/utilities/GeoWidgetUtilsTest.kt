@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
@@ -9,16 +9,15 @@ import org.hamcrest.Matchers.equalTo
 import org.javarosa.core.model.data.GeoPointData
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.widgets.support.GeoWidgetHelpers
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils.convertCoordinatesIntoDegreeFormat
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils.floor
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils.getGeoPointAnswerToDisplay
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils.getGeoPolyAnswerToDisplay
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils.isWithinMapBounds
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils.parseGeometry
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils.parseGeometryPoint
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils.truncateDouble
+import org.espen.collect.android.widgets.support.GeoWidgetHelpers
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils.convertCoordinatesIntoDegreeFormat
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils.floor
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils.getGeoPointAnswerToDisplay
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils.getGeoPolyAnswerToDisplay
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils.isWithinMapBounds
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils.parseGeometry
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils.parseGeometryPoint
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils.truncateDouble
 import org.odk.collect.maps.MapPoint
 
 @RunWith(AndroidJUnit4::class)

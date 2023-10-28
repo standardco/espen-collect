@@ -1,7 +1,8 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import android.webkit.MimeTypeMap;
 
+import org.espen.collect.android.openrosa.CollectThenSystemContentTypeMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

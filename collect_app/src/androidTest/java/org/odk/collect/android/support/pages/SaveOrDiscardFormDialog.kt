@@ -1,7 +1,6 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import android.os.Build
-import org.odk.collect.android.R
 
 class SaveOrDiscardFormDialog<D : Page<D>> @JvmOverloads constructor(
     private val destination: D,

@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.map
 import org.odk.collect.analytics.Analytics.Companion.log
-import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
-import org.odk.collect.androidshared.livedata.NonNullLiveData
+import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
+import org.espen.collect.androidshared.livedata.NonNullLiveData
 import org.odk.collect.async.Scheduler
 import org.odk.collect.geo.analytics.AnalyticsEvents
 import org.odk.collect.location.Location

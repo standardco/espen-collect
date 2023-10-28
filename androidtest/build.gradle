@@ -28,7 +28,7 @@ android {
             minifyEnabled false
         }
     }
-    namespace 'org.odk.collect.androidtest'
+    namespace 'org.espen.collect.androidtest'
 }
 dependencies {
     coreLibraryDesugaring Dependencies.desugar

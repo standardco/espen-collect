@@ -1,4 +1,4 @@
-package org.odk.collect.androidshared.system
+package org.espen.collect.androidshared.system
 
 import android.app.Activity
 import android.content.Context

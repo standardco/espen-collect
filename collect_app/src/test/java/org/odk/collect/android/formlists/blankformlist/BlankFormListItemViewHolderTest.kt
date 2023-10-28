@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.content.Context
 import android.net.Uri
@@ -10,8 +10,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.BlankFormListItemBinding
+import org.espen.collect.android.databinding.BlankFormListItemBinding
 
 @RunWith(AndroidJUnit4::class)
 class BlankFormListItemViewHolderTest {

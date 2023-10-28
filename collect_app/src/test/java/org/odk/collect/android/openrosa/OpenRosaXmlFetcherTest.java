@@ -1,14 +1,17 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.openrosa.HttpGetResult;
+import org.espen.collect.android.openrosa.OpenRosaHttpInterface;
+import org.espen.collect.android.openrosa.OpenRosaXmlFetcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.odk.collect.android.TestSettingsProvider;
-import org.odk.collect.android.utilities.DocumentFetchResult;
-import org.odk.collect.android.utilities.WebCredentialsUtils;
+import org.espen.collect.android.TestSettingsProvider;
+import org.espen.collect.android.utilities.DocumentFetchResult;
+import org.espen.collect.android.utilities.WebCredentialsUtils;
 
 import java.io.ByteArrayInputStream;
 import java.util.HashMap;

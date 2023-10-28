@@ -1,10 +1,12 @@
-package org.odk.collect.android.fragments.dialogs;
+package org.espen.collect.android.fragments.dialogs;
 
 import androidx.test.core.app.ApplicationProvider;
 
+import org.espen.collect.android.fragments.dialogs.SelectMinimalDialog;
+import org.espen.collect.android.fragments.dialogs.SelectOneMinimalDialog;
 import org.javarosa.core.model.SelectChoice;
 import org.junit.Test;
-import org.odk.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.utilities.MediaUtils;
 import org.odk.collect.testshared.RobolectricHelpers;
 
 import java.util.List;

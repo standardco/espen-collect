@@ -1,4 +1,4 @@
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -19,18 +19,21 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.viewmodel.CreationExtras;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.audio.AudioRecordingControllerFragment;
+import org.espen.collect.android.audio.AudioRecordingErrorDialogFragment;
+import org.espen.collect.android.audio.BackgroundAudioHelpDialogFragment;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.R;
-import org.odk.collect.android.formentry.BackgroundAudioViewModel;
-import org.odk.collect.android.formentry.FormEntryViewModel;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.utilities.ExternalWebPageHelper;
-import org.odk.collect.androidshared.livedata.MutableNonNullLiveData;
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder;
+import org.espen.collect.android.R;
+import org.espen.collect.android.formentry.BackgroundAudioViewModel;
+import org.espen.collect.android.formentry.FormEntryViewModel;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.utilities.ExternalWebPageHelper;
+import org.espen.collect.androidshared.livedata.MutableNonNullLiveData;
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder;
 import org.odk.collect.audiorecorder.recorder.Output;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.testsupport.StubAudioRecorder;

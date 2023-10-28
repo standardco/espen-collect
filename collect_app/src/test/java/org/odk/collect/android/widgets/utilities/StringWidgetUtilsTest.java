@@ -1,5 +1,6 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
+import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
 import org.javarosa.core.model.data.DecimalData;
 import org.javarosa.core.model.data.IntegerData;
 import org.javarosa.core.model.data.StringData;

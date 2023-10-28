@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -8,13 +8,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
-import static org.odk.collect.android.support.matchers.CustomMatchers.withIndex;
+import static org.espen.collect.android.support.matchers.CustomMatchers.withIndex;
 
 public class SendFinalizedFormPage extends Page<SendFinalizedFormPage> {
 
     @Override
     public SendFinalizedFormPage assertOnPage() {
-        onView(allOf(withText(getTranslatedString(org.odk.collect.strings.R.string.send_data)), isDescendantOfA(withId(org.odk.collect.androidshared.R.id.toolbar)))).check(matches(isDisplayed()));
+        onView(allOf(withText(getTranslatedString(org.odk.collect.strings.R.string.send_data)), isDescendantOfA(withId(org.espen.collect.androidshared.R.id.toolbar)))).check(matches(isDisplayed()));
         return this;
     }
 

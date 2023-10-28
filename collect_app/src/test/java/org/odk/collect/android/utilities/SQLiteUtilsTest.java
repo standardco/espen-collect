@@ -1,12 +1,15 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.utilities.CustomSQLiteQueryBuilder;
+import org.espen.collect.android.utilities.CustomSQLiteQueryExecutor;
+import org.espen.collect.android.utilities.SQLiteUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.application.EspenCollect;
+import org.espen.collect.android.application.EspenCollect;
 
 import java.util.ArrayList;
 import java.util.List;

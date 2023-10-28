@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.formentry.audit;
+package org.espen.collect.android.formentry.audit;
 
+import org.espen.collect.android.formentry.audit.AuditEvent;
 import org.javarosa.form.api.FormEntryController;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.BEGINNING_OF_FORM;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.END_OF_FORM;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.GROUP;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.PROMPT_NEW_REPEAT;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.REPEAT;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.UNKNOWN_EVENT_TYPE;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.BEGINNING_OF_FORM;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.END_OF_FORM;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.GROUP;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.PROMPT_NEW_REPEAT;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.REPEAT;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.UNKNOWN_EVENT_TYPE;
 
 public class AuditEventTest {
 

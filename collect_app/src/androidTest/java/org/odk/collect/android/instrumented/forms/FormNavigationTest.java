@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.instrumented.forms;
+package org.espen.collect.android.instrumented.forms;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -33,16 +33,16 @@ import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.injection.config.AppDependencyComponent;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.listeners.FormLoaderListener;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.support.StorageUtils;
-import org.odk.collect.android.support.rules.RunnableRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
-import org.odk.collect.android.tasks.FormLoaderTask;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.injection.config.AppDependencyComponent;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.listeners.FormLoaderListener;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.support.StorageUtils;
+import org.espen.collect.android.support.rules.RunnableRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.tasks.FormLoaderTask;
 import org.odk.collect.projects.Project;
 
 import java.io.File;

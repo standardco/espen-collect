@@ -25,7 +25,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.odk.collect.androidtest.ActivityScenarioExtensions.isFinishing;
+import static org.espen.collect.androidtest.ActivityScenarioExtensions.isFinishing;
 import static org.robolectric.Shadows.shadowOf;
 
 import android.app.Application;
@@ -42,7 +42,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.androidtest.ActivityScenarioLauncherRule;
+import org.espen.collect.androidtest.ActivityScenarioLauncherRule;
 import org.odk.collect.geo.Constants;
 import org.odk.collect.geo.DaggerGeoDependencyComponent;
 import org.odk.collect.geo.GeoDependencyModule;

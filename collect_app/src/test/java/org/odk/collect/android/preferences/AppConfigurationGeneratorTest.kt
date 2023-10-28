@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences
+package org.espen.collect.android.preferences
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
@@ -9,8 +9,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
-import org.odk.collect.android.configure.qr.AppConfigurationGenerator
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.configure.qr.AppConfigurationGenerator
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.projects.Project
 import org.odk.collect.settings.InMemSettingsProvider
 import org.odk.collect.settings.keys.AppConfigurationKeys

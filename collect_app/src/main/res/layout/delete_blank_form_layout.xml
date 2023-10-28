@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <org.odk.collect.android.formlists.FormListRecyclerView
+    <org.espen.collect.android.formlists.FormListRecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -1,5 +1,6 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
+import org.espen.collect.android.utilities.FileUtils;
 import org.hamcrest.Matchers;
 import org.javarosa.xform.parse.XFormParser;
 import org.junit.Test;
@@ -302,8 +303,8 @@ public class FileUtilsTest {
         assertThat(FileUtils.expandAndroidStoragePath(null), is(nullValue()));
         assertThat(FileUtils.expandAndroidStoragePath(""), is(""));
         assertThat(FileUtils.expandAndroidStoragePath("blahblahblah"), is("blahblahblah"));
-        assertThat(FileUtils.expandAndroidStoragePath("/storage/emulated/0/Android/data/org.odk.collect.android/files/layers"), is("/sdcard/Android/data/org.odk.collect.android/files/layers"));
-        assertThat(FileUtils.expandAndroidStoragePath("/storage/emulated/0/Android/data/org.odk.collect.android/files/layers/countries/countries-raster.mbtiles"), is("/sdcard/Android/data/org.odk.collect.android/files/layers/countries/countries-raster.mbtiles"));
+        assertThat(FileUtils.expandAndroidStoragePath("/storage/emulated/0/Android/data/org.espen.collect.android/files/layers"), is("/sdcard/Android/data/org.espen.collect.android/files/layers"));
+        assertThat(FileUtils.expandAndroidStoragePath("/storage/emulated/0/Android/data/org.espen.collect.android/files/layers/countries/countries-raster.mbtiles"), is("/sdcard/Android/data/org.espen.collect.android/files/layers/countries/countries-raster.mbtiles"));
     }
 
     @Test

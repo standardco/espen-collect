@@ -10,8 +10,8 @@ import androidx.preference.Preference;
 import com.google.common.collect.ImmutableSet;
 import com.mapbox.maps.Style;
 
-import org.odk.collect.androidshared.ui.PrefUtils;
-import org.odk.collect.androidshared.ui.ToastUtils;
+import org.espen.collect.androidshared.ui.PrefUtils;
+import org.espen.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.maps.MapConfigurator;
 import org.odk.collect.maps.layers.MbtilesFile;
 import org.odk.collect.settings.keys.ProjectKeys;

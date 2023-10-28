@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -15,10 +15,10 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.formmanagement.FormsDataService
-import org.odk.collect.android.preferences.utilities.FormUpdateMode
-import org.odk.collect.android.utilities.ChangeLockProvider
-import org.odk.collect.androidtest.getOrAwaitValue
+import org.espen.collect.android.formmanagement.FormsDataService
+import org.espen.collect.android.preferences.utilities.FormUpdateMode
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.androidtest.getOrAwaitValue
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.FormSourceException
 import org.odk.collect.forms.instances.Instance
@@ -87,7 +87,7 @@ class BlankFormListViewModelTest {
 
         generalSettings.save(
             ProjectKeys.KEY_FORM_UPDATE_MODE,
-            FormUpdateMode.MATCH_EXACTLY.getValue(context)
+            org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context)
         )
 
         assertThat(viewModel.isMatchExactlyEnabled(), `is`(true))

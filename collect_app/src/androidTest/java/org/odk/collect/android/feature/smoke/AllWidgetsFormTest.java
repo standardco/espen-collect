@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.smoke;
+package org.espen.collect.android.feature.smoke;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.pressBack;
@@ -16,8 +16,8 @@ import androidx.test.uiautomator.UiDevice;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 /**
  * Integration test that runs through a form with all question types.

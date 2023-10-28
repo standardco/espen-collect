@@ -20,7 +20,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.androidtest.ActivityScenarioLauncherRule;
+import org.espen.collect.androidtest.ActivityScenarioLauncherRule;
 import org.odk.collect.externalapp.ExternalAppUtils;
 import org.odk.collect.geo.DaggerGeoDependencyComponent;
 import org.odk.collect.geo.GeoDependencyModule;

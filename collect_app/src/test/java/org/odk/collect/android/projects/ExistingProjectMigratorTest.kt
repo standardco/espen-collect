@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.app.Application
 import android.content.Context
@@ -10,8 +10,8 @@ import org.hamcrest.Matchers.`is`
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.storage.StorageSubdirectory
 import org.odk.collect.settings.keys.MetaKeys
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.TempFiles
@@ -21,7 +21,7 @@ import java.io.File
 class ExistingProjectMigratorTest {
 
     private val context = ApplicationProvider.getApplicationContext<Application>()
-    private val component = DaggerUtils.getComponent(context)
+    private val component = org.espen.collect.android.injection.DaggerUtils.getComponent(context)
     private val existingProjectMigrator = component.existingProjectMigrator()
     private val storagePathProvider = component.storagePathProvider()
     private val projectsRepository = component.projectsRepository()
@@ -179,12 +179,12 @@ class ExistingProjectMigratorTest {
 
     private fun getProjectDirPaths(projectId: String): Array<String> {
         return arrayOf(
-            storagePathProvider.getOdkDirPath(StorageSubdirectory.FORMS, projectId),
-            storagePathProvider.getOdkDirPath(StorageSubdirectory.INSTANCES, projectId),
-            storagePathProvider.getOdkDirPath(StorageSubdirectory.CACHE, projectId),
-            storagePathProvider.getOdkDirPath(StorageSubdirectory.METADATA, projectId),
-            storagePathProvider.getOdkDirPath(StorageSubdirectory.LAYERS, projectId),
-            storagePathProvider.getOdkDirPath(StorageSubdirectory.SETTINGS, projectId)
+            storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.FORMS, projectId),
+            storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.INSTANCES, projectId),
+            storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.CACHE, projectId),
+            storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.METADATA, projectId),
+            storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.LAYERS, projectId),
+            storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.SETTINGS, projectId)
         )
     }
 }

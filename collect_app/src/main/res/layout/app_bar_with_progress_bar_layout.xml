@@ -3,7 +3,7 @@
 
     <include layout="@layout/app_bar_layout" />
 
-    <org.odk.collect.android.views.ObviousProgressBar
+    <org.espen.collect.android.views.ObviousProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"

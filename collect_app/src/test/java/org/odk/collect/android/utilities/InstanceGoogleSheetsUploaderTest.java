@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import static org.javarosa.core.model.Constants.DATATYPE_BARCODE;
 import static org.javarosa.core.model.Constants.DATATYPE_BINARY;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.core.model.instance.TreeElement;
 import org.junit.Test;
-import org.odk.collect.android.gdrive.InstanceGoogleSheetsUploader;
+import org.espen.collect.android.gdrive.InstanceGoogleSheetsUploader;
 
 public class InstanceGoogleSheetsUploaderTest {
     @Test

@@ -1,11 +1,11 @@
-package org.odk.collect.android.support;
+package org.espen.collect.android.support;
 
 import android.accounts.Account;
 import android.content.Intent;
 
 import com.google.android.gms.auth.GoogleAuthException;
 
-import org.odk.collect.android.gdrive.GoogleAccountPicker;
+import org.espen.collect.android.gdrive.GoogleAccountPicker;
 
 import java.io.IOException;
 

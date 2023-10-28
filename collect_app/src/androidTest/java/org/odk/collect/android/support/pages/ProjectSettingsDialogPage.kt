@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -10,8 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matchers.allOf
-import org.odk.collect.android.R
-import org.odk.collect.android.support.WaitFor
+import org.espen.collect.android.support.WaitFor
 
 internal class ProjectSettingsDialogPage : Page<ProjectSettingsDialogPage>() {
 

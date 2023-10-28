@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import androidx.preference.Preference
@@ -11,9 +11,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.metadata.InstallIDProvider
 import org.odk.collect.settings.InMemSettingsProvider
@@ -30,7 +29,7 @@ class FormMetadataPreferencesFragmentTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
             override fun providesInstallIDProvider(settingsProvider: SettingsProvider): InstallIDProvider {
                 return installIDProvider
             }
@@ -46,7 +45,7 @@ class FormMetadataPreferencesFragmentTest {
         whenever(installIDProvider.installID).thenReturn("")
 
         launcherRule
-            .launch(FormMetadataPreferencesFragment::class.java)
+            .launch(org.espen.collect.android.preferences.screens.FormMetadataPreferencesFragment::class.java)
             .onFragment {
                 assertThat(
                     it.findPreference<Preference>("metadata_username")!!.summary,
@@ -75,7 +74,7 @@ class FormMetadataPreferencesFragmentTest {
         settingsProvider.getUnprotectedSettings().save(ProjectKeys.KEY_METADATA_EMAIL, "john@gmail.com")
 
         launcherRule
-            .launch(FormMetadataPreferencesFragment::class.java)
+            .launch(org.espen.collect.android.preferences.screens.FormMetadataPreferencesFragment::class.java)
             .onFragment {
                 assertThat(
                     it.findPreference<Preference>("metadata_username")!!.summary,

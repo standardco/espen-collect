@@ -11,7 +11,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.androidshared.data.Consumable
+import org.espen.collect.androidshared.data.Consumable
 import org.odk.collect.async.Scheduler
 import org.odk.collect.audiorecorder.AudioRecorderDependencyModule
 import org.odk.collect.audiorecorder.recorder.Output

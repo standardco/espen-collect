@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.content.Context
 import androidx.lifecycle.Lifecycle
@@ -9,7 +9,7 @@ import org.hamcrest.Matchers.equalTo
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.androidtest.ActivityScenarioLauncherRule
+import org.espen.collect.androidtest.ActivityScenarioLauncherRule
 import org.odk.collect.crashhandler.CrashHandler
 import org.odk.collect.crashhandler.MockCrashView
 import org.odk.collect.testshared.ActivityExt.getContextView

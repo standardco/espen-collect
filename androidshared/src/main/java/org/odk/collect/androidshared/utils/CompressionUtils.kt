@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.odk.collect.androidshared.utils
+package org.espen.collect.androidshared.utils
 
 import android.util.Base64
 import java.io.ByteArrayOutputStream

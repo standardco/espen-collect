@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.net.Uri
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -43,7 +43,7 @@ class BlankFormListItemTest {
         assertThat(blankFormListItem.geometryPath, `is`(form.geometryXpath))
         assertThat(blankFormListItem.dateOfCreation, `is`(form.date))
         assertThat(blankFormListItem.dateOfLastUsage, `is`(3L))
-        assertThat(blankFormListItem.contentUri, `is`(Uri.parse("content://org.odk.collect.android.provider.odk.forms/forms/1?projectId=DEMO")))
+        assertThat(blankFormListItem.contentUri, `is`(Uri.parse("content://org.espen.collect.android.provider.odk.forms/forms/1?projectId=DEMO")))
     }
 
     @Test

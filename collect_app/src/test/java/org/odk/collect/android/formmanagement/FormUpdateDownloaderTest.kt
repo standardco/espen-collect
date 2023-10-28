@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import org.hamcrest.Matchers.equalTo

@@ -1,4 +1,4 @@
-package org.odk.collect.androidtest
+package org.espen.collect.androidtest
 
 import android.app.Activity
 import android.content.Intent

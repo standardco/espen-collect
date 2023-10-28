@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import androidx.preference.EditTextPreference
@@ -14,12 +14,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
-import org.odk.collect.android.application.EspenCollect
-import org.odk.collect.android.application.initialization.AnalyticsInitializer
-import org.odk.collect.android.application.initialization.MapsInitializer
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.application.EspenCollect
+import org.espen.collect.android.application.initialization.AnalyticsInitializer
+import org.espen.collect.android.application.initialization.MapsInitializer
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository
@@ -44,7 +44,7 @@ class ProjectDisplayPreferencesFragmentTest {
         `when`(projectsDataService.getCurrentProject())
             .thenReturn(Project.Saved("123", "Project X", "X", "#cccccc"))
 
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
             override fun providesCurrentProjectProvider(
                 settingsProvider: SettingsProvider,
                 projectsRepository: ProjectsRepository,
@@ -79,7 +79,7 @@ class ProjectDisplayPreferencesFragmentTest {
             assertThat(
                 it.findPreference<EditTextPreference>(ProjectDisplayPreferencesFragment.PROJECT_NAME_KEY)!!.title,
                 `is`(
-                    ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(
+                    ApplicationProvider.getApplicationContext<org.espen.collect.android.application.EspenCollect>().getLocalizedString(
                         org.odk.collect.strings.R.string.project_name
                     )
                 )
@@ -117,7 +117,7 @@ class ProjectDisplayPreferencesFragmentTest {
                 it.findPreference<EditTextPreference>(ProjectDisplayPreferencesFragment.PROJECT_ICON_KEY)!!.title,
                 `is`(
 
-                    ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(
+                    ApplicationProvider.getApplicationContext<org.espen.collect.android.application.EspenCollect>().getLocalizedString(
                         org.odk.collect.strings.R.string.project_icon
                     )
                 )
@@ -154,7 +154,7 @@ class ProjectDisplayPreferencesFragmentTest {
             assertThat(
                 it.findPreference<Preference>(ProjectDisplayPreferencesFragment.PROJECT_COLOR_KEY)!!.title,
                 `is`(
-                    ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(
+                    ApplicationProvider.getApplicationContext<org.espen.collect.android.application.EspenCollect>().getLocalizedString(
                         org.odk.collect.strings.R.string.project_color
                     )
                 )

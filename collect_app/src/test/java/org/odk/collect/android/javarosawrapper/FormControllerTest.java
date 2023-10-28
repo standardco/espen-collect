@@ -1,7 +1,8 @@
-package org.odk.collect.android.javarosawrapper;
+package org.espen.collect.android.javarosawrapper;
 
 import com.google.common.io.Files;
 
+import org.espen.collect.android.javarosawrapper.JavaRosaFormController;
 import org.javarosa.form.api.FormEntryController;
 import org.javarosa.form.api.FormEntryModel;
 import org.javarosa.xform.parse.XFormParser;

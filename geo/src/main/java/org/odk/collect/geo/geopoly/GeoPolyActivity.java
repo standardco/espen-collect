@@ -14,7 +14,7 @@
 
 package org.odk.collect.geo.geopoly;
 
-import static org.odk.collect.androidshared.system.ContextUtils.getThemeAttributeValue;
+import static org.espen.collect.androidshared.system.ContextUtils.getThemeAttributeValue;
 import static org.odk.collect.geo.Constants.EXTRA_READ_ONLY;
 import static org.odk.collect.geo.GeoActivityUtils.requireLocationPermissions;
 
@@ -32,9 +32,9 @@ import androidx.fragment.app.FragmentContainerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.odk.collect.androidshared.ui.DialogFragmentUtils;
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder;
-import org.odk.collect.androidshared.ui.ToastUtils;
+import org.espen.collect.androidshared.ui.DialogFragmentUtils;
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder;
+import org.espen.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.externalapp.ExternalAppUtils;
 import org.odk.collect.geo.Constants;
 import org.odk.collect.geo.GeoDependencyComponentProvider;

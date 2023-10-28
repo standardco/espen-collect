@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -10,9 +10,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.support.StorageUtils;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.support.StorageUtils;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 import java.io.IOException;
 import java.util.List;

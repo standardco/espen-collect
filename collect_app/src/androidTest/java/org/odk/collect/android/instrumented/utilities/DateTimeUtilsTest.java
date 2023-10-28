@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.instrumented.utilities;
+package org.espen.collect.android.instrumented.utilities;
 
 import android.content.Context;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -24,9 +24,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.application.EspenCollect;
-import org.odk.collect.android.logic.DatePickerDetails;
-import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils;
+import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.logic.DatePickerDetails;
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils;
 import org.odk.collect.testshared.TimeZoneSetter;
 
 import java.util.Calendar;

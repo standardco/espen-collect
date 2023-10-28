@@ -1,4 +1,4 @@
-package org.odk.collect.android.views;
+package org.espen.collect.android.views;
 
 import android.widget.LinearLayout;
 
@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.core.view.MotionEventBuilder;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.views.TrackingTouchSlider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

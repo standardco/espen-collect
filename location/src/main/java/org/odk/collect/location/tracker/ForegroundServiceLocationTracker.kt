@@ -10,12 +10,11 @@ import android.content.Intent
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
-import org.odk.collect.androidshared.data.getState
-import org.odk.collect.androidshared.ui.ReturnToAppActivity
+import org.espen.collect.androidshared.data.getState
+import org.espen.collect.androidshared.ui.ReturnToAppActivity
 import org.odk.collect.location.Location
 import org.odk.collect.location.LocationClient
 import org.odk.collect.location.LocationClientProvider
-import org.odk.collect.location.R
 import org.odk.collect.strings.localization.getLocalizedString
 
 private const val LOCATION_KEY = "location"

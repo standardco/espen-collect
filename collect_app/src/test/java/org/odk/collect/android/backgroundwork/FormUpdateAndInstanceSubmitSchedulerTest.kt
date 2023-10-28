@@ -1,4 +1,4 @@
-package org.odk.collect.android.backgroundwork
+package org.espen.collect.android.backgroundwork
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -9,10 +9,9 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.R
-import org.odk.collect.android.TestSettingsProvider
-import org.odk.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY
-import org.odk.collect.android.preferences.utilities.FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY
+import org.espen.collect.android.TestSettingsProvider
+import org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY
+import org.espen.collect.android.preferences.utilities.FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY
 import org.odk.collect.async.Scheduler
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.settings.keys.ProjectKeys.KEY_FORM_UPDATE_MODE
@@ -37,7 +36,7 @@ class FormUpdateAndInstanceSubmitSchedulerTest {
             application.getString(org.odk.collect.strings.R.string.every_one_hour_value)
         )
 
-        val manager = FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
+        val manager = org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
 
         manager.scheduleUpdates("myProject")
         verify(scheduler).networkDeferred(
@@ -50,7 +49,7 @@ class FormUpdateAndInstanceSubmitSchedulerTest {
 
     @Test
     fun `cancelUpdates cancels auto update for project`() {
-        val manager = FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
+        val manager = org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
 
         manager.cancelUpdates("myProject")
         verify(scheduler).cancelDeferred("serverPollingJob:myProject")
@@ -58,7 +57,7 @@ class FormUpdateAndInstanceSubmitSchedulerTest {
 
     @Test
     fun `cancelUpdates cancels match exactly update for project`() {
-        val manager = FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
+        val manager = org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
 
         manager.cancelUpdates("myProject")
         verify(scheduler).cancelDeferred("match_exactly:myProject")
@@ -75,7 +74,7 @@ class FormUpdateAndInstanceSubmitSchedulerTest {
             application.getString(org.odk.collect.strings.R.string.every_one_hour_value)
         )
 
-        val manager = FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
+        val manager = org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
 
         manager.scheduleUpdates("myProject")
         verify(scheduler).networkDeferred(
@@ -88,7 +87,7 @@ class FormUpdateAndInstanceSubmitSchedulerTest {
 
     @Test
     fun `scheduleSubmit passes current project ID`() {
-        val manager = FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
+        val manager = org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
 
         manager.scheduleSubmit("myProject")
         verify(scheduler).networkDeferred(
@@ -100,7 +99,7 @@ class FormUpdateAndInstanceSubmitSchedulerTest {
 
     @Test
     fun `cancelSubmit cancels auto send for current project`() {
-        val manager = FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
+        val manager = org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler(scheduler, settingsProvider, application)
 
         manager.cancelSubmit("myProject")
         verify(scheduler).cancelDeferred("AutoSendWorker:myProject")

@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -18,8 +18,8 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.matcher.ViewMatchers;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.WaitFor;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.WaitFor;
 
 public class FillBlankFormPage extends Page<FillBlankFormPage> {
 

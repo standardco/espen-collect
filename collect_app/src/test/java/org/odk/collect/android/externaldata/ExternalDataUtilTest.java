@@ -1,5 +1,6 @@
-package org.odk.collect.android.externaldata;
+package org.espen.collect.android.externaldata;
 
+import org.espen.collect.android.externaldata.ExternalDataUtil;
 import org.junit.Assert;
 import org.junit.Test;
 

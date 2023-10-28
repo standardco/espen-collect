@@ -1,19 +1,20 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import android.util.Pair;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.widgets.utilities.AudioRecorderRecordingStatusHandler;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.formentry.FormEntryViewModel;
+import org.espen.collect.android.formentry.FormEntryViewModel;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.RecordingSession;
-import org.odk.collect.androidshared.livedata.MutableNonNullLiveData;
-import org.odk.collect.androidtest.FakeLifecycleOwner;
+import org.espen.collect.androidshared.livedata.MutableNonNullLiveData;
+import org.espen.collect.androidtest.FakeLifecycleOwner;
 
 import java.util.function.Consumer;
 
@@ -21,7 +22,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
 
 @RunWith(AndroidJUnit4.class)
 public class AudioRecorderRecordingStatusHandlerTest {

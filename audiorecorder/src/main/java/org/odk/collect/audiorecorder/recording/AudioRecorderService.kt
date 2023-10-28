@@ -4,7 +4,7 @@ import android.app.Application
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import org.odk.collect.androidshared.data.getState
+import org.espen.collect.androidshared.data.getState
 import org.odk.collect.async.Cancellable
 import org.odk.collect.async.Scheduler
 import org.odk.collect.audiorecorder.AudioRecorderDependencyComponentProvider

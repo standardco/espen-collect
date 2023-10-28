@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -40,7 +40,7 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.endsWith;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.StringStartsWith.startsWith;
-import static org.odk.collect.android.support.matchers.CustomMatchers.withIndex;
+import static org.espen.collect.android.support.matchers.CustomMatchers.withIndex;
 
 import android.app.Activity;
 import android.app.Application;
@@ -60,14 +60,14 @@ import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.R;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.preferences.GuidanceHint;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.support.pages.FormEntryPage;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
-import org.odk.collect.androidtest.RecordedIntentsRule;
+import org.espen.collect.android.R;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.preferences.GuidanceHint;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.support.pages.FormEntryPage;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.androidtest.RecordedIntentsRule;
 import org.odk.collect.settings.keys.ProjectKeys;
 
 import java.io.File;

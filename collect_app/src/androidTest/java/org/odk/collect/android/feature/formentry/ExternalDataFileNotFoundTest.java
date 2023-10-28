@@ -1,12 +1,12 @@
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 public class ExternalDataFileNotFoundTest {
     private static final String EXTERNAL_DATA_QUESTIONS = "external_data_questions.xml";

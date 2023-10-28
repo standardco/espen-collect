@@ -17,12 +17,11 @@ import androidx.lifecycle.ViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN
-import org.odk.collect.androidshared.livedata.NonNullLiveData
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
-import org.odk.collect.androidshared.ui.ToastUtils
-import org.odk.collect.androidshared.ui.multiclicksafe.setMultiClickSafeOnClickListener
+import org.espen.collect.androidshared.livedata.NonNullLiveData
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder
+import org.espen.collect.androidshared.ui.ToastUtils
+import org.espen.collect.androidshared.ui.multiclicksafe.setMultiClickSafeOnClickListener
 import org.odk.collect.geo.GeoDependencyComponentProvider
-import org.odk.collect.geo.R
 import org.odk.collect.geo.ReferenceLayerSettingsNavigator
 import org.odk.collect.geo.databinding.SelectionMapLayoutBinding
 import org.odk.collect.maps.MapFragment

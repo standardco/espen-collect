@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.dialogs
+package org.espen.collect.android.preferences.dialogs
 
 import android.text.InputType
 import androidx.appcompat.app.AlertDialog
@@ -18,10 +18,10 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoMoreInteractions
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.preferences.ProjectPreferencesViewModel
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.AdminPasswordProvider
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.preferences.ProjectPreferencesViewModel
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.AdminPasswordProvider
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.testshared.RobolectricHelpers
@@ -30,7 +30,7 @@ import javax.inject.Inject
 @RunWith(AndroidJUnit4::class)
 class AdminPasswordDialogFragmentTest {
 
-    private val adminPasswordProvider = mock<AdminPasswordProvider>()
+    private val adminPasswordProvider = mock<org.espen.collect.android.utilities.AdminPasswordProvider>()
     private val projectPreferencesViewModel = mock<ProjectPreferencesViewModel>()
 
     @Inject
@@ -41,12 +41,12 @@ class AdminPasswordDialogFragmentTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
-            override fun providesAdminPasswordProvider(settingsProvider: SettingsProvider): AdminPasswordProvider {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
+            override fun providesAdminPasswordProvider(settingsProvider: SettingsProvider): org.espen.collect.android.utilities.AdminPasswordProvider {
                 return adminPasswordProvider
             }
 
-            override fun providesProjectPreferencesViewModel(adminPasswordProvider: AdminPasswordProvider): ProjectPreferencesViewModel.Factory {
+            override fun providesProjectPreferencesViewModel(adminPasswordProvider: org.espen.collect.android.utilities.AdminPasswordProvider): ProjectPreferencesViewModel.Factory {
                 return object : ProjectPreferencesViewModel.Factory(adminPasswordProvider) {
                     override fun <T : ViewModel> create(modelClass: Class<T>): T {
                         return projectPreferencesViewModel as T

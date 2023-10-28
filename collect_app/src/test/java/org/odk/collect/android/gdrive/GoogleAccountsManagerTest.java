@@ -1,4 +1,4 @@
-package org.odk.collect.android.gdrive;
+package org.espen.collect.android.gdrive;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -18,12 +18,13 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 
+import org.espen.collect.android.gdrive.GoogleAccountsManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.odk.collect.android.utilities.ThemeUtils;
+import org.espen.collect.android.utilities.ThemeUtils;
 import org.odk.collect.settings.SettingsProvider;
 import org.odk.collect.settings.keys.ProjectKeys;
 import org.odk.collect.shared.settings.Settings;

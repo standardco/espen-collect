@@ -13,7 +13,7 @@
         app:allowDividerAbove="false"
         app:allowDividerBelow="false"
         app:iconSpaceReserved="false">
-        <org.odk.collect.android.preferences.CaptionedListPreference
+        <org.espen.collect.android.preferences.CaptionedListPreference
             android:key="reference_layer"
             android:title="@string/layer_data_file"
             android:dialogTitle="@string/layer_data_file"

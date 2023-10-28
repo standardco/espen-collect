@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.source
+package org.espen.collect.android.preferences.source
 
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat

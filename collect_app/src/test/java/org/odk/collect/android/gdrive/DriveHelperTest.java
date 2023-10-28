@@ -1,16 +1,17 @@
-package org.odk.collect.android.gdrive;
+package org.espen.collect.android.gdrive;
 
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import com.google.api.services.drive.model.Permission;
 
+import org.espen.collect.android.gdrive.GoogleDriveApi;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.odk.collect.android.gdrive.sheets.DriveHelper;
+import org.espen.collect.android.gdrive.sheets.DriveHelper;
 
 import java.io.IOException;
 

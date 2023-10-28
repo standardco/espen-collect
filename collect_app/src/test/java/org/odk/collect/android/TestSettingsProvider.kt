@@ -1,8 +1,8 @@
-package org.odk.collect.android
+package org.espen.collect.android
 
 import androidx.test.core.app.ApplicationProvider
-import org.odk.collect.android.application.EspenCollect
-import org.odk.collect.android.injection.DaggerUtils
+import org.espen.collect.android.application.EspenCollect
+import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.shared.settings.Settings
 
@@ -10,7 +10,7 @@ import org.odk.collect.shared.settings.Settings
 object TestSettingsProvider {
     @JvmStatic
     fun getSettingsProvider(): SettingsProvider {
-        return DaggerUtils.getComponent(ApplicationProvider.getApplicationContext<EspenCollect>()).settingsProvider()
+        return org.espen.collect.android.injection.DaggerUtils.getComponent(ApplicationProvider.getApplicationContext<org.espen.collect.android.application.EspenCollect>()).settingsProvider()
     }
 
     @JvmStatic

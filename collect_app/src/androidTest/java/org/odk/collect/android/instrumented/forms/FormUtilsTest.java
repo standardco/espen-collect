@@ -1,7 +1,7 @@
-package org.odk.collect.android.instrumented.forms;
+package org.espen.collect.android.instrumented.forms;
 
 import static org.mockito.Mockito.mock;
-import static org.odk.collect.android.support.StorageUtils.copyFormToStorage;
+import static org.espen.collect.android.support.StorageUtils.copyFormToStorage;
 
 import org.javarosa.core.model.FormDef;
 import org.javarosa.core.reference.RootTranslator;
@@ -11,13 +11,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.rules.ResetStateRule;
-import org.odk.collect.android.tasks.FormLoaderTask;
-import org.odk.collect.android.utilities.FileUtils;
-import org.odk.collect.android.utilities.FormUtils;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.rules.ResetStateRule;
+import org.espen.collect.android.tasks.FormLoaderTask;
+import org.espen.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.FormUtils;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.base;
+package org.espen.collect.android.widgets.base;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-import org.odk.collect.android.TestSettingsProvider;
+import org.espen.collect.android.TestSettingsProvider;
 import org.odk.collect.settings.SettingsProvider;
 
 import javax.annotation.OverridingMethodsMustInvokeSuper;

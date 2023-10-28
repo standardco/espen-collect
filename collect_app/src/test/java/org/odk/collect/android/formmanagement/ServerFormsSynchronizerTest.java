@@ -1,7 +1,7 @@
-package org.odk.collect.android.formmanagement;
+package org.espen.collect.android.formmanagement;
 
 import org.junit.Test;
-import org.odk.collect.android.formmanagement.matchexactly.ServerFormsSynchronizer;
+import org.espen.collect.android.formmanagement.matchexactly.ServerFormsSynchronizer;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.FormSourceException;
 import org.odk.collect.forms.FormsRepository;

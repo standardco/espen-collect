@@ -1,15 +1,14 @@
-package org.odk.collect.android.feature.formmanagement
+package org.espen.collect.android.feature.formmanagement
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain.chain
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain.chain
 
 // https://github.com/getodk/collect/issues/5384
 @RunWith(AndroidJUnit4::class)

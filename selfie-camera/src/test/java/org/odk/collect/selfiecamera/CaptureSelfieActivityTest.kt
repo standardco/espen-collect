@@ -17,9 +17,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
-import org.odk.collect.androidshared.livedata.NonNullLiveData
-import org.odk.collect.androidtest.ActivityScenarioLauncherRule
+import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
+import org.espen.collect.androidshared.livedata.NonNullLiveData
+import org.espen.collect.androidtest.ActivityScenarioLauncherRule
 import org.odk.collect.externalapp.ExternalAppUtils
 import org.odk.collect.permissions.PermissionsChecker
 import org.odk.collect.selfiecamera.support.RobolectricApplication

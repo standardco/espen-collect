@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences
+package org.espen.collect.android.preferences
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
@@ -7,15 +7,15 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.utilities.AdminPasswordProvider
-import org.odk.collect.androidshared.data.Consumable
+import org.espen.collect.android.utilities.AdminPasswordProvider
+import org.espen.collect.androidshared.data.Consumable
 import org.odk.collect.testshared.RobolectricHelpers
 
 @RunWith(AndroidJUnit4::class)
 class ProjectPreferencesViewModelTest {
 
     private lateinit var projectPreferencesViewModel: ProjectPreferencesViewModel
-    private val adminPasswordProvider = mock<AdminPasswordProvider>()
+    private val adminPasswordProvider = mock<org.espen.collect.android.utilities.AdminPasswordProvider>()
 
     @Test
     fun `When admin password is set the initial stat should be Locked`() {

@@ -1,6 +1,4 @@
-package org.odk.collect.android.support.pages
-
-import org.odk.collect.android.R
+package org.espen.collect.android.support.pages
 
 class FirstLaunchPage : Page<FirstLaunchPage>() {
 

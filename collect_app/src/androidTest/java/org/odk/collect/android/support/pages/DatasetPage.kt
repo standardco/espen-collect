@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 class DatasetPage(private val datasetName: String) : Page<DatasetPage>() {
 

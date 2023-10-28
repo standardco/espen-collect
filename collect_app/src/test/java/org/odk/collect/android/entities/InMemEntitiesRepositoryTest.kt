@@ -1,4 +1,4 @@
-package org.odk.collect.android.entities
+package org.espen.collect.android.entities
 
 import org.odk.collect.entities.EntitiesRepository
 

@@ -32,7 +32,7 @@ the License.
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/audio_recording_controller"
-            android:name="org.odk.collect.android.audio.AudioRecordingControllerFragment"
+            android:name="org.espen.collect.android.audio.AudioRecordingControllerFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -49,7 +49,7 @@ the License.
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <org.odk.collect.android.views.TransparentProgressScreen
+        <org.espen.collect.android.views.TransparentProgressScreen
             android:id="@+id/loading_screen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

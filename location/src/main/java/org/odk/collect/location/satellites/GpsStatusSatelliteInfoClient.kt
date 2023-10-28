@@ -6,7 +6,7 @@ import android.location.GpsStatus
 import android.location.LocationManager
 import android.os.Build
 import androidx.annotation.RequiresApi
-import org.odk.collect.androidshared.livedata.NonNullLiveData
+import org.espen.collect.androidshared.livedata.NonNullLiveData
 
 class GpsStatusSatelliteInfoClient(private val locationManager: LocationManager) :
     SatelliteInfoClient {

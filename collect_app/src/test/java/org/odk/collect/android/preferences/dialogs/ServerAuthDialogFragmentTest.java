@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.dialogs;
+package org.espen.collect.android.preferences.dialogs;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -9,11 +9,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.preferences.dialogs.ServerAuthDialogFragment;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.R;
-import org.odk.collect.android.TestSettingsProvider;
+import org.espen.collect.android.R;
+import org.espen.collect.android.TestSettingsProvider;
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule;
 import org.odk.collect.settings.keys.ProjectKeys;
 import org.odk.collect.shared.settings.Settings;

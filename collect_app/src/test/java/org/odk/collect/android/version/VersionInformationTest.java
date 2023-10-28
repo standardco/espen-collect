@@ -1,5 +1,6 @@
-package org.odk.collect.android.version;
+package org.espen.collect.android.version;
 
+import org.espen.collect.android.version.VersionInformation;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -1,15 +1,16 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import org.espen.collect.android.widgets.ExPrinterWidget;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.junit.Test;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.widgets.base.QuestionWidgetTest;
-import org.odk.collect.android.widgets.support.FakeWaitingForDataRegistry;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.widgets.base.QuestionWidgetTest;
+import org.espen.collect.android.widgets.support.FakeWaitingForDataRegistry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

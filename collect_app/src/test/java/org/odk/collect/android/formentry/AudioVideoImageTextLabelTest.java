@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import android.view.View;
 import android.widget.CheckBox;
@@ -14,12 +14,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-import org.odk.collect.android.R;
-import org.odk.collect.android.audio.AudioButton;
-import org.odk.collect.android.audio.AudioHelper;
-import org.odk.collect.android.formentry.questions.AudioVideoImageTextLabel;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.audio.AudioButton;
+import org.espen.collect.android.audio.AudioHelper;
+import org.espen.collect.android.formentry.questions.AudioVideoImageTextLabel;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.utilities.MediaUtils;
 import org.odk.collect.imageloader.ImageLoader;
 
 import java.io.File;
@@ -33,7 +33,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.support.CollectHelpers.createThemedActivity;
+import static org.espen.collect.android.support.CollectHelpers.createThemedActivity;
 
 @RunWith(AndroidJUnit4.class)
 public class AudioVideoImageTextLabelTest {

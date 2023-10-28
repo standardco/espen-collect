@@ -1,12 +1,12 @@
-package org.odk.collect.android.widgets.support;
+package org.espen.collect.android.widgets.support;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.common.io.Files;
 
-import org.odk.collect.android.utilities.QuestionMediaManager;
-import org.odk.collect.utilities.Result;
+import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.utilities.Result;
 
 import java.io.File;
 import java.io.IOException;

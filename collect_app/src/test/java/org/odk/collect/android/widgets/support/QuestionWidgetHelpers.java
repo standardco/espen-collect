@@ -1,13 +1,13 @@
-package org.odk.collect.android.widgets.support;
+package org.espen.collect.android.widgets.support;
 
 import org.javarosa.core.model.QuestionDef;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.widgets.QuestionWidget;
 
 import static org.mockito.Mockito.mock;
 

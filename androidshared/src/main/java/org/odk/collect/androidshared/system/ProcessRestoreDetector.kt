@@ -1,8 +1,8 @@
-package org.odk.collect.androidshared.system
+package org.espen.collect.androidshared.system
 
 import android.content.Context
 import android.os.Bundle
-import org.odk.collect.androidshared.data.getState
+import org.espen.collect.androidshared.data.getState
 import org.odk.collect.shared.strings.UUIDGenerator
 
 object ProcessRestoreDetector {

@@ -1,10 +1,10 @@
-package org.odk.collect.android.formentry.support
+package org.espen.collect.android.formentry.support
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import org.odk.collect.android.formentry.FormSession
-import org.odk.collect.android.formentry.FormSessionRepository
-import org.odk.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.formentry.FormSession
+import org.espen.collect.android.formentry.FormSessionRepository
+import org.espen.collect.android.javarosawrapper.FormController
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.shared.strings.UUIDGenerator

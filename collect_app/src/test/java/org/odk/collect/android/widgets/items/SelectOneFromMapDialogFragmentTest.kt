@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items
+package org.espen.collect.android.widgets.items
 
 import android.app.Application
 import android.os.Bundle
@@ -23,19 +23,18 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.SelectOneFromMapDialogLayoutBinding
-import org.odk.collect.android.formentry.FormEntryViewModel
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.MockFormEntryPromptBuilder
-import org.odk.collect.android.utilities.Appearances
-import org.odk.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_FORM_INDEX
-import org.odk.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_SELECTED_INDEX
-import org.odk.collect.android.widgets.support.FormElementFixtures.selectChoice
-import org.odk.collect.android.widgets.support.FormElementFixtures.treeElement
-import org.odk.collect.android.widgets.support.NoOpMapFragment
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
+import org.espen.collect.android.databinding.SelectOneFromMapDialogLayoutBinding
+import org.espen.collect.android.formentry.FormEntryViewModel
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.MockFormEntryPromptBuilder
+import org.espen.collect.android.utilities.Appearances
+import org.espen.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_FORM_INDEX
+import org.espen.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_SELECTED_INDEX
+import org.espen.collect.android.widgets.support.FormElementFixtures.selectChoice
+import org.espen.collect.android.widgets.support.FormElementFixtures.treeElement
+import org.espen.collect.android.widgets.support.NoOpMapFragment
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.async.Scheduler
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.geo.selection.MappableSelectItem
@@ -75,7 +74,7 @@ class SelectOneFromMapDialogFragmentTest {
         )
         .build()
 
-    private val formEntryViewModel = mock<FormEntryViewModel> {
+    private val formEntryViewModel = mock<org.espen.collect.android.formentry.FormEntryViewModel> {
         on { getQuestionPrompt(prompt.index) } doReturn prompt
     }
 
@@ -99,7 +98,7 @@ class SelectOneFromMapDialogFragmentTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
             override fun providesMapFragmentFactory(settingsProvider: SettingsProvider): MapFragmentFactory {
                 return object : MapFragmentFactory {
                     override fun createMapFragment(): MapFragment {

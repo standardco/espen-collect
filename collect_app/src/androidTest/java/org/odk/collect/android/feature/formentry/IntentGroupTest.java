@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -36,8 +36,8 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.StringEndsWith.endsWith;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.support.matchers.CustomMatchers.withIndex;
-import static org.odk.collect.android.utilities.FileUtils.copyFileFromResources;
+import static org.espen.collect.android.support.matchers.CustomMatchers.withIndex;
+import static org.espen.collect.android.utilities.FileUtils.copyFileFromResources;
 
 import android.app.Activity;
 import android.app.Instrumentation;
@@ -54,12 +54,12 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.BuildConfig;
-import org.odk.collect.android.R;
-import org.odk.collect.android.application.EspenCollect;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
-import org.odk.collect.androidtest.RecordedIntentsRule;
+import org.espen.collect.android.BuildConfig;
+import org.espen.collect.android.R;
+import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.androidtest.RecordedIntentsRule;
 
 import java.io.File;
 import java.io.IOException;

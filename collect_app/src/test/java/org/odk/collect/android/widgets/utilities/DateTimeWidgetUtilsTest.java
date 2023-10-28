@@ -1,23 +1,24 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils;
 import org.joda.time.LocalDateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.fragments.dialogs.BikramSambatDatePickerDialog;
-import org.odk.collect.android.fragments.dialogs.CopticDatePickerDialog;
-import org.odk.collect.android.fragments.dialogs.CustomTimePickerDialog;
-import org.odk.collect.android.fragments.dialogs.EthiopianDatePickerDialog;
-import org.odk.collect.android.fragments.dialogs.FixedDatePickerDialog;
-import org.odk.collect.android.fragments.dialogs.IslamicDatePickerDialog;
-import org.odk.collect.android.fragments.dialogs.MyanmarDatePickerDialog;
-import org.odk.collect.android.fragments.dialogs.PersianDatePickerDialog;
-import org.odk.collect.android.logic.DatePickerDetails;
+import org.espen.collect.android.fragments.dialogs.BikramSambatDatePickerDialog;
+import org.espen.collect.android.fragments.dialogs.CopticDatePickerDialog;
+import org.espen.collect.android.fragments.dialogs.CustomTimePickerDialog;
+import org.espen.collect.android.fragments.dialogs.EthiopianDatePickerDialog;
+import org.espen.collect.android.fragments.dialogs.FixedDatePickerDialog;
+import org.espen.collect.android.fragments.dialogs.IslamicDatePickerDialog;
+import org.espen.collect.android.fragments.dialogs.MyanmarDatePickerDialog;
+import org.espen.collect.android.fragments.dialogs.PersianDatePickerDialog;
+import org.espen.collect.android.logic.DatePickerDetails;
 import org.odk.collect.testshared.RobolectricHelpers;
-import org.odk.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.support.WidgetTestActivity;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -25,13 +26,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.logic.DatePickerDetails.DatePickerType.BIKRAM_SAMBAT;
-import static org.odk.collect.android.logic.DatePickerDetails.DatePickerType.COPTIC;
-import static org.odk.collect.android.logic.DatePickerDetails.DatePickerType.ETHIOPIAN;
-import static org.odk.collect.android.logic.DatePickerDetails.DatePickerType.GREGORIAN;
-import static org.odk.collect.android.logic.DatePickerDetails.DatePickerType.ISLAMIC;
-import static org.odk.collect.android.logic.DatePickerDetails.DatePickerType.MYANMAR;
-import static org.odk.collect.android.logic.DatePickerDetails.DatePickerType.PERSIAN;
+import static org.espen.collect.android.logic.DatePickerDetails.DatePickerType.BIKRAM_SAMBAT;
+import static org.espen.collect.android.logic.DatePickerDetails.DatePickerType.COPTIC;
+import static org.espen.collect.android.logic.DatePickerDetails.DatePickerType.ETHIOPIAN;
+import static org.espen.collect.android.logic.DatePickerDetails.DatePickerType.GREGORIAN;
+import static org.espen.collect.android.logic.DatePickerDetails.DatePickerType.ISLAMIC;
+import static org.espen.collect.android.logic.DatePickerDetails.DatePickerType.MYANMAR;
+import static org.espen.collect.android.logic.DatePickerDetails.DatePickerType.PERSIAN;
 
 import android.app.DatePickerDialog;
 

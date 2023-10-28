@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import android.app.Application
 import android.graphics.Color
@@ -23,26 +23,26 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.activities.CrashHandlerActivity
-import org.odk.collect.android.activities.DeleteSavedFormActivity
-import org.odk.collect.android.activities.FormDownloadListActivity
-import org.odk.collect.android.activities.InstanceChooserList
-import org.odk.collect.android.application.initialization.AnalyticsInitializer
-import org.odk.collect.android.fakes.FakePermissionsProvider
-import org.odk.collect.android.formlists.blankformlist.BlankFormListActivity
-import org.odk.collect.android.formmanagement.InstancesAppState
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
-import org.odk.collect.android.instancemanagement.send.InstanceUploaderListActivity
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.ApplicationConstants
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.android.version.VersionInformation
-import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
-import org.odk.collect.androidtest.ActivityScenarioLauncherRule
+import org.espen.collect.android.R
+import org.espen.collect.android.activities.CrashHandlerActivity
+import org.espen.collect.android.activities.DeleteSavedFormActivity
+import org.espen.collect.android.activities.FormDownloadListActivity
+import org.espen.collect.android.activities.InstanceChooserList
+import org.espen.collect.android.application.initialization.AnalyticsInitializer
+import org.espen.collect.android.fakes.FakePermissionsProvider
+import org.espen.collect.android.formlists.blankformlist.BlankFormListActivity
+import org.espen.collect.android.formmanagement.InstancesAppState
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
+import org.espen.collect.android.instancemanagement.send.InstanceUploaderListActivity
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.version.VersionInformation
+import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
+import org.espen.collect.androidtest.ActivityScenarioLauncherRule
 import org.odk.collect.async.Scheduler
 import org.odk.collect.crashhandler.CrashHandler
 import org.odk.collect.permissions.PermissionsChecker
@@ -81,19 +81,19 @@ class MainMenuActivityTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
             override fun providesMainMenuViewModelFactory(
-                versionInformation: VersionInformation,
-                application: Application,
-                settingsProvider: SettingsProvider,
-                instancesAppState: InstancesAppState,
-                scheduler: Scheduler,
-                projectsDataService: ProjectsDataService,
-                analyticsInitializer: AnalyticsInitializer,
-                permissionChecker: PermissionsChecker,
-                formsRepositoryProvider: FormsRepositoryProvider,
-                instancesRepositoryProvider: InstancesRepositoryProvider,
-                autoSendSettingsProvider: AutoSendSettingsProvider
+                    versionInformation: org.espen.collect.android.version.VersionInformation,
+                    application: Application,
+                    settingsProvider: SettingsProvider,
+                    instancesAppState: InstancesAppState,
+                    scheduler: Scheduler,
+                    projectsDataService: ProjectsDataService,
+                    analyticsInitializer: AnalyticsInitializer,
+                    permissionChecker: PermissionsChecker,
+                    formsRepositoryProvider: FormsRepositoryProvider,
+                    instancesRepositoryProvider: InstancesRepositoryProvider,
+                    autoSendSettingsProvider: AutoSendSettingsProvider
             ): MainMenuViewModelFactory {
                 return object : MainMenuViewModelFactory(
                     versionInformation,
@@ -197,10 +197,10 @@ class MainMenuActivityTest {
 
             val button = activity.findViewById<MainMenuButton>(R.id.review_data)
             button.performClick()
-            assertThat(Intents.getIntents()[0], hasComponent(InstanceChooserList::class.java.name))
+            assertThat(Intents.getIntents()[0], hasComponent(org.espen.collect.android.activities.InstanceChooserList::class.java.name))
             assertThat(
-                Intents.getIntents()[0].extras!!.get(ApplicationConstants.BundleKeys.FORM_MODE),
-                `is`(ApplicationConstants.FormModes.EDIT_SAVED)
+                Intents.getIntents()[0].extras!!.get(org.espen.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODE),
+                `is`(org.espen.collect.android.utilities.ApplicationConstants.FormModes.EDIT_SAVED)
             )
 
             Intents.release()
@@ -226,7 +226,7 @@ class MainMenuActivityTest {
             button.performClick()
             assertThat(
                 Intents.getIntents()[0],
-                hasComponent(InstanceUploaderListActivity::class.java.name)
+                hasComponent(org.espen.collect.android.instancemanagement.send.InstanceUploaderListActivity::class.java.name)
             )
 
             Intents.release()
@@ -250,10 +250,10 @@ class MainMenuActivityTest {
 
             val button = activity.findViewById<MainMenuButton>(R.id.view_sent_forms)
             button.performClick()
-            assertThat(Intents.getIntents()[0], hasComponent(InstanceChooserList::class.java.name))
+            assertThat(Intents.getIntents()[0], hasComponent(org.espen.collect.android.activities.InstanceChooserList::class.java.name))
             assertThat(
-                Intents.getIntents()[0].extras!!.get(ApplicationConstants.BundleKeys.FORM_MODE),
-                `is`(ApplicationConstants.FormModes.VIEW_SENT)
+                Intents.getIntents()[0].extras!!.get(org.espen.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODE),
+                `is`(org.espen.collect.android.utilities.ApplicationConstants.FormModes.VIEW_SENT)
             )
 
             Intents.release()
@@ -279,7 +279,7 @@ class MainMenuActivityTest {
             button.performClick()
             assertThat(
                 Intents.getIntents()[0],
-                hasComponent(FormDownloadListActivity::class.java.name)
+                hasComponent(org.espen.collect.android.activities.FormDownloadListActivity::class.java.name)
             )
 
             Intents.release()

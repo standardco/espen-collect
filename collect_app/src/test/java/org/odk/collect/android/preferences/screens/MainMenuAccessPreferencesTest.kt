@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import androidx.preference.CheckBoxPreference
@@ -10,9 +10,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.TestSettingsProvider
-import org.odk.collect.android.preferences.utilities.FormUpdateMode
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.TestSettingsProvider
+import org.espen.collect.android.preferences.utilities.FormUpdateMode
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.settings.keys.ProtectedProjectKeys
@@ -292,7 +292,7 @@ class MainMenuAccessPreferencesTest {
 
     @Test
     fun `When match exactly enabled shows the Get Blank Form option as unchecked and disabled`() {
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.MATCH_EXACTLY.getValue(context))
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context))
 
         val scenario = launcherRule.launch(MainMenuAccessPreferencesFragment::class.java)
 
@@ -306,7 +306,7 @@ class MainMenuAccessPreferencesTest {
 
     @Test
     fun `When match exactly enabled and google used as protocol the Get Blank Form option is enabled`() {
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.MATCH_EXACTLY.getValue(context))
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context))
 
         generalSettings.save(ProjectKeys.KEY_PROTOCOL, ProjectKeys.PROTOCOL_GOOGLE_SHEETS)
         val scenario = launcherRule.launch(MainMenuAccessPreferencesFragment::class.java)

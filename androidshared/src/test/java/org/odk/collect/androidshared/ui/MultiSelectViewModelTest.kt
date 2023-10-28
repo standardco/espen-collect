@@ -1,4 +1,4 @@
-package org.odk.collect.androidshared.ui
+package org.espen.collect.androidshared.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.hamcrest.MatcherAssert.assertThat

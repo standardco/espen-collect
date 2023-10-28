@@ -47,7 +47,7 @@ import com.mapbox.maps.plugin.locationcomponent.location
 import com.mapbox.maps.plugin.scalebar.scalebar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.odk.collect.androidshared.utils.ScreenUtils
+import org.espen.collect.androidshared.utils.ScreenUtils
 import org.odk.collect.location.LocationClient
 import org.odk.collect.location.LocationClient.LocationClientListener
 import org.odk.collect.maps.MapFragment

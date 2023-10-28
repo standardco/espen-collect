@@ -1,7 +1,8 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.utilities.InstanceUploaderUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.odk.collect.forms.instances.Instance;

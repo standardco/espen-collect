@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.content.Context
 import android.content.Intent
@@ -11,7 +11,7 @@ import org.hamcrest.Matchers.equalTo
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.CollectHelpers
 
 @RunWith(AndroidJUnit4::class)
 class FormHierarchyActivityTest {
@@ -27,11 +27,11 @@ class FormHierarchyActivityTest {
     @Test
     fun whenFormHasNotLoadedYet_finishes() {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        val intent = Intent(context, FormHierarchyActivity::class.java).also {
-            it.putExtra(FormHierarchyActivity.EXTRA_SESSION_ID, "blah")
+        val intent = Intent(context, org.espen.collect.android.activities.FormHierarchyActivity::class.java).also {
+            it.putExtra(org.espen.collect.android.activities.FormHierarchyActivity.EXTRA_SESSION_ID, "blah")
         }
 
-        ActivityScenario.launch<FormHierarchyActivity>(intent).use { scenario ->
+        ActivityScenario.launch<org.espen.collect.android.activities.FormHierarchyActivity>(intent).use { scenario ->
             assertThat(scenario.state, equalTo(Lifecycle.State.DESTROYED))
         }
     }

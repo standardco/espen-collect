@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import androidx.lifecycle.ViewModel
 import androidx.preference.Preference
@@ -11,11 +11,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
-import org.odk.collect.android.TestSettingsProvider
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.preferences.ProjectPreferencesViewModel
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.AdminPasswordProvider
+import org.espen.collect.android.TestSettingsProvider
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.preferences.ProjectPreferencesViewModel
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.AdminPasswordProvider
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 import org.odk.collect.shared.settings.Settings
@@ -25,7 +25,7 @@ class ProjectPreferencesFragmentTest {
     private lateinit var generalSettings: Settings
     private lateinit var adminSettings: Settings
 
-    private val adminPasswordProvider = mock<AdminPasswordProvider> {
+    private val adminPasswordProvider = mock<org.espen.collect.android.utilities.AdminPasswordProvider> {
         on { isAdminPasswordSet } doReturn false
     }
     private val projectPreferencesViewModel = ProjectPreferencesViewModel(adminPasswordProvider)
@@ -35,8 +35,8 @@ class ProjectPreferencesFragmentTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
-            override fun providesProjectPreferencesViewModel(adminPasswordProvider: AdminPasswordProvider): ProjectPreferencesViewModel.Factory {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
+            override fun providesProjectPreferencesViewModel(adminPasswordProvider: org.espen.collect.android.utilities.AdminPasswordProvider): ProjectPreferencesViewModel.Factory {
                 return object : ProjectPreferencesViewModel.Factory(adminPasswordProvider) {
                     override fun <T : ViewModel> create(modelClass: Class<T>): T {
                         return projectPreferencesViewModel as T

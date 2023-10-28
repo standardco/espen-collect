@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
 import android.app.Activity
 import android.provider.MediaStore
@@ -10,13 +10,12 @@ import org.hamcrest.CoreMatchers.nullValue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.fakes.FakePermissionsProvider
-import org.odk.collect.android.utilities.ApplicationConstants
-import org.odk.collect.android.widgets.support.FakeWaitingForDataRegistry
-import org.odk.collect.android.widgets.support.QuestionWidgetHelpers
-import org.odk.collect.androidshared.system.IntentLauncher
-import org.odk.collect.androidshared.system.IntentLauncherImpl
+import org.espen.collect.android.fakes.FakePermissionsProvider
+import org.espen.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.widgets.support.FakeWaitingForDataRegistry
+import org.espen.collect.android.widgets.support.QuestionWidgetHelpers
+import org.espen.collect.androidshared.system.IntentLauncher
+import org.espen.collect.androidshared.system.IntentLauncherImpl
 import org.odk.collect.testshared.ErrorIntentLauncher
 import org.robolectric.Robolectric
 import org.robolectric.Shadows
@@ -93,7 +92,7 @@ class ExternalAppRecordingRequesterTest {
         val intentForResult = Shadows.shadowOf(activity).nextStartedActivityForResult
         assertThat(
             intentForResult.requestCode,
-            equalTo(ApplicationConstants.RequestCodes.AUDIO_CAPTURE)
+            equalTo(org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.AUDIO_CAPTURE)
         )
         assertThat(
             waitingForDataRegistry.waiting.contains(prompt.index),

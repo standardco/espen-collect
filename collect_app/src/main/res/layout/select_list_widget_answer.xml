@@ -13,7 +13,7 @@
         android:saveEnabled="false"
         android:visibility="gone" />
 
-    <org.odk.collect.android.views.ChoicesRecyclerView
+    <org.espen.collect.android.views.ChoicesRecyclerView
         android:id="@+id/choices_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

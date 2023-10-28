@@ -1,4 +1,4 @@
-package org.odk.collect.android.support;
+package org.espen.collect.android.support;
 
 import android.app.Application;
 import android.content.Context;
@@ -6,17 +6,17 @@ import android.webkit.MimeTypeMap;
 
 import androidx.work.WorkManager;
 
-import org.odk.collect.android.gdrive.GoogleAccountPicker;
-import org.odk.collect.android.gdrive.GoogleApiProvider;
-import org.odk.collect.android.gdrive.sheets.DriveApi;
-import org.odk.collect.android.gdrive.sheets.SheetsApi;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.openrosa.OpenRosaHttpInterface;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.version.VersionInformation;
-import org.odk.collect.android.views.BarcodeViewDecoder;
+import org.espen.collect.android.gdrive.GoogleAccountPicker;
+import org.espen.collect.android.gdrive.GoogleApiProvider;
+import org.espen.collect.android.gdrive.sheets.DriveApi;
+import org.espen.collect.android.gdrive.sheets.SheetsApi;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.openrosa.OpenRosaHttpInterface;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.version.VersionInformation;
+import org.espen.collect.android.views.BarcodeViewDecoder;
 import org.odk.collect.async.Scheduler;
-import org.odk.collect.utilities.UserAgentProvider;
+import org.espen.collect.utilities.UserAgentProvider;
 
 public class TestDependencies extends AppDependencyModule {
 

@@ -8,7 +8,6 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.geo.R
 import org.odk.collect.geo.databinding.PropertyBinding
 import org.odk.collect.geo.support.Fixtures
 import org.odk.collect.testshared.RobolectricHelpers.getCreatedFromResId

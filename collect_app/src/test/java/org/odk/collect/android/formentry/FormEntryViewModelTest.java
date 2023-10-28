@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -12,11 +12,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.androidtest.LiveDataTestUtilsKt.getOrAwaitValue;
+import static org.espen.collect.androidtest.LiveDataTestUtilsKt.getOrAwaitValue;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.formentry.FormEntryViewModel;
 import org.javarosa.core.model.FormDef;
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.data.IAnswerData;
@@ -29,13 +30,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
 import org.mockito.stubbing.Answer;
-import org.odk.collect.android.exception.JavaRosaException;
-import org.odk.collect.android.formentry.audit.AuditEventLogger;
-import org.odk.collect.android.formentry.support.InMemFormSessionRepository;
-import org.odk.collect.android.javarosawrapper.FailedValidationResult;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.androidshared.data.Consumable;
+import org.espen.collect.android.exception.JavaRosaException;
+import org.espen.collect.android.formentry.audit.AuditEventLogger;
+import org.espen.collect.android.formentry.support.InMemFormSessionRepository;
+import org.espen.collect.android.javarosawrapper.FailedValidationResult;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.androidshared.data.Consumable;
 import org.odk.collect.testshared.FakeScheduler;
 
 import java.io.IOException;

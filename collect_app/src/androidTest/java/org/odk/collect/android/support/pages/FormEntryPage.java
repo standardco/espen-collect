@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -15,16 +15,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.core.StringEndsWith.endsWith;
-import static org.odk.collect.android.support.matchers.CustomMatchers.withIndex;
+import static org.espen.collect.android.support.matchers.CustomMatchers.withIndex;
 
 import android.os.Build;
 
 import androidx.test.core.app.ApplicationProvider;
 
 import org.hamcrest.Matchers;
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.WaitFor;
-import org.odk.collect.android.utilities.FlingRegister;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.WaitFor;
+import org.espen.collect.android.utilities.FlingRegister;
 
 import java.util.concurrent.Callable;
 

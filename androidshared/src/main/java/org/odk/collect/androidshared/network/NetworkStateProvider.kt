@@ -1,4 +1,4 @@
-package org.odk.collect.androidshared.network
+package org.espen.collect.androidshared.network
 
 import android.net.NetworkInfo
 

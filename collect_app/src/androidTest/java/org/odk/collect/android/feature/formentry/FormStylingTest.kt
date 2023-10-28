@@ -1,14 +1,13 @@
-package org.odk.collect.android.feature.formentry
+package org.espen.collect.android.feature.formentry
 
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.R
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.pages.ProjectSettingsPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.pages.ProjectSettingsPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 private const val FORM_FILE_NAME = "form_styling.xml"
 private const val FORM_NAME = "Form styling"

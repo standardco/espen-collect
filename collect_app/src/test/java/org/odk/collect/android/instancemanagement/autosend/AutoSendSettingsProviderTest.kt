@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement.autosend
+package org.espen.collect.android.instancemanagement.autosend
 
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
@@ -7,7 +7,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.androidshared.network.NetworkStateProvider
+import org.espen.collect.androidshared.network.NetworkStateProvider
 import org.odk.collect.projects.Project
 import org.odk.collect.settings.InMemSettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys

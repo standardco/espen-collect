@@ -1,9 +1,9 @@
-package org.odk.collect.androidshared.ui
+package org.espen.collect.androidshared.ui
 
 import android.widget.Button
 import androidx.lifecycle.ViewModel
-import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
-import org.odk.collect.androidshared.livedata.NonNullLiveData
+import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
+import org.espen.collect.androidshared.livedata.NonNullLiveData
 
 class MultiSelectViewModel : ViewModel() {
 

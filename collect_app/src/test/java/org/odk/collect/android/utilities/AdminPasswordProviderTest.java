@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -7,6 +7,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.odk.collect.settings.keys.ProtectedProjectKeys.KEY_ADMIN_PW;
 
+import org.espen.collect.android.utilities.AdminPasswordProvider;
 import org.junit.Test;
 import org.odk.collect.shared.settings.Settings;
 

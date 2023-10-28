@@ -1,17 +1,18 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import androidx.annotation.NonNull;
 
 import net.bytebuddy.utility.RandomString;
 
+import org.espen.collect.android.widgets.StringNumberWidget;
 import org.javarosa.core.model.data.StringData;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
 import org.junit.Test;
-import org.odk.collect.android.widgets.base.GeneralStringWidgetTest;
+import org.espen.collect.android.widgets.base.GeneralStringWidgetTest;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.utilities.Appearances.THOUSANDS_SEP;
+import static org.espen.collect.android.utilities.Appearances.THOUSANDS_SEP;
 
 /**
  * @author James Knight

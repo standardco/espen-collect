@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
 import android.app.Activity
 import android.content.Context
@@ -15,10 +15,9 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.spy
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.utilities.ExternalAppIntentProvider
-import org.odk.collect.androidshared.system.IntentLauncher
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.utilities.ExternalAppIntentProvider
+import org.espen.collect.androidshared.system.IntentLauncher
 import org.robolectric.Robolectric
 import java.lang.Exception
 
@@ -26,7 +25,7 @@ import java.lang.Exception
 class StringRequesterImplTest {
     private val intentLauncher = spy(FakeIntentLauncher())
     private val requestCode = 99
-    private val externalAppIntentProvider = mock<ExternalAppIntentProvider>()
+    private val externalAppIntentProvider = mock<org.espen.collect.android.utilities.ExternalAppIntentProvider>()
     private val formEntryPrompt = mock<FormEntryPrompt>()
     private val onError: (String) -> Unit = mock()
     private val availableActionSendToIntent = Intent(Intent.ACTION_SENDTO)

@@ -47,8 +47,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 
-import org.odk.collect.androidshared.system.ContextUtils;
-import org.odk.collect.androidshared.ui.ToastUtils;
+import org.espen.collect.androidshared.system.ContextUtils;
+import org.espen.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.googlemaps.GoogleMapConfigurator.GoogleMapTypeOption;
 import org.odk.collect.location.LocationClient;
 import org.odk.collect.maps.MapConfigurator;
@@ -606,7 +606,7 @@ public class GoogleMapFragment extends SupportMapFragment implements
         }
         if (accuracyCircle == null) {
             int stroke = ContextUtils.getThemeAttributeValue(requireContext(), com.google.android.material.R.attr.colorPrimaryDark);
-            int fill = getResources().getColor(org.odk.collect.androidshared.R.color.color_primary_low_emphasis);
+            int fill = getResources().getColor(org.espen.collect.androidshared.R.color.color_primary_low_emphasis);
             accuracyCircle = map.addCircle(new CircleOptions()
                 .center(loc)
                 .radius(radius)

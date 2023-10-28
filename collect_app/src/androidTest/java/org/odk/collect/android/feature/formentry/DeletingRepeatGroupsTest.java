@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -7,12 +7,12 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.pages.FormEndPage;
-import org.odk.collect.android.support.pages.FormEntryPage;
-import org.odk.collect.android.support.pages.FormHierarchyPage;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.pages.FormEndPage;
+import org.espen.collect.android.support.pages.FormEntryPage;
+import org.espen.collect.android.support.pages.FormHierarchyPage;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 import org.odk.collect.testshared.RecyclerViewMatcher;
 
 public class DeletingRepeatGroupsTest {

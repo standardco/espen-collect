@@ -1,31 +1,32 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.view.View;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.widgets.GeoPointMapWidget;
 import org.javarosa.core.model.data.GeoPointData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
-import org.odk.collect.android.widgets.interfaces.GeoDataRequester;
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.widgets.interfaces.GeoDataRequester;
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.odk.collect.android.widgets.support.GeoWidgetHelpers.getRandomDoubleArray;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnly;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnlyAndAnswer;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
+import static org.espen.collect.android.widgets.support.GeoWidgetHelpers.getRandomDoubleArray;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnly;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnlyAndAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
 
 @RunWith(AndroidJUnit4.class)
 public class GeoPointMapWidgetTest {

@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.formentry.audit;
+package org.espen.collect.android.formentry.audit;
 
+import org.espen.collect.android.formentry.audit.AuditConfig;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

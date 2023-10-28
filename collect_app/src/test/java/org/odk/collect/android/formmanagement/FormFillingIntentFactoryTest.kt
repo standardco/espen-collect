@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import android.app.Activity
 import android.content.Intent.ACTION_EDIT
@@ -12,11 +12,11 @@ import org.hamcrest.Matchers.not
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.external.FormUriActivity
-import org.odk.collect.android.external.InstancesContract
-import org.odk.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODE
-import org.odk.collect.android.utilities.ApplicationConstants.FormModes.VIEW_SENT
-import org.odk.collect.androidtest.RecordedIntentsRule
+import org.espen.collect.android.external.FormUriActivity
+import org.espen.collect.android.external.InstancesContract
+import org.espen.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODE
+import org.espen.collect.android.utilities.ApplicationConstants.FormModes.VIEW_SENT
+import org.espen.collect.androidtest.RecordedIntentsRule
 import org.robolectric.Robolectric
 
 @RunWith(AndroidJUnit4::class)
@@ -29,11 +29,11 @@ class FormFillingIntentFactoryTest {
 
     @Test
     fun `newInstance starts FormUriActivity with instance URI`() {
-        activity.startActivity(FormFillingIntentFactory.newInstanceIntent(activity, InstancesContract.getUri("projectId", 101)))
+        activity.startActivity(FormFillingIntentFactory.newInstanceIntent(activity, org.espen.collect.android.external.InstancesContract.getUri("projectId", 101)))
 
         intended(hasAction(ACTION_EDIT))
         intended(hasComponent(FormUriActivity::class.java.name))
-        intended(hasData(InstancesContract.getUri("projectId", 101)))
+        intended(hasData(org.espen.collect.android.external.InstancesContract.getUri("projectId", 101)))
         intended(not(hasExtra(FORM_MODE, VIEW_SENT)))
     }
 
@@ -43,7 +43,7 @@ class FormFillingIntentFactoryTest {
 
         intended(hasAction(ACTION_EDIT))
         intended(hasComponent(FormUriActivity::class.java.name))
-        intended(hasData(InstancesContract.getUri("projectId", 101)))
+        intended(hasData(org.espen.collect.android.external.InstancesContract.getUri("projectId", 101)))
         intended(not(hasExtra(FORM_MODE, VIEW_SENT)))
     }
 }

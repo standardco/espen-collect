@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import android.app.Activity
 import androidx.test.espresso.core.internal.deps.guava.collect.Iterables

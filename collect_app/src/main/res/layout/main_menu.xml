@@ -41,7 +41,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/map_box_initialization_fragment" />
 
-            <org.odk.collect.android.mainmenu.StartNewFormButton
+            <org.espen.collect.android.mainmenu.StartNewFormButton
                 android:id="@+id/enter_data"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/google_drive_deprecation_banner" />
 
-            <org.odk.collect.android.mainmenu.MainMenuButton
+            <org.espen.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/review_data"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@id/enter_data"
                 app:name="@string/review_data" />
 
-            <org.odk.collect.android.mainmenu.MainMenuButton
+            <org.espen.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/send_data"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 app:name="@string/send_data"
                 app:highlightable="true"/>
 
-            <org.odk.collect.android.mainmenu.MainMenuButton
+            <org.espen.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/view_sent_forms"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
                 app:layout_constraintTop_toBottomOf="@id/send_data"
                 app:name="@string/view_sent_forms" />
 
-            <org.odk.collect.android.mainmenu.MainMenuButton
+            <org.espen.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/get_forms"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 app:layout_constraintTop_toBottomOf="@id/view_sent_forms"
                 app:name="@string/get_forms" />
 
-            <org.odk.collect.android.mainmenu.MainMenuButton
+            <org.espen.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/manage_forms"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

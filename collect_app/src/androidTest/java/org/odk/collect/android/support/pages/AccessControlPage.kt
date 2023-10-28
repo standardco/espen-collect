@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -10,8 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withClassName
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matchers.endsWith
 import org.hamcrest.Matchers.not
-import org.odk.collect.android.R
-import org.odk.collect.android.support.matchers.CustomMatchers.withIndex
+import org.espen.collect.android.support.matchers.CustomMatchers.withIndex
 
 class AccessControlPage : Page<AccessControlPage>() {
 

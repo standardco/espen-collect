@@ -1,4 +1,4 @@
-package org.odk.collect.android.rules
+package org.espen.collect.android.rules
 
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.rules.TestRule

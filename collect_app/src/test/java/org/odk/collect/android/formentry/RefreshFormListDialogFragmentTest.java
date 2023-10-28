@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.formentry.RefreshFormListDialogFragment;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

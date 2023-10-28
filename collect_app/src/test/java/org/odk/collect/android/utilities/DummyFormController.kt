@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import org.javarosa.core.model.FormDef
 import org.javarosa.core.model.FormIndex
@@ -7,11 +7,11 @@ import org.javarosa.core.model.instance.TreeReference
 import org.javarosa.core.services.transport.payload.ByteArrayPayload
 import org.javarosa.form.api.FormEntryCaption
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.formentry.audit.AuditEventLogger
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.javarosawrapper.InstanceMetadata
-import org.odk.collect.android.javarosawrapper.SuccessValidationResult
-import org.odk.collect.android.javarosawrapper.ValidationResult
+import org.espen.collect.android.formentry.audit.AuditEventLogger
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.javarosawrapper.InstanceMetadata
+import org.espen.collect.android.javarosawrapper.SuccessValidationResult
+import org.espen.collect.android.javarosawrapper.ValidationResult
 import org.odk.collect.entities.Entity
 import java.io.File
 import java.util.stream.Stream
@@ -33,7 +33,7 @@ open class DummyFormController : FormController {
 
     override fun setIndexWaitingForData(index: FormIndex?) {}
 
-    override fun getAuditEventLogger(): AuditEventLogger? = null
+    override fun getAuditEventLogger(): org.espen.collect.android.formentry.audit.AuditEventLogger? = null
 
     override fun isEditing(): Boolean {
         return false
@@ -142,7 +142,7 @@ open class DummyFormController : FormController {
 
     override fun getSubmissionXml(): ByteArrayPayload? = null
 
-    override fun getSubmissionMetadata(): InstanceMetadata? = null
+    override fun getSubmissionMetadata(): org.espen.collect.android.javarosawrapper.InstanceMetadata? = null
 
     override fun currentFormAuditsLocation(): Boolean = false
 

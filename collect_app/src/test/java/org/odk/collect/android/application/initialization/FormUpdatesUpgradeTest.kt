@@ -1,9 +1,9 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.backgroundwork.FormUpdateScheduler
+import org.espen.collect.android.backgroundwork.FormUpdateScheduler
 import org.odk.collect.async.Scheduler
 import org.odk.collect.projects.InMemProjectsRepository
 import org.odk.collect.projects.Project
@@ -25,7 +25,7 @@ class FormUpdatesUpgradeTest {
         val project1 = projectsRepository.save(Project.New("1", "1", "#ffffff"))
         val project2 = projectsRepository.save(Project.New("2", "2", "#ffffff"))
 
-        val formUpdateScheduler = mock<FormUpdateScheduler>()
+        val formUpdateScheduler = mock<org.espen.collect.android.backgroundwork.FormUpdateScheduler>()
         val formUpdatesUpgrade = FormUpdatesUpgrade(mock(), projectsRepository, formUpdateScheduler)
 
         formUpdatesUpgrade.run()

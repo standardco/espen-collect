@@ -1,9 +1,9 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
 import org.junit.rules.TestRule
 import org.junit.runner.Description
 import org.junit.runners.model.Statement
-import org.odk.collect.android.support.pages.NotificationDrawer
+import org.espen.collect.android.support.pages.NotificationDrawer
 
 class NotificationDrawerRule : TestRule {
     private val notificationDrawer = NotificationDrawer()

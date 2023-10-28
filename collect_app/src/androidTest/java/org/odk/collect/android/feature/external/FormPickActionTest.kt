@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.external
+package org.espen.collect.android.feature.external
 
 import android.content.Intent
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
@@ -8,11 +8,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.support.ContentProviderUtils
-import org.odk.collect.android.support.pages.FillBlankFormPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.support.ContentProviderUtils
+import org.espen.collect.android.support.pages.FillBlankFormPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 @RunWith(AndroidJUnit4::class)
 class FormPickActionTest {
@@ -29,12 +29,12 @@ class FormPickActionTest {
             .copyForm("one-question.xml")
 
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = FormsContract.CONTENT_TYPE
+        intent.type = org.espen.collect.android.external.FormsContract.CONTENT_TYPE
         val result = rule.launchForResult(intent, FillBlankFormPage()) {
             it.clickOnForm("One Question")
         }
 
         val formId = ContentProviderUtils.getFormDatabaseId("DEMO", "one_question")
-        assertThat(result.resultData.data, equalTo(FormsContract.getUri("DEMO", formId)))
+        assertThat(result.resultData.data, equalTo(org.espen.collect.android.external.FormsContract.getUri("DEMO", formId)))
     }
 }

@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
 import android.app.Activity
 import android.app.Application
@@ -6,14 +6,14 @@ import android.content.Intent
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import org.junit.rules.ExternalResource
-import org.odk.collect.android.activities.FormFillingActivity
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.formmanagement.FormFillingIntentFactory
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.StorageUtils
-import org.odk.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.activities.FormFillingActivity
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.formmanagement.FormFillingIntentFactory
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.StorageUtils
+import org.espen.collect.android.support.pages.FormEntryPage
 import timber.log.Timber
 import java.io.IOException
 
@@ -54,13 +54,13 @@ class BlankFormTestRule @JvmOverloads constructor(
     private val activityIntent: Intent
         get() {
             val application = ApplicationProvider.getApplicationContext<Application>()
-            val formPath = DaggerUtils.getComponent(application).storagePathProvider()
-                .getOdkDirPath(StorageSubdirectory.FORMS) + "/" + formFilename
-            val form = DaggerUtils.getComponent(application).formsRepositoryProvider().get()
+            val formPath = org.espen.collect.android.injection.DaggerUtils.getComponent(application).storagePathProvider()
+                .getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.FORMS) + "/" + formFilename
+            val form = org.espen.collect.android.injection.DaggerUtils.getComponent(application).formsRepositoryProvider().get()
                 .getOneByPath(formPath)
-            val projectId = DaggerUtils.getComponent(application).currentProjectProvider()
+            val projectId = org.espen.collect.android.injection.DaggerUtils.getComponent(application).currentProjectProvider()
                 .getCurrentProject().uuid
 
-            return FormFillingIntentFactory.newInstanceIntent(application, FormsContract.getUri(projectId, form!!.dbId), FormFillingActivity::class)
+            return FormFillingIntentFactory.newInstanceIntent(application, org.espen.collect.android.external.FormsContract.getUri(projectId, form!!.dbId), org.espen.collect.android.activities.FormFillingActivity::class)
         }
 }

@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists
+package org.espen.collect.android.formlists
 
 import android.app.Application
 import android.net.Uri
@@ -34,13 +34,13 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
-import org.odk.collect.android.R
-import org.odk.collect.android.formlists.blankformlist.BlankFormListItem
-import org.odk.collect.android.formlists.blankformlist.BlankFormListMenuProvider
-import org.odk.collect.android.formlists.blankformlist.BlankFormListViewModel
-import org.odk.collect.android.formlists.blankformlist.DeleteBlankFormFragment
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
-import org.odk.collect.androidshared.ui.MultiSelectViewModel
+import org.espen.collect.android.R
+import org.espen.collect.android.formlists.blankformlist.BlankFormListItem
+import org.espen.collect.android.formlists.blankformlist.BlankFormListMenuProvider
+import org.espen.collect.android.formlists.blankformlist.BlankFormListViewModel
+import org.espen.collect.android.formlists.blankformlist.DeleteBlankFormFragment
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder
+import org.espen.collect.androidshared.ui.MultiSelectViewModel
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.testshared.RecyclerViewMatcher.Companion.withRecyclerView
 import org.odk.collect.testshared.ViewActions.clickOnItemWith

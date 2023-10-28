@@ -15,7 +15,7 @@ import org.mockito.Mockito.never
 import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
-import org.odk.collect.androidtest.getOrAwaitValue
+import org.espen.collect.androidtest.getOrAwaitValue
 import org.odk.collect.testshared.FakeScheduler
 import java.io.File
 import java.io.IOException

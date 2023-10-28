@@ -1,4 +1,4 @@
-package org.odk.collect.android.support;
+package org.espen.collect.android.support;
 
 import android.app.Application;
 import android.content.Intent;
@@ -10,11 +10,11 @@ import androidx.test.core.app.ApplicationProvider;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.Reference;
 import org.javarosa.core.reference.ReferenceManager;
-import org.odk.collect.android.application.EspenCollect;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.injection.config.AppDependencyComponent;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.injection.config.DaggerAppDependencyComponent;
+import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.injection.config.AppDependencyComponent;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.injection.config.DaggerAppDependencyComponent;
 import org.odk.collect.projects.Project;
 import org.odk.collect.testshared.RobolectricHelpers;
 import org.robolectric.Robolectric;

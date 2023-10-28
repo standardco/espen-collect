@@ -1,17 +1,17 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
 import android.app.Activity
 import android.app.Instrumentation
 import android.content.Context
 import android.content.Intent
 import androidx.test.core.app.ApplicationProvider
-import org.odk.collect.android.BuildConfig.APPLICATION_ID
-import org.odk.collect.android.external.AndroidShortcutsActivity
-import org.odk.collect.android.support.pages.FirstLaunchPage
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.pages.Page
-import org.odk.collect.android.support.pages.ShortcutsPage
-import org.odk.collect.androidtest.ActivityScenarioLauncherRule
+import org.espen.collect.android.BuildConfig.APPLICATION_ID
+import org.espen.collect.android.external.AndroidShortcutsActivity
+import org.espen.collect.android.support.pages.FirstLaunchPage
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.pages.Page
+import org.espen.collect.android.support.pages.ShortcutsPage
+import org.espen.collect.androidtest.ActivityScenarioLauncherRule
 import java.util.function.Consumer
 
 class CollectTestRule @JvmOverloads constructor(

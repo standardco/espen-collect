@@ -1,18 +1,18 @@
-package org.odk.collect.android.application
+package org.espen.collect.android.application
 
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
-import org.odk.collect.android.backgroundwork.FormUpdateScheduler
-import org.odk.collect.android.formmanagement.FormsDataService
+import org.espen.collect.android.backgroundwork.FormUpdateScheduler
+import org.espen.collect.android.formmanagement.FormsDataService
 import org.odk.collect.metadata.PropertyManager
 import org.odk.collect.settings.keys.ProjectKeys
 
 class CollectSettingsChangeHandlerTest {
 
     private val propertyManager = mock<PropertyManager>()
-    private val formUpdateScheduler = mock<FormUpdateScheduler>()
+    private val formUpdateScheduler = mock<org.espen.collect.android.backgroundwork.FormUpdateScheduler>()
     private val formsDataService = mock<FormsDataService>()
     private val handler = CollectSettingsChangeHandler(propertyManager, formUpdateScheduler, formsDataService)
 

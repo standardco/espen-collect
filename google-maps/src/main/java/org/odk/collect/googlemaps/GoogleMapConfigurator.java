@@ -1,7 +1,7 @@
 package org.odk.collect.googlemaps;
 
-import static org.odk.collect.androidshared.ui.PrefUtils.createListPref;
-import static org.odk.collect.androidshared.ui.PrefUtils.getInt;
+import static org.espen.collect.androidshared.ui.PrefUtils.createListPref;
+import static org.espen.collect.androidshared.ui.PrefUtils.getInt;
 
 import android.app.ActivityManager;
 import android.content.Context;
@@ -14,8 +14,8 @@ import androidx.preference.Preference;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.common.collect.ImmutableSet;
 
-import org.odk.collect.androidshared.system.PlayServicesChecker;
-import org.odk.collect.androidshared.ui.ToastUtils;
+import org.espen.collect.androidshared.system.PlayServicesChecker;
+import org.espen.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.maps.MapConfigurator;
 import org.odk.collect.maps.layers.MbtilesFile;
 import org.odk.collect.maps.layers.MbtilesFile.LayerType;

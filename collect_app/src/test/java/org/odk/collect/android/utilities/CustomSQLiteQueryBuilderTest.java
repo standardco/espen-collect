@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
+import org.espen.collect.android.utilities.CustomSQLiteQueryBuilder;
 import org.junit.Test;
 
 import java.util.ArrayList;

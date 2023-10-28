@@ -1,12 +1,12 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
 import android.Manifest
 import android.os.Build
 import androidx.test.rule.GrantPermissionRule
 import org.junit.rules.RuleChain
-import org.odk.collect.android.support.CountingTaskExecutorIdlingResource
-import org.odk.collect.android.support.SchedulerIdlingResource
-import org.odk.collect.android.support.TestDependencies
+import org.espen.collect.android.support.CountingTaskExecutorIdlingResource
+import org.espen.collect.android.support.SchedulerIdlingResource
+import org.espen.collect.android.support.TestDependencies
 
 object TestRuleChain {
 

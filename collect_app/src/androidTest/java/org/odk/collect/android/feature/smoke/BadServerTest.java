@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.smoke;
+package org.espen.collect.android.feature.smoke;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -6,11 +6,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.support.TestDependencies;
-import org.odk.collect.android.support.TranslatedStringBuilder;
-import org.odk.collect.android.support.pages.MainMenuPage;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.support.TestDependencies;
+import org.espen.collect.android.support.TranslatedStringBuilder;
+import org.espen.collect.android.support.pages.MainMenuPage;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 import java.util.Arrays;
 

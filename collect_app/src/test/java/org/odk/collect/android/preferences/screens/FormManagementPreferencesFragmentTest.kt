@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.app.Application
 import android.content.Context
@@ -20,14 +20,13 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
-import org.odk.collect.android.R
-import org.odk.collect.android.TestSettingsProvider
-import org.odk.collect.android.backgroundwork.InstanceSubmitScheduler
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.preferences.ProjectPreferencesViewModel
-import org.odk.collect.android.preferences.utilities.FormUpdateMode
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.AdminPasswordProvider
+import org.espen.collect.android.TestSettingsProvider
+import org.espen.collect.android.backgroundwork.InstanceSubmitScheduler
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.preferences.ProjectPreferencesViewModel
+import org.espen.collect.android.preferences.utilities.FormUpdateMode
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.AdminPasswordProvider
 import org.odk.collect.async.Scheduler
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.settings.SettingsProvider
@@ -43,10 +42,10 @@ class FormManagementPreferencesFragmentTest {
     private lateinit var generalSettings: Settings
     private lateinit var adminSettings: Settings
 
-    private val adminPasswordProvider = mock<AdminPasswordProvider> {
+    private val adminPasswordProvider = mock<org.espen.collect.android.utilities.AdminPasswordProvider> {
         on { isAdminPasswordSet } doReturn false
     }
-    private val instanceSubmitScheduler = mock<InstanceSubmitScheduler>()
+    private val instanceSubmitScheduler = mock<org.espen.collect.android.backgroundwork.InstanceSubmitScheduler>()
 
     private val projectPreferencesViewModel = ProjectPreferencesViewModel(adminPasswordProvider)
 
@@ -55,8 +54,8 @@ class FormManagementPreferencesFragmentTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
-            override fun providesProjectPreferencesViewModel(adminPasswordProvider: AdminPasswordProvider): ProjectPreferencesViewModel.Factory {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
+            override fun providesProjectPreferencesViewModel(adminPasswordProvider: org.espen.collect.android.utilities.AdminPasswordProvider): ProjectPreferencesViewModel.Factory {
                 return object : ProjectPreferencesViewModel.Factory(adminPasswordProvider) {
                     override fun <T : ViewModel> create(modelClass: Class<T>): T {
                         return projectPreferencesViewModel as T
@@ -64,7 +63,7 @@ class FormManagementPreferencesFragmentTest {
                 }
             }
 
-            override fun providesFormSubmitManager(scheduler: Scheduler, settingsProvider: SettingsProvider, application: Application): InstanceSubmitScheduler {
+            override fun providesFormSubmitManager(scheduler: Scheduler, settingsProvider: SettingsProvider, application: Application): org.espen.collect.android.backgroundwork.InstanceSubmitScheduler {
                 return instanceSubmitScheduler
             }
         })
@@ -78,17 +77,17 @@ class FormManagementPreferencesFragmentTest {
     @Test
     fun `When Google Drive used as server shows update mode as manual and disable prefs`() {
         generalSettings.save(ProjectKeys.KEY_PROTOCOL, ProjectKeys.PROTOCOL_GOOGLE_SHEETS)
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.MATCH_EXACTLY.getValue(context))
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context))
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(
                 f.findPreference<Preference>(ProjectKeys.KEY_FORM_UPDATE_MODE)!!.summary,
                 `is`(context.getString(org.odk.collect.strings.R.string.manual))
             )
             assertThat(
                 generalSettings.getString(ProjectKeys.KEY_FORM_UPDATE_MODE),
-                `is`(FormUpdateMode.MATCH_EXACTLY.getValue(context))
+                `is`(org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context))
             )
             assertThat(
                 f.findPreference<Preference>(ProjectKeys.KEY_FORM_UPDATE_MODE)!!.isEnabled,
@@ -107,9 +106,9 @@ class FormManagementPreferencesFragmentTest {
 
     @Test
     fun `When 'Manual Updates' enabled disables prefs`() {
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.MANUAL.getValue(context))
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.MANUAL.getValue(context))
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(
                 f.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isEnabled,
                 `is`(false)
@@ -123,9 +122,9 @@ class FormManagementPreferencesFragmentTest {
 
     @Test
     fun `When 'Previously Downloaded Only 'enabled disables prefs`() {
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY.getValue(context))
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY.getValue(context))
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(
                 f.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isEnabled,
                 `is`(true)
@@ -139,9 +138,9 @@ class FormManagementPreferencesFragmentTest {
 
     @Test
     fun `When 'Match Exactly' enabled disables prefs`() {
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.MATCH_EXACTLY.getValue(context))
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context))
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(
                 f.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isEnabled,
                 `is`(true)
@@ -155,10 +154,10 @@ class FormManagementPreferencesFragmentTest {
 
     @Test
     fun `When 'Match Exactly' enabled and 'Automatic Download' disabled shows 'Automatic Download' as checked`() {
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.MATCH_EXACTLY.getValue(context))
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context))
         generalSettings.save(ProjectKeys.KEY_AUTOMATIC_UPDATE, false)
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             val automaticDownload = f.findPreference<CheckBoxPreference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)
             assertThat(automaticDownload!!.isChecked, `is`(true))
             assertThat(
@@ -170,10 +169,10 @@ class FormManagementPreferencesFragmentTest {
 
     @Test
     fun `When 'Manual Updates' enabled and 'Automatic Download' enabled shows 'Automatic Download' as not checked`() {
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.MANUAL.getValue(context))
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.MANUAL.getValue(context))
         generalSettings.save(ProjectKeys.KEY_AUTOMATIC_UPDATE, true)
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             val automaticDownload = f.findPreference<CheckBoxPreference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)
             assertThat(automaticDownload!!.isChecked, `is`(false))
             assertThat(
@@ -187,8 +186,8 @@ class FormManagementPreferencesFragmentTest {
     fun `When Google Drive used as server and 'Automatic Download' enabled shows 'Automatic Download' as not checked`() {
         generalSettings.save(ProjectKeys.KEY_PROTOCOL, ProjectKeys.PROTOCOL_GOOGLE_SHEETS)
         generalSettings.save(ProjectKeys.KEY_AUTOMATIC_UPDATE, true)
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             val automaticDownload = f.findPreference<CheckBoxPreference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)
             assertThat(automaticDownload!!.isChecked, `is`(false))
             assertThat(
@@ -200,12 +199,12 @@ class FormManagementPreferencesFragmentTest {
 
     @Test
     fun `When 'Manual Updates' enabled and 'Automatic Download' disabled setting to 'Previously Downloaded' resets 'Automatic Download'`() {
-        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, FormUpdateMode.MANUAL.getValue(context))
+        generalSettings.save(ProjectKeys.KEY_FORM_UPDATE_MODE, org.espen.collect.android.preferences.utilities.FormUpdateMode.MANUAL.getValue(context))
         generalSettings.save(ProjectKeys.KEY_AUTOMATIC_UPDATE, false)
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             val updateMode = f.findPreference<ListPreference>(ProjectKeys.KEY_FORM_UPDATE_MODE)
-            updateMode!!.value = FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY.getValue(context)
+            updateMode!!.value = org.espen.collect.android.preferences.utilities.FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY.getValue(context)
             Shadows.shadowOf(Looper.getMainLooper()).idle()
             val automaticDownload = f.findPreference<CheckBoxPreference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)
             assertThat(automaticDownload!!.isChecked, `is`(false))
@@ -221,15 +220,15 @@ class FormManagementPreferencesFragmentTest {
         adminSettings.save(ProtectedProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK, false)
         adminSettings.save(ProtectedProjectKeys.KEY_AUTOMATIC_UPDATE, false)
         val scenario = launcherRule.launch(
-            FormManagementPreferencesFragment::class.java
+            org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java
         )
-        scenario.onFragment { f: FormManagementPreferencesFragment ->
+        scenario.onFragment { f: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(f.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isVisible, `is`(false))
             assertThat(f.findPreference<Preference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)!!.isVisible, `is`(false))
             val updateMode = f.findPreference<ListPreference>(ProjectKeys.KEY_FORM_UPDATE_MODE)
-            updateMode!!.value = FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY.getValue(context)
-            updateMode.value = FormUpdateMode.MATCH_EXACTLY.getValue(context)
-            updateMode.value = FormUpdateMode.MANUAL.getValue(context)
+            updateMode!!.value = org.espen.collect.android.preferences.utilities.FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY.getValue(context)
+            updateMode.value = org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context)
+            updateMode.value = org.espen.collect.android.preferences.utilities.FormUpdateMode.MANUAL.getValue(context)
         }
     }
 
@@ -237,8 +236,8 @@ class FormManagementPreferencesFragmentTest {
     fun `Enabled preferences should be visible in Locked mode`() {
         projectPreferencesViewModel.setStateLocked()
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FORM_UPDATE_MODE)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)!!.isVisible, `is`(true))
@@ -271,8 +270,8 @@ class FormManagementPreferencesFragmentTest {
 
         projectPreferencesViewModel.setStateLocked()
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FORM_UPDATE_MODE)!!.isVisible, `is`(false))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isVisible, `is`(false))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)!!.isVisible, `is`(false))
@@ -292,8 +291,8 @@ class FormManagementPreferencesFragmentTest {
     fun `Enabled preferences should be visible in Unlocked mode`() {
         projectPreferencesViewModel.setStateUnlocked()
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FORM_UPDATE_MODE)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)!!.isVisible, `is`(true))
@@ -326,8 +325,8 @@ class FormManagementPreferencesFragmentTest {
 
         projectPreferencesViewModel.setStateUnlocked()
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FORM_UPDATE_MODE)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)!!.isVisible, `is`(true))
@@ -347,8 +346,8 @@ class FormManagementPreferencesFragmentTest {
     fun `Enabled preferences should be visible in NotProtected mode`() {
         projectPreferencesViewModel.setStateNotProtected()
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FORM_UPDATE_MODE)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isVisible, `is`(true))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)!!.isVisible, `is`(true))
@@ -381,8 +380,8 @@ class FormManagementPreferencesFragmentTest {
 
         projectPreferencesViewModel.setStateNotProtected()
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_FORM_UPDATE_MODE)!!.isVisible, `is`(false))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK)!!.isVisible, `is`(false))
             assertThat(fragment.findPreference<Preference>(ProjectKeys.KEY_AUTOMATIC_UPDATE)!!.isVisible, `is`(false))
@@ -405,8 +404,8 @@ class FormManagementPreferencesFragmentTest {
         adminSettings.save(ProtectedProjectKeys.KEY_AUTOMATIC_UPDATE, false)
         adminSettings.save(ProtectedProjectKeys.KEY_HIDE_OLD_FORM_VERSIONS, false)
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<PreferenceCategory>("form_update_category")!!.isVisible, `is`(false))
         }
     }
@@ -418,8 +417,8 @@ class FormManagementPreferencesFragmentTest {
         adminSettings.save(ProtectedProjectKeys.KEY_AUTOMATIC_UPDATE, false)
         adminSettings.save(ProtectedProjectKeys.KEY_HIDE_OLD_FORM_VERSIONS, false)
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<PreferenceCategory>("form_update_category")!!.isVisible, `is`(true))
         }
     }
@@ -429,8 +428,8 @@ class FormManagementPreferencesFragmentTest {
         adminSettings.save(ProtectedProjectKeys.KEY_AUTOSEND, false)
         adminSettings.save(ProtectedProjectKeys.KEY_DELETE_AFTER_SEND, false)
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<PreferenceCategory>("form_submission")!!.isVisible, `is`(false))
         }
     }
@@ -440,8 +439,8 @@ class FormManagementPreferencesFragmentTest {
         adminSettings.save(ProtectedProjectKeys.KEY_AUTOSEND, false)
         adminSettings.save(ProtectedProjectKeys.KEY_DELETE_AFTER_SEND, true)
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<PreferenceCategory>("form_submission")!!.isVisible, `is`(true))
         }
     }
@@ -454,8 +453,8 @@ class FormManagementPreferencesFragmentTest {
         adminSettings.save(ProtectedProjectKeys.KEY_GUIDANCE_HINT, false)
         adminSettings.save(ProtectedProjectKeys.KEY_EXTERNAL_APP_RECORDING, false)
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<PreferenceCategory>("form_filling")!!.isVisible, `is`(false))
         }
     }
@@ -468,8 +467,8 @@ class FormManagementPreferencesFragmentTest {
         adminSettings.save(ProtectedProjectKeys.KEY_GUIDANCE_HINT, false)
         adminSettings.save(ProtectedProjectKeys.KEY_EXTERNAL_APP_RECORDING, false)
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<PreferenceCategory>("form_filling")!!.isVisible, `is`(true))
         }
     }
@@ -478,8 +477,8 @@ class FormManagementPreferencesFragmentTest {
     fun `When all preferences in 'Form import' category are hidden, the category should be hidden as well`() {
         adminSettings.save(ProtectedProjectKeys.KEY_INSTANCE_FORM_SYNC, false)
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<PreferenceCategory>("form_import")!!.isVisible, `is`(false))
         }
     }
@@ -488,16 +487,16 @@ class FormManagementPreferencesFragmentTest {
     fun `When al least one preference in 'Form import' category is visible, the category should be visible as well`() {
         adminSettings.save(ProtectedProjectKeys.KEY_INSTANCE_FORM_SYNC, true)
 
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             assertThat(fragment.findPreference<PreferenceCategory>("form_import")!!.isVisible, `is`(true))
         }
     }
 
     @Test
     fun `When Auto send preference is enabled, finalized forms should be scheduled for submission`() {
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             fragment.findPreference<ListPreference>(ProjectKeys.KEY_AUTOSEND)!!.value = "wifi"
         }
         verify(instanceSubmitScheduler).scheduleSubmit(projectID)
@@ -505,8 +504,8 @@ class FormManagementPreferencesFragmentTest {
 
     @Test
     fun `When Auto send preference is disabled, no submissions should be scheduled`() {
-        val scenario = launcherRule.launch(FormManagementPreferencesFragment::class.java)
-        scenario.onFragment { fragment: FormManagementPreferencesFragment ->
+        val scenario = launcherRule.launch(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment::class.java)
+        scenario.onFragment { fragment: org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment ->
             fragment.findPreference<ListPreference>(ProjectKeys.KEY_AUTOSEND)!!.value = "off"
         }
         verify(instanceSubmitScheduler, never()).scheduleSubmit(projectID)

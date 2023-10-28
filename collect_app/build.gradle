@@ -74,7 +74,7 @@ android {
     }
 
     defaultConfig {
-        applicationId('org.odk.collect.android')
+        applicationId('org.espen.collect.android')
         minSdkVersion Versions.android_min_sdk
         targetSdkVersion Versions.android_target_sdk
         versionCode LEGACY_BUILD_NUMBER_OFFSET + getMasterCommitCount()
@@ -209,7 +209,7 @@ android {
         lintConfig file("$rootDir/config/lint.xml")
         xmlReport true
     }
-    namespace 'org.odk.collect.android'
+    namespace 'org.espen.collect.android'
 }
 
 configurations.all {

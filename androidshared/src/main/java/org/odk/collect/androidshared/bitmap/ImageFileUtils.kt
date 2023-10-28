@@ -1,4 +1,4 @@
-package org.odk.collect.androidshared.bitmap
+package org.espen.collect.androidshared.bitmap
 
 import android.graphics.Bitmap
 import android.graphics.Bitmap.CompressFormat

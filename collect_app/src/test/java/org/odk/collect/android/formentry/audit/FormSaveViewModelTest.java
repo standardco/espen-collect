@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry.audit;
+package org.espen.collect.android.formentry.audit;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -11,14 +11,14 @@ import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.CHANGE_REASON_REQUIRED;
-import static org.odk.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.CONSTRAINT_ERROR;
-import static org.odk.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.FINALIZE_ERROR;
-import static org.odk.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.SAVED;
-import static org.odk.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.SAVE_ERROR;
-import static org.odk.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.SAVING;
-import static org.odk.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.WAITING_TO_SAVE;
-import static org.odk.collect.androidshared.livedata.LiveDataUtils.liveDataOf;
+import static org.espen.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.CHANGE_REASON_REQUIRED;
+import static org.espen.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.CONSTRAINT_ERROR;
+import static org.espen.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.FINALIZE_ERROR;
+import static org.espen.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.SAVED;
+import static org.espen.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.SAVE_ERROR;
+import static org.espen.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.SAVING;
+import static org.espen.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.WAITING_TO_SAVE;
+import static org.espen.collect.androidshared.livedata.LiveDataUtils.liveDataOf;
 
 import android.net.Uri;
 
@@ -29,23 +29,25 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.google.common.io.Files;
 
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.formentry.audit.AuditEventLogger;
 import org.javarosa.form.api.FormEntryController;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
-import org.odk.collect.android.formentry.FormSession;
-import org.odk.collect.android.formentry.saving.FormSaveViewModel;
-import org.odk.collect.android.formentry.saving.FormSaver;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.javarosawrapper.RepeatsInFieldListException;
-import org.odk.collect.android.projects.ProjectsDataService;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.tasks.SaveFormToDisk;
-import org.odk.collect.android.tasks.SaveToDiskResult;
-import org.odk.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.formentry.FormSession;
+import org.espen.collect.android.formentry.saving.FormSaveViewModel;
+import org.espen.collect.android.formentry.saving.FormSaver;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.RepeatsInFieldListException;
+import org.espen.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.tasks.SaveFormToDisk;
+import org.espen.collect.android.tasks.SaveToDiskResult;
+import org.espen.collect.android.utilities.MediaUtils;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.entities.EntitiesRepository;
 import org.odk.collect.forms.Form;
@@ -55,7 +57,7 @@ import org.odk.collect.formstest.InMemInstancesRepository;
 import org.odk.collect.projects.Project;
 import org.odk.collect.shared.TempFiles;
 import org.odk.collect.testshared.FakeScheduler;
-import org.odk.collect.utilities.Result;
+import org.espen.collect.utilities.Result;
 import org.robolectric.Robolectric;
 import org.robolectric.annotation.LooperMode;
 

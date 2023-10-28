@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.app.Application
 import android.view.View
@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 
 @RunWith(AndroidJUnit4::class)
 class FormEndViewTest {

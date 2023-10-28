@@ -1,4 +1,4 @@
-package org.odk.collect.android.adapters
+package org.espen.collect.android.adapters
 
 import android.app.Application
 import android.graphics.drawable.Drawable
@@ -11,8 +11,8 @@ import org.hamcrest.Matchers.`is`
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
-import org.odk.collect.android.R
-import org.odk.collect.android.logic.HierarchyElement
+import org.espen.collect.android.R
+import org.espen.collect.android.logic.HierarchyElement
 
 @RunWith(AndroidJUnit4::class)
 class HierarchyListItemViewTest {
@@ -82,5 +82,5 @@ class HierarchyListItemViewTest {
     }
 
     private fun getHierarchyElement(icon: Drawable?, primaryText: String, secondaryText: String?) =
-        HierarchyElement(primaryText, secondaryText, icon, HierarchyElement.Type.QUESTION, mock())
+            org.espen.collect.android.logic.HierarchyElement(primaryText, secondaryText, icon, org.espen.collect.android.logic.HierarchyElement.Type.QUESTION, mock())
 }

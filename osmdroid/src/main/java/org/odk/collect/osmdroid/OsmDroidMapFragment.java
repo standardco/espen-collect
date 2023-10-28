@@ -43,7 +43,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.LocationListener;
 
-import org.odk.collect.androidshared.system.ContextUtils;
+import org.espen.collect.androidshared.system.ContextUtils;
 import org.odk.collect.location.LocationClient;
 import org.odk.collect.maps.MapConfigurator;
 import org.odk.collect.maps.MapFragment;

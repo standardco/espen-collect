@@ -20,10 +20,10 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <org.odk.collect.android.views.ChoicesRecyclerView
+    <org.espen.collect.android.views.ChoicesRecyclerView
         android:id="@+id/choices_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/margin_extra_small">
-    </org.odk.collect.android.views.ChoicesRecyclerView>
+    </org.espen.collect.android.views.ChoicesRecyclerView>
 </LinearLayout>

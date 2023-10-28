@@ -1,4 +1,4 @@
-package org.odk.collect.android.regression;
+package org.espen.collect.android.regression;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -6,12 +6,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.support.pages.AddNewRepeatDialog;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
-import org.odk.collect.android.support.pages.FormEndPage;
-import org.odk.collect.android.support.pages.FormEntryPage;
-import org.odk.collect.android.support.pages.ProjectSettingsPage;
+import org.espen.collect.android.support.pages.AddNewRepeatDialog;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.support.pages.FormEndPage;
+import org.espen.collect.android.support.pages.FormEntryPage;
+import org.espen.collect.android.support.pages.ProjectSettingsPage;
 
 //Issue NODK-247
 @RunWith(AndroidJUnit4.class)

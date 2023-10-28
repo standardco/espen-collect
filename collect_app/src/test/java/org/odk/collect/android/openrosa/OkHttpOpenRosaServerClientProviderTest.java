@@ -1,12 +1,15 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
-import static org.odk.collect.android.openrosa.support.MockWebServerHelper.buildRequest;
+import static org.espen.collect.android.openrosa.support.MockWebServerHelper.buildRequest;
 
+import org.espen.collect.android.openrosa.HttpCredentials;
+import org.espen.collect.android.openrosa.OpenRosaServerClient;
+import org.espen.collect.android.openrosa.OpenRosaServerClientProvider;
 import org.junit.Test;
-import org.odk.collect.android.openrosa.okhttp.OkHttpOpenRosaServerClientProvider;
+import org.espen.collect.android.openrosa.okhttp.OkHttpOpenRosaServerClientProvider;
 import org.odk.collect.shared.TempFiles;
 
 import java.io.File;

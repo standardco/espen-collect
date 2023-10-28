@@ -46,7 +46,7 @@ At the beginning of each release cycle, [@grzesiek2010](https://github.com/grzes
 ## Downloading builds
 Per-commit debug builds can be found on [CircleCI](https://circleci.com/gh/getodk/collect). Login with your GitHub account, click the build you'd like, then find the APK in the Artifacts tab.
 
-If you are looking to use ESPEN Collect, we strongly recommend using the [Play Store build](https://play.google.com/store/apps/details?id=org.odk.collect.android). Current and previous production builds can be found in [Releases](https://github.com/getodk/collect/releases).
+If you are looking to use ESPEN Collect, we strongly recommend using the [Play Store build](https://play.google.com/store/apps/details?id=org.espen.collect.android). Current and previous production builds can be found in [Releases](https://github.com/getodk/collect/releases).
 
 ## Suggesting new features
 We try to make sure that all issues in the issue tracker are as close to fully specified as possible so that they can be closed by a pull request. Feature suggestions should be described [in the forum Features category](https://forum.getodk.org/c/features) and discussed by the broader user community. Once there is a clear way forward, issues should be filed on the relevant repositories. More controversial features will be discussed as part of the Technical Steering Committee's [roadmapping process](https://github.com/getodk/governance/blob/master/TSC-1/STANDARD-OPERATING-PROCEDURES.md#roadmap).
@@ -79,7 +79,7 @@ Our regular code contributors use these devices (ordered by Android version):
 * [Motorola G 5th Gen XT1671](https://www.gsmarena.com/motorola_moto_g5-8454.php) - Android 7.0 [@lognaturel](https://github.com/lognaturel)
 
 
-The best way to help us test is to build from source! If you aren't a developer and want to help us test release candidates, join the [beta program](https://play.google.com/apps/testing/org.odk.collect.android)!
+The best way to help us test is to build from source! If you aren't a developer and want to help us test release candidates, join the [beta program](https://play.google.com/apps/testing/org.espen.collect.android)!
 
 Testing checklists can be found on the [Collect testing plan](https://docs.google.com/spreadsheets/d/1ITmOW2MFs_8-VM6MTwganTRWDjpctz9CI8QKojXrnjE/edit?usp=sharing).
 
@@ -135,7 +135,7 @@ When you first run Collect, it is set to download forms from [https://demo.getod
 
 1. Once you have the XForm, use [adb](https://developer.android.com/studio/command-line/adb.html) to push the form to your device (after [enabling USB debugging](https://www.kingoapp.com/root-tutorials/how-to-enable-usb-debugging-mode-on-android.htm)) or emulator.
 	```
-	adb push my_form.xml /sdcard/Android/data/org.odk.collect.android/files/forms
+	adb push my_form.xml /sdcard/Android/data/org.espen.collect.android/files/forms
 	```
 
 1. Launch ESPEN Collect and tap `Fill Blank Form`. The new form will be there.
@@ -148,7 +148,7 @@ Certain functions in ESPEN Collect depend on cloud services that require API key
   1. Create and configure a Google API project for Google Sign-in using the "Configure Project" button found [here](https://developers.google.com/identity/sign-in/android/start).
       1. Choose whatever you'd like for the project and product name
       1. Select "Android" for "What are you calling from?"
-      1. Enter "org.odk.collect.android" for package name
+      1. Enter "org.espen.collect.android" for package name
       1. Enter your debug key's SHA1 certificate fingerprint as the SHA1 (more info on that [here](https://developers.google.com/android/guides/client-auth))
       1. Copy the displayed "Client ID" into `client_id` (under `oauth_client`) in `google-services.json`
   1. [Enable the Google Drive API](https://console.developers.google.com/apis/api/drive.googleapis.com).

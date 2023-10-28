@@ -1,4 +1,4 @@
-package org.odk.collect.android.support;
+package org.espen.collect.android.support;
 
 import com.google.api.client.http.FileContent;
 import com.google.api.services.drive.Drive;
@@ -10,8 +10,8 @@ import com.google.api.services.sheets.v4.model.Spreadsheet;
 import com.google.api.services.sheets.v4.model.SpreadsheetProperties;
 import com.google.api.services.sheets.v4.model.ValueRange;
 
-import org.odk.collect.android.gdrive.sheets.DriveApi;
-import org.odk.collect.android.gdrive.sheets.SheetsApi;
+import org.espen.collect.android.gdrive.sheets.DriveApi;
+import org.espen.collect.android.gdrive.sheets.SheetsApi;
 
 import java.io.File;
 import java.io.IOException;

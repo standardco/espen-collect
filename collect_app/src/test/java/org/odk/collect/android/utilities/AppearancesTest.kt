@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.content.res.Configuration
 import junit.framework.TestCase.assertEquals
@@ -23,7 +23,7 @@ import org.javarosa.form.api.FormEntryPrompt
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.androidshared.utils.ScreenUtils
+import org.espen.collect.androidshared.utils.ScreenUtils
 
 class AppearancesTest {
     private val formEntryPrompt = mock<FormEntryPrompt>()

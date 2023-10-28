@@ -1,7 +1,7 @@
 package org.odk.collect.audiorecorder.recording
 
 import androidx.lifecycle.LiveData
-import org.odk.collect.androidshared.data.Consumable
+import org.espen.collect.androidshared.data.Consumable
 import org.odk.collect.audiorecorder.recorder.Output
 import java.io.File
 import java.io.Serializable

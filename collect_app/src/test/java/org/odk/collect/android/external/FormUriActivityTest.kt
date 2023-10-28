@@ -1,4 +1,4 @@
-package org.odk.collect.android.external
+package org.espen.collect.android.external
 
 import android.app.Activity
 import android.app.Application
@@ -31,18 +31,18 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.activities.FormFillingActivity
-import org.odk.collect.android.application.initialization.AnalyticsInitializer
-import org.odk.collect.android.application.initialization.MapsInitializer
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.ApplicationConstants
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.androidtest.ActivityScenarioLauncherRule
-import org.odk.collect.androidtest.RecordedIntentsRule
+import org.espen.collect.android.activities.FormFillingActivity
+import org.espen.collect.android.application.initialization.AnalyticsInitializer
+import org.espen.collect.android.application.initialization.MapsInitializer
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.androidtest.ActivityScenarioLauncherRule
+import org.espen.collect.androidtest.RecordedIntentsRule
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.formstest.FormUtils
 import org.odk.collect.formstest.InMemFormsRepository
@@ -77,7 +77,7 @@ class FormUriActivityTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
             override fun providesProjectsRepository(
                 uuidGenerator: UUIDGenerator,
                 gson: Gson,
@@ -649,7 +649,7 @@ class FormUriActivityTest {
             launcherRule.launch<FormUriActivity>(getBlankFormIntent(project.uuid, form.dbId))
         scenario.recreate()
 
-        Intents.intended(hasComponent(FormFillingActivity::class.java.name), Intents.times(1))
+        Intents.intended(hasComponent(org.espen.collect.android.activities.FormFillingActivity::class.java.name), Intents.times(1))
     }
 
     @Test
@@ -744,7 +744,7 @@ class FormUriActivityTest {
             data = if (projectId == null) {
                 getFormsUriInOldFormatWithNoProjectId(dbId)
             } else {
-                FormsContract.getUri(projectId, dbId)
+                org.espen.collect.android.external.FormsContract.getUri(projectId, dbId)
             }
             putExtra("KEY_1", "Text")
         }
@@ -754,13 +754,13 @@ class FormUriActivityTest {
             data = if (projectId == null) {
                 getInstancesUriInOldFormatWithNoProjectId(dbId)
             } else {
-                InstancesContract.getUri(projectId, dbId)
+                org.espen.collect.android.external.InstancesContract.getUri(projectId, dbId)
             }
             putExtra("KEY_1", "Text")
         }
 
     private fun getFormsUriInOldFormatWithNoProjectId(dbId: Long): Uri {
-        val uri = FormsContract.getUri("", dbId)
+        val uri = org.espen.collect.android.external.FormsContract.getUri("", dbId)
         return Uri.Builder()
             .scheme(uri.scheme)
             .authority(uri.authority)
@@ -770,7 +770,7 @@ class FormUriActivityTest {
     }
 
     private fun getInstancesUriInOldFormatWithNoProjectId(dbId: Long): Uri {
-        val uri = InstancesContract.getUri("", dbId)
+        val uri = org.espen.collect.android.external.InstancesContract.getUri("", dbId)
         return Uri.Builder()
             .scheme(uri.scheme)
             .authority(uri.authority)
@@ -787,30 +787,30 @@ class FormUriActivityTest {
     }
 
     private fun assertStartBlankFormIntent(projectId: String?, dbId: Long) {
-        Intents.intended(hasComponent(FormFillingActivity::class.java.name))
+        Intents.intended(hasComponent(org.espen.collect.android.activities.FormFillingActivity::class.java.name))
         if (projectId == null) {
             Intents.intended(hasData(getFormsUriInOldFormatWithNoProjectId(dbId)))
         } else {
-            Intents.intended(hasData(FormsContract.getUri(projectId, dbId)))
+            Intents.intended(hasData(org.espen.collect.android.external.FormsContract.getUri(projectId, dbId)))
         }
-        Intents.intended(not(hasExtraWithKey(ApplicationConstants.BundleKeys.FORM_MODE)))
+        Intents.intended(not(hasExtraWithKey(org.espen.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODE)))
         Intents.intended(hasExtra("KEY_1", "Text"))
     }
 
     private fun assertStartSavedFormIntent(projectId: String?, dbId: Long, canBeEdited: Boolean) {
-        Intents.intended(hasComponent(FormFillingActivity::class.java.name))
+        Intents.intended(hasComponent(org.espen.collect.android.activities.FormFillingActivity::class.java.name))
         if (projectId == null) {
             Intents.intended(hasData(getInstancesUriInOldFormatWithNoProjectId(dbId)))
         } else {
-            Intents.intended(hasData(InstancesContract.getUri(projectId, dbId)))
+            Intents.intended(hasData(org.espen.collect.android.external.InstancesContract.getUri(projectId, dbId)))
         }
         if (canBeEdited) {
-            Intents.intended(not(hasExtraWithKey(ApplicationConstants.BundleKeys.FORM_MODE)))
+            Intents.intended(not(hasExtraWithKey(org.espen.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODE)))
         } else {
             Intents.intended(
                 hasExtra(
-                    ApplicationConstants.BundleKeys.FORM_MODE,
-                    ApplicationConstants.FormModes.VIEW_SENT
+                    org.espen.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODE,
+                    org.espen.collect.android.utilities.ApplicationConstants.FormModes.VIEW_SENT
                 )
             )
         }

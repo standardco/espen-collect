@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.base;
+package org.espen.collect.android.widgets.base;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -8,7 +8,7 @@ import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
 
 import android.app.Activity;
 import android.view.View;
@@ -20,13 +20,13 @@ import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.odk.collect.android.R;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.interfaces.Widget;
+import org.espen.collect.android.R;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.interfaces.Widget;
 
 import java.util.List;
 import java.util.Random;
@@ -59,7 +59,7 @@ public abstract class QuestionWidgetTest<W extends Widget, A extends IAnswerData
     /**
      * @return Real {@link Widget} object if present otherwise creates one
      * <p>
-     * This should be used for mutating the {@link org.odk.collect.android.widgets.QuestionWidget}
+     * This should be used for mutating the {@link QuestionWidget}
      */
     public W getWidget() {
         if (actualWidget == null) {
@@ -72,7 +72,7 @@ public abstract class QuestionWidgetTest<W extends Widget, A extends IAnswerData
     /**
      * @return {@link org.mockito.Spy} of the {@link #actualWidget}
      * <p>
-     * This should be unless we want to mutate {@link org.odk.collect.android.widgets.QuestionWidget}
+     * This should be unless we want to mutate {@link QuestionWidget}
      * This is because a spy is not the real object and changing it won't have any effect on the real object
      */
     public W getSpyWidget() {

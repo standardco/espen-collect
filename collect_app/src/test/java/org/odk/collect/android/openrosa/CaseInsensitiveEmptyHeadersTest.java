@@ -1,5 +1,7 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
+import org.espen.collect.android.openrosa.CaseInsensitiveEmptyHeaders;
+import org.espen.collect.android.openrosa.CaseInsensitiveHeaders;
 import org.junit.Assert;
 import org.junit.Test;
 

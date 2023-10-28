@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import android.content.pm.ActivityInfo
 import androidx.annotation.StringRes
@@ -37,17 +37,17 @@ import org.hamcrest.Matchers.allOf
 import org.hamcrest.core.StringContains.containsString
 import org.hamcrest.core.StringEndsWith.endsWith
 import org.junit.Assert
-import org.odk.collect.android.BuildConfig
-import org.odk.collect.android.R
-import org.odk.collect.android.application.EspenCollect
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.support.ActivityHelpers
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.WaitFor.wait250ms
-import org.odk.collect.android.support.WaitFor.waitFor
-import org.odk.collect.android.support.actions.RotateAction
-import org.odk.collect.android.support.matchers.CustomMatchers.withIndex
-import org.odk.collect.androidshared.ui.ToastUtils.popRecordedToasts
+import org.espen.collect.android.BuildConfig
+import org.espen.collect.android.R
+import org.espen.collect.android.application.EspenCollect
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.support.ActivityHelpers
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.WaitFor.wait250ms
+import org.espen.collect.android.support.WaitFor.waitFor
+import org.espen.collect.android.support.actions.RotateAction
+import org.espen.collect.android.support.matchers.CustomMatchers.withIndex
+import org.espen.collect.androidshared.ui.ToastUtils.popRecordedToasts
 import org.odk.collect.strings.localization.getLocalizedQuantityString
 import org.odk.collect.strings.localization.getLocalizedString
 import org.odk.collect.testshared.EspressoHelpers
@@ -254,11 +254,11 @@ abstract class Page<T : Page<T>> {
     }
 
     fun getTranslatedString(id: Int?, vararg formatArgs: Any): String {
-        return ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedString(id!!, *formatArgs)
+        return ApplicationProvider.getApplicationContext<org.espen.collect.android.application.EspenCollect>().getLocalizedString(id!!, *formatArgs)
     }
 
     fun getTranslatedQuantityString(id: Int?, quantity: Int, vararg formatArgs: Any): String {
-        return ApplicationProvider.getApplicationContext<EspenCollect>().getLocalizedQuantityString(id!!, quantity, *formatArgs)
+        return ApplicationProvider.getApplicationContext<org.espen.collect.android.application.EspenCollect>().getLocalizedQuantityString(id!!, quantity, *formatArgs)
     }
 
     fun clickOnAreaWithIndex(clazz: String?, index: Int): T {
@@ -401,7 +401,7 @@ abstract class Page<T : Page<T>> {
     }
 
     protected fun assertToolbarTitle(title: String?) {
-        onView(allOf(withText(title), isDescendantOfA(withId(org.odk.collect.androidshared.R.id.toolbar)))).check(matches(isDisplayed()))
+        onView(allOf(withText(title), isDescendantOfA(withId(org.espen.collect.androidshared.R.id.toolbar)))).check(matches(isDisplayed()))
     }
 
     protected fun assertToolbarTitle(title: Int) {

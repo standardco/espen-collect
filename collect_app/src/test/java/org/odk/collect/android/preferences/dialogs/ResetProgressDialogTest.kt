@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.dialogs
+package org.espen.collect.android.preferences.dialogs
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
@@ -9,7 +9,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
-import org.odk.collect.permissions.R
 import org.odk.collect.strings.localization.getLocalizedString
 
 @RunWith(AndroidJUnit4::class)

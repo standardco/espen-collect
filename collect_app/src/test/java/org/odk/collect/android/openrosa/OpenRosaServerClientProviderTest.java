@@ -1,16 +1,19 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.isEmptyOrNullString;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.startsWith;
-import static org.odk.collect.android.openrosa.support.MockWebServerHelper.buildRequest;
+import static org.espen.collect.android.openrosa.support.MockWebServerHelper.buildRequest;
 
+import org.espen.collect.android.openrosa.HttpCredentials;
+import org.espen.collect.android.openrosa.OpenRosaServerClient;
+import org.espen.collect.android.openrosa.OpenRosaServerClientProvider;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.odk.collect.android.rules.MockWebServerRule;
+import org.espen.collect.android.rules.MockWebServerRule;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

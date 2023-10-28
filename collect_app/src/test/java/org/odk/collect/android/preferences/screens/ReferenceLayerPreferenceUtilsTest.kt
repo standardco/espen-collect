@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.preferences.CaptionedListPreference
+import org.espen.collect.android.preferences.CaptionedListPreference
 import org.odk.collect.maps.layers.DirectoryReferenceLayerRepository
 import org.odk.collect.shared.TempFiles
 
@@ -22,7 +22,7 @@ class ReferenceLayerPreferenceUtilsTest {
         val referenceLayerRepository = DirectoryReferenceLayerRepository(tempDirPath)
 
         // Use mock to avoid explosions constructing pref in Robolectric
-        val pref = mock<CaptionedListPreference> {
+        val pref = mock<org.espen.collect.android.preferences.CaptionedListPreference> {
             on { getValue() } doReturn "something"
         }
 

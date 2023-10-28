@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -16,11 +16,11 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.R;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.preferences.GuidanceHint;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.R;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.preferences.GuidanceHint;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 import org.odk.collect.settings.keys.ProjectKeys;
 
 public class GuidanceHintFormTest {

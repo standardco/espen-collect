@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.app.Activity
 import android.view.View
@@ -12,8 +12,8 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.formentry.saving.FormSaveViewModel
+import org.espen.collect.android.R
+import org.espen.collect.android.formentry.saving.FormSaveViewModel
 import org.odk.collect.settings.InMemSettingsProvider
 import org.odk.collect.settings.keys.ProtectedProjectKeys.KEY_SAVE_MID
 import org.odk.collect.shadows.ShadowAndroidXAlertDialog
@@ -28,11 +28,11 @@ import java.util.Locale
 @Config(shadows = [ShadowAndroidXAlertDialog::class])
 class QuitFormDialogTest {
 
-    private val formSaveViewModel = mock<FormSaveViewModel>() {
+    private val formSaveViewModel = mock<org.espen.collect.android.formentry.saving.FormSaveViewModel>() {
         on { lastSavedTime } doReturn null
     }
 
-    private val formEntryViewModel = mock<FormEntryViewModel>()
+    private val formEntryViewModel = mock<org.espen.collect.android.formentry.FormEntryViewModel>()
     private val settingsProvider = InMemSettingsProvider()
 
     @Test

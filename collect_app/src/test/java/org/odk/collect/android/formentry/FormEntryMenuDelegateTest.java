@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,18 +17,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.formentry.BackgroundAudioViewModel;
+import org.espen.collect.android.formentry.FormEntryMenuDelegate;
+import org.espen.collect.android.formentry.FormEntryViewModel;
+import org.espen.collect.android.formentry.RecordingWarningDialogFragment;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.R;
-import org.odk.collect.android.TestSettingsProvider;
-import org.odk.collect.android.activities.FormHierarchyActivity;
-import org.odk.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel;
-import org.odk.collect.android.formentry.questions.AnswersProvider;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.preferences.screens.ProjectPreferencesActivity;
-import org.odk.collect.android.utilities.ApplicationConstants;
-import org.odk.collect.androidshared.livedata.MutableNonNullLiveData;
+import org.espen.collect.android.R;
+import org.espen.collect.android.TestSettingsProvider;
+import org.espen.collect.android.activities.FormHierarchyActivity;
+import org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel;
+import org.espen.collect.android.formentry.questions.AnswersProvider;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity;
+import org.espen.collect.android.utilities.ApplicationConstants;
+import org.espen.collect.androidshared.livedata.MutableNonNullLiveData;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.testshared.RobolectricHelpers;
 import org.robolectric.Robolectric;

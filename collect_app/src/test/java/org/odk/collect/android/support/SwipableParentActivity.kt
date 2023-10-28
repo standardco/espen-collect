@@ -1,7 +1,7 @@
-package org.odk.collect.android.support
+package org.espen.collect.android.support
 
 import androidx.fragment.app.FragmentActivity
-import org.odk.collect.android.audio.AudioControllerView.SwipableParent
+import org.espen.collect.android.audio.AudioControllerView.SwipableParent
 
 class SwipableParentActivity : FragmentActivity(), SwipableParent {
     var isSwipingAllowed = false

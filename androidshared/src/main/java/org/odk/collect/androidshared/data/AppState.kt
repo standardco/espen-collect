@@ -1,4 +1,4 @@
-package org.odk.collect.androidshared.data
+package org.espen.collect.androidshared.data
 
 import android.app.Activity
 import android.app.Application

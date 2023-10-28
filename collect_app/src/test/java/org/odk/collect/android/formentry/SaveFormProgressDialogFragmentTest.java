@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -17,9 +17,9 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.formentry.saving.FormSaveViewModel;
-import org.odk.collect.android.formentry.saving.SaveFormProgressDialogFragment;
-import org.odk.collect.androidshared.ui.FragmentFactoryBuilder;
+import org.espen.collect.android.formentry.saving.FormSaveViewModel;
+import org.espen.collect.android.formentry.saving.SaveFormProgressDialogFragment;
+import org.espen.collect.androidshared.ui.FragmentFactoryBuilder;
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule;
 
 @RunWith(AndroidJUnit4.class)

@@ -1,4 +1,4 @@
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -10,6 +10,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.audio.BackgroundAudioHelpDialogFragment;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

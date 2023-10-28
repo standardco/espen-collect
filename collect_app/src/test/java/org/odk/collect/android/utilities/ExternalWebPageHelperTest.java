@@ -1,10 +1,11 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import android.app.Activity;
 import android.net.Uri;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.espen.collect.android.utilities.ExternalWebPageHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;

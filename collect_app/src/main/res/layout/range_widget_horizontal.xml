@@ -37,7 +37,7 @@ limitations under the License.
         android:clipChildren="false"
         android:clipToPadding="false">
 
-        <org.odk.collect.android.views.TrackingTouchSlider
+        <org.espen.collect.android.views.TrackingTouchSlider
             android:id="@+id/slider"
             style="@style/SliderTheme"
             android:layout_width="match_parent"

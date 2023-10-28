@@ -11,7 +11,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package org.odk.collect.androidshared.ui
+package org.espen.collect.androidshared.ui
 
 import android.view.View
 import android.view.ViewGroup
@@ -84,7 +84,7 @@ object SnackbarUtils {
             if (displayDismissButton) {
                 view.findViewById<Button>(com.google.android.material.R.id.snackbar_action).let {
                     val dismissButton = ImageView(view.context).apply {
-                        setImageResource(org.odk.collect.androidshared.R.drawable.ic_close_24)
+                        setImageResource(org.espen.collect.androidshared.R.drawable.ic_close_24)
                         setOnClickListener {
                             dismiss()
                         }

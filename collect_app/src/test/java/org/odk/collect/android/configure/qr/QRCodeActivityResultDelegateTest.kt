@@ -1,4 +1,4 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import android.app.Activity
 import android.content.Context
@@ -14,9 +14,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.projects.Project.Saved
 import org.odk.collect.qrcode.QRCodeDecoder
 import org.odk.collect.settings.ODKAppSettingsImporter
@@ -41,7 +40,7 @@ class QRCodeActivityResultDelegateTest {
 
     @Before
     fun setup() {
-        CollectHelpers.overrideAppDependencyModule(object : AppDependencyModule() {
+        CollectHelpers.overrideAppDependencyModule(object : org.espen.collect.android.injection.config.AppDependencyModule() {
             override fun providesQRCodeDecoder(): QRCodeDecoder {
                 return fakeQRDecoder
             }

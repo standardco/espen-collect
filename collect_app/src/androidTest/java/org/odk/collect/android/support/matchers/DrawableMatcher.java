@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.matchers;
+package org.espen.collect.android.support.matchers;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;

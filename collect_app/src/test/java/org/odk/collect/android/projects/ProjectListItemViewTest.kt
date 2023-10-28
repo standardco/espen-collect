@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.content.Context
 import android.graphics.Color
@@ -12,7 +12,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.projects.Project
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.settings.Settings

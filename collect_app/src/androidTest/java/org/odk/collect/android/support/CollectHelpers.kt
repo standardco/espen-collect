@@ -1,18 +1,18 @@
-package org.odk.collect.android.support
+package org.espen.collect.android.support
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
-import org.odk.collect.android.application.EspenCollect
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.injection.config.AppDependencyComponent
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.injection.config.DaggerAppDependencyComponent
+import org.espen.collect.android.application.EspenCollect
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.injection.config.AppDependencyComponent
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.injection.config.DaggerAppDependencyComponent
 import org.odk.collect.projects.Project
 import org.odk.collect.settings.keys.ProjectKeys
 
 object CollectHelpers {
-    fun overrideAppDependencyModule(appDependencyModule: AppDependencyModule): AppDependencyComponent {
-        val application = ApplicationProvider.getApplicationContext<EspenCollect>()
+    fun overrideAppDependencyModule(appDependencyModule: org.espen.collect.android.injection.config.AppDependencyModule): org.espen.collect.android.injection.config.AppDependencyComponent {
+        val application = ApplicationProvider.getApplicationContext<org.espen.collect.android.application.EspenCollect>()
         val testComponent = DaggerAppDependencyComponent.builder()
             .application(application)
             .appDependencyModule(appDependencyModule)
@@ -21,11 +21,11 @@ object CollectHelpers {
         return testComponent
     }
 
-    fun simulateProcessRestart(appDependencyModule: AppDependencyModule? = null) {
-        ApplicationProvider.getApplicationContext<EspenCollect>().getState().clear()
+    fun simulateProcessRestart(appDependencyModule: org.espen.collect.android.injection.config.AppDependencyModule? = null) {
+        ApplicationProvider.getApplicationContext<org.espen.collect.android.application.EspenCollect>().getState().clear()
 
         val newComponent =
-            overrideAppDependencyModule(appDependencyModule ?: AppDependencyModule())
+            overrideAppDependencyModule(appDependencyModule ?: org.espen.collect.android.injection.config.AppDependencyModule())
 
         // Reinitialize any application state with new deps/state
         newComponent.applicationInitializer().initialize()
@@ -34,7 +34,7 @@ object CollectHelpers {
     @JvmStatic
     fun addDemoProject() {
         val component =
-            DaggerUtils.getComponent(ApplicationProvider.getApplicationContext<Application>())
+            org.espen.collect.android.injection.DaggerUtils.getComponent(ApplicationProvider.getApplicationContext<Application>())
         component.projectsRepository().save(Project.DEMO_PROJECT)
         component.currentProjectProvider().setCurrentProject(Project.DEMO_PROJECT_ID)
     }
@@ -44,12 +44,12 @@ object CollectHelpers {
         testDependencies.googleAccountPicker.setDeviceAccount(accountName)
         testDependencies.googleApi.setAccount(accountName)
 
-        val project = DaggerUtils
+        val project = org.espen.collect.android.injection.DaggerUtils
             .getComponent(ApplicationProvider.getApplicationContext<Application>())
             .projectsRepository()
             .save(gdProject)
 
-        DaggerUtils
+        org.espen.collect.android.injection.DaggerUtils
             .getComponent(ApplicationProvider.getApplicationContext<Application>())
             .settingsProvider().getUnprotectedSettings(project.uuid)
             .also {

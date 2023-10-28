@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
@@ -8,7 +8,6 @@ import org.hamcrest.Matchers.`is`
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
 
 @RunWith(AndroidJUnit4::class)
 class FormDownloadExceptionMapperTest {
