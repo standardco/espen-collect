@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.content.Context
 import android.os.Bundle
@@ -8,15 +8,15 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.doOnTextChanged
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.activities.ActivityUtils
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.configure.qr.AppConfigurationGenerator
-import org.odk.collect.android.databinding.ManualProjectCreatorDialogLayoutBinding
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.mainmenu.MainMenuActivity
-import org.odk.collect.android.projects.DuplicateProjectConfirmationKeys.MATCHING_PROJECT
-import org.odk.collect.android.projects.DuplicateProjectConfirmationKeys.SETTINGS_JSON
-import org.odk.collect.android.utilities.SoftKeyboardController
+import org.espen.collect.android.activities.ActivityUtils
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.configure.qr.AppConfigurationGenerator
+import org.espen.collect.android.databinding.ManualProjectCreatorDialogLayoutBinding
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.projects.DuplicateProjectConfirmationKeys.MATCHING_PROJECT
+import org.espen.collect.android.projects.DuplicateProjectConfirmationKeys.SETTINGS_JSON
+import org.espen.collect.android.utilities.SoftKeyboardController
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.androidshared.ui.ToastUtils
 import org.odk.collect.androidshared.utils.Validator

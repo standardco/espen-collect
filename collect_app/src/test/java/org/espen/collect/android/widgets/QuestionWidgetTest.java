@@ -1,9 +1,9 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.support.CollectHelpers.setupFakeReferenceManager;
+import static org.espen.collect.android.support.CollectHelpers.setupFakeReferenceManager;
 import static java.util.Arrays.asList;
 
 import android.content.Context;
@@ -22,15 +22,15 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-import org.odk.collect.android.R;
-import org.odk.collect.android.audio.AudioButton;
-import org.odk.collect.android.audio.AudioHelper;
-import org.odk.collect.android.formentry.media.AudioHelperFactory;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.R;
+import org.espen.collect.android.audio.AudioButton;
+import org.espen.collect.android.audio.AudioHelper;
+import org.espen.collect.android.formentry.media.AudioHelperFactory;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.support.WidgetTestActivity;
 import org.odk.collect.async.Scheduler;
 import org.odk.collect.audioclips.Clip;
 

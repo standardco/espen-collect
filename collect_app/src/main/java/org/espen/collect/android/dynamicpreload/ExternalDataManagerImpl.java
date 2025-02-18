@@ -16,10 +16,10 @@
  * the License.
  */
 
-package org.odk.collect.android.dynamicpreload;
+package org.espen.collect.android.dynamicpreload;
 
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.exception.ExternalDataException;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.exception.ExternalDataException;
 
 import java.io.File;
 import java.util.HashMap;

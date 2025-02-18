@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement;
+package org.espen.collect.android.formmanagement;
 
 import org.junit.Test;
 import org.odk.collect.forms.Form;

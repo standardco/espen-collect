@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.instancemanagement
+package org.espen.collect.android.feature.instancemanagement
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert
@@ -6,11 +6,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 import java.io.File
 
 @RunWith(AndroidJUnit4::class)

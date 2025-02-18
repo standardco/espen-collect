@@ -1,4 +1,4 @@
-package org.odk.collect.android.benchmark
+package org.espen.collect.android.benchmark
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -10,13 +10,13 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.benchmark.support.Benchmarker
-import org.odk.collect.android.benchmark.support.benchmark
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain.chain
-import org.odk.collect.android.test.BuildConfig.ENTITIES_FILTER_TEST_PROJECT_URL
+import org.espen.collect.android.benchmark.support.Benchmarker
+import org.espen.collect.android.benchmark.support.benchmark
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain.chain
+import org.espen.collect.android.test.BuildConfig.ENTITIES_FILTER_TEST_PROJECT_URL
 import org.odk.collect.strings.R
 
 /**

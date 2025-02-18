@@ -16,7 +16,7 @@
  * the License.
  */
 
-package org.odk.collect.android.dynamicpreload;
+package org.espen.collect.android.dynamicpreload;
 
 import android.content.Intent;
 
@@ -34,11 +34,11 @@ import org.javarosa.xpath.expr.XPathExpression;
 import org.javarosa.xpath.expr.XPathFuncExpr;
 import org.javarosa.xpath.expr.XPathPathExpr;
 import org.javarosa.xpath.parser.XPathSyntaxException;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.exception.ExternalParamsException;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.exception.ExternalParamsException;
+import org.espen.collect.android.javarosawrapper.FormController;
 import org.odk.collect.forms.instances.Instance;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
 
 import java.io.Serializable;
 import java.util.ArrayList;

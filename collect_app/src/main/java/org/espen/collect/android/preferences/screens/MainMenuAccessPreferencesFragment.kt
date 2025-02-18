@@ -1,9 +1,9 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.os.Bundle
 import androidx.preference.Preference
-import org.odk.collect.android.R
-import org.odk.collect.android.preferences.utilities.PreferencesUtils
+import org.espen.collect.android.R
+import org.espen.collect.android.preferences.utilities.PreferencesUtils
 import org.odk.collect.settings.enums.FormUpdateMode
 import org.odk.collect.settings.enums.StringIdEnumUtils.getFormUpdateMode
 import org.odk.collect.settings.keys.ProtectedProjectKeys

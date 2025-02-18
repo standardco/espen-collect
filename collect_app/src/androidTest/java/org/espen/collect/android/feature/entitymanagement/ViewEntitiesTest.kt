@@ -1,13 +1,13 @@
-package org.odk.collect.android.feature.entitymanagement
+package org.espen.collect.android.feature.entitymanagement
 
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.support.StubOpenRosaServer
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.StubOpenRosaServer
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 class ViewEntitiesTest {
 

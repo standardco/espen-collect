@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement.drafts
+package org.espen.collect.android.formmanagement.drafts
 
 import android.content.Context
 import android.view.Menu
@@ -6,7 +6,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.androidshared.ui.enableIconsVisibility
 import org.odk.collect.strings.R.plurals
 import org.odk.collect.strings.R.string

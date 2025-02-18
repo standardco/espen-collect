@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import org.apache.commons.io.FileUtils.readFileToByteArray
 import org.javarosa.core.model.FormDef
@@ -9,12 +9,12 @@ import org.javarosa.core.reference.ReferenceManager
 import org.javarosa.form.api.FormEntryController
 import org.javarosa.xform.parse.XFormParser
 import org.javarosa.xform.util.XFormUtils
-import org.odk.collect.android.dynamicpreload.ExternalAnswerResolver
-import org.odk.collect.android.javarosawrapper.FailedValidationResult
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.javarosawrapper.JavaRosaFormController
-import org.odk.collect.android.utilities.FileUtils
-import org.odk.collect.android.utilities.FormUtils
+import org.espen.collect.android.dynamicpreload.ExternalAnswerResolver
+import org.espen.collect.android.javarosawrapper.FailedValidationResult
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.javarosawrapper.JavaRosaFormController
+import org.espen.collect.android.utilities.FileUtils
+import org.espen.collect.android.utilities.FormUtils
 import org.odk.collect.entities.LocalEntityUseCases
 import org.odk.collect.entities.storage.EntitiesRepository
 import org.odk.collect.forms.Form

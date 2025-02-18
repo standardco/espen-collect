@@ -1,10 +1,10 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import org.javarosa.core.model.FormDef;
 import org.javarosa.core.util.externalizable.ExtUtil;
-import org.odk.collect.android.formentry.FormDefCache;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.formentry.FormDefCache;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
 import org.odk.collect.shared.strings.Md5;
 
 import java.io.DataInputStream;

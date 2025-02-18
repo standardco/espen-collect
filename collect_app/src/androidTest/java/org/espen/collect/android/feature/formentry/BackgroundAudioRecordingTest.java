@@ -1,10 +1,10 @@
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.odk.collect.android.utilities.FileUtils.copyFileFromResources;
+import static org.espen.collect.android.utilities.FileUtils.copyFileFromResources;
 
 import android.Manifest;
 import android.app.Activity;
@@ -20,14 +20,14 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.support.TestDependencies;
-import org.odk.collect.android.support.pages.FormEndPage;
-import org.odk.collect.android.support.pages.FormEntryPage;
-import org.odk.collect.android.support.pages.MainMenuPage;
-import org.odk.collect.android.support.pages.SaveOrDiscardFormDialog;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.support.TestDependencies;
+import org.espen.collect.android.support.pages.FormEndPage;
+import org.espen.collect.android.support.pages.FormEntryPage;
+import org.espen.collect.android.support.pages.MainMenuPage;
+import org.espen.collect.android.support.pages.SaveOrDiscardFormDialog;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.testsupport.StubAudioRecorder;
 import org.odk.collect.permissions.ContextCompatPermissionChecker;

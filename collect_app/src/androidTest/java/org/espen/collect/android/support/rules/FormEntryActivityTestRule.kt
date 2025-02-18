@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
 import android.app.Activity
 import android.app.Application
@@ -6,16 +6,16 @@ import android.content.Intent
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import org.junit.rules.ExternalResource
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.formmanagement.FormFillingIntentFactory
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.StorageUtils
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.FormHierarchyPage
-import org.odk.collect.android.support.pages.Page
-import org.odk.collect.android.support.pages.SavepointRecoveryDialogPage
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.formmanagement.FormFillingIntentFactory
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.StorageUtils
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.FormHierarchyPage
+import org.espen.collect.android.support.pages.Page
+import org.espen.collect.android.support.pages.SavepointRecoveryDialogPage
 import timber.log.Timber
 import java.io.IOException
 

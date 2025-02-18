@@ -1,4 +1,4 @@
-package org.odk.collect.android.itemsets
+package org.espen.collect.android.itemsets
 
 interface FastExternalItemsetsRepository {
 

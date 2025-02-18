@@ -1,6 +1,6 @@
-package org.odk.collect.android.feature.formentry;
+package org.espen.collect.android.feature.formentry;
 
-import static org.odk.collect.android.utilities.FileUtils.copyFileFromResources;
+import static org.espen.collect.android.utilities.FileUtils.copyFileFromResources;
 
 import android.app.Application;
 
@@ -10,12 +10,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.support.TestDependencies;
-import org.odk.collect.android.support.pages.FormEntryPage;
-import org.odk.collect.android.support.pages.MainMenuPage;
-import org.odk.collect.android.support.pages.OkDialog;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.support.TestDependencies;
+import org.espen.collect.android.support.pages.FormEntryPage;
+import org.espen.collect.android.support.pages.MainMenuPage;
+import org.espen.collect.android.support.pages.OkDialog;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.testsupport.StubAudioRecorder;
 

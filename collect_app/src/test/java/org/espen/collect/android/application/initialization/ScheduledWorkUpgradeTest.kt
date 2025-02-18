@@ -1,10 +1,10 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.backgroundwork.FormUpdateScheduler
-import org.odk.collect.android.backgroundwork.InstanceSubmitScheduler
+import org.espen.collect.android.backgroundwork.FormUpdateScheduler
+import org.espen.collect.android.backgroundwork.InstanceSubmitScheduler
 import org.odk.collect.async.Scheduler
 import org.odk.collect.projects.InMemProjectsRepository
 import org.odk.collect.projects.Project

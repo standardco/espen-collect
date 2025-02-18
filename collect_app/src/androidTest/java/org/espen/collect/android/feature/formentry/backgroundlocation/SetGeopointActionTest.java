@@ -1,11 +1,11 @@
-package org.odk.collect.android.feature.formentry.backgroundlocation;
+package org.espen.collect.android.feature.formentry.backgroundlocation;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.formentry.FormEntryMenuProvider;
-import org.odk.collect.android.support.rules.BlankFormTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.formentry.FormEntryMenuProvider;
+import org.espen.collect.android.support.rules.BlankFormTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 public class SetGeopointActionTest {
     private static final String SETGEOPOINT_ACTION_FORM = "setgeopoint-action.xml";

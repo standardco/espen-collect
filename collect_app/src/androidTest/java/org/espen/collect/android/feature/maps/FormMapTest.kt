@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.maps
+package org.espen.collect.android.feature.maps
 
 import android.app.Activity
 import android.app.Instrumentation
@@ -12,11 +12,11 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.support.FakeClickableMapFragment
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.R
+import org.espen.collect.android.support.FakeClickableMapFragment
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 import org.odk.collect.androidtest.RecordedIntentsRule
 import org.odk.collect.externalapp.ExternalAppUtils.getReturnIntent
 import org.odk.collect.geo.GeoUtils

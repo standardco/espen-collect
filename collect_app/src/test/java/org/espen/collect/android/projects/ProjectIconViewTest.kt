@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.content.Context
 import android.graphics.Color
@@ -11,7 +11,7 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.projects.Project
 
 @RunWith(AndroidJUnit4::class)

@@ -1,16 +1,16 @@
-package org.odk.collect.android.feature.formentry
+package org.espen.collect.android.feature.formentry
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.support.pages.AddNewRepeatDialog
-import org.odk.collect.android.support.pages.FormEndPage
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.ProjectSettingsPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain.chain
+import org.espen.collect.android.support.pages.AddNewRepeatDialog
+import org.espen.collect.android.support.pages.FormEndPage
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.ProjectSettingsPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain.chain
 
 @RunWith(AndroidJUnit4::class)
 class FillBlankFormWithRepeatGroupTest {

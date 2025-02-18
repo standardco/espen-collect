@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import android.net.Uri;
 import android.util.Base64;
@@ -24,11 +24,11 @@ import org.kxml2.io.KXmlSerializer;
 import org.kxml2.kdom.Document;
 import org.kxml2.kdom.Element;
 import org.kxml2.kdom.Node;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.exception.EncryptionException;
-import org.odk.collect.android.external.FormsContract;
-import org.odk.collect.android.external.InstancesContract;
-import org.odk.collect.android.javarosawrapper.InstanceMetadata;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.exception.EncryptionException;
+import org.espen.collect.android.external.FormsContract;
+import org.espen.collect.android.external.InstancesContract;
+import org.espen.collect.android.javarosawrapper.InstanceMetadata;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.shared.strings.Md5;
@@ -65,7 +65,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import timber.log.Timber;
 
-import static org.odk.collect.android.utilities.ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE;
+import static org.espen.collect.android.utilities.ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE;
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 /**

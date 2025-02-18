@@ -1,4 +1,4 @@
-package org.odk.collect.android.formhierarchy
+package org.espen.collect.android.formhierarchy
 
 import android.app.Application
 import android.view.View
@@ -12,7 +12,7 @@ import org.javarosa.core.model.FormIndex
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 
 @RunWith(AndroidJUnit4::class)
 class HierarchyListItemViewTest {

@@ -1,4 +1,4 @@
-package org.odk.collect.android.database.forms
+package org.espen.collect.android.database.forms
 
 import android.provider.BaseColumns
 

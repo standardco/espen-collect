@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -10,12 +10,12 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.external.InstancesContract
-import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.android.version.VersionInformation
+import org.espen.collect.android.external.InstancesContract
+import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.version.VersionInformation
 import org.odk.collect.androidtest.getOrAwaitValue
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.formstest.FormUtils

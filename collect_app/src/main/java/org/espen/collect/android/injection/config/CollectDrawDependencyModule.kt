@@ -1,4 +1,4 @@
-package org.odk.collect.android.injection.config
+package org.espen.collect.android.injection.config
 
 import org.odk.collect.async.Scheduler
 import org.odk.collect.draw.DrawDependencyModule

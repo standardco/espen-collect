@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -9,12 +9,12 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.backgroundwork.FormUpdateScheduler
-import org.odk.collect.android.backgroundwork.InstanceSubmitScheduler
-import org.odk.collect.android.preferences.Defaults
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.utilities.ChangeLockProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.backgroundwork.FormUpdateScheduler
+import org.espen.collect.android.backgroundwork.InstanceSubmitScheduler
+import org.espen.collect.android.preferences.Defaults
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.formstest.InMemInstancesRepository
 import org.odk.collect.projects.InMemProjectsRepository

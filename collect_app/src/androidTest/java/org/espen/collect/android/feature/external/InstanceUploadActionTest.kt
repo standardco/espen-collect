@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.external
+package org.espen.collect.android.feature.external
 
 import android.content.Context
 import android.content.Intent
@@ -11,13 +11,13 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.external.InstancesContract
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.OkDialog
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
-import org.odk.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.external.InstancesContract
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.OkDialog
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.utilities.ApplicationConstants
 
 @RunWith(AndroidJUnit4::class)
 class InstanceUploadActionTest {
@@ -44,7 +44,7 @@ class InstanceUploadActionTest {
                     it.getLong(it.getColumnIndex(_ID))
                 }
 
-        val intent = Intent("org.odk.collect.android.INSTANCE_UPLOAD")
+        val intent = Intent("org.espen.collect.android.INSTANCE_UPLOAD")
         intent.type = InstancesContract.CONTENT_TYPE
         intent.putExtra(ApplicationConstants.BundleKeys.URL, testDependencies.server.url)
         intent.putExtra("instances", longArrayOf(instanceId))
@@ -58,7 +58,7 @@ class InstanceUploadActionTest {
     fun whenInstanceDoesNotExist_showsError() {
         rule.startAtMainMenu()
 
-        val intent = Intent("org.odk.collect.android.INSTANCE_UPLOAD")
+        val intent = Intent("org.espen.collect.android.INSTANCE_UPLOAD")
         intent.type = InstancesContract.CONTENT_TYPE
         intent.putExtra("instances", longArrayOf(11))
 

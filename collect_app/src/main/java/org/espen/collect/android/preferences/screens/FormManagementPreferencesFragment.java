@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.odk.collect.android.preferences.screens;
+package org.espen.collect.android.preferences.screens;
 
-import static org.odk.collect.android.preferences.utilities.PreferencesUtils.displayDisabled;
+import static org.espen.collect.android.preferences.utilities.PreferencesUtils.displayDisabled;
 import static org.odk.collect.settings.enums.StringIdEnumUtils.getFormUpdateMode;
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_AUTOMATIC_UPDATE;
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_AUTOSEND;
@@ -35,10 +35,10 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
 import org.jetbrains.annotations.NotNull;
-import org.odk.collect.android.R;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.backgroundwork.FormUpdateScheduler;
-import org.odk.collect.android.backgroundwork.InstanceSubmitScheduler;
+import org.espen.collect.android.R;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.backgroundwork.FormUpdateScheduler;
+import org.espen.collect.android.backgroundwork.InstanceSubmitScheduler;
 import org.odk.collect.settings.enums.AutoSend;
 import org.odk.collect.settings.enums.StringIdEnumUtils;
 import org.odk.collect.shared.settings.Settings;

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <org.odk.collect.android.instancemanagement.send.ReadyToSendBanner
+        <org.espen.collect.android.instancemanagement.send.ReadyToSendBanner
             android:id="@+id/ready_to_send_banner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

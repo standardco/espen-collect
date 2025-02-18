@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
-import static org.odk.collect.android.utilities.ApplicationConstants.RequestCodes;
+import static org.espen.collect.android.utilities.ApplicationConstants.RequestCodes;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -29,14 +29,14 @@ import androidx.core.content.ContextCompat;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.R;
-import org.odk.collect.android.activities.BearingActivity;
-import org.odk.collect.android.databinding.BearingWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.widgets.utilities.StringWidgetUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.activities.BearingActivity;
+import org.espen.collect.android.databinding.BearingWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
 import org.odk.collect.androidshared.ui.ToastUtils;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 /**
  * BearingWidget is the widget that allows the user to get a compass heading.

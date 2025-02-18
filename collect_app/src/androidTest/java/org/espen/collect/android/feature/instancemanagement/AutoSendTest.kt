@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.instancemanagement
+package org.espen.collect.android.feature.instancemanagement
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
@@ -9,14 +9,14 @@ import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 import org.kxml2.kdom.Element
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.ErrorPage
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.pages.ViewSentFormPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.NotificationDrawerRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.ErrorPage
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.pages.ViewSentFormPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.NotificationDrawerRule
+import org.espen.collect.android.support.rules.TestRuleChain
 import org.odk.collect.async.Scheduler
 import org.odk.collect.strings.R
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.logic.actions.setgeopoint;
+package org.espen.collect.android.logic.actions.setgeopoint;
 
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_BACKGROUND_LOCATION;
 
@@ -24,9 +24,9 @@ import com.google.android.gms.location.LocationListener;
 
 import org.javarosa.core.model.actions.setgeopoint.SetGeopointAction;
 import org.javarosa.core.model.instance.TreeReference;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.location.client.MaxAccuracyWithinTimeoutLocationClientWrapper;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.location.client.MaxAccuracyWithinTimeoutLocationClientWrapper;
 import org.odk.collect.androidshared.system.PlayServicesChecker;
 import org.odk.collect.geo.GeoUtils;
 import org.odk.collect.location.GoogleFusedLocationClient;

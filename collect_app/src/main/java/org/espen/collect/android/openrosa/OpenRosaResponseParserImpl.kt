@@ -1,4 +1,4 @@
-package org.odk.collect.android.openrosa
+package org.espen.collect.android.openrosa
 
 import org.javarosa.xform.parse.XFormParser
 import org.kxml2.kdom.Document

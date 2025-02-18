@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.app.Application
 import android.os.Bundle
@@ -20,16 +20,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import org.odk.collect.android.databinding.TabsLayoutBinding
-import org.odk.collect.android.formlists.blankformlist.BlankFormListViewModel
-import org.odk.collect.android.formlists.blankformlist.DeleteBlankFormFragment
-import org.odk.collect.android.formlists.savedformlist.DeleteSavedFormFragment
-import org.odk.collect.android.formlists.savedformlist.SavedFormListViewModel
-import org.odk.collect.android.formmanagement.FormsDataService
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.injection.config.ProjectDependencyModuleFactory
-import org.odk.collect.android.instancemanagement.InstancesDataService
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.databinding.TabsLayoutBinding
+import org.espen.collect.android.formlists.blankformlist.BlankFormListViewModel
+import org.espen.collect.android.formlists.blankformlist.DeleteBlankFormFragment
+import org.espen.collect.android.formlists.savedformlist.DeleteSavedFormFragment
+import org.espen.collect.android.formlists.savedformlist.SavedFormListViewModel
+import org.espen.collect.android.formmanagement.FormsDataService
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.injection.config.ProjectDependencyModuleFactory
+import org.espen.collect.android.instancemanagement.InstancesDataService
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.androidshared.ui.ListFragmentStateAdapter
 import org.odk.collect.androidshared.utils.AppBarUtils.setupAppBarLayout

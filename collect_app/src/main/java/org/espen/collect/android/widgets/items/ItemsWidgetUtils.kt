@@ -1,12 +1,12 @@
-package org.odk.collect.android.widgets.items
+package org.espen.collect.android.widgets.items
 
 import org.javarosa.core.model.SelectChoice
 import org.javarosa.form.api.FormEntryPrompt
 import org.javarosa.xpath.parser.XPathSyntaxException
-import org.odk.collect.android.R
-import org.odk.collect.android.exception.ExternalDataException
-import org.odk.collect.android.widgets.QuestionWidget
-import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader
+import org.espen.collect.android.R
+import org.espen.collect.android.exception.ExternalDataException
+import org.espen.collect.android.widgets.QuestionWidget
+import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader
 import java.io.FileNotFoundException
 
 object ItemsWidgetUtils {

@@ -1,8 +1,8 @@
-package org.odk.collect.android.formentry.media;
+package org.espen.collect.android.formentry.media;
 
 import android.content.Context;
 
-import org.odk.collect.android.audio.AudioHelper;
+import org.espen.collect.android.audio.AudioHelper;
 
 public interface AudioHelperFactory {
 

@@ -1,10 +1,10 @@
-package org.odk.collect.android.instancemanagement.send
+package org.espen.collect.android.instancemanagement.send
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import org.odk.collect.android.databinding.ReadyToSendBannerBinding
+import org.espen.collect.android.databinding.ReadyToSendBannerBinding
 import org.odk.collect.shared.TimeInMs
 import org.odk.collect.strings.R
 

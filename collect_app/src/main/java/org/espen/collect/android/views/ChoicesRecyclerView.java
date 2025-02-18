@@ -1,4 +1,4 @@
-package org.odk.collect.android.views;
+package org.espen.collect.android.views;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.flexbox.FlexboxLayoutManager;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.adapters.AbstractSelectListAdapter;
+import org.espen.collect.android.R;
+import org.espen.collect.android.adapters.AbstractSelectListAdapter;
 import org.odk.collect.androidshared.utils.ScreenUtils;
-import org.odk.collect.android.utilities.ThemeUtils;
+import org.espen.collect.android.utilities.ThemeUtils;
 
 public class ChoicesRecyclerView extends RecyclerView {
     /**

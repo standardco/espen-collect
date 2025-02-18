@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.content.Context
 import android.content.Intent
@@ -16,7 +16,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.BuildConfig
+import org.espen.collect.android.BuildConfig
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.robolectric.shadows.ShadowToast
 import java.io.File
@@ -68,7 +68,7 @@ class MediaUtilsTest {
                 file
             )
         ).thenReturn(
-            Uri.parse("content://org.odk.collect.android.provider/external_files/Android/data/org.odk.collect.android/files/image.png")
+            Uri.parse("content://org.espen.collect.android.provider/external_files/Android/data/org.odk.collect.android/files/image.png")
         )
 
         val contextCaptor = argumentCaptor<Context>()
@@ -86,7 +86,7 @@ class MediaUtilsTest {
         assertThat(intentCaptor.firstValue.action, `is`(Intent.ACTION_VIEW))
         assertThat(
             intentCaptor.firstValue.data.toString(),
-            `is`("content://org.odk.collect.android.provider/external_files/Android/data/org.odk.collect.android/files/image.png")
+            `is`("content://org.espen.collect.android.provider/external_files/Android/data/org.odk.collect.android/files/image.png")
         )
         assertThat(intentCaptor.firstValue.type, `is`("image/*"))
     }

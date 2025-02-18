@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement
+package org.espen.collect.android.instancemanagement
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider

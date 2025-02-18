@@ -1,4 +1,4 @@
-package org.odk.collect.android.support;
+package org.espen.collect.android.support;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
@@ -16,7 +16,7 @@ import androidx.test.espresso.ViewAction;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.hamcrest.Matcher;
-import org.odk.collect.android.BuildConfig;
+import org.espen.collect.android.BuildConfig;
 
 public final class ActivityHelpers {
 

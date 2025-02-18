@@ -1,6 +1,6 @@
-package org.odk.collect.android.support;
+package org.espen.collect.android.support;
 
-import static org.odk.collect.android.utilities.FileUtils.getResourceAsStream;
+import static org.espen.collect.android.utilities.FileUtils.getResourceAsStream;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 
@@ -8,16 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
-import org.odk.collect.android.formmanagement.metadata.FormMetadata;
-import org.odk.collect.android.formmanagement.metadata.FormMetadataParser;
-import org.odk.collect.android.openrosa.CaseInsensitiveEmptyHeaders;
-import org.odk.collect.android.openrosa.CaseInsensitiveHeaders;
-import org.odk.collect.android.openrosa.HttpCredentialsInterface;
-import org.odk.collect.android.openrosa.HttpGetResult;
-import org.odk.collect.android.openrosa.HttpHeadResult;
-import org.odk.collect.android.openrosa.HttpPostResult;
-import org.odk.collect.android.openrosa.OpenRosaConstants;
-import org.odk.collect.android.openrosa.OpenRosaHttpInterface;
+import org.espen.collect.android.formmanagement.metadata.FormMetadata;
+import org.espen.collect.android.formmanagement.metadata.FormMetadataParser;
+import org.espen.collect.android.openrosa.CaseInsensitiveEmptyHeaders;
+import org.espen.collect.android.openrosa.CaseInsensitiveHeaders;
+import org.espen.collect.android.openrosa.HttpCredentialsInterface;
+import org.espen.collect.android.openrosa.HttpGetResult;
+import org.espen.collect.android.openrosa.HttpHeadResult;
+import org.espen.collect.android.openrosa.HttpPostResult;
+import org.espen.collect.android.openrosa.OpenRosaConstants;
+import org.espen.collect.android.openrosa.OpenRosaHttpInterface;
 import org.odk.collect.shared.strings.Md5;
 import org.odk.collect.shared.strings.RandomString;
 

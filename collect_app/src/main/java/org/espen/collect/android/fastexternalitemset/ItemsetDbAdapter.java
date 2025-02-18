@@ -1,4 +1,4 @@
-package org.odk.collect.android.fastexternalitemset;
+package org.espen.collect.android.fastexternalitemset;
 
 import static org.odk.collect.shared.PathUtils.getAbsoluteFilePath;
 
@@ -8,10 +8,10 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import org.odk.collect.android.application.Collect;
+import org.espen.collect.android.application.Collect;
 import org.odk.collect.db.sqlite.AltDatabasePathContext;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
 import org.odk.collect.shared.PathUtils;
 
 import java.io.Closeable;

@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 import static java.util.Arrays.asList;
@@ -28,7 +28,7 @@ import androidx.annotation.Nullable;
 import com.google.common.base.CharMatcher;
 
 import org.apache.commons.io.IOUtils;
-import org.odk.collect.android.application.Collect;
+import org.espen.collect.android.application.Collect;
 import org.odk.collect.async.OngoingWorkListener;
 
 import java.io.File;

@@ -1,12 +1,12 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
 import android.app.Activity
 import android.content.Intent
 import android.provider.MediaStore
 import android.widget.Toast
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.R
-import org.odk.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.R
+import org.espen.collect.android.utilities.ApplicationConstants
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.permissions.PermissionListener
 import org.odk.collect.permissions.PermissionsProvider

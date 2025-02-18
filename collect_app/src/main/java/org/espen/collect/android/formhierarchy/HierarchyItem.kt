@@ -1,4 +1,4 @@
-package org.odk.collect.android.formhierarchy
+package org.espen.collect.android.formhierarchy
 
 import org.javarosa.core.model.FormIndex
 

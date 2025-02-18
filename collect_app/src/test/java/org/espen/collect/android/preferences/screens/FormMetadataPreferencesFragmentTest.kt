@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import androidx.preference.Preference
 import androidx.test.core.app.ApplicationProvider
@@ -11,9 +11,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.metadata.InstallIDProvider
 import org.odk.collect.settings.SettingsProvider

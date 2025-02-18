@@ -1,4 +1,4 @@
-package org.odk.collect.android.entities.support
+package org.espen.collect.android.entities.support
 
 import org.hamcrest.Description
 import org.hamcrest.TypeSafeMatcher

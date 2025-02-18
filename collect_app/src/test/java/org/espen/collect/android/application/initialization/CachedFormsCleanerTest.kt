@@ -1,4 +1,4 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import android.app.Application
 import android.content.Context
@@ -9,7 +9,7 @@ import org.hamcrest.Matchers.containsInAnyOrder
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.injection.DaggerUtils
+import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.projects.Project
 import java.io.File
 

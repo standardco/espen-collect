@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import androidx.activity.ComponentActivity;
 import androidx.lifecycle.MutableLiveData;
@@ -8,8 +8,8 @@ import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.fakes.FakePermissionsProvider;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.fakes.FakePermissionsProvider;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
 import org.odk.collect.audiorecorder.recorder.Output;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.robolectric.Robolectric;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
 
 @RunWith(AndroidJUnit4.class)
 public class InternalRecordingRequesterTest {

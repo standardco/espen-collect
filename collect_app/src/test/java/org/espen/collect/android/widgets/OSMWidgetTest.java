@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.content.Intent;
 import android.view.View;
@@ -16,13 +16,13 @@ import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.javarosawrapper.InstanceMetadata;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.utilities.ApplicationConstants;
-import org.odk.collect.android.widgets.support.FakeWaitingForDataRegistry;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.InstanceMetadata;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.utilities.ApplicationConstants;
+import org.espen.collect.android.widgets.support.FakeWaitingForDataRegistry;
 import org.odk.collect.androidshared.system.IntentLauncherImpl;
 import org.odk.collect.testshared.ErrorIntentLauncher;
 import org.odk.collect.androidshared.system.IntentLauncher;
@@ -38,10 +38,10 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnly;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnly;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
 import static org.robolectric.Shadows.shadowOf;
 
 /**

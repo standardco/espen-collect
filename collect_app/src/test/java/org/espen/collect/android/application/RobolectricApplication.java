@@ -1,4 +1,4 @@
-package org.odk.collect.android.application;
+package org.espen.collect.android.application;
 
 import static android.os.Environment.MEDIA_MOUNTED;
 import static org.robolectric.Shadows.shadowOf;

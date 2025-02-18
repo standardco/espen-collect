@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -23,13 +23,13 @@ import android.view.View;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.databinding.GeotraceQuestionBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.databinding.GeotraceQuestionBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
 import org.odk.collect.maps.MapConfigurator;
-import org.odk.collect.android.widgets.interfaces.GeoDataRequester;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.widgets.interfaces.GeoDataRequester;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 /**
  * GeoTraceWidget allows the user to collect a trace of GPS points as the

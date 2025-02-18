@@ -1,4 +1,4 @@
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.odk.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.injection.DaggerUtils;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.MicInUseException;
 import org.odk.collect.androidshared.data.Consumable;

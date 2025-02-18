@@ -1,4 +1,4 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import androidx.annotation.NonNull;
 

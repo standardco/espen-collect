@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -11,7 +11,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.widgets.QuestionWidget
+import org.espen.collect.android.widgets.QuestionWidget
 import org.odk.collect.androidshared.bitmap.ImageCompressor
 
 @RunWith(AndroidJUnit4::class)

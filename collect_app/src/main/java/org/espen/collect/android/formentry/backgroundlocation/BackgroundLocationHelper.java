@@ -1,16 +1,16 @@
-package org.odk.collect.android.formentry.backgroundlocation;
+package org.espen.collect.android.formentry.backgroundlocation;
 
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_BACKGROUND_LOCATION;
 
 import android.location.Location;
 
-import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.formentry.FormSession;
-import org.odk.collect.android.formentry.FormSessionRepository;
-import org.odk.collect.android.formentry.audit.AuditConfig;
-import org.odk.collect.android.formentry.audit.AuditEvent;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.formentry.FormSession;
+import org.espen.collect.android.formentry.FormSessionRepository;
+import org.espen.collect.android.formentry.audit.AuditConfig;
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.javarosawrapper.FormController;
 import org.odk.collect.androidshared.system.PlayServicesChecker;
 import org.odk.collect.permissions.PermissionsProvider;
 import org.odk.collect.shared.settings.Settings;

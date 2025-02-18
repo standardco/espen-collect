@@ -16,7 +16,7 @@
  * the License.
  */
 
-package org.odk.collect.android.dynamicpreload;
+package org.espen.collect.android.dynamicpreload;
 
 /**
  * This class handles all DB connections for the function handlers
@@ -32,7 +32,7 @@ public interface ExternalDataManager {
      *
      * @param dataSetName the name of the imported .csv
      * @param required    if true, a runtime exception
-     *                    ({@link org.odk.collect.android.exception.ExternalDataException})
+     *                    ({@link org.espen.collect.android.exception.ExternalDataException})
      *                    will be thrown.
      *                    if false null will be returned
      * @return an object of {@link ExternalSQLiteOpenHelper}

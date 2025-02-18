@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -12,7 +12,7 @@ import android.graphics.Bitmap;
 
 import androidx.test.espresso.Espresso;
 
-import org.odk.collect.android.support.ActivityHelpers;
+import org.espen.collect.android.support.ActivityHelpers;
 import org.odk.collect.testshared.WaitFor;
 import org.odk.collect.androidtest.DrawableMatcher;
 

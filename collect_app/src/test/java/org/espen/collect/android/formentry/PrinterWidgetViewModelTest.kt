@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -9,7 +9,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.utilities.QuestionMediaManager
+import org.espen.collect.android.utilities.QuestionMediaManager
 import org.odk.collect.printer.HtmlPrinter
 import org.odk.collect.qrcode.QRCodeCreator
 import org.odk.collect.testshared.FakeScheduler

@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;

@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
-import org.odk.collect.android.fastexternalitemset.ItemsetDbAdapter
-import org.odk.collect.android.instancemanagement.InstancesDataService
-import org.odk.collect.android.storage.StoragePaths
-import org.odk.collect.android.utilities.WebCredentialsUtils
+import org.espen.collect.android.fastexternalitemset.ItemsetDbAdapter
+import org.espen.collect.android.instancemanagement.InstancesDataService
+import org.espen.collect.android.storage.StoragePaths
+import org.espen.collect.android.utilities.WebCredentialsUtils
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.savepoints.SavepointsRepository
 import org.odk.collect.metadata.PropertyManager

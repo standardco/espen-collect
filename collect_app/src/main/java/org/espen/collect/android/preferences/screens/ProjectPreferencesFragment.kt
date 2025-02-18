@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import android.os.Bundle
@@ -25,11 +25,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.preference.Preference
-import org.odk.collect.android.R
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.preferences.ProjectPreferencesViewModel
-import org.odk.collect.android.preferences.dialogs.AdminPasswordDialogFragment
-import org.odk.collect.android.preferences.dialogs.ChangeAdminPasswordDialog
+import org.espen.collect.android.R
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.preferences.ProjectPreferencesViewModel
+import org.espen.collect.android.preferences.dialogs.AdminPasswordDialogFragment
+import org.espen.collect.android.preferences.dialogs.ChangeAdminPasswordDialog
 import org.odk.collect.androidshared.data.Consumable
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard

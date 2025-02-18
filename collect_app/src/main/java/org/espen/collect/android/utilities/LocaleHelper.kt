@@ -1,6 +1,6 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
-import org.odk.collect.android.application.Collect
+import org.espen.collect.android.application.Collect
 import org.odk.collect.shared.strings.StringUtils.isBlank
 import java.util.Locale
 import java.util.TreeMap

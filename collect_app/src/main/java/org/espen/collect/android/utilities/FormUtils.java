@@ -1,11 +1,11 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import androidx.annotation.NonNull;
 
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.core.reference.RootTranslator;
-import org.odk.collect.android.logic.FileReferenceFactory;
-import org.odk.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.logic.FileReferenceFactory;
+import org.espen.collect.android.storage.StoragePathProvider;
 import org.odk.collect.forms.Form;
 
 import java.io.File;

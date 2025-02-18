@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.actions;
+package org.espen.collect.android.support.actions;
 
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;

@@ -1,9 +1,9 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import org.odk.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.javarosawrapper.FormController
 import org.odk.collect.androidshared.data.getState
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance

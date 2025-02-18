@@ -1,7 +1,7 @@
-package org.odk.collect.android.javarosawrapper;
+package org.espen.collect.android.javarosawrapper;
 
-import org.odk.collect.android.formentry.audit.AuditConfig;
-import org.odk.collect.android.utilities.FormNameUtils;
+import org.espen.collect.android.formentry.audit.AuditConfig;
+import org.espen.collect.android.utilities.FormNameUtils;
 
 /**
  * OpenRosa metadata of a form instance.

@@ -13,17 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.feature.formentry
+package org.espen.collect.android.feature.formentry
 
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.support.pages.AccessControlPage
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.pages.ProjectSettingsPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.pages.AccessControlPage
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.pages.ProjectSettingsPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 class FormNavigationTest {
     var rule = CollectTestRule()

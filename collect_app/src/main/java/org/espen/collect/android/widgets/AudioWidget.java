@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -23,17 +23,17 @@ import android.view.View;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.audio.AudioControllerView;
-import org.odk.collect.android.databinding.AudioWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.utilities.QuestionMediaManager;
-import org.odk.collect.android.widgets.interfaces.FileWidget;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.AudioFileRequester;
-import org.odk.collect.android.widgets.utilities.AudioPlayer;
-import org.odk.collect.android.widgets.utilities.RecordingRequester;
-import org.odk.collect.android.widgets.utilities.RecordingStatusHandler;
+import org.espen.collect.android.audio.AudioControllerView;
+import org.espen.collect.android.databinding.AudioWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.widgets.interfaces.FileWidget;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.AudioFileRequester;
+import org.espen.collect.android.widgets.utilities.AudioPlayer;
+import org.espen.collect.android.widgets.utilities.RecordingRequester;
+import org.espen.collect.android.widgets.utilities.RecordingStatusHandler;
 import org.odk.collect.audioclips.Clip;
 
 import java.io.File;

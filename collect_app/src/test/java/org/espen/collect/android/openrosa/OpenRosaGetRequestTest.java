@@ -1,10 +1,10 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.odk.collect.android.rules.MockWebServerRule;
+import org.espen.collect.android.rules.MockWebServerRule;
 import org.odk.collect.shared.strings.Md5;
 
 import java.io.ByteArrayInputStream;

@@ -1,7 +1,7 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import org.javarosa.core.model.FormIndex;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.FormController;
 
 import java.util.function.Supplier;
 

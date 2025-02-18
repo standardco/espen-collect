@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import android.graphics.Canvas;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
 
-import org.odk.collect.android.adapters.RankingListAdapter;
+import org.espen.collect.android.adapters.RankingListAdapter;
 
 public class RankingItemTouchHelperCallback extends ItemTouchHelper.Callback {
 

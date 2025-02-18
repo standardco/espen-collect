@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formmanagement
+package org.espen.collect.android.feature.formmanagement
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
@@ -8,13 +8,13 @@ import org.hamcrest.Matchers.equalTo
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.R
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.ErrorPage
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.NotificationDrawerRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.R
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.ErrorPage
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.NotificationDrawerRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 class PreviouslyDownloadedOnlyTest {
 

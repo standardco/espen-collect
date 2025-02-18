@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.odk.collect.android.formhierarchy;
+package org.espen.collect.android.formhierarchy;
 
-import static org.odk.collect.android.javarosawrapper.FormIndexUtils.getPreviousLevel;
+import static org.espen.collect.android.javarosawrapper.FormIndexUtils.getPreviousLevel;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -45,29 +45,29 @@ import org.javarosa.form.api.FormEntryController;
 import org.javarosa.form.api.FormEntryModel;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.odk.collect.analytics.Analytics;
-import org.odk.collect.android.R;
-import org.odk.collect.android.activities.FormEntryViewModelFactory;
-import org.odk.collect.android.entities.EntitiesRepositoryProvider;
-import org.odk.collect.android.exception.JavaRosaException;
-import org.odk.collect.android.formentry.FormEntryViewModel;
-import org.odk.collect.android.formentry.FormSessionRepository;
-import org.odk.collect.android.formentry.ODKView;
-import org.odk.collect.android.formentry.repeats.DeleteRepeatDialogFragment;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.instancemanagement.InstancesDataService;
-import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.javarosawrapper.JavaRosaFormController;
-import org.odk.collect.android.projects.ProjectsDataService;
-import org.odk.collect.android.utilities.ApplicationConstants;
-import org.odk.collect.android.utilities.ChangeLockProvider;
-import org.odk.collect.android.utilities.CollectStrictMode;
-import org.odk.collect.android.utilities.FormEntryPromptUtils;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.HtmlUtils;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
-import org.odk.collect.android.utilities.MediaUtils;
-import org.odk.collect.android.utilities.SavepointsRepositoryProvider;
+import org.espen.collect.android.R;
+import org.espen.collect.android.activities.FormEntryViewModelFactory;
+import org.espen.collect.android.entities.EntitiesRepositoryProvider;
+import org.espen.collect.android.exception.JavaRosaException;
+import org.espen.collect.android.formentry.FormEntryViewModel;
+import org.espen.collect.android.formentry.FormSessionRepository;
+import org.espen.collect.android.formentry.ODKView;
+import org.espen.collect.android.formentry.repeats.DeleteRepeatDialogFragment;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.instancemanagement.InstancesDataService;
+import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.JavaRosaFormController;
+import org.espen.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.utilities.ApplicationConstants;
+import org.espen.collect.android.utilities.ChangeLockProvider;
+import org.espen.collect.android.utilities.CollectStrictMode;
+import org.espen.collect.android.utilities.FormEntryPromptUtils;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.HtmlUtils;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.utilities.SavepointsRepositoryProvider;
 import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder;
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard;

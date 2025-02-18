@@ -1,12 +1,12 @@
-package org.odk.collect.android.formhierarchy
+package org.espen.collect.android.formhierarchy
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.google.android.material.textview.MaterialTextView
-import org.odk.collect.android.R
-import org.odk.collect.android.utilities.HtmlUtils
+import org.espen.collect.android.R
+import org.espen.collect.android.utilities.HtmlUtils
 
 class HierarchyListItemView(context: Context, viewType: Int) : FrameLayout(context) {
     init {

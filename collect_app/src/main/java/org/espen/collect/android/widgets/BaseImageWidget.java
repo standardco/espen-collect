@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -34,12 +34,12 @@ import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.odk.collect.draw.DrawActivity;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.ApplicationConstants;
-import org.odk.collect.android.utilities.QuestionMediaManager;
-import org.odk.collect.android.widgets.interfaces.FileWidget;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.ApplicationConstants;
+import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.widgets.interfaces.FileWidget;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
 import org.odk.collect.imageloader.GlideImageLoader;
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.app.Dialog
 import android.content.Context
@@ -10,13 +10,13 @@ import android.view.View.VISIBLE
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.android.activities.AboutActivity
-import org.odk.collect.android.activities.ActivityUtils
-import org.odk.collect.android.databinding.ProjectSettingsDialogLayoutBinding
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.mainmenu.CurrentProjectViewModel
-import org.odk.collect.android.mainmenu.MainMenuActivity
-import org.odk.collect.android.preferences.screens.ProjectPreferencesActivity
+import org.espen.collect.android.activities.AboutActivity
+import org.espen.collect.android.activities.ActivityUtils
+import org.espen.collect.android.databinding.ProjectSettingsDialogLayoutBinding
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.mainmenu.CurrentProjectViewModel
+import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.androidshared.ui.ToastUtils
 import org.odk.collect.projects.Project

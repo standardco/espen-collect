@@ -12,17 +12,17 @@
  * the License.
  */
 
-package org.odk.collect.android.tasks;
+package org.espen.collect.android.tasks;
 
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import android.os.AsyncTask;
 
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.formmanagement.FormsDataService;
-import org.odk.collect.android.formmanagement.ServerFormDetails;
-import org.odk.collect.android.formmanagement.download.FormDownloadException;
-import org.odk.collect.android.listeners.DownloadFormsTaskListener;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.formmanagement.FormsDataService;
+import org.espen.collect.android.formmanagement.ServerFormDetails;
+import org.espen.collect.android.formmanagement.download.FormDownloadException;
+import org.espen.collect.android.listeners.DownloadFormsTaskListener;
 
 import java.util.ArrayList;
 import java.util.Map;

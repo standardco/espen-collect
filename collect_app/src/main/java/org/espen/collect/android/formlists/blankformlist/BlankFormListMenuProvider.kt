@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.view.Menu
 import android.view.MenuInflater
@@ -6,9 +6,9 @@ import android.view.MenuItem
 import androidx.activity.ComponentActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
-import org.odk.collect.android.R
-import org.odk.collect.android.formlists.sorting.FormListSortingBottomSheetDialog
-import org.odk.collect.android.formlists.sorting.FormListSortingOption
+import org.espen.collect.android.R
+import org.espen.collect.android.formlists.sorting.FormListSortingBottomSheetDialog
+import org.espen.collect.android.formlists.sorting.FormListSortingOption
 import org.odk.collect.androidshared.ui.ToastUtils
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 import org.odk.collect.async.network.NetworkStateProvider

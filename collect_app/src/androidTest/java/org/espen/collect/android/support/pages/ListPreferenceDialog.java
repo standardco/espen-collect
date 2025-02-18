@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 public class ListPreferenceDialog<T extends Page<T>> extends Page<ListPreferenceDialog<T>> {
 

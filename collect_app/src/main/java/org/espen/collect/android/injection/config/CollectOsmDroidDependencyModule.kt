@@ -1,6 +1,6 @@
-package org.odk.collect.android.injection.config
+package org.espen.collect.android.injection.config
 
-import org.odk.collect.android.geo.MapConfiguratorProvider
+import org.espen.collect.android.geo.MapConfiguratorProvider
 import org.odk.collect.location.LocationClient
 import org.odk.collect.maps.MapConfigurator
 import org.odk.collect.maps.layers.ReferenceLayerRepository

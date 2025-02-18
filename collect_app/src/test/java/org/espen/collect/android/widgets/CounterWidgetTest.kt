@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets
+package org.espen.collect.android.widgets
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -7,10 +7,10 @@ import org.javarosa.core.model.data.IntegerData
 import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.formentry.questions.QuestionDetails
-import org.odk.collect.android.widgets.CounterWidget.Companion.MAX_VALUE
-import org.odk.collect.android.widgets.base.QuestionWidgetTest
-import org.odk.collect.android.widgets.support.QuestionWidgetHelpers
+import org.espen.collect.android.formentry.questions.QuestionDetails
+import org.espen.collect.android.widgets.CounterWidget.Companion.MAX_VALUE
+import org.espen.collect.android.widgets.base.QuestionWidgetTest
+import org.espen.collect.android.widgets.support.QuestionWidgetHelpers
 
 class CounterWidgetTest : QuestionWidgetTest<CounterWidget, IAnswerData>() {
 

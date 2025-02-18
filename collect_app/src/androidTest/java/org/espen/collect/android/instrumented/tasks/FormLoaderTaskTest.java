@@ -1,4 +1,4 @@
-package org.odk.collect.android.instrumented.tasks;
+package org.espen.collect.android.instrumented.tasks;
 
 import static org.mockito.Mockito.mock;
 
@@ -14,17 +14,17 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.external.FormsContract;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.injection.config.AppDependencyComponent;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.support.StorageUtils;
-import org.odk.collect.android.support.rules.RunnableRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
-import org.odk.collect.android.tasks.FormLoaderTask;
-import org.odk.collect.android.tasks.FormLoaderTask.FormEntryControllerFactory;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.external.FormsContract;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.injection.config.AppDependencyComponent;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.support.StorageUtils;
+import org.espen.collect.android.support.rules.RunnableRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.tasks.FormLoaderTask;
+import org.espen.collect.android.tasks.FormLoaderTask.FormEntryControllerFactory;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
 import org.odk.collect.forms.Form;
 import org.odk.collect.projects.Project;
 

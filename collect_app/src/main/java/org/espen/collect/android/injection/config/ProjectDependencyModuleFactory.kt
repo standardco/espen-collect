@@ -1,13 +1,13 @@
-package org.odk.collect.android.injection.config
+package org.espen.collect.android.injection.config
 
-import org.odk.collect.android.entities.EntitiesRepositoryProvider
-import org.odk.collect.android.formmanagement.FormSourceProvider
-import org.odk.collect.android.projects.ProjectDependencyModule
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.utilities.ChangeLockProvider
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.android.utilities.SavepointsRepositoryProvider
+import org.espen.collect.android.entities.EntitiesRepositoryProvider
+import org.espen.collect.android.formmanagement.FormSourceProvider
+import org.espen.collect.android.projects.ProjectDependencyModule
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.utilities.SavepointsRepositoryProvider
 import org.odk.collect.projects.ProjectDependencyFactory
 import org.odk.collect.settings.SettingsProvider
 import javax.inject.Inject

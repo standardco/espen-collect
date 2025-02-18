@@ -12,11 +12,11 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
 import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
-import static org.odk.collect.android.utilities.ApplicationConstants.RequestCodes;
+import static org.espen.collect.android.utilities.ApplicationConstants.RequestCodes;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,14 +26,14 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.databinding.AnnotateWidgetBinding;
+import org.espen.collect.android.databinding.AnnotateWidgetBinding;
 import org.odk.collect.draw.DrawActivity;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.utilities.FileUtils;
-import org.odk.collect.android.utilities.QuestionMediaManager;
-import org.odk.collect.android.widgets.utilities.ImageCaptureIntentCreator;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.widgets.utilities.ImageCaptureIntentCreator;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.odk.collect.androidshared.ui.ToastUtils;
 import java.io.File;
 import java.util.Locale;

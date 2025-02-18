@@ -1,7 +1,7 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.net.Uri
-import org.odk.collect.android.external.FormsContract
+import org.espen.collect.android.external.FormsContract
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.InstancesRepository
 

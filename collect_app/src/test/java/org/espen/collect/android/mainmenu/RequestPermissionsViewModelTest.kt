@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import android.Manifest.permission.POST_NOTIFICATIONS
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -15,7 +15,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/audio_recording_controller"
-            android:name="org.odk.collect.android.audio.AudioRecordingControllerFragment"
+            android:name="org.espen.collect.android.audio.AudioRecordingControllerFragment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toBottomOf="@id/audio_recording_controller"
             app:layout_constraintBottom_toTopOf="@id/buttonholder"/>
 
-        <org.odk.collect.android.views.TransparentProgressScreen
+        <org.espen.collect.android.views.TransparentProgressScreen
             android:id="@+id/loading_screen"
             android:layout_width="0dp"
             android:layout_height="0dp"

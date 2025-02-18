@@ -1,4 +1,4 @@
-package org.odk.collect.android.fastexternalitemset;
+package org.espen.collect.android.fastexternalitemset;
 
 import org.javarosa.xpath.expr.XPathExpression;
 import org.javarosa.xpath.parser.Lexer;

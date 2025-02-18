@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.views;
+package org.espen.collect.android.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -21,7 +21,7 @@ import android.widget.Checkable;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 
 public class TwoItemMultipleChoiceView extends ConstraintLayout implements Checkable {
 

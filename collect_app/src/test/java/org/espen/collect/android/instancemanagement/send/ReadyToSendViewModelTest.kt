@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement.send
+package org.espen.collect.android.instancemanagement.send
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.espresso.matcher.ViewMatchers.assertThat

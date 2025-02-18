@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.adapters;
+package org.espen.collect.android.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -30,12 +30,12 @@ import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.R;
-import org.odk.collect.android.audio.AudioHelper;
-import org.odk.collect.android.formentry.questions.AudioVideoImageTextLabel;
-import org.odk.collect.android.formentry.questions.NoButtonsItem;
-import org.odk.collect.android.listeners.SelectItemClickListener;
-import org.odk.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.audio.AudioHelper;
+import org.espen.collect.android.formentry.questions.AudioVideoImageTextLabel;
+import org.espen.collect.android.formentry.questions.NoButtonsItem;
+import org.espen.collect.android.listeners.SelectItemClickListener;
+import org.espen.collect.android.utilities.MediaUtils;
 import org.odk.collect.imageloader.GlideImageLoader;
 
 import java.util.ArrayList;

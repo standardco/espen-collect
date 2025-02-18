@@ -1,10 +1,10 @@
-package org.odk.collect.android.backgroundwork
+package org.espen.collect.android.backgroundwork
 
 import android.content.Context
 import androidx.work.BackoffPolicy
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.formmanagement.FormsDataService
-import org.odk.collect.android.injection.DaggerUtils
+import org.espen.collect.android.formmanagement.FormsDataService
+import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.async.TaskSpec
 import java.util.function.Supplier
 import javax.inject.Inject

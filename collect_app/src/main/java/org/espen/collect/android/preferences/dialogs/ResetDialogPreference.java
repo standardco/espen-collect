@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.preferences.dialogs;
+package org.espen.collect.android.preferences.dialogs;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
 import androidx.preference.DialogPreference;
 
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 
 public class ResetDialogPreference extends DialogPreference {
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import android.app.Activity;
 
@@ -8,7 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 import org.odk.collect.testshared.RobolectricHelpers;
 
 import static org.hamcrest.MatcherAssert.assertThat;

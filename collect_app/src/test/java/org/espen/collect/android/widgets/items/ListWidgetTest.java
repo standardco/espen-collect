@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.view.View;
 import android.widget.RadioButton;
@@ -6,9 +6,9 @@ import android.widget.RadioButton;
 import androidx.annotation.NonNull;
 
 import org.junit.Test;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.widgets.base.GeneralSelectOneWidgetTest;
-import org.odk.collect.android.widgets.support.FormEntryPromptSelectChoiceLoader;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.widgets.base.GeneralSelectOneWidgetTest;
+import org.espen.collect.android.widgets.support.FormEntryPromptSelectChoiceLoader;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

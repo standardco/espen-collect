@@ -63,7 +63,7 @@
         android:visibility="gone"
         tools:visibility="visible">
 
-        <org.odk.collect.android.audio.AudioButton
+        <org.espen.collect.android.audio.AudioButton
             android:id="@+id/audioButton"
             style="?materialIconButtonOutlinedStyle"
             android:layout_width="@dimen/touch_target_size"

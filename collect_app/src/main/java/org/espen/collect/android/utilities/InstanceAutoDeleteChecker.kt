@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.instances.Instance

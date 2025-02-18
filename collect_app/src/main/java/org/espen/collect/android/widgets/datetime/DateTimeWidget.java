@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets.datetime;
+package org.espen.collect.android.widgets.datetime;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,12 +26,12 @@ import org.javarosa.core.model.data.TimeData;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
-import org.odk.collect.android.databinding.DateTimeWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.databinding.DateTimeWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 /**
  * Displays a DatePicker widget. DateWidget handles leap years and does not allow dates that do not

@@ -1,7 +1,7 @@
-package org.odk.collect.android.preferences.dialogs;
+package org.espen.collect.android.preferences.dialogs;
 
-import static org.odk.collect.android.fragments.dialogs.ResetSettingsResultDialog.RESET_SETTINGS_RESULT_DIALOG_TAG;
-import static org.odk.collect.android.projects.ProjectResetter.ResetAction.RESET_PREFERENCES;
+import static org.espen.collect.android.fragments.dialogs.ResetSettingsResultDialog.RESET_SETTINGS_RESULT_DIALOG_TAG;
+import static org.espen.collect.android.projects.ProjectResetter.ResetAction.RESET_PREFERENCES;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,11 +15,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.preference.PreferenceDialogFragmentCompat;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.fragments.dialogs.ResetSettingsResultDialog;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.preferences.screens.ProjectPreferencesActivity;
-import org.odk.collect.android.projects.ProjectResetter;
+import org.espen.collect.android.R;
+import org.espen.collect.android.fragments.dialogs.ResetSettingsResultDialog;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity;
+import org.espen.collect.android.projects.ProjectResetter;
 import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 
 import java.util.ArrayList;

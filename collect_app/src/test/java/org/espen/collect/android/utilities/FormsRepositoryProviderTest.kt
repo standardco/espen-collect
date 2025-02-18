@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -8,7 +8,7 @@ import org.hamcrest.Matchers.startsWith
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
-import org.odk.collect.android.storage.StoragePaths
+import org.espen.collect.android.storage.StoragePaths
 import org.odk.collect.formstest.FormUtils.buildForm
 import org.odk.collect.shared.TempFiles.createTempDir
 

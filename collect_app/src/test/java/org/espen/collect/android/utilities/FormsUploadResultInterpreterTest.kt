@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -7,8 +7,8 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.upload.FormUploadException
+import org.espen.collect.android.R
+import org.espen.collect.android.upload.FormUploadException
 import org.odk.collect.forms.instances.Instance
 
 @RunWith(AndroidJUnit4::class)

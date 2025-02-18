@@ -12,14 +12,14 @@
  * the License.
  */
 
-package org.odk.collect.android.instancemanagement.send;
+package org.espen.collect.android.instancemanagement.send;
 
-import static org.odk.collect.android.activities.AppListActivity.LOADER_ID;
-import static org.odk.collect.android.activities.AppListActivity.toggleButtonLabel;
-import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_ASC;
-import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_DESC;
-import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_ASC;
-import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_DESC;
+import static org.espen.collect.android.activities.AppListActivity.LOADER_ID;
+import static org.espen.collect.android.activities.AppListActivity.toggleButtonLabel;
+import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_ASC;
+import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_DESC;
+import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_ASC;
+import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_DESC;
 import static org.odk.collect.lists.selects.MultiSelectViewModelKt.updateSelectAll;
 
 import android.content.Intent;
@@ -47,21 +47,21 @@ import androidx.work.WorkManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.adapters.InstanceUploaderAdapter;
-import org.odk.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler;
-import org.odk.collect.android.backgroundwork.InstanceSubmitScheduler;
-import org.odk.collect.android.dao.CursorLoaderFactory;
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
-import org.odk.collect.android.databinding.InstanceUploaderListBinding;
-import org.odk.collect.android.formlists.sorting.FormListSortingBottomSheetDialog;
-import org.odk.collect.android.formlists.sorting.FormListSortingOption;
-import org.odk.collect.android.formmanagement.FormFillingIntentFactory;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.mainmenu.MainMenuActivity;
-import org.odk.collect.android.preferences.screens.ProjectPreferencesActivity;
-import org.odk.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.R;
+import org.espen.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.adapters.InstanceUploaderAdapter;
+import org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler;
+import org.espen.collect.android.backgroundwork.InstanceSubmitScheduler;
+import org.espen.collect.android.dao.CursorLoaderFactory;
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
+import org.espen.collect.android.databinding.InstanceUploaderListBinding;
+import org.espen.collect.android.formlists.sorting.FormListSortingBottomSheetDialog;
+import org.espen.collect.android.formlists.sorting.FormListSortingOption;
+import org.espen.collect.android.formmanagement.FormFillingIntentFactory;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.mainmenu.MainMenuActivity;
+import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity;
+import org.espen.collect.android.projects.ProjectsDataService;
 import org.odk.collect.androidshared.ui.MenuExtKt;
 import org.odk.collect.androidshared.ui.ObviousProgressBar;
 import org.odk.collect.androidshared.ui.ToastUtils;

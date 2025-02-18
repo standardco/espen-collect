@@ -1,13 +1,13 @@
-package org.odk.collect.android.notifications.builders
+package org.espen.collect.android.notifications.builders
 
 import android.app.Application
 import android.app.Notification
 import androidx.core.app.NotificationCompat
-import org.odk.collect.android.R
-import org.odk.collect.android.notifications.NotificationManagerNotifier
-import org.odk.collect.android.notifications.NotificationUtils
-import org.odk.collect.android.upload.FormUploadException
-import org.odk.collect.android.utilities.FormsUploadResultInterpreter
+import org.espen.collect.android.R
+import org.espen.collect.android.notifications.NotificationManagerNotifier
+import org.espen.collect.android.notifications.NotificationUtils
+import org.espen.collect.android.upload.FormUploadException
+import org.espen.collect.android.utilities.FormsUploadResultInterpreter
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.strings.localization.getLocalizedString
 

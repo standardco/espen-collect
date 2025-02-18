@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
 import android.app.Activity
 import android.content.Intent
@@ -9,10 +9,10 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.utilities.ApplicationConstants
-import org.odk.collect.android.widgets.support.FakeWaitingForDataRegistry
-import org.odk.collect.android.widgets.support.QuestionWidgetHelpers
+import org.espen.collect.android.R
+import org.espen.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.widgets.support.FakeWaitingForDataRegistry
+import org.espen.collect.android.widgets.support.QuestionWidgetHelpers
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.androidshared.system.IntentLauncherImpl
 import org.odk.collect.testshared.ErrorIntentLauncher

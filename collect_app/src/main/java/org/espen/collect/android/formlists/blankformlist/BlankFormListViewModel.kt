@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -10,7 +10,7 @@ import androidx.lifecycle.map
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
-import org.odk.collect.android.formmanagement.FormsDataService
+import org.espen.collect.android.formmanagement.FormsDataService
 import org.odk.collect.async.Scheduler
 import org.odk.collect.async.flowOnBackground
 import org.odk.collect.forms.Form

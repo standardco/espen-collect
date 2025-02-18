@@ -1,4 +1,4 @@
-package org.odk.collect.android.database;
+package org.espen.collect.android.database;
 
 public final class DatabaseConstants {
 

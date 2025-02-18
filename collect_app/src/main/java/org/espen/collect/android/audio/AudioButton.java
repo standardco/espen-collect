@@ -12,13 +12,13 @@
  * the License.
  */
 
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickSafeMaterialButton;
 
 /**

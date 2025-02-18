@@ -1,9 +1,9 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import org.odk.collect.android.databinding.BlankFormListItemBinding
+import org.espen.collect.android.databinding.BlankFormListItemBinding
 import org.odk.collect.strings.R.string
 import timber.log.Timber
 import java.text.SimpleDateFormat

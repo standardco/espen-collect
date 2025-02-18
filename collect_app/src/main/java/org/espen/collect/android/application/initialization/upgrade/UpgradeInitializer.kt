@@ -1,13 +1,13 @@
-package org.odk.collect.android.application.initialization.upgrade
+package org.espen.collect.android.application.initialization.upgrade
 
 import android.content.Context
-import org.odk.collect.android.BuildConfig
-import org.odk.collect.android.application.initialization.CachedFormsCleaner
-import org.odk.collect.android.application.initialization.ExistingProjectMigrator
-import org.odk.collect.android.application.initialization.ExistingSettingsMigrator
-import org.odk.collect.android.application.initialization.GoogleDriveProjectsDeleter
-import org.odk.collect.android.application.initialization.SavepointsImporter
-import org.odk.collect.android.application.initialization.ScheduledWorkUpgrade
+import org.espen.collect.android.BuildConfig
+import org.espen.collect.android.application.initialization.CachedFormsCleaner
+import org.espen.collect.android.application.initialization.ExistingProjectMigrator
+import org.espen.collect.android.application.initialization.ExistingSettingsMigrator
+import org.espen.collect.android.application.initialization.GoogleDriveProjectsDeleter
+import org.espen.collect.android.application.initialization.SavepointsImporter
+import org.espen.collect.android.application.initialization.ScheduledWorkUpgrade
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.MetaKeys
 import org.odk.collect.upgrade.AppUpgrader

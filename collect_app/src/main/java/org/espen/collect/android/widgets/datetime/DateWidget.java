@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets.datetime;
+package org.espen.collect.android.widgets.datetime;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -24,12 +24,12 @@ import org.javarosa.core.model.data.DateData;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.joda.time.LocalDateTime;
-import org.odk.collect.android.databinding.DateWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.databinding.DateWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 @SuppressLint("ViewConstructor")
 public class DateWidget extends QuestionWidget implements WidgetDataReceiver {

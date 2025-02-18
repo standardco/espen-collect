@@ -1,16 +1,16 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import android.content.Context
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeResult
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.activities.ActivityUtils
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.fragments.BarCodeScannerFragment
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.mainmenu.MainMenuActivity
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.activities.ActivityUtils
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.fragments.BarCodeScannerFragment
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.storage.StoragePathProvider
 import org.odk.collect.androidshared.ui.ToastUtils.showLongToast
 import org.odk.collect.androidshared.utils.CompressionUtils
 import org.odk.collect.settings.ODKAppSettingsImporter

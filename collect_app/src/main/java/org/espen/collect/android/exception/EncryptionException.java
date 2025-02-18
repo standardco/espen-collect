@@ -16,7 +16,7 @@
  * the License.
  */
 
-package org.odk.collect.android.exception;
+package org.espen.collect.android.exception;
 
 /**
  * Author: Meletis Margaritis

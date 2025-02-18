@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
@@ -9,9 +9,9 @@ import org.mockito.invocation.InvocationOnMock
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.stubbing.Answer
-import org.odk.collect.android.formmanagement.download.FormDownloadException
-import org.odk.collect.android.formmanagement.download.FormDownloader
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.formmanagement.download.FormDownloadException
+import org.espen.collect.android.formmanagement.download.FormDownloader
+import org.espen.collect.android.utilities.FileUtils
 import org.odk.collect.entities.storage.InMemEntitiesRepository
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.FormSource

@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -7,9 +7,9 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.formmanagement.ServerFormDetails
-import org.odk.collect.android.formmanagement.download.FormDownloadException
-import org.odk.collect.android.formmanagement.download.FormDownloadExceptionMapper
+import org.espen.collect.android.formmanagement.ServerFormDetails
+import org.espen.collect.android.formmanagement.download.FormDownloadException
+import org.espen.collect.android.formmanagement.download.FormDownloadExceptionMapper
 
 @RunWith(AndroidJUnit4::class)
 class FormsDownloadResultInterpreterTest {

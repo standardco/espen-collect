@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.formhierarchy
+package org.espen.collect.android.formhierarchy
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

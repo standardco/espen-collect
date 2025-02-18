@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement
+package org.espen.collect.android.instancemanagement
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,8 +10,8 @@ import org.hamcrest.Matchers.equalTo
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.FormChooserListItemBinding
+import org.espen.collect.android.R
+import org.espen.collect.android.databinding.FormChooserListItemBinding
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.formstest.InstanceFixtures
 

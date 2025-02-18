@@ -1,10 +1,10 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import com.google.zxing.WriterException
 import org.json.JSONException
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.utilities.FileUtils
 import org.odk.collect.androidshared.bitmap.ImageFileUtils
 import org.odk.collect.qrcode.QRCodeCreator
 import org.odk.collect.qrcode.QRCodeDecoder

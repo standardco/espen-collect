@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.adapters;
+package org.espen.collect.android.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -22,10 +22,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SimpleCursorAdapter;
 
-import org.odk.collect.android.database.DatabaseObjectMapper;
-import org.odk.collect.android.instancemanagement.InstanceListItemView;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.database.DatabaseObjectMapper;
+import org.espen.collect.android.instancemanagement.InstanceListItemView;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
 import org.odk.collect.forms.instances.Instance;
 
 public class InstanceListCursorAdapter extends SimpleCursorAdapter {

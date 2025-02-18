@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.odk.collect.android.tasks;
+package org.espen.collect.android.tasks;
 
-import static org.odk.collect.android.analytics.AnalyticsEvents.ENCRYPT_SUBMISSION;
+import static org.espen.collect.android.analytics.AnalyticsEvents.ENCRYPT_SUBMISSION;
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import android.content.ContentValues;
@@ -39,23 +39,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.odk.collect.analytics.Analytics;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
-import org.odk.collect.android.exception.EncryptionException;
-import org.odk.collect.android.external.InstancesContract;
-import org.odk.collect.android.formentry.FormEntryUseCases;
-import org.odk.collect.android.formentry.saving.FormSaver;
-import org.odk.collect.android.javarosawrapper.FailedValidationResult;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.javarosawrapper.ValidationResult;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.utilities.ContentUriHelper;
-import org.odk.collect.android.utilities.EncryptionUtils;
-import org.odk.collect.android.utilities.EncryptionUtils.EncryptedFormInformation;
-import org.odk.collect.android.utilities.FileUtils;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
+import org.espen.collect.android.exception.EncryptionException;
+import org.espen.collect.android.external.InstancesContract;
+import org.espen.collect.android.formentry.FormEntryUseCases;
+import org.espen.collect.android.formentry.saving.FormSaver;
+import org.espen.collect.android.javarosawrapper.FailedValidationResult;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.ValidationResult;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.utilities.ContentUriHelper;
+import org.espen.collect.android.utilities.EncryptionUtils;
+import org.espen.collect.android.utilities.EncryptionUtils.EncryptedFormInformation;
+import org.espen.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.MediaUtils;
 import org.odk.collect.entities.storage.EntitiesRepository;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.instances.Instance;

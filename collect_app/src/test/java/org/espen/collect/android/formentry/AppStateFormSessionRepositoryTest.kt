@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider

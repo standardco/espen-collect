@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,12 +26,12 @@ import androidx.core.content.ContextCompat;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.R;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.views.WidgetAnswerText;
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
-import org.odk.collect.android.widgets.utilities.StringWidgetUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.views.WidgetAnswerText;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
 
 /**
  * The most basic widget that allows for entry of any text.

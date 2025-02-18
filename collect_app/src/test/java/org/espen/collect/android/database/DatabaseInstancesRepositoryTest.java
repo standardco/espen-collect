@@ -12,13 +12,13 @@
  * the License.
  */
 
-package org.odk.collect.android.database;
+package org.espen.collect.android.database;
 
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.runner.RunWith;
-import org.odk.collect.android.database.instances.DatabaseInstancesRepository;
+import org.espen.collect.android.database.instances.DatabaseInstancesRepository;
 import org.odk.collect.forms.instances.InstancesRepository;
 import org.odk.collect.formstest.InstancesRepositoryTest;
 import org.odk.collect.shared.TempFiles;

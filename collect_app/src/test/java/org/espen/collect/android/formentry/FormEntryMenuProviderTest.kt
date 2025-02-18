@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
@@ -15,15 +15,15 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.TestSettingsProvider.getSettingsProvider
-import org.odk.collect.android.formentry.FormEntryMenuProvider.FormEntryMenuClickListener
-import org.odk.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel
-import org.odk.collect.android.formentry.questions.AnswersProvider
-import org.odk.collect.android.formhierarchy.FormHierarchyActivity
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.preferences.screens.ProjectPreferencesActivity
-import org.odk.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.R
+import org.espen.collect.android.TestSettingsProvider.getSettingsProvider
+import org.espen.collect.android.formentry.FormEntryMenuProvider.FormEntryMenuClickListener
+import org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel
+import org.espen.collect.android.formentry.questions.AnswersProvider
+import org.espen.collect.android.formhierarchy.FormHierarchyActivity
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity
+import org.espen.collect.android.utilities.ApplicationConstants
 import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
 import org.odk.collect.audiorecorder.recording.AudioRecorder
 import org.odk.collect.settings.keys.ProtectedProjectKeys

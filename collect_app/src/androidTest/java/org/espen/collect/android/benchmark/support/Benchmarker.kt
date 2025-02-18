@@ -1,8 +1,8 @@
-package org.odk.collect.android.benchmark.support
+package org.espen.collect.android.benchmark.support
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.lessThan
-import org.odk.collect.android.support.pages.Page
+import org.espen.collect.android.support.pages.Page
 import org.odk.collect.shared.TimeInMs
 
 class Benchmarker {

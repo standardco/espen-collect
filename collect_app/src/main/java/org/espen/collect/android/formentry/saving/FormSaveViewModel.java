@@ -1,8 +1,8 @@
-package org.odk.collect.android.formentry.saving;
+package org.espen.collect.android.formentry.saving;
 
-import static org.odk.collect.android.tasks.SaveFormToDisk.SAVED;
-import static org.odk.collect.android.tasks.SaveFormToDisk.SAVED_AND_EXIT;
-import static org.odk.collect.android.tasks.SaveFormToDisk.SAVE_ERROR;
+import static org.espen.collect.android.tasks.SaveFormToDisk.SAVED;
+import static org.espen.collect.android.tasks.SaveFormToDisk.SAVED_AND_EXIT;
+import static org.espen.collect.android.tasks.SaveFormToDisk.SAVE_ERROR;
 import static org.odk.collect.shared.strings.StringUtils.isBlank;
 
 import android.net.Uri;
@@ -17,20 +17,20 @@ import androidx.lifecycle.ViewModel;
 
 import org.apache.commons.io.IOUtils;
 import org.javarosa.form.api.FormEntryController;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.dao.helpers.InstancesDaoHelper;
-import org.odk.collect.android.dynamicpreload.ExternalDataManager;
-import org.odk.collect.android.formentry.FormSession;
-import org.odk.collect.android.formentry.audit.AuditEvent;
-import org.odk.collect.android.formentry.audit.AuditUtils;
-import org.odk.collect.android.instancemanagement.InstancesDataService;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.projects.ProjectsDataService;
-import org.odk.collect.android.tasks.SaveFormToDisk;
-import org.odk.collect.android.tasks.SaveToDiskResult;
-import org.odk.collect.android.utilities.FileUtils;
-import org.odk.collect.android.utilities.MediaUtils;
-import org.odk.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.dao.helpers.InstancesDaoHelper;
+import org.espen.collect.android.dynamicpreload.ExternalDataManager;
+import org.espen.collect.android.formentry.FormSession;
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.formentry.audit.AuditUtils;
+import org.espen.collect.android.instancemanagement.InstancesDataService;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.tasks.SaveFormToDisk;
+import org.espen.collect.android.tasks.SaveToDiskResult;
+import org.espen.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.utilities.QuestionMediaManager;
 import org.odk.collect.androidshared.livedata.LiveDataUtils;
 import org.odk.collect.async.Cancellable;
 import org.odk.collect.async.Scheduler;
@@ -42,7 +42,7 @@ import org.odk.collect.forms.instances.InstancesRepository;
 import org.odk.collect.forms.savepoints.SavepointsRepository;
 import org.odk.collect.material.MaterialProgressDialogFragment;
 import org.odk.collect.shared.strings.Md5;
-import org.odk.collect.utilities.Result;
+import org.espen.collect.utilities.Result;
 
 import java.io.File;
 import java.io.FileInputStream;

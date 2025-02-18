@@ -1,16 +1,16 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import android.os.Build
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
-import org.odk.collect.android.R
-import org.odk.collect.android.activities.ActivityUtils
-import org.odk.collect.android.activities.CrashHandlerActivity
-import org.odk.collect.android.activities.FirstLaunchActivity
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.projects.ProjectSettingsDialog
-import org.odk.collect.android.utilities.ThemeUtils
+import org.espen.collect.android.R
+import org.espen.collect.android.activities.ActivityUtils
+import org.espen.collect.android.activities.CrashHandlerActivity
+import org.espen.collect.android.activities.FirstLaunchActivity
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.projects.ProjectSettingsDialog
+import org.espen.collect.android.utilities.ThemeUtils
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.crashhandler.CrashHandler
 import org.odk.collect.permissions.PermissionsProvider

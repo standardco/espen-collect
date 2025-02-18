@@ -1,12 +1,12 @@
-package org.odk.collect.android.feature.formentry.dynamicpreload;
+package org.espen.collect.android.feature.formentry.dynamicpreload;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.support.rules.FormEntryActivityTestRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.support.rules.FormEntryActivityTestRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 
 import java.util.Collections;
 

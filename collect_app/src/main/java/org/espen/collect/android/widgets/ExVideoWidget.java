@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -8,15 +8,15 @@ import android.view.View;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.databinding.ExVideoWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.ApplicationConstants;
-import org.odk.collect.android.utilities.FileUtils;
-import org.odk.collect.android.utilities.QuestionMediaManager;
-import org.odk.collect.android.widgets.interfaces.FileWidget;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.FileRequester;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.databinding.ExVideoWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.ApplicationConstants;
+import org.espen.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.widgets.interfaces.FileWidget;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.FileRequester;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.odk.collect.androidshared.ui.ToastUtils;
 
 import java.io.File;

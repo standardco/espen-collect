@@ -1,10 +1,10 @@
-package org.odk.collect.android.formentry.audit;
+package org.espen.collect.android.formentry.audit;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.FormController;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;

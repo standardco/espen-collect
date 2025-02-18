@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.app.Application
 import android.content.Context
@@ -14,16 +14,16 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.preferences.Defaults
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.ChangeLockProvider
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.android.utilities.SavepointsRepositoryProvider
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.preferences.Defaults
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.utilities.SavepointsRepositoryProvider
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.forms.savepoints.Savepoint

@@ -1,4 +1,4 @@
-package org.odk.collect.utilities;
+package org.espen.collect.utilities;
 
 public interface UserAgentProvider {
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.hamcrest.MatcherAssert.assertThat
@@ -9,8 +9,8 @@ import org.mockito.Mockito.verify
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.application.initialization.AnalyticsInitializer
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.application.initialization.AnalyticsInitializer
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.projects.Project
 
 class CurrentProjectViewModelTest {

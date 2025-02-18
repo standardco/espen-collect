@@ -1,6 +1,6 @@
-package org.odk.collect.android.geo
+package org.espen.collect.android.geo
 
-import org.odk.collect.android.application.MapboxClassInstanceCreator
+import org.espen.collect.android.application.MapboxClassInstanceCreator
 import org.odk.collect.googlemaps.GoogleMapFragment
 import org.odk.collect.maps.MapFragment
 import org.odk.collect.maps.MapFragmentFactory

@@ -1,7 +1,7 @@
-package org.odk.collect.android.preferences.dialogs
+package org.espen.collect.android.preferences.dialogs
 
 import android.content.Context
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.material.MaterialProgressDialogFragment
 import org.odk.collect.strings.localization.getLocalizedString
 

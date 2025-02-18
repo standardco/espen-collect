@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items
+package org.espen.collect.android.widgets.items
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -12,13 +12,13 @@ import org.javarosa.core.model.data.IAnswerData
 import org.javarosa.core.model.data.SelectOneData
 import org.javarosa.core.model.data.helper.Selection
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.databinding.SelectOneFromMapWidgetAnswerBinding
-import org.odk.collect.android.formentry.questions.QuestionDetails
-import org.odk.collect.android.listeners.AdvanceToNextListener
-import org.odk.collect.android.widgets.QuestionWidget
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver
-import org.odk.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_FORM_INDEX
-import org.odk.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_SELECTED_INDEX
+import org.espen.collect.android.databinding.SelectOneFromMapWidgetAnswerBinding
+import org.espen.collect.android.formentry.questions.QuestionDetails
+import org.espen.collect.android.listeners.AdvanceToNextListener
+import org.espen.collect.android.widgets.QuestionWidget
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver
+import org.espen.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_FORM_INDEX
+import org.espen.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_SELECTED_INDEX
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.permissions.PermissionListener
 

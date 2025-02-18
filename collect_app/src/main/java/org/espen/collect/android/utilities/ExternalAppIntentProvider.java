@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -6,9 +6,9 @@ import android.net.Uri;
 
 import org.javarosa.form.api.FormEntryPrompt;
 import org.javarosa.xpath.parser.XPathSyntaxException;
-import org.odk.collect.android.exception.ExternalParamsException;
-import org.odk.collect.android.dynamicpreload.ExternalAppsUtils;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.exception.ExternalParamsException;
+import org.espen.collect.android.dynamicpreload.ExternalAppsUtils;
+import org.espen.collect.android.javarosawrapper.FormController;
 
 import java.util.Map;
 

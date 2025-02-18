@@ -1,4 +1,4 @@
-package org.odk.collect.android.geo;
+package org.espen.collect.android.geo;
 
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_CARTO;
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_GOOGLE;
@@ -17,11 +17,11 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.maps.GoogleMap;
 
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.application.MapboxClassInstanceCreator;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.application.MapboxClassInstanceCreator;
 import org.odk.collect.googlemaps.GoogleMapConfigurator;
 import org.odk.collect.googlemaps.GoogleMapConfigurator.GoogleMapTypeOption;
-import org.odk.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.injection.DaggerUtils;
 import org.odk.collect.maps.MapConfigurator;
 import org.odk.collect.osmdroid.OsmDroidMapConfigurator;
 import org.odk.collect.osmdroid.OsmDroidMapConfigurator.WmsOption;

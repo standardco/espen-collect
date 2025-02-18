@@ -1,8 +1,8 @@
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
-import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.mainmenu.MainMenuActivity
 import org.odk.collect.crashhandler.CrashHandler
 import org.odk.collect.strings.localization.LocalizedActivity
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.activities;
+package org.espen.collect.android.activities;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -32,11 +32,11 @@ import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.MenuItemCompat;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
-import org.odk.collect.android.formlists.sorting.FormListSortingBottomSheetDialog;
-import org.odk.collect.android.formlists.sorting.FormListSortingOption;
-import org.odk.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
+import org.espen.collect.android.formlists.sorting.FormListSortingBottomSheetDialog;
+import org.espen.collect.android.formlists.sorting.FormListSortingOption;
+import org.espen.collect.android.injection.DaggerUtils;
 import org.odk.collect.androidshared.ui.ObviousProgressBar;
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
 import org.odk.collect.settings.SettingsProvider;

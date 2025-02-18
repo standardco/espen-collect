@@ -1,7 +1,7 @@
-package org.odk.collect.android.database.itemsets
+package org.espen.collect.android.database.itemsets
 
-import org.odk.collect.android.fastexternalitemset.ItemsetDbAdapter
-import org.odk.collect.android.itemsets.FastExternalItemsetsRepository
+import org.espen.collect.android.fastexternalitemset.ItemsetDbAdapter
+import org.espen.collect.android.itemsets.FastExternalItemsetsRepository
 
 class DatabaseFastExternalItemsetsRepository : FastExternalItemsetsRepository {
 

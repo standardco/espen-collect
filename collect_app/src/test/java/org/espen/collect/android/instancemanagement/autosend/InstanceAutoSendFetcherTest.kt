@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement.autosend
+package org.espen.collect.android.instancemanagement.autosend
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat

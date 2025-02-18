@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.source
+package org.espen.collect.android.preferences.source
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4

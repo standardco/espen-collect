@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -18,10 +18,10 @@ import org.javarosa.core.model.instance.TreeReference;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.odk.collect.android.audio.AudioFileAppender;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.utilities.StubFormController;
-import org.odk.collect.android.widgets.support.FakeQuestionMediaManager;
+import org.espen.collect.android.audio.AudioFileAppender;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.utilities.StubFormController;
+import org.espen.collect.android.widgets.support.FakeQuestionMediaManager;
 import org.odk.collect.androidtest.FakeLifecycleOwner;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.RecordingSession;

@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.view.View;
 import android.widget.CheckBox;
@@ -8,11 +8,11 @@ import androidx.annotation.NonNull;
 
 import org.javarosa.core.model.SelectChoice;
 import org.junit.Test;
-import org.odk.collect.android.R;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.widgets.base.GeneralSelectMultiWidgetTest;
-import org.odk.collect.android.widgets.support.FormEntryPromptSelectChoiceLoader;
+import org.espen.collect.android.R;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.widgets.base.GeneralSelectMultiWidgetTest;
+import org.espen.collect.android.widgets.support.FormEntryPromptSelectChoiceLoader;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;

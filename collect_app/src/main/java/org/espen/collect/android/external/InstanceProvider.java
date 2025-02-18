@@ -12,13 +12,13 @@
  * the License.
  */
 
-package org.odk.collect.android.external;
+package org.espen.collect.android.external;
 
-import static org.odk.collect.android.database.DatabaseObjectMapper.getInstanceFromValues;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns._ID;
-import static org.odk.collect.android.external.InstancesContract.CONTENT_ITEM_TYPE;
-import static org.odk.collect.android.external.InstancesContract.CONTENT_TYPE;
-import static org.odk.collect.android.external.InstancesContract.getUri;
+import static org.espen.collect.android.database.DatabaseObjectMapper.getInstanceFromValues;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns._ID;
+import static org.espen.collect.android.external.InstancesContract.CONTENT_ITEM_TYPE;
+import static org.espen.collect.android.external.InstancesContract.CONTENT_TYPE;
+import static org.espen.collect.android.external.InstancesContract.getUri;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -28,17 +28,17 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import org.odk.collect.android.analytics.AnalyticsEvents;
-import org.odk.collect.android.analytics.AnalyticsUtils;
-import org.odk.collect.android.dao.CursorLoaderFactory;
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
-import org.odk.collect.android.database.instances.DatabaseInstancesRepository;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.instancemanagement.InstanceDeleter;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.utilities.ContentUriHelper;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.analytics.AnalyticsEvents;
+import org.espen.collect.android.analytics.AnalyticsUtils;
+import org.espen.collect.android.dao.CursorLoaderFactory;
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
+import org.espen.collect.android.database.instances.DatabaseInstancesRepository;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.instancemanagement.InstanceDeleter;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.utilities.ContentUriHelper;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.projects.ProjectsRepository;
 import org.odk.collect.settings.SettingsProvider;

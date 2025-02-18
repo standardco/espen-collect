@@ -1,6 +1,6 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
-import org.odk.collect.android.projects.ProjectDependencyModule
+import org.espen.collect.android.projects.ProjectDependencyModule
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.instances.InstancesRepository
 import org.odk.collect.forms.savepoints.Savepoint

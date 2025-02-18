@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.content.Context
 import android.content.Intent
@@ -14,8 +14,8 @@ import androidx.core.text.inSpans
 import androidx.core.text.underline
 import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.FormEntryEndBinding
+import org.espen.collect.android.R
+import org.espen.collect.android.databinding.FormEntryEndBinding
 import org.odk.collect.androidshared.system.ContextUtils
 import org.odk.collect.strings.localization.getLocalizedString
 import org.odk.collect.webpage.WebViewActivity

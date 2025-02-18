@@ -16,7 +16,7 @@
  * the License.
  */
 
-package org.odk.collect.android.tasks;
+package org.espen.collect.android.tasks;
 
 import org.odk.collect.forms.instances.Instance;
 

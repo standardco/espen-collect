@@ -11,12 +11,12 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.odk.collect.android.adapters
+package org.espen.collect.android.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.odk.collect.android.databinding.AboutItemLayoutBinding
+import org.espen.collect.android.databinding.AboutItemLayoutBinding
 
 class AboutListAdapter(
     private val items: Array<IntArray>,

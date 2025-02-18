@@ -1,10 +1,10 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import org.hamcrest.Matchers.`is`
 import org.junit.Test
 import org.mockito.kotlin.mock
-import org.odk.collect.android.openrosa.OpenRosaFormSource
+import org.espen.collect.android.openrosa.OpenRosaFormSource
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.settings.InMemSettings
 

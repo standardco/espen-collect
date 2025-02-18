@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
-import org.odk.collect.android.openrosa.OpenRosaFormSource
-import org.odk.collect.android.utilities.FormUtils
-import org.odk.collect.android.utilities.WebCredentialsUtils
+import org.espen.collect.android.openrosa.OpenRosaFormSource
+import org.espen.collect.android.utilities.FormUtils
+import org.espen.collect.android.utilities.WebCredentialsUtils
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.FormSource
 import org.odk.collect.forms.FormSourceException

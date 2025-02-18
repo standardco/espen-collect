@@ -114,7 +114,7 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
 
-        <activity android:name="org.odk.collect.android.activities.CrashHandlerActivity" />
+        <activity android:name="org.espen.collect.android.activities.CrashHandlerActivity" />
 
         <activity
             android:name=".activities.ScannerWithFlashlightActivity"
@@ -218,11 +218,11 @@ the specific language governing permissions and limitations under the License.
 
         <provider
             android:name=".external.FormsProvider"
-            android:authorities="org.odk.collect.android.provider.odk.forms"
+            android:authorities="org.espen.collect.android.provider.odk.forms"
             android:exported="true" />
         <provider
             android:name=".external.InstanceProvider"
-            android:authorities="org.odk.collect.android.provider.odk.instances"
+            android:authorities="org.espen.collect.android.provider.odk.instances"
             android:exported="true" />
 
         <activity-alias
@@ -269,7 +269,7 @@ the specific language governing permissions and limitations under the License.
             android:targetActivity=".activities.FormDownloadListActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.odk.collect.android.FORM_DOWNLOAD" />
+                <action android:name="org.espen.collect.android.FORM_DOWNLOAD" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="vnd.android.cursor.dir/vnd.odk.form" />
             </intent-filter>
@@ -292,7 +292,7 @@ the specific language governing permissions and limitations under the License.
             android:targetActivity=".instancemanagement.send.InstanceUploaderActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.odk.collect.android.INSTANCE_UPLOAD" />
+                <action android:name="org.espen.collect.android.INSTANCE_UPLOAD" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="vnd.android.cursor.dir/vnd.odk.instance" />
             </intent-filter>

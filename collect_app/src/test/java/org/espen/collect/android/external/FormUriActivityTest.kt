@@ -1,4 +1,4 @@
-package org.odk.collect.android.external
+package org.espen.collect.android.external
 
 import android.app.Activity
 import android.app.Application
@@ -34,18 +34,18 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.activities.FormFillingActivity
-import org.odk.collect.android.application.initialization.AnalyticsInitializer
-import org.odk.collect.android.application.initialization.MapsInitializer
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.ApplicationConstants
-import org.odk.collect.android.utilities.ChangeLockProvider
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.android.utilities.SavepointsRepositoryProvider
+import org.espen.collect.android.activities.FormFillingActivity
+import org.espen.collect.android.application.initialization.AnalyticsInitializer
+import org.espen.collect.android.application.initialization.MapsInitializer
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.utilities.SavepointsRepositoryProvider
 import org.odk.collect.androidtest.ActivityScenarioLauncherRule
 import org.odk.collect.androidtest.RecordedIntentsRule
 import org.odk.collect.async.Scheduler

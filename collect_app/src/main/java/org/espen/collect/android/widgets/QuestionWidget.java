@@ -12,12 +12,12 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
-import static org.odk.collect.android.formentry.media.FormMediaUtils.getClipID;
-import static org.odk.collect.android.formentry.media.FormMediaUtils.getPlayColor;
-import static org.odk.collect.android.formentry.media.FormMediaUtils.getPlayableAudioURI;
-import static org.odk.collect.android.injection.DaggerUtils.getComponent;
+import static org.espen.collect.android.formentry.media.FormMediaUtils.getClipID;
+import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayColor;
+import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayableAudioURI;
+import static org.espen.collect.android.injection.DaggerUtils.getComponent;
 
 import android.app.Activity;
 import android.content.Context;
@@ -36,22 +36,22 @@ import androidx.core.content.ContextCompat;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.R;
-import org.odk.collect.android.audio.AudioHelper;
-import org.odk.collect.android.formentry.media.AudioHelperFactory;
-import org.odk.collect.android.formentry.questions.AudioVideoImageTextLabel;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
-import org.odk.collect.android.preferences.GuidanceHint;
-import org.odk.collect.android.utilities.AnimationUtils;
-import org.odk.collect.android.utilities.FormEntryPromptUtils;
-import org.odk.collect.android.utilities.HtmlUtils;
-import org.odk.collect.android.utilities.MediaUtils;
-import org.odk.collect.android.utilities.SoftKeyboardController;
-import org.odk.collect.android.utilities.ThemeUtils;
-import org.odk.collect.android.widgets.interfaces.Widget;
-import org.odk.collect.android.widgets.items.SelectImageMapWidget;
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.audio.AudioHelper;
+import org.espen.collect.android.formentry.media.AudioHelperFactory;
+import org.espen.collect.android.formentry.questions.AudioVideoImageTextLabel;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.preferences.GuidanceHint;
+import org.espen.collect.android.utilities.AnimationUtils;
+import org.espen.collect.android.utilities.FormEntryPromptUtils;
+import org.espen.collect.android.utilities.HtmlUtils;
+import org.espen.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.utilities.SoftKeyboardController;
+import org.espen.collect.android.utilities.ThemeUtils;
+import org.espen.collect.android.widgets.interfaces.Widget;
+import org.espen.collect.android.widgets.items.SelectImageMapWidget;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.odk.collect.androidshared.utils.ScreenUtils;
 import org.odk.collect.imageloader.ImageLoader;
 import org.odk.collect.permissions.PermissionsProvider;

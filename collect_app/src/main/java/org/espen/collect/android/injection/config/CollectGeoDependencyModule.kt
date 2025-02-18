@@ -1,4 +1,4 @@
-package org.odk.collect.android.injection.config
+package org.espen.collect.android.injection.config
 
 import android.app.Application
 import android.content.Context

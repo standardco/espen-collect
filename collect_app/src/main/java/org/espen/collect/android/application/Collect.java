@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.application;
+package org.espen.collect.android.application;
 
 import static org.odk.collect.settings.keys.MetaKeys.KEY_GOOGLE_BUG_154855417_FIXED;
 
@@ -23,19 +23,19 @@ import android.content.res.Configuration;
 import androidx.annotation.NonNull;
 
 import org.jetbrains.annotations.NotNull;
-import org.odk.collect.android.dynamicpreload.ExternalDataManager;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.injection.config.AppDependencyComponent;
-import org.odk.collect.android.injection.config.CollectDrawDependencyModule;
-import org.odk.collect.android.injection.config.CollectGeoDependencyModule;
-import org.odk.collect.android.injection.config.CollectGoogleMapsDependencyModule;
-import org.odk.collect.android.injection.config.CollectOsmDroidDependencyModule;
-import org.odk.collect.android.injection.config.CollectProjectsDependencyModule;
-import org.odk.collect.android.injection.config.CollectSelfieCameraDependencyModule;
-import org.odk.collect.android.injection.config.DaggerAppDependencyComponent;
-import org.odk.collect.android.utilities.CollectStrictMode;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.LocaleHelper;
+import org.espen.collect.android.dynamicpreload.ExternalDataManager;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.injection.config.AppDependencyComponent;
+import org.espen.collect.android.injection.config.CollectDrawDependencyModule;
+import org.espen.collect.android.injection.config.CollectGeoDependencyModule;
+import org.espen.collect.android.injection.config.CollectGoogleMapsDependencyModule;
+import org.espen.collect.android.injection.config.CollectOsmDroidDependencyModule;
+import org.espen.collect.android.injection.config.CollectProjectsDependencyModule;
+import org.espen.collect.android.injection.config.CollectSelfieCameraDependencyModule;
+import org.espen.collect.android.injection.config.DaggerAppDependencyComponent;
+import org.espen.collect.android.utilities.CollectStrictMode;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.LocaleHelper;
 import org.odk.collect.androidshared.data.AppState;
 import org.odk.collect.androidshared.data.StateStore;
 import org.odk.collect.androidshared.system.ExternalFilesUtils;

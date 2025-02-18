@@ -1,9 +1,9 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import androidx.lifecycle.ViewModel
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
 import org.odk.collect.androidshared.livedata.NonNullLiveData
 import org.odk.collect.projects.Project

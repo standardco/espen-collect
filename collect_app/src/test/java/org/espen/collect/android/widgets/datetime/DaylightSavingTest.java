@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.widgets.datetime;
+package org.espen.collect.android.widgets.datetime;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
@@ -34,11 +34,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils;
 import org.odk.collect.testshared.TimeZoneSetter;
 
 import java.util.TimeZone;

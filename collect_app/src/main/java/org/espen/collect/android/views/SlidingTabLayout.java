@@ -1,4 +1,4 @@
-package org.odk.collect.android.views;
+package org.espen.collect.android.views;
 /*
  * Copyright 2014 Google Inc. All rights reserved.
  *

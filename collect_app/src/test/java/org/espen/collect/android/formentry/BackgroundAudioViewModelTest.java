@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -16,10 +16,10 @@ import org.javarosa.core.model.instance.TreeReference;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.TestSettingsProvider;
-import org.odk.collect.android.formentry.audit.AuditEvent;
-import org.odk.collect.android.formentry.audit.AuditEventLogger;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.TestSettingsProvider;
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.formentry.audit.AuditEventLogger;
+import org.espen.collect.android.javarosawrapper.FormController;
 import org.odk.collect.audiorecorder.recorder.Output;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.forms.Form;

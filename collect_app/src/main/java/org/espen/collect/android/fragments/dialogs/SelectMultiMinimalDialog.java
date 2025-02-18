@@ -1,4 +1,4 @@
-package org.odk.collect.android.fragments.dialogs;
+package org.espen.collect.android.fragments.dialogs;
 
 import android.content.Context;
 
@@ -6,8 +6,8 @@ import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.adapters.SelectMultipleListAdapter;
-import org.odk.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.adapters.SelectMultipleListAdapter;
+import org.espen.collect.android.utilities.MediaUtils;
 
 import java.util.List;
 

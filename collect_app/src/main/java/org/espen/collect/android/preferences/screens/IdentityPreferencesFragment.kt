@@ -11,17 +11,17 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import android.os.Bundle
 import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.R
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.preferences.utilities.PreferencesUtils
-import org.odk.collect.android.version.VersionInformation
+import org.espen.collect.android.R
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.preferences.utilities.PreferencesUtils
+import org.espen.collect.android.version.VersionInformation
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 import org.odk.collect.settings.keys.ProjectKeys
 import javax.inject.Inject

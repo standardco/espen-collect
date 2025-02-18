@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -9,14 +9,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.databinding.FirstLaunchLayoutBinding
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.mainmenu.MainMenuActivity
-import org.odk.collect.android.projects.ManualProjectCreatorDialog
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.projects.QrCodeProjectCreatorDialog
-import org.odk.collect.android.version.VersionInformation
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.databinding.FirstLaunchLayoutBinding
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.projects.ManualProjectCreatorDialog
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.projects.QrCodeProjectCreatorDialog
+import org.espen.collect.android.version.VersionInformation
 import org.odk.collect.androidshared.system.ContextUtils.getThemeAttributeValue
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.async.Scheduler

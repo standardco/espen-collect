@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import org.odk.collect.projects.ProjectDependencyFactory
 import org.odk.collect.shared.locks.ChangeLock

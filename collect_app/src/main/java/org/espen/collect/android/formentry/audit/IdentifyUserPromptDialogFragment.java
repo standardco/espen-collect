@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry.audit;
+package org.espen.collect.android.formentry.audit;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 import org.odk.collect.material.MaterialFullScreenDialogFragment;
 
 public class IdentifyUserPromptDialogFragment extends MaterialFullScreenDialogFragment {

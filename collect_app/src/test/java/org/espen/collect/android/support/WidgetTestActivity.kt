@@ -1,9 +1,9 @@
-package org.odk.collect.android.support
+package org.espen.collect.android.support
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
-import org.odk.collect.android.utilities.ScreenContext
+import org.espen.collect.android.utilities.ScreenContext
 
 class WidgetTestActivity : AppCompatActivity(), ScreenContext {
     @JvmField

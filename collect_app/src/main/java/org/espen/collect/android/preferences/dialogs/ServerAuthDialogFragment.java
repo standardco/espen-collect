@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.dialogs;
+package org.espen.collect.android.preferences.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,8 +11,8 @@ import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.odk.collect.android.databinding.ServerAuthDialogBinding;
-import org.odk.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.databinding.ServerAuthDialogBinding;
+import org.espen.collect.android.injection.DaggerUtils;
 import org.odk.collect.settings.SettingsProvider;
 import org.odk.collect.settings.keys.ProjectKeys;
 import org.odk.collect.shared.settings.Settings;

@@ -11,20 +11,20 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.odk.collect.android.R
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.formmanagement.FormFillingIntentFactory
-import org.odk.collect.android.formmanagement.formmap.FormMapViewModel
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.R
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.formmanagement.FormFillingIntentFactory
+import org.espen.collect.android.formmanagement.formmap.FormMapViewModel
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.async.Scheduler
 import org.odk.collect.geo.selection.SelectionMapFragment

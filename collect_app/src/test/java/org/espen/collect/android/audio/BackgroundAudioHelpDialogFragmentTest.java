@@ -1,4 +1,4 @@
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

@@ -11,13 +11,13 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.content.ContentResolver
 import android.net.Uri
 import android.provider.MediaStore
 import android.webkit.MimeTypeMap
-import org.odk.collect.android.application.Collect
+import org.espen.collect.android.application.Collect
 
 object ContentUriHelper {
 

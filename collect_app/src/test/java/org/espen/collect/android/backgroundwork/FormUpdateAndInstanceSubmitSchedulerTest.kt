@@ -1,4 +1,4 @@
-package org.odk.collect.android.backgroundwork
+package org.espen.collect.android.backgroundwork
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -10,7 +10,7 @@ import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
-import org.odk.collect.android.TestSettingsProvider
+import org.espen.collect.android.TestSettingsProvider
 import org.odk.collect.async.Scheduler
 import org.odk.collect.settings.enums.FormUpdateMode.MATCH_EXACTLY
 import org.odk.collect.settings.enums.FormUpdateMode.PREVIOUSLY_DOWNLOADED_ONLY

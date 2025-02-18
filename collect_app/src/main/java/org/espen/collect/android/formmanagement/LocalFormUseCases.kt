@@ -1,11 +1,11 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import android.database.SQLException
 import org.javarosa.xform.parse.XFormParser
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.formmanagement.metadata.FormMetadata
-import org.odk.collect.android.formmanagement.metadata.FormMetadataParser
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.formmanagement.metadata.FormMetadata
+import org.espen.collect.android.formmanagement.metadata.FormMetadataParser
+import org.espen.collect.android.utilities.FileUtils
 import org.odk.collect.androidshared.utils.Validator
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.FormsRepository

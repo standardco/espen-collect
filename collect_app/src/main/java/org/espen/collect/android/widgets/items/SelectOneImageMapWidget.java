@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -25,10 +25,10 @@ import androidx.annotation.Nullable;
 
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectOneData;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.listeners.AdvanceToNextListener;
-import org.odk.collect.android.utilities.SelectOneWidgetUtils;
-import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.listeners.AdvanceToNextListener;
+import org.espen.collect.android.utilities.SelectOneWidgetUtils;
+import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 
 /**
  * A widget which is responsible for multi select questions represented by

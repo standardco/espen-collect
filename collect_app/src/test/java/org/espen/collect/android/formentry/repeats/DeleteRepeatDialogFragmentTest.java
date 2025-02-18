@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry.repeats;
+package org.espen.collect.android.formentry.repeats;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -27,9 +27,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.formentry.FormEntryViewModel;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.support.CollectHelpers;
+import org.espen.collect.android.formentry.FormEntryViewModel;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.support.CollectHelpers;
 import org.odk.collect.testshared.RobolectricHelpers;
 import org.robolectric.shadows.ShadowDialog;
 

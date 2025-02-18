@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.viewmodels;
+package org.espen.collect.android.widgets.viewmodels;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
-import org.odk.collect.android.widgets.datetime.DatePickerDetails;
-import org.odk.collect.android.widgets.datetime.DateTimeUtils;
+import org.espen.collect.android.widgets.datetime.DatePickerDetails;
+import org.espen.collect.android.widgets.datetime.DateTimeUtils;
 
 public class DateTimeViewModel extends ViewModel {
     private final MutableLiveData<LocalDateTime> selectedDate = new MutableLiveData<>();

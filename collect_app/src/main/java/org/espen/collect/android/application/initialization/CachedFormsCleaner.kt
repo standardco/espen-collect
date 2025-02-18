@@ -1,6 +1,6 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
-import org.odk.collect.android.projects.ProjectDependencyModule
+import org.espen.collect.android.projects.ProjectDependencyModule
 import org.odk.collect.projects.ProjectDependencyFactory
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.upgrade.Upgrade

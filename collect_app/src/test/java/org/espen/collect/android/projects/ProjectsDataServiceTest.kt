@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -6,7 +6,7 @@ import org.hamcrest.Matchers.`is`
 import org.junit.Test
 import org.mockito.Mockito.verify
 import org.mockito.kotlin.mock
-import org.odk.collect.android.application.initialization.AnalyticsInitializer
+import org.espen.collect.android.application.initialization.AnalyticsInitializer
 import org.odk.collect.projects.InMemProjectsRepository
 import org.odk.collect.projects.Project
 import org.odk.collect.settings.InMemSettingsProvider

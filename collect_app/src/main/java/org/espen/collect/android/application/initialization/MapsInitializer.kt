@@ -1,13 +1,13 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import android.content.Context
 import android.os.Handler
 import com.google.android.gms.maps.MapView
-import org.odk.collect.android.geo.MapConfiguratorProvider
+import org.espen.collect.android.geo.MapConfiguratorProvider
 import org.odk.collect.osmdroid.OsmDroidInitializer
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys
-import org.odk.collect.utilities.UserAgentProvider
+import org.espen.collect.utilities.UserAgentProvider
 import timber.log.Timber
 import javax.inject.Inject
 

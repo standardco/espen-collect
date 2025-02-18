@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -27,8 +27,8 @@ import androidx.appcompat.widget.AppCompatCheckBox;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.R;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.R;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
 
 @SuppressLint("ViewConstructor")
 public class TriggerWidget extends QuestionWidget {

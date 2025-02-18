@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import android.content.DialogInterface
@@ -7,17 +7,17 @@ import android.os.Bundle
 import androidx.preference.Preference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.R
-import org.odk.collect.android.activities.ActivityUtils
-import org.odk.collect.android.activities.FirstLaunchActivity
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.configure.qr.QRCodeTabsActivity
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.mainmenu.MainMenuActivity
-import org.odk.collect.android.preferences.dialogs.ResetDialogPreference
-import org.odk.collect.android.preferences.dialogs.ResetDialogPreferenceFragmentCompat
-import org.odk.collect.android.projects.DeleteProjectResult
-import org.odk.collect.android.projects.ProjectDeleter
+import org.espen.collect.android.R
+import org.espen.collect.android.activities.ActivityUtils
+import org.espen.collect.android.activities.FirstLaunchActivity
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.configure.qr.QRCodeTabsActivity
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.preferences.dialogs.ResetDialogPreference
+import org.espen.collect.android.preferences.dialogs.ResetDialogPreferenceFragmentCompat
+import org.espen.collect.android.projects.DeleteProjectResult
+import org.espen.collect.android.projects.ProjectDeleter
 import org.odk.collect.androidshared.ui.ToastUtils
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 import javax.inject.Inject

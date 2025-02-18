@@ -1,14 +1,14 @@
-package org.odk.collect.android.notifications.builders
+package org.espen.collect.android.notifications.builders
 
 import android.app.Application
 import android.app.Notification
 import androidx.core.app.NotificationCompat
-import org.odk.collect.android.R
-import org.odk.collect.android.formmanagement.ServerFormDetails
-import org.odk.collect.android.formmanagement.download.FormDownloadException
-import org.odk.collect.android.notifications.NotificationManagerNotifier
-import org.odk.collect.android.notifications.NotificationUtils
-import org.odk.collect.android.utilities.FormsDownloadResultInterpreter
+import org.espen.collect.android.R
+import org.espen.collect.android.formmanagement.ServerFormDetails
+import org.espen.collect.android.formmanagement.download.FormDownloadException
+import org.espen.collect.android.notifications.NotificationManagerNotifier
+import org.espen.collect.android.notifications.NotificationUtils
+import org.espen.collect.android.utilities.FormsDownloadResultInterpreter
 import org.odk.collect.strings.localization.getLocalizedString
 
 object FormUpdatesDownloadedNotificationBuilder {

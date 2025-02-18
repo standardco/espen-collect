@@ -12,25 +12,25 @@
  * the License.
  */
 
-package org.odk.collect.android.external;
+package org.espen.collect.android.external;
 
 import static android.provider.BaseColumns._ID;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.AUTO_DELETE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.AUTO_SEND;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.BASE64_RSA_PUBLIC_KEY;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DATE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DELETED_DATE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DESCRIPTION;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.GEOMETRY_XPATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.SUBMISSION_URI;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.AUTO_DELETE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.AUTO_SEND;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.BASE64_RSA_PUBLIC_KEY;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DATE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DELETED_DATE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DESCRIPTION;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.GEOMETRY_XPATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.SUBMISSION_URI;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -41,17 +41,17 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 
 import org.jetbrains.annotations.NotNull;
-import org.odk.collect.android.analytics.AnalyticsEvents;
-import org.odk.collect.android.analytics.AnalyticsUtils;
-import org.odk.collect.android.dao.CursorLoaderFactory;
-import org.odk.collect.android.database.forms.DatabaseFormsRepository;
-import org.odk.collect.android.formmanagement.LocalFormUseCases;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.itemsets.FastExternalItemsetsRepository;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.utilities.ContentUriHelper;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.analytics.AnalyticsEvents;
+import org.espen.collect.android.analytics.AnalyticsUtils;
+import org.espen.collect.android.dao.CursorLoaderFactory;
+import org.espen.collect.android.database.forms.DatabaseFormsRepository;
+import org.espen.collect.android.formmanagement.LocalFormUseCases;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.itemsets.FastExternalItemsetsRepository;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.utilities.ContentUriHelper;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
 import org.odk.collect.forms.FormsRepository;
 import org.odk.collect.forms.instances.InstancesRepository;
 import org.odk.collect.projects.ProjectsRepository;

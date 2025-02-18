@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement.metadata
+package org.espen.collect.android.formmanagement.metadata
 
 data class FormMetadata(
     val title: String?,

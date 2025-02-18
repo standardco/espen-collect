@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import android.app.Activity
 import android.app.Application
@@ -43,15 +43,15 @@ import org.hamcrest.core.StringContains.containsString
 import org.hamcrest.core.StringEndsWith.endsWith
 import org.junit.Assert
 import org.junit.Assert.fail
-import org.odk.collect.android.BuildConfig
-import org.odk.collect.android.R
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.support.ActivityHelpers.getLaunchIntent
-import org.odk.collect.android.support.actions.RotateAction
-import org.odk.collect.android.support.matchers.CustomMatchers.withIndex
-import org.odk.collect.android.support.rules.RecentAppsRule
-import org.odk.collect.android.utilities.ActionRegister
+import org.espen.collect.android.BuildConfig
+import org.espen.collect.android.R
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.support.ActivityHelpers.getLaunchIntent
+import org.espen.collect.android.support.actions.RotateAction
+import org.espen.collect.android.support.matchers.CustomMatchers.withIndex
+import org.espen.collect.android.support.rules.RecentAppsRule
+import org.espen.collect.android.utilities.ActionRegister
 import org.odk.collect.androidshared.ui.ToastUtils.popRecordedToasts
 import org.odk.collect.androidtest.ActivityScenarioLauncherRule
 import org.odk.collect.strings.localization.getLocalizedQuantityString

@@ -12,13 +12,13 @@
  * the License.
  */
 
-package org.odk.collect.android.activities;
+package org.espen.collect.android.activities;
 
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 import org.odk.collect.strings.localization.LocalizedActivity;
 
 /**

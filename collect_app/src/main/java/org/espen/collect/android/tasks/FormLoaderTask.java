@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.odk.collect.android.tasks;
+package org.espen.collect.android.tasks;
 
-import static org.odk.collect.android.utilities.FormUtils.setupReferenceManagerForForm;
+import static org.espen.collect.android.utilities.FormUtils.setupReferenceManagerForForm;
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import android.content.Intent;
@@ -38,22 +38,22 @@ import org.javarosa.form.api.FormEntryController;
 import org.javarosa.xform.parse.XFormParser;
 import org.javarosa.xform.util.XFormUtils;
 import org.javarosa.xpath.XPathTypeMismatchException;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.dynamicpreload.ExternalAnswerResolver;
-import org.odk.collect.android.dynamicpreload.ExternalDataManager;
-import org.odk.collect.android.dynamicpreload.ExternalDataUseCases;
-import org.odk.collect.android.external.FormsContract;
-import org.odk.collect.android.external.InstancesContract;
-import org.odk.collect.android.fastexternalitemset.ItemsetDbAdapter;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.javarosawrapper.JavaRosaFormController;
-import org.odk.collect.android.listeners.FormLoaderListener;
-import org.odk.collect.android.utilities.ContentUriHelper;
-import org.odk.collect.android.utilities.ExternalizableFormDefCache;
-import org.odk.collect.android.utilities.FileUtils;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
-import org.odk.collect.android.utilities.ZipUtils;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.dynamicpreload.ExternalAnswerResolver;
+import org.espen.collect.android.dynamicpreload.ExternalDataManager;
+import org.espen.collect.android.dynamicpreload.ExternalDataUseCases;
+import org.espen.collect.android.external.FormsContract;
+import org.espen.collect.android.external.InstancesContract;
+import org.espen.collect.android.fastexternalitemset.ItemsetDbAdapter;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.JavaRosaFormController;
+import org.espen.collect.android.listeners.FormLoaderListener;
+import org.espen.collect.android.utilities.ContentUriHelper;
+import org.espen.collect.android.utilities.ExternalizableFormDefCache;
+import org.espen.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.utilities.ZipUtils;
 import org.odk.collect.async.Scheduler;
 import org.odk.collect.async.SchedulerAsyncTaskMimic;
 import org.odk.collect.entities.javarosa.spec.UnrecognizedEntityVersionException;

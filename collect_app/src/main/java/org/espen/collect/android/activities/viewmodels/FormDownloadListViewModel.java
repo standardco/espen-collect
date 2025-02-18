@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.activities.viewmodels;
+package org.espen.collect.android.activities.viewmodels;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.odk.collect.android.formmanagement.ServerFormDetails;
+import org.espen.collect.android.formmanagement.ServerFormDetails;
 
 import java.util.ArrayList;
 import java.util.Arrays;

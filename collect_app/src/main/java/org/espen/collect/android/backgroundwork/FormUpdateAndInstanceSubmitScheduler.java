@@ -1,6 +1,6 @@
-package org.odk.collect.android.backgroundwork;
+package org.espen.collect.android.backgroundwork;
 
-import static org.odk.collect.android.backgroundwork.BackgroundWorkUtils.getPeriodInMilliseconds;
+import static org.espen.collect.android.backgroundwork.BackgroundWorkUtils.getPeriodInMilliseconds;
 import static org.odk.collect.settings.enums.StringIdEnumUtils.getFormUpdateMode;
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_PERIODIC_FORM_UPDATES_CHECK;
 

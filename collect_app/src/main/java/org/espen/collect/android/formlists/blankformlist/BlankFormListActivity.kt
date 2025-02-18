@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.content.Intent
 import android.net.Uri
@@ -8,11 +8,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import org.odk.collect.android.R
-import org.odk.collect.android.activities.FormMapActivity
-import org.odk.collect.android.formmanagement.FormFillingIntentFactory
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.preferences.dialogs.ServerAuthDialogFragment
+import org.espen.collect.android.R
+import org.espen.collect.android.activities.FormMapActivity
+import org.espen.collect.android.formmanagement.FormFillingIntentFactory
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.preferences.dialogs.ServerAuthDialogFragment
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.androidshared.ui.ObviousProgressBar
 import org.odk.collect.androidshared.ui.SnackbarUtils

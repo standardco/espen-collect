@@ -1,6 +1,6 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
-import org.odk.collect.android.support.FakeClickableMapFragment;
+import org.espen.collect.android.support.FakeClickableMapFragment;
 
 public class FormMapPage extends Page<FormMapPage> {
 

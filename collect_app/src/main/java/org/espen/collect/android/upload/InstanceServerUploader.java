@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.upload;
+package org.espen.collect.android.upload;
 
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
@@ -20,14 +20,14 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.openrosa.CaseInsensitiveHeaders;
-import org.odk.collect.android.openrosa.HttpHeadResult;
-import org.odk.collect.android.openrosa.HttpPostResult;
-import org.odk.collect.android.openrosa.OpenRosaConstants;
-import org.odk.collect.android.openrosa.OpenRosaHttpInterface;
-import org.odk.collect.android.utilities.ResponseMessageParser;
-import org.odk.collect.android.utilities.WebCredentialsUtils;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.openrosa.CaseInsensitiveHeaders;
+import org.espen.collect.android.openrosa.HttpHeadResult;
+import org.espen.collect.android.openrosa.HttpPostResult;
+import org.espen.collect.android.openrosa.OpenRosaConstants;
+import org.espen.collect.android.openrosa.OpenRosaHttpInterface;
+import org.espen.collect.android.utilities.ResponseMessageParser;
+import org.espen.collect.android.utilities.WebCredentialsUtils;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;
 import org.odk.collect.settings.keys.ProjectKeys;

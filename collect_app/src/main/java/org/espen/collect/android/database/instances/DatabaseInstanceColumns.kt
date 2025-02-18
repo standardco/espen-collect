@@ -1,4 +1,4 @@
-package org.odk.collect.android.database.instances
+package org.espen.collect.android.database.instances
 
 import android.provider.BaseColumns
 

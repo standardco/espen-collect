@@ -1,8 +1,8 @@
-package org.odk.collect.android.application.initialization.upgrade
+package org.espen.collect.android.application.initialization.upgrade
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.utilities.FileUtils
 import org.odk.collect.upgrade.AppUpgrader
 import org.odk.collect.upgrade.InstallDetector
 import java.io.File

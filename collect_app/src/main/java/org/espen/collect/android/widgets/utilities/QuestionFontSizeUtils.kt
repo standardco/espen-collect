@@ -1,7 +1,7 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.injection.DaggerUtils
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.settings.Settings
 

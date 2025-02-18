@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.range
+package org.espen.collect.android.widgets.range
 
 import android.view.View.OnLongClickListener
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -12,8 +12,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.formentry.questions.QuestionDetails
-import org.odk.collect.android.widgets.support.QuestionWidgetHelpers
+import org.espen.collect.android.formentry.questions.QuestionDetails
+import org.espen.collect.android.widgets.support.QuestionWidgetHelpers
 import java.math.BigDecimal
 
 @RunWith(AndroidJUnit4::class)

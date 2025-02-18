@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry.questions;
+package org.espen.collect.android.formentry.questions;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import org.odk.collect.android.databinding.NoButtonsItemLayoutBinding;
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.espen.collect.android.databinding.NoButtonsItemLayoutBinding;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.odk.collect.imageloader.ImageLoader;
 
 import java.io.File;

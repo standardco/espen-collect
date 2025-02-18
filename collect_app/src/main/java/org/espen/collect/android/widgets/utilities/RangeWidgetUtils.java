@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,12 +11,12 @@ import androidx.fragment.app.FragmentActivity;
 
 import org.javarosa.core.model.RangeQuestion;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.databinding.RangePickerWidgetAnswerBinding;
-import org.odk.collect.android.databinding.RangeWidgetHorizontalBinding;
-import org.odk.collect.android.databinding.RangeWidgetVerticalBinding;
-import org.odk.collect.android.fragments.dialogs.NumberPickerDialog;
+import org.espen.collect.android.databinding.RangePickerWidgetAnswerBinding;
+import org.espen.collect.android.databinding.RangeWidgetHorizontalBinding;
+import org.espen.collect.android.databinding.RangeWidgetVerticalBinding;
+import org.espen.collect.android.fragments.dialogs.NumberPickerDialog;
 import org.odk.collect.androidshared.ui.ToastUtils;
-import org.odk.collect.android.views.TrackingTouchSlider;
+import org.espen.collect.android.views.TrackingTouchSlider;
 
 import java.math.BigDecimal;
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.equalTo;
@@ -6,7 +6,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.utilities.Appearances.THOUSANDS_SEP;
+import static org.espen.collect.android.utilities.Appearances.THOUSANDS_SEP;
 
 import android.text.InputType;
 
@@ -17,10 +17,10 @@ import org.javarosa.core.model.data.DecimalData;
 import org.javarosa.core.model.data.IAnswerData;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.widgets.base.GeneralExStringWidgetTest;
-import org.odk.collect.android.widgets.support.FakeWaitingForDataRegistry;
-import org.odk.collect.android.widgets.utilities.StringRequester;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.widgets.base.GeneralExStringWidgetTest;
+import org.espen.collect.android.widgets.support.FakeWaitingForDataRegistry;
+import org.espen.collect.android.widgets.utilities.StringRequester;
 
 import java.text.NumberFormat;
 import java.util.Locale;

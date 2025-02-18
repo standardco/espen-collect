@@ -1,4 +1,4 @@
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -10,11 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 
 import static androidx.core.content.res.ResourcesCompat.getDrawable;
-import static org.odk.collect.android.utilities.ViewUtils.dpFromPx;
-import static org.odk.collect.android.utilities.ViewUtils.pxFromDp;
+import static org.espen.collect.android.utilities.ViewUtils.dpFromPx;
+import static org.espen.collect.android.utilities.ViewUtils.pxFromDp;
 
 public class VolumeBar extends LinearLayout {
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement.formmap
+package org.espen.collect.android.formmanagement.formmap
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.json.JSONException
 import org.json.JSONObject
-import org.odk.collect.android.R
-import org.odk.collect.android.instancemanagement.getStatusDescription
-import org.odk.collect.android.instancemanagement.showAsEditable
+import org.espen.collect.android.R
+import org.espen.collect.android.instancemanagement.getStatusDescription
+import org.espen.collect.android.instancemanagement.showAsEditable
 import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
 import org.odk.collect.androidshared.livedata.NonNullLiveData
 import org.odk.collect.async.Scheduler

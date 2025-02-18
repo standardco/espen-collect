@@ -1,11 +1,11 @@
-package org.odk.collect.android.formentry.backgroundlocation;
+package org.espen.collect.android.formentry.backgroundlocation;
 
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_BACKGROUND_LOCATION;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 
-import org.odk.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.activities.FormFillingActivity;
 import org.odk.collect.shared.settings.Settings;
 
 /**

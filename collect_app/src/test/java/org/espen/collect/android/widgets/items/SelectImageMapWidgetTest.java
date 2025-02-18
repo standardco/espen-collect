@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.view.MotionEvent;
 import android.view.View;
@@ -8,11 +8,11 @@ import androidx.core.util.Pair;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.reference.ReferenceManager;
 import org.junit.Test;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.widgets.base.SelectWidgetTest;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.widgets.base.SelectWidgetTest;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -20,8 +20,8 @@ import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.support.CollectHelpers.setupFakeReferenceManager;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
+import static org.espen.collect.android.support.CollectHelpers.setupFakeReferenceManager;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
 
 public abstract class SelectImageMapWidgetTest<W extends SelectImageMapWidget, A extends IAnswerData>
         extends SelectWidgetTest<W, A> {

@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.projects
+package org.espen.collect.android.feature.projects
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -7,9 +7,9 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 @RunWith(AndroidJUnit4::class)
 class ProjectsAdbTest {

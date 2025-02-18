@@ -1,4 +1,4 @@
-package org.odk.collect.android.database
+package org.espen.collect.android.database
 
 import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
@@ -10,19 +10,19 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.CAN_DELETE_BEFORE_SEND
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.CAN_EDIT_WHEN_COMPLETE
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.DELETED_DATE
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.DISPLAY_NAME
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.GEOMETRY
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.GEOMETRY_TYPE
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.INSTANCE_FILE_PATH
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.JR_FORM_ID
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.JR_VERSION
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.LAST_STATUS_CHANGE_DATE
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.STATUS
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns.SUBMISSION_URI
-import org.odk.collect.android.database.instances.InstanceDatabaseMigrator
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.CAN_DELETE_BEFORE_SEND
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.CAN_EDIT_WHEN_COMPLETE
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.DELETED_DATE
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.DISPLAY_NAME
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.GEOMETRY
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.GEOMETRY_TYPE
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.INSTANCE_FILE_PATH
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.JR_FORM_ID
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.JR_VERSION
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.LAST_STATUS_CHANGE_DATE
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.STATUS
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns.SUBMISSION_URI
+import org.espen.collect.android.database.instances.InstanceDatabaseMigrator
 
 @RunWith(AndroidJUnit4::class)
 class InstanceDatabaseMigratorTest {

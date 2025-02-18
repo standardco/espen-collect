@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items
+package org.espen.collect.android.widgets.items
 
 import android.content.Context
 import android.content.res.Resources
@@ -18,12 +18,12 @@ import org.javarosa.core.model.SelectChoice
 import org.javarosa.core.model.data.SelectOneData
 import org.javarosa.core.model.instance.geojson.GeojsonFeature
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.SelectOneFromMapDialogLayoutBinding
-import org.odk.collect.android.formentry.FormEntryViewModel
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.utilities.Appearances
-import org.odk.collect.android.widgets.utilities.GeoWidgetUtils
+import org.espen.collect.android.R
+import org.espen.collect.android.databinding.SelectOneFromMapDialogLayoutBinding
+import org.espen.collect.android.formentry.FormEntryViewModel
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.utilities.Appearances
+import org.espen.collect.android.widgets.utilities.GeoWidgetUtils
 import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
 import org.odk.collect.androidshared.livedata.NonNullLiveData
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder

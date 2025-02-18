@@ -1,4 +1,4 @@
-package org.odk.collect.android.views
+package org.espen.collect.android.views
 
 import android.content.Context
 import android.text.Editable
@@ -16,9 +16,9 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
-import org.odk.collect.android.databinding.WidgetAnswerTextBinding
-import org.odk.collect.android.listeners.ThousandsSeparatorTextWatcher
-import org.odk.collect.android.utilities.SoftKeyboardController
+import org.espen.collect.android.databinding.WidgetAnswerTextBinding
+import org.espen.collect.android.listeners.ThousandsSeparatorTextWatcher
+import org.espen.collect.android.utilities.SoftKeyboardController
 import java.text.NumberFormat
 import java.util.Locale
 

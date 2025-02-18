@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement.formmap
+package org.espen.collect.android.formmanagement.formmap
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -8,7 +8,7 @@ import org.hamcrest.Matchers.containsString
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.formstest.FormUtils

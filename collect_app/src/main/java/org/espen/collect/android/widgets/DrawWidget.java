@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -20,13 +20,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.databinding.DrawWidgetBinding;
+import org.espen.collect.android.databinding.DrawWidgetBinding;
 import org.odk.collect.draw.DrawActivity;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.QuestionMediaManager;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
-import static org.odk.collect.android.utilities.ApplicationConstants.RequestCodes;
+import static org.espen.collect.android.utilities.ApplicationConstants.RequestCodes;
 
 /**
  * Free drawing widget.

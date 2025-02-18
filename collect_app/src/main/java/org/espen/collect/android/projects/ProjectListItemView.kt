@@ -1,10 +1,10 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.TextView
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.projects.Project
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.settings.Settings

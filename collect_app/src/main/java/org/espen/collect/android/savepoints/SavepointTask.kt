@@ -1,6 +1,6 @@
-package org.odk.collect.android.savepoints
+package org.espen.collect.android.savepoints
 
-import org.odk.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.javarosawrapper.FormController
 import org.odk.collect.async.Scheduler
 import org.odk.collect.async.SchedulerAsyncTaskMimic
 import org.odk.collect.forms.savepoints.Savepoint

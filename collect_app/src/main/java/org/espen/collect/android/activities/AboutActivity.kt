@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.content.Intent
 import android.net.Uri
@@ -23,10 +23,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
-import org.odk.collect.android.R
-import org.odk.collect.android.adapters.AboutItemClickListener
-import org.odk.collect.android.adapters.AboutListAdapter
-import org.odk.collect.android.injection.DaggerUtils
+import org.espen.collect.android.R
+import org.espen.collect.android.adapters.AboutItemClickListener
+import org.espen.collect.android.adapters.AboutListAdapter
+import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard.allowClick
 import org.odk.collect.strings.localization.LocalizedActivity

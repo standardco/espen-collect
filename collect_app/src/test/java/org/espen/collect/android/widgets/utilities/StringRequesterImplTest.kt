@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
 import android.app.Activity
 import android.content.Context
@@ -15,9 +15,9 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.spy
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.utilities.ExternalAppIntentProvider
+import org.espen.collect.android.R
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.utilities.ExternalAppIntentProvider
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.robolectric.Robolectric
 import java.lang.Exception

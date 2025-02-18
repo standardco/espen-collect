@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import android.content.Context
 import android.content.Intent
@@ -14,18 +14,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import org.odk.collect.android.activities.DeleteFormsActivity
-import org.odk.collect.android.activities.FormDownloadListActivity
-import org.odk.collect.android.activities.InstanceChooserList
-import org.odk.collect.android.application.MapboxClassInstanceCreator
-import org.odk.collect.android.databinding.MainMenuBinding
-import org.odk.collect.android.formlists.blankformlist.BlankFormListActivity
-import org.odk.collect.android.formmanagement.FormFillingIntentFactory
-import org.odk.collect.android.instancemanagement.send.InstanceUploaderListActivity
-import org.odk.collect.android.projects.ProjectIconView
-import org.odk.collect.android.projects.ProjectSettingsDialog
-import org.odk.collect.android.utilities.ActionRegister
-import org.odk.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.activities.DeleteFormsActivity
+import org.espen.collect.android.activities.FormDownloadListActivity
+import org.espen.collect.android.activities.InstanceChooserList
+import org.espen.collect.android.application.MapboxClassInstanceCreator
+import org.espen.collect.android.databinding.MainMenuBinding
+import org.espen.collect.android.formlists.blankformlist.BlankFormListActivity
+import org.espen.collect.android.formmanagement.FormFillingIntentFactory
+import org.espen.collect.android.instancemanagement.send.InstanceUploaderListActivity
+import org.espen.collect.android.projects.ProjectIconView
+import org.espen.collect.android.projects.ProjectSettingsDialog
+import org.espen.collect.android.utilities.ActionRegister
+import org.espen.collect.android.utilities.ApplicationConstants
 import org.odk.collect.androidshared.data.consume
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.androidshared.ui.SnackbarUtils
@@ -118,7 +118,7 @@ class MainMenuFragment(
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
-        val projectsMenuItem = menu.findItem(org.odk.collect.android.R.id.projects)
+        val projectsMenuItem = menu.findItem(org.espen.collect.android.R.id.projects)
         (projectsMenuItem.actionView as ProjectIconView).apply {
             project = currentProjectViewModel.currentProject.value
             setOnClickListener { onOptionsItemSelected(projectsMenuItem) }
@@ -127,14 +127,14 @@ class MainMenuFragment(
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(org.odk.collect.android.R.menu.main_menu, menu)
+        menuInflater.inflate(org.espen.collect.android.R.menu.main_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (!MultiClickGuard.allowClick(javaClass.name)) {
             return true
         }
-        if (item.itemId == org.odk.collect.android.R.id.projects) {
+        if (item.itemId == org.espen.collect.android.R.id.projects) {
             DialogFragmentUtils.showIfNotShowing(
                 ProjectSettingsDialog::class.java,
                 parentFragmentManager
@@ -155,7 +155,7 @@ class MainMenuFragment(
             childFragmentManager
                 .beginTransaction()
                 .add(
-                    org.odk.collect.android.R.id.map_box_initialization_fragment,
+                    org.espen.collect.android.R.id.map_box_initialization_fragment,
                     MapboxClassInstanceCreator.createMapBoxInitializationFragment()!!
                 )
                 .commit()

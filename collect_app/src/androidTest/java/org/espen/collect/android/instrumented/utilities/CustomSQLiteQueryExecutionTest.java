@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.instrumented.utilities;
+package org.espen.collect.android.instrumented.utilities;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -25,8 +25,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.support.rules.RunnableRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.support.rules.RunnableRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
 import org.odk.collect.db.sqlite.CustomSQLiteQueryExecutor;
 
 import java.io.File;

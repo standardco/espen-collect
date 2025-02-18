@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import androidx.appcompat.app.AlertDialog;
 import android.content.Context;
@@ -25,9 +25,9 @@ import android.widget.EditText;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.preferences.dialogs.ServerAuthDialogFragment;
+import org.espen.collect.android.R;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.preferences.dialogs.ServerAuthDialogFragment;
 import org.odk.collect.metadata.PropertyManager;
 
 import javax.inject.Inject;

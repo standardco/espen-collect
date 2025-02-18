@@ -12,15 +12,15 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 
 import org.javarosa.core.model.data.IAnswerData;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.widgets.utilities.StringWidgetUtils;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
 
 /**
  * Widget that restricts values to integers.

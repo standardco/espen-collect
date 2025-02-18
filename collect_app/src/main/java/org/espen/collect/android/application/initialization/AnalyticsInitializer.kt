@@ -1,7 +1,7 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.version.VersionInformation
+import org.espen.collect.android.version.VersionInformation
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys
 

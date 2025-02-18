@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.settings;
+package org.espen.collect.android.feature.settings;
 
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 
@@ -12,20 +12,20 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.R;
-import org.odk.collect.android.configure.qr.AppConfigurationGenerator;
-import org.odk.collect.android.configure.qr.QRCodeGenerator;
-import org.odk.collect.android.injection.config.AppDependencyModule;
-import org.odk.collect.android.support.StubBarcodeViewDecoder;
-import org.odk.collect.android.support.TestDependencies;
-import org.odk.collect.android.support.pages.MainMenuPage;
-import org.odk.collect.android.support.pages.ProjectSettingsPage;
-import org.odk.collect.android.support.pages.QRCodePage;
-import org.odk.collect.android.support.rules.CollectTestRule;
-import org.odk.collect.android.support.rules.ResetStateRule;
-import org.odk.collect.android.support.rules.RunnableRule;
-import org.odk.collect.android.support.rules.TestRuleChain;
-import org.odk.collect.android.views.BarcodeViewDecoder;
+import org.espen.collect.android.R;
+import org.espen.collect.android.configure.qr.AppConfigurationGenerator;
+import org.espen.collect.android.configure.qr.QRCodeGenerator;
+import org.espen.collect.android.injection.config.AppDependencyModule;
+import org.espen.collect.android.support.StubBarcodeViewDecoder;
+import org.espen.collect.android.support.TestDependencies;
+import org.espen.collect.android.support.pages.MainMenuPage;
+import org.espen.collect.android.support.pages.ProjectSettingsPage;
+import org.espen.collect.android.support.pages.QRCodePage;
+import org.espen.collect.android.support.rules.CollectTestRule;
+import org.espen.collect.android.support.rules.ResetStateRule;
+import org.espen.collect.android.support.rules.RunnableRule;
+import org.espen.collect.android.support.rules.TestRuleChain;
+import org.espen.collect.android.views.BarcodeViewDecoder;
 
 import java.io.File;
 import java.io.FileOutputStream;

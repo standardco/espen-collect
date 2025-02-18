@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets.interfaces;
+package org.espen.collect.android.widgets.interfaces;
 
-import org.odk.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.activities.FormFillingActivity;
 
 public interface WidgetDataReceiver {
     /**

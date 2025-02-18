@@ -1,19 +1,19 @@
-package org.odk.collect.android.database.instances;
+package org.espen.collect.android.database.instances;
 
 import static android.provider.BaseColumns._ID;
-import static org.odk.collect.android.database.DatabaseConstants.INSTANCES_TABLE_NAME;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.CAN_DELETE_BEFORE_SEND;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.CAN_EDIT_WHEN_COMPLETE;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.DELETED_DATE;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.DISPLAY_NAME;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.GEOMETRY;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.GEOMETRY_TYPE;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.INSTANCE_FILE_PATH;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.JR_FORM_ID;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.JR_VERSION;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.LAST_STATUS_CHANGE_DATE;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.STATUS;
-import static org.odk.collect.android.database.instances.DatabaseInstanceColumns.SUBMISSION_URI;
+import static org.espen.collect.android.database.DatabaseConstants.INSTANCES_TABLE_NAME;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.CAN_DELETE_BEFORE_SEND;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.CAN_EDIT_WHEN_COMPLETE;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.DELETED_DATE;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.DISPLAY_NAME;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.GEOMETRY;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.GEOMETRY_TYPE;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.INSTANCE_FILE_PATH;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.JR_FORM_ID;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.JR_VERSION;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.LAST_STATUS_CHANGE_DATE;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.STATUS;
+import static org.espen.collect.android.database.instances.DatabaseInstanceColumns.SUBMISSION_URI;
 import static org.odk.collect.db.sqlite.SQLiteDatabaseExt.doesColumnExist;
 
 import android.database.sqlite.SQLiteDatabase;
@@ -59,7 +59,7 @@ public class InstanceDatabaseMigrator implements DatabaseMigrator {
             case 7:
                 upgradeToVersion8(db);
             case 8:
-                // Remember to bump the database version number in {@link org.odk.collect.android.database.DatabaseConstants}
+                // Remember to bump the database version number in {@link org.espen.collect.android.database.DatabaseConstants}
                 // upgradeToVersion9(db);
         }
     }

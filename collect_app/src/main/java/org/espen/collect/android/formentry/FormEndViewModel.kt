@@ -1,8 +1,8 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import androidx.lifecycle.ViewModel
-import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
-import org.odk.collect.android.instancemanagement.autosend.shouldFormBeSentAutomatically
+import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
+import org.espen.collect.android.instancemanagement.autosend.shouldFormBeSentAutomatically
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 

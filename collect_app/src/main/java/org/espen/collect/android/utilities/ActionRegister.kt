@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 /**
  * Used to allow tests to understand whether a UI action has been successfully detected or not

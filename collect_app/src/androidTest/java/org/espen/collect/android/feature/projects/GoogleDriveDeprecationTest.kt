@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.projects
+package org.espen.collect.android.feature.projects
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -9,10 +9,10 @@ import org.hamcrest.CoreMatchers.allOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 import org.odk.collect.androidtest.RecordedIntentsRule
 import org.odk.collect.projects.Project
 import org.odk.collect.webpage.WebViewActivity

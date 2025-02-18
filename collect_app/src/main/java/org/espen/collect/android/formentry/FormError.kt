@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

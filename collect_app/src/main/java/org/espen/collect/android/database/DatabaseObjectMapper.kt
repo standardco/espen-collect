@@ -1,10 +1,10 @@
-package org.odk.collect.android.database
+package org.espen.collect.android.database
 
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
-import org.odk.collect.android.database.forms.DatabaseFormColumns
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns
+import org.espen.collect.android.database.forms.DatabaseFormColumns
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.shared.PathUtils.getAbsoluteFilePath

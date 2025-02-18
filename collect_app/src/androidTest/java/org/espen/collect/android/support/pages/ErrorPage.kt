@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.test.espresso.Espresso.onView
@@ -7,7 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withParent
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.instanceOf
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 
 class ErrorPage : Page<ErrorPage>() {
 

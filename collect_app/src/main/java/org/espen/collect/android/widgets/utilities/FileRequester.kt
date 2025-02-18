@@ -1,10 +1,10 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
 import android.app.Activity
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.R
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.utilities.ExternalAppIntentProvider
+import org.espen.collect.android.R
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.utilities.ExternalAppIntentProvider
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.androidshared.ui.ToastUtils.showLongToast
 import java.lang.Error

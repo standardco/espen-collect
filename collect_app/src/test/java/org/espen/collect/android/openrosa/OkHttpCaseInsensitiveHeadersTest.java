@@ -1,9 +1,9 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
-import org.odk.collect.android.openrosa.okhttp.OkHttpCaseInsensitiveHeaders;
+import org.espen.collect.android.openrosa.okhttp.OkHttpCaseInsensitiveHeaders;
 
 import java.util.Set;
 import java.util.TreeSet;

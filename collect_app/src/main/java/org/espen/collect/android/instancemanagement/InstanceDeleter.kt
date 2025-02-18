@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement
+package org.espen.collect.android.instancemanagement
 
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.instances.Instance

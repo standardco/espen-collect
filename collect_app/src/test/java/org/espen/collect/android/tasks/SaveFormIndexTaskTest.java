@@ -1,4 +1,4 @@
-package org.odk.collect.android.tasks;
+package org.espen.collect.android.tasks;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -11,10 +11,10 @@ import org.javarosa.core.model.FormIndex;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.support.CollectHelpers;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.support.CollectHelpers;
 
 import java.io.File;
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import androidx.preference.CheckBoxPreference
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -8,8 +8,8 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.TestSettingsProvider
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.TestSettingsProvider
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.androidshared.utils.getPreference
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.settings.keys.ProtectedProjectKeys

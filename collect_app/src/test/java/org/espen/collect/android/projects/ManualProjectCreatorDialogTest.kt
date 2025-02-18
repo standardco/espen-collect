@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.content.Context
 import androidx.test.espresso.Espresso.onView
@@ -22,12 +22,12 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.application.initialization.AnalyticsInitializer
-import org.odk.collect.android.application.initialization.MapsInitializer
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.mainmenu.MainMenuActivity
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.Matchers.isPasswordHidden
+import org.espen.collect.android.application.initialization.AnalyticsInitializer
+import org.espen.collect.android.application.initialization.MapsInitializer
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.Matchers.isPasswordHidden
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository

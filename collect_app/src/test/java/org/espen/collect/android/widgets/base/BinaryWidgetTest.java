@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.base;
+package org.espen.collect.android.widgets.base;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -6,10 +6,10 @@ import android.content.Intent;
 
 import org.javarosa.core.model.data.IAnswerData;
 import org.junit.Test;
-import org.odk.collect.android.fakes.FakePermissionsProvider;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.interfaces.Widget;
+import org.espen.collect.android.fakes.FakePermissionsProvider;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.interfaces.Widget;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

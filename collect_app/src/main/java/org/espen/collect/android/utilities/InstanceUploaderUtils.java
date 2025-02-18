@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import android.content.Context;
 
-import org.odk.collect.android.application.Collect;
+import org.espen.collect.android.application.Collect;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;
 

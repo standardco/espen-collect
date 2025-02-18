@@ -1,4 +1,4 @@
-package org.odk.collect.android.injection.config
+package org.espen.collect.android.injection.config
 
 import org.odk.collect.projects.ProjectsDependencyModule
 import org.odk.collect.projects.ProjectsRepository

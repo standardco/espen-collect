@@ -1,4 +1,4 @@
-package org.odk.collect.android.notifications
+package org.espen.collect.android.notifications
 
 import android.app.Application
 import android.app.NotificationManager
@@ -10,8 +10,8 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.TestSettingsProvider
-import org.odk.collect.android.formmanagement.ServerFormDetails
+import org.espen.collect.android.TestSettingsProvider
+import org.espen.collect.android.formmanagement.ServerFormDetails
 import org.odk.collect.forms.FormSourceException
 import org.odk.collect.forms.ManifestFile
 import org.odk.collect.projects.InMemProjectsRepository

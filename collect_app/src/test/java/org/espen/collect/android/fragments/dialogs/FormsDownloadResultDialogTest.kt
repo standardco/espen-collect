@@ -1,4 +1,4 @@
-package org.odk.collect.android.fragments.dialogs
+package org.espen.collect.android.fragments.dialogs
 
 import android.os.Bundle
 import android.view.View
@@ -18,9 +18,9 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.formmanagement.ServerFormDetails
-import org.odk.collect.android.formmanagement.download.FormDownloadException
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.formmanagement.ServerFormDetails
+import org.espen.collect.android.formmanagement.download.FormDownloadException
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.testshared.RobolectricHelpers
 import org.robolectric.Shadows

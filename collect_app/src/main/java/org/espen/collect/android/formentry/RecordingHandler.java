@@ -1,15 +1,15 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import androidx.lifecycle.LifecycleOwner;
 
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.core.model.instance.TreeReference;
-import org.odk.collect.android.audio.AudioFileAppender;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.utilities.QuestionMediaManager;
+import org.espen.collect.android.audio.AudioFileAppender;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.utilities.QuestionMediaManager;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.RecordingSession;
-import org.odk.collect.utilities.Result;
+import org.espen.collect.utilities.Result;
 
 import java.io.File;
 import java.io.IOException;

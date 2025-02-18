@@ -1,11 +1,11 @@
-package org.odk.collect.android.entities
+package org.espen.collect.android.entities
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.contains
 import org.hamcrest.Matchers.containsInAnyOrder
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
-import org.odk.collect.android.entities.support.EntitySameAsMatcher.Companion.sameEntityAs
+import org.espen.collect.android.entities.support.EntitySameAsMatcher.Companion.sameEntityAs
 import org.odk.collect.entities.storage.EntitiesRepository
 import org.odk.collect.entities.storage.Entity
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -18,11 +18,11 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.injection.config.ProjectDependencyModuleFactory
-import org.odk.collect.android.notifications.Notifier
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.injection.config.ProjectDependencyModuleFactory
+import org.espen.collect.android.notifications.Notifier
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.utilities.ChangeLockProvider
 import org.odk.collect.androidshared.data.AppState
 import org.odk.collect.androidtest.getOrAwaitValue
 import org.odk.collect.androidtest.recordValues

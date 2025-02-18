@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.formentry.questions;
+package org.espen.collect.android.formentry.questions;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -31,13 +31,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.audio.AudioHelper;
-import org.odk.collect.android.databinding.AudioVideoImageTextLabelBinding;
-import org.odk.collect.android.listeners.SelectItemClickListener;
-import org.odk.collect.android.utilities.FormEntryPromptUtils;
-import org.odk.collect.android.utilities.MediaUtils;
-import org.odk.collect.android.utilities.ScreenContext;
+import org.espen.collect.android.R;
+import org.espen.collect.android.audio.AudioHelper;
+import org.espen.collect.android.databinding.AudioVideoImageTextLabelBinding;
+import org.espen.collect.android.listeners.SelectItemClickListener;
+import org.espen.collect.android.utilities.FormEntryPromptUtils;
+import org.espen.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.utilities.ScreenContext;
 import org.odk.collect.audioclips.Clip;
 import org.odk.collect.imageloader.ImageLoader;
 

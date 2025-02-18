@@ -1,14 +1,14 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import org.odk.collect.android.R
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.utilities.FileProvider
+import org.espen.collect.android.R
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.utilities.FileProvider
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.androidshared.ui.ListFragmentStateAdapter
 import org.odk.collect.androidshared.utils.AppBarUtils.setupAppBarLayout

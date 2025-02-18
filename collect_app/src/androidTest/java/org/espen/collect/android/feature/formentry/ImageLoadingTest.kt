@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formentry
+package org.espen.collect.android.feature.formentry
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -7,10 +7,10 @@ import com.caverock.androidsvg.SVG
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.R
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
-import org.odk.collect.android.utilities.FileUtils.getResourceAsStream
+import org.espen.collect.android.R
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.utilities.FileUtils.getResourceAsStream
 
 class ImageLoadingTest {
     private val rule = CollectTestRule()

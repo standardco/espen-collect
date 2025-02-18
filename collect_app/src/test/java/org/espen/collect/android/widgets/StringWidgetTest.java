@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.utilities.Appearances.MASKED;
+import static org.espen.collect.android.utilities.Appearances.MASKED;
 
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
@@ -18,9 +18,9 @@ import net.bytebuddy.utility.RandomString;
 import org.javarosa.core.model.Constants;
 import org.javarosa.core.model.data.StringData;
 import org.junit.Test;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.widgets.base.GeneralStringWidgetTest;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.widgets.base.GeneralStringWidgetTest;
 
 /**
  * @author James Knight

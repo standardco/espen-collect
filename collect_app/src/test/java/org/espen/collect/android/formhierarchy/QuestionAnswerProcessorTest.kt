@@ -1,4 +1,4 @@
-package org.odk.collect.android.formhierarchy
+package org.espen.collect.android.formhierarchy
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -6,8 +6,8 @@ import org.javarosa.core.model.Constants
 import org.javarosa.core.model.QuestionDef
 import org.junit.Test
 import org.mockito.Mockito.mock
-import org.odk.collect.android.support.MockFormEntryPromptBuilder
-import org.odk.collect.android.utilities.Appearances
+import org.espen.collect.android.support.MockFormEntryPromptBuilder
+import org.espen.collect.android.utilities.Appearances
 
 // TODO: Add tests for other question/data types
 class QuestionAnswerProcessorTest {

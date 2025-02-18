@@ -16,7 +16,7 @@
  * the License.
  */
 
-package org.odk.collect.android.dynamicpreload.handler;
+package org.espen.collect.android.dynamicpreload.handler;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -24,12 +24,12 @@ import android.database.sqlite.SQLiteDatabase;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.condition.EvaluationContext;
 import org.javarosa.xpath.expr.XPathFuncExpr;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.exception.ExternalDataException;
-import org.odk.collect.android.dynamicpreload.ExternalDataManager;
-import org.odk.collect.android.dynamicpreload.ExternalDataUtil;
-import org.odk.collect.android.dynamicpreload.ExternalSQLiteOpenHelper;
-import org.odk.collect.android.dynamicpreload.ExternalSelectChoice;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.exception.ExternalDataException;
+import org.espen.collect.android.dynamicpreload.ExternalDataManager;
+import org.espen.collect.android.dynamicpreload.ExternalDataUtil;
+import org.espen.collect.android.dynamicpreload.ExternalSQLiteOpenHelper;
+import org.espen.collect.android.dynamicpreload.ExternalSelectChoice;
 import org.odk.collect.shared.strings.StringUtils;
 
 import java.util.ArrayList;

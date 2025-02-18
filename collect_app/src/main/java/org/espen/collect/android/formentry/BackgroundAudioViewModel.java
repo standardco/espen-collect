@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_BACKGROUND_RECORDING;
 
@@ -11,8 +11,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import org.javarosa.core.model.instance.TreeReference;
-import org.odk.collect.android.formentry.audit.AuditEvent;
-import org.odk.collect.android.formentry.audit.AuditEventLogger;
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.formentry.audit.AuditEventLogger;
 import org.odk.collect.androidshared.livedata.LiveDataUtils;
 import org.odk.collect.androidshared.livedata.MutableNonNullLiveData;
 import org.odk.collect.androidshared.livedata.NonNullLiveData;

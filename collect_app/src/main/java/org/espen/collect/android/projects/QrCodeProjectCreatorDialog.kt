@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.content.Context
 import android.content.Intent
@@ -15,14 +15,14 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.CaptureManager
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.R
-import org.odk.collect.android.activities.ActivityUtils
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.databinding.QrCodeProjectCreatorDialogLayoutBinding
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.mainmenu.MainMenuActivity
-import org.odk.collect.android.utilities.CodeCaptureManagerFactory
-import org.odk.collect.android.views.BarcodeViewDecoder
+import org.espen.collect.android.R
+import org.espen.collect.android.activities.ActivityUtils
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.databinding.QrCodeProjectCreatorDialogLayoutBinding
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.utilities.CodeCaptureManagerFactory
+import org.espen.collect.android.views.BarcodeViewDecoder
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.androidshared.ui.ToastUtils

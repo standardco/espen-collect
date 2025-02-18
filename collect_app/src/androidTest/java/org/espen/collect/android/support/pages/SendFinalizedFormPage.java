@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -8,10 +8,10 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.AllOf.allOf;
-import static org.odk.collect.android.support.matchers.CustomMatchers.withIndex;
+import static org.espen.collect.android.support.matchers.CustomMatchers.withIndex;
 
 import org.hamcrest.Matcher;
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 
 public class SendFinalizedFormPage extends Page<SendFinalizedFormPage> {
 
@@ -42,7 +42,7 @@ public class SendFinalizedFormPage extends Page<SendFinalizedFormPage> {
     }
 
     /**
-     * @deprecated uses the deprecated {@link org.odk.collect.android.support.matchers.CustomMatchers#withIndex(Matcher, int)})} helper.
+     * @deprecated uses the deprecated {@link org.espen.collect.android.support.matchers.CustomMatchers#withIndex(Matcher, int)})} helper.
      */
     @Deprecated
     public SendFinalizedFormPage selectForm(int index) {

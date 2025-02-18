@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.app.Application
 import android.content.Context
@@ -10,8 +10,8 @@ import org.hamcrest.Matchers.`is`
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.storage.StorageSubdirectory
 import org.odk.collect.settings.keys.MetaKeys
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.TempFiles

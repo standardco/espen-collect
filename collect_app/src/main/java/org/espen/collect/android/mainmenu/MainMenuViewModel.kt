@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import android.app.Application
 import android.net.Uri
@@ -6,17 +6,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import org.odk.collect.android.instancemanagement.InstanceDiskSynchronizer
-import org.odk.collect.android.instancemanagement.InstancesDataService
-import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
-import org.odk.collect.android.instancemanagement.autosend.shouldFormBeSentAutomatically
-import org.odk.collect.android.instancemanagement.canBeEdited
-import org.odk.collect.android.instancemanagement.isDraft
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.utilities.ContentUriHelper
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.android.version.VersionInformation
+import org.espen.collect.android.instancemanagement.InstanceDiskSynchronizer
+import org.espen.collect.android.instancemanagement.InstancesDataService
+import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
+import org.espen.collect.android.instancemanagement.autosend.shouldFormBeSentAutomatically
+import org.espen.collect.android.instancemanagement.canBeEdited
+import org.espen.collect.android.instancemanagement.isDraft
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.utilities.ContentUriHelper
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.version.VersionInformation
 import org.odk.collect.androidshared.data.Consumable
 import org.odk.collect.async.Scheduler
 import org.odk.collect.forms.instances.Instance

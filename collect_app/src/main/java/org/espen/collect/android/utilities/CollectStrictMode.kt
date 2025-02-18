@@ -1,9 +1,9 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.os.Build
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
-import org.odk.collect.android.BuildConfig
+import org.espen.collect.android.BuildConfig
 
 object CollectStrictMode {
 

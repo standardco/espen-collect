@@ -1,4 +1,4 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import android.content.Intent
 import android.view.Menu
@@ -7,8 +7,8 @@ import android.view.MenuItem
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import org.odk.collect.android.R
-import org.odk.collect.android.utilities.FileProvider
+import org.espen.collect.android.R
+import org.espen.collect.android.utilities.FileProvider
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.androidshared.ui.ToastUtils.showShortToast
 import org.odk.collect.androidshared.ui.enableIconsVisibility

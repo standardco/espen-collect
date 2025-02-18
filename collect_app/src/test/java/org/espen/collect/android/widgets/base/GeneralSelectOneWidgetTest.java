@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.base;
+package org.espen.collect.android.widgets.base;
 
 
 import androidx.annotation.NonNull;
@@ -8,7 +8,7 @@ import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectOneData;
 import org.javarosa.core.model.data.helper.Selection;
 import org.junit.Test;
-import org.odk.collect.android.widgets.interfaces.MultiChoiceWidget;
+import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
 
 import java.util.List;
 

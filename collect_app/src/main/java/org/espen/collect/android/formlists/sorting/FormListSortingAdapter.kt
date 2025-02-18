@@ -1,12 +1,12 @@
-package org.odk.collect.android.formlists.sorting
+package org.espen.collect.android.formlists.sorting
 
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.SortItemLayoutBinding
+import org.espen.collect.android.R
+import org.espen.collect.android.databinding.SortItemLayoutBinding
 import org.odk.collect.androidshared.system.ContextUtils.getThemeAttributeValue
 import java.util.function.Consumer
 

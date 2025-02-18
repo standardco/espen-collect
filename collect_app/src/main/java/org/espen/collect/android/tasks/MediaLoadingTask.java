@@ -1,18 +1,18 @@
-package org.odk.collect.android.tasks;
+package org.espen.collect.android.tasks;
 
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_IMAGE_SIZE;
 
 import android.net.Uri;
 import android.os.AsyncTask;
 
-import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.utilities.ContentUriHelper;
-import org.odk.collect.android.utilities.FileUtils;
-import org.odk.collect.android.utilities.ImageCompressionController;
-import org.odk.collect.android.widgets.BaseImageWidget;
-import org.odk.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.utilities.ContentUriHelper;
+import org.espen.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.ImageCompressionController;
+import org.espen.collect.android.widgets.BaseImageWidget;
+import org.espen.collect.android.widgets.QuestionWidget;
 import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 import org.odk.collect.settings.SettingsProvider;
 

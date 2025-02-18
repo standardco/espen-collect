@@ -1,4 +1,4 @@
-package org.odk.collect.android.fakes
+package org.espen.collect.android.fakes
 
 import android.app.Activity
 import androidx.test.platform.app.InstrumentationRegistry

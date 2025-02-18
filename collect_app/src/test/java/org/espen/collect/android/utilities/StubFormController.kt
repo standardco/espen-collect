@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import org.javarosa.core.model.FormDef
 import org.javarosa.core.model.FormIndex
@@ -7,12 +7,12 @@ import org.javarosa.core.model.instance.TreeReference
 import org.javarosa.core.services.transport.payload.ByteArrayPayload
 import org.javarosa.form.api.FormEntryCaption
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.exception.JavaRosaException
-import org.odk.collect.android.formentry.audit.AuditEventLogger
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.javarosawrapper.InstanceMetadata
-import org.odk.collect.android.javarosawrapper.SuccessValidationResult
-import org.odk.collect.android.javarosawrapper.ValidationResult
+import org.espen.collect.android.exception.JavaRosaException
+import org.espen.collect.android.formentry.audit.AuditEventLogger
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.javarosawrapper.InstanceMetadata
+import org.espen.collect.android.javarosawrapper.SuccessValidationResult
+import org.espen.collect.android.javarosawrapper.ValidationResult
 import org.odk.collect.entities.javarosa.finalization.EntitiesExtra
 import java.io.File
 

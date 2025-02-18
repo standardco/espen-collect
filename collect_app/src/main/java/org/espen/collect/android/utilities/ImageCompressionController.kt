@@ -1,8 +1,8 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.content.Context
-import org.odk.collect.android.R
-import org.odk.collect.android.widgets.QuestionWidget
+import org.espen.collect.android.R
+import org.espen.collect.android.widgets.QuestionWidget
 import org.odk.collect.androidshared.bitmap.ImageCompressor
 import timber.log.Timber
 

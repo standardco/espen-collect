@@ -1,12 +1,12 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.app.Activity
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.QuitFormDialogLayoutBinding
-import org.odk.collect.android.formentry.saving.FormSaveViewModel
+import org.espen.collect.android.R
+import org.espen.collect.android.databinding.QuitFormDialogLayoutBinding
+import org.espen.collect.android.formentry.saving.FormSaveViewModel
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 import java.text.SimpleDateFormat

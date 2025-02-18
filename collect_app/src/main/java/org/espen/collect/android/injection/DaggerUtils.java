@@ -12,13 +12,13 @@
  * the License.
  */
 
-package org.odk.collect.android.injection;
+package org.espen.collect.android.injection;
 
 import android.app.Activity;
 import android.content.Context;
 
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.injection.config.AppDependencyComponent;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.injection.config.AppDependencyComponent;
 
 public final class DaggerUtils {
 

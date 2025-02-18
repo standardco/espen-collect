@@ -1,4 +1,4 @@
-package org.odk.collect.android.database.savepoints
+package org.espen.collect.android.database.savepoints
 
 import android.provider.BaseColumns
 

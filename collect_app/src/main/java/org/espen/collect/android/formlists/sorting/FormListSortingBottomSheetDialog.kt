@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.sorting
+package org.espen.collect.android.formlists.sorting
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import java.util.function.Consumer
 
 class FormListSortingBottomSheetDialog(

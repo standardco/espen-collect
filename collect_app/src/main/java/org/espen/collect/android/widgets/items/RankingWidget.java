@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -27,16 +27,16 @@ import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectMultiData;
 import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.databinding.RankingWidgetBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.fragments.dialogs.RankingWidgetDialog;
-import org.odk.collect.android.utilities.HtmlUtils;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
-import org.odk.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
+import org.espen.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.databinding.RankingWidgetBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.fragments.dialogs.RankingWidgetDialog;
+import org.espen.collect.android.utilities.HtmlUtils;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
 import java.util.ArrayList;
 import java.util.List;
 

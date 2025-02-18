@@ -1,4 +1,4 @@
-package org.odk.collect.android.javarosawrapper;
+package org.espen.collect.android.javarosawrapper;
 
 import com.google.common.io.Files;
 
@@ -8,7 +8,7 @@ import org.javarosa.xform.parse.XFormParser;
 import org.javarosa.xform.util.XFormUtils;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
-import org.odk.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.FileUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;

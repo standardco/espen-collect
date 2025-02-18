@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import androidx.preference.Preference
@@ -12,12 +12,12 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.application.initialization.AnalyticsInitializer
-import org.odk.collect.android.application.initialization.MapsInitializer
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.application.initialization.AnalyticsInitializer
+import org.espen.collect.android.application.initialization.MapsInitializer
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.maps.layers.ReferenceLayer
 import org.odk.collect.maps.layers.ReferenceLayerRepository

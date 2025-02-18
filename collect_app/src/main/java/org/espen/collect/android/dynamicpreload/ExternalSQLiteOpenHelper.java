@@ -16,7 +16,7 @@
  * the License.
  */
 
-package org.odk.collect.android.dynamicpreload;
+package org.espen.collect.android.dynamicpreload;
 
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
@@ -30,9 +30,9 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 
-import org.odk.collect.android.application.Collect;
+import org.espen.collect.android.application.Collect;
 import org.odk.collect.db.sqlite.AltDatabasePathContext;
-import org.odk.collect.android.exception.ExternalDataException;
+import org.espen.collect.android.exception.ExternalDataException;
 import org.odk.collect.db.sqlite.CustomSQLiteQueryBuilder;
 import org.odk.collect.db.sqlite.CustomSQLiteQueryExecutor;
 import org.odk.collect.db.sqlite.SQLiteUtils;

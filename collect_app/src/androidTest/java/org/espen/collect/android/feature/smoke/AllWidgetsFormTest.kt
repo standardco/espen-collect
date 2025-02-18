@@ -1,10 +1,10 @@
-package org.odk.collect.android.feature.smoke
+package org.espen.collect.android.feature.smoke
 
 import org.junit.Rule
 import org.junit.Test
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.rules.BlankFormTestRule
-import org.odk.collect.android.support.rules.TestRuleChain.chain
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.rules.BlankFormTestRule
+import org.espen.collect.android.support.rules.TestRuleChain.chain
 import org.odk.collect.strings.R.string
 
 /**

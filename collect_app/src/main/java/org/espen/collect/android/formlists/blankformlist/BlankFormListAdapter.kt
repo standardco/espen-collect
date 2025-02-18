@@ -1,11 +1,11 @@
-package org.odk.collect.android.formlists.blankformlist
+package org.espen.collect.android.formlists.blankformlist
 
 import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 import org.odk.collect.lists.RecyclerViewUtils.matchParentWidth
 

@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
-import static org.odk.collect.android.utilities.ApplicationConstants.RequestCodes;
+import static org.espen.collect.android.utilities.ApplicationConstants.RequestCodes;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -32,16 +32,16 @@ import androidx.core.content.ContextCompat;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.databinding.ExStringQuestionTypeBinding;
-import org.odk.collect.android.dynamicpreload.ExternalAppsUtils;
-import org.odk.collect.android.R;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
-import org.odk.collect.android.widgets.utilities.StringRequester;
-import org.odk.collect.android.widgets.utilities.StringWidgetUtils;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.databinding.ExStringQuestionTypeBinding;
+import org.espen.collect.android.dynamicpreload.ExternalAppsUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.espen.collect.android.widgets.utilities.StringRequester;
+import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 import java.io.Serializable;
 

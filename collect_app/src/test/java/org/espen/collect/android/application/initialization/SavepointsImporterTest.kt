@@ -1,4 +1,4 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import android.app.Application
 import android.content.Context
@@ -9,8 +9,8 @@ import org.hamcrest.Matchers.contains
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.storage.StorageSubdirectory
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.forms.savepoints.Savepoint

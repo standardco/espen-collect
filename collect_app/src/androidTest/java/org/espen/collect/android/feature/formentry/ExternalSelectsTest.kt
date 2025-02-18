@@ -1,12 +1,12 @@
-package org.odk.collect.android.feature.formentry
+package org.espen.collect.android.feature.formentry
 
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain.chain
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain.chain
 
 /**
  * This tests the "External selects" feature of XLSForms. This will often be referred to as "fast

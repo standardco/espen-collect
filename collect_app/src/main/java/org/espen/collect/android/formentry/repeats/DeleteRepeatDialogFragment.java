@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry.repeats;
+package org.espen.collect.android.formentry.repeats;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static android.content.DialogInterface.BUTTON_POSITIVE;
@@ -16,10 +16,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.odk.collect.android.formentry.FormEntryViewModel;
-import org.odk.collect.android.formentry.audit.AuditEvent;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.formentry.FormEntryViewModel;
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.javarosawrapper.FormController;
 
 public class DeleteRepeatDialogFragment extends DialogFragment {
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.views
+package org.espen.collect.android.views
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

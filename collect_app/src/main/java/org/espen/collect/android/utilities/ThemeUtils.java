@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import static android.content.res.Configuration.UI_MODE_NIGHT_MASK;
 import static android.content.res.Configuration.UI_MODE_NIGHT_YES;
@@ -28,8 +28,8 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.injection.DaggerUtils;
 import org.odk.collect.settings.SettingsProvider;
 import org.odk.collect.settings.keys.ProjectKeys;
 

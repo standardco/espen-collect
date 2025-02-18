@@ -1,4 +1,4 @@
-package org.odk.collect.android.support
+package org.espen.collect.android.support
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider

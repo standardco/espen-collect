@@ -1,4 +1,4 @@
-package org.odk.collect.android.formhierarchy
+package org.espen.collect.android.formhierarchy
 
 import android.content.Context
 import org.javarosa.core.model.Constants
@@ -7,11 +7,11 @@ import org.javarosa.core.model.data.DateTimeData
 import org.javarosa.core.model.data.MultipleItemsData
 import org.javarosa.core.model.data.helper.Selection
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.fastexternalitemset.ItemsetDao
-import org.odk.collect.android.fastexternalitemset.ItemsetDbAdapter
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.utilities.Appearances
-import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils
+import org.espen.collect.android.fastexternalitemset.ItemsetDao
+import org.espen.collect.android.fastexternalitemset.ItemsetDbAdapter
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.utilities.Appearances
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils
 import java.math.BigDecimal
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols

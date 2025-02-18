@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.viewmodels;
+package org.espen.collect.android.widgets.viewmodels;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -20,7 +20,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.widgets.datetime.DateTimeUtils;
+import org.espen.collect.android.widgets.datetime.DateTimeUtils;
 
 @RunWith(AndroidJUnit4.class)
 public class DateTimeViewModelTest {

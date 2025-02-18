@@ -1,4 +1,4 @@
-package org.odk.collect.android.dynamicpreload
+package org.espen.collect.android.dynamicpreload
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.instanceOf

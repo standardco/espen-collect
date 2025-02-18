@@ -1,10 +1,10 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import android.content.Context
 import androidx.preference.PreferenceManager
 import org.apache.commons.io.FileUtils
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.storage.StoragePathProvider
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.importing.ProjectDetailsCreator

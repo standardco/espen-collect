@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement.metadata
+package org.espen.collect.android.formmanagement.metadata
 
 import org.javarosa.xform.parse.XFormParser
 import org.kxml2.kdom.Element

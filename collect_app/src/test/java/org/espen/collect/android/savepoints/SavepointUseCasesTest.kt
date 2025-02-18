@@ -1,12 +1,12 @@
-package org.odk.collect.android.savepoints
+package org.espen.collect.android.savepoints
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.external.InstancesContract
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.external.InstancesContract
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.forms.savepoints.Savepoint

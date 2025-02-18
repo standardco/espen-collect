@@ -1,4 +1,4 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import org.javarosa.core.model.CoreModelModule
 import org.javarosa.core.services.PrototypeManager
@@ -7,9 +7,9 @@ import org.javarosa.model.xform.XFormsModule
 import org.javarosa.xform.parse.XFormParser
 import org.javarosa.xform.parse.XFormParserFactory
 import org.javarosa.xform.util.XFormUtils
-import org.odk.collect.android.dynamicpreload.DynamicPreloadXFormParserFactory
-import org.odk.collect.android.logic.actions.setgeopoint.CollectSetGeopointActionHandler
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.dynamicpreload.DynamicPreloadXFormParserFactory
+import org.espen.collect.android.logic.actions.setgeopoint.CollectSetGeopointActionHandler
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.entities.javarosa.intance.LocalEntitiesExternalInstanceParserFactory
 import org.odk.collect.entities.javarosa.parse.EntityXFormParserFactory
 import org.odk.collect.entities.storage.EntitiesRepository
@@ -35,7 +35,7 @@ class JavaRosaInitializer(
         XFormsModule().registerModule()
 
         // When registering prototypes from Collect, a proguard exception also needs to be added
-        PrototypeManager.registerPrototype("org.odk.collect.android.logic.actions.setgeopoint.CollectSetGeopointAction")
+        PrototypeManager.registerPrototype("org.espen.collect.android.logic.actions.setgeopoint.CollectSetGeopointAction")
         XFormParser.registerActionHandler(
             CollectSetGeopointActionHandler.ELEMENT_NAME,
             CollectSetGeopointActionHandler()

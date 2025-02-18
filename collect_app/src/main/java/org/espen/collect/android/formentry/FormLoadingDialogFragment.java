@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import android.content.Context;
 
-import org.odk.collect.android.formentry.saving.SaveFormProgressDialogFragment;
+import org.espen.collect.android.formentry.saving.SaveFormProgressDialogFragment;
 import org.odk.collect.material.MaterialProgressDialogFragment;
 
 public class FormLoadingDialogFragment extends MaterialProgressDialogFragment {

@@ -1,7 +1,7 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
-import org.odk.collect.android.backgroundwork.FormUpdateScheduler
-import org.odk.collect.android.backgroundwork.InstanceSubmitScheduler
+import org.espen.collect.android.backgroundwork.FormUpdateScheduler
+import org.espen.collect.android.backgroundwork.InstanceSubmitScheduler
 import org.odk.collect.async.Scheduler
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.upgrade.Upgrade

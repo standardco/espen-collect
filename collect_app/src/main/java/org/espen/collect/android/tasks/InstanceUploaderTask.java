@@ -12,28 +12,28 @@
  * the License.
  */
 
-package org.odk.collect.android.tasks;
+package org.espen.collect.android.tasks;
 
-import static org.odk.collect.android.analytics.AnalyticsEvents.SUBMISSION;
+import static org.espen.collect.android.analytics.AnalyticsEvents.SUBMISSION;
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import android.net.Uri;
 import android.os.AsyncTask;
 
 import org.odk.collect.analytics.Analytics;
-import org.odk.collect.android.analytics.AnalyticsEvents;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.instancemanagement.InstanceDeleter;
-import org.odk.collect.android.instancemanagement.InstancesDataService;
-import org.odk.collect.android.listeners.InstanceUploaderListener;
-import org.odk.collect.android.openrosa.OpenRosaHttpInterface;
-import org.odk.collect.android.projects.ProjectsDataService;
-import org.odk.collect.android.upload.FormUploadAuthRequestedException;
-import org.odk.collect.android.upload.FormUploadException;
-import org.odk.collect.android.upload.InstanceServerUploader;
-import org.odk.collect.android.utilities.InstanceAutoDeleteChecker;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
-import org.odk.collect.android.utilities.WebCredentialsUtils;
+import org.espen.collect.android.analytics.AnalyticsEvents;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.instancemanagement.InstanceDeleter;
+import org.espen.collect.android.instancemanagement.InstancesDataService;
+import org.espen.collect.android.listeners.InstanceUploaderListener;
+import org.espen.collect.android.openrosa.OpenRosaHttpInterface;
+import org.espen.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.upload.FormUploadAuthRequestedException;
+import org.espen.collect.android.upload.FormUploadException;
+import org.espen.collect.android.upload.InstanceServerUploader;
+import org.espen.collect.android.utilities.InstanceAutoDeleteChecker;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.utilities.WebCredentialsUtils;
 import org.odk.collect.forms.FormsRepository;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;

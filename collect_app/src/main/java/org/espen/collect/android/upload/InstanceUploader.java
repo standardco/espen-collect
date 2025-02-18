@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.upload;
+package org.espen.collect.android.upload;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

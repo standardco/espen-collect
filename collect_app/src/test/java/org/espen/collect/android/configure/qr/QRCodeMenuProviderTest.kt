@@ -1,4 +1,4 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import android.content.Intent
 import android.net.Uri
@@ -14,9 +14,9 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.TestSettingsProvider.getSettingsProvider
-import org.odk.collect.android.utilities.FileProvider
+import org.espen.collect.android.R
+import org.espen.collect.android.TestSettingsProvider.getSettingsProvider
+import org.espen.collect.android.utilities.FileProvider
 import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.androidshared.system.IntentLauncherImpl
 import org.odk.collect.testshared.ErrorIntentLauncher

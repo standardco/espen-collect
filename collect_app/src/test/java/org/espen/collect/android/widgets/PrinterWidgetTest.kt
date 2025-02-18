@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets
+package org.espen.collect.android.widgets
 
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
@@ -9,12 +9,12 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.formentry.PrinterWidgetViewModel
-import org.odk.collect.android.formentry.questions.QuestionDetails
-import org.odk.collect.android.support.WidgetTestActivity
-import org.odk.collect.android.utilities.QuestionMediaManager
-import org.odk.collect.android.widgets.base.QuestionWidgetTest
+import org.espen.collect.android.R
+import org.espen.collect.android.formentry.PrinterWidgetViewModel
+import org.espen.collect.android.formentry.questions.QuestionDetails
+import org.espen.collect.android.support.WidgetTestActivity
+import org.espen.collect.android.utilities.QuestionMediaManager
+import org.espen.collect.android.widgets.base.QuestionWidgetTest
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickSafeMaterialButton
 import org.odk.collect.printer.HtmlPrinter
 import org.odk.collect.qrcode.QRCodeCreator

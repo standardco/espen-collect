@@ -1,10 +1,10 @@
-package org.odk.collect.android.fragments.viewmodels;
+package org.espen.collect.android.fragments.viewmodels;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.odk.collect.android.adapters.AbstractSelectListAdapter;
+import org.espen.collect.android.adapters.AbstractSelectListAdapter;
 
 @SuppressWarnings("PMD.MissingStaticMethodInNonInstantiatableClass")
 public class SelectMinimalViewModel extends ViewModel {

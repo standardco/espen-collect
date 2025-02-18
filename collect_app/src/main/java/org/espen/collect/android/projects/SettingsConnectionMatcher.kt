@@ -1,8 +1,8 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import org.json.JSONException
 import org.json.JSONObject
-import org.odk.collect.android.preferences.Defaults
+import org.espen.collect.android.preferences.Defaults
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.AppConfigurationKeys

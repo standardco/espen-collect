@@ -1,10 +1,10 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
-import org.odk.collect.android.backgroundwork.FormUpdateScheduler
-import org.odk.collect.android.backgroundwork.InstanceSubmitScheduler
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.utilities.ChangeLockProvider
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.backgroundwork.FormUpdateScheduler
+import org.espen.collect.android.backgroundwork.InstanceSubmitScheduler
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
 import org.odk.collect.db.sqlite.DatabaseConnection
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.projects.Project

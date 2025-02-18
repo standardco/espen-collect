@@ -1,11 +1,11 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.hamcrest.Matchers.not
 import org.junit.Test
 import org.mockito.kotlin.mock
-import org.odk.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.javarosawrapper.FormController
 import org.odk.collect.androidtest.getOrAwaitValue
 import org.odk.collect.forms.Form
 

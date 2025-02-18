@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.app.Activity
 import android.app.Activity.RESULT_OK
@@ -18,16 +18,16 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.external.FormUriActivity
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.formhierarchy.FormHierarchyActivity
-import org.odk.collect.android.formmanagement.FormFillingIntentFactory
-import org.odk.collect.android.injection.config.AppDependencyComponent
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.storage.StorageSubdirectory
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.CollectHelpers.resetProcess
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.external.FormUriActivity
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.formhierarchy.FormHierarchyActivity
+import org.espen.collect.android.formmanagement.FormFillingIntentFactory
+import org.espen.collect.android.injection.config.AppDependencyComponent
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.storage.StorageSubdirectory
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.CollectHelpers.resetProcess
+import org.espen.collect.android.utilities.FileUtils
 import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.androidtest.ActivityScenarioExtensions.isFinishing
 import org.odk.collect.androidtest.ActivityScenarioLauncherRule

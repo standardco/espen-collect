@@ -1,4 +1,4 @@
-package org.odk.collect.android.application.initialization.upgrade
+package org.espen.collect.android.application.initialization.upgrade
 
 import android.app.Application
 import android.content.Context

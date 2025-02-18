@@ -1,11 +1,11 @@
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.content.Context
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.database.instances.DatabaseInstancesRepository
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.storage.StoragePaths
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.database.instances.DatabaseInstancesRepository
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.storage.StoragePaths
 import org.odk.collect.forms.instances.InstancesRepository
 import org.odk.collect.projects.ProjectDependencyFactory
 

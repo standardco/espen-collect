@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement
+package org.espen.collect.android.instancemanagement
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.CoreMatchers.equalTo
@@ -10,11 +10,11 @@ import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.notifications.Notifier
-import org.odk.collect.android.openrosa.HttpGetResult
-import org.odk.collect.android.openrosa.OpenRosaHttpInterface
-import org.odk.collect.android.projects.ProjectDependencyModule
-import org.odk.collect.android.utilities.ChangeLocks
+import org.espen.collect.android.notifications.Notifier
+import org.espen.collect.android.openrosa.HttpGetResult
+import org.espen.collect.android.openrosa.OpenRosaHttpInterface
+import org.espen.collect.android.projects.ProjectDependencyModule
+import org.espen.collect.android.utilities.ChangeLocks
 import org.odk.collect.androidshared.data.AppState
 import org.odk.collect.forms.instances.Instance.STATUS_COMPLETE
 import org.odk.collect.forms.instances.Instance.STATUS_INCOMPLETE

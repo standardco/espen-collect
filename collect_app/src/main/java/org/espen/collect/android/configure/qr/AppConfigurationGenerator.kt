@@ -1,8 +1,8 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import org.json.JSONObject
-import org.odk.collect.android.preferences.Defaults
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.preferences.Defaults
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.AppConfigurationKeys
 import org.odk.collect.settings.keys.ProjectKeys

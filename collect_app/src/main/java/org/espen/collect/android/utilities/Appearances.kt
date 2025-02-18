@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.utilities
+package org.espen.collect.android.utilities
 
 import android.content.res.Configuration
 import org.javarosa.core.model.Constants
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.dynamicpreload.ExternalDataUtil
+import org.espen.collect.android.dynamicpreload.ExternalDataUtil
 import org.odk.collect.androidshared.utils.ScreenUtils
 
 object Appearances {

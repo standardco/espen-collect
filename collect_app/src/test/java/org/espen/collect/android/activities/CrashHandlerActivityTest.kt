@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import android.content.Context
 import androidx.lifecycle.Lifecycle

@@ -1,7 +1,7 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.utilities.FormEntryPromptUtils;
+import org.espen.collect.android.utilities.FormEntryPromptUtils;
 
 public class RecordingRequesterProvider {
 

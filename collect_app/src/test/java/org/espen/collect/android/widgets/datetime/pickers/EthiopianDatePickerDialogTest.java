@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.datetime.pickers;
+package org.espen.collect.android.widgets.datetime.pickers;
 
 import android.content.DialogInterface;
 
@@ -8,9 +8,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.fragments.support.DialogFragmentHelpers;
-import org.odk.collect.android.widgets.datetime.DatePickerDetails;
-import org.odk.collect.android.support.CollectHelpers;
+import org.espen.collect.android.fragments.support.DialogFragmentHelpers;
+import org.espen.collect.android.widgets.datetime.DatePickerDetails;
+import org.espen.collect.android.support.CollectHelpers;
 import org.odk.collect.testshared.RobolectricHelpers;
 
 import static org.mockito.Mockito.when;

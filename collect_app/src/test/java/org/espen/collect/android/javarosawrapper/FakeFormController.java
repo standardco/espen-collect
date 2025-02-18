@@ -1,4 +1,4 @@
-package org.odk.collect.android.javarosawrapper;
+package org.espen.collect.android.javarosawrapper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,9 +9,9 @@ import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.instance.TreeReference;
 import org.javarosa.form.api.FormEntryController;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.exception.JavaRosaException;
-import org.odk.collect.android.formentry.audit.AuditEventLogger;
-import org.odk.collect.android.utilities.StubFormController;
+import org.espen.collect.android.exception.JavaRosaException;
+import org.espen.collect.android.formentry.audit.AuditEventLogger;
+import org.espen.collect.android.utilities.StubFormController;
 
 import java.util.HashMap;
 import java.util.LinkedList;

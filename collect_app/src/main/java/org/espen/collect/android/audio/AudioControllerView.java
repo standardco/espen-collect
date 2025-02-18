@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import android.content.Context;
 import android.os.Build;
@@ -24,8 +24,8 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.databinding.AudioControllerLayoutBinding;
+import org.espen.collect.android.R;
+import org.espen.collect.android.databinding.AudioControllerLayoutBinding;
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickSafeMaterialButton;
 
 import static java.lang.Math.max;

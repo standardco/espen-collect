@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 class SaveOrIgnoreDrawingDialog<D : Page<D>>(
     private val drawingName: String,

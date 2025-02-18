@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement.download;
+package org.espen.collect.android.formmanagement.download;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -10,7 +10,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.utilities.FileUtils.read;
+import static org.espen.collect.android.utilities.FileUtils.read;
 import static org.odk.collect.formstest.FormUtils.buildForm;
 import static org.odk.collect.formstest.FormUtils.createXFormBody;
 import static org.odk.collect.shared.PathUtils.getAbsoluteFilePath;
@@ -19,8 +19,8 @@ import static java.util.Arrays.asList;
 import com.google.common.io.Files;
 
 import org.junit.Test;
-import org.odk.collect.android.formmanagement.metadata.FormMetadataParser;
-import org.odk.collect.android.formmanagement.ServerFormDetails;
+import org.espen.collect.android.formmanagement.metadata.FormMetadataParser;
+import org.espen.collect.android.formmanagement.ServerFormDetails;
 import org.odk.collect.entities.storage.EntitiesRepository;
 import org.odk.collect.entities.storage.InMemEntitiesRepository;
 import org.odk.collect.forms.Form;

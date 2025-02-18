@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -11,8 +11,8 @@ import org.javarosa.xform.parse.XFormParser
 import org.junit.Before
 import org.junit.Test
 import org.mockito.kotlin.mock
-import org.odk.collect.android.javarosawrapper.FormController
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.javarosawrapper.FormController
+import org.espen.collect.android.utilities.FileUtils
 import org.odk.collect.entities.storage.InMemEntitiesRepository
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance

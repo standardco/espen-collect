@@ -1,4 +1,4 @@
-package org.odk.collect.android.analytics
+package org.espen.collect.android.analytics
 
 object AnalyticsEvents {
     /**

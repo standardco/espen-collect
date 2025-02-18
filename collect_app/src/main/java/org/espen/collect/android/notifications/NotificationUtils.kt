@@ -1,10 +1,10 @@
-package org.odk.collect.android.notifications
+package org.espen.collect.android.notifications
 
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import org.odk.collect.android.BuildConfig
-import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.BuildConfig
+import org.espen.collect.android.mainmenu.MainMenuActivity
 import org.odk.collect.errors.ErrorActivity
 import org.odk.collect.errors.ErrorItem
 import java.io.Serializable

@@ -1,4 +1,4 @@
-package org.odk.collect.android.storage
+package org.espen.collect.android.storage
 
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import org.hamcrest.CoreMatchers.`is`
@@ -7,7 +7,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository
 import java.io.File

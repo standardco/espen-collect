@@ -1,8 +1,8 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.os.Bundle
 import androidx.preference.Preference
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 
 class DevToolsPreferencesFragment : BaseProjectPreferencesFragment() {
 

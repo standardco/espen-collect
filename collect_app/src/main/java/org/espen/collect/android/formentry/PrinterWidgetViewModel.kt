@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -6,8 +6,8 @@ import android.util.Base64
 import androidx.lifecycle.ViewModel
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.odk.collect.android.utilities.QuestionMediaManager
-import org.odk.collect.android.widgets.interfaces.Printer
+import org.espen.collect.android.utilities.QuestionMediaManager
+import org.espen.collect.android.widgets.interfaces.Printer
 import org.odk.collect.androidshared.async.TrackableWorker
 import org.odk.collect.androidshared.livedata.NonNullLiveData
 import org.odk.collect.async.Scheduler

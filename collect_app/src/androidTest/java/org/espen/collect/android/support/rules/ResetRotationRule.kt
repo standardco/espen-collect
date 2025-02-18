@@ -1,7 +1,7 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
 import org.junit.rules.ExternalResource
-import org.odk.collect.android.support.DummyActivityLauncher
+import org.espen.collect.android.support.DummyActivityLauncher
 
 class ResetRotationRule : ExternalResource() {
 

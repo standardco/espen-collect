@@ -1,4 +1,4 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import org.jetbrains.annotations.Nullable;
 import org.kxml2.kdom.Document;

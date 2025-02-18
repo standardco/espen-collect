@@ -1,4 +1,4 @@
-package org.odk.collect.android.audio;
+package org.espen.collect.android.audio;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -19,11 +19,11 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.databinding.AudioRecordingControllerFragmentBinding;
-import org.odk.collect.android.formentry.BackgroundAudioViewModel;
-import org.odk.collect.android.formentry.FormEntryViewModel;
-import org.odk.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.databinding.AudioRecordingControllerFragmentBinding;
+import org.espen.collect.android.formentry.BackgroundAudioViewModel;
+import org.espen.collect.android.formentry.FormEntryViewModel;
+import org.espen.collect.android.injection.DaggerUtils;
 import org.odk.collect.androidshared.data.Consumable;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.RecordingSession;

@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -23,8 +23,8 @@ import android.view.View;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.databinding.UrlWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.databinding.UrlWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
 import org.odk.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.webpage.ExternalWebPageHelper;
 

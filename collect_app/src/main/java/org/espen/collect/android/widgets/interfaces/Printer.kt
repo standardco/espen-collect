@@ -1,7 +1,7 @@
-package org.odk.collect.android.widgets.interfaces
+package org.espen.collect.android.widgets.interfaces
 
 import android.content.Context
-import org.odk.collect.android.utilities.QuestionMediaManager
+import org.espen.collect.android.utilities.QuestionMediaManager
 import org.odk.collect.androidshared.livedata.NonNullLiveData
 
 interface Printer {

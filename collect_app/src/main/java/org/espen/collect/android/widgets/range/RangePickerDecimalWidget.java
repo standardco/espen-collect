@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.range;
+package org.espen.collect.android.widgets.range;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,11 +9,11 @@ import org.javarosa.core.model.RangeQuestion;
 import org.javarosa.core.model.data.DecimalData;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.databinding.RangePickerWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.utilities.RangeWidgetUtils;
+import org.espen.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.databinding.RangePickerWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.utilities.RangeWidgetUtils;
 
 import java.math.BigDecimal;
 

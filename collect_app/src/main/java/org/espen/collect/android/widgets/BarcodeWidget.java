@@ -12,10 +12,10 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
-import static org.odk.collect.android.utilities.Appearances.FRONT;
-import static org.odk.collect.android.utilities.Appearances.hasAppearance;
+import static org.espen.collect.android.utilities.Appearances.FRONT;
+import static org.espen.collect.android.utilities.Appearances.hasAppearance;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -28,14 +28,14 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.activities.ScannerWithFlashlightActivity;
-import org.odk.collect.android.databinding.BarcodeWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.Appearances;
+import org.espen.collect.android.activities.ScannerWithFlashlightActivity;
+import org.espen.collect.android.databinding.BarcodeWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
 import org.odk.collect.androidshared.system.CameraUtils;
 import org.odk.collect.androidshared.ui.ToastUtils;
-import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 /**
  * Widget that allows user to scan barcodes and add them to the form.

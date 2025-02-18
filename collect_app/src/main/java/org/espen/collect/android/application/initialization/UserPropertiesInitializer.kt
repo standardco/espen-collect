@@ -1,8 +1,8 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import android.content.Context
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.preferences.Defaults
+import org.espen.collect.android.preferences.Defaults
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider

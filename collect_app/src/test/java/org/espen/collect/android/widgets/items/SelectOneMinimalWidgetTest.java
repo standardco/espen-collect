@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.text.InputType;
 import android.view.View;
@@ -8,11 +8,11 @@ import androidx.annotation.NonNull;
 import org.javarosa.core.model.data.SelectOneData;
 import org.javarosa.core.model.data.helper.Selection;
 import org.junit.Test;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.listeners.WidgetValueChangedListener;
-import org.odk.collect.android.widgets.base.GeneralSelectOneWidgetTest;
-import org.odk.collect.android.widgets.support.FakeWaitingForDataRegistry;
-import org.odk.collect.android.widgets.support.FormEntryPromptSelectChoiceLoader;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.listeners.WidgetValueChangedListener;
+import org.espen.collect.android.widgets.base.GeneralSelectOneWidgetTest;
+import org.espen.collect.android.widgets.support.FakeWaitingForDataRegistry;
+import org.espen.collect.android.widgets.support.FormEntryPromptSelectChoiceLoader;
 
 import java.util.Collections;
 
@@ -20,7 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.mockValueChangedListener;
 
 public class SelectOneMinimalWidgetTest extends GeneralSelectOneWidgetTest<SelectOneMinimalWidget> {
     @NonNull

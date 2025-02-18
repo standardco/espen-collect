@@ -1,11 +1,11 @@
-package org.odk.collect.android.instancemanagement
+package org.espen.collect.android.instancemanagement
 
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import org.odk.collect.android.R
-import org.odk.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.R
+import org.espen.collect.android.utilities.FormsRepositoryProvider
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.material.ErrorsPill
 import org.odk.collect.strings.R.string

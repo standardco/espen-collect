@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.external;
+package org.espen.collect.android.external;
 
 import android.net.Uri;
 
 public final class InstancesContract {
 
-    public static final String AUTHORITY = "org.odk.collect.android.provider.odk.instances";
+    public static final String AUTHORITY = "org.espen.collect.android.provider.odk.instances";
     public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.odk.instance";
     public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.odk.instance";
 

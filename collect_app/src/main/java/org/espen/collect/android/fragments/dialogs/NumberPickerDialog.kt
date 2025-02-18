@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.fragments.dialogs
+package org.espen.collect.android.fragments.dialogs
 
 import android.app.Dialog
 import android.content.Context
@@ -21,7 +21,7 @@ import android.os.Bundle
 import android.widget.NumberPicker
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 
 class NumberPickerDialog : DialogFragment() {
     interface NumberPickerListener {

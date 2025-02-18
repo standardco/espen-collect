@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.os.Bundle
-import org.odk.collect.android.R
-import org.odk.collect.android.activities.ActivityUtils
-import org.odk.collect.android.fragments.dialogs.MovingBackwardsDialog.MovingBackwardsDialogListener
-import org.odk.collect.android.fragments.dialogs.ResetSettingsResultDialog.ResetSettingsResultDialogListener
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.R
+import org.espen.collect.android.activities.ActivityUtils
+import org.espen.collect.android.fragments.dialogs.MovingBackwardsDialog.MovingBackwardsDialogListener
+import org.espen.collect.android.fragments.dialogs.ResetSettingsResultDialog.ResetSettingsResultDialogListener
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.mainmenu.MainMenuActivity
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.metadata.PropertyManager
 import org.odk.collect.strings.localization.LocalizedActivity

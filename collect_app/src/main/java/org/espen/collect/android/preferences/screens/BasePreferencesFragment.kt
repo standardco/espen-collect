@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import android.os.Bundle
@@ -7,9 +7,9 @@ import androidx.fragment.app.Fragment
 import androidx.preference.DialogPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
-import org.odk.collect.android.R
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.R
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.androidshared.utils.AppBarUtils
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.importing.SettingsChangeHandler

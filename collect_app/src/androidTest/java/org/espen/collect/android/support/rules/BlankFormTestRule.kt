@@ -1,6 +1,6 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
-import org.odk.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.FormEntryPage
 
 class BlankFormTestRule @JvmOverloads constructor(
     private val formFilename: String,

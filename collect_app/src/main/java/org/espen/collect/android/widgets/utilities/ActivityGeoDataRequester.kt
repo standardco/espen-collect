@@ -1,13 +1,13 @@
-package org.odk.collect.android.widgets.utilities
+package org.espen.collect.android.widgets.utilities
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.utilities.Appearances
-import org.odk.collect.android.utilities.ApplicationConstants
-import org.odk.collect.android.utilities.FormEntryPromptUtils
-import org.odk.collect.android.widgets.interfaces.GeoDataRequester
+import org.espen.collect.android.utilities.Appearances
+import org.espen.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.utilities.FormEntryPromptUtils
+import org.espen.collect.android.widgets.interfaces.GeoDataRequester
 import org.odk.collect.geo.Constants.EXTRA_DRAGGABLE_ONLY
 import org.odk.collect.geo.Constants.EXTRA_READ_ONLY
 import org.odk.collect.geo.Constants.EXTRA_RETAIN_MOCK_ACCURACY

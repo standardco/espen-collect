@@ -1,4 +1,4 @@
-package org.odk.collect.android.activities
+package org.espen.collect.android.activities
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
@@ -20,13 +20,13 @@ import org.junit.runner.RunWith
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.projects.ManualProjectCreatorDialog
-import org.odk.collect.android.projects.QrCodeProjectCreatorDialog
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.version.VersionInformation
+import org.espen.collect.android.R
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.projects.ManualProjectCreatorDialog
+import org.espen.collect.android.projects.QrCodeProjectCreatorDialog
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.version.VersionInformation
 import org.odk.collect.androidtest.ActivityScenarioLauncherRule
 import org.odk.collect.androidtest.RecordedIntentsRule
 import org.odk.collect.material.MaterialProgressDialogFragment

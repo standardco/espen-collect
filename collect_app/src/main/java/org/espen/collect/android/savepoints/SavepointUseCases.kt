@@ -1,8 +1,8 @@
-package org.odk.collect.android.savepoints
+package org.espen.collect.android.savepoints
 
 import android.net.Uri
-import org.odk.collect.android.external.FormsContract
-import org.odk.collect.android.utilities.ContentUriHelper
+import org.espen.collect.android.external.FormsContract
+import org.espen.collect.android.utilities.ContentUriHelper
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.instances.InstancesRepository
 import org.odk.collect.forms.savepoints.Savepoint

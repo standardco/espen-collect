@@ -1,7 +1,7 @@
-package org.odk.collect.android.widgets.interfaces
+package org.espen.collect.android.widgets.interfaces
 
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
 
 interface GeoDataRequester {
     fun requestGeoPoint(

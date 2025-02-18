@@ -12,21 +12,21 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
-import static org.odk.collect.android.utilities.ApplicationConstants.RequestCodes;
+import static org.espen.collect.android.utilities.ApplicationConstants.RequestCodes;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.IntegerData;
-import org.odk.collect.android.dynamicpreload.ExternalAppsUtils;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.widgets.utilities.StringRequester;
-import org.odk.collect.android.widgets.utilities.StringWidgetUtils;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.dynamicpreload.ExternalAppsUtils;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.widgets.utilities.StringRequester;
+import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 import java.io.Serializable;
 
@@ -34,7 +34,7 @@ import java.io.Serializable;
  * Launch an external app to supply an integer value. If the app
  * does not launch, enable the text area for regular data entry.
  * <p>
- * See {@link org.odk.collect.android.widgets.ExStringWidget} for usage.
+ * See {@link org.espen.collect.android.widgets.ExStringWidget} for usage.
  */
 @SuppressLint("ViewConstructor")
 public class ExIntegerWidget extends ExStringWidget {

@@ -1,8 +1,8 @@
 
-package org.odk.collect.android.formentry.audit;
+package org.espen.collect.android.formentry.audit;
 
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PROVIDERS_DISABLED;
-import static org.odk.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PROVIDERS_ENABLED;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PROVIDERS_DISABLED;
+import static org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.LOCATION_PROVIDERS_ENABLED;
 
 import android.location.Location;
 import android.os.SystemClock;
@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.data.IAnswerData;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.FormController;
 
 import java.util.ArrayList;
 import java.util.List;

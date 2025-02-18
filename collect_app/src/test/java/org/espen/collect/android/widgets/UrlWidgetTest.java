@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets;
+package org.espen.collect.android.widgets;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -12,8 +12,8 @@ import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.support.WidgetTestActivity;
 import org.odk.collect.webpage.ExternalWebPageHelper;
 import org.robolectric.shadows.ShadowToast;
 
@@ -25,8 +25,8 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
 
 /**
  * @author James Knight

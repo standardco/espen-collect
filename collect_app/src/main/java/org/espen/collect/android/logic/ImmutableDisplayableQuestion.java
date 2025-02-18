@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.logic;
+package org.espen.collect.android.logic;
 
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.SelectChoice;

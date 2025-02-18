@@ -12,26 +12,26 @@
  * the License.
  */
 
-package org.odk.collect.android.instancemanagement;
+package org.espen.collect.android.instancemanagement;
 
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import android.net.Uri;
 
 import org.apache.commons.io.FileUtils;
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.exception.EncryptionException;
-import org.odk.collect.android.external.InstancesContract;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.injection.config.AppDependencyComponent;
-import org.odk.collect.android.javarosawrapper.InstanceMetadata;
-import org.odk.collect.android.projects.ProjectsDataService;
-import org.odk.collect.android.storage.StoragePathProvider;
-import org.odk.collect.android.storage.StorageSubdirectory;
-import org.odk.collect.android.tasks.SaveFormToDisk;
-import org.odk.collect.android.utilities.EncryptionUtils;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.exception.EncryptionException;
+import org.espen.collect.android.external.InstancesContract;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.injection.config.AppDependencyComponent;
+import org.espen.collect.android.javarosawrapper.InstanceMetadata;
+import org.espen.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.storage.StoragePathProvider;
+import org.espen.collect.android.storage.StorageSubdirectory;
+import org.espen.collect.android.tasks.SaveFormToDisk;
+import org.espen.collect.android.utilities.EncryptionUtils;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;

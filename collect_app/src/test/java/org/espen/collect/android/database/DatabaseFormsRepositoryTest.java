@@ -1,10 +1,10 @@
-package org.odk.collect.android.database;
+package org.espen.collect.android.database;
 
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.runner.RunWith;
-import org.odk.collect.android.database.forms.DatabaseFormsRepository;
+import org.espen.collect.android.database.forms.DatabaseFormsRepository;
 import org.odk.collect.forms.FormsRepository;
 import org.odk.collect.formstest.FormsRepositoryTest;
 import org.odk.collect.shared.TempFiles;

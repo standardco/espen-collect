@@ -1,4 +1,4 @@
-package org.odk.collect.android.formmanagement.drafts
+package org.espen.collect.android.formmanagement.drafts
 
 import androidx.appcompat.view.SupportMenuInflater
 import androidx.appcompat.view.menu.MenuBuilder
@@ -9,8 +9,8 @@ import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
-import org.odk.collect.android.R
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.R
+import org.espen.collect.android.support.CollectHelpers
 
 @RunWith(AndroidJUnit4::class)
 class DraftsMenuProviderTest {

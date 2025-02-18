@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.logic.actions.setgeopoint;
+package org.espen.collect.android.logic.actions.setgeopoint;
 
 import org.javarosa.core.model.actions.setgeopoint.SetGeopointAction;
 import org.javarosa.core.model.actions.setgeopoint.SetGeopointActionHandler;

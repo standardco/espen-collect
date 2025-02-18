@@ -1,16 +1,16 @@
-package org.odk.collect.android.instancemanagement
+package org.espen.collect.android.instancemanagement
 
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.openrosa.OpenRosaHttpInterface
-import org.odk.collect.android.upload.FormUploadException
-import org.odk.collect.android.upload.InstanceServerUploader
-import org.odk.collect.android.upload.InstanceUploader
-import org.odk.collect.android.utilities.FormsRepositoryProvider
-import org.odk.collect.android.utilities.InstanceAutoDeleteChecker
-import org.odk.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.android.utilities.WebCredentialsUtils
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.openrosa.OpenRosaHttpInterface
+import org.espen.collect.android.upload.FormUploadException
+import org.espen.collect.android.upload.InstanceServerUploader
+import org.espen.collect.android.upload.InstanceUploader
+import org.espen.collect.android.utilities.FormsRepositoryProvider
+import org.espen.collect.android.utilities.InstanceAutoDeleteChecker
+import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.utilities.WebCredentialsUtils
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.forms.instances.InstancesRepository

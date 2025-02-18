@@ -1,4 +1,4 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -7,8 +7,8 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoMoreInteractions
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.projects.DeleteProjectResult
-import org.odk.collect.android.projects.ProjectDeleter
+import org.espen.collect.android.projects.DeleteProjectResult
+import org.espen.collect.android.projects.ProjectDeleter
 import org.odk.collect.projects.InMemProjectsRepository
 import org.odk.collect.projects.Project
 import org.odk.collect.settings.InMemSettingsProvider

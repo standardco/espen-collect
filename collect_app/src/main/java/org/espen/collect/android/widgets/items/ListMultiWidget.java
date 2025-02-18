@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -38,16 +38,16 @@ import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryCaption;
-import org.odk.collect.android.R;
-import org.odk.collect.android.dynamicpreload.ExternalSelectChoice;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.HtmlUtils;
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.dynamicpreload.ExternalSelectChoice;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.HtmlUtils;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.odk.collect.androidshared.bitmap.ImageFileUtils;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.interfaces.MultiChoiceWidget;
-import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.odk.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
+import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
 
 import java.io.File;
 import java.util.ArrayList;

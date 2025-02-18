@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.fastexternalitemset;
+package org.espen.collect.android.fastexternalitemset;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
@@ -27,7 +27,7 @@ import org.javarosa.form.api.FormEntryPrompt;
 import org.javarosa.xpath.XPathNodeset;
 import org.javarosa.xpath.expr.XPathExpression;
 import org.javarosa.xpath.parser.XPathSyntaxException;
-import org.odk.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.FormController;
 
 import java.io.File;
 import java.io.FileNotFoundException;

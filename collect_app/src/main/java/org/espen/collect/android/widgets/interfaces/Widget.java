@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.interfaces;
+package org.espen.collect.android.widgets.interfaces;
 
 import org.javarosa.core.model.data.IAnswerData;
 

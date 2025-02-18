@@ -1,10 +1,10 @@
-package org.odk.collect.android.formentry.saving;
+package org.espen.collect.android.formentry.saving;
 
 import android.net.Uri;
 
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.tasks.SaveToDiskResult;
-import org.odk.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.tasks.SaveToDiskResult;
+import org.espen.collect.android.utilities.MediaUtils;
 import org.odk.collect.entities.storage.EntitiesRepository;
 import org.odk.collect.forms.instances.InstancesRepository;
 

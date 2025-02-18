@@ -1,13 +1,13 @@
-package org.odk.collect.android.database.savepoints
+package org.espen.collect.android.database.savepoints
 
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import org.odk.collect.android.database.DatabaseConstants.SAVEPOINTS_DATABASE_NAME
-import org.odk.collect.android.database.DatabaseConstants.SAVEPOINTS_DATABASE_VERSION
-import org.odk.collect.android.database.DatabaseConstants.SAVEPOINTS_TABLE_NAME
-import org.odk.collect.android.database.savepoints.DatabaseSavepointsColumns.FORM_DB_ID
-import org.odk.collect.android.database.savepoints.DatabaseSavepointsColumns.INSTANCE_DB_ID
+import org.espen.collect.android.database.DatabaseConstants.SAVEPOINTS_DATABASE_NAME
+import org.espen.collect.android.database.DatabaseConstants.SAVEPOINTS_DATABASE_VERSION
+import org.espen.collect.android.database.DatabaseConstants.SAVEPOINTS_TABLE_NAME
+import org.espen.collect.android.database.savepoints.DatabaseSavepointsColumns.FORM_DB_ID
+import org.espen.collect.android.database.savepoints.DatabaseSavepointsColumns.INSTANCE_DB_ID
 import org.odk.collect.db.sqlite.CursorExt.foldAndClose
 import org.odk.collect.db.sqlite.DatabaseConnection
 import org.odk.collect.db.sqlite.SQLiteDatabaseExt.delete

@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.utilities;
+package org.espen.collect.android.preferences.utilities;
 
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.Preference;

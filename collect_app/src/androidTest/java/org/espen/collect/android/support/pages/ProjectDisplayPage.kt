@@ -1,9 +1,9 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 
 class ProjectDisplayPage : Page<ProjectDisplayPage>() {
     override fun assertOnPage(): ProjectDisplayPage {

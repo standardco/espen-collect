@@ -1,12 +1,12 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import android.app.Activity
 import android.content.Intent
 import android.widget.Toast
 import org.odk.collect.analytics.Analytics.Companion.log
-import org.odk.collect.android.activities.ActivityUtils
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.activities.ActivityUtils
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.mainmenu.MainMenuActivity
 import org.odk.collect.projects.Project.Saved
 import org.odk.collect.qrcode.QRCodeDecoder
 import org.odk.collect.settings.ODKAppSettingsImporter

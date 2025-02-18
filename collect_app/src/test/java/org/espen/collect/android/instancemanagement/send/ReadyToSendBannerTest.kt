@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement.send
+package org.espen.collect.android.instancemanagement.send
 
 import android.app.Application
 import android.view.View
@@ -10,7 +10,7 @@ import com.google.android.material.textview.MaterialTextView
 import org.hamcrest.Matchers.equalTo
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.shared.TimeInMs
 
 @RunWith(AndroidJUnit4::class)

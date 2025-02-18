@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:icon="@drawable/ic_baseline_explore_white_24" />
 
-    <org.odk.collect.android.views.WidgetAnswerText
+    <org.espen.collect.android.views.WidgetAnswerText
         android:id="@+id/widget_answer_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

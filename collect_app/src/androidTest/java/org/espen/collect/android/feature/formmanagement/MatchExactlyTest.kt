@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formmanagement
+package org.espen.collect.android.feature.formmanagement
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.CoreMatchers.`is`
@@ -8,13 +8,13 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.ErrorPage
-import org.odk.collect.android.support.pages.FillBlankFormPage
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.NotificationDrawerRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.ErrorPage
+import org.espen.collect.android.support.pages.FillBlankFormPage
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.NotificationDrawerRule
+import org.espen.collect.android.support.rules.TestRuleChain
 
 @RunWith(AndroidJUnit4::class)
 class MatchExactlyTest {

@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,18 +12,18 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.adapters.AbstractSelectListAdapter;
-import org.odk.collect.android.databinding.SelectListWidgetAnswerBinding;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.listeners.SelectItemClickListener;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.interfaces.MultiChoiceWidget;
-import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
-import org.odk.collect.android.widgets.utilities.SearchQueryViewModel;
+import org.espen.collect.android.adapters.AbstractSelectListAdapter;
+import org.espen.collect.android.databinding.SelectListWidgetAnswerBinding;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.listeners.SelectItemClickListener;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
+import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.espen.collect.android.widgets.utilities.SearchQueryViewModel;
 
-import static org.odk.collect.android.formentry.media.FormMediaUtils.getPlayableAudioURI;
+import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayableAudioURI;
 
 import java.util.List;
 

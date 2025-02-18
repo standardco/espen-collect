@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -20,8 +20,8 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.core.StringEndsWith.endsWith;
-import static org.odk.collect.android.support.matchers.CustomMatchers.isQuestionView;
-import static org.odk.collect.android.support.matchers.CustomMatchers.withIndex;
+import static org.espen.collect.android.support.matchers.CustomMatchers.isQuestionView;
+import static org.espen.collect.android.support.matchers.CustomMatchers.withIndex;
 
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -33,7 +33,7 @@ import androidx.test.core.app.ApplicationProvider;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 import org.odk.collect.androidtest.DrawableMatcher;
 import org.odk.collect.testshared.Interactions;
 import org.odk.collect.testshared.ViewActions;

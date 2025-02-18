@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import androidx.core.view.children
 import androidx.lifecycle.viewmodel.initializer
@@ -21,11 +21,11 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.activities.AboutActivity
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.mainmenu.CurrentProjectViewModel
-import org.odk.collect.android.preferences.screens.ProjectPreferencesActivity
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.activities.AboutActivity
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.mainmenu.CurrentProjectViewModel
+import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule

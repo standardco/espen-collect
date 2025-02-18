@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.warnings;
+package org.espen.collect.android.widgets.warnings;
 
 import android.content.Context;
 
@@ -7,8 +7,8 @@ import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Lists;
 
 import org.javarosa.core.model.SelectChoice;
-import org.odk.collect.android.utilities.UnderlyingValuesConcat;
-import org.odk.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.utilities.UnderlyingValuesConcat;
+import org.espen.collect.android.widgets.QuestionWidget;
 
 import java.util.List;
 

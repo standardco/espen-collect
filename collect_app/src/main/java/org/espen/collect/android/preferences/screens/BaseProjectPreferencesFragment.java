@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens;
+package org.espen.collect.android.preferences.screens;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,11 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.jetbrains.annotations.NotNull;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.preferences.PreferenceVisibilityHandler;
-import org.odk.collect.android.preferences.ProjectPreferencesViewModel;
-import org.odk.collect.android.preferences.source.SettingsStore;
-import org.odk.collect.android.utilities.AdminPasswordProvider;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.preferences.PreferenceVisibilityHandler;
+import org.espen.collect.android.preferences.ProjectPreferencesViewModel;
+import org.espen.collect.android.preferences.source.SettingsStore;
+import org.espen.collect.android.utilities.AdminPasswordProvider;
 import org.odk.collect.shared.settings.Settings;
 
 import javax.inject.Inject;

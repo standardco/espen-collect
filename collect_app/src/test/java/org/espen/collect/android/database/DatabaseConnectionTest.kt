@@ -1,4 +1,4 @@
-package org.odk.collect.android.database
+package org.espen.collect.android.database
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -6,7 +6,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.database.forms.FormDatabaseMigrator
+import org.espen.collect.android.database.forms.FormDatabaseMigrator
 import org.odk.collect.db.sqlite.DatabaseConnection
 import org.odk.collect.shared.TempFiles.createTempDir
 import java.io.File

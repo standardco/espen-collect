@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import org.javarosa.core.model.QuestionDef;
 import org.javarosa.core.model.data.DecimalData;
@@ -6,8 +6,8 @@ import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.IntegerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.listeners.ThousandsSeparatorTextWatcher;
-import org.odk.collect.android.utilities.Appearances;
+import org.espen.collect.android.listeners.ThousandsSeparatorTextWatcher;
+import org.espen.collect.android.utilities.Appearances;
 
 import timber.log.Timber;
 

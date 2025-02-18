@@ -1,4 +1,4 @@
-package org.odk.collect.android.database.entities
+package org.espen.collect.android.database.entities
 
 import android.content.ContentValues
 import android.content.Context

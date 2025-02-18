@@ -1,4 +1,4 @@
-package org.odk.collect.android.support
+package org.espen.collect.android.support
 
 import org.odk.collect.async.Scheduler
 import org.odk.collect.async.network.NetworkStateProvider

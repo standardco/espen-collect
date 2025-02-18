@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -26,13 +26,13 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.exception.JavaRosaException;
-import org.odk.collect.android.formentry.audit.AuditEventLogger;
-import org.odk.collect.android.formentry.support.InMemFormSessionRepository;
-import org.odk.collect.android.javarosawrapper.FailedValidationResult;
-import org.odk.collect.android.javarosawrapper.FakeFormController;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.utilities.ChangeLocks;
+import org.espen.collect.android.exception.JavaRosaException;
+import org.espen.collect.android.formentry.audit.AuditEventLogger;
+import org.espen.collect.android.formentry.support.InMemFormSessionRepository;
+import org.espen.collect.android.javarosawrapper.FailedValidationResult;
+import org.espen.collect.android.javarosawrapper.FakeFormController;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.utilities.ChangeLocks;
 import org.odk.collect.androidshared.data.Consumable;
 import org.odk.collect.forms.FormsRepository;
 import org.odk.collect.formstest.InMemFormsRepository;

@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.dialogs
+package org.espen.collect.android.preferences.dialogs
 
 import android.content.Context
 import android.text.InputType
@@ -18,10 +18,10 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoMoreInteractions
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.preferences.ProjectPreferencesViewModel
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.AdminPasswordProvider
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.preferences.ProjectPreferencesViewModel
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.AdminPasswordProvider
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.settings.InMemSettingsProvider
 import org.odk.collect.settings.SettingsProvider

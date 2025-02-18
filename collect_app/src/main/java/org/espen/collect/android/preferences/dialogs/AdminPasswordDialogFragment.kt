@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.dialogs
+package org.espen.collect.android.preferences.dialogs
 
 import android.app.Dialog
 import android.content.Context
@@ -10,12 +10,12 @@ import android.widget.CompoundButton
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.AdminPasswordDialogLayoutBinding
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.preferences.ProjectPreferencesViewModel
-import org.odk.collect.android.utilities.AdminPasswordProvider
-import org.odk.collect.android.utilities.SoftKeyboardController
+import org.espen.collect.android.R
+import org.espen.collect.android.databinding.AdminPasswordDialogLayoutBinding
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.preferences.ProjectPreferencesViewModel
+import org.espen.collect.android.utilities.AdminPasswordProvider
+import org.espen.collect.android.utilities.SoftKeyboardController
 import org.odk.collect.androidshared.ui.ToastUtils
 import javax.inject.Inject
 

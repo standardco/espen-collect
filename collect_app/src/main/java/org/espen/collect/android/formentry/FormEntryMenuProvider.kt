@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.android.R
-import org.odk.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel
-import org.odk.collect.android.formentry.questions.AnswersProvider
-import org.odk.collect.android.formhierarchy.FormHierarchyActivity
-import org.odk.collect.android.preferences.screens.ProjectPreferencesActivity
-import org.odk.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.R
+import org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel
+import org.espen.collect.android.formentry.questions.AnswersProvider
+import org.espen.collect.android.formhierarchy.FormHierarchyActivity
+import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity
+import org.espen.collect.android.utilities.ApplicationConstants
 import org.odk.collect.androidshared.system.PlayServicesChecker
 import org.odk.collect.androidshared.ui.DialogFragmentUtils.showIfNotShowing
 import org.odk.collect.androidshared.ui.enableIconsVisibility

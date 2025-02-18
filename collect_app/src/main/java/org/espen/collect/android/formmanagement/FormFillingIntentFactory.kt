@@ -1,11 +1,11 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import org.odk.collect.android.external.FormUriActivity
-import org.odk.collect.android.external.InstancesContract
+import org.espen.collect.android.external.FormUriActivity
+import org.espen.collect.android.external.InstancesContract
 import kotlin.reflect.KClass
 
 object FormFillingIntentFactory {

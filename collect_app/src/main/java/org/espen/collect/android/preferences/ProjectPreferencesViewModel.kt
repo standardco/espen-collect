@@ -1,10 +1,10 @@
-package org.odk.collect.android.preferences
+package org.espen.collect.android.preferences
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.odk.collect.android.utilities.AdminPasswordProvider
+import org.espen.collect.android.utilities.AdminPasswordProvider
 import org.odk.collect.androidshared.data.Consumable
 
 class ProjectPreferencesViewModel(adminPasswordProvider: AdminPasswordProvider) : ViewModel() {

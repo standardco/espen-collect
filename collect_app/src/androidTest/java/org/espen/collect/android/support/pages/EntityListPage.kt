@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 class EntityListPage(private val list: String) : Page<EntityListPage>() {
 

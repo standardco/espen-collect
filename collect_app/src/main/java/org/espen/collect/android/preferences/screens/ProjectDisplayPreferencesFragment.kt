@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences.screens
+package org.espen.collect.android.preferences.screens
 
 import android.content.Context
 import android.graphics.Color
@@ -11,12 +11,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.R
-import org.odk.collect.android.analytics.AnalyticsEvents
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.R
+import org.espen.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.utilities.FileUtils
 import org.odk.collect.androidshared.ColorPickerDialog
 import org.odk.collect.androidshared.ColorPickerViewModel
 import org.odk.collect.androidshared.ui.DialogFragmentUtils

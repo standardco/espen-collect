@@ -1,6 +1,6 @@
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
-import static org.odk.collect.android.formentry.media.FormMediaUtils.getPlayColor;
+import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayColor;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,16 +8,16 @@ import android.content.Context;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectOneData;
 import org.javarosa.core.model.data.helper.Selection;
-import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.fragments.dialogs.SelectMinimalDialog;
-import org.odk.collect.android.fragments.dialogs.SelectOneMinimalDialog;
-import org.odk.collect.android.listeners.AdvanceToNextListener;
-import org.odk.collect.android.utilities.Appearances;
-import org.odk.collect.android.utilities.HtmlUtils;
-import org.odk.collect.android.utilities.SelectOneWidgetUtils;
-import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.espen.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.fragments.dialogs.SelectMinimalDialog;
+import org.espen.collect.android.fragments.dialogs.SelectOneMinimalDialog;
+import org.espen.collect.android.listeners.AdvanceToNextListener;
+import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.utilities.HtmlUtils;
+import org.espen.collect.android.utilities.SelectOneWidgetUtils;
+import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 
 import java.util.List;

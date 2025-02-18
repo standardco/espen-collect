@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.datetime.pickers
+package org.espen.collect.android.widgets.datetime.pickers
 
 import android.os.Bundle
 import androidx.fragment.app.testing.FragmentScenario
@@ -15,10 +15,10 @@ import org.joda.time.LocalDateTime
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.R
-import org.odk.collect.android.widgets.datetime.DatePickerDetails
-import org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerMode
-import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils
+import org.espen.collect.android.R
+import org.espen.collect.android.widgets.datetime.DatePickerDetails
+import org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerMode
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.strings.R.string
 import org.odk.collect.testshared.Assertions

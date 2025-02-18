@@ -1,4 +1,4 @@
-package org.odk.collect.android.database.forms;
+package org.espen.collect.android.database.forms;
 
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,27 +7,27 @@ import org.odk.collect.db.sqlite.DatabaseMigrator;
 import org.odk.collect.db.sqlite.SQLiteUtils;
 
 import static android.provider.BaseColumns._ID;
-import static org.odk.collect.android.database.DatabaseConstants.FORMS_TABLE_NAME;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.AUTO_DELETE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.AUTO_SEND;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.BASE64_RSA_PUBLIC_KEY;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DATE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DELETED_DATE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DESCRIPTION;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.DISPLAY_SUBTEXT;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.USES_ENTITIES;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.GEOMETRY_XPATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.LAST_DETECTED_ATTACHMENTS_UPDATE_DATE;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.LAST_DETECTED_FORM_VERSION_HASH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
-import static org.odk.collect.android.database.forms.DatabaseFormColumns.SUBMISSION_URI;
+import static org.espen.collect.android.database.DatabaseConstants.FORMS_TABLE_NAME;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.AUTO_DELETE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.AUTO_SEND;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.BASE64_RSA_PUBLIC_KEY;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DATE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DELETED_DATE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DESCRIPTION;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.DISPLAY_SUBTEXT;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.USES_ENTITIES;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.GEOMETRY_XPATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.LAST_DETECTED_ATTACHMENTS_UPDATE_DATE;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.LAST_DETECTED_FORM_VERSION_HASH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
+import static org.espen.collect.android.database.forms.DatabaseFormColumns.SUBMISSION_URI;
 
 import timber.log.Timber;
 
@@ -76,7 +76,7 @@ public class FormDatabaseMigrator implements DatabaseMigrator {
             case 13:
                 upgradeToVersion14(db);
             case 14:
-                // Remember to bump the database version number in {@link org.odk.collect.android.database.DatabaseConstants}
+                // Remember to bump the database version number in {@link org.espen.collect.android.database.DatabaseConstants}
                 // upgradeToVersion15(db);
         }
     }

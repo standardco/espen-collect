@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.adapters;
+package org.espen.collect.android.adapters;
 
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
@@ -29,11 +29,11 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.R;
-import org.odk.collect.android.adapters.RankingListAdapter.ItemViewHolder;
-import org.odk.collect.android.utilities.HtmlUtils;
-import org.odk.collect.android.utilities.ThemeUtils;
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.adapters.RankingListAdapter.ItemViewHolder;
+import org.espen.collect.android.utilities.HtmlUtils;
+import org.espen.collect.android.utilities.ThemeUtils;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 
 import java.util.Collections;
 import java.util.List;

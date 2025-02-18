@@ -1,10 +1,10 @@
-package org.odk.collect.android.views;
+package org.espen.collect.android.views;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-import org.odk.collect.android.utilities.ThemeUtils;
+import org.espen.collect.android.utilities.ThemeUtils;
 import org.odk.collect.material.MaterialProgressDialogFragment;
 
 /**

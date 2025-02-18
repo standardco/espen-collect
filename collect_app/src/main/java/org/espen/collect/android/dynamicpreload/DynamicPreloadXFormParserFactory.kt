@@ -1,4 +1,4 @@
-package org.odk.collect.android.dynamicpreload
+package org.espen.collect.android.dynamicpreload
 
 import org.javarosa.core.model.FormDef
 import org.javarosa.core.model.QuestionDef

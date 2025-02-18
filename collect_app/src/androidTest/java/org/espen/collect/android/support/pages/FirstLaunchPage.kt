@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import androidx.test.espresso.matcher.ViewMatchers.withSubstring
 import org.odk.collect.strings.R.string

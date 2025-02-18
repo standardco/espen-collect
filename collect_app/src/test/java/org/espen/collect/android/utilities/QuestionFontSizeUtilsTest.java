@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -8,8 +8,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.TestSettingsProvider;
-import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.espen.collect.android.TestSettingsProvider;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 
 @RunWith(AndroidJUnit4.class)
 public class QuestionFontSizeUtilsTest {

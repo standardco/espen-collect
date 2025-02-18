@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.pages
+package org.espen.collect.android.support.pages
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By

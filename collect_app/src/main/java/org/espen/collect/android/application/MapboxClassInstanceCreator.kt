@@ -1,4 +1,4 @@
-package org.odk.collect.android.application
+package org.espen.collect.android.application
 
 import androidx.fragment.app.Fragment
 import org.odk.collect.maps.MapConfigurator

@@ -1,10 +1,10 @@
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import android.webkit.MimeTypeMap;
 
 import androidx.annotation.NonNull;
 
-import org.odk.collect.android.utilities.FileUtils;
+import org.espen.collect.android.utilities.FileUtils;
 
 /**
  * This covers types not included in Android's MimeTypeMap

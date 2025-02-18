@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.support
+package org.espen.collect.android.widgets.support
 
 import androidx.fragment.app.Fragment
 import org.odk.collect.maps.LineDescription

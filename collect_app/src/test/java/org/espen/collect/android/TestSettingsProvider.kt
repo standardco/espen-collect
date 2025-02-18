@@ -1,8 +1,8 @@
-package org.odk.collect.android
+package org.espen.collect.android
 
 import androidx.test.core.app.ApplicationProvider
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.injection.DaggerUtils
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.shared.settings.Settings
 

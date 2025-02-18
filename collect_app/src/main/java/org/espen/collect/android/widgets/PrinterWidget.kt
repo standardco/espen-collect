@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets
+package org.espen.collect.android.widgets
 
 import android.app.Activity
 import android.content.Context
@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import org.javarosa.core.model.data.IAnswerData
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.R
-import org.odk.collect.android.formentry.questions.QuestionDetails
-import org.odk.collect.android.utilities.QuestionMediaManager
-import org.odk.collect.android.widgets.interfaces.Printer
+import org.espen.collect.android.R
+import org.espen.collect.android.formentry.questions.QuestionDetails
+import org.espen.collect.android.utilities.QuestionMediaManager
+import org.espen.collect.android.widgets.interfaces.Printer
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickSafeMaterialButton
 
 class PrinterWidget(

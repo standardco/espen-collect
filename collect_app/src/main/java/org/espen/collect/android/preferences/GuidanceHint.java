@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences;
+package org.espen.collect.android.preferences;
 
 public enum GuidanceHint {
     YES("yes"),

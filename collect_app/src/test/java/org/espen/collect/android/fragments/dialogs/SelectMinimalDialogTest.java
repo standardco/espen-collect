@@ -1,4 +1,4 @@
-package org.odk.collect.android.fragments.dialogs;
+package org.espen.collect.android.fragments.dialogs;
 
 import android.view.View;
 
@@ -12,11 +12,11 @@ import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.utilities.MediaUtils;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.utilities.MediaUtils;
 import org.odk.collect.testshared.RobolectricHelpers;
 
 import java.util.List;

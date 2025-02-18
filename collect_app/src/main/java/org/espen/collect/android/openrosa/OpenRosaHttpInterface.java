@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.openrosa;
+package org.espen.collect.android.openrosa;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -12,12 +12,12 @@
  * the License.
  */
 
-package org.odk.collect.android.activities;
+package org.espen.collect.android.activities;
 
-import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_ASC;
-import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_DESC;
-import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_ASC;
-import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_DESC;
+import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_ASC;
+import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_DESC;
+import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_ASC;
+import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_DESC;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -36,24 +36,24 @@ import androidx.loader.content.Loader;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.adapters.InstanceListCursorAdapter;
-import org.odk.collect.android.dao.CursorLoaderFactory;
+import org.espen.collect.android.R;
+import org.espen.collect.android.adapters.InstanceListCursorAdapter;
+import org.espen.collect.android.dao.CursorLoaderFactory;
 import org.odk.collect.db.sqlite.DatabaseConnection;
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
-import org.odk.collect.android.entities.EntitiesRepositoryProvider;
-import org.odk.collect.android.external.FormUriActivity;
-import org.odk.collect.android.external.InstancesContract;
-import org.odk.collect.android.formlists.sorting.FormListSortingOption;
-import org.odk.collect.android.formmanagement.drafts.BulkFinalizationViewModel;
-import org.odk.collect.android.formmanagement.drafts.DraftsMenuProvider;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.instancemanagement.FinalizeAllSnackbarPresenter;
-import org.odk.collect.android.instancemanagement.InstancesDataService;
-import org.odk.collect.android.projects.ProjectsDataService;
-import org.odk.collect.android.utilities.ApplicationConstants;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
+import org.espen.collect.android.entities.EntitiesRepositoryProvider;
+import org.espen.collect.android.external.FormUriActivity;
+import org.espen.collect.android.external.InstancesContract;
+import org.espen.collect.android.formlists.sorting.FormListSortingOption;
+import org.espen.collect.android.formmanagement.drafts.BulkFinalizationViewModel;
+import org.espen.collect.android.formmanagement.drafts.DraftsMenuProvider;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.instancemanagement.FinalizeAllSnackbarPresenter;
+import org.espen.collect.android.instancemanagement.InstancesDataService;
+import org.espen.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.utilities.ApplicationConstants;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
 import org.odk.collect.async.Scheduler;
 import org.odk.collect.lists.EmptyListView;

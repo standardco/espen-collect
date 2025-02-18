@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.savedformlist
+package org.espen.collect.android.formlists.savedformlist
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -13,8 +13,8 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.formlists.savedformlist.SavedFormListViewModel.SortOrder
-import org.odk.collect.android.instancemanagement.InstancesDataService
+import org.espen.collect.android.formlists.savedformlist.SavedFormListViewModel.SortOrder
+import org.espen.collect.android.instancemanagement.InstancesDataService
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.formstest.InstanceFixtures
 import org.odk.collect.shared.settings.InMemSettings

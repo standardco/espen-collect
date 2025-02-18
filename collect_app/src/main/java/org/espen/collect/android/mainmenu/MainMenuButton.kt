@@ -1,4 +1,4 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import android.content.Context
 import android.graphics.Typeface
@@ -9,8 +9,8 @@ import androidx.core.content.withStyledAttributes
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.badge.BadgeUtils
 import com.google.android.material.badge.ExperimentalBadgeUtils
-import org.odk.collect.android.R
-import org.odk.collect.android.databinding.MainMenuButtonBinding
+import org.espen.collect.android.R
+import org.espen.collect.android.databinding.MainMenuButtonBinding
 import org.odk.collect.androidshared.system.ContextUtils.getThemeAttributeValue
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 

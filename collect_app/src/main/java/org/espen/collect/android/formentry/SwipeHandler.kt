@@ -1,11 +1,11 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.content.Context
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.widget.FrameLayout
 import androidx.core.widget.NestedScrollView
-import org.odk.collect.android.utilities.ActionRegister
+import org.espen.collect.android.utilities.ActionRegister
 import org.odk.collect.androidshared.utils.ScreenUtils
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.settings.Settings

@@ -1,4 +1,4 @@
-package org.odk.collect.android.fragments.dialogs
+package org.espen.collect.android.fragments.dialogs
 
 import android.app.Dialog
 import android.content.Context
@@ -6,10 +6,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.android.formmanagement.ServerFormDetails
-import org.odk.collect.android.formmanagement.download.FormDownloadException
-import org.odk.collect.android.injection.DaggerUtils
-import org.odk.collect.android.utilities.FormsDownloadResultInterpreter
+import org.espen.collect.android.formmanagement.ServerFormDetails
+import org.espen.collect.android.formmanagement.download.FormDownloadException
+import org.espen.collect.android.injection.DaggerUtils
+import org.espen.collect.android.utilities.FormsDownloadResultInterpreter
 import org.odk.collect.errors.ErrorActivity
 import java.io.Serializable
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
 import android.Manifest
 import android.content.Context
@@ -29,13 +29,13 @@ import org.mockito.Mockito.verifyNoInteractions
 import org.mockito.Mockito.`when`
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
-import org.odk.collect.android.R
-import org.odk.collect.android.fakes.FakePermissionsProvider
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.mainmenu.MainMenuActivity
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.utilities.CodeCaptureManagerFactory
-import org.odk.collect.android.views.BarcodeViewDecoder
+import org.espen.collect.android.R
+import org.espen.collect.android.fakes.FakePermissionsProvider
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.utilities.CodeCaptureManagerFactory
+import org.espen.collect.android.views.BarcodeViewDecoder
 import org.odk.collect.androidshared.utils.CompressionUtils
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.permissions.PermissionsChecker

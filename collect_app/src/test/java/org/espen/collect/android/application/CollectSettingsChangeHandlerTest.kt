@@ -1,11 +1,11 @@
-package org.odk.collect.android.application
+package org.espen.collect.android.application
 
 import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
-import org.odk.collect.android.backgroundwork.FormUpdateScheduler
-import org.odk.collect.android.formmanagement.FormsDataService
+import org.espen.collect.android.backgroundwork.FormUpdateScheduler
+import org.espen.collect.android.formmanagement.FormsDataService
 import org.odk.collect.metadata.PropertyManager
 import org.odk.collect.settings.keys.ProjectKeys
 

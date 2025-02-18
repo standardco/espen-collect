@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.adapters;
+package org.espen.collect.android.adapters;
 
 import android.content.Context;
 import androidx.annotation.NonNull;
@@ -24,15 +24,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.formmanagement.ServerFormDetails;
+import org.espen.collect.android.R;
+import org.espen.collect.android.formmanagement.ServerFormDetails;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.odk.collect.android.activities.FormDownloadListActivity.FORMID_DISPLAY;
-import static org.odk.collect.android.activities.FormDownloadListActivity.FORMNAME;
-import static org.odk.collect.android.activities.FormDownloadListActivity.FORM_ID_KEY;
+import static org.espen.collect.android.activities.FormDownloadListActivity.FORMID_DISPLAY;
+import static org.espen.collect.android.activities.FormDownloadListActivity.FORMNAME;
+import static org.espen.collect.android.activities.FormDownloadListActivity.FORM_ID_KEY;
 
 public class FormDownloadListAdapter extends ArrayAdapter {
 

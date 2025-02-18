@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.base;
+package org.espen.collect.android.widgets.base;
 
 import static junit.framework.Assert.assertTrue;
 
@@ -7,9 +7,9 @@ import android.widget.TextView;
 
 import org.javarosa.core.model.data.IAnswerData;
 import org.junit.Test;
-import org.odk.collect.android.R;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.widgets.ExStringWidget;
+import org.espen.collect.android.R;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.widgets.ExStringWidget;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;

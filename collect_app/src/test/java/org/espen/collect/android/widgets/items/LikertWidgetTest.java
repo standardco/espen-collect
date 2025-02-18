@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,10 +11,10 @@ import org.javarosa.core.model.data.SelectOneData;
 import org.javarosa.core.model.data.helper.Selection;
 import org.junit.Before;
 import org.junit.Test;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.widgets.base.QuestionWidgetTest;
-import org.odk.collect.android.widgets.support.FormEntryPromptSelectChoiceLoader;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.widgets.base.QuestionWidgetTest;
+import org.espen.collect.android.widgets.support.FormEntryPromptSelectChoiceLoader;
 
 import java.util.ArrayList;
 import java.util.List;

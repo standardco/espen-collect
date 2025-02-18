@@ -1,4 +1,4 @@
-package org.odk.collect.android.support.rules
+package org.espen.collect.android.support.rules
 
 import android.os.Build
 import androidx.test.platform.app.InstrumentationRegistry
@@ -8,8 +8,8 @@ import androidx.test.uiautomator.UiSelector
 import androidx.test.uiautomator.Until
 import org.junit.Assert.assertTrue
 import org.junit.rules.ExternalResource
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.DummyActivityLauncher
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.DummyActivityLauncher
 import org.odk.collect.shared.TimeInMs
 
 class RecentAppsRule : ExternalResource() {

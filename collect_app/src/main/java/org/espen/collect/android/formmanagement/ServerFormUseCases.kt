@@ -1,9 +1,9 @@
-package org.odk.collect.android.formmanagement
+package org.espen.collect.android.formmanagement
 
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.formmanagement.download.FormDownloadException
-import org.odk.collect.android.formmanagement.download.FormDownloader
-import org.odk.collect.android.utilities.FileUtils
+import org.espen.collect.android.formmanagement.download.FormDownloadException
+import org.espen.collect.android.formmanagement.download.FormDownloader
+import org.espen.collect.android.utilities.FileUtils
 import org.odk.collect.async.OngoingWorkListener
 import org.odk.collect.entities.LocalEntityUseCases
 import org.odk.collect.entities.storage.EntitiesRepository

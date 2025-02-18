@@ -1,4 +1,4 @@
-package org.odk.collect.android.feature.formentry
+package org.espen.collect.android.feature.formentry
 
 import android.app.Activity
 import android.app.Instrumentation
@@ -12,12 +12,12 @@ import org.hamcrest.Matchers
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
-import org.odk.collect.android.R
-import org.odk.collect.android.storage.StoragePathProvider
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.ProjectSettingsPage
-import org.odk.collect.android.support.rules.FormEntryActivityTestRule
-import org.odk.collect.android.support.rules.TestRuleChain.chain
+import org.espen.collect.android.R
+import org.espen.collect.android.storage.StoragePathProvider
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.ProjectSettingsPage
+import org.espen.collect.android.support.rules.FormEntryActivityTestRule
+import org.espen.collect.android.support.rules.TestRuleChain.chain
 import org.odk.collect.androidtest.RecordedIntentsRule
 import java.io.File
 import java.io.FileOutputStream

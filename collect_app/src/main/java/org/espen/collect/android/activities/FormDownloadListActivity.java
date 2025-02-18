@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.activities;
+package org.espen.collect.android.activities;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -34,29 +34,29 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.odk.collect.android.R;
-import org.odk.collect.android.activities.viewmodels.FormDownloadListViewModel;
-import org.odk.collect.android.adapters.FormDownloadListAdapter;
-import org.odk.collect.android.formentry.RefreshFormListDialogFragment;
-import org.odk.collect.android.formlists.sorting.FormListSortingOption;
-import org.odk.collect.android.formmanagement.FormSourceExceptionMapper;
-import org.odk.collect.android.formmanagement.FormsDataService;
-import org.odk.collect.android.formmanagement.ServerFormDetails;
-import org.odk.collect.android.formmanagement.ServerFormsDetailsFetcher;
-import org.odk.collect.android.formmanagement.download.FormDownloadException;
-import org.odk.collect.android.fragments.dialogs.FormsDownloadResultDialog;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.listeners.DownloadFormsTaskListener;
-import org.odk.collect.android.listeners.FormListDownloaderListener;
-import org.odk.collect.android.openrosa.HttpCredentialsInterface;
-import org.odk.collect.android.projects.ProjectsDataService;
-import org.odk.collect.android.tasks.DownloadFormListTask;
-import org.odk.collect.android.tasks.DownloadFormsTask;
-import org.odk.collect.android.utilities.ApplicationConstants;
-import org.odk.collect.android.utilities.AuthDialogUtility;
-import org.odk.collect.android.utilities.DialogUtils;
-import org.odk.collect.android.utilities.WebCredentialsUtils;
-import org.odk.collect.android.views.DayNightProgressDialog;
+import org.espen.collect.android.R;
+import org.espen.collect.android.activities.viewmodels.FormDownloadListViewModel;
+import org.espen.collect.android.adapters.FormDownloadListAdapter;
+import org.espen.collect.android.formentry.RefreshFormListDialogFragment;
+import org.espen.collect.android.formlists.sorting.FormListSortingOption;
+import org.espen.collect.android.formmanagement.FormSourceExceptionMapper;
+import org.espen.collect.android.formmanagement.FormsDataService;
+import org.espen.collect.android.formmanagement.ServerFormDetails;
+import org.espen.collect.android.formmanagement.ServerFormsDetailsFetcher;
+import org.espen.collect.android.formmanagement.download.FormDownloadException;
+import org.espen.collect.android.fragments.dialogs.FormsDownloadResultDialog;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.listeners.DownloadFormsTaskListener;
+import org.espen.collect.android.listeners.FormListDownloaderListener;
+import org.espen.collect.android.openrosa.HttpCredentialsInterface;
+import org.espen.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.tasks.DownloadFormListTask;
+import org.espen.collect.android.tasks.DownloadFormsTask;
+import org.espen.collect.android.utilities.ApplicationConstants;
+import org.espen.collect.android.utilities.AuthDialogUtility;
+import org.espen.collect.android.utilities.DialogUtils;
+import org.espen.collect.android.utilities.WebCredentialsUtils;
+import org.espen.collect.android.views.DayNightProgressDialog;
 import org.odk.collect.async.network.NetworkStateProvider;
 import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 import org.odk.collect.androidshared.ui.ToastUtils;

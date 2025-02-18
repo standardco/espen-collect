@@ -1,6 +1,6 @@
-package org.odk.collect.android.formentry;
+package org.espen.collect.android.formentry;
 
-import static org.odk.collect.android.javarosawrapper.FormIndexUtils.getRepeatGroupIndex;
+import static org.espen.collect.android.javarosawrapper.FormIndexUtils.getRepeatGroupIndex;
 import static org.odk.collect.androidshared.livedata.LiveDataUtils.observe;
 
 import androidx.annotation.NonNull;
@@ -19,17 +19,17 @@ import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryController;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.javarosa.xpath.parser.XPathSyntaxException;
-import org.odk.collect.android.exception.ExternalDataException;
-import org.odk.collect.android.exception.JavaRosaException;
-import org.odk.collect.android.formentry.audit.AuditEvent;
-import org.odk.collect.android.formentry.audit.AuditUtils;
-import org.odk.collect.android.formentry.questions.SelectChoiceUtils;
-import org.odk.collect.android.javarosawrapper.FailedValidationResult;
-import org.odk.collect.android.javarosawrapper.FormController;
-import org.odk.collect.android.javarosawrapper.RepeatsInFieldListException;
-import org.odk.collect.android.javarosawrapper.ValidationResult;
-import org.odk.collect.android.utilities.ChangeLocks;
-import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.espen.collect.android.exception.ExternalDataException;
+import org.espen.collect.android.exception.JavaRosaException;
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.formentry.audit.AuditUtils;
+import org.espen.collect.android.formentry.questions.SelectChoiceUtils;
+import org.espen.collect.android.javarosawrapper.FailedValidationResult;
+import org.espen.collect.android.javarosawrapper.FormController;
+import org.espen.collect.android.javarosawrapper.RepeatsInFieldListException;
+import org.espen.collect.android.javarosawrapper.ValidationResult;
+import org.espen.collect.android.utilities.ChangeLocks;
+import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.odk.collect.androidshared.async.TrackableWorker;
 import org.odk.collect.androidshared.data.Consumable;
 import org.odk.collect.androidshared.livedata.MutableNonNullLiveData;

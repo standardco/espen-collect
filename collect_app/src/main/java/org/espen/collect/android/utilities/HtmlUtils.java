@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import static org.odk.collect.shared.strings.StringUtils.trim;
 

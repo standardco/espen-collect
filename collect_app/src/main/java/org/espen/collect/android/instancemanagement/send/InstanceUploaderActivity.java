@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.odk.collect.android.instancemanagement.send;
+package org.espen.collect.android.instancemanagement.send;
 
 import static java.util.Arrays.stream;
 
@@ -23,19 +23,19 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import org.odk.collect.android.activities.FormFillingActivity;
-import org.odk.collect.android.fragments.dialogs.SimpleDialog;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.listeners.InstanceUploaderListener;
-import org.odk.collect.android.openrosa.OpenRosaConstants;
-import org.odk.collect.android.tasks.InstanceUploaderTask;
-import org.odk.collect.android.utilities.ApplicationConstants;
-import org.odk.collect.android.utilities.ArrayUtils;
-import org.odk.collect.android.utilities.AuthDialogUtility;
-import org.odk.collect.android.utilities.FormsRepositoryProvider;
-import org.odk.collect.android.utilities.InstanceUploaderUtils;
-import org.odk.collect.android.utilities.InstancesRepositoryProvider;
-import org.odk.collect.android.views.DayNightProgressDialog;
+import org.espen.collect.android.activities.FormFillingActivity;
+import org.espen.collect.android.fragments.dialogs.SimpleDialog;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.listeners.InstanceUploaderListener;
+import org.espen.collect.android.openrosa.OpenRosaConstants;
+import org.espen.collect.android.tasks.InstanceUploaderTask;
+import org.espen.collect.android.utilities.ApplicationConstants;
+import org.espen.collect.android.utilities.ArrayUtils;
+import org.espen.collect.android.utilities.AuthDialogUtility;
+import org.espen.collect.android.utilities.FormsRepositoryProvider;
+import org.espen.collect.android.utilities.InstanceUploaderUtils;
+import org.espen.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.views.DayNightProgressDialog;
 import org.odk.collect.forms.FormsRepository;
 import org.odk.collect.forms.instances.InstancesRepository;
 import org.odk.collect.settings.SettingsProvider;

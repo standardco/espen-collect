@@ -1,4 +1,4 @@
-package org.odk.collect.android.fragments.dialogs;
+package org.espen.collect.android.fragments.dialogs;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,18 +13,18 @@ import androidx.lifecycle.ViewModelProvider;
 
 import org.javarosa.core.model.data.helper.Selection;
 import org.jetbrains.annotations.NotNull;
-import org.odk.collect.android.R;
-import org.odk.collect.android.adapters.AbstractSelectListAdapter;
-import org.odk.collect.android.databinding.SelectMinimalDialogLayoutBinding;
-import org.odk.collect.android.formentry.media.AudioHelperFactory;
-import org.odk.collect.android.fragments.viewmodels.SelectMinimalViewModel;
+import org.espen.collect.android.R;
+import org.espen.collect.android.adapters.AbstractSelectListAdapter;
+import org.espen.collect.android.databinding.SelectMinimalDialogLayoutBinding;
+import org.espen.collect.android.formentry.media.AudioHelperFactory;
+import org.espen.collect.android.fragments.viewmodels.SelectMinimalViewModel;
 import org.odk.collect.material.MaterialFullScreenDialogFragment;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import static org.odk.collect.android.injection.DaggerUtils.getComponent;
+import static org.espen.collect.android.injection.DaggerUtils.getComponent;
 
 public abstract class SelectMinimalDialog extends MaterialFullScreenDialogFragment {
 

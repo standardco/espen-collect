@@ -1,10 +1,10 @@
-package org.odk.collect.android.mainmenu
+package org.espen.collect.android.mainmenu
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.TextView
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 
 class StartNewFormButton(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {

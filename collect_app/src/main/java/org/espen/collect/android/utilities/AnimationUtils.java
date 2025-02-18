@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import androidx.core.view.animation.PathInterpolatorCompat;
 
@@ -10,7 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.Interpolator;
 import android.view.animation.Transformation;
 
-import org.odk.collect.android.listeners.Result;
+import org.espen.collect.android.listeners.Result;
 
 /**
  * Created by Ing. Oscar G. Medina Cruz on 18/06/2016.

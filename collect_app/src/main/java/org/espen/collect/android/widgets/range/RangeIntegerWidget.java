@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.odk.collect.android.widgets.range;
+package org.espen.collect.android.widgets.range;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -30,10 +30,10 @@ import com.google.android.material.slider.Slider;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.IntegerData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.views.TrackingTouchSlider;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.utilities.RangeWidgetUtils;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.views.TrackingTouchSlider;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.utilities.RangeWidgetUtils;
 
 import java.math.BigDecimal;
 

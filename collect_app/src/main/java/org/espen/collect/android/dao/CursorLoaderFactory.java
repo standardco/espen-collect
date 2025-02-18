@@ -1,13 +1,13 @@
-package org.odk.collect.android.dao;
+package org.espen.collect.android.dao;
 
 import android.net.Uri;
 
 import androidx.loader.content.CursorLoader;
 
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
-import org.odk.collect.android.external.InstancesContract;
-import org.odk.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
+import org.espen.collect.android.external.InstancesContract;
+import org.espen.collect.android.projects.ProjectsDataService;
 import org.odk.collect.forms.instances.Instance;
 
 @Deprecated

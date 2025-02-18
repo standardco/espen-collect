@@ -1,13 +1,13 @@
-package org.odk.collect.android.widgets
+package org.espen.collect.android.widgets
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import org.javarosa.core.model.data.IAnswerData
 import org.javarosa.form.api.FormEntryPrompt
-import org.odk.collect.android.databinding.CounterWidgetBinding
-import org.odk.collect.android.formentry.questions.QuestionDetails
-import org.odk.collect.android.widgets.utilities.StringWidgetUtils
+import org.espen.collect.android.databinding.CounterWidgetBinding
+import org.espen.collect.android.formentry.questions.QuestionDetails
+import org.espen.collect.android.widgets.utilities.StringWidgetUtils
 
 class CounterWidget(
     context: Context,

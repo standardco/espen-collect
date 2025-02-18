@@ -1,4 +1,4 @@
-package org.odk.collect.android.utilities;
+package org.espen.collect.android.utilities;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 

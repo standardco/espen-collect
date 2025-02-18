@@ -1,4 +1,4 @@
-package org.odk.collect.android.formlists.savedformlist
+package org.espen.collect.android.formlists.savedformlist
 
 import android.content.Context
 import android.os.Bundle
@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.map
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.R
-import org.odk.collect.android.analytics.AnalyticsEvents
+import org.espen.collect.android.R
+import org.espen.collect.android.analytics.AnalyticsEvents
 import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.androidshared.ui.SnackbarUtils
 import org.odk.collect.androidshared.ui.SnackbarUtils.SnackbarPresenterObserver

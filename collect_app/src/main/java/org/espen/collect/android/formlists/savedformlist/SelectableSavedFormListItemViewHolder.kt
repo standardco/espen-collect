@@ -1,9 +1,9 @@
-package org.odk.collect.android.formlists.savedformlist
+package org.espen.collect.android.formlists.savedformlist
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.lists.RecyclerViewUtils.matchParentWidth
 import org.odk.collect.lists.selects.MultiSelectAdapter

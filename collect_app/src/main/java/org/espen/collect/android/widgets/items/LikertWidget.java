@@ -1,9 +1,9 @@
-package org.odk.collect.android.widgets.items;
+package org.espen.collect.android.widgets.items;
 
 import static android.widget.RelativeLayout.CENTER_HORIZONTAL;
 import static android.widget.RelativeLayout.CENTER_IN_PARENT;
 import static android.widget.RelativeLayout.TRUE;
-import static org.odk.collect.android.utilities.ViewUtils.pxFromDp;
+import static org.espen.collect.android.utilities.ViewUtils.pxFromDp;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -30,11 +30,11 @@ import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.odk.collect.android.dynamicpreload.ExternalSelectChoice;
-import org.odk.collect.android.formentry.questions.QuestionDetails;
-import org.odk.collect.android.utilities.HtmlUtils;
-import org.odk.collect.android.widgets.QuestionWidget;
-import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.espen.collect.android.dynamicpreload.ExternalSelectChoice;
+import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.HtmlUtils;
+import org.espen.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.odk.collect.androidshared.bitmap.ImageFileUtils;
 
 import java.io.File;

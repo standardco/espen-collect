@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry.backgroundlocation;
+package org.espen.collect.android.formentry.backgroundlocation;
 
 import android.location.Location;
 
@@ -7,9 +7,9 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.location.LocationListener;
 
 import org.odk.collect.location.LocationClient;
-import org.odk.collect.android.formentry.audit.AuditConfig;
-import org.odk.collect.android.formentry.audit.AuditEvent;
-import org.odk.collect.android.logic.actions.setgeopoint.CollectSetGeopointAction;
+import org.espen.collect.android.formentry.audit.AuditConfig;
+import org.espen.collect.android.formentry.audit.AuditEvent;
+import org.espen.collect.android.logic.actions.setgeopoint.CollectSetGeopointAction;
 
 /**
  * Manages background location for the location audit logging and odk:setgeopoint action features.

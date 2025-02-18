@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.odk.collect.android.external
+package org.espen.collect.android.external
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -20,10 +20,10 @@ import android.os.Parcelable
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.odk.collect.android.R
-import org.odk.collect.android.formlists.blankformlist.BlankFormListItem
-import org.odk.collect.android.formlists.blankformlist.BlankFormListViewModel
-import org.odk.collect.android.injection.DaggerUtils
+import org.espen.collect.android.R
+import org.espen.collect.android.formlists.blankformlist.BlankFormListItem
+import org.espen.collect.android.formlists.blankformlist.BlankFormListViewModel
+import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.androidshared.livedata.LiveDataUtils
 import org.odk.collect.settings.SettingsProvider
 import javax.inject.Inject

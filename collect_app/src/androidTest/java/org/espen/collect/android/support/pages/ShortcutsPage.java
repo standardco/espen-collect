@@ -1,10 +1,10 @@
-package org.odk.collect.android.support.pages;
+package org.espen.collect.android.support.pages;
 
 import android.content.Intent;
 
 import androidx.test.core.app.ActivityScenario;
 
-import org.odk.collect.android.external.AndroidShortcutsActivity;
+import org.espen.collect.android.external.AndroidShortcutsActivity;
 
 public class ShortcutsPage extends Page<ShortcutsPage> {
 

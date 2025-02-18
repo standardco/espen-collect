@@ -1,4 +1,4 @@
-package org.odk.collect.android.instancemanagement
+package org.espen.collect.android.instancemanagement
 
 import android.content.Context
 import android.content.res.Resources
@@ -83,10 +83,10 @@ fun Instance.getIcon(): Int {
 
 fun getInstanceIcon(status: String): Int {
     return when (status) {
-        Instance.STATUS_INCOMPLETE, Instance.STATUS_INVALID, Instance.STATUS_VALID -> org.odk.collect.android.R.drawable.ic_form_state_saved
-        Instance.STATUS_COMPLETE -> org.odk.collect.android.R.drawable.ic_form_state_finalized
-        Instance.STATUS_SUBMITTED -> org.odk.collect.android.R.drawable.ic_form_state_submitted
-        Instance.STATUS_SUBMISSION_FAILED -> org.odk.collect.android.R.drawable.ic_form_state_submission_failed
+        Instance.STATUS_INCOMPLETE, Instance.STATUS_INVALID, Instance.STATUS_VALID -> org.espen.collect.android.R.drawable.ic_form_state_saved
+        Instance.STATUS_COMPLETE -> org.espen.collect.android.R.drawable.ic_form_state_finalized
+        Instance.STATUS_SUBMITTED -> org.espen.collect.android.R.drawable.ic_form_state_submitted
+        Instance.STATUS_SUBMISSION_FAILED -> org.espen.collect.android.R.drawable.ic_form_state_submission_failed
         else -> throw IllegalArgumentException()
     }
 }

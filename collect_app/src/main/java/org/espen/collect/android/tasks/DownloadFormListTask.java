@@ -12,21 +12,21 @@
  * the License.
  */
 
-package org.odk.collect.android.tasks;
+package org.espen.collect.android.tasks;
 
 import android.net.Uri;
 import android.os.AsyncTask;
 
 import androidx.core.util.Pair;
 
-import org.odk.collect.android.application.Collect;
-import org.odk.collect.android.formmanagement.FormsDataService;
-import org.odk.collect.android.formmanagement.ServerFormDetails;
-import org.odk.collect.android.formmanagement.ServerFormsDetailsFetcher;
-import org.odk.collect.android.injection.DaggerUtils;
-import org.odk.collect.android.listeners.FormListDownloaderListener;
-import org.odk.collect.android.projects.ProjectsDataService;
-import org.odk.collect.android.utilities.WebCredentialsUtils;
+import org.espen.collect.android.application.Collect;
+import org.espen.collect.android.formmanagement.FormsDataService;
+import org.espen.collect.android.formmanagement.ServerFormDetails;
+import org.espen.collect.android.formmanagement.ServerFormsDetailsFetcher;
+import org.espen.collect.android.injection.DaggerUtils;
+import org.espen.collect.android.listeners.FormListDownloaderListener;
+import org.espen.collect.android.projects.ProjectsDataService;
+import org.espen.collect.android.utilities.WebCredentialsUtils;
 import org.odk.collect.forms.FormSourceException;
 
 import java.util.HashMap;

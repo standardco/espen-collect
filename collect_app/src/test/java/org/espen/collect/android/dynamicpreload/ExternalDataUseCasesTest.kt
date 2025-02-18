@@ -1,4 +1,4 @@
-package org.odk.collect.android.dynamicpreload
+package org.espen.collect.android.dynamicpreload
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat

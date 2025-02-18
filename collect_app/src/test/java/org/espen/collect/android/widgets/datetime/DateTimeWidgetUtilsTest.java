@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.datetime;
+package org.espen.collect.android.widgets.datetime;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -7,18 +7,18 @@ import org.joda.time.LocalDateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.widgets.datetime.pickers.BikramSambatDatePickerDialog;
-import org.odk.collect.android.widgets.datetime.pickers.BuddhistDatePickerDialog;
-import org.odk.collect.android.widgets.datetime.pickers.CopticDatePickerDialog;
-import org.odk.collect.android.widgets.datetime.pickers.CustomTimePickerDialog;
-import org.odk.collect.android.widgets.datetime.pickers.EthiopianDatePickerDialog;
-import org.odk.collect.android.widgets.datetime.pickers.FixedDatePickerDialog;
-import org.odk.collect.android.widgets.datetime.pickers.IslamicDatePickerDialog;
-import org.odk.collect.android.widgets.datetime.pickers.MyanmarDatePickerDialog;
-import org.odk.collect.android.widgets.datetime.pickers.PersianDatePickerDialog;
-import org.odk.collect.android.widgets.utilities.DateTimeWidgetUtils;
+import org.espen.collect.android.widgets.datetime.pickers.BikramSambatDatePickerDialog;
+import org.espen.collect.android.widgets.datetime.pickers.BuddhistDatePickerDialog;
+import org.espen.collect.android.widgets.datetime.pickers.CopticDatePickerDialog;
+import org.espen.collect.android.widgets.datetime.pickers.CustomTimePickerDialog;
+import org.espen.collect.android.widgets.datetime.pickers.EthiopianDatePickerDialog;
+import org.espen.collect.android.widgets.datetime.pickers.FixedDatePickerDialog;
+import org.espen.collect.android.widgets.datetime.pickers.IslamicDatePickerDialog;
+import org.espen.collect.android.widgets.datetime.pickers.MyanmarDatePickerDialog;
+import org.espen.collect.android.widgets.datetime.pickers.PersianDatePickerDialog;
+import org.espen.collect.android.widgets.utilities.DateTimeWidgetUtils;
 import org.odk.collect.testshared.RobolectricHelpers;
-import org.odk.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.support.WidgetTestActivity;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -26,14 +26,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.BIKRAM_SAMBAT;
-import static org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.BUDDHIST;
-import static org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.COPTIC;
-import static org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.ETHIOPIAN;
-import static org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.GREGORIAN;
-import static org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.ISLAMIC;
-import static org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.MYANMAR;
-import static org.odk.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.PERSIAN;
+import static org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.BIKRAM_SAMBAT;
+import static org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.BUDDHIST;
+import static org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.COPTIC;
+import static org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.ETHIOPIAN;
+import static org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.GREGORIAN;
+import static org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.ISLAMIC;
+import static org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.MYANMAR;
+import static org.espen.collect.android.widgets.datetime.DatePickerDetails.DatePickerType.PERSIAN;
 
 import android.app.DatePickerDialog;
 

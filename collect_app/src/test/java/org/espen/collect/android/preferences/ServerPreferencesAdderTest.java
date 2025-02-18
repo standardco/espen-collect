@@ -1,4 +1,4 @@
-package org.odk.collect.android.preferences;
+package org.espen.collect.android.preferences;
 
 import static junit.framework.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
@@ -14,7 +14,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.R;
+import org.espen.collect.android.R;
 import org.robolectric.Robolectric;
 import org.robolectric.shadows.ShadowToast;
 

@@ -1,4 +1,4 @@
-package org.odk.collect.android.javarosawrapper
+package org.espen.collect.android.javarosawrapper
 
 import androidx.annotation.StringRes
 import org.javarosa.core.model.FormIndex

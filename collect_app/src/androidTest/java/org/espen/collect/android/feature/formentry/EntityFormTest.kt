@@ -1,16 +1,16 @@
-package org.odk.collect.android.feature.formentry
+package org.espen.collect.android.feature.formentry
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
-import org.odk.collect.android.support.StubOpenRosaServer.EntityListItem
-import org.odk.collect.android.support.TestDependencies
-import org.odk.collect.android.support.pages.FormEntryPage
-import org.odk.collect.android.support.pages.MainMenuPage
-import org.odk.collect.android.support.rules.CollectTestRule
-import org.odk.collect.android.support.rules.TestRuleChain
+import org.espen.collect.android.support.StubOpenRosaServer.EntityListItem
+import org.espen.collect.android.support.TestDependencies
+import org.espen.collect.android.support.pages.FormEntryPage
+import org.espen.collect.android.support.pages.MainMenuPage
+import org.espen.collect.android.support.rules.CollectTestRule
+import org.espen.collect.android.support.rules.TestRuleChain
 import org.odk.collect.strings.R
 
 @RunWith(AndroidJUnit4::class)

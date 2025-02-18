@@ -1,4 +1,4 @@
-package org.odk.collect.android.formentry
+package org.espen.collect.android.formentry
 
 import android.view.View
 import android.widget.TextView
@@ -13,12 +13,12 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.R
-import org.odk.collect.android.audio.AudioHelper
-import org.odk.collect.android.formentry.questions.AudioVideoImageTextLabel
-import org.odk.collect.android.logic.FileReference
-import org.odk.collect.android.support.CollectHelpers
-import org.odk.collect.android.support.WidgetTestActivity
+import org.espen.collect.android.R
+import org.espen.collect.android.audio.AudioHelper
+import org.espen.collect.android.formentry.questions.AudioVideoImageTextLabel
+import org.espen.collect.android.logic.FileReference
+import org.espen.collect.android.support.CollectHelpers
+import org.espen.collect.android.support.WidgetTestActivity
 import org.robolectric.ParameterizedRobolectricTestRunner
 import java.io.File
 import java.util.Random

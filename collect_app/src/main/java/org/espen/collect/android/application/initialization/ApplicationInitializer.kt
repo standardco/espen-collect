@@ -1,15 +1,15 @@
-package org.odk.collect.android.application.initialization
+package org.espen.collect.android.application.initialization
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.startup.AppInitializer
 import net.danlew.android.joda.JodaTimeInitializer
 import org.odk.collect.analytics.Analytics
-import org.odk.collect.android.BuildConfig
-import org.odk.collect.android.application.Collect
-import org.odk.collect.android.application.initialization.upgrade.UpgradeInitializer
-import org.odk.collect.android.entities.EntitiesRepositoryProvider
-import org.odk.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.BuildConfig
+import org.espen.collect.android.application.Collect
+import org.espen.collect.android.application.initialization.upgrade.UpgradeInitializer
+import org.espen.collect.android.entities.EntitiesRepositoryProvider
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.metadata.PropertyManager
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider

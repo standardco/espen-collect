@@ -1,4 +1,4 @@
-package org.odk.collect.android.widgets.utilities;
+package org.espen.collect.android.widgets.utilities;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -7,9 +7,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithQuestionDefAndAnswer;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnlyAndQuestionDef;
-import static org.odk.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithQuestionDefAndAnswer;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.promptWithReadOnlyAndQuestionDef;
+import static org.espen.collect.android.widgets.support.QuestionWidgetHelpers.widgetTestActivity;
 
 import android.content.Context;
 import android.view.View;
@@ -25,12 +25,12 @@ import org.javarosa.form.api.FormEntryPrompt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.odk.collect.android.databinding.RangePickerWidgetAnswerBinding;
-import org.odk.collect.android.fragments.dialogs.NumberPickerDialog;
-import org.odk.collect.android.support.CollectHelpers;
-import org.odk.collect.android.support.MockFormEntryPromptBuilder;
-import org.odk.collect.android.support.WidgetTestActivity;
-import org.odk.collect.android.views.TrackingTouchSlider;
+import org.espen.collect.android.databinding.RangePickerWidgetAnswerBinding;
+import org.espen.collect.android.fragments.dialogs.NumberPickerDialog;
+import org.espen.collect.android.support.CollectHelpers;
+import org.espen.collect.android.support.MockFormEntryPromptBuilder;
+import org.espen.collect.android.support.WidgetTestActivity;
+import org.espen.collect.android.views.TrackingTouchSlider;
 import org.odk.collect.testshared.RobolectricHelpers;
 import org.robolectric.shadows.ShadowToast;
 

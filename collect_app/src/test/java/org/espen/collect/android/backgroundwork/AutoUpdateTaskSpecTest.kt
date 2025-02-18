@@ -1,4 +1,4 @@
-package org.odk.collect.android.backgroundwork
+package org.espen.collect.android.backgroundwork
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -11,11 +11,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.odk.collect.android.formmanagement.FormsDataService
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.injection.config.ProjectDependencyModuleFactory
-import org.odk.collect.android.notifications.Notifier
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.formmanagement.FormsDataService
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.injection.config.ProjectDependencyModuleFactory
+import org.espen.collect.android.notifications.Notifier
+import org.espen.collect.android.support.CollectHelpers
 
 @RunWith(AndroidJUnit4::class)
 class AutoUpdateTaskSpecTest {

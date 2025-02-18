@@ -1,7 +1,7 @@
-package org.odk.collect.android.projects
+package org.espen.collect.android.projects
 
-import org.odk.collect.android.storage.StoragePaths
-import org.odk.collect.android.utilities.ChangeLocks
+import org.espen.collect.android.storage.StoragePaths
+import org.espen.collect.android.utilities.ChangeLocks
 import org.odk.collect.entities.storage.EntitiesRepository
 import org.odk.collect.forms.FormSource
 import org.odk.collect.forms.FormsRepository

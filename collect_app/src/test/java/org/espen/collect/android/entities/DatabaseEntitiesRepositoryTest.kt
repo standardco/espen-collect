@@ -1,12 +1,12 @@
-package org.odk.collect.android.entities
+package org.espen.collect.android.entities
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.odk.collect.android.database.entities.DatabaseEntitiesRepository
-import org.odk.collect.android.entities.support.EntitySameAsMatcher.Companion.sameEntityAs
+import org.espen.collect.android.database.entities.DatabaseEntitiesRepository
+import org.espen.collect.android.entities.support.EntitySameAsMatcher.Companion.sameEntityAs
 import org.odk.collect.entities.storage.EntitiesRepository
 import org.odk.collect.entities.storage.Entity
 import org.odk.collect.shared.TempFiles

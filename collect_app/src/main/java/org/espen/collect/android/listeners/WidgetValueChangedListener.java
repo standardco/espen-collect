@@ -1,6 +1,6 @@
-package org.odk.collect.android.listeners;
+package org.espen.collect.android.listeners;
 
-import org.odk.collect.android.widgets.QuestionWidget;
+import org.espen.collect.android.widgets.QuestionWidget;
 
 public interface WidgetValueChangedListener {
     void widgetValueChanged(QuestionWidget changedWidget);

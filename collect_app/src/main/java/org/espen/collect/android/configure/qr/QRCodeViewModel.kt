@@ -1,4 +1,4 @@
-package org.odk.collect.android.configure.qr
+package org.espen.collect.android.configure.qr
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.odk.collect.android.R
+import org.espen.collect.android.R
 import org.odk.collect.androidshared.bitmap.ImageFileUtils
 import org.odk.collect.async.Scheduler
 import org.odk.collect.settings.SettingsProvider

@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.odk.collect.android.support.matchers
+package org.espen.collect.android.support.matchers
 
 import android.view.View
 import android.widget.TextView
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
-import org.odk.collect.android.R
-import org.odk.collect.android.widgets.QuestionWidget
+import org.espen.collect.android.R
+import org.espen.collect.android.widgets.QuestionWidget
 
 /**
  * Grab bag of Hamcrest matchers.

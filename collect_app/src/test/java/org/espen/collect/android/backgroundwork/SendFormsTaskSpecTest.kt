@@ -1,4 +1,4 @@
-package org.odk.collect.android.backgroundwork
+package org.espen.collect.android.backgroundwork
 
 import android.app.Application
 import androidx.test.core.app.ApplicationProvider
@@ -11,13 +11,13 @@ import org.junit.runner.RunWith
 import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import org.odk.collect.android.injection.config.AppDependencyModule
-import org.odk.collect.android.injection.config.ProjectDependencyModuleFactory
-import org.odk.collect.android.instancemanagement.InstancesDataService
-import org.odk.collect.android.notifications.Notifier
-import org.odk.collect.android.openrosa.OpenRosaHttpInterface
-import org.odk.collect.android.projects.ProjectsDataService
-import org.odk.collect.android.support.CollectHelpers
+import org.espen.collect.android.injection.config.AppDependencyModule
+import org.espen.collect.android.injection.config.ProjectDependencyModuleFactory
+import org.espen.collect.android.instancemanagement.InstancesDataService
+import org.espen.collect.android.notifications.Notifier
+import org.espen.collect.android.openrosa.OpenRosaHttpInterface
+import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.support.CollectHelpers
 import org.odk.collect.metadata.PropertyManager
 import org.odk.collect.testshared.RobolectricHelpers
 
