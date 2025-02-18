@@ -12,42 +12,26 @@
  * the License.
  */
 
-package org.espen.collect.android.instancemanagement;
+package org.odk.collect.android.instancemanagement;
+
+import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import android.net.Uri;
 
 import org.apache.commons.io.FileUtils;
-import org.espen.collect.android.analytics.AnalyticsEvents;
-import org.espen.collect.android.analytics.AnalyticsUtils;
-import org.espen.collect.android.application.EspenCollect;
-import org.espen.collect.android.exception.EncryptionException;
-import org.espen.collect.android.external.InstancesContract;
-import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.android.injection.config.AppDependencyComponent;
-import org.espen.collect.android.projects.ProjectsDataService;
-import org.espen.collect.android.storage.StoragePathProvider;
-import org.espen.collect.android.storage.StorageSubdirectory;
-import org.espen.collect.android.tasks.SaveFormToDisk;
-import org.espen.collect.android.utilities.EncryptionUtils;
-import org.espen.collect.android.utilities.FormsRepositoryProvider;
-import org.espen.collect.android.utilities.InstancesRepositoryProvider;
-import org.espen.collect.android.utilities.LookUpRepositoryProvider;
-import org.espen.collect.android.analytics.AnalyticsEvents;
-import org.espen.collect.android.analytics.AnalyticsUtils;
-import org.espen.collect.android.application.EspenCollect;
-import org.espen.collect.android.exception.EncryptionException;
-import org.espen.collect.android.external.InstancesContract;
-import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.android.injection.config.AppDependencyComponent;
-import org.espen.collect.android.javarosawrapper.InstanceMetadata;
-import org.espen.collect.android.projects.ProjectsDataService;
-import org.espen.collect.android.storage.StoragePathProvider;
-import org.espen.collect.android.storage.StorageSubdirectory;
-import org.espen.collect.android.tasks.SaveFormToDisk;
-import org.espen.collect.android.utilities.EncryptionUtils;
-import org.espen.collect.android.utilities.FormsRepositoryProvider;
-import org.espen.collect.android.utilities.InstancesRepositoryProvider;
-import org.espen.collect.android.utilities.LookUpRepositoryProvider;
+import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.exception.EncryptionException;
+import org.odk.collect.android.external.InstancesContract;
+import org.odk.collect.android.injection.DaggerUtils;
+import org.odk.collect.android.injection.config.AppDependencyComponent;
+import org.odk.collect.android.javarosawrapper.InstanceMetadata;
+import org.odk.collect.android.projects.ProjectsDataService;
+import org.odk.collect.android.storage.StoragePathProvider;
+import org.odk.collect.android.storage.StorageSubdirectory;
+import org.odk.collect.android.tasks.SaveFormToDisk;
+import org.odk.collect.android.utilities.EncryptionUtils;
+import org.odk.collect.android.utilities.FormsRepositoryProvider;
+import org.odk.collect.android.utilities.InstancesRepositoryProvider;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;
@@ -66,8 +50,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import timber.log.Timber;
 
-import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
-
 public class InstanceDiskSynchronizer {
 
     private static int counter;
@@ -84,9 +66,8 @@ public class InstanceDiskSynchronizer {
 
     public InstanceDiskSynchronizer(SettingsProvider settingsProvider) {
         this.settingsProvider = settingsProvider;
-        instancesRepository = new InstancesRepositoryProvider(EspenCollect.getInstance()).get();
-        new LookUpRepositoryProvider(EspenCollect.getInstance()).get();
-        AppDependencyComponent component = DaggerUtils.getComponent(EspenCollect.getInstance());
+        instancesRepository = new InstancesRepositoryProvider(Collect.getInstance()).create();
+        AppDependencyComponent component = DaggerUtils.getComponent(Collect.getInstance());
         projectsDataService = component.currentProjectProvider();
     }
 
@@ -135,7 +116,7 @@ public class InstanceDiskSynchronizer {
                         try {
                             // TODO: optimize this by caching the previously found form definition
                             // TODO: optimize this by caching unavailable form definition to skip
-                            List<Form> forms = new FormsRepositoryProvider(EspenCollect.getInstance()).get().getAllByFormId(instanceFormId);
+                            List<Form> forms = new FormsRepositoryProvider(Collect.getInstance()).create().getAllByFormId(instanceFormId);
 
                             if (!forms.isEmpty()) {
                                 Form form = forms.get(0);
@@ -164,7 +145,7 @@ public class InstanceDiskSynchronizer {
                     }
                 }
                 if (counter > 0) {
-                    currentStatus += getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.instance_scan_count, counter);
+                    currentStatus += getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.instance_scan_count, counter);
                 }
             }
         } finally {
@@ -204,20 +185,9 @@ public class InstanceDiskSynchronizer {
     private void encryptInstanceIfNeeded(Form form, Instance instance) throws EncryptionException, IOException {
         if (instance != null) {
             if (shouldInstanceBeEncrypted(form)) {
-                logImportAndEncrypt(form);
                 encryptInstance(instance);
-            } else {
-                logImport(form);
             }
         }
-    }
-
-    private void logImport(Form form) {
-        AnalyticsUtils.logFormEvent(AnalyticsEvents.IMPORT_INSTANCE, form.getFormId(), form.getDisplayName());
-    }
-
-    private void logImportAndEncrypt(Form form) {
-        AnalyticsUtils.logFormEvent(AnalyticsEvents.IMPORT_AND_ENCRYPT_INSTANCE, form.getFormId(), form.getDisplayName());
     }
 
     private void encryptInstance(Instance instance) throws EncryptionException, IOException {

@@ -1,4 +1,4 @@
-package org.espen.collect.android.formentry.audit;
+package org.odk.collect.android.formentry.audit;
 
 import static org.odk.collect.shared.strings.StringUtils.isBlank;
 
@@ -8,8 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.espen.collect.android.javarosawrapper.FormController;
-import org.espen.collect.android.javarosawrapper.FormController;
+import org.odk.collect.android.javarosawrapper.FormController;
 
 public class IdentityPromptViewModel extends ViewModel {
 

@@ -1,5 +1,5 @@
 
-package org.espen.collect.android.formentry.audit;
+package org.odk.collect.android.formentry.audit;
 
 import android.os.AsyncTask;
 
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import timber.log.Timber;
 
-import static org.espen.collect.android.formentry.audit.AuditEventCSVLine.toCSVLine;
+import static org.odk.collect.android.formentry.audit.AuditEventCSVLine.toCSVLine;
 
 /**
  * Background task for appending events to the event log

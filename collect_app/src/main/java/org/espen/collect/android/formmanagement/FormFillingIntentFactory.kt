@@ -1,11 +1,11 @@
-package org.espen.collect.android.formmanagement
+package org.odk.collect.android.formmanagement
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import org.espen.collect.android.external.FormUriActivity
-import org.espen.collect.android.external.InstancesContract
+import org.odk.collect.android.external.FormUriActivity
+import org.odk.collect.android.external.InstancesContract
 import kotlin.reflect.KClass
 
 object FormFillingIntentFactory {
@@ -43,7 +43,7 @@ object FormFillingIntentFactory {
     ): Intent {
         return Intent(context, clazz.java).also {
             it.action = Intent.ACTION_EDIT
-            it.data = org.espen.collect.android.external.InstancesContract.getUri(projectId, instanceId)
+            it.data = InstancesContract.getUri(projectId, instanceId)
         }
     }
 }

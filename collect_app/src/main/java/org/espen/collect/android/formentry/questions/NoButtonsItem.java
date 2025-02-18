@@ -1,4 +1,4 @@
-package org.espen.collect.android.formentry.questions;
+package org.odk.collect.android.formentry.questions;
 
 import android.content.Context;
 import android.util.TypedValue;
@@ -7,9 +7,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
-import org.espen.collect.android.databinding.NoButtonsItemLayoutBinding;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.odk.collect.android.databinding.NoButtonsItemLayoutBinding;
+import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.odk.collect.imageloader.ImageLoader;
 
 import java.io.File;
@@ -29,6 +28,7 @@ public class NoButtonsItem extends FrameLayout {
 
     public void setUpNoButtonsItem(File imageFile, String choiceText, String errorMsg, boolean isInGridView) {
         if (imageFile != null && imageFile.exists()) {
+            binding.imageView.layout(0, 0, 0, 0);
             binding.imageView.setVisibility(View.VISIBLE);
             if (isInGridView) {
                 imageLoader.loadImage(binding.imageView, imageFile, ImageView.ScaleType.FIT_CENTER, null);

@@ -1,4 +1,4 @@
-package org.espen.collect.android.formentry.audit;
+package org.odk.collect.android.formentry.audit;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.espen.collect.android.R;
+import org.odk.collect.android.R;
 import org.odk.collect.material.MaterialFullScreenDialogFragment;
 
 public class IdentifyUserPromptDialogFragment extends MaterialFullScreenDialogFragment {
@@ -29,7 +29,10 @@ public class IdentifyUserPromptDialogFragment extends MaterialFullScreenDialogFr
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getToolbar().setTitle(viewModel.getFormTitle());
+        Toolbar toolbar = getToolbar();
+        toolbar.setTitle(viewModel.getFormTitle());
+        toolbar.setNavigationIcon(org.odk.collect.icons.R.drawable.ic_close);
+        toolbar.setNavigationContentDescription(org.odk.collect.strings.R.string.close);
 
         EditText identityField = view.findViewById(R.id.identity);
         identityField.setText(viewModel.getUser());
@@ -85,7 +88,7 @@ public class IdentifyUserPromptDialogFragment extends MaterialFullScreenDialogFr
 
     @Override
     protected Toolbar getToolbar() {
-        return getView().findViewById(R.id.toolbar);
+        return getView().findViewById(org.odk.collect.androidshared.R.id.toolbar);
     }
 
     @Override

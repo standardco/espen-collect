@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.utils
+package org.odk.collect.androidshared.utils
 
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.views;
+package org.odk.collect.android.views;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -12,27 +12,22 @@
  * the License.
  */
 
-package org.espen.collect.android.widgets.items;
+package org.odk.collect.android.widgets.items;
 
-import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayColor;
+import static org.odk.collect.android.formentry.media.FormMediaUtils.getPlayColor;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import org.espen.collect.android.adapters.AbstractSelectListAdapter;
-import org.espen.collect.android.adapters.SelectMultipleListAdapter;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectMultiData;
 import org.javarosa.core.model.data.helper.Selection;
-import org.espen.collect.android.adapters.AbstractSelectListAdapter;
-import org.espen.collect.android.adapters.SelectMultipleListAdapter;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
+import org.odk.collect.android.adapters.AbstractSelectListAdapter;
+import org.odk.collect.android.adapters.SelectMultipleListAdapter;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.utilities.Appearances;
+import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.odk.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
 
 import java.util.ArrayList;
 import java.util.List;

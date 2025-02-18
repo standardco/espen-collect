@@ -26,6 +26,9 @@ the specific language governing permissions and limitations under the License.
     <uses-feature
         android:name="android.hardware.wifi"
         android:required="false" />
+    <uses-feature
+        android:glEsVersion="0x00030000"
+        tools:node="remove" />
 
     <!-- Dangerous permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -33,7 +36,6 @@ the specific language governing permissions and limitations under the License.
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <!-- Normal permissions -->
@@ -76,9 +78,9 @@ the specific language governing permissions and limitations under the License.
         android:xlargeScreens="true" />
 
     <application
-        android:name="org.espen.collect.android.application.EspenCollect"
+        android:name=".application.Collect"
         android:allowBackup="true"
-        android:icon="@drawable/espen_logo2"
+        android:icon="@drawable/notes"
         android:installLocation="auto"
         android:label="@string/collect_app_name"
         android:largeHeap="true"
@@ -112,40 +114,37 @@ the specific language governing permissions and limitations under the License.
             </intent-filter>
         </activity>
 
-        <activity android:name="org.espen.collect.android.activities.CrashHandlerActivity" />
+        <activity android:name="org.odk.collect.android.activities.CrashHandlerActivity" />
 
         <activity
-            android:name="org.espen.collect.android.activities.ScannerWithFlashlightActivity"
+            android:name=".activities.ScannerWithFlashlightActivity"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name="org.espen.collect.android.activities.FormFillingActivity"
+            android:name=".activities.FormFillingActivity"
             android:theme="@style/Theme.Collect.FormEntry"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="org.espen.collect.android.draw.DrawActivity"
+            android:name="org.odk.collect.draw.DrawActivity"
             android:screenOrientation="landscape" />
-        <activity android:name="org.espen.collect.android.activities.InstanceChooserList" />
+        <activity android:name=".activities.InstanceChooserList" />
         <activity
             android:name=".formlists.blankformlist.BlankFormListActivity"
             android:launchMode="singleTop" />
-        <activity android:name="org.espen.collect.android.activities.FormDownloadListActivity" />
-        <activity android:name=".activities.DeleteSavedFormActivity" />
+        <activity android:name=".activities.FormDownloadListActivity" />
+        <activity android:name=".activities.DeleteFormsActivity" />
         <activity
-            android:name="org.espen.collect.android.gdrive.GoogleSheetsUploaderActivity"
+            android:name=".instancemanagement.send.InstanceUploaderListActivity"
             android:configChanges="orientation|screenSize" />
-        <activity
-            android:name="org.espen.collect.android.instancemanagement.send.InstanceUploaderListActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity android:name="org.espen.collect.android.instancemanagement.send.InstanceUploaderActivity" />
+        <activity android:name=".instancemanagement.send.InstanceUploaderActivity" />
         <activity android:name=".activities.AboutActivity" />
         <activity android:name=".configure.qr.QRCodeTabsActivity" />
         <activity
             android:name=".preferences.screens.ProjectPreferencesActivity"
             android:theme="@style/Theme.Collect.Settings" />
-        <activity android:name="org.espen.collect.android.activities.FormHierarchyActivity" />
-        <activity android:name="org.espen.collect.android.activities.ViewOnlyFormHierarchyActivity" />
+        <activity android:name=".formhierarchy.FormHierarchyActivity" />
+        <activity android:name=".formhierarchy.ViewOnlyFormHierarchyActivity" />
         <activity
             android:name="org.odk.collect.geo.geopoint.GeoPointActivity"
             android:theme="@style/Theme.Collect"
@@ -164,13 +163,13 @@ the specific language governing permissions and limitations under the License.
             tools:replace="android:theme" />
 
         <activity
-            android:name="org.odk.collect.entities.EntityBrowserActivity"
+            android:name="org.odk.collect.entities.browser.EntityBrowserActivity"
             android:theme="@style/Theme.Collect"
             tools:replace="android:theme" />
 
         <activity android:name=".activities.FormMapActivity" />
-        <activity android:name="org.espen.collect.android.activities.BearingActivity" />
-        <activity android:name="org.espen.collect.android.activities.WebViewActivity" />
+        <activity android:name=".activities.BearingActivity" />
+        <activity android:name="org.odk.collect.webpage.WebViewActivity" />
         <activity
             android:name="org.odk.collect.selfiecamera.CaptureSelfieActivity"
             android:theme="@style/Theme.Collect"
@@ -218,16 +217,12 @@ the specific language governing permissions and limitations under the License.
          -->
 
         <provider
-            android:name="org.espen.collect.android.external.FormsProvider"
-            android:authorities="com.espen.provider.odk.v2.forms"
+            android:name=".external.FormsProvider"
+            android:authorities="org.odk.collect.android.provider.odk.forms"
             android:exported="true" />
         <provider
-            android:name="org.espen.collect.android.external.InstanceProvider"
-            android:authorities="com.espen.provider.odk.v2.instances"
-            android:exported="true" />
-        <provider
-            android:name="org.espen.collect.android.external.LookupProvider"
-            android:authorities="com.espen.provider.odk.v2.lookup"
+            android:name=".external.InstanceProvider"
+            android:authorities="org.odk.collect.android.provider.odk.instances"
             android:exported="true" />
 
         <activity-alias
@@ -239,7 +234,7 @@ the specific language governing permissions and limitations under the License.
 
         <activity-alias
             android:name=".activities.InstanceChooserList"
-            android:targetActivity="org.espen.collect.android.activities.InstanceChooserList"
+            android:targetActivity=".activities.InstanceChooserList"
             android:exported="true"
             tools:ignore="AppLinkUrlError">
             <intent-filter>
@@ -271,10 +266,10 @@ the specific language governing permissions and limitations under the License.
 
         <activity-alias
             android:name=".activities.FormDownloadList"
-            android:targetActivity="org.espen.collect.android.activities.FormDownloadListActivity"
+            android:targetActivity=".activities.FormDownloadListActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.espen.collect.android.FORM_DOWNLOAD" />
+                <action android:name="org.odk.collect.android.FORM_DOWNLOAD" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="vnd.android.cursor.dir/vnd.odk.form" />
             </intent-filter>
@@ -282,7 +277,7 @@ the specific language governing permissions and limitations under the License.
 
         <activity-alias
             android:name=".activities.InstanceUploaderList"
-            android:targetActivity="org.espen.collect.android.instancemanagement.send.InstanceUploaderListActivity"
+            android:targetActivity=".instancemanagement.send.InstanceUploaderListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -294,10 +289,10 @@ the specific language governing permissions and limitations under the License.
 
         <activity-alias
             android:name=".activities.InstanceUploaderActivity"
-            android:targetActivity="org.espen.collect.android.instancemanagement.send.InstanceUploaderActivity"
+            android:targetActivity=".instancemanagement.send.InstanceUploaderActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="org.espen.collect.android.INSTANCE_UPLOAD" />
+                <action android:name="org.odk.collect.android.INSTANCE_UPLOAD" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="vnd.android.cursor.dir/vnd.odk.instance" />
             </intent-filter>

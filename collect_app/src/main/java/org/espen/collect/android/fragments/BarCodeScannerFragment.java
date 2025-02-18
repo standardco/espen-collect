@@ -11,9 +11,9 @@
  * the License.
  */
 
-package org.espen.collect.android.fragments;
+package org.odk.collect.android.fragments;
 
-import static org.espen.collect.android.injection.DaggerUtils.getComponent;
+import static org.odk.collect.android.injection.DaggerUtils.getComponent;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -32,16 +32,13 @@ import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
 
-import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.utilities.CodeCaptureManagerFactory;
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.R;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.androidshared.system.CameraUtils;
-import org.espen.collect.android.utilities.CodeCaptureManagerFactory;
-import org.espen.collect.androidshared.ui.ToastUtils;
-import org.espen.collect.android.views.BarcodeViewDecoder;
+import org.odk.collect.android.R;
+import org.odk.collect.android.utilities.Appearances;
+import org.odk.collect.androidshared.system.CameraUtils;
+import org.odk.collect.android.utilities.CodeCaptureManagerFactory;
+import org.odk.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.android.views.BarcodeViewDecoder;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -66,7 +63,7 @@ public abstract class BarCodeScannerFragment extends Fragment implements Decorat
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        DaggerUtils.getComponent(context).inject(this);
+        getComponent(context).inject(this);
     }
 
     @Override

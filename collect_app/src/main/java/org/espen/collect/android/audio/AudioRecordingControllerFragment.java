@@ -1,9 +1,9 @@
-package org.espen.collect.android.audio;
+package org.odk.collect.android.audio;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static org.espen.collect.androidshared.livedata.LiveDataUtils.zip4;
-import static org.espen.collect.androidshared.ui.DialogFragmentUtils.showIfNotShowing;
+import static org.odk.collect.androidshared.livedata.LiveDataUtils.zip4;
+import static org.odk.collect.androidshared.ui.DialogFragmentUtils.showIfNotShowing;
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import android.content.Context;
@@ -19,13 +19,12 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.espen.collect.android.formentry.BackgroundAudioViewModel;
-import org.espen.collect.android.R;
-import org.espen.collect.android.databinding.AudioRecordingControllerFragmentBinding;
-import org.espen.collect.android.formentry.BackgroundAudioViewModel;
-import org.espen.collect.android.formentry.FormEntryViewModel;
-import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.androidshared.data.Consumable;
+import org.odk.collect.android.R;
+import org.odk.collect.android.databinding.AudioRecordingControllerFragmentBinding;
+import org.odk.collect.android.formentry.BackgroundAudioViewModel;
+import org.odk.collect.android.formentry.FormEntryViewModel;
+import org.odk.collect.android.injection.DaggerUtils;
+import org.odk.collect.androidshared.data.Consumable;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.RecordingSession;
 import org.odk.collect.strings.format.LengthFormatterKt;
@@ -117,7 +116,7 @@ public class AudioRecordingControllerFragment extends Fragment {
     }
 
     private void renderRecordingProblem(String string) {
-        binding.recordingIcon.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_mic_off_24));
+        binding.recordingIcon.setImageDrawable(ContextCompat.getDrawable(requireContext(), org.odk.collect.icons.R.drawable.ic_baseline_mic_off_24));
         binding.timeCode.setText(string);
         binding.volumeBar.setVisibility(GONE);
         binding.controls.setVisibility(GONE);
@@ -140,7 +139,7 @@ public class AudioRecordingControllerFragment extends Fragment {
         binding.controls.setVisibility(VISIBLE);
 
         if (session.getPaused()) {
-            binding.pauseRecording.setIcon(ContextCompat.getDrawable(requireContext(), org.odk.collect.audiorecorder.R.drawable.ic_baseline_mic_24));
+            binding.pauseRecording.setIcon(ContextCompat.getDrawable(requireContext(), org.odk.collect.icons.R.drawable.ic_baseline_mic_24));
             binding.pauseRecording.setContentDescription(getString(org.odk.collect.strings.R.string.resume_recording));
             binding.pauseRecording.setOnClickListener(v -> audioRecorder.resume());
 
@@ -152,7 +151,7 @@ public class AudioRecordingControllerFragment extends Fragment {
                 audioRecorder.pause();
             });
 
-            binding.recordingIcon.setImageDrawable(ContextCompat.getDrawable(requireContext(), org.odk.collect.audiorecorder.R.drawable.ic_baseline_mic_24));
+            binding.recordingIcon.setImageDrawable(ContextCompat.getDrawable(requireContext(), org.odk.collect.icons.R.drawable.ic_baseline_mic_24));
         }
     }
 }

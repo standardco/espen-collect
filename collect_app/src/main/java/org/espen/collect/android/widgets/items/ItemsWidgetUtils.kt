@@ -1,20 +1,21 @@
-package org.espen.collect.android.widgets.items
+package org.odk.collect.android.widgets.items
 
 import org.javarosa.core.model.SelectChoice
 import org.javarosa.form.api.FormEntryPrompt
 import org.javarosa.xpath.parser.XPathSyntaxException
-import org.espen.collect.android.exception.ExternalDataException
-import org.espen.collect.android.widgets.QuestionWidget
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader
+import org.odk.collect.android.R
+import org.odk.collect.android.exception.ExternalDataException
+import org.odk.collect.android.widgets.QuestionWidget
+import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader
 import java.io.FileNotFoundException
 
 object ItemsWidgetUtils {
 
     @JvmStatic
     fun loadItemsAndHandleErrors(
-            widget: org.espen.collect.android.widgets.QuestionWidget,
-            prompt: FormEntryPrompt,
-            selectChoiceLoader: SelectChoiceLoader
+        widget: QuestionWidget,
+        prompt: FormEntryPrompt,
+        selectChoiceLoader: SelectChoiceLoader
     ): List<SelectChoice> {
         return try {
             selectChoiceLoader.loadSelectChoices(prompt)
@@ -24,7 +25,7 @@ object ItemsWidgetUtils {
         } catch (e: XPathSyntaxException) {
             widget.showWarning(widget.context.getString(org.odk.collect.strings.R.string.parser_exception, e.message))
             emptyList()
-        } catch (e: org.espen.collect.android.exception.ExternalDataException) {
+        } catch (e: ExternalDataException) {
             widget.showWarning(e.message)
             emptyList()
         }

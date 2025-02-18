@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.fragments.dialogs;
+package org.odk.collect.android.fragments.dialogs;
 
-import static org.espen.collect.android.utilities.ViewUtils.pxFromDp;
+import static org.odk.collect.android.utilities.ViewUtils.pxFromDp;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -38,19 +38,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.adapters.RankingListAdapter;
-import org.espen.collect.android.fragments.viewmodels.RankingViewModel;
-import org.espen.collect.android.utilities.RankingItemTouchHelperCallback;
-import org.espen.collect.android.utilities.ViewUtils;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.R;
-import org.espen.collect.android.adapters.RankingListAdapter;
-import org.espen.collect.android.fragments.viewmodels.RankingViewModel;
-import org.espen.collect.android.utilities.RankingItemTouchHelperCallback;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.odk.collect.android.R;
+import org.odk.collect.android.adapters.RankingListAdapter;
+import org.odk.collect.android.fragments.viewmodels.RankingViewModel;
+import org.odk.collect.android.utilities.RankingItemTouchHelperCallback;
+import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,8 +101,8 @@ public class RankingWidgetDialog extends DialogFragment {
 
         float standardMargin = requireContext()
                 .getResources()
-                .getDimension(org.espen.collect.androidshared.R.dimen.margin_standard);
-        int standardMarginPx = ViewUtils.pxFromDp(requireContext(), standardMargin);
+                .getDimension(org.odk.collect.androidshared.R.dimen.margin_standard);
+        int standardMarginPx = pxFromDp(requireContext(), standardMargin);
         rankingLayout.setPadding(standardMarginPx, standardMarginPx, standardMarginPx, standardMarginPx);
 
         NestedScrollView scrollView = new NestedScrollView(getContext());

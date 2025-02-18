@@ -2,6 +2,7 @@ package org.odk.collect.geo.geopoint
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
@@ -20,13 +21,11 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.kotlin.any
 import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
+import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
 import org.odk.collect.fragmentstest.FragmentScenarioLauncherRule
 import org.odk.collect.geo.DaggerGeoDependencyComponent
 import org.odk.collect.geo.GeoDependencyModule
@@ -56,8 +55,11 @@ class GeoPointDialogFragmentTest {
             .application(application)
             .geoDependencyModule(object : GeoDependencyModule() {
                 override fun providesGeoPointViewModelFactory(application: Application) =
-                    mock<GeoPointViewModelFactory> {
-                        on { create(eq(GeoPointViewModel::class.java), any()) } doReturn viewModel
+                    object : GeoPointViewModelFactory {
+                        @Suppress("UNCHECKED_CAST")
+                        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                            return viewModel as T
+                        }
                     }
             })
             .build()

@@ -1,20 +1,20 @@
-package org.espen.collect.android.application.initialization
+package org.odk.collect.android.application.initialization
 
 import android.content.Context
 import android.os.Handler
 import com.google.android.gms.maps.MapView
-import org.espen.collect.android.geo.MapConfiguratorProvider
+import org.odk.collect.android.geo.MapConfiguratorProvider
 import org.odk.collect.osmdroid.OsmDroidInitializer
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys
-import org.espen.collect.utilities.UserAgentProvider
+import org.odk.collect.utilities.UserAgentProvider
 import timber.log.Timber
 import javax.inject.Inject
 
 class MapsInitializer @Inject constructor(
     private val context: Context,
     private val settingsProvider: SettingsProvider,
-    private val userAgentProvider: org.espen.collect.utilities.UserAgentProvider
+    private val userAgentProvider: UserAgentProvider
 ) {
 
     fun initialize() {
@@ -26,8 +26,8 @@ class MapsInitializer @Inject constructor(
     }
 
     private fun resetToAvailableFramework() {
-        org.espen.collect.android.geo.MapConfiguratorProvider.initOptions(context)
-        val availableBaseMaps = org.espen.collect.android.geo.MapConfiguratorProvider.getIds()
+        MapConfiguratorProvider.initOptions(context)
+        val availableBaseMaps = MapConfiguratorProvider.getIds()
         val baseMapSetting =
             settingsProvider.getUnprotectedSettings().getString(ProjectKeys.KEY_BASEMAP_SOURCE)
         if (!availableBaseMaps.contains(baseMapSetting)) {

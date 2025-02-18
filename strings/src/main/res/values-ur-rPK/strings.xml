@@ -25,9 +25,7 @@
   <!--A sort option for blank forms. When this option is selected, the form for which a filled instance was last filled will go first.-->
   <string name="filter_the_list">فہرست کو فلٹر کریں۔</string>
   <!--Displayed in search boxes for form lists or question types that involve search-->
-  <string name="no_items_display">دکھانے کیلے کچھ بھی نہیں ہے</string>
-  <string name="no_items_display_forms">دکھانے کیلئےکچھ نہیں ہے؟؟ خالی فارم حاصل کرنے اور پر کرنے کی کوشش کریں</string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
   <!--##############################################
     # FILL BLANK FORM
     ##############################################-->
@@ -91,8 +89,6 @@
   <string name="launch_app">آغاز</string>
   <string name="activity_not_found">‎%s‏  کو کر نے کیلیے کوئی سرگرمی نہی پا ئ گئ</string>
   <string name="no_app">درخواست کیا گیا ایپلیکیشن موجود نہیں ہے۔ براو مہربانی اعداد و شمار کو خود درج کریں۔</string>
-  <string name="launch_printer">پرنٹنگ کا آغاز کریں</string>
-  <string name="no_printer">مطلوبہ پرینٹر انسٹال نہیں ہے۔ براہ مہربانی پرینٹر انسٹال کریں۔</string>
   <string name="get_barcode">بارکوڈ حاصل کریں</string>
   <string name="replace_barcode">مقام کو بدل دیں</string>
   <string name="capture_image">تصویر لیں</string>
@@ -153,8 +149,6 @@
   <!--TODO(ping): Delete these openmap_* strings when we're ready to move on from OSMDroid.
    These strings are only being used to preserve compatibility with pre-existing
     tile caches, and are not shown in the UI.-->
-  <string name="view_change_location">مقام کو ملاحظہ کریں یا تبدیلکریں۔</string>
-  <string name="get_location">مقام درج کریں</string>
   <string name="provider_disabled_error">معافی، مقام فراہم کرنے والے نااہل کئے گئے ہیں</string>
   <!--Action to go to Android settings. Displayed when location providers are disabled.-->
   <!--Label for a menu item that can be toggled to turn background location tracking on and off during form filling-->
@@ -225,9 +219,7 @@
   <string name="delete_file">منتخب شدہ کو مٹادیں</string>
   <string name="delete_no">نہ مٹا ئیں</string>
   <string name="delete_yes">فارم کو مٹا دیں</string>
-  <string name="file_deleted_error">منتخب شدہ ‎%1$s‏ فارم(ز) کا ‎%2$s‏ نہ مٹ سکا</string>
-  <string name="file_deleted_ok">فارم ‎%s‏ کامیابی سے مٹادئے گئے</string>
-  <string name="file_delete_in_progress">معافی، فارم مٹانے کا عمل پہلے سے جاری ہے</string>
+    <string name="file_deleted_ok">فارم ‎%s‏ کامیابی سے مٹادئے گئے</string>
   <!--##############################################
     # UNPROTECTED SETTINGS
     ##############################################-->
@@ -260,9 +252,6 @@
   <string name="change_username">ODK استعمال کرنے والے کا نام</string>
   <string name="password">شناختی لفظ (Password)</string>
   <string name="change_password">  ODK  کا شناختی لفظ (Password)</string>
-  <string name="selected_google_account_text">گوگل اکاونٹ</string>
-  <!--To use Google Drive, forms must set a submission URL. If they don't, this URL will be used.-->
-  <!--Description for Fallback submission URL setting-->
   <string name="use_device_language">فون کی منتخب زبان استعمال کریں</string>
   <string name="font_size">ہجوں کے فانٹ کا ناپ</string>
   <string name="change_font_size">فانٹ کا سائز</string>
@@ -314,13 +303,6 @@
   <!--Name of a setting that determines whether users can navigate backwards in a form-->
   <string name="moving_backwards_title">پیچھے جائیں</string>
   <!--Protected setting. When enabled, users are allowed to save forms while filling them. When disabled, users are only allowed to save forms when they reach their end-->
-  <!--##############################################
-     # GOOGLE DRIVE, GOOGLE SHEETS
-     ##############################################-->
-  <!--Title of the screen that lists forms in user's Google Drive-->
-  <!--Title of the screen that lists forms shared with Google Drive user-->
-  <!--Button for navigating across Google Drive folders-->
-  <!--Text shown in dialog when a Google Sheets form upload was canceled before completion-->
   <!--##############################################
      # ABOUT
      ##############################################-->
@@ -381,7 +363,7 @@
     ##############################################-->
   <!--Section title in settings-->
   <!--Option provided in the Developer tools settings to force an application crash-->
-  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
   <!--##############################################
     # Form saved Snackbar
     ##############################################-->

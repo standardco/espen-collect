@@ -2,7 +2,7 @@ package org.odk.collect.selfiecamera
 
 import android.view.View
 import androidx.activity.ComponentActivity
-import org.espen.collect.androidshared.livedata.NonNullLiveData
+import org.odk.collect.androidshared.livedata.NonNullLiveData
 
 internal interface Camera {
     fun initialize(activity: ComponentActivity, previewView: View)

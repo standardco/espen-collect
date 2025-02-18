@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.utils
+package org.odk.collect.androidshared.utils
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat

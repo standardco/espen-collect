@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.ui.multiclicksafe
+package org.odk.collect.androidshared.ui.multiclicksafe
 
 import android.view.View
 

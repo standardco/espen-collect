@@ -1,4 +1,4 @@
-package org.espen.collect.android.openrosa;
+package org.odk.collect.android.openrosa;
 
 import java.util.List;
 import java.util.Set;

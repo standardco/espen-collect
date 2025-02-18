@@ -1,4 +1,4 @@
-package org.espen.collect.android.version;
+package org.odk.collect.android.version;
 
 import androidx.annotation.Nullable;
 

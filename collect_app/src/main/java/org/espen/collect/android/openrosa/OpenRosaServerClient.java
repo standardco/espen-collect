@@ -1,4 +1,4 @@
-package org.espen.collect.android.openrosa;
+package org.odk.collect.android.openrosa;
 
 import java.io.IOException;
 import java.util.Date;

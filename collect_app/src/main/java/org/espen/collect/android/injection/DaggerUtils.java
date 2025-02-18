@@ -12,25 +12,23 @@
  * the License.
  */
 
-package org.espen.collect.android.injection;
+package org.odk.collect.android.injection;
 
 import android.app.Activity;
 import android.content.Context;
 
-import org.espen.collect.android.application.EspenCollect;
-import org.espen.collect.android.injection.config.AppDependencyComponent;
-import org.espen.collect.android.application.EspenCollect;
-import org.espen.collect.android.injection.config.AppDependencyComponent;
+import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.injection.config.AppDependencyComponent;
 
 public final class DaggerUtils {
 
     private DaggerUtils() {}
 
     public static AppDependencyComponent getComponent(Activity activity) {
-        return ((EspenCollect) activity.getApplication()).getComponent();
+        return ((Collect) activity.getApplication()).getComponent();
     }
 
     public static AppDependencyComponent getComponent(Context context) {
-        return ((EspenCollect) context.getApplicationContext()).getComponent();
+        return ((Collect) context.getApplicationContext()).getComponent();
     }
 }

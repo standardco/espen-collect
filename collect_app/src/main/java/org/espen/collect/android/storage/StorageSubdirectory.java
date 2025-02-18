@@ -1,4 +1,4 @@
-package org.espen.collect.android.storage;
+package org.odk.collect.android.storage;
 
 public enum StorageSubdirectory {
     FORMS("forms"),
@@ -8,9 +8,8 @@ public enum StorageSubdirectory {
     LAYERS("layers"),
     SETTINGS("settings"),
     PROJECTS("projects"),
-    SHARED_LAYERS("layers"),
+    SHARED_LAYERS("layers");
 
-    LOOKUPS("lookups");
     private final String directoryName;
 
     StorageSubdirectory(String directoryName) {

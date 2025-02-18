@@ -1,11 +1,11 @@
-package org.espen.collect.android.openrosa;
+package org.odk.collect.android.openrosa;
 
 import static java.net.HttpURLConnection.HTTP_NOT_FOUND;
 import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
 
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.utilities.DocumentFetchResult;
-import org.espen.collect.android.utilities.WebCredentialsUtils;
+import org.odk.collect.android.utilities.DocumentFetchResult;
+import org.odk.collect.android.utilities.WebCredentialsUtils;
 import org.odk.collect.forms.FormListItem;
 import org.odk.collect.forms.FormSource;
 import org.odk.collect.forms.FormSourceException;

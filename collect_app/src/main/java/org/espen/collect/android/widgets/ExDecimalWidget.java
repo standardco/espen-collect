@@ -12,25 +12,21 @@
  * the License.
  */
 
-package org.espen.collect.android.widgets;
+package org.odk.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import org.espen.collect.android.externaldata.ExternalAppsUtils;
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.widgets.utilities.StringRequester;
-import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.core.model.data.DecimalData;
 import org.javarosa.core.model.data.IAnswerData;
-import org.espen.collect.android.externaldata.ExternalAppsUtils;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.widgets.utilities.StringRequester;
-import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.odk.collect.android.dynamicpreload.ExternalAppsUtils;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.utilities.Appearances;
+import org.odk.collect.android.widgets.utilities.StringRequester;
+import org.odk.collect.android.widgets.utilities.StringWidgetUtils;
+import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
 
-import static org.espen.collect.android.utilities.ApplicationConstants.RequestCodes;
+import static org.odk.collect.android.utilities.ApplicationConstants.RequestCodes;
 
 import java.io.Serializable;
 
@@ -38,16 +34,17 @@ import java.io.Serializable;
  * Launch an external app to supply a decimal value. If the app
  * does not launch, enable the text area for regular data entry.
  * <p>
- * See {@link ExStringWidget} for usage.
+ * See {@link org.odk.collect.android.widgets.ExStringWidget} for usage.
  */
 @SuppressLint("ViewConstructor")
 public class ExDecimalWidget extends ExStringWidget {
 
     public ExDecimalWidget(Context context, QuestionDetails questionDetails, WaitingForDataRegistry waitingForDataRegistry, StringRequester stringRequester) {
         super(context, questionDetails, waitingForDataRegistry, stringRequester);
-        render();
 
-        StringWidgetUtils.adjustEditTextAnswerToDecimalWidget(answerText, questionDetails.getPrompt());
+        boolean useThousandSeparator = Appearances.useThousandSeparator(questionDetails.getPrompt());
+        Double answer = StringWidgetUtils.getDoubleAnswerValueFromIAnswerData(questionDetails.getPrompt().getAnswerValue());
+        binding.widgetAnswerText.setDecimalType(useThousandSeparator, answer);
     }
 
     @Override
@@ -57,18 +54,17 @@ public class ExDecimalWidget extends ExStringWidget {
 
     @Override
     protected int getRequestCode() {
-        return ApplicationConstants.RequestCodes.EX_DECIMAL_CAPTURE;
+        return RequestCodes.EX_DECIMAL_CAPTURE;
     }
 
     @Override
     public IAnswerData getAnswer() {
-        return StringWidgetUtils.getDecimalData(answerText.getText().toString(), getFormEntryPrompt());
+        return StringWidgetUtils.getDecimalData(binding.widgetAnswerText.getAnswer(), getFormEntryPrompt());
     }
 
     @Override
     public void setData(Object answer) {
         DecimalData decimalData = ExternalAppsUtils.asDecimalData(answer);
-        answerText.setText(decimalData == null ? null : decimalData.getValue().toString());
-        widgetValueChanged();
+        binding.widgetAnswerText.setAnswer(decimalData == null ? null : decimalData.getValue().toString());
     }
 }

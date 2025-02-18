@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import org.joda.time.LocalDateTime;
 

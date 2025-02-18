@@ -2,7 +2,7 @@
  *
  */
 
-package org.espen.collect.android.logic;
+package org.odk.collect.android.logic;
 
 import org.javarosa.core.reference.Reference;
 

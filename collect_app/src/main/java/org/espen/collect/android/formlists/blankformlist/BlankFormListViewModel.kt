@@ -1,20 +1,24 @@
-package org.espen.collect.android.formlists.blankformlist
+package org.odk.collect.android.formlists.blankformlist
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.map
-import org.espen.collect.android.formmanagement.FormsDataService
-import org.espen.collect.android.preferences.utilities.FormUpdateMode
-import org.espen.collect.android.preferences.utilities.SettingsUtils
-import org.espen.collect.androidshared.livedata.LiveDataUtils
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
+import org.odk.collect.android.formmanagement.FormsDataService
 import org.odk.collect.async.Scheduler
+import org.odk.collect.async.flowOnBackground
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.FormSourceException
 import org.odk.collect.forms.FormSourceException.AuthRequired
 import org.odk.collect.forms.instances.InstancesRepository
+import org.odk.collect.settings.enums.FormUpdateMode
+import org.odk.collect.settings.enums.StringIdEnumUtils.getFormUpdateMode
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.settings.Settings
 
@@ -28,22 +32,29 @@ class BlankFormListViewModel(
     private val showAllVersions: Boolean = false
 ) : ViewModel() {
 
-    private val _filterText = MutableLiveData("")
-    private val _sortingOrder = MutableLiveData(generalSettings.getInt("formChooserListSortingOrder"))
-    private val filteredForms = LiveDataUtils.zip3(formsDataService.getForms(projectId), _filterText, _sortingOrder)
-    val formsToDisplay: LiveData<List<BlankFormListItem>> = filteredForms.map { (forms, filter, sort) ->
-        filterAndSortForms(forms, sort, filter)
-    }
+    private val _filterText = MutableStateFlow("")
+    private val _sortingOrder = MutableStateFlow(getSortOrder())
+    private val filteredForms = formsDataService.getForms(projectId)
+        .combine(_filterText) { forms, filter ->
+            Pair(forms, filter)
+        }.combine(_sortingOrder) { (forms, filter), sort ->
+            Triple(forms, filter, sort)
+        }
+
+    val formsToDisplay: LiveData<List<BlankFormListItem>> =
+        filteredForms.map { (forms, filter, sort) ->
+            filterAndSortForms(forms, sort, filter)
+        }.flowOnBackground(scheduler).asLiveData()
 
     val syncResult: LiveData<String?> = formsDataService.getDiskError(projectId)
     val isLoading: LiveData<Boolean> = formsDataService.isSyncing(projectId)
 
-    var sortingOrder: Int = generalSettings.getInt("formChooserListSortingOrder")
-        get() { return generalSettings.getInt("formChooserListSortingOrder") }
+    var sortingOrder: SortOrder = getSortOrder()
+        get() { return getSortOrder() }
 
         set(value) {
             field = value
-            generalSettings.save("formChooserListSortingOrder", value)
+            generalSettings.save(ProjectKeys.KEY_BLANK_FORM_SORT_ORDER, value.ordinal)
             _sortingOrder.value = value
         }
 
@@ -74,10 +85,7 @@ class BlankFormListViewModel(
     }
 
     fun isMatchExactlyEnabled(): Boolean {
-        return org.espen.collect.android.preferences.utilities.SettingsUtils.getFormUpdateMode(
-            application,
-            generalSettings
-        ) == org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY
+        return generalSettings.getFormUpdateMode(application) == FormUpdateMode.MATCH_EXACTLY
     }
 
     fun isOutOfSyncWithServer(): LiveData<Boolean> {
@@ -109,7 +117,7 @@ class BlankFormListViewModel(
 
     private fun filterAndSortForms(
         forms: List<Form>,
-        sort: Int?,
+        sort: SortOrder,
         filter: String
     ): List<BlankFormListItem> {
         var newListOfForms = forms
@@ -130,22 +138,22 @@ class BlankFormListViewModel(
         }
 
         return when (sort) {
-            0 -> newListOfForms.sortedBy { it.formName.lowercase() }
-            1 -> newListOfForms.sortedByDescending { it.formName.lowercase() }
-            2 -> newListOfForms.sortedByDescending {
+            SortOrder.NAME_ASC -> newListOfForms.sortedBy { it.formName.lowercase() }
+            SortOrder.NAME_DESC -> newListOfForms.sortedByDescending { it.formName.lowercase() }
+            SortOrder.DATE_DESC -> newListOfForms.sortedByDescending {
                 it.dateOfLastDetectedAttachmentsUpdate ?: it.dateOfCreation
             }
-            3 -> newListOfForms.sortedBy {
+            SortOrder.DATE_ASC -> newListOfForms.sortedBy {
                 it.dateOfLastDetectedAttachmentsUpdate ?: it.dateOfCreation
             }
-            4 -> newListOfForms.sortedByDescending { it.dateOfLastUsage }
-            else -> {
-                newListOfForms
-            }
+            SortOrder.LAST_SAVED -> newListOfForms.sortedByDescending { it.dateOfLastUsage }
         }.filter {
             filter.isBlank() || it.formName.contains(filter, true)
         }
     }
+
+    private fun getSortOrder() =
+        SortOrder.entries[generalSettings.getInt(ProjectKeys.KEY_BLANK_FORM_SORT_ORDER)]
 
     class Factory(
         private val instancesRepository: InstancesRepository,
@@ -167,5 +175,13 @@ class BlankFormListViewModel(
                 !generalSettings.getBoolean(ProjectKeys.KEY_HIDE_OLD_FORM_VERSIONS)
             ) as T
         }
+    }
+
+    enum class SortOrder {
+        NAME_ASC,
+        NAME_DESC,
+        DATE_DESC,
+        DATE_ASC,
+        LAST_SAVED
     }
 }

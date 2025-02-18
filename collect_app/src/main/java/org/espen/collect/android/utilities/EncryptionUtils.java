@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import android.net.Uri;
 import android.util.Base64;
@@ -20,19 +20,15 @@ import android.util.Base64;
 import androidx.annotation.Nullable;
 
 import org.apache.commons.io.IOUtils;
-import org.espen.collect.android.application.EspenCollect;
-import org.espen.collect.android.exception.EncryptionException;
-import org.espen.collect.android.external.FormsContract;
-import org.espen.collect.android.external.InstancesContract;
 import org.kxml2.io.KXmlSerializer;
 import org.kxml2.kdom.Document;
 import org.kxml2.kdom.Element;
 import org.kxml2.kdom.Node;
-import org.espen.collect.android.application.EspenCollect;
-import org.espen.collect.android.exception.EncryptionException;
-import org.espen.collect.android.external.FormsContract;
-import org.espen.collect.android.external.InstancesContract;
-import org.espen.collect.android.javarosawrapper.InstanceMetadata;
+import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.exception.EncryptionException;
+import org.odk.collect.android.external.FormsContract;
+import org.odk.collect.android.external.InstancesContract;
+import org.odk.collect.android.javarosawrapper.InstanceMetadata;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.shared.strings.Md5;
@@ -69,7 +65,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import timber.log.Timber;
 
-import static org.espen.collect.android.utilities.ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE;
+import static org.odk.collect.android.utilities.ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE;
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 /**
@@ -270,10 +266,10 @@ public class EncryptionUtils {
 
         Form form = null;
 
-        if (InstancesContract.CONTENT_ITEM_TYPE.equals(EspenCollect.getInstance().getContentResolver().getType(uri))) {
-            Instance instance = new InstancesRepositoryProvider(EspenCollect.getInstance()).get().get(ContentUriHelper.getIdFromUri(uri));
+        if (InstancesContract.CONTENT_ITEM_TYPE.equals(Collect.getInstance().getContentResolver().getType(uri))) {
+            Instance instance = new InstancesRepositoryProvider(Collect.getInstance()).create().get(ContentUriHelper.getIdFromUri(uri));
             if (instance == null) {
-                String msg = getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.not_exactly_one_record_for_this_instance);
+                String msg = getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.not_exactly_one_record_for_this_instance);
                 Timber.e(new Error(msg));
                 throw new EncryptionException(msg, null);
             }
@@ -281,24 +277,24 @@ public class EncryptionUtils {
             formId = instance.getFormId();
             formVersion = instance.getFormVersion();
 
-            List<Form> forms = new FormsRepositoryProvider(EspenCollect.getInstance()).get().getAllByFormIdAndVersion(formId, formVersion);
+            List<Form> forms = new FormsRepositoryProvider(Collect.getInstance()).create().getAllByFormIdAndVersion(formId, formVersion);
 
             // OK to finalize with form definition that was soft-deleted. OK if there are multiple
             // forms with the same formid/version as long as only one is active (not deleted).
-            if (forms.isEmpty() || new FormsRepositoryProvider(EspenCollect.getInstance()).get().getAllNotDeletedByFormIdAndVersion(formId, formVersion).size() > 1) {
-                String msg = getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.not_exactly_one_blank_form_for_this_form_id);
+            if (forms.isEmpty() || new FormsRepositoryProvider(Collect.getInstance()).create().getAllNotDeletedByFormIdAndVersion(formId, formVersion).size() > 1) {
+                String msg = getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.not_exactly_one_blank_form_for_this_form_id);
                 Timber.d(msg);
                 throw new EncryptionException(msg, null);
             }
 
             form = forms.get(0);
-        } else if (FormsContract.CONTENT_ITEM_TYPE.equals(EspenCollect.getInstance().getContentResolver().getType(uri))) {
+        } else if (FormsContract.CONTENT_ITEM_TYPE.equals(Collect.getInstance().getContentResolver().getType(uri))) {
             throw new IllegalArgumentException("Can't get encryption info for Form URI!");
         }
 
         formId = form.getFormId();
         if (formId == null || formId.length() == 0) {
-            String msg = getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.no_form_id_specified);
+            String msg = getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.no_form_id_specified);
             Timber.d(msg);
             throw new EncryptionException(msg, null);
         }
@@ -315,14 +311,14 @@ public class EncryptionUtils {
         try {
             kf = KeyFactory.getInstance(RSA_ALGORITHM);
         } catch (NoSuchAlgorithmException e) {
-            String msg = getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.phone_does_not_support_rsa);
+            String msg = getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.phone_does_not_support_rsa);
             Timber.d(e, "%s due to %s ", msg, e.getMessage());
             throw new EncryptionException(msg, e);
         }
         try {
             pk = kf.generatePublic(publicKeySpec);
         } catch (InvalidKeySpecException e) {
-            String msg = getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.invalid_rsa_public_key);
+            String msg = getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.invalid_rsa_public_key);
             Timber.d(e, "%s due to %s ", msg, e.getMessage());
             throw new EncryptionException(msg, e);
         }
@@ -521,10 +517,10 @@ public class EncryptionUtils {
         c.addChild(0, Node.TEXT, formInfo.base64RsaEncryptedSymmetricKey);
         e.addChild(idx++, Node.ELEMENT, c);
 
-        c = d.createElement(ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE, META);
-        c.setPrefix("orx", ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE);
+        c = d.createElement(XML_OPENROSA_NAMESPACE, META);
+        c.setPrefix("orx", XML_OPENROSA_NAMESPACE);
         {
-            Element instanceTag = d.createElement(ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE, INSTANCE_ID);
+            Element instanceTag = d.createElement(XML_OPENROSA_NAMESPACE, INSTANCE_ID);
             instanceTag.addChild(0, Node.TEXT, formInfo.instanceMetadata.instanceId);
             c.addChild(0, Node.ELEMENT, instanceTag);
         }

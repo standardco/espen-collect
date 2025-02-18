@@ -1,4 +1,4 @@
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.FluentIterable;

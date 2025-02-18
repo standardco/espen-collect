@@ -1,35 +1,30 @@
-package org.espen.collect.android.widgets;
+package org.odk.collect.android.widgets;
 
-import static org.espen.collect.android.utilities.ApplicationConstants.RequestCodes;
+import static org.odk.collect.android.utilities.ApplicationConstants.RequestCodes;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.TypedValue;
 import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.FileUtils;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.core.model.osm.OSMTag;
 import org.javarosa.core.model.osm.OSMTagItem;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.databinding.OsmWidgetAnswerBinding;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.javarosawrapper.FormController;
-import org.espen.collect.android.utilities.FileUtils;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
-import org.espen.collect.androidshared.system.IntentLauncher;
+import org.odk.collect.android.databinding.OsmWidgetAnswerBinding;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.javarosawrapper.FormController;
+import org.odk.collect.android.utilities.FileUtils;
+import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.odk.collect.androidshared.system.IntentLauncher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,16 +80,16 @@ public class OSMWidget extends QuestionWidget implements WidgetDataReceiver {
         } else {
             binding.osmFileHeaderText.setVisibility(View.GONE);
         }
+        binding.osmFileText.setVisibility(binding.osmFileText.getText().toString().isBlank() ? GONE : VISIBLE);
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = OsmWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
 
         if (prompt.isReadOnly()) {
             binding.launchOpenMapKitButton.setVisibility(GONE);
         } else {
-            binding.launchOpenMapKitButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
             binding.launchOpenMapKitButton.setOnClickListener(v -> onButtonClick());
         }
 
@@ -129,7 +124,7 @@ public class OSMWidget extends QuestionWidget implements WidgetDataReceiver {
             writeOsmRequiredTagsToExtras(launchIntent);
 
             waitingForDataRegistry.waitForData(getFormEntryPrompt().getIndex());
-            intentLauncher.launchForResult((Activity) getContext(), launchIntent, ApplicationConstants.RequestCodes.OSM_CAPTURE, () -> {
+            intentLauncher.launchForResult((Activity) getContext(), launchIntent, RequestCodes.OSM_CAPTURE, () -> {
                 waitingForDataRegistry.cancelWaitingForData();
                 binding.errorText.setVisibility(View.VISIBLE);
                 return null;
@@ -151,6 +146,7 @@ public class OSMWidget extends QuestionWidget implements WidgetDataReceiver {
     public void setData(Object answer) {
         // show file name of saved osm data
         binding.osmFileText.setText((String) answer);
+        binding.osmFileText.setVisibility(binding.osmFileText.getText().toString().isBlank() ? GONE : VISIBLE);
         binding.osmFileHeaderText.setVisibility(View.VISIBLE);
         binding.launchOpenMapKitButton.setText(getContext().getString(org.odk.collect.strings.R.string.recapture_osm));
         widgetValueChanged();
@@ -165,6 +161,7 @@ public class OSMWidget extends QuestionWidget implements WidgetDataReceiver {
     @Override
     public void clearAnswer() {
         binding.osmFileText.setText(null);
+        binding.osmFileText.setVisibility(GONE);
         binding.osmFileHeaderText.setVisibility(View.GONE);
         binding.launchOpenMapKitButton.setText(getContext().getString(org.odk.collect.strings.R.string.capture_osm));
         widgetValueChanged();

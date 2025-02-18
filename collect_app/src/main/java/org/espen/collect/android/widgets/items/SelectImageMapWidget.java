@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.widgets.items;
+package org.odk.collect.android.widgets.items;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -26,17 +26,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
-import org.espen.collect.android.utilities.HtmlUtils;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.databinding.SelectImageMapWidgetAnswerBinding;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.utilities.HtmlUtils;
-import org.espen.collect.android.widgets.QuestionWidget;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.odk.collect.android.databinding.SelectImageMapWidgetAnswerBinding;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.utilities.HtmlUtils;
+import org.odk.collect.android.widgets.QuestionWidget;
+import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -113,6 +111,7 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
     public void clearAnswer() {
         selections.clear();
         binding.imageMap.loadUrl("javascript:clearAreas()");
+        binding.selectedElements.setVisibility(GONE);
         widgetValueChanged();
     }
 
@@ -122,9 +121,10 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = SelectImageMapWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
         binding.selectedElements.setTextSize(TypedValue.COMPLEX_UNIT_DIP, answerFontSize);
+        binding.selectedElements.setVisibility(binding.selectedElements.getText().toString().isBlank() ? GONE : VISIBLE);
         return binding.getRoot();
     }
 
@@ -168,7 +168,7 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
         if (selectChoice != null) {
             selections.add(new Selection(selectChoice));
         }
-        widgetValueChanged();
+        ((Activity) getContext()).runOnUiThread(this::widgetValueChanged);
     }
 
     private void unselectArea(String areaId) {
@@ -181,7 +181,7 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
         }
 
         selections.remove(selectionToRemove);
-        widgetValueChanged();
+        ((Activity) getContext()).runOnUiThread(this::widgetValueChanged);
     }
 
     private void notifyChanges() {
@@ -268,8 +268,10 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
             }
         }
 
-        ((Activity) getContext()).runOnUiThread(() ->
-                binding.selectedElements.setText(HtmlUtils.textToHtml(stringBuilder.toString())));
+        ((Activity) getContext()).runOnUiThread(() -> {
+            binding.selectedElements.setText(HtmlUtils.textToHtml(stringBuilder.toString()));
+            binding.selectedElements.setVisibility(binding.selectedElements.getText().toString().isBlank() ? GONE : VISIBLE);
+        });
     }
 
     protected abstract void highlightSelections(WebView view);

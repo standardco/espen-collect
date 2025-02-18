@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.livedata
+package org.odk.collect.androidshared.livedata
 
 import androidx.lifecycle.LiveData
 

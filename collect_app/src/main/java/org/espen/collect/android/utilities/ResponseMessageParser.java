@@ -1,4 +1,4 @@
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;

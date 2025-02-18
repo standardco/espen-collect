@@ -1,4 +1,4 @@
-package org.espen.collect.android.audio;
+package org.odk.collect.android.audio;
 
 import android.media.MediaPlayer;
 
@@ -10,7 +10,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.espen.collect.android.widgets.utilities.AudioPlayer;
+import org.odk.collect.android.widgets.utilities.AudioPlayer;
 import org.odk.collect.async.Scheduler;
 import org.odk.collect.audioclips.AudioClipViewModel;
 import org.odk.collect.audioclips.Clip;

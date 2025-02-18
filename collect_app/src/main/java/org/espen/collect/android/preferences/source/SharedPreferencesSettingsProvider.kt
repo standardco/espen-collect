@@ -1,7 +1,7 @@
-package org.espen.collect.android.preferences.source
+package org.odk.collect.android.preferences.source
 
 import android.content.Context
-import org.espen.collect.android.preferences.Defaults
+import org.odk.collect.android.preferences.Defaults
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.MetaKeys
 import org.odk.collect.shared.settings.Settings

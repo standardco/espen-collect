@@ -1,14 +1,16 @@
-package org.espen.collect.android.formmanagement
+package org.odk.collect.android.formmanagement
 
 import android.database.SQLException
 import org.javarosa.xform.parse.XFormParser
-import org.espen.collect.android.application.EspenCollect
-import org.espen.collect.android.utilities.FileUtils
-import org.espen.collect.androidshared.utils.Validator
+import org.odk.collect.android.application.Collect
+import org.odk.collect.android.formmanagement.metadata.FormMetadata
+import org.odk.collect.android.formmanagement.metadata.FormMetadataParser
+import org.odk.collect.android.utilities.FileUtils
+import org.odk.collect.androidshared.utils.Validator
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.instances.InstancesRepository
-import org.odk.collect.shared.strings.Md5
+import org.odk.collect.shared.strings.Md5.getMd5Hash
 import org.odk.collect.strings.localization.getLocalizedString
 import timber.log.Timber
 import java.io.File
@@ -75,7 +77,7 @@ object LocalFormUseCases {
                         // remove it from the list of forms (we only want forms
                         // we haven't added at the end)
                         formsToAdd.remove(sqlFile)
-                        val md5Computed = Md5.getMd5Hash(sqlFile)
+                        val md5Computed = sqlFile.getMd5Hash()
                         if (md5Computed == null || md5 == null || md5Computed != md5) {
                             // Probably someone overwrite the file on the sdcard
                             // So re-parse it and update it's information
@@ -173,7 +175,7 @@ object LocalFormUseCases {
                 statusMessage = errors.toString()
             } else {
                 Timber.d(
-                    org.espen.collect.android.application.EspenCollect.getInstance()
+                    Collect.getInstance()
                         .getLocalizedString(org.odk.collect.strings.R.string.finished_disk_scan)
                 )
             }
@@ -213,9 +215,8 @@ object LocalFormUseCases {
         // Probably someone overwrite the file on the sdcard
         // So re-parse it and update it's information
         val builder = Form.Builder()
-        val fields: HashMap<String, String>
-        fields = try {
-            org.espen.collect.android.utilities.FileUtils.getMetadataFromFormDefinition(formDefFile)
+        val formMetadata: FormMetadata = try {
+            FormMetadataParser.readMetadata(formDefFile!!)
         } catch (e: RuntimeException) {
             throw IllegalArgumentException(formDefFile!!.name + " :: " + e.toString())
         } catch (e: XFormParser.ParseException) {
@@ -225,12 +226,12 @@ object LocalFormUseCases {
         // update date
         val now = System.currentTimeMillis()
         builder.date(now)
-        val title = fields[org.espen.collect.android.utilities.FileUtils.TITLE]
+        val title = formMetadata.title
         if (title != null) {
             builder.displayName(title)
         } else {
             throw IllegalArgumentException(
-                org.espen.collect.android.application.EspenCollect.getInstance()
+                Collect.getInstance()
                     .getLocalizedString(
                         org.odk.collect.strings.R.string.xform_parse_error,
                         formDefFile!!.name,
@@ -238,12 +239,12 @@ object LocalFormUseCases {
                     )
             )
         }
-        val formid = fields[org.espen.collect.android.utilities.FileUtils.FORMID]
+        val formid = formMetadata.id
         if (formid != null) {
             builder.formId(formid)
         } else {
             throw IllegalArgumentException(
-                org.espen.collect.android.application.EspenCollect.getInstance()
+                Collect.getInstance()
                     .getLocalizedString(
                         org.odk.collect.strings.R.string.xform_parse_error,
                         formDefFile!!.name,
@@ -251,17 +252,17 @@ object LocalFormUseCases {
                     )
             )
         }
-        val version = fields[org.espen.collect.android.utilities.FileUtils.VERSION]
+        val version = formMetadata.version
         if (version != null) {
             builder.version(version)
         }
-        val submission = fields[org.espen.collect.android.utilities.FileUtils.SUBMISSIONURI]
+        val submission = formMetadata.submissionUri
         if (submission != null) {
             if (Validator.isUrlValid(submission)) {
                 builder.submissionUri(submission)
             } else {
                 throw IllegalArgumentException(
-                    org.espen.collect.android.application.EspenCollect.getInstance().getLocalizedString(
+                    Collect.getInstance().getLocalizedString(
                         org.odk.collect.strings.R.string.xform_parse_error,
                         formDefFile!!.name,
                         "submission url"
@@ -269,19 +270,20 @@ object LocalFormUseCases {
                 )
             }
         }
-        val base64RsaPublicKey = fields[org.espen.collect.android.utilities.FileUtils.BASE64_RSA_PUBLIC_KEY]
+        val base64RsaPublicKey = formMetadata.base64RsaPublicKey
         if (base64RsaPublicKey != null) {
             builder.base64RSAPublicKey(base64RsaPublicKey)
         }
-        builder.autoDelete(fields[org.espen.collect.android.utilities.FileUtils.AUTO_DELETE])
-        builder.autoSend(fields[org.espen.collect.android.utilities.FileUtils.AUTO_SEND])
-        builder.geometryXpath(fields[org.espen.collect.android.utilities.FileUtils.GEOMETRY_XPATH])
+        builder.autoDelete(formMetadata.autoDelete)
+        builder.autoSend(formMetadata.autoSend)
+        builder.geometryXpath(formMetadata.geometryXPath)
+        builder.usesEntities(formMetadata.isEntityForm)
 
         // Note, the path doesn't change here, but it needs to be included so the
         // update will automatically update the .md5 and the cache path.
         builder.formFilePath(formDefFile!!.absolutePath)
         builder.formMediaPath(
-            org.espen.collect.android.utilities.FileUtils.constructMediaPath(
+            FileUtils.constructMediaPath(
                 formDefFile.absolutePath
             )
         )

@@ -1,4 +1,4 @@
-package org.espen.collect.androidtest
+package org.odk.collect.androidtest
 
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents

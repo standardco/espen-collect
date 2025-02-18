@@ -1,14 +1,13 @@
-package org.espen.collect.android.dao;
+package org.odk.collect.android.dao;
 
 import android.net.Uri;
 
 import androidx.loader.content.CursorLoader;
 
-import org.espen.collect.android.projects.ProjectsDataService;
-import org.espen.collect.android.application.EspenCollect;
-import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
-import org.espen.collect.android.external.InstancesContract;
-import org.espen.collect.android.projects.ProjectsDataService;
+import org.odk.collect.android.application.Collect;
+import org.odk.collect.android.database.instances.DatabaseInstanceColumns;
+import org.odk.collect.android.external.InstancesContract;
+import org.odk.collect.android.projects.ProjectsDataService;
 import org.odk.collect.forms.instances.Instance;
 
 @Deprecated
@@ -47,34 +46,18 @@ public class CursorLoaderFactory {
     public CursorLoader createEditableInstancesCursorLoader(CharSequence charSequence, String sortOrder) {
         CursorLoader cursorLoader;
         if (charSequence.length() == 0) {
-            String selection = DatabaseInstanceColumns.STATUS + " =? ";
-            String[] selectionArgs = {Instance.STATUS_INCOMPLETE};
+            String selection = DatabaseInstanceColumns.STATUS + "=? or " + DatabaseInstanceColumns.STATUS + "=? or " + DatabaseInstanceColumns.STATUS + "=?";
+            String[] selectionArgs = {Instance.STATUS_INCOMPLETE, Instance.STATUS_INVALID, Instance.STATUS_VALID};
 
             cursorLoader = getInstancesCursorLoader(selection, selectionArgs, sortOrder);
         } else {
-            String selection = DatabaseInstanceColumns.STATUS + " =? " +
+            String selection = "(" + DatabaseInstanceColumns.STATUS + "=? or " + DatabaseInstanceColumns.STATUS + "=? or " + DatabaseInstanceColumns.STATUS + "=?)" +
                     "and " + DatabaseInstanceColumns.DISPLAY_NAME + " LIKE ?";
             String[] selectionArgs = {
-                    Instance.STATUS_INCOMPLETE,
+                    Instance.STATUS_INCOMPLETE, Instance.STATUS_INVALID, Instance.STATUS_VALID,
                     "%" + charSequence + "%"
             };
 
-            cursorLoader = getInstancesCursorLoader(selection, selectionArgs, sortOrder);
-        }
-
-        return cursorLoader;
-    }
-
-    public CursorLoader createSavedInstancesCursorLoader(CharSequence charSequence, String sortOrder) {
-        CursorLoader cursorLoader;
-        if (charSequence.length() == 0) {
-            String selection = DatabaseInstanceColumns.DELETED_DATE + " IS NULL ";
-            cursorLoader = getInstancesCursorLoader(selection, null, sortOrder);
-        } else {
-            String selection =
-                    DatabaseInstanceColumns.DELETED_DATE + " IS NULL and "
-                            + DatabaseInstanceColumns.DISPLAY_NAME + " LIKE ?";
-            String[] selectionArgs = {"%" + charSequence + "%"};
             cursorLoader = getInstancesCursorLoader(selection, selectionArgs, sortOrder);
         }
 
@@ -139,7 +122,7 @@ public class CursorLoaderFactory {
         Uri uri = InstancesContract.getUri(projectsDataService.getCurrentProject().getUuid());
 
         return new CursorLoader(
-                EspenCollect.getInstance(),
+                Collect.getInstance(),
                 getUriWithAnalyticsParam(uri),
                 null,
                 selection,

@@ -1,4 +1,4 @@
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,8 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 
 import org.apache.commons.io.IOUtils;
-import org.espen.collect.android.storage.StoragePathProvider;
-import org.espen.collect.android.storage.StorageSubdirectory;
+import org.odk.collect.android.storage.StoragePathProvider;
+import org.odk.collect.android.storage.StorageSubdirectory;
 
 import java.io.File;
 import java.io.FileInputStream;

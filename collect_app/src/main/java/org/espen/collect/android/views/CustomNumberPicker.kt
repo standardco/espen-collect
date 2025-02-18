@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.android.views
+package org.odk.collect.android.views
 
 import android.content.Context
 import android.util.AttributeSet
@@ -21,7 +21,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.NumberPicker
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils
+import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils
 
 class CustomNumberPicker(context: Context, attrs: AttributeSet) : NumberPicker(context, attrs) {
     override fun addView(view: View) {
@@ -41,7 +41,7 @@ class CustomNumberPicker(context: Context, attrs: AttributeSet) : NumberPicker(c
 
     private fun updateView(view: View) {
         if (view is EditText) {
-            view.textSize = org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils.getQuestionFontSize().toFloat()
+            view.textSize = QuestionFontSizeUtils.getQuestionFontSize().toFloat()
         }
     }
 }

@@ -1,7 +1,7 @@
-package org.espen.collect.android.formlists.blankformlist
+package org.odk.collect.android.formlists.blankformlist
 
 import android.net.Uri
-import org.espen.collect.android.external.FormsContract
+import org.odk.collect.android.external.FormsContract
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.InstancesRepository
 
@@ -29,5 +29,5 @@ fun Form.toBlankFormListItem(projectId: String, instancesRepository: InstancesRe
         .filter { it.formVersion == this.version }
         .maxByOrNull { it.lastStatusChangeDate }?.lastStatusChangeDate ?: 0L,
     dateOfLastDetectedAttachmentsUpdate = this.lastDetectedAttachmentsUpdateDate,
-    contentUri = org.espen.collect.android.external.FormsContract.getUri(projectId, this.dbId)
+    contentUri = FormsContract.getUri(projectId, this.dbId)
 )

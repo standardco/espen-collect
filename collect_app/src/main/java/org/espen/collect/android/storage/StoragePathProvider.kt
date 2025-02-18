@@ -1,24 +1,26 @@
-package org.espen.collect.android.storage
+package org.odk.collect.android.storage
 
-import org.espen.collect.android.application.EspenCollect
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.projects.ProjectsDataService
-import org.espen.collect.android.utilities.FileUtils
+import org.odk.collect.android.application.Collect
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.projects.ProjectsDataService
+import org.odk.collect.android.utilities.FileUtils
+import org.odk.collect.projects.ProjectDependencyFactory
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.shared.PathUtils
 import timber.log.Timber
 import java.io.File
 
 class StoragePathProvider(
-        private val projectsDataService: ProjectsDataService = org.espen.collect.android.injection.DaggerUtils.getComponent(org.espen.collect.android.application.EspenCollect.getInstance()).currentProjectProvider(),
-        private val projectsRepository: ProjectsRepository = org.espen.collect.android.injection.DaggerUtils.getComponent(org.espen.collect.android.application.EspenCollect.getInstance()).projectsRepository(),
-        val odkRootDirPath: String = org.espen.collect.android.application.EspenCollect.getInstance().getExternalFilesDir(null)!!.absolutePath
-) {
+    private val projectsDataService: ProjectsDataService = DaggerUtils.getComponent(Collect.getInstance()).currentProjectProvider(),
+    private val projectsRepository: ProjectsRepository = DaggerUtils.getComponent(Collect.getInstance()).projectsRepository(),
+    val odkRootDirPath: String = Collect.getInstance().getExternalFilesDir(null)!!.absolutePath
+) : ProjectDependencyFactory<StoragePaths> {
 
     @JvmOverloads
+    @Deprecated(message = "Use create() instead")
     fun getProjectRootDirPath(projectId: String? = null): String {
         val uuid = projectId ?: projectsDataService.getCurrentProject().uuid
-        val path = getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.PROJECTS) + File.separator + uuid
+        val path = getOdkDirPath(StorageSubdirectory.PROJECTS) + File.separator + uuid
 
         if (!File(path).exists()) {
             File(path).mkdirs()
@@ -29,7 +31,7 @@ class StoragePathProvider(
             } catch (e: Exception) {
                 Timber.e(
                     Error(
-                        org.espen.collect.android.utilities.FileUtils.getFilenameError(
+                        FileUtils.getFilenameError(
                             projectsRepository.get(uuid)!!.name
                         )
                     )
@@ -41,17 +43,17 @@ class StoragePathProvider(
     }
 
     @JvmOverloads
-    fun getOdkDirPath(subdirectory: org.espen.collect.android.storage.StorageSubdirectory, projectId: String? = null): String {
+    @Deprecated(message = "Use create() instead")
+    fun getOdkDirPath(subdirectory: StorageSubdirectory, projectId: String? = null): String {
         val path = when (subdirectory) {
-            org.espen.collect.android.storage.StorageSubdirectory.PROJECTS,
-            org.espen.collect.android.storage.StorageSubdirectory.SHARED_LAYERS -> odkRootDirPath + File.separator + subdirectory.directoryName
-            org.espen.collect.android.storage.StorageSubdirectory.FORMS,
-            org.espen.collect.android.storage.StorageSubdirectory.INSTANCES,
-            org.espen.collect.android.storage.StorageSubdirectory.LOOKUPS,
-            org.espen.collect.android.storage.StorageSubdirectory.CACHE,
-            org.espen.collect.android.storage.StorageSubdirectory.METADATA,
-            org.espen.collect.android.storage.StorageSubdirectory.LAYERS,
-            org.espen.collect.android.storage.StorageSubdirectory.SETTINGS -> getProjectRootDirPath(projectId) + File.separator + subdirectory.directoryName
+            StorageSubdirectory.PROJECTS,
+            StorageSubdirectory.SHARED_LAYERS -> odkRootDirPath + File.separator + subdirectory.directoryName
+            StorageSubdirectory.FORMS,
+            StorageSubdirectory.INSTANCES,
+            StorageSubdirectory.CACHE,
+            StorageSubdirectory.METADATA,
+            StorageSubdirectory.LAYERS,
+            StorageSubdirectory.SETTINGS -> getProjectRootDirPath(projectId) + File.separator + subdirectory.directoryName
         }
 
         if (!File(path).exists()) {
@@ -68,7 +70,7 @@ class StoragePathProvider(
         )
     )
     fun getTmpImageFilePath(): String {
-        return getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.CACHE) + File.separator + "tmp.jpg"
+        return getOdkDirPath(StorageSubdirectory.CACHE) + File.separator + "tmp.jpg"
     }
 
     @Deprecated(
@@ -78,6 +80,17 @@ class StoragePathProvider(
         )
     )
     fun getTmpVideoFilePath(): String {
-        return getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.CACHE) + File.separator + "tmp.mp4"
+        return getOdkDirPath(StorageSubdirectory.CACHE) + File.separator + "tmp.mp4"
+    }
+
+    override fun create(projectId: String): StoragePaths {
+        return StoragePaths(getProjectRootDirPath(projectId),
+            getOdkDirPath(StorageSubdirectory.FORMS, projectId),
+            getOdkDirPath(StorageSubdirectory.INSTANCES, projectId),
+            getOdkDirPath(StorageSubdirectory.CACHE, projectId),
+            getOdkDirPath(StorageSubdirectory.METADATA, projectId),
+            getOdkDirPath(StorageSubdirectory.SETTINGS, projectId),
+            getOdkDirPath(StorageSubdirectory.LAYERS, projectId)
+        )
     }
 }

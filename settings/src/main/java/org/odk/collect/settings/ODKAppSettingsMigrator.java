@@ -2,7 +2,6 @@ package org.odk.collect.settings;
 
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_CARTO;
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_OSM;
-import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_STAMEN;
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_USGS;
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_BASEMAP_SOURCE;
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_CARTO_MAP_STYLE;
@@ -63,7 +62,7 @@ public class ODKAppSettingsMigrator implements SettingsMigrator {
 
                 // ListPreferences can only handle string values, so we use string values here.
                 // Note that unfortunately there was a hidden U+200E character in the preference
-                // value for "terrain" in previous versions of ESPEN Collect, so we need to
+                // value for "terrain" in previous versions of ODK Collect, so we need to
                 // include that character to match that value correctly.
                 translateKey("map_basemap_behavior").toKey(KEY_GOOGLE_MAP_STYLE)
                         .fromValue("streets").toValue(Integer.toString(1))
@@ -94,7 +93,7 @@ public class ODKAppSettingsMigrator implements SettingsMigrator {
                         .toPairs(KEY_BASEMAP_SOURCE, BASEMAP_SOURCE_USGS, KEY_USGS_MAP_STYLE, "satellite")
 
                         .withValues("osmdroid", "openmap_stamen_terrain")
-                        .toPairs(KEY_BASEMAP_SOURCE, BASEMAP_SOURCE_STAMEN)
+                        .toPairs(KEY_BASEMAP_SOURCE, "stamen")
 
                         .withValues("osmdroid", "openmap_cartodb_positron")
                         .toPairs(KEY_BASEMAP_SOURCE, BASEMAP_SOURCE_CARTO, KEY_CARTO_MAP_STYLE, "positron")
@@ -129,7 +128,9 @@ public class ODKAppSettingsMigrator implements SettingsMigrator {
 
                 moveKey("knownUrlList").toPreferences(metaSettings),
 
-                moveKey("default_completed").toPreferences(protectedSettings)
+                moveKey("default_completed").toPreferences(protectedSettings),
+
+                translateValue("stamen").toValue(BASEMAP_SOURCE_OSM).forKey(KEY_BASEMAP_SOURCE)
         );
     }
 
@@ -155,17 +156,17 @@ public class ODKAppSettingsMigrator implements SettingsMigrator {
                         .withValues(false, false)
                         .toPairs(
                                 ProtectedProjectKeys.KEY_SAVE_AS_DRAFT, true,
-                                ProtectedProjectKeys.KEY_FINALIZE, false
+                                "finalize", false
                         )
                         .withValues(false, true)
                         .toPairs(
                                 ProtectedProjectKeys.KEY_SAVE_AS_DRAFT, false,
-                                ProtectedProjectKeys.KEY_FINALIZE, true
+                                "finalize", true
                         )
                         .withValues(false, null)
                         .toPairs(
                                 ProtectedProjectKeys.KEY_SAVE_AS_DRAFT, false,
-                                ProtectedProjectKeys.KEY_FINALIZE, true
+                                "finalize", true
                         ),
                 removeKey("mark_as_finalized"),
                 removeKey("default_completed"),
@@ -173,8 +174,19 @@ public class ODKAppSettingsMigrator implements SettingsMigrator {
                         .withValues(false)
                         .toPairs(
                                 ProtectedProjectKeys.KEY_SAVE_AS_DRAFT, false,
-                                ProtectedProjectKeys.KEY_FINALIZE, true
+                                "finalize", true
+                        ),
+                updateKeys("finalize").withValues(false)
+                        .toPairs(
+                                ProtectedProjectKeys.KEY_FINALIZE_IN_FORM_ENTRY, false,
+                                ProtectedProjectKeys.KEY_BULK_FINALIZE, false
                         )
+                        .withValues(true)
+                        .toPairs(
+                                ProtectedProjectKeys.KEY_FINALIZE_IN_FORM_ENTRY, true,
+                                ProtectedProjectKeys.KEY_BULK_FINALIZE, true
+                        ),
+                removeKey("finalize")
         );
     }
 }

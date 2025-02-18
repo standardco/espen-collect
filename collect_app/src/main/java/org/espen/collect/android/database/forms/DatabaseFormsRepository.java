@@ -1,4 +1,28 @@
-package org.espen.collect.android.database.forms;
+package org.odk.collect.android.database.forms;
+
+import static android.provider.BaseColumns._ID;
+import static org.odk.collect.android.database.DatabaseConstants.FORMS_TABLE_NAME;
+import static org.odk.collect.android.database.DatabaseObjectMapper.getFormFromCurrentCursorPosition;
+import static org.odk.collect.android.database.DatabaseObjectMapper.getValuesFromForm;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.AUTO_DELETE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.AUTO_SEND;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.BASE64_RSA_PUBLIC_KEY;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.DATE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.DELETED_DATE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.DESCRIPTION;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.USES_ENTITIES;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.GEOMETRY_XPATH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.LAST_DETECTED_ATTACHMENTS_UPDATE_DATE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.SUBMISSION_URI;
+import static org.odk.collect.shared.PathUtils.getRelativeFilePath;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,14 +31,16 @@ import android.database.CursorWindow;
 import android.database.sqlite.SQLiteBlobTooBigException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.os.StrictMode;
 
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.database.DatabaseConnection;
-import org.espen.collect.android.database.DatabaseConstants;
-import org.espen.collect.android.utilities.FileUtils;
+import org.odk.collect.db.sqlite.DatabaseConnection;
+import org.odk.collect.android.database.DatabaseConstants;
+import org.odk.collect.android.utilities.FileUtils;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.FormsRepository;
-import org.odk.collect.shared.files.DirectoryUtils;
+import org.odk.collect.forms.savepoints.SavepointsRepository;
+import org.odk.collect.shared.files.FileExt;
 import org.odk.collect.shared.strings.Md5;
 
 import java.io.File;
@@ -27,20 +53,6 @@ import java.util.function.Supplier;
 
 import javax.annotation.Nullable;
 
-import static android.provider.BaseColumns._ID;
-import static org.espen.collect.android.database.DatabaseConstants.FORMS_TABLE_NAME;
-import static org.espen.collect.android.database.DatabaseObjectMapper.getFormFromCurrentCursorPosition;
-import static org.espen.collect.android.database.DatabaseObjectMapper.getValuesFromForm;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.DATE;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.DELETED_DATE;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
-import static org.odk.collect.shared.PathUtils.getRelativeFilePath;
-
 import timber.log.Timber;
 
 public class DatabaseFormsRepository implements FormsRepository {
@@ -49,8 +61,9 @@ public class DatabaseFormsRepository implements FormsRepository {
     private final String formsPath;
     private final String cachePath;
     private final Supplier<Long> clock;
+    private final SavepointsRepository savepointsRepository;
 
-    public DatabaseFormsRepository(Context context, String dbPath, String formsPath, String cachePath, Supplier<Long> clock) {
+    public DatabaseFormsRepository(Context context, String dbPath, String formsPath, String cachePath, Supplier<Long> clock, SavepointsRepository savepointsRepository) {
         this.formsPath = formsPath;
         this.cachePath = cachePath;
         this.clock = clock;
@@ -61,6 +74,7 @@ public class DatabaseFormsRepository implements FormsRepository {
                 new FormDatabaseMigrator(),
                 DatabaseConstants.FORMS_DATABASE_VERSION
         );
+        this.savepointsRepository = savepointsRepository;
     }
 
     @Nullable
@@ -83,7 +97,7 @@ public class DatabaseFormsRepository implements FormsRepository {
     @Nullable
     @Override
     public Form getOneByPath(String path) {
-        String selection = DatabaseFormColumns.FORM_FILE_PATH + "=?";
+        String selection = FORM_FILE_PATH + "=?";
         String[] selectionArgs = {getRelativeFilePath(formsPath, path)};
         return queryForForm(selection, selectionArgs);
     }
@@ -102,35 +116,40 @@ public class DatabaseFormsRepository implements FormsRepository {
 
     @Override
     public List<Form> getAll() {
+        StrictMode.noteSlowCall("Accessing readable DB");
         return queryForForms(null, null);
     }
 
     @Override
     public List<Form> getAllByFormIdAndVersion(String jrFormId, @Nullable String jrVersion) {
         if (jrVersion != null) {
-            return queryForForms(DatabaseFormColumns.JR_FORM_ID + "=? AND " + DatabaseFormColumns.JR_VERSION + "=?", new String[]{jrFormId, jrVersion});
+            return queryForForms(JR_FORM_ID + "=? AND " + JR_VERSION + "=?", new String[]{jrFormId, jrVersion});
         } else {
-            return queryForForms(DatabaseFormColumns.JR_FORM_ID + "=? AND " + DatabaseFormColumns.JR_VERSION + " IS NULL", new String[]{jrFormId});
+            return queryForForms(JR_FORM_ID + "=? AND " + JR_VERSION + " IS NULL", new String[]{jrFormId});
         }
     }
 
     @Override
     public List<Form> getAllByFormId(String formId) {
-        return queryForForms(DatabaseFormColumns.JR_FORM_ID + "=?", new String[]{formId});
+        StrictMode.noteSlowCall("Accessing readable DB");
+        return queryForForms(JR_FORM_ID + "=?", new String[]{formId});
     }
 
     @Override
     public List<Form> getAllNotDeletedByFormId(String jrFormId) {
-        return queryForForms(DatabaseFormColumns.JR_FORM_ID + "=? AND " + DatabaseFormColumns.DELETED_DATE + " IS NULL", new String[]{jrFormId});
+        StrictMode.noteSlowCall("Accessing readable DB");
+        return queryForForms(JR_FORM_ID + "=? AND " + DELETED_DATE + " IS NULL", new String[]{jrFormId});
     }
 
 
     @Override
     public List<Form> getAllNotDeletedByFormIdAndVersion(String jrFormId, @Nullable String jrVersion) {
+        StrictMode.noteSlowCall("Accessing readable DB");
+
         if (jrVersion != null) {
-            return queryForForms(DatabaseFormColumns.DELETED_DATE + " IS NULL AND " + DatabaseFormColumns.JR_FORM_ID + "=? AND " + DatabaseFormColumns.JR_VERSION + "=?", new String[]{jrFormId, jrVersion});
+            return queryForForms(DELETED_DATE + " IS NULL AND " + JR_FORM_ID + "=? AND " + JR_VERSION + "=?", new String[]{jrFormId, jrVersion});
         } else {
-            return queryForForms(DatabaseFormColumns.DELETED_DATE + " IS NULL AND " + DatabaseFormColumns.JR_FORM_ID + "=? AND " + DatabaseFormColumns.JR_VERSION + " IS NULL", new String[]{jrFormId});
+            return queryForForms(DELETED_DATE + " IS NULL AND " + JR_FORM_ID + "=? AND " + JR_VERSION + " IS NULL", new String[]{jrFormId});
         }
     }
 
@@ -139,18 +158,18 @@ public class DatabaseFormsRepository implements FormsRepository {
         final ContentValues values = getValuesFromForm(form, formsPath);
 
         String md5Hash = Md5.getMd5Hash(new File(form.getFormFilePath()));
-        values.put(DatabaseFormColumns.MD5_HASH, md5Hash);
-        values.put(DatabaseFormColumns.FORM_MEDIA_PATH, getRelativeFilePath(formsPath, FileUtils.constructMediaPath(form.getFormFilePath())));
-        values.put(DatabaseFormColumns.JRCACHE_FILE_PATH, md5Hash + ".formdef");
+        values.put(MD5_HASH, md5Hash);
+        values.put(FORM_MEDIA_PATH, getRelativeFilePath(formsPath, FileUtils.constructMediaPath(form.getFormFilePath())));
+        values.put(JRCACHE_FILE_PATH, md5Hash + ".formdef");
 
         if (form.isDeleted()) {
-            values.put(DatabaseFormColumns.DELETED_DATE, 0L);
+            values.put(DELETED_DATE, 0L);
         } else {
-            values.putNull(DatabaseFormColumns.DELETED_DATE);
+            values.putNull(DELETED_DATE);
         }
 
         if (form.getDbId() == null) {
-            values.put(DatabaseFormColumns.DATE, clock.get());
+            values.put(DATE, clock.get());
 
             Long idFromUri = insertForm(values);
             if (idFromUri == -1) {
@@ -174,8 +193,9 @@ public class DatabaseFormsRepository implements FormsRepository {
     @Override
     public void softDelete(Long id) {
         ContentValues values = new ContentValues();
-        values.put(DatabaseFormColumns.DELETED_DATE, System.currentTimeMillis());
+        values.put(DELETED_DATE, System.currentTimeMillis());
         updateForm(id, values);
+        savepointsRepository.delete(id, null);
     }
 
     @Override
@@ -194,7 +214,7 @@ public class DatabaseFormsRepository implements FormsRepository {
     @Override
     public void restore(Long id) {
         ContentValues values = new ContentValues();
-        values.putNull(DatabaseFormColumns.DELETED_DATE);
+        values.putNull(DELETED_DATE);
         updateForm(id, values);
     }
 
@@ -204,6 +224,7 @@ public class DatabaseFormsRepository implements FormsRepository {
 
     @Nullable
     private Form queryForForm(String selection, String[] selectionArgs) {
+        StrictMode.noteSlowCall("Accessing readable DB");
         List<Form> forms = queryForForms(selection, selectionArgs);
         return !forms.isEmpty() ? forms.get(0) : null;
     }
@@ -219,6 +240,37 @@ public class DatabaseFormsRepository implements FormsRepository {
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(FORMS_TABLE_NAME);
 
+        if (projection == null) {
+            /*
+             For some reason passing null as the projection doesn't always give us all the
+             columns so we hardcode them here so it's explicit that we need these all back.
+             The problem can occur, for example, when a new column is added to a database and the
+             database needs to be updated. After the upgrade, the new column might not be returned,
+             even though it already exists.
+             */
+            projection = new String[]{
+                    _ID,
+                    DISPLAY_NAME,
+                    DESCRIPTION,
+                    JR_FORM_ID,
+                    JR_VERSION,
+                    MD5_HASH,
+                    DATE,
+                    FORM_MEDIA_PATH,
+                    FORM_FILE_PATH,
+                    LANGUAGE,
+                    SUBMISSION_URI,
+                    BASE64_RSA_PUBLIC_KEY,
+                    JRCACHE_FILE_PATH,
+                    AUTO_SEND,
+                    AUTO_DELETE,
+                    GEOMETRY_XPATH,
+                    DELETED_DATE,
+                    LAST_DETECTED_ATTACHMENTS_UPDATE_DATE,
+                    USES_ENTITIES
+            };
+        }
+
         if (projectionMap != null) {
             qb.setProjectionMap(projectionMap);
         }
@@ -227,23 +279,25 @@ public class DatabaseFormsRepository implements FormsRepository {
     }
 
     private Long insertForm(ContentValues values) {
-        SQLiteDatabase writeableDatabase = databaseConnection.getWriteableDatabase();
-        return writeableDatabase.insertOrThrow(FORMS_TABLE_NAME, null, values);
+        SQLiteDatabase writableDatabase = databaseConnection.getWritableDatabase();
+        return writableDatabase.insertOrThrow(FORMS_TABLE_NAME, null, values);
     }
 
     private void updateForm(Long id, ContentValues values) {
-        SQLiteDatabase writeableDatabase = databaseConnection.getWriteableDatabase();
-        writeableDatabase.update(FORMS_TABLE_NAME, values, _ID + "=?", new String[]{String.valueOf(id)});
+        SQLiteDatabase writableDatabase = databaseConnection.getWritableDatabase();
+        writableDatabase.update(FORMS_TABLE_NAME, values, _ID + "=?", new String[]{String.valueOf(id)});
     }
 
     private void deleteForms(String selection, String[] selectionArgs) {
+        StrictMode.noteSlowCall("Accessing readable DB");
+
         List<Form> forms = queryForForms(selection, selectionArgs);
         for (Form form : forms) {
             deleteFilesForForm(form);
         }
 
-        SQLiteDatabase writeableDatabase = databaseConnection.getWriteableDatabase();
-        writeableDatabase.delete(FORMS_TABLE_NAME, selection, selectionArgs);
+        SQLiteDatabase writableDatabase = databaseConnection.getWritableDatabase();
+        writableDatabase.delete(FORMS_TABLE_NAME, selection, selectionArgs);
     }
 
     @NotNull
@@ -289,10 +343,12 @@ public class DatabaseFormsRepository implements FormsRepository {
             File mediaDir = new File(form.getFormMediaPath());
 
             if (mediaDir.isDirectory()) {
-                DirectoryUtils.deleteDirectory(mediaDir);
+                FileExt.deleteDirectory(mediaDir);
             } else {
                 mediaDir.delete();
             }
         }
+
+        savepointsRepository.delete(form.getDbId(), null);
     }
 }

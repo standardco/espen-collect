@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.espen.collect.android.widgets.items;
+package org.odk.collect.android.widgets.items;
 
-import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayColor;
+import static org.odk.collect.android.formentry.media.FormMediaUtils.getPlayColor;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -22,25 +22,19 @@ import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
 
-import org.espen.collect.android.adapters.AbstractSelectListAdapter;
-import org.espen.collect.android.adapters.SelectOneListAdapter;
-import org.espen.collect.android.exception.JavaRosaException;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.utilities.SelectOneWidgetUtils;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectOneData;
 import org.javarosa.core.model.data.helper.Selection;
-import org.espen.collect.android.adapters.AbstractSelectListAdapter;
-import org.espen.collect.android.adapters.SelectOneListAdapter;
-import org.espen.collect.android.exception.JavaRosaException;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.javarosawrapper.FormController;
-import org.espen.collect.android.listeners.AdvanceToNextListener;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.utilities.SelectOneWidgetUtils;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.odk.collect.android.adapters.AbstractSelectListAdapter;
+import org.odk.collect.android.adapters.SelectOneListAdapter;
+import org.odk.collect.android.exception.JavaRosaException;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.javarosawrapper.FormController;
+import org.odk.collect.android.listeners.AdvanceToNextListener;
+import org.odk.collect.android.utilities.Appearances;
+import org.odk.collect.android.utilities.SelectOneWidgetUtils;
+import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
 
 import timber.log.Timber;
 

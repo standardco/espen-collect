@@ -1,4 +1,4 @@
-package org.espen.collect.android.version;
+package org.odk.collect.android.version;
 
 public interface VersionDescriptionProvider {
     String getVersionDescription();

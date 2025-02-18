@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.android.activities
+package org.odk.collect.android.activities
 
 import android.content.Intent
 import android.net.Uri
@@ -23,17 +23,19 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
-import org.espen.collect.android.adapters.AboutItemClickListener
-import org.espen.collect.android.R
-import org.espen.collect.android.adapters.AboutListAdapter
-import org.espen.collect.androidshared.system.IntentLauncher
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard.allowClick
+import org.odk.collect.android.R
+import org.odk.collect.android.adapters.AboutItemClickListener
+import org.odk.collect.android.adapters.AboutListAdapter
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.androidshared.system.IntentLauncher
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard.allowClick
 import org.odk.collect.strings.localization.LocalizedActivity
+import org.odk.collect.webpage.ExternalWebPageHelper
 import javax.inject.Inject
 
 class AboutActivity : LocalizedActivity(), AboutItemClickListener {
-    private val websiteTabHelper = org.espen.collect.android.utilities.ExternalWebPageHelper()
-    private val forumTabHelper = org.espen.collect.android.utilities.ExternalWebPageHelper()
+    private val websiteTabHelper = ExternalWebPageHelper()
+    private val forumTabHelper = ExternalWebPageHelper()
     private lateinit var websiteUri: Uri
     private lateinit var forumUri: Uri
 
@@ -43,7 +45,7 @@ class AboutActivity : LocalizedActivity(), AboutItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.about_layout)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(this).inject(this)
+        DaggerUtils.getComponent(this).inject(this)
         initToolbar()
 
         findViewById<RecyclerView>(R.id.recyclerView).apply {
@@ -57,7 +59,7 @@ class AboutActivity : LocalizedActivity(), AboutItemClickListener {
     }
 
     private fun initToolbar() {
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val toolbar = findViewById<Toolbar>(org.odk.collect.androidshared.R.id.toolbar)
         title = getString(org.odk.collect.strings.R.string.about_preferences)
         setSupportActionBar(toolbar)
     }

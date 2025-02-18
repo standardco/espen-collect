@@ -1,17 +1,17 @@
-package org.espen.collect.android.utilities
+package org.odk.collect.android.utilities
 
 import android.content.Context
-import org.espen.collect.android.R
-import org.espen.collect.android.widgets.QuestionWidget
-import org.espen.collect.androidshared.bitmap.ImageCompressor
+import org.odk.collect.android.R
+import org.odk.collect.android.widgets.QuestionWidget
+import org.odk.collect.androidshared.bitmap.ImageCompressor
 import timber.log.Timber
 
 class ImageCompressionController(private val imageCompressor: ImageCompressor) {
     fun execute(
-            imagePath: String,
-            questionWidget: org.espen.collect.android.widgets.QuestionWidget,
-            context: Context,
-            imageSizeMode: String
+        imagePath: String,
+        questionWidget: QuestionWidget,
+        context: Context,
+        imageSizeMode: String
     ) {
         var maxPixels: Int?
         maxPixels = getMaxPixelsFromFormIfDefined(questionWidget)
@@ -23,16 +23,17 @@ class ImageCompressionController(private val imageCompressor: ImageCompressor) {
         }
     }
 
-    private fun getMaxPixelsFromFormIfDefined(questionWidget: org.espen.collect.android.widgets.QuestionWidget): Int? {
+    private fun getMaxPixelsFromFormIfDefined(questionWidget: QuestionWidget): Int? {
         for (bindAttribute in questionWidget.formEntryPrompt.bindAttributes) {
-            if ("max-pixels" == bindAttribute.name && org.espen.collect.android.utilities.ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE == bindAttribute.namespace) {
+            if ("max-pixels" == bindAttribute.name && ApplicationConstants.Namespaces.XML_OPENROSA_NAMESPACE == bindAttribute.namespace) {
                 try {
-                    return bindAttribute.attributeValue.toInt()
+                    return bindAttribute.attributeValue?.toInt()
                 } catch (e: NumberFormatException) {
                     Timber.i(e)
                 }
             }
         }
+
         return null
     }
 

@@ -1,6 +1,6 @@
-package org.espen.collect.android.openrosa.okhttp;
+package org.odk.collect.android.openrosa.okhttp;
 
-import org.espen.collect.android.openrosa.CaseInsensitiveHeaders;
+import org.odk.collect.android.openrosa.CaseInsensitiveHeaders;
 
 import java.util.List;
 import java.util.Set;

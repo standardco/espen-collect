@@ -12,15 +12,14 @@
  * the License.
  */
 
-package org.espen.collect.android.preferences;
+package org.odk.collect.android.preferences;
 
 import android.widget.Toast;
 
 import androidx.preference.PreferenceFragmentCompat;
 
-import org.espen.collect.android.preferences.screens.ServerPreferencesFragment;
-import org.espen.collect.android.R;
-import org.espen.collect.android.preferences.screens.ServerPreferencesFragment;
+import org.odk.collect.android.R;
+import org.odk.collect.android.preferences.screens.ServerPreferencesFragment;
 
 /**
  * Extracted use case class to isolate and allow testing of functionality (in this

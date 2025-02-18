@@ -1,4 +1,4 @@
-package org.espen.collect.android.projects
+package org.odk.collect.android.projects
 
 import android.content.Context
 import android.os.Bundle
@@ -8,18 +8,18 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.doOnTextChanged
 import org.odk.collect.analytics.Analytics
-import org.espen.collect.android.activities.ActivityUtils
-import org.espen.collect.android.analytics.AnalyticsEvents
-import org.espen.collect.android.configure.qr.AppConfigurationGenerator
-import org.espen.collect.android.databinding.ManualProjectCreatorDialogLayoutBinding
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.mainmenu.MainMenuActivity
-import org.espen.collect.android.projects.DuplicateProjectConfirmationKeys.MATCHING_PROJECT
-import org.espen.collect.android.projects.DuplicateProjectConfirmationKeys.SETTINGS_JSON
-import org.espen.collect.android.utilities.SoftKeyboardController
-import org.espen.collect.androidshared.ui.DialogFragmentUtils
-import org.espen.collect.androidshared.ui.ToastUtils
-import org.espen.collect.androidshared.utils.Validator
+import org.odk.collect.android.activities.ActivityUtils
+import org.odk.collect.android.analytics.AnalyticsEvents
+import org.odk.collect.android.configure.qr.AppConfigurationGenerator
+import org.odk.collect.android.databinding.ManualProjectCreatorDialogLayoutBinding
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.odk.collect.android.projects.DuplicateProjectConfirmationKeys.MATCHING_PROJECT
+import org.odk.collect.android.projects.DuplicateProjectConfirmationKeys.SETTINGS_JSON
+import org.odk.collect.android.utilities.SoftKeyboardController
+import org.odk.collect.androidshared.ui.DialogFragmentUtils
+import org.odk.collect.androidshared.ui.ToastUtils
+import org.odk.collect.androidshared.utils.Validator
 import org.odk.collect.material.MaterialFullScreenDialogFragment
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider
@@ -36,7 +36,7 @@ class ManualProjectCreatorDialog :
     lateinit var appConfigurationGenerator: AppConfigurationGenerator
 
     @Inject
-    lateinit var softKeyboardController: org.espen.collect.android.utilities.SoftKeyboardController
+    lateinit var softKeyboardController: SoftKeyboardController
 
     @Inject
     lateinit var projectsDataService: ProjectsDataService
@@ -53,7 +53,7 @@ class ManualProjectCreatorDialog :
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
         settingsConnectionMatcher = SettingsConnectionMatcher(projectsRepository, settingsProvider)
     }
 
@@ -95,12 +95,11 @@ class ManualProjectCreatorDialog :
     }
 
     override fun getToolbar(): Toolbar {
-        return binding.toolbar
+        return binding.toolbarLayout.toolbar
     }
 
     private fun setUpToolbar() {
         toolbar.setTitle(org.odk.collect.strings.R.string.add_project)
-        toolbar.navigationIcon = null
     }
 
     private fun handleAddingNewProject() {
@@ -131,7 +130,7 @@ class ManualProjectCreatorDialog :
 
     override fun createProject(settingsJson: String) {
         projectCreator.createNewProject(settingsJson)
-        org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(activity, MainMenuActivity::class.java)
+        ActivityUtils.startActivityAndCloseAllOthers(activity, MainMenuActivity::class.java)
         ToastUtils.showLongToast(
             requireContext(),
             getString(org.odk.collect.strings.R.string.switched_project, projectsDataService.getCurrentProject().name)
@@ -140,7 +139,7 @@ class ManualProjectCreatorDialog :
 
     override fun switchToProject(uuid: String) {
         projectsDataService.setCurrentProject(uuid)
-        org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(activity, MainMenuActivity::class.java)
+        ActivityUtils.startActivityAndCloseAllOthers(activity, MainMenuActivity::class.java)
         ToastUtils.showLongToast(
             requireContext(),
             getString(

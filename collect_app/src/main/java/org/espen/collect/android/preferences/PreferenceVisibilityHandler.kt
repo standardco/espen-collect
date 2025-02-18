@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.android.preferences
+package org.odk.collect.android.preferences
 
 import androidx.preference.PreferenceGroup
 import androidx.preference.PreferenceScreen
-import org.espen.collect.android.BuildConfig
-import org.espen.collect.android.version.VersionInformation
+import org.odk.collect.android.BuildConfig
+import org.odk.collect.android.version.VersionInformation
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 
 class PreferenceVisibilityHandler(
     private val settingsProvider: SettingsProvider,
-    private val versionInformation: org.espen.collect.android.version.VersionInformation
+    private val versionInformation: VersionInformation
 ) {
 
     fun updatePreferencesVisibility(preferenceScreen: PreferenceScreen, state: ProjectPreferencesViewModel.State) {

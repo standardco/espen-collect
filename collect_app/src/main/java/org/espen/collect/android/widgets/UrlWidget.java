@@ -12,23 +12,21 @@
  * the License.
  */
 
-package org.espen.collect.android.widgets;
+package org.odk.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
-import android.util.TypedValue;
 import android.view.View;
 
-import org.espen.collect.android.utilities.ExternalWebPageHelper;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.databinding.UrlWidgetAnswerBinding;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.utilities.ExternalWebPageHelper;
-import org.espen.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.android.databinding.UrlWidgetAnswerBinding;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.webpage.ExternalWebPageHelper;
 
 @SuppressLint("ViewConstructor")
 public class UrlWidget extends QuestionWidget {
@@ -44,10 +42,8 @@ public class UrlWidget extends QuestionWidget {
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = UrlWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
-
-        binding.urlButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
         binding.urlButton.setOnClickListener(v -> onButtonClick());
 
         return binding.getRoot();

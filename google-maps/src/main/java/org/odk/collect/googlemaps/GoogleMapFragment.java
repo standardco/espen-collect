@@ -14,18 +14,18 @@
 
 package org.odk.collect.googlemaps;
 
-import static org.odk.collect.maps.MapConsts.POLYGON_FILL_COLOR_OPACITY;
-import static org.odk.collect.maps.MapConsts.POLYLINE_STROKE_WIDTH;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.graphics.ColorUtils;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdate;
@@ -47,14 +47,17 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 
-import org.espen.collect.androidshared.system.ContextUtils;
-import org.espen.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.androidshared.system.ContextUtils;
+import org.odk.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.googlemaps.GoogleMapConfigurator.GoogleMapTypeOption;
+import org.odk.collect.googlemaps.scaleview.MapScaleView;
 import org.odk.collect.location.LocationClient;
+import org.odk.collect.maps.LineDescription;
 import org.odk.collect.maps.MapConfigurator;
 import org.odk.collect.maps.MapFragment;
 import org.odk.collect.maps.MapFragmentDelegate;
 import org.odk.collect.maps.MapPoint;
+import org.odk.collect.maps.PolygonDescription;
 import org.odk.collect.maps.layers.MapFragmentReferenceLayerUtils;
 import org.odk.collect.maps.layers.ReferenceLayerRepository;
 import org.odk.collect.maps.markers.MarkerDescription;
@@ -74,7 +77,7 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-public class GoogleMapFragment extends SupportMapFragment implements
+public class GoogleMapFragment extends Fragment implements
         MapFragment, LocationListener, LocationClient.LocationClientListener,
         GoogleMap.OnMapClickListener, GoogleMap.OnMapLongClickListener,
         GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener,
@@ -102,6 +105,9 @@ public class GoogleMapFragment extends SupportMapFragment implements
     );
 
     private GoogleMap map;
+    private MapScaleView scaleView;
+    private ReadyListener readyListener;
+    private ErrorListener errorListener;
     private Marker locationCrosshairs;
     private Circle accuracyCircle;
     private final List<ReadyListener> gpsLocationReadyListeners = new ArrayList<>();
@@ -123,9 +129,27 @@ public class GoogleMapFragment extends SupportMapFragment implements
     private boolean hasCenter;
 
     @Override
-    @SuppressLint("MissingPermission") // Permission checks for location services handled in widgets
     public void init(@Nullable ReadyListener readyListener, @Nullable ErrorListener errorListener) {
-        getMapAsync((GoogleMap googleMap) -> {
+        this.readyListener = readyListener;
+        this.errorListener = errorListener;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mapFragmentDelegate.onCreate(savedInstanceState);
+    }
+
+    @Nullable
+    @Override
+    @SuppressLint("MissingPermission") // Permission checks for location services handled in widgets
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.map_layout, container, false);
+
+        scaleView = view.findViewById(R.id.scale_view);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync((GoogleMap googleMap) -> {
             if (googleMap == null) {
                 ToastUtils.showShortToast(requireContext(), org.odk.collect.strings.R.string.google_play_services_error_occured);
                 if (errorListener != null) {
@@ -146,7 +170,9 @@ public class GoogleMapFragment extends SupportMapFragment implements
             googleMap.setMyLocationEnabled(false);
             googleMap.setMinZoomPreference(1);
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                toLatLng(INITIAL_CENTER), INITIAL_ZOOM));
+                    toLatLng(INITIAL_CENTER), INITIAL_ZOOM));
+            googleMap.setOnCameraMoveListener(() -> scaleView.update(googleMap.getCameraPosition().zoom, googleMap.getCameraPosition().target.latitude));
+            googleMap.setOnCameraIdleListener(() -> scaleView.update(googleMap.getCameraPosition().zoom, googleMap.getCameraPosition().target.latitude));
             loadReferenceOverlay();
 
             // If the screen is rotated before the map is ready, this fragment
@@ -157,12 +183,8 @@ public class GoogleMapFragment extends SupportMapFragment implements
                 readyListener.onReady(this);
             }
         });
-    }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mapFragmentDelegate.onCreate(savedInstanceState);
+        return view;
     }
 
     @Override public void onAttach(@NonNull Context context) {
@@ -306,20 +328,20 @@ public class GoogleMapFragment extends SupportMapFragment implements
         return feature instanceof MarkerFeature ? ((MarkerFeature) feature).getPoint() : null;
     }
 
-    @Override public int addPolyLine(@NonNull Iterable<MapPoint> points, boolean closed, boolean draggable) {
+    @Override public int addPolyLine(LineDescription lineDescription) {
         int featureId = nextFeatureId++;
-        if (draggable) {
-            features.put(featureId, new DynamicPolyLineFeature(getActivity(), points, closed, map));
+        if (lineDescription.getDraggable()) {
+            features.put(featureId, new DynamicPolyLineFeature(getActivity(), lineDescription, map));
         } else {
-            features.put(featureId, new StaticPolyLineFeature(getActivity(), points, closed, map));
+            features.put(featureId, new StaticPolyLineFeature(lineDescription, map));
         }
         return featureId;
     }
 
     @Override
-    public int addPolygon(@NonNull Iterable<MapPoint> points) {
+    public int addPolygon(PolygonDescription polygonDescription) {
         int featureId = nextFeatureId++;
-        features.put(featureId, new StaticPolygonFeature(map, points, requireContext().getResources().getColor(org.odk.collect.icons.R.color.mapLineColor)));
+        features.put(featureId, new StaticPolygonFeature(map, polygonDescription));
         return featureId;
     }
 
@@ -332,9 +354,10 @@ public class GoogleMapFragment extends SupportMapFragment implements
 
     @Override public @NonNull List<MapPoint> getPolyLinePoints(int featureId) {
         MapFeature feature = features.get(featureId);
-        if (feature instanceof DynamicPolyLineFeature) {
-            return ((DynamicPolyLineFeature) feature).getPoints();
+        if (feature instanceof LineFeature) {
+            return ((LineFeature) feature).getPoints();
         }
+
         return new ArrayList<>();
     }
 
@@ -606,7 +629,7 @@ public class GoogleMapFragment extends SupportMapFragment implements
         }
         if (accuracyCircle == null) {
             int stroke = ContextUtils.getThemeAttributeValue(requireContext(), com.google.android.material.R.attr.colorPrimaryDark);
-            int fill = getResources().getColor(org.espen.collect.androidshared.R.color.color_primary_low_emphasis);
+            int fill = getResources().getColor(org.odk.collect.androidshared.R.color.color_primary_low_emphasis);
             accuracyCircle = map.addCircle(new CircleOptions()
                 .center(loc)
                 .radius(radius)
@@ -773,27 +796,34 @@ public class GoogleMapFragment extends SupportMapFragment implements
         }
     }
 
-    /** A polyline or polygon that can not be manipulated by dragging markers at its vertices. */
-    private static class StaticPolyLineFeature implements MapFeature {
+    private interface LineFeature extends MapFeature {
 
+        List<MapPoint> getPoints();
+    }
+
+    /** A polyline or polygon that can not be manipulated by dragging markers at its vertices. */
+    private static class StaticPolyLineFeature implements LineFeature {
+
+        private List<MapPoint> points;
         private Polyline polyline;
 
-        StaticPolyLineFeature(Context context, Iterable<MapPoint> points, boolean closedPolygon, GoogleMap map) {
+        StaticPolyLineFeature(LineDescription lineDescription, GoogleMap map) {
             if (map == null) {  // during Robolectric tests, map will be null
                 return;
             }
 
+            points = lineDescription.getPoints();
             List<LatLng> latLngs = StreamSupport.stream(points.spliterator(), false).map(mapPoint -> new LatLng(mapPoint.latitude, mapPoint.longitude)).collect(Collectors.toList());
-            if (closedPolygon && !latLngs.isEmpty()) {
+            if (lineDescription.getClosed() && !latLngs.isEmpty()) {
                 latLngs.add(latLngs.get(0));
             }
             if (latLngs.isEmpty()) {
                 clearPolyline();
             } else if (polyline == null) {
                 polyline = map.addPolyline(new PolylineOptions()
-                        .color(context.getResources().getColor(org.odk.collect.icons.R.color.mapLineColor))
+                        .color(lineDescription.getStrokeColor())
                         .zIndex(1)
-                        .width(POLYLINE_STROKE_WIDTH)
+                        .width(lineDescription.getStrokeWidth())
                         .addAll(latLngs)
                         .clickable(true)
                 );
@@ -832,27 +862,32 @@ public class GoogleMapFragment extends SupportMapFragment implements
                 polyline = null;
             }
         }
+
+        @Override
+        public List<MapPoint> getPoints() {
+            return points;
+        }
     }
 
     /** A polyline or polygon that can be manipulated by dragging markers at its vertices. */
-    private static class DynamicPolyLineFeature implements MapFeature {
+    private static class DynamicPolyLineFeature implements LineFeature {
 
         private final Context context;
         private final GoogleMap map;
         private final List<Marker> markers = new ArrayList<>();
-        private final boolean closedPolygon;
+        private final LineDescription lineDescription;
         private Polyline polyline;
 
-        DynamicPolyLineFeature(Context context, Iterable<MapPoint> points, boolean closedPolygon, GoogleMap map) {
+        DynamicPolyLineFeature(Context context, LineDescription lineDescription, GoogleMap map) {
             this.context = context;
+            this.lineDescription = lineDescription;
             this.map = map;
-            this.closedPolygon = closedPolygon;
 
             if (map == null) {  // during Robolectric tests, map will be null
                 return;
             }
 
-            for (MapPoint point : points) {
+            for (MapPoint point : lineDescription.getPoints()) {
                 markers.add(createMarker(context, new MarkerDescription(point, true, CENTER, new MarkerIconDescription(org.odk.collect.icons.R.drawable.ic_map_point)), map));
             }
 
@@ -880,16 +915,16 @@ public class GoogleMapFragment extends SupportMapFragment implements
             for (Marker marker : markers) {
                 latLngs.add(marker.getPosition());
             }
-            if (closedPolygon && !latLngs.isEmpty()) {
+            if (lineDescription.getClosed() && !latLngs.isEmpty()) {
                 latLngs.add(latLngs.get(0));
             }
             if (markers.isEmpty()) {
                 clearPolyline();
             } else if (polyline == null) {
                 polyline = map.addPolyline(new PolylineOptions()
-                    .color(context.getResources().getColor(org.odk.collect.icons.R.color.mapLineColor))
+                    .color(lineDescription.getStrokeColor())
                     .zIndex(1)
-                    .width(POLYLINE_STROKE_WIDTH)
+                    .width(lineDescription.getStrokeWidth())
                     .addAll(latLngs)
                     .clickable(true)
                 );
@@ -943,12 +978,12 @@ public class GoogleMapFragment extends SupportMapFragment implements
     private static class StaticPolygonFeature implements MapFeature {
         private Polygon polygon;
 
-        StaticPolygonFeature(GoogleMap map, Iterable<MapPoint> points, int strokeLineColor) {
+        StaticPolygonFeature(GoogleMap map, PolygonDescription polygonDescription) {
             polygon = map.addPolygon(new PolygonOptions()
-                    .addAll(StreamSupport.stream(points.spliterator(), false).map(mapPoint -> new LatLng(mapPoint.latitude, mapPoint.longitude)).collect(Collectors.toList()))
-                    .strokeColor(strokeLineColor)
-                    .strokeWidth(POLYLINE_STROKE_WIDTH)
-                    .fillColor(ColorUtils.setAlphaComponent(strokeLineColor, POLYGON_FILL_COLOR_OPACITY))
+                    .addAll(StreamSupport.stream(polygonDescription.getPoints().spliterator(), false).map(mapPoint -> new LatLng(mapPoint.latitude, mapPoint.longitude)).collect(Collectors.toList()))
+                    .strokeColor(polygonDescription.getStrokeColor())
+                    .strokeWidth(polygonDescription.getStrokeWidth())
+                    .fillColor(polygonDescription.getFillColor())
                     .clickable(true)
             );
         }

@@ -1,4 +1,4 @@
-package org.espen.collect.android.widgets;
+package org.odk.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -6,17 +6,13 @@ import android.content.Context;
 import android.util.TypedValue;
 import android.view.View;
 
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.utilities.FileRequester;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.databinding.ExArbitraryFileWidgetAnswerBinding;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.utilities.FileRequester;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.odk.collect.android.databinding.ExArbitraryFileWidgetAnswerBinding;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.utilities.ApplicationConstants;
+import org.odk.collect.android.utilities.QuestionMediaManager;
+import org.odk.collect.android.widgets.utilities.FileRequester;
+import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 @SuppressLint("ViewConstructor")
 public class ExArbitraryFileWidget extends BaseArbitraryFileWidget {
@@ -32,11 +28,10 @@ public class ExArbitraryFileWidget extends BaseArbitraryFileWidget {
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = ExArbitraryFileWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
         setupAnswerFile(prompt.getAnswerText());
 
-        binding.exArbitraryFileButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
         binding.exArbitraryFileAnswerText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, answerFontSize);
 
         if (questionDetails.isReadOnly()) {

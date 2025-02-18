@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.logic.actions.setgeopoint;
+package org.odk.collect.android.logic.actions.setgeopoint;
 
 import org.javarosa.core.model.actions.setgeopoint.SetGeopointAction;
 import org.javarosa.core.model.actions.setgeopoint.SetGeopointActionHandler;
 
 /**
- * Handler for EspenCollect's implementation of the odk:setgeopoint action.
+ * Handler for Collect's implementation of the odk:setgeopoint action.
  */
 public class CollectSetGeopointActionHandler extends SetGeopointActionHandler {
     public SetGeopointAction getSetGeopointAction() {

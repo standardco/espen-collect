@@ -17,7 +17,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.verifyNoInteractions
 import org.mockito.kotlin.verifyNoMoreInteractions
-import org.espen.collect.androidtest.RecordedIntentsRule
+import org.odk.collect.androidtest.RecordedIntentsRule
 import org.odk.collect.testshared.RobolectricHelpers
 import org.odk.collect.testshared.RobolectricHelpers.createThemedActivity
 import org.robolectric.shadows.ShadowDialog

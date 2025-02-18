@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.external;
+package org.odk.collect.android.external;
 
 import android.net.Uri;
 
-import org.espen.collect.android.database.forms.DatabaseFormColumns;
+import org.odk.collect.android.database.forms.DatabaseFormColumns;
 
 /**
  * Contract between the forms provider and applications. Contains definitions for the supported
@@ -29,12 +29,9 @@ import org.espen.collect.android.database.forms.DatabaseFormColumns;
  */
 public final class FormsContract {
 
-//    static final String AUTHORITY = "org.espen.collect.android.provider.odk.forms";
-//    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.odk.form";
-//    public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.odk.form";
-    static final String AUTHORITY =  "com.espen.provider.odk.v2.forms";
-    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.espen.form";
-    public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.espen.form";
+    static final String AUTHORITY = "org.odk.collect.android.provider.odk.forms";
+    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.odk.form";
+    public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.odk.form";
 
     /**
      * The content:// style URL for accessing Forms.

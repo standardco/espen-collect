@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.espen.collect.android.widgets;
+package org.odk.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -22,15 +22,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsSeekBar;
 
-import org.espen.collect.android.utilities.UiUtils;
 import org.javarosa.core.model.RangeQuestion;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.IntegerData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.databinding.RatingWidgetAnswerBinding;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.androidshared.utils.ScreenUtils;
-import org.espen.collect.android.utilities.UiUtils;
+import org.odk.collect.android.databinding.RatingWidgetAnswerBinding;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.utilities.ViewUtils;
+import org.odk.collect.androidshared.utils.ScreenUtils;
 
 import java.lang.reflect.Field;
 
@@ -49,7 +48,7 @@ public class RatingWidget extends QuestionWidget {
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = RatingWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
         View answerView = binding.getRoot();
 
@@ -62,7 +61,7 @@ public class RatingWidget extends QuestionWidget {
             binding.ratingBar2.setNumStars(Math.min(numberOfStars - maxNumberOfStars, maxNumberOfStars));
             binding.ratingBar2.setMax(Math.min(numberOfStars - maxNumberOfStars, maxNumberOfStars));
 
-            binding.ratingBar2.setVisibility(VISIBLE);
+            binding.ratingBar2.setVisibility(View.VISIBLE);
         } else {
             binding.ratingBar1.setNumStars(numberOfStars);
             binding.ratingBar1.setMax(numberOfStars);
@@ -149,7 +148,7 @@ public class RatingWidget extends QuestionWidget {
 
     private int calculateMaximumStarsInOneLine() {
         return (int) ((ScreenUtils.getScreenWidth(getContext()) - ASSUMED_TOTAL_MARGIN_AROUND_WIDGET)
-                / UiUtils.convertDpToPixel(STANDARD_WIDTH_OF_STAR, getContext()));
+                / ViewUtils.pxFromDp(getContext(), STANDARD_WIDTH_OF_STAR));
     }
 
     private int getTotalStars(RangeQuestion rangeQuestion) {

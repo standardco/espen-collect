@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

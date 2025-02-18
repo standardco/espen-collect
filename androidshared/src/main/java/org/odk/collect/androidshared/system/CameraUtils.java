@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.system;
+package org.odk.collect.androidshared.system;
 
 /*
 Copyright 2018 Theodoros Tyrovouzis

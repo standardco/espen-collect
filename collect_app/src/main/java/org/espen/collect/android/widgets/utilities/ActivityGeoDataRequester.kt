@@ -1,13 +1,13 @@
-package org.espen.collect.android.widgets.utilities
+package org.odk.collect.android.widgets.utilities
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import org.javarosa.form.api.FormEntryPrompt
-import org.espen.collect.android.utilities.Appearances
-import org.espen.collect.android.utilities.ApplicationConstants
-import org.espen.collect.android.utilities.FormEntryPromptUtils
-import org.espen.collect.android.widgets.interfaces.GeoDataRequester
+import org.odk.collect.android.utilities.Appearances
+import org.odk.collect.android.utilities.ApplicationConstants
+import org.odk.collect.android.utilities.FormEntryPromptUtils
+import org.odk.collect.android.widgets.interfaces.GeoDataRequester
 import org.odk.collect.geo.Constants.EXTRA_DRAGGABLE_ONLY
 import org.odk.collect.geo.Constants.EXTRA_READ_ONLY
 import org.odk.collect.geo.Constants.EXTRA_RETAIN_MOCK_ACCURACY
@@ -26,7 +26,7 @@ class ActivityGeoDataRequester(
     override fun requestGeoPoint(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     ) {
         permissionsProvider.requestEnabledLocationPermissions(
             activity,
@@ -44,9 +44,9 @@ class ActivityGeoDataRequester(
                         }
 
                         val accuracyThreshold =
-                            org.espen.collect.android.utilities.FormEntryPromptUtils.getBodyAttribute(prompt, "accuracyThreshold")
+                            FormEntryPromptUtils.getAdditionalAttribute(prompt, "accuracyThreshold")
                         val unacceptableAccuracyThreshold =
-                            org.espen.collect.android.utilities.FormEntryPromptUtils.getBodyAttribute(
+                            FormEntryPromptUtils.getAdditionalAttribute(
                                 prompt,
                                 "unacceptableAccuracyThreshold"
                             )
@@ -76,7 +76,7 @@ class ActivityGeoDataRequester(
 
                     activity.startActivityForResult(
                         intent,
-                        org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.LOCATION_CAPTURE
+                        ApplicationConstants.RequestCodes.LOCATION_CAPTURE
                     )
                 }
             }
@@ -86,7 +86,7 @@ class ActivityGeoDataRequester(
     override fun requestGeoShape(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     ) {
         permissionsProvider.requestEnabledLocationPermissions(
             activity,
@@ -109,7 +109,7 @@ class ActivityGeoDataRequester(
 
                     activity.startActivityForResult(
                         intent,
-                        org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.GEOSHAPE_CAPTURE
+                        ApplicationConstants.RequestCodes.GEOSHAPE_CAPTURE
                     )
                 }
             }
@@ -119,7 +119,7 @@ class ActivityGeoDataRequester(
     override fun requestGeoTrace(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     ) {
         permissionsProvider.requestEnabledLocationPermissions(
             activity,
@@ -142,7 +142,7 @@ class ActivityGeoDataRequester(
 
                     activity.startActivityForResult(
                         intent,
-                        org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.GEOTRACE_CAPTURE
+                        ApplicationConstants.RequestCodes.GEOTRACE_CAPTURE
                     )
                 }
             }
@@ -151,7 +151,7 @@ class ActivityGeoDataRequester(
 
     private fun getAllowMockAccuracy(prompt: FormEntryPrompt): Boolean {
         return parseBoolean(
-            org.espen.collect.android.utilities.FormEntryPromptUtils.getBindAttribute(
+            FormEntryPromptUtils.getBindAttribute(
                 prompt,
                 "allow-mock-accuracy"
             )

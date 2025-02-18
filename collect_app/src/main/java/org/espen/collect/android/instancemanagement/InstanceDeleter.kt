@@ -1,4 +1,4 @@
-package org.espen.collect.android.instancemanagement
+package org.odk.collect.android.instancemanagement
 
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.instances.Instance
@@ -8,6 +8,12 @@ class InstanceDeleter(
     private val instancesRepository: InstancesRepository,
     private val formsRepository: FormsRepository
 ) {
+    fun delete(ids: Array<Long>) {
+        ids.forEach {
+            delete(it)
+        }
+    }
+
     fun delete(id: Long?) {
         instancesRepository[id]?.let { instance ->
             if (instance.status == Instance.STATUS_SUBMITTED) {

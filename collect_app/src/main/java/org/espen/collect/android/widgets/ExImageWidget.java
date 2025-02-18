@@ -1,32 +1,24 @@
-package org.espen.collect.android.widgets;
+package org.odk.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.FileUtils;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.interfaces.FileWidget;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.FileRequester;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.databinding.ExImageWidgetAnswerBinding;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.FileUtils;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.interfaces.FileWidget;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.FileRequester;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
-import org.espen.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.android.databinding.ExImageWidgetAnswerBinding;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.utilities.ApplicationConstants;
+import org.odk.collect.android.utilities.FileUtils;
+import org.odk.collect.android.utilities.QuestionMediaManager;
+import org.odk.collect.android.widgets.interfaces.FileWidget;
+import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.odk.collect.android.widgets.utilities.FileRequester;
+import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.odk.collect.androidshared.ui.ToastUtils;
 
 import java.io.File;
 
@@ -54,12 +46,11 @@ public class ExImageWidget extends QuestionWidget implements FileWidget, WidgetD
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         setupAnswerFile(prompt.getAnswerText());
 
         binding = ExImageWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
 
-        binding.launchExternalAppButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
         binding.launchExternalAppButton.setVisibility(questionDetails.isReadOnly() ? GONE : VISIBLE);
         binding.launchExternalAppButton.setOnClickListener(view -> launchExternalApp());
         binding.imageView.setOnClickListener(view -> mediaUtils.openFile(getContext(), answerFile, "image/*"));

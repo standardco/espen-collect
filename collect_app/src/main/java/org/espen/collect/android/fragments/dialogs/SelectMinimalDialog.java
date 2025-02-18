@@ -1,4 +1,4 @@
-package org.espen.collect.android.fragments.dialogs;
+package org.odk.collect.android.fragments.dialogs;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,23 +11,20 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.espen.collect.android.adapters.AbstractSelectListAdapter;
-import org.espen.collect.android.fragments.viewmodels.SelectMinimalViewModel;
-import org.espen.collect.android.injection.DaggerUtils;
 import org.javarosa.core.model.data.helper.Selection;
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.R;
-import org.espen.collect.android.adapters.AbstractSelectListAdapter;
-import org.espen.collect.android.databinding.SelectMinimalDialogLayoutBinding;
-import org.espen.collect.android.formentry.media.AudioHelperFactory;
-import org.espen.collect.android.fragments.viewmodels.SelectMinimalViewModel;
+import org.odk.collect.android.R;
+import org.odk.collect.android.adapters.AbstractSelectListAdapter;
+import org.odk.collect.android.databinding.SelectMinimalDialogLayoutBinding;
+import org.odk.collect.android.formentry.media.AudioHelperFactory;
+import org.odk.collect.android.fragments.viewmodels.SelectMinimalViewModel;
 import org.odk.collect.material.MaterialFullScreenDialogFragment;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import static org.espen.collect.android.injection.DaggerUtils.getComponent;
+import static org.odk.collect.android.injection.DaggerUtils.getComponent;
 
 public abstract class SelectMinimalDialog extends MaterialFullScreenDialogFragment {
 
@@ -58,7 +55,7 @@ public abstract class SelectMinimalDialog extends MaterialFullScreenDialogFragme
     @Override
     public void onAttach(@NotNull Context context) {
         super.onAttach(context);
-        DaggerUtils.getComponent(context).inject(this);
+        getComponent(context).inject(this);
         if (context instanceof SelectMinimalDialogListener) {
             listener = (SelectMinimalDialogListener) context;
         }
@@ -109,7 +106,7 @@ public abstract class SelectMinimalDialog extends MaterialFullScreenDialogFragme
     @Nullable
     @Override
     protected Toolbar getToolbar() {
-        return getView().findViewById(R.id.toolbar);
+        return getView().findViewById(org.odk.collect.androidshared.R.id.toolbar);
     }
 
     private void initToolbar() {

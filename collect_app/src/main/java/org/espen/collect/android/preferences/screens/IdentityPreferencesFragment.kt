@@ -11,31 +11,31 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.espen.collect.android.preferences.screens
+package org.odk.collect.android.preferences.screens
 
 import android.content.Context
 import android.os.Bundle
 import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import org.odk.collect.analytics.Analytics
-import org.espen.collect.android.R
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.preferences.utilities.PreferencesUtils
-import org.espen.collect.android.version.VersionInformation
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard
+import org.odk.collect.android.R
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.preferences.utilities.PreferencesUtils
+import org.odk.collect.android.version.VersionInformation
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 import org.odk.collect.settings.keys.ProjectKeys
 import javax.inject.Inject
 
-class IdentityPreferencesFragment : org.espen.collect.android.preferences.screens.BaseProjectPreferencesFragment() {
+class IdentityPreferencesFragment : BaseProjectPreferencesFragment() {
     @Inject
     lateinit var analytics: Analytics
 
     @Inject
-    lateinit var versionInformation: org.espen.collect.android.version.VersionInformation
+    lateinit var versionInformation: VersionInformation
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -44,7 +44,7 @@ class IdentityPreferencesFragment : org.espen.collect.android.preferences.screen
         findPreference<Preference>("form_metadata")!!.onPreferenceClickListener =
             Preference.OnPreferenceClickListener listener@{
                 if (MultiClickGuard.allowClick(javaClass.name)) {
-                    displayPreferences(org.espen.collect.android.preferences.screens.FormMetadataPreferencesFragment())
+                    displayPreferences(FormMetadataPreferencesFragment())
                     return@listener true
                 }
                 false
@@ -56,9 +56,9 @@ class IdentityPreferencesFragment : org.espen.collect.android.preferences.screen
         val analyticsPreference = findPreference<Preference>(ProjectKeys.KEY_ANALYTICS) as CheckBoxPreference?
         if (analyticsPreference != null) {
             if (versionInformation.isBeta) {
-                org.espen.collect.android.preferences.utilities.PreferencesUtils.displayDisabled(analyticsPreference, true)
+                PreferencesUtils.displayDisabled(analyticsPreference, true)
                 analyticsPreference.summary =
-                    analyticsPreference.summary.toString() + " Usage data collection cannot be disabled in beta versions of EspenCollect."
+                    analyticsPreference.summary.toString() + " Usage data collection cannot be disabled in beta versions of Collect."
             } else {
                 analyticsPreference.onPreferenceClickListener =
                     Preference.OnPreferenceClickListener {

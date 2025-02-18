@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.android.formmanagement
+package org.odk.collect.android.formmanagement
 
-import org.espen.collect.android.openrosa.OpenRosaFormSource
-import org.espen.collect.android.utilities.FormUtils
-import org.espen.collect.android.utilities.WebCredentialsUtils
+import org.odk.collect.android.openrosa.OpenRosaFormSource
+import org.odk.collect.android.utilities.FormUtils
+import org.odk.collect.android.utilities.WebCredentialsUtils
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.FormSource
 import org.odk.collect.forms.FormSourceException
@@ -36,11 +36,11 @@ open class ServerFormsDetailsFetcher(
     private val formSource: FormSource
 ) {
     open fun updateUrl(url: String) {
-        (formSource as org.espen.collect.android.openrosa.OpenRosaFormSource).updateUrl(url)
+        (formSource as OpenRosaFormSource).updateUrl(url)
     }
 
-    open fun updateCredentials(webCredentialsUtils: org.espen.collect.android.utilities.WebCredentialsUtils) {
-        (formSource as org.espen.collect.android.openrosa.OpenRosaFormSource).updateWebCredentialsUtils(webCredentialsUtils)
+    open fun updateCredentials(webCredentialsUtils: WebCredentialsUtils) {
+        (formSource as OpenRosaFormSource).updateWebCredentialsUtils(webCredentialsUtils)
     }
 
     @Throws(FormSourceException::class)
@@ -108,7 +108,7 @@ open class ServerFormsDetailsFetcher(
         existingForm: Form,
         newMediaFiles: List<MediaFile>
     ): Boolean {
-        val localMediaFiles = org.espen.collect.android.utilities.FormUtils.getMediaFiles(existingForm)
+        val localMediaFiles = FormUtils.getMediaFiles(existingForm)
         return newMediaFiles.any {
             !isMediaFileAlreadyDownloaded(localMediaFiles, it)
         }
@@ -128,7 +128,7 @@ open class ServerFormsDetailsFetcher(
         }
 
         return localMediaFiles.any {
-            newMediaFile.hash == getMd5Hash(it)
+            newMediaFile.hash == it.getMd5Hash()
         }
     }
 }

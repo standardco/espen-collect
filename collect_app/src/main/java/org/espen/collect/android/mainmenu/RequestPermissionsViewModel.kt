@@ -1,4 +1,4 @@
-package org.espen.collect.android.mainmenu
+package org.odk.collect.android.mainmenu
 
 import android.Manifest
 import android.os.Build

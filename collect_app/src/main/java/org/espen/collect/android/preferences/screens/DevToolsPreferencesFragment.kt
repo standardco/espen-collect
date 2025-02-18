@@ -1,10 +1,10 @@
-package org.espen.collect.android.preferences.screens
+package org.odk.collect.android.preferences.screens
 
 import android.os.Bundle
 import androidx.preference.Preference
-import org.espen.collect.android.R
+import org.odk.collect.android.R
 
-class DevToolsPreferencesFragment : org.espen.collect.android.preferences.screens.BaseProjectPreferencesFragment() {
+class DevToolsPreferencesFragment : BaseProjectPreferencesFragment() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)

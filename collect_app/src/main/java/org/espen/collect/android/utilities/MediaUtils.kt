@@ -11,14 +11,15 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.espen.collect.android.utilities
+package org.odk.collect.android.utilities
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import org.espen.collect.android.BuildConfig
-import org.espen.collect.androidshared.system.IntentLauncher
-import org.espen.collect.androidshared.ui.ToastUtils
+import org.odk.collect.android.BuildConfig
+import org.odk.collect.android.R
+import org.odk.collect.androidshared.system.IntentLauncher
+import org.odk.collect.androidshared.ui.ToastUtils
 import timber.log.Timber
 import java.io.File
 
@@ -34,9 +35,9 @@ import java.io.File
  * @author mitchellsundt@gmail.com
  * @author paulburke
  */
-class MediaUtils(private val intentLauncher: IntentLauncher, private val contentUriProvider: org.espen.collect.android.utilities.ContentUriProvider) {
+class MediaUtils(private val intentLauncher: IntentLauncher, private val contentUriProvider: ContentUriProvider) {
     fun deleteMediaFile(imageFile: String) {
-        org.espen.collect.android.utilities.FileUtils.deleteAndReport(File(imageFile))
+        FileUtils.deleteAndReport(File(imageFile))
     }
 
     fun openFile(context: Context, file: File, expectedMimeType: String?) {
@@ -76,7 +77,7 @@ class MediaUtils(private val intentLauncher: IntentLauncher, private val content
 
     private fun getMimeType(file: File, expectedMimeType: String?) =
         if (expectedMimeType == null || expectedMimeType.isEmpty()) {
-            org.espen.collect.android.utilities.FileUtils.getMimeType(file)
+            FileUtils.getMimeType(file)
         } else {
             expectedMimeType
         }
@@ -93,14 +94,14 @@ class MediaUtils(private val intentLauncher: IntentLauncher, private val content
     }
 
     fun isVideoFile(file: File): Boolean {
-        return org.espen.collect.android.utilities.FileUtils.getMimeType(file).startsWith("video")
+        return FileUtils.getMimeType(file).startsWith("video")
     }
 
     fun isImageFile(file: File): Boolean {
-        return org.espen.collect.android.utilities.FileUtils.getMimeType(file).startsWith("image")
+        return FileUtils.getMimeType(file).startsWith("image")
     }
 
     fun isAudioFile(file: File): Boolean {
-        return org.espen.collect.android.utilities.FileUtils.getMimeType(file).startsWith("audio")
+        return FileUtils.getMimeType(file).startsWith("audio")
     }
 }

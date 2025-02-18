@@ -1,4 +1,4 @@
-package org.espen.collect.android.preferences.screens;
+package org.odk.collect.android.preferences.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.R;
-import org.espen.collect.androidshared.ui.ToastUtils;
-import org.odk.collect.entities.EntityBrowserActivity;
+import org.odk.collect.android.R;
+import org.odk.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.entities.browser.EntityBrowserActivity;
 
 public class ExperimentalPreferencesFragment extends BaseProjectPreferencesFragment {
 

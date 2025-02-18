@@ -1,8 +1,8 @@
-package org.espen.collect.android.activities
+package org.odk.collect.android.activities
 
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
-import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.odk.collect.android.mainmenu.MainMenuActivity
 import org.odk.collect.crashhandler.CrashHandler
 import org.odk.collect.strings.localization.LocalizedActivity
 
@@ -13,7 +13,7 @@ class CrashHandlerActivity : LocalizedActivity() {
 
         val crashHandler = CrashHandler.getInstance(this)!!
         val crashView = crashHandler.getCrashView(this) {
-            org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(this, MainMenuActivity::class.java)
+            ActivityUtils.startActivityAndCloseAllOthers(this, MainMenuActivity::class.java)
         }
 
         if (crashView != null) {

@@ -8,8 +8,8 @@ import org.junit.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
-import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
-import org.espen.collect.androidtest.getOrAwaitValue
+import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
+import org.odk.collect.androidtest.getOrAwaitValue
 import org.odk.collect.location.Location
 import org.odk.collect.location.satellites.SatelliteInfoClient
 import org.odk.collect.location.tracker.LocationTracker

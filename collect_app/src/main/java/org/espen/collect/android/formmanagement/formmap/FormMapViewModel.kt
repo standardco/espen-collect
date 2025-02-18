@@ -1,4 +1,4 @@
-package org.espen.collect.android.formmanagement.formmap
+package org.odk.collect.android.formmanagement.formmap
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
@@ -6,22 +6,25 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import org.json.JSONException
 import org.json.JSONObject
-import org.espen.collect.android.R
-import org.espen.collect.android.external.InstanceProvider
-import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
-import org.espen.collect.androidshared.livedata.NonNullLiveData
+import org.odk.collect.android.R
+import org.odk.collect.android.instancemanagement.getStatusDescription
+import org.odk.collect.android.instancemanagement.showAsEditable
+import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
+import org.odk.collect.androidshared.livedata.NonNullLiveData
 import org.odk.collect.async.Scheduler
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.FormsRepository
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.forms.instances.InstancesRepository
+import org.odk.collect.geo.selection.IconifiedText
 import org.odk.collect.geo.selection.MappableSelectItem
 import org.odk.collect.geo.selection.SelectionMapData
+import org.odk.collect.geo.selection.Status
+import org.odk.collect.maps.MapPoint
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 import timber.log.Timber
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 class FormMapViewModel(
@@ -102,11 +105,7 @@ class FormMapViewModel(
         latitude: Double,
         longitude: Double
     ): MappableSelectItem {
-        val instanceLastStatusChangeDate = org.espen.collect.android.external.InstanceProvider.getDisplaySubtext(
-            resources,
-            instance.status,
-            Date(instance.lastStatusChangeDate)
-        )
+        val instanceLastStatusChangeDate = instance.getStatusDescription(resources)
 
         return if (instance.deletedDate != null) {
             val deletedTime = resources.getString(org.odk.collect.strings.R.string.deleted_on_date_at_time)
@@ -115,21 +114,14 @@ class FormMapViewModel(
                 Locale.getDefault()
             )
 
-            val info = dateFormat.format(instance.deletedDate)
-            MappableSelectItem.WithInfo(
+            val info = "$instanceLastStatusChangeDate\n${dateFormat.format(instance.deletedDate)}"
+            MappableSelectItem.MappableSelectPoint(
                 instance.dbId,
-                latitude,
-                longitude,
-                getDrawableIdForStatus(instance.status, false),
-                getDrawableIdForStatus(instance.status, true),
                 instance.displayName,
-                listOf(
-                    MappableSelectItem.IconifiedText(
-                        getSubmissionSummaryStatusIcon(instance.status),
-                        instanceLastStatusChangeDate
-                    )
-                ),
-                info
+                point = MapPoint(latitude, longitude),
+                smallIcon = getDrawableIdForStatus(instance.status, false),
+                largeIcon = getDrawableIdForStatus(instance.status, true),
+                info = info
             )
         } else if (!instance.canEditWhenComplete() && listOf(
                 Instance.STATUS_COMPLETE,
@@ -137,59 +129,56 @@ class FormMapViewModel(
                 Instance.STATUS_SUBMITTED
             ).contains(instance.status)
         ) {
-            val info = resources.getString(org.odk.collect.strings.R.string.cannot_edit_completed_form)
-            MappableSelectItem.WithInfo(
+            val info = "$instanceLastStatusChangeDate\n${resources.getString(org.odk.collect.strings.R.string.cannot_edit_completed_form)}"
+            MappableSelectItem.MappableSelectPoint(
                 instance.dbId,
-                latitude,
-                longitude,
-                getDrawableIdForStatus(instance.status, false),
-                getDrawableIdForStatus(instance.status, true),
                 instance.displayName,
-                listOf(
-                    MappableSelectItem.IconifiedText(
-                        getSubmissionSummaryStatusIcon(instance.status),
-                        instanceLastStatusChangeDate
-                    )
-                ),
-                info
+                point = MapPoint(latitude, longitude),
+                smallIcon = getDrawableIdForStatus(instance.status, false),
+                largeIcon = getDrawableIdForStatus(instance.status, true),
+                info = info
             )
         } else {
-            val action = if (instance.status == Instance.STATUS_INCOMPLETE) {
-                createEditAction()
-            } else {
-                createViewAction()
-            }
+            val action =
+                if (instance.showAsEditable(settingsProvider)) {
+                    createEditAction()
+                } else {
+                    createViewAction()
+                }
 
-            MappableSelectItem.WithAction(
+            MappableSelectItem.MappableSelectPoint(
                 instance.dbId,
-                latitude,
-                longitude,
-                getDrawableIdForStatus(instance.status, false),
-                getDrawableIdForStatus(instance.status, true),
                 instance.displayName,
-                listOf(
-                    MappableSelectItem.IconifiedText(
-                        getSubmissionSummaryStatusIcon(instance.status),
-                        instanceLastStatusChangeDate
-                    )
-                ),
-                action
+                point = MapPoint(latitude, longitude),
+                smallIcon = getDrawableIdForStatus(instance.status, false),
+                largeIcon = getDrawableIdForStatus(instance.status, true),
+                info = instanceLastStatusChangeDate,
+                action = action,
+                status = instanceStatusToMappableSelectionItemStatus(instance)
             )
         }
     }
 
-    private fun createViewAction(): MappableSelectItem.IconifiedText {
-        return MappableSelectItem.IconifiedText(
+    private fun instanceStatusToMappableSelectionItemStatus(instance: Instance): Status? {
+        return when (instance.status) {
+            Instance.STATUS_INVALID, Instance.STATUS_INCOMPLETE -> Status.ERRORS
+            Instance.STATUS_VALID -> Status.NO_ERRORS
+            else -> null
+        }
+    }
+
+    private fun createViewAction(): IconifiedText {
+        return IconifiedText(
             R.drawable.ic_visibility,
             resources.getString(org.odk.collect.strings.R.string.view_data)
         )
     }
 
-    private fun createEditAction(): MappableSelectItem.IconifiedText {
+    private fun createEditAction(): IconifiedText {
         val canEditSaved = settingsProvider.getProtectedSettings()
             .getBoolean(ProtectedProjectKeys.KEY_EDIT_SAVED)
 
-        return MappableSelectItem.IconifiedText(
+        return IconifiedText(
             if (canEditSaved) R.drawable.ic_edit else R.drawable.ic_visibility,
             resources.getString(if (canEditSaved) org.odk.collect.strings.R.string.edit_data else org.odk.collect.strings.R.string.view_data)
         )
@@ -197,20 +186,11 @@ class FormMapViewModel(
 
     private fun getDrawableIdForStatus(status: String, enlarged: Boolean): Int {
         return when (status) {
-            Instance.STATUS_INCOMPLETE -> if (enlarged) R.drawable.ic_room_form_state_incomplete_48dp else R.drawable.ic_room_form_state_incomplete_24dp
+            Instance.STATUS_INCOMPLETE, Instance.STATUS_VALID, Instance.STATUS_INVALID -> if (enlarged) R.drawable.ic_room_form_state_incomplete_48dp else R.drawable.ic_room_form_state_incomplete_24dp
             Instance.STATUS_COMPLETE -> if (enlarged) R.drawable.ic_room_form_state_complete_48dp else R.drawable.ic_room_form_state_complete_24dp
             Instance.STATUS_SUBMITTED -> if (enlarged) R.drawable.ic_room_form_state_submitted_48dp else R.drawable.ic_room_form_state_submitted_24dp
             Instance.STATUS_SUBMISSION_FAILED -> if (enlarged) R.drawable.ic_room_form_state_submission_failed_48dp else R.drawable.ic_room_form_state_submission_failed_24dp
             else -> org.odk.collect.icons.R.drawable.ic_map_point
-        }
-    }
-
-    private fun getSubmissionSummaryStatusIcon(instanceStatus: String?): Int {
-        return when (instanceStatus) {
-            Instance.STATUS_COMPLETE -> R.drawable.ic_form_state_finalized
-            Instance.STATUS_SUBMITTED -> R.drawable.ic_form_state_submitted
-            Instance.STATUS_SUBMISSION_FAILED -> R.drawable.ic_form_state_submission_failed
-            else -> R.drawable.ic_form_state_saved
         }
     }
 }

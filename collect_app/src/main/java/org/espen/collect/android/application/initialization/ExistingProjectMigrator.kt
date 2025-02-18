@@ -1,16 +1,15 @@
-package org.espen.collect.android.application.initialization
+package org.odk.collect.android.application.initialization
 
 import android.content.Context
 import androidx.preference.PreferenceManager
 import org.apache.commons.io.FileUtils
-import org.espen.collect.android.projects.ProjectsDataService
-import org.espen.collect.android.storage.StoragePathProvider
+import org.odk.collect.android.projects.ProjectsDataService
+import org.odk.collect.android.storage.StoragePathProvider
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.importing.ProjectDetailsCreator
 import org.odk.collect.settings.keys.MetaKeys
 import org.odk.collect.settings.keys.ProjectKeys
-import org.odk.collect.shared.files.DirectoryUtils
 import org.odk.collect.upgrade.Upgrade
 import java.io.File
 import java.io.FileNotFoundException
@@ -67,7 +66,7 @@ class ExistingProjectMigrator(
         }
 
         try {
-            DirectoryUtils.deleteDirectory(File(rootDir, ".cache"))
+            File(rootDir, ".cache").deleteRecursively()
         } catch (e: Exception) {
             // ignore
         }

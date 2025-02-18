@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.espen.collect.android.widgets.items;
+package org.odk.collect.android.widgets.items;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -32,12 +32,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatRadioButton;
 
-import org.espen.collect.android.externaldata.ExternalSelectChoice;
-import org.espen.collect.android.utilities.HtmlUtils;
-import org.espen.collect.android.utilities.SelectOneWidgetUtils;
-import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectOneData;
@@ -45,17 +39,17 @@ import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryCaption;
-import org.espen.collect.android.R;
-import org.espen.collect.android.externaldata.ExternalSelectChoice;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.listeners.AdvanceToNextListener;
-import org.espen.collect.android.utilities.HtmlUtils;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
-import org.espen.collect.androidshared.bitmap.ImageFileUtils;
-import org.espen.collect.android.utilities.SelectOneWidgetUtils;
-import org.espen.collect.android.widgets.QuestionWidget;
-import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.odk.collect.android.R;
+import org.odk.collect.android.dynamicpreload.ExternalSelectChoice;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.listeners.AdvanceToNextListener;
+import org.odk.collect.android.utilities.HtmlUtils;
+import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils;
+import org.odk.collect.androidshared.bitmap.ImageFileUtils;
+import org.odk.collect.android.utilities.SelectOneWidgetUtils;
+import org.odk.collect.android.widgets.QuestionWidget;
+import org.odk.collect.android.widgets.interfaces.MultiChoiceWidget;
+import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
 
 import java.io.File;
 import java.util.ArrayList;

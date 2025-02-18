@@ -35,16 +35,13 @@
   <string name="do_not_save">Balewalain ang mga binago</string>
   <string name="enter_data">Punan ang Blangkong Form</string>
   <string name="error_occured">May Maling Nangyari</string>
-  <string name="file_deleted_error">Paumanhin, %1$s of %2$s ang mga piniling form(s) ay nabigong ma-i-karga!</string>
-  <string name="file_deleted_ok">%s na (mga) form ay matagumpay na binura!</string>
-  <string name="file_delete_in_progress">Paumanhin, ang form ay kasalukuyang binubura!</string>
+    <string name="file_deleted_ok">%s na (mga) form ay matagumpay na binura!</string>
   <string name="file_invalid">Talaksa: %s ay walang kabuluhan.</string>
   <string name="file_missing">Talaksa: %s ay nawawala.</string>
   <string name="finished_disk_scan">Tapos na ang pag-scan. Naka-karga na ang lahat ng forms.</string>
   <string name="forms">Mga Blangkong Form</string>
     <string name="get_barcode">Kunin ang Barcode</string>
   <string name="get_forms">Kumuha ng Blangkong Form</string>
-  <string name="get_location">Itala ang Kinalalagyan</string>
   <string name="provider_disabled_error">Paumanhin, ang mga provider ng Kinalalagyan ay hindi pinagana!</string>
   <string name="invalid_answer_error">Paumanhin, ang tugon na into ay hindi wasto!</string>
   <string name="jump_to_beginning">Punta sa Simula</string>
@@ -57,7 +54,6 @@
     <string name="manage_files">Burahin ang Inimpok na Form</string>
   <string name="noselect_error">Paumanhin, walang form na pinili!</string>
   <string name="no_connection">Wala koneksyon sa network</string>
-  <string name="no_items_display">Walang maipakita.</string>
   <string name="ok">OK</string>
   <string name="parse_error">Paumanhin, hindi ma-suri ang form.</string>
   <string name="password">Kontrasenyas</string>
@@ -96,8 +92,7 @@
   <string name="selected">Pinili: </string>
   <string name="select_answer">Pumili ng Sagot</string>
   <string name="edit_prompt">Pamatnugutan ang Udyok</string>
-  <string name="selected_google_account_text">Google Account</string>
-    <string name="font_size_extra_large">Labis na Malaki</string>
+  <string name="font_size_extra_large">Labis na Malaki</string>
   <string name="font_size_large">Malaki</string>
   <string name="font_size_medium">Katamtaman</string>
   <string name="font_size_small">Maliit</string>

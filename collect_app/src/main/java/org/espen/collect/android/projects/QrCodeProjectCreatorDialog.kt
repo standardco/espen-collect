@@ -1,4 +1,4 @@
-package org.espen.collect.android.projects
+package org.odk.collect.android.projects
 
 import android.content.Context
 import android.content.Intent
@@ -15,19 +15,20 @@ import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.CaptureManager
 import org.odk.collect.analytics.Analytics
-import org.espen.collect.android.R
-import org.espen.collect.android.activities.ActivityUtils
-import org.espen.collect.android.analytics.AnalyticsEvents
-import org.espen.collect.android.databinding.QrCodeProjectCreatorDialogLayoutBinding
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.mainmenu.MainMenuActivity
-import org.espen.collect.android.utilities.CodeCaptureManagerFactory
-import org.espen.collect.android.views.BarcodeViewDecoder
-import org.espen.collect.androidshared.system.IntentLauncher
-import org.espen.collect.androidshared.ui.DialogFragmentUtils
-import org.espen.collect.androidshared.ui.ToastUtils
-import org.espen.collect.androidshared.ui.ToastUtils.showShortToast
-import org.espen.collect.androidshared.utils.CompressionUtils
+import org.odk.collect.android.R
+import org.odk.collect.android.activities.ActivityUtils
+import org.odk.collect.android.analytics.AnalyticsEvents
+import org.odk.collect.android.databinding.QrCodeProjectCreatorDialogLayoutBinding
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.odk.collect.android.utilities.CodeCaptureManagerFactory
+import org.odk.collect.android.views.BarcodeViewDecoder
+import org.odk.collect.androidshared.system.IntentLauncher
+import org.odk.collect.androidshared.ui.DialogFragmentUtils
+import org.odk.collect.androidshared.ui.ToastUtils
+import org.odk.collect.androidshared.ui.ToastUtils.showShortToast
+import org.odk.collect.androidshared.ui.enableIconsVisibility
+import org.odk.collect.androidshared.utils.CompressionUtils
 import org.odk.collect.material.MaterialFullScreenDialogFragment
 import org.odk.collect.permissions.PermissionListener
 import org.odk.collect.permissions.PermissionsProvider
@@ -121,7 +122,7 @@ class QrCodeProjectCreatorDialog :
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
 
         settingsConnectionMatcher = SettingsConnectionMatcher(projectsRepository, settingsProvider)
     }
@@ -134,6 +135,7 @@ class QrCodeProjectCreatorDialog :
         this.savedInstanceState = savedInstanceState
 
         binding = QrCodeProjectCreatorDialogLayoutBinding.inflate(inflater)
+        binding.toolbarLayout.toolbar.setTitle(org.odk.collect.strings.R.string.add_project)
 
         configureMenu()
 
@@ -168,9 +170,15 @@ class QrCodeProjectCreatorDialog :
     }
 
     private fun configureMenu() {
-        binding.toolbar.menu.removeItem(R.id.menu_item_share)
+        val toolbar = binding.toolbarLayout.toolbar
+        toolbar.inflateMenu(R.menu.qr_code_scan_menu)
 
-        binding.toolbar.setOnMenuItemClickListener {
+        val menu = toolbar.menu
+        menu.enableIconsVisibility()
+
+        menu.removeItem(R.id.menu_item_share)
+
+        toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.menu_item_scan_sd_card -> {
                     val photoPickerIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -229,7 +237,7 @@ class QrCodeProjectCreatorDialog :
     }
 
     override fun getToolbar(): Toolbar? {
-        return binding.toolbar
+        return binding.toolbarLayout.toolbar
     }
 
     private fun startScanning(savedInstanceState: Bundle?) {
@@ -285,7 +293,7 @@ class QrCodeProjectCreatorDialog :
             SettingsImportingResult.SUCCESS -> {
                 Analytics.log(AnalyticsEvents.QR_CREATE_PROJECT)
 
-                org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(activity, MainMenuActivity::class.java)
+                ActivityUtils.startActivityAndCloseAllOthers(activity, MainMenuActivity::class.java)
                 ToastUtils.showLongToast(
                     requireContext(),
                     getString(
@@ -313,7 +321,7 @@ class QrCodeProjectCreatorDialog :
 
     override fun switchToProject(uuid: String) {
         projectsDataService.setCurrentProject(uuid)
-        org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(activity, MainMenuActivity::class.java)
+        ActivityUtils.startActivityAndCloseAllOthers(activity, MainMenuActivity::class.java)
         ToastUtils.showLongToast(
             requireContext(),
             getString(

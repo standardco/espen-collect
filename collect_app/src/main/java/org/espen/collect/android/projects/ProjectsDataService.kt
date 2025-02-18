@@ -1,7 +1,7 @@
-package org.espen.collect.android.projects
+package org.odk.collect.android.projects
 
-import org.espen.collect.android.application.initialization.AnalyticsInitializer
-import org.espen.collect.android.application.initialization.MapsInitializer
+import org.odk.collect.android.application.initialization.AnalyticsInitializer
+import org.odk.collect.android.application.initialization.MapsInitializer
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider

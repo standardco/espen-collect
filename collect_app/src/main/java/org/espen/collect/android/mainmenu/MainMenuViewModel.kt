@@ -1,34 +1,40 @@
-package org.espen.collect.android.mainmenu
+package org.odk.collect.android.mainmenu
 
 import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import org.espen.collect.android.formmanagement.InstancesAppState
-import org.espen.collect.android.instancemanagement.InstanceDiskSynchronizer
-import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
-import org.espen.collect.android.instancemanagement.autosend.shouldFormBeSentAutomatically
-import org.espen.collect.android.instancemanagement.canBeEdited
-import org.espen.collect.android.preferences.utilities.FormUpdateMode
-import org.espen.collect.android.preferences.utilities.SettingsUtils
-import org.espen.collect.android.utilities.ContentUriHelper
-import org.espen.collect.android.utilities.FormsRepositoryProvider
-import org.espen.collect.android.utilities.InstancesRepositoryProvider
-import org.espen.collect.android.version.VersionInformation
+import androidx.lifecycle.map
+import org.odk.collect.android.instancemanagement.InstanceDiskSynchronizer
+import org.odk.collect.android.instancemanagement.InstancesDataService
+import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
+import org.odk.collect.android.instancemanagement.autosend.shouldFormBeSentAutomatically
+import org.odk.collect.android.instancemanagement.canBeEdited
+import org.odk.collect.android.instancemanagement.isDraft
+import org.odk.collect.android.projects.ProjectsDataService
+import org.odk.collect.android.utilities.ContentUriHelper
+import org.odk.collect.android.utilities.FormsRepositoryProvider
+import org.odk.collect.android.utilities.InstancesRepositoryProvider
+import org.odk.collect.android.version.VersionInformation
+import org.odk.collect.androidshared.data.Consumable
 import org.odk.collect.async.Scheduler
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.settings.SettingsProvider
+import org.odk.collect.settings.enums.FormUpdateMode
+import org.odk.collect.settings.enums.StringIdEnumUtils.getFormUpdateMode
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 
 class MainMenuViewModel(
-        private val application: Application,
-        private val versionInformation: org.espen.collect.android.version.VersionInformation,
-        private val settingsProvider: SettingsProvider,
-        private val instancesAppState: InstancesAppState,
-        private val scheduler: Scheduler,
-        private val formsRepositoryProvider: FormsRepositoryProvider,
-        private val instancesRepositoryProvider: InstancesRepositoryProvider,
-        private val autoSendSettingsProvider: AutoSendSettingsProvider
+    private val application: Application,
+    private val versionInformation: VersionInformation,
+    private val settingsProvider: SettingsProvider,
+    private val instancesDataService: InstancesDataService,
+    private val scheduler: Scheduler,
+    private val formsRepositoryProvider: FormsRepositoryProvider,
+    private val instancesRepositoryProvider: InstancesRepositoryProvider,
+    private val autoSendSettingsProvider: AutoSendSettingsProvider,
+    private val projectsDataService: ProjectsDataService
 ) : ViewModel() {
 
     val version: String
@@ -39,7 +45,10 @@ class MainMenuViewModel(
             var commitDescription = ""
             if (versionInformation.commitCount != null) {
                 commitDescription =
-                    appendToCommitDescription(commitDescription, versionInformation.commitCount.toString())
+                    appendToCommitDescription(
+                        commitDescription,
+                        versionInformation.commitCount.toString()
+                    )
             }
             if (versionInformation.commitSHA != null) {
                 commitDescription =
@@ -55,29 +64,38 @@ class MainMenuViewModel(
             }
         }
 
+    private val _savedForm = MutableLiveData<SavedForm>()
+    val savedForm: LiveData<Consumable<SavedForm>> = _savedForm.map { Consumable(it) }
+
     fun shouldEditSavedFormButtonBeVisible(): Boolean {
-        return settingsProvider.getProtectedSettings().getBoolean(ProtectedProjectKeys.KEY_EDIT_SAVED)
+        return settingsProvider.getProtectedSettings()
+            .getBoolean(ProtectedProjectKeys.KEY_EDIT_SAVED)
     }
 
     fun shouldSendFinalizedFormButtonBeVisible(): Boolean {
-        return settingsProvider.getProtectedSettings().getBoolean(ProtectedProjectKeys.KEY_SEND_FINALIZED)
+        return settingsProvider.getProtectedSettings()
+            .getBoolean(ProtectedProjectKeys.KEY_SEND_FINALIZED)
     }
 
     fun shouldViewSentFormButtonBeVisible(): Boolean {
-        return settingsProvider.getProtectedSettings().getBoolean(ProtectedProjectKeys.KEY_VIEW_SENT)
+        return settingsProvider.getProtectedSettings()
+            .getBoolean(ProtectedProjectKeys.KEY_VIEW_SENT)
     }
 
     fun shouldGetBlankFormButtonBeVisible(): Boolean {
-        val buttonEnabled = settingsProvider.getProtectedSettings().getBoolean(ProtectedProjectKeys.KEY_GET_BLANK)
+        val buttonEnabled =
+            settingsProvider.getProtectedSettings().getBoolean(ProtectedProjectKeys.KEY_GET_BLANK)
         return !isMatchExactlyEnabled() && buttonEnabled
     }
 
     fun shouldDeleteSavedFormButtonBeVisible(): Boolean {
-        return settingsProvider.getProtectedSettings().getBoolean(ProtectedProjectKeys.KEY_DELETE_SAVED)
+        return settingsProvider.getProtectedSettings()
+            .getBoolean(ProtectedProjectKeys.KEY_DELETE_SAVED)
     }
 
     private fun isMatchExactlyEnabled(): Boolean {
-        return org.espen.collect.android.preferences.utilities.SettingsUtils.getFormUpdateMode(application, settingsProvider.getUnprotectedSettings()) == org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY
+        return settingsProvider.getUnprotectedSettings()
+            .getFormUpdateMode(application) == FormUpdateMode.MATCH_EXACTLY
     }
 
     private fun appendToCommitDescription(commitDescription: String, part: String): String {
@@ -90,28 +108,42 @@ class MainMenuViewModel(
 
     fun refreshInstances() {
         scheduler.immediate<Any?>({
-            org.espen.collect.android.instancemanagement.InstanceDiskSynchronizer(settingsProvider).doInBackground()
-            instancesAppState.update()
+            InstanceDiskSynchronizer(settingsProvider).doInBackground()
+            instancesDataService.update(projectsDataService.getCurrentProject().uuid)
             null
         }) { }
     }
 
     val editableInstancesCount: LiveData<Int>
-        get() = instancesAppState.editableCount
+        get() = instancesDataService.editableCount
 
     val sendableInstancesCount: LiveData<Int>
-        get() = instancesAppState.sendableCount
+        get() = instancesDataService.sendableCount
 
     val sentInstancesCount: LiveData<Int>
-        get() = instancesAppState.sentCount
+        get() = instancesDataService.sentCount
 
-    fun getFormSavedSnackbarDetails(uri: Uri): Pair<Int, Int?>? {
-        val instance = instancesRepositoryProvider.get().get(ContentUriHelper.getIdFromUri(uri))
+    fun setSavedForm(uri: Uri?) {
+        if (uri == null) {
+            return
+        }
+
+        scheduler.immediate {
+            val details = getFormSavedSnackbarDetails(uri)
+            if (details != null) {
+                _savedForm.postValue(SavedForm(uri, details.first, details.second))
+            }
+        }
+    }
+
+    private fun getFormSavedSnackbarDetails(uri: Uri): Pair<Int, Int?>? {
+        val instance = instancesRepositoryProvider.create().get(ContentUriHelper.getIdFromUri(uri))
         return if (instance != null) {
-            val message = if (instance.status == Instance.STATUS_INCOMPLETE) {
+            val message = if (instance.isDraft()) {
                 org.odk.collect.strings.R.string.form_saved_as_draft
-            } else if (instance.status == Instance.STATUS_COMPLETE) {
-                val form = formsRepositoryProvider.get().getAllByFormIdAndVersion(instance.formId, instance.formVersion).first()
+            } else if (instance.status == Instance.STATUS_COMPLETE || instance.status == Instance.STATUS_SUBMISSION_FAILED) {
+                val form = formsRepositoryProvider.create()
+                    .getAllByFormIdAndVersion(instance.formId, instance.formVersion).first()
                 if (form.shouldFormBeSentAutomatically(autoSendSettingsProvider.isAutoSendEnabledInSettings())) {
                     org.odk.collect.strings.R.string.form_sending
                 } else {
@@ -124,7 +156,7 @@ class MainMenuViewModel(
             val action = if (instance.canBeEdited(settingsProvider)) {
                 org.odk.collect.strings.R.string.edit_form
             } else {
-                if (instance.status == Instance.STATUS_INCOMPLETE || instance.canEditWhenComplete()) {
+                if (instance.isDraft() || instance.canEditWhenComplete()) {
                     org.odk.collect.strings.R.string.view_form
                 } else {
                     null
@@ -136,4 +168,6 @@ class MainMenuViewModel(
             null
         }
     }
+
+    data class SavedForm(val uri: Uri, val message: Int, val action: Int?)
 }

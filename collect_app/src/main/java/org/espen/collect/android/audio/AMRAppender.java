@@ -1,4 +1,4 @@
-package org.espen.collect.android.audio;
+package org.odk.collect.android.audio;
 
 import java.io.File;
 import java.io.FileInputStream;

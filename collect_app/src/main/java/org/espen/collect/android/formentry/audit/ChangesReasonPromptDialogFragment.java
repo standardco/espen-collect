@@ -1,4 +1,4 @@
-package org.espen.collect.android.formentry.audit;
+package org.odk.collect.android.formentry.audit;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,9 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.espen.collect.android.formentry.saving.FormSaveViewModel;
-import org.espen.collect.android.R;
-import org.espen.collect.android.formentry.saving.FormSaveViewModel;
+import org.odk.collect.android.R;
+import org.odk.collect.android.formentry.saving.FormSaveViewModel;
 import org.odk.collect.material.MaterialFullScreenDialogFragment;
 
 public class ChangesReasonPromptDialogFragment extends MaterialFullScreenDialogFragment {
@@ -35,6 +34,8 @@ public class ChangesReasonPromptDialogFragment extends MaterialFullScreenDialogF
 
         Toolbar toolbar = getToolbar();
         toolbar.setTitle(viewModel.getFormName());
+        toolbar.setNavigationIcon(org.odk.collect.icons.R.drawable.ic_close);
+        toolbar.setNavigationContentDescription(org.odk.collect.strings.R.string.close);
         toolbar.inflateMenu(R.menu.changes_reason_dialog);
 
         EditText reasonField = view.findViewById(R.id.reason);
@@ -77,7 +78,7 @@ public class ChangesReasonPromptDialogFragment extends MaterialFullScreenDialogF
 
     @Override
     protected Toolbar getToolbar() {
-        return getView().findViewById(R.id.toolbar);
+        return getView().findViewById(org.odk.collect.androidshared.R.id.toolbar);
     }
 
     @Override

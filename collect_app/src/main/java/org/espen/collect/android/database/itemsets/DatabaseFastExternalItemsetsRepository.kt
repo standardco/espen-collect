@@ -1,12 +1,12 @@
-package org.espen.collect.android.database.itemsets
+package org.odk.collect.android.database.itemsets
 
-import org.espen.collect.android.fastexternalitemset.ItemsetDbAdapter
-import org.espen.collect.android.itemsets.FastExternalItemsetsRepository
+import org.odk.collect.android.fastexternalitemset.ItemsetDbAdapter
+import org.odk.collect.android.itemsets.FastExternalItemsetsRepository
 
 class DatabaseFastExternalItemsetsRepository : FastExternalItemsetsRepository {
 
     override fun deleteAllByCsvPath(path: String) {
-        org.espen.collect.android.fastexternalitemset.ItemsetDbAdapter().open().use {
+        ItemsetDbAdapter().open().use {
             it.delete(path)
         }
     }

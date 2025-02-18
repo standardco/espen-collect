@@ -1,11 +1,11 @@
-package org.espen.collect.android.widgets.utilities;
+package org.odk.collect.android.widgets.utilities;
 
 import android.util.Pair;
 
 import androidx.lifecycle.LifecycleOwner;
 
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.formentry.FormEntryViewModel;
+import org.odk.collect.android.formentry.FormEntryViewModel;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 
 import java.util.function.Consumer;

@@ -13,15 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.android.preferences.screens
+package org.odk.collect.android.preferences.screens
 
 import android.os.Bundle
-import org.espen.collect.android.R
-import org.espen.collect.android.activities.ActivityUtils
-import org.espen.collect.android.fragments.dialogs.MovingBackwardsDialog.MovingBackwardsDialogListener
-import org.espen.collect.android.fragments.dialogs.ResetSettingsResultDialog.ResetSettingsResultDialogListener
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.odk.collect.android.R
+import org.odk.collect.android.activities.ActivityUtils
+import org.odk.collect.android.fragments.dialogs.MovingBackwardsDialog.MovingBackwardsDialogListener
+import org.odk.collect.android.fragments.dialogs.ResetSettingsResultDialog.ResetSettingsResultDialogListener
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.metadata.PropertyManager
 import org.odk.collect.strings.localization.LocalizedActivity
 import javax.inject.Inject
@@ -37,9 +38,15 @@ class ProjectPreferencesActivity :
     lateinit var propertyManager: PropertyManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportFragmentManager.fragmentFactory = FragmentFactoryBuilder()
+            .forClass(ProjectPreferencesFragment::class.java) {
+                ProjectPreferencesFragment(intent.getBooleanExtra(EXTRA_IN_FORM_ENTRY, false))
+            }
+            .build()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preferences_layout)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(this).inject(this)
+        DaggerUtils.getComponent(this).inject(this)
     }
 
     override fun onPause() {
@@ -58,7 +65,7 @@ class ProjectPreferencesActivity :
     }
 
     override fun onDialogClosed() {
-        org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(this, MainMenuActivity::class.java)
+        ActivityUtils.startActivityAndCloseAllOthers(this, MainMenuActivity::class.java)
     }
 
     override fun preventOtherWaysOfEditingForm() {
@@ -67,4 +74,8 @@ class ProjectPreferencesActivity :
     }
 
     fun isInstanceStateSaved() = isInstanceStateSaved
+
+    companion object {
+        const val EXTRA_IN_FORM_ENTRY = "in_form_entry"
+    }
 }

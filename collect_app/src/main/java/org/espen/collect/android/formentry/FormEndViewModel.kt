@@ -1,8 +1,8 @@
-package org.espen.collect.android.formentry
+package org.odk.collect.android.formentry
 
 import androidx.lifecycle.ViewModel
-import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
-import org.espen.collect.android.instancemanagement.autosend.shouldFormBeSentAutomatically
+import org.odk.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
+import org.odk.collect.android.instancemanagement.autosend.shouldFormBeSentAutomatically
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 
@@ -18,7 +18,7 @@ class FormEndViewModel(
     }
 
     fun isFinalizeEnabled(): Boolean {
-        return settingsProvider.getProtectedSettings().getBoolean(ProtectedProjectKeys.KEY_FINALIZE)
+        return settingsProvider.getProtectedSettings().getBoolean(ProtectedProjectKeys.KEY_FINALIZE_IN_FORM_ENTRY)
     }
 
     fun shouldFormBeSentAutomatically(): Boolean {

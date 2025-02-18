@@ -1,11 +1,12 @@
-package org.espen.collect.android.injection.config
+package org.odk.collect.android.injection.config
 
 import org.odk.collect.projects.ProjectsDependencyModule
 import org.odk.collect.projects.ProjectsRepository
 
-class CollectProjectsDependencyModule(private val projectsRepository: ProjectsRepository) :
-    ProjectsDependencyModule() {
+class CollectProjectsDependencyModule(
+    private val appDependencyComponent: AppDependencyComponent
+) : ProjectsDependencyModule() {
     override fun providesProjectsRepository(): ProjectsRepository {
-        return projectsRepository
+        return appDependencyComponent.projectsRepository()
     }
 }

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.formentry.audit;
+package org.odk.collect.android.formentry.audit;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

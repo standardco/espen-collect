@@ -1,4 +1,4 @@
-package org.espen.collect.android.views;
+package org.odk.collect.android.views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

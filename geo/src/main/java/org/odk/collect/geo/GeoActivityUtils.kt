@@ -2,7 +2,7 @@ package org.odk.collect.geo
 
 import android.Manifest
 import android.app.Activity
-import org.espen.collect.androidshared.ui.ToastUtils
+import org.odk.collect.androidshared.ui.ToastUtils
 import org.odk.collect.permissions.ContextCompatPermissionChecker
 
 internal object GeoActivityUtils {

@@ -2,7 +2,7 @@ package org.odk.collect.crashhandler
 
 import android.content.Context
 import android.content.SharedPreferences
-import org.espen.collect.androidshared.data.getState
+import org.odk.collect.androidshared.data.getState
 import java.lang.Thread.UncaughtExceptionHandler
 import kotlin.system.exitProcess
 

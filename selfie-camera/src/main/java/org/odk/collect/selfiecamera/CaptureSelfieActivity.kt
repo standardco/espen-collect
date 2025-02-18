@@ -20,7 +20,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import org.espen.collect.androidshared.ui.ToastUtils.showLongToast
+import org.odk.collect.androidshared.ui.ToastUtils.showLongToast
 import org.odk.collect.externalapp.ExternalAppUtils
 import org.odk.collect.permissions.PermissionsChecker
 import org.odk.collect.strings.localization.LocalizedActivity

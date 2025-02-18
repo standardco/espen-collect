@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.espen.collect.android.listeners;
+package org.odk.collect.android.listeners;
 
 /**
  * Callback interface invoked upon the completion of a DeleteInstancesTask

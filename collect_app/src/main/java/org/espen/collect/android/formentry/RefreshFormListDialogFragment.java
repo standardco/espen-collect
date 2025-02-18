@@ -1,4 +1,4 @@
-package org.espen.collect.android.formentry;
+package org.odk.collect.android.formentry;
 
 import android.content.Context;
 

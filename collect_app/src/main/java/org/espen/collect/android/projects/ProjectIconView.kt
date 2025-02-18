@@ -1,4 +1,4 @@
-package org.espen.collect.android.projects
+package org.odk.collect.android.projects
 
 import android.content.Context
 import android.graphics.Color
@@ -6,7 +6,7 @@ import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.TextView
-import org.espen.collect.android.R
+import org.odk.collect.android.R
 import org.odk.collect.projects.Project
 import kotlin.properties.Delegates
 

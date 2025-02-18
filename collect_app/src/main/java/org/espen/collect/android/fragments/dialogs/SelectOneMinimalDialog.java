@@ -1,19 +1,16 @@
-package org.espen.collect.android.fragments.dialogs;
+package org.odk.collect.android.fragments.dialogs;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import org.espen.collect.android.adapters.SelectOneListAdapter;
-import org.espen.collect.android.listeners.SelectItemClickListener;
-import org.espen.collect.android.utilities.MediaUtils;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.adapters.SelectOneListAdapter;
-import org.espen.collect.android.listeners.SelectItemClickListener;
-import org.espen.collect.android.utilities.MediaUtils;
+import org.odk.collect.android.adapters.SelectOneListAdapter;
+import org.odk.collect.android.listeners.SelectItemClickListener;
+import org.odk.collect.android.utilities.MediaUtils;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import static org.odk.collect.settings.keys.ProtectedProjectKeys.KEY_ADMIN_PW;
 

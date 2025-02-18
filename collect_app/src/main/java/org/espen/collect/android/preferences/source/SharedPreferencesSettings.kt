@@ -1,4 +1,4 @@
-package org.espen.collect.android.preferences.source
+package org.odk.collect.android.preferences.source
 
 import android.content.SharedPreferences
 import org.odk.collect.shared.settings.Settings

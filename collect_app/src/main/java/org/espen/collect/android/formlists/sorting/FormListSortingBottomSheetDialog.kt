@@ -1,4 +1,4 @@
-package org.espen.collect.android.formlists.sorting
+package org.odk.collect.android.formlists.sorting
 
 import android.content.Context
 import android.os.Bundle
@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import org.espen.collect.android.R
+import org.odk.collect.android.R
 import java.util.function.Consumer
 
 class FormListSortingBottomSheetDialog(
     context: Context,
-    private val options: List<FormListSortingOption>,
-    private val selectedOption: Int,
-    private val onSelectedOptionChanged: Consumer<Int>
+    val options: List<FormListSortingOption>,
+    val selectedOption: Int,
+    val onSelectedOptionChanged: Consumer<Int>
 ) : BottomSheetDialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {

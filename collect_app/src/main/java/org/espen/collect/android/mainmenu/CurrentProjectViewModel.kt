@@ -1,11 +1,11 @@
-package org.espen.collect.android.mainmenu
+package org.odk.collect.android.mainmenu
 
 import androidx.lifecycle.ViewModel
 import org.odk.collect.analytics.Analytics
-import org.espen.collect.android.analytics.AnalyticsEvents
-import org.espen.collect.android.projects.ProjectsDataService
-import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
-import org.espen.collect.androidshared.livedata.NonNullLiveData
+import org.odk.collect.android.analytics.AnalyticsEvents
+import org.odk.collect.android.projects.ProjectsDataService
+import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
+import org.odk.collect.androidshared.livedata.NonNullLiveData
 import org.odk.collect.projects.Project
 
 class CurrentProjectViewModel(
@@ -23,7 +23,7 @@ class CurrentProjectViewModel(
 
     fun refresh() {
         if (currentProject.value != projectsDataService.getCurrentProject()) {
-            _currentProject.postValue(projectsDataService.getCurrentProject())
+            _currentProject.value = projectsDataService.getCurrentProject()
         }
     }
 

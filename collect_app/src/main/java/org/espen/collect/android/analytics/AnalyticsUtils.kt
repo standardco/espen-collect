@@ -1,7 +1,7 @@
-package org.espen.collect.android.analytics
+package org.odk.collect.android.analytics
 
 import org.odk.collect.analytics.Analytics
-import org.espen.collect.android.javarosawrapper.FormController
+import org.odk.collect.android.javarosawrapper.FormController
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.shared.settings.Settings
 import org.odk.collect.shared.strings.Md5.getMd5Hash

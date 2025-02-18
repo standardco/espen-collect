@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.ui
+package org.odk.collect.androidshared.ui
 
 import android.content.Context
 import androidx.preference.ListPreference

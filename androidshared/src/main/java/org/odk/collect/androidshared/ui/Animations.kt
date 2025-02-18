@@ -1,10 +1,10 @@
-package org.espen.collect.androidshared.ui
+package org.odk.collect.androidshared.ui
 
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.view.View
-import org.espen.collect.androidshared.ui.Animations.DISABLE_ANIMATIONS
+import org.odk.collect.androidshared.ui.Animations.DISABLE_ANIMATIONS
 
 /**
  * Helpers/extensions for running animations. These are "test safe" in that animations can be disabled

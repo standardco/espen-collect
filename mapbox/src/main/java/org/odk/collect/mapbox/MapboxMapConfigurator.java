@@ -1,17 +1,18 @@
 package org.odk.collect.mapbox;
 
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_MAPBOX_MAP_STYLE;
+import static kotlin.collections.SetsKt.setOf;
 
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.preference.Preference;
 
-import com.google.common.collect.ImmutableSet;
 import com.mapbox.maps.Style;
 
-import org.espen.collect.androidshared.ui.PrefUtils;
-import org.espen.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.androidshared.system.OpenGLVersionChecker;
+import org.odk.collect.androidshared.ui.PrefUtils;
+import org.odk.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.maps.MapConfigurator;
 import org.odk.collect.maps.layers.MbtilesFile;
 import org.odk.collect.settings.keys.ProjectKeys;
@@ -42,8 +43,11 @@ public class MapboxMapConfigurator implements MapConfigurator {
     }
 
     @Override public boolean isAvailable(Context context) {
-        // If the app builds that means mapbox is available
-        return true;
+        /*
+         * The Mapbox SDK for Android requires OpenGL ES version 3.
+         * See: https://github.com/mapbox/mapbox-maps-android/blob/main/CHANGELOG.md#1100-november-29-2023
+         */
+        return OpenGLVersionChecker.isOpenGLv3Supported(context);
     }
 
     @Override public void showUnavailableMessage(Context context) {
@@ -66,8 +70,8 @@ public class MapboxMapConfigurator implements MapConfigurator {
     }
 
     @Override public Set<String> getPrefKeys() {
-        return prefKey.isEmpty() ? ImmutableSet.of(ProjectKeys.KEY_REFERENCE_LAYER) :
-            ImmutableSet.of(prefKey, ProjectKeys.KEY_REFERENCE_LAYER);
+        return prefKey.isEmpty() ? setOf(ProjectKeys.KEY_REFERENCE_LAYER) :
+                setOf(prefKey, ProjectKeys.KEY_REFERENCE_LAYER);
     }
 
     @Override public Bundle buildConfig(Settings prefs) {

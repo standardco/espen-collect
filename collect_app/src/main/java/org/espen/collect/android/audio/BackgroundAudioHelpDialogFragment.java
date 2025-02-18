@@ -1,4 +1,4 @@
-package org.espen.collect.android.audio;
+package org.odk.collect.android.audio;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.R;
+import org.odk.collect.android.R;
 
 public class BackgroundAudioHelpDialogFragment extends DialogFragment {
 

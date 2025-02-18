@@ -1,4 +1,4 @@
-package org.espen.collect.android.projects
+package org.odk.collect.android.projects
 
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository

@@ -1,4 +1,4 @@
-package org.espen.collect.android.preferences.screens;
+package org.odk.collect.android.preferences.screens;
 
 import static org.odk.collect.metadata.PropertyManager.PROPMGR_DEVICE_ID;
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_METADATA_EMAIL;
@@ -16,10 +16,10 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.R;
-import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.androidshared.ui.ToastUtils;
-import org.espen.collect.androidshared.utils.Validator;
+import org.odk.collect.android.R;
+import org.odk.collect.android.injection.DaggerUtils;
+import org.odk.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.androidshared.utils.Validator;
 import org.odk.collect.metadata.PropertyManager;
 
 import javax.inject.Inject;

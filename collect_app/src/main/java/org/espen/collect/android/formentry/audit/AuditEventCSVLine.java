@@ -1,6 +1,5 @@
-package org.espen.collect.android.formentry.audit;
+package org.odk.collect.android.formentry.audit;
 
-import org.espen.collect.android.utilities.CSVUtils;
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.instance.TreeReference;
 import org.odk.collect.shared.strings.StringUtils;
@@ -10,7 +9,7 @@ import java.util.List;
 
 import timber.log.Timber;
 
-import static org.espen.collect.android.utilities.CSVUtils.getEscapedValueForCsv;
+import static org.odk.collect.android.utilities.CSVUtils.getEscapedValueForCsv;
 
 public final class AuditEventCSVLine {
 
@@ -40,16 +39,16 @@ public final class AuditEventCSVLine {
         }
 
         if (isTrackingChangesEnabled) {
-            string += String.format(",%s,%s", CSVUtils.getEscapedValueForCsv(oldValue), CSVUtils.getEscapedValueForCsv(newValue));
+            string += String.format(",%s,%s", getEscapedValueForCsv(oldValue), getEscapedValueForCsv(newValue));
         }
 
         if (user != null) {
-            string += String.format(",%s", CSVUtils.getEscapedValueForCsv(user));
+            string += String.format(",%s", getEscapedValueForCsv(user));
         }
 
         if (isTrackingChangesReasonEnabled) {
             if (changeReason != null) {
-                string += String.format(",%s", CSVUtils.getEscapedValueForCsv(changeReason));
+                string += String.format(",%s", getEscapedValueForCsv(changeReason));
             } else {
                 string += ",";
             }

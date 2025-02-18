@@ -1,22 +1,21 @@
-package org.espen.collect.android.formentry.media;
+package org.odk.collect.android.formentry.media;
 
-import org.espen.collect.android.audio.AudioHelper;
-import org.espen.collect.android.utilities.Appearances;
 import org.javarosa.core.model.Constants;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.audio.AudioHelper;
-import org.espen.collect.android.utilities.Appearances;
+import org.odk.collect.android.audio.AudioHelper;
+import org.odk.collect.android.utilities.Appearances;
+import org.odk.collect.android.utilities.FormEntryPromptUtils;
 import org.odk.collect.audioclips.Clip;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Collections.emptyList;
-import static org.espen.collect.android.formentry.media.FormMediaUtils.getClipID;
-import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayableAudioURI;
-import static org.espen.collect.android.utilities.Appearances.NO_BUTTONS;
+import static org.odk.collect.android.formentry.media.FormMediaUtils.getClipID;
+import static org.odk.collect.android.formentry.media.FormMediaUtils.getPlayableAudioURI;
+import static org.odk.collect.android.utilities.Appearances.NO_BUTTONS;
 
 public class PromptAutoplayer {
 
@@ -32,7 +31,7 @@ public class PromptAutoplayer {
     }
 
     public Boolean autoplayIfNeeded(FormEntryPrompt prompt) {
-        String autoplayOption = prompt.getFormElement().getAdditionalAttribute(null, AUTOPLAY_ATTRIBUTE);
+        String autoplayOption = FormEntryPromptUtils.getAdditionalAttribute(prompt, AUTOPLAY_ATTRIBUTE);
 
         if (hasAudioAutoplay(autoplayOption)) {
             List<Clip> clipsToPlay = new ArrayList<>();
@@ -75,10 +74,10 @@ public class PromptAutoplayer {
             List<SelectChoice> selectChoices = prompt.getSelectChoices();
 
             for (SelectChoice choice : selectChoices) {
-                String selectURI = FormMediaUtils.getPlayableAudioURI(prompt, choice, referenceManager);
+                String selectURI = getPlayableAudioURI(prompt, choice, referenceManager);
 
                 if (selectURI != null) {
-                    Clip clip = new Clip(FormMediaUtils.getClipID(prompt, choice), selectURI);
+                    Clip clip = new Clip(getClipID(prompt, choice), selectURI);
                     selectClips.add(clip);
                 }
             }
@@ -90,15 +89,15 @@ public class PromptAutoplayer {
     private boolean appearanceDoesNotShowControls(String appearance) {
         return appearance.startsWith(Appearances.MINIMAL) ||
                 appearance.startsWith(Appearances.COMPACT) ||
-                appearance.contains(Appearances.NO_BUTTONS);
+                appearance.contains(NO_BUTTONS);
     }
 
     private Clip getPromptClip(FormEntryPrompt prompt) {
-        String uri = FormMediaUtils.getPlayableAudioURI(prompt, referenceManager);
+        String uri = getPlayableAudioURI(prompt, referenceManager);
         if (uri != null) {
             return new Clip(
-                    FormMediaUtils.getClipID(prompt),
-                    FormMediaUtils.getPlayableAudioURI(prompt, referenceManager)
+                    getClipID(prompt),
+                    getPlayableAudioURI(prompt, referenceManager)
             );
         } else {
             return null;

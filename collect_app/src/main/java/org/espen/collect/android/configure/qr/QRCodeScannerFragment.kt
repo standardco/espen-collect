@@ -1,18 +1,18 @@
-package org.espen.collect.android.configure.qr
+package org.odk.collect.android.configure.qr
 
 import android.content.Context
 import com.google.zxing.integration.android.IntentIntegrator
 import com.journeyapps.barcodescanner.BarcodeResult
 import org.odk.collect.analytics.Analytics
-import org.espen.collect.android.activities.ActivityUtils
-import org.espen.collect.android.analytics.AnalyticsEvents
-import org.espen.collect.android.fragments.BarCodeScannerFragment
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.mainmenu.MainMenuActivity
-import org.espen.collect.android.projects.ProjectsDataService
-import org.espen.collect.android.storage.StoragePathProvider
-import org.espen.collect.androidshared.ui.ToastUtils.showLongToast
-import org.espen.collect.androidshared.utils.CompressionUtils
+import org.odk.collect.android.activities.ActivityUtils
+import org.odk.collect.android.analytics.AnalyticsEvents
+import org.odk.collect.android.fragments.BarCodeScannerFragment
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.odk.collect.android.projects.ProjectsDataService
+import org.odk.collect.android.storage.StoragePathProvider
+import org.odk.collect.androidshared.ui.ToastUtils.showLongToast
+import org.odk.collect.androidshared.utils.CompressionUtils
 import org.odk.collect.settings.ODKAppSettingsImporter
 import org.odk.collect.settings.importing.SettingsImportingResult
 import java.io.File
@@ -20,7 +20,7 @@ import java.io.IOException
 import java.util.zip.DataFormatException
 import javax.inject.Inject
 
-class QRCodeScannerFragment : org.espen.collect.android.fragments.BarCodeScannerFragment() {
+class QRCodeScannerFragment : BarCodeScannerFragment() {
 
     @Inject
     lateinit var settingsImporter: ODKAppSettingsImporter
@@ -33,7 +33,7 @@ class QRCodeScannerFragment : org.espen.collect.android.fragments.BarCodeScanner
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
     }
 
     @Throws(IOException::class, DataFormatException::class)
@@ -59,7 +59,7 @@ class QRCodeScannerFragment : org.espen.collect.android.fragments.BarCodeScanner
                     requireContext(),
                     getString(org.odk.collect.strings.R.string.successfully_imported_settings)
                 )
-                org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(
+                ActivityUtils.startActivityAndCloseAllOthers(
                     requireActivity(),
                     MainMenuActivity::class.java
                 )

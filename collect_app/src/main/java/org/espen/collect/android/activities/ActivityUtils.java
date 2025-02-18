@@ -1,4 +1,4 @@
-package org.espen.collect.android.activities;
+package org.odk.collect.android.activities;
 
 import android.app.Activity;
 import android.content.Intent;

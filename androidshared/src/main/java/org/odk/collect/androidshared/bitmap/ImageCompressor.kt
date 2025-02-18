@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.androidshared.bitmap
+package org.odk.collect.androidshared.bitmap
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

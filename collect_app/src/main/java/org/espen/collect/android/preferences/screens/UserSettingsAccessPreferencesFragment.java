@@ -1,8 +1,8 @@
-package org.espen.collect.android.preferences.screens;
+package org.odk.collect.android.preferences.screens;
 
 import android.os.Bundle;
 
-import org.espen.collect.android.R;
+import org.odk.collect.android.R;
 
 public class UserSettingsAccessPreferencesFragment extends BaseAdminPreferencesFragment {
 

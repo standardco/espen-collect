@@ -1,4 +1,4 @@
-package org.espen.collect.android.preferences.screens
+package org.odk.collect.android.preferences.screens
 
 import android.content.Context
 import android.content.DialogInterface
@@ -7,24 +7,23 @@ import android.os.Bundle
 import androidx.preference.Preference
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.odk.collect.analytics.Analytics
-import org.espen.collect.android.R
-import org.espen.collect.android.activities.ActivityUtils
-import org.espen.collect.android.activities.FirstLaunchActivity
-import org.espen.collect.android.analytics.AnalyticsEvents
-import org.espen.collect.android.configure.qr.QRCodeTabsActivity
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.mainmenu.MainMenuActivity
-import org.espen.collect.android.preferences.dialogs.ResetDialogPreference
-import org.espen.collect.android.preferences.dialogs.ResetDialogPreferenceFragmentCompat
-import org.espen.collect.android.projects.DeleteProjectResult
-import org.espen.collect.android.projects.ProjectDeleter
-import org.espen.collect.androidshared.ui.ToastUtils
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard
-import org.odk.collect.settings.keys.ProjectKeys
+import org.odk.collect.android.R
+import org.odk.collect.android.activities.ActivityUtils
+import org.odk.collect.android.activities.FirstLaunchActivity
+import org.odk.collect.android.analytics.AnalyticsEvents
+import org.odk.collect.android.configure.qr.QRCodeTabsActivity
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.mainmenu.MainMenuActivity
+import org.odk.collect.android.preferences.dialogs.ResetDialogPreference
+import org.odk.collect.android.preferences.dialogs.ResetDialogPreferenceFragmentCompat
+import org.odk.collect.android.projects.DeleteProjectResult
+import org.odk.collect.android.projects.ProjectDeleter
+import org.odk.collect.androidshared.ui.ToastUtils
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 import javax.inject.Inject
 
 class ProjectManagementPreferencesFragment :
-    org.espen.collect.android.preferences.screens.BaseAdminPreferencesFragment(),
+    BaseAdminPreferencesFragment(),
     Preference.OnPreferenceClickListener {
 
     @Inject
@@ -32,18 +31,12 @@ class ProjectManagementPreferencesFragment :
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         super.onCreatePreferences(savedInstanceState, rootKey)
         setPreferencesFromResource(R.xml.project_management_preferences, rootKey)
-
-        val unprotectedSettings = settingsProvider.getUnprotectedSettings()
-        val protocol = unprotectedSettings.getString(ProjectKeys.KEY_PROTOCOL)
-        if (protocol == ProjectKeys.PROTOCOL_GOOGLE_SHEETS) {
-            findPreference<Preference>(IMPORT_SETTINGS_KEY)!!.isVisible = false
-        }
 
         findPreference<Preference>(IMPORT_SETTINGS_KEY)!!.onPreferenceClickListener = this
         findPreference<Preference>(DELETE_PROJECT_KEY)!!.onPreferenceClickListener = this
@@ -51,12 +44,12 @@ class ProjectManagementPreferencesFragment :
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
         if (MultiClickGuard.allowClick(javaClass.name)) {
-            var resetDialogPreference: org.espen.collect.android.preferences.dialogs.ResetDialogPreference? = null
-            if (preference is org.espen.collect.android.preferences.dialogs.ResetDialogPreference) {
+            var resetDialogPreference: ResetDialogPreference? = null
+            if (preference is ResetDialogPreference) {
                 resetDialogPreference = preference
             }
             if (resetDialogPreference != null) {
-                val dialogFragment = org.espen.collect.android.preferences.dialogs.ResetDialogPreferenceFragmentCompat.newInstance(preference.key)
+                val dialogFragment = ResetDialogPreferenceFragmentCompat.newInstance(preference.key)
                 dialogFragment.setTargetFragment(this, 0)
                 dialogFragment.show(parentFragmentManager, null)
             } else {
@@ -73,12 +66,9 @@ class ProjectManagementPreferencesFragment :
                     startActivity(pref)
                 }
                 DELETE_PROJECT_KEY -> {
-                    val isGDProject = ProjectKeys.PROTOCOL_GOOGLE_SHEETS == settingsProvider.getUnprotectedSettings().getString(ProjectKeys.KEY_PROTOCOL)
-                    val message = if (isGDProject) org.odk.collect.strings.R.string.delete_google_drive_project_confirm_message else org.odk.collect.strings.R.string.delete_project_confirm_message
-
                     MaterialAlertDialogBuilder(requireActivity())
                         .setTitle(org.odk.collect.strings.R.string.delete_project)
-                        .setMessage(message)
+                        .setMessage(org.odk.collect.strings.R.string.delete_project_confirm_message)
                         .setNegativeButton(org.odk.collect.strings.R.string.delete_project_no) { _: DialogInterface?, _: Int -> }
                         .setPositiveButton(org.odk.collect.strings.R.string.delete_project_yes) { _: DialogInterface?, _: Int -> deleteProject() }
                         .show()
@@ -109,7 +99,7 @@ class ProjectManagementPreferencesFragment :
             }
             is DeleteProjectResult.DeletedSuccessfullyCurrentProject -> {
                 val newCurrentProject = deleteProjectResult.newCurrentProject
-                org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(
+                ActivityUtils.startActivityAndCloseAllOthers(
                     requireActivity(),
                     MainMenuActivity::class.java
                 )
@@ -122,7 +112,7 @@ class ProjectManagementPreferencesFragment :
                 )
             }
             is DeleteProjectResult.DeletedSuccessfullyLastProject -> {
-                org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(
+                ActivityUtils.startActivityAndCloseAllOthers(
                     requireActivity(),
                     FirstLaunchActivity::class.java
                 )

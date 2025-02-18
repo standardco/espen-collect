@@ -1,12 +1,11 @@
-package org.espen.collect.android.activities;
+package org.odk.collect.android.activities;
 
-import org.espen.collect.android.database.forms.DatabaseFormColumns;
-import org.espen.collect.android.database.forms.DatabaseFormColumns;
+import org.odk.collect.android.database.forms.DatabaseFormColumns;
 
-import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_ASC;
-import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_DESC;
-import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_ASC;
-import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_DESC;
+import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_ASC;
+import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_DESC;
+import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_ASC;
+import static org.odk.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_DESC;
 
 public abstract class FormListActivity extends AppListActivity {
 

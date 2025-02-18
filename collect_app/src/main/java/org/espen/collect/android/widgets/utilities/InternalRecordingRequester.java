@@ -1,10 +1,9 @@
-package org.espen.collect.android.widgets.utilities;
+package org.odk.collect.android.widgets.utilities;
 
 import androidx.activity.ComponentActivity;
 
-import org.espen.collect.android.utilities.FormEntryPromptUtils;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.utilities.FormEntryPromptUtils;
+import org.odk.collect.android.utilities.FormEntryPromptUtils;
 import org.odk.collect.audiorecorder.recorder.Output;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.permissions.PermissionsProvider;

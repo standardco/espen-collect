@@ -29,13 +29,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_standard"
-            android:text="@string/google_drive_deprecation_message"
+            android:text="@string/google_drive_removed_message"
             android:textAppearance="?textAppearanceBody2"
+            android:textColor="?colorOnSurface"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/instance_name_info_icon"
             app:layout_constraintTop_toTopOf="@id/instance_name_info_icon" />
 
-        <com.google.android.material.button.MaterialButton
+        <org.odk.collect.androidshared.ui.multiclicksafe.MultiClickSafeMaterialButton
             android:id="@+id/learn_more_button"
             style="?borderlessButtonStyle"
             android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.utils;
+package org.odk.collect.androidshared.utils;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -13,7 +13,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.espen.collect.androidshared.ui.DialogFragmentUtils;
+import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 import org.robolectric.Robolectric;
 import org.robolectric.android.controller.ActivityController;
 

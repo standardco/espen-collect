@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.fragments.dialogs;
+package org.odk.collect.android.fragments.dialogs;
 
 import android.app.Dialog;
 import android.content.Intent;

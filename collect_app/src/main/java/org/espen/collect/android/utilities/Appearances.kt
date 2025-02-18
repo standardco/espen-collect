@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.android.utilities
+package org.odk.collect.android.utilities
 
 import android.content.res.Configuration
+import org.javarosa.core.model.Constants
 import org.javarosa.form.api.FormEntryPrompt
-import org.espen.collect.android.externaldata.ExternalDataUtil
-import org.espen.collect.androidshared.utils.ScreenUtils
-import java.lang.Exception
+import org.odk.collect.android.dynamicpreload.ExternalDataUtil
+import org.odk.collect.androidshared.utils.ScreenUtils
 
 object Appearances {
     // Date appearances
@@ -29,6 +29,7 @@ object Appearances {
     const val BIKRAM_SAMBAT = "bikram-sambat"
     const val MYANMAR = "myanmar"
     const val PERSIAN = "persian"
+    const val BUDDHIST = "buddhist"
     const val NO_CALENDAR = "no-calendar"
     const val MONTH_YEAR = "month-year"
     const val YEAR = "year"
@@ -69,6 +70,7 @@ object Appearances {
     const val NEW_FRONT = "new-front"
     const val NEW = "new"
     const val FRONT = "front"
+    const val HIDDEN_ANSWER = "hidden-answer"
 
     // Maps appearances
     const val PLACEMENT_MAP = "placement-map"
@@ -86,6 +88,8 @@ object Appearances {
     const val NUMBERS = "numbers"
     const val URL = "url"
     const val RATING = "rating"
+    const val MASKED = "masked"
+    const val COUNTER = "counter"
 
     // Get appearance hint and clean it up so it is lower case, without the search function and never null.
     @JvmStatic
@@ -100,7 +104,7 @@ object Appearances {
             // Strip out the search() appearance/function which is handled in ExternalDataUtil so that
             // it is not considered when matching other appearances. For example, a file named list.csv
             // used as a parameter to search() should not be interpreted as a list appearance.
-            appearance = org.espen.collect.android.externaldata.ExternalDataUtil.SEARCH_FUNCTION_REGEX.matcher(appearance).replaceAll("")
+            appearance = ExternalDataUtil.SEARCH_FUNCTION_REGEX.matcher(appearance).replaceAll("")
         }
         return appearance
     }
@@ -168,7 +172,7 @@ object Appearances {
 
     @JvmStatic
     fun useThousandSeparator(prompt: FormEntryPrompt): Boolean {
-        return getSanitizedAppearanceHint(prompt).contains(THOUSANDS_SEP)
+        return getSanitizedAppearanceHint(prompt).contains(THOUSANDS_SEP) && !isMasked(prompt)
     }
 
     @JvmStatic
@@ -188,5 +192,13 @@ object Appearances {
     fun isAutocomplete(prompt: FormEntryPrompt): Boolean {
         val appearance = getSanitizedAppearanceHint(prompt)
         return appearance.contains(SEARCH) || appearance.contains(AUTOCOMPLETE)
+    }
+
+    @JvmStatic
+    fun isMasked(prompt: FormEntryPrompt): Boolean {
+        val appearance = getSanitizedAppearanceHint(prompt)
+        return appearance.contains(MASKED) &&
+            !appearance.contains(NUMBERS) &&
+            prompt.dataType == Constants.DATATYPE_TEXT
     }
 }

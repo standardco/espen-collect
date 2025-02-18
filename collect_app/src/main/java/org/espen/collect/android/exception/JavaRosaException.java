@@ -16,7 +16,7 @@
  * the License.
  */
 
-package org.espen.collect.android.exception;
+package org.odk.collect.android.exception;
 
 /**
  * This exception wraps all exceptions that come from JR.

@@ -1,4 +1,4 @@
-package org.espen.collect.android.javarosawrapper;
+package org.odk.collect.android.javarosawrapper;
 
 import androidx.annotation.Nullable;
 

@@ -1,4 +1,4 @@
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;

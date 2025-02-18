@@ -1,19 +1,17 @@
-package org.espen.collect.android.configure.qr
+package org.odk.collect.android.configure.qr
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import org.espen.collect.android.R
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.projects.ProjectsDataService
-import org.espen.collect.android.utilities.FileProvider
-import org.espen.collect.androidshared.system.IntentLauncher
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard.allowClick
-import org.espen.collect.androidshared.utils.AppBarUtils.setupAppBarLayout
+import org.odk.collect.android.R
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.projects.ProjectsDataService
+import org.odk.collect.android.utilities.FileProvider
+import org.odk.collect.androidshared.system.IntentLauncher
+import org.odk.collect.androidshared.ui.ListFragmentStateAdapter
+import org.odk.collect.androidshared.utils.AppBarUtils.setupAppBarLayout
 import org.odk.collect.async.Scheduler
 import org.odk.collect.permissions.PermissionListener
 import org.odk.collect.permissions.PermissionsProvider
@@ -31,7 +29,7 @@ class QRCodeTabsActivity : LocalizedActivity() {
     lateinit var intentLauncher: IntentLauncher
 
     @Inject
-    lateinit var fileProvider: org.espen.collect.android.utilities.FileProvider
+    lateinit var fileProvider: FileProvider
 
     @Inject
     lateinit var scheduler: Scheduler
@@ -54,12 +52,11 @@ class QRCodeTabsActivity : LocalizedActivity() {
     @Inject
     lateinit var settingsProvider: SettingsProvider
 
-    private lateinit var menuDelegate: QRCodeMenuDelegate
     private lateinit var activityResultDelegate: QRCodeActivityResultDelegate
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(this).inject(this)
+        DaggerUtils.getComponent(this).inject(this)
         setContentView(R.layout.tabs_layout)
         setupAppBarLayout(this, getString(org.odk.collect.strings.R.string.reconfigure_with_qr_code_settings_title))
 
@@ -70,7 +67,7 @@ class QRCodeTabsActivity : LocalizedActivity() {
             projectsDataService.getCurrentProject()
         )
 
-        menuDelegate = QRCodeMenuDelegate(
+        val menuProvider = QRCodeMenuProvider(
             this,
             intentLauncher,
             qrCodeGenerator,
@@ -79,6 +76,7 @@ class QRCodeTabsActivity : LocalizedActivity() {
             settingsProvider,
             scheduler
         )
+        addMenuProvider(menuProvider, this)
 
         permissionsProvider.requestCameraPermission(
             this,
@@ -102,29 +100,14 @@ class QRCodeTabsActivity : LocalizedActivity() {
 
         val viewPager = findViewById<ViewPager2>(R.id.viewPager)
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-        val adapter = QRCodeTabsAdapter(this)
-        viewPager.adapter = adapter
+        viewPager.adapter = ListFragmentStateAdapter(
+            this,
+            listOf(QRCodeScannerFragment::class.java, ShowQRCodeFragment::class.java)
+        )
 
         TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
             tab.text = fragmentTitleList[position]
         }.attach()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuDelegate.onCreateOptionsMenu(menuInflater, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (!allowClick(javaClass.name)) {
-            return true
-        }
-
-        return if (menuDelegate.onOptionsItemSelected(item)) {
-            true
-        } else {
-            super.onOptionsItemSelected(item)
-        }
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

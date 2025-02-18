@@ -1,6 +1,6 @@
-package org.espen.collect.android.formentry.saving;
+package org.odk.collect.android.formentry.saving;
 
-import static org.espen.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.SAVING;
+import static org.odk.collect.android.formentry.saving.FormSaveViewModel.SaveResult.State.SAVING;
 
 import android.content.Context;
 

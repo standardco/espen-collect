@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.tasks;
+package org.odk.collect.android.tasks;
 
 import android.os.AsyncTask;
 
 import org.javarosa.core.model.FormIndex;
-import org.espen.collect.android.javarosawrapper.FormController;
+import org.odk.collect.android.javarosawrapper.FormController;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,23 +1,43 @@
-package org.espen.collect.android.utilities
+package org.odk.collect.android.utilities
 
 import android.content.Context
-import org.espen.collect.android.database.forms.DatabaseFormsRepository
-import org.espen.collect.android.storage.StoragePathProvider
-import org.espen.collect.android.storage.StorageSubdirectory
+import org.odk.collect.android.application.Collect
+import org.odk.collect.android.database.forms.DatabaseFormsRepository
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.storage.StoragePathProvider
+import org.odk.collect.android.storage.StoragePaths
 import org.odk.collect.forms.FormsRepository
+import org.odk.collect.forms.savepoints.SavepointsRepository
+import org.odk.collect.projects.ProjectDependencyFactory
 
 class FormsRepositoryProvider @JvmOverloads constructor(
     private val context: Context,
-    private val storagePathProvider: StoragePathProvider = StoragePathProvider()
-) {
+    private val storagePathFactory: ProjectDependencyFactory<StoragePaths> = StoragePathProvider(),
+    private val savepointsRepositoryProvider: ProjectDependencyFactory<SavepointsRepository> = SavepointsRepositoryProvider(
+        context,
+        storagePathFactory
+    )
+) : ProjectDependencyFactory<FormsRepository> {
 
     private val clock = { System.currentTimeMillis() }
 
-    @JvmOverloads
-    fun get(projectId: String? = null): FormsRepository {
-        val dbPath = storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.METADATA, projectId)
-        val formsPath = storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.FORMS, projectId)
-        val cachePath = storagePathProvider.getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.CACHE, projectId)
-        return org.espen.collect.android.database.forms.DatabaseFormsRepository(context, dbPath, formsPath, cachePath, clock)
+    override fun create(projectId: String): FormsRepository {
+        val storagePaths = storagePathFactory.create(projectId)
+        return DatabaseFormsRepository(
+            context,
+            storagePaths.metaDir,
+            storagePaths.formsDir,
+            storagePaths.cacheDir,
+            clock,
+            savepointsRepositoryProvider.create(projectId)
+        )
+    }
+
+    @Deprecated("Creating dependency without specified project is dangerous")
+    fun create(): FormsRepository {
+        val currentProject =
+            DaggerUtils.getComponent(Collect.getInstance()).currentProjectProvider()
+                .getCurrentProject()
+        return create(currentProject.uuid)
     }
 }

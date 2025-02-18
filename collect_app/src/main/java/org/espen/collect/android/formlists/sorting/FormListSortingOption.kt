@@ -1,4 +1,4 @@
-package org.espen.collect.android.formlists.sorting
+package org.odk.collect.android.formlists.sorting
 
 data class FormListSortingOption(
     val icon: Int,

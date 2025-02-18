@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.espen.collect.android.activities;
+package org.odk.collect.android.activities;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -22,7 +22,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 
-import org.espen.collect.android.views.DayNightProgressDialog;
+import org.odk.collect.android.views.DayNightProgressDialog;
 import org.odk.collect.externalapp.ExternalAppUtils;
 import org.odk.collect.strings.localization.LocalizedActivity;
 

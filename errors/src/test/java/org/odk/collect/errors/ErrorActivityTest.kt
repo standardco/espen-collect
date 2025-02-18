@@ -13,7 +13,7 @@ import org.hamcrest.Matchers.equalTo
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.espen.collect.androidtest.ActivityScenarioLauncherRule
+import org.odk.collect.androidtest.ActivityScenarioLauncherRule
 import org.odk.collect.testshared.RecyclerViewMatcher.Companion.withListSize
 import org.odk.collect.testshared.RecyclerViewMatcher.Companion.withRecyclerView
 import java.io.Serializable

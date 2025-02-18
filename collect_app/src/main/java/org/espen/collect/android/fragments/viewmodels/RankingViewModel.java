@@ -1,4 +1,4 @@
-package org.espen.collect.android.fragments.viewmodels;
+package org.odk.collect.android.fragments.viewmodels;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

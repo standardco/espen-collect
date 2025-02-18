@@ -12,13 +12,11 @@
  * the License.
  */
 
-package org.espen.collect.android.listeners;
+package org.odk.collect.android.listeners;
 
-import org.espen.collect.android.tasks.FormLoaderTask;
-import org.espen.collect.android.tasks.ProgressNotifier;
 import org.javarosa.core.model.FormDef;
-import org.espen.collect.android.tasks.FormLoaderTask;
-import org.espen.collect.android.tasks.ProgressNotifier;
+import org.odk.collect.android.tasks.FormLoaderTask;
+import org.odk.collect.android.tasks.ProgressNotifier;
 
 /**
  * @author Carl Hartung (carlhartung@gmail.com)

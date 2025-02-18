@@ -1,4 +1,4 @@
-package org.espen.collect.android.backgroundwork;
+package org.odk.collect.android.backgroundwork;
 
 public interface FormUpdateScheduler {
 

@@ -9,7 +9,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.espen.collect.android.configure.qr
+package org.odk.collect.android.configure.qr
 
 import android.content.Context
 import android.content.DialogInterface
@@ -23,8 +23,9 @@ import androidx.appcompat.widget.AppCompatCheckedTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.espen.collect.android.databinding.ShowQrcodeFragmentBinding
-import org.espen.collect.android.injection.DaggerUtils
+import org.odk.collect.android.R
+import org.odk.collect.android.databinding.ShowQrcodeFragmentBinding
+import org.odk.collect.android.injection.DaggerUtils
 import org.odk.collect.async.Scheduler
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys
@@ -87,7 +88,7 @@ class ShowQRCodeFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
 
         qrCodeViewModel = ViewModelProvider(
             requireActivity(),

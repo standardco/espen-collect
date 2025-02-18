@@ -1,4 +1,4 @@
-package org.espen.collect.android.listeners;
+package org.odk.collect.android.listeners;
 
 import android.text.Editable;
 import android.text.TextWatcher;

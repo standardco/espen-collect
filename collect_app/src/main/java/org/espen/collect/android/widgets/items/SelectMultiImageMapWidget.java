@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package org.espen.collect.android.widgets.items;
+package org.odk.collect.android.widgets.items;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.webkit.WebView;
 
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectMultiData;
 import org.javarosa.core.model.data.helper.Selection;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.odk.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
 
 import java.util.List;
 

@@ -1,18 +1,19 @@
-package org.espen.collect.android.widgets.utilities
+package org.odk.collect.android.widgets.utilities
 
 import android.app.Activity
 import org.javarosa.form.api.FormEntryPrompt
-import org.espen.collect.android.javarosawrapper.FormController
-import org.espen.collect.android.utilities.ExternalAppIntentProvider
-import org.espen.collect.androidshared.system.IntentLauncher
-import org.espen.collect.androidshared.ui.ToastUtils.showLongToast
+import org.odk.collect.android.R
+import org.odk.collect.android.javarosawrapper.FormController
+import org.odk.collect.android.utilities.ExternalAppIntentProvider
+import org.odk.collect.androidshared.system.IntentLauncher
+import org.odk.collect.androidshared.ui.ToastUtils.showLongToast
 import java.lang.Error
 import java.lang.Exception
 
 class FileRequesterImpl(
-        val intentLauncher: IntentLauncher,
-        val externalAppIntentProvider: org.espen.collect.android.utilities.ExternalAppIntentProvider,
-        private val formController: FormController
+    val intentLauncher: IntentLauncher,
+    val externalAppIntentProvider: ExternalAppIntentProvider,
+    private val formController: FormController
 ) : FileRequester {
 
     override fun launch(

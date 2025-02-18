@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.espen.collect.android.widgets;
+package org.odk.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -20,23 +20,19 @@ import android.content.Context;
 import android.util.TypedValue;
 import android.view.View;
 
-import org.espen.collect.android.widgets.interfaces.GeoDataRequester;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.GeoWidgetUtils;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.core.model.data.GeoPointData;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.databinding.GeoWidgetAnswerBinding;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.widgets.interfaces.GeoDataRequester;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.GeoWidgetUtils;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
+import org.odk.collect.android.databinding.GeopointQuestionBinding;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.widgets.interfaces.GeoDataRequester;
+import org.odk.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.odk.collect.android.widgets.utilities.GeoWidgetUtils;
+import org.odk.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 @SuppressLint("ViewConstructor")
 public class GeoPointWidget extends QuestionWidget implements WidgetDataReceiver {
-    GeoWidgetAnswerBinding binding;
+    GeopointQuestionBinding binding;
 
     private final WaitingForDataRegistry waitingForDataRegistry;
     private final GeoDataRequester geoDataRequester;
@@ -53,14 +49,13 @@ public class GeoPointWidget extends QuestionWidget implements WidgetDataReceiver
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
-        binding = GeoWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
+        binding = GeopointQuestionBinding.inflate(((Activity) context).getLayoutInflater());
 
         binding.geoAnswerText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, answerFontSize);
         if (prompt.isReadOnly()) {
             binding.simpleButton.setVisibility(GONE);
         } else {
-            binding.simpleButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
             binding.simpleButton.setOnClickListener(v -> geoDataRequester.requestGeoPoint(prompt, answerText, waitingForDataRegistry));
         }
 
@@ -72,8 +67,9 @@ public class GeoPointWidget extends QuestionWidget implements WidgetDataReceiver
             answerText = null;
         } else {
             binding.geoAnswerText.setText(answerToDisplay);
-            binding.simpleButton.setText(org.odk.collect.strings.R.string.change_location);
+            binding.simpleButton.setText(org.odk.collect.strings.R.string.change_point);
         }
+        binding.geoAnswerText.setVisibility(binding.geoAnswerText.getText().toString().isBlank() ? GONE : VISIBLE);
 
         return binding.getRoot();
     }
@@ -90,6 +86,7 @@ public class GeoPointWidget extends QuestionWidget implements WidgetDataReceiver
     public void clearAnswer() {
         answerText = null;
         binding.geoAnswerText.setText(null);
+        binding.geoAnswerText.setVisibility(GONE);
         binding.simpleButton.setText(org.odk.collect.strings.R.string.get_point);
         widgetValueChanged();
     }
@@ -113,11 +110,13 @@ public class GeoPointWidget extends QuestionWidget implements WidgetDataReceiver
         if (answerToDisplay.isEmpty()) {
             answerText = null;
             binding.geoAnswerText.setText("");
+            binding.geoAnswerText.setVisibility(GONE);
             binding.simpleButton.setText(org.odk.collect.strings.R.string.get_point);
         } else {
             answerText = answer.toString();
             binding.geoAnswerText.setText(answerToDisplay);
-            binding.simpleButton.setText(org.odk.collect.strings.R.string.change_location);
+            binding.geoAnswerText.setVisibility(VISIBLE);
+            binding.simpleButton.setText(org.odk.collect.strings.R.string.change_point);
         }
         widgetValueChanged();
     }

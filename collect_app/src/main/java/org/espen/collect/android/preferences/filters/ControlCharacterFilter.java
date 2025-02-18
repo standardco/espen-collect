@@ -1,4 +1,4 @@
-package org.espen.collect.android.preferences.filters;
+package org.odk.collect.android.preferences.filters;
 
 import android.text.InputFilter;
 import android.text.Spanned;

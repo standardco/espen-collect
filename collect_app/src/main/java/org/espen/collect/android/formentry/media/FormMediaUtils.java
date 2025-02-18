@@ -1,16 +1,15 @@
-package org.espen.collect.android.formentry.media;
+package org.odk.collect.android.formentry.media;
 
 import android.graphics.Color;
 
 import androidx.annotation.Nullable;
 
-import org.espen.collect.android.utilities.ThemeUtils;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryPrompt;
-import org.espen.collect.android.utilities.ThemeUtils;
+import org.odk.collect.android.utilities.ThemeUtils;
 import org.odk.collect.audioclips.Clip;
 
 import timber.log.Timber;

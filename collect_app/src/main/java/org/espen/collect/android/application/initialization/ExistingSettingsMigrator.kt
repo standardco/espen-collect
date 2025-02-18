@@ -1,4 +1,4 @@
-package org.espen.collect.android.application.initialization
+package org.odk.collect.android.application.initialization
 
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.ODKAppSettingsMigrator

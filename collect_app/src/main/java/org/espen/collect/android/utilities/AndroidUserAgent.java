@@ -1,7 +1,7 @@
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
-import org.espen.collect.android.BuildConfig;
-import org.espen.collect.utilities.UserAgentProvider;
+import org.odk.collect.android.BuildConfig;
+import org.odk.collect.utilities.UserAgentProvider;
 
 public final class AndroidUserAgent implements UserAgentProvider {
 

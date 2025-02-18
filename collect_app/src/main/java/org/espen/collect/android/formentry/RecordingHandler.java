@@ -1,22 +1,15 @@
-package org.espen.collect.android.formentry;
+package org.odk.collect.android.formentry;
 
 import androidx.lifecycle.LifecycleOwner;
 
-import org.espen.collect.android.audio.AudioFileAppender;
-import org.espen.collect.android.exception.JavaRosaException;
-import org.espen.collect.android.javarosawrapper.FormController;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.utilities.Result;
-import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.core.model.instance.TreeReference;
-import org.espen.collect.android.audio.AudioFileAppender;
-import org.espen.collect.android.exception.JavaRosaException;
-import org.espen.collect.android.javarosawrapper.FormController;
-import org.espen.collect.android.utilities.QuestionMediaManager;
+import org.odk.collect.android.audio.AudioFileAppender;
+import org.odk.collect.android.javarosawrapper.FormController;
+import org.odk.collect.android.utilities.QuestionMediaManager;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.RecordingSession;
-import org.espen.collect.utilities.Result;
+import org.odk.collect.utilities.Result;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,31 +34,22 @@ public class RecordingHandler {
         this.m4aAppender = m4aAppender;
     }
 
-    public void handle(FormController formController, RecordingSession session, Consumer<Boolean> onRecordingHandled) {
+    public void handle(FormController formController, RecordingSession session, Consumer<File> onRecordingHandled) {
         questionMediaManager.createAnswerFile(session.getFile()).observe(lifecycleOwner, result -> {
             if (result != null && result.isSuccess()) {
                 try {
-                    if (session.getId() instanceof FormIndex) {
-                        handleForegroundRecording(formController, session, result);
-                    } else if (session.getId() instanceof HashSet) {
+                    if (session.getId() instanceof HashSet) {
                         handleBackgroundRecording(formController, session, result);
                     }
 
-                    onRecordingHandled.accept(true);
-                } catch (JavaRosaException | IOException e) {
+                    onRecordingHandled.accept(result.getOrNull());
+                } catch (IOException e) {
                     Timber.e(e);
-                    onRecordingHandled.accept(false);
+                    onRecordingHandled.accept(null);
                 }
                 audioRecorder.cleanUp();
             }
         });
-    }
-
-    private void handleForegroundRecording(FormController formController, RecordingSession session, Result<File> result) throws JavaRosaException {
-        FormIndex formIndex = (FormIndex) session.getId();
-        questionMediaManager.replaceAnswerFile(formIndex.toString(), result.getOrNull().getAbsolutePath());
-        formController.answerQuestion(formIndex, new StringData(result.getOrNull().getName()));
-        session.getFile().delete();
     }
 
     private void handleBackgroundRecording(FormController formController, RecordingSession session, Result<File> result) throws IOException {

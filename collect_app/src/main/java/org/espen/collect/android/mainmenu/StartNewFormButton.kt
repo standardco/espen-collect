@@ -1,12 +1,11 @@
-package org.espen.collect.android.mainmenu
+package org.odk.collect.android.mainmenu
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import android.widget.TextView
-import org.espen.collect.android.R
-import org.espen.collect.android.utilities.ApplicationConstants
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard
+import org.odk.collect.android.R
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 
 class StartNewFormButton(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 
@@ -20,6 +19,6 @@ class StartNewFormButton(context: Context, attrs: AttributeSet?) : FrameLayout(c
         get() = findViewById<TextView>(R.id.name).text.toString()
 
     override fun performClick(): Boolean {
-        return MultiClickGuard.allowClick(org.espen.collect.android.utilities.ApplicationConstants.ScreenName.MAIN_MENU.name) && super.performClick()
+        return MultiClickGuard.allowClick(context.getString(R.string.main_menu_screen)) && super.performClick()
     }
 }

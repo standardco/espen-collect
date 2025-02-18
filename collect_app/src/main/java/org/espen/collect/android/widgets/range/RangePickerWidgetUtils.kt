@@ -1,4 +1,4 @@
-package org.espen.collect.android.widgets.range
+package org.odk.collect.android.widgets.range
 
 import org.javarosa.form.api.FormEntryPrompt
 import java.math.BigDecimal

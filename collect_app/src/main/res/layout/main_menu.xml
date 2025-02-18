@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/app_bar_layout"
-        layout="@layout/app_bar_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include layout="@layout/app_bar_layout"/>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_bar_layout">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,17 +36,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/map_box_initialization_fragment" />
 
-            <org.espen.collect.android.mainmenu.StartNewFormButton
+            <org.odk.collect.android.mainmenu.StartNewFormButton
                 android:id="@+id/enter_data"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_extra_small"
                 app:layout_constraintWidth_max="@dimen/max_content_width"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/google_drive_deprecation_banner" />
 
-            <org.espen.collect.android.mainmenu.MainMenuButton
+            <org.odk.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/review_data"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -61,7 +56,7 @@
                 app:layout_constraintTop_toBottomOf="@id/enter_data"
                 app:name="@string/review_data" />
 
-            <org.espen.collect.android.mainmenu.MainMenuButton
+            <org.odk.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/send_data"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -72,7 +67,7 @@
                 app:name="@string/send_data"
                 app:highlightable="true"/>
 
-            <org.espen.collect.android.mainmenu.MainMenuButton
+            <org.odk.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/view_sent_forms"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -82,7 +77,7 @@
                 app:layout_constraintTop_toBottomOf="@id/send_data"
                 app:name="@string/view_sent_forms" />
 
-            <org.espen.collect.android.mainmenu.MainMenuButton
+            <org.odk.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/get_forms"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -92,7 +87,7 @@
                 app:layout_constraintTop_toBottomOf="@id/view_sent_forms"
                 app:name="@string/get_forms" />
 
-            <org.espen.collect.android.mainmenu.MainMenuButton
+            <org.odk.collect.android.mainmenu.MainMenuButton
                 android:id="@+id/manage_forms"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -113,7 +108,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/manage_forms"
-                tools:text="ESPEN Collect v2023.1" />
+                tools:text="ODK Collect v2022.3" />
 
             <TextView
                 android:id="@+id/version_sha"
@@ -127,5 +122,5 @@
                 tools:text="commit sha" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

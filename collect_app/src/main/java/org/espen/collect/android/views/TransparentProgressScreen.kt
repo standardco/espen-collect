@@ -1,10 +1,10 @@
-package org.espen.collect.android.views
+package org.odk.collect.android.views
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import org.espen.collect.android.R
-import org.espen.collect.androidshared.ui.Animations.createAlphaAnimation
+import org.odk.collect.android.R
+import org.odk.collect.androidshared.ui.Animations.createAlphaAnimation
 
 class TransparentProgressScreen(context: Context, attrs: AttributeSet?) :
     FrameLayout(context, attrs) {

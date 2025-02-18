@@ -1,13 +1,13 @@
-package org.espen.collect.android.configure.qr
+package org.odk.collect.android.configure.qr
 
 import com.google.zxing.WriterException
 import org.json.JSONException
-import org.espen.collect.android.storage.StoragePathProvider
-import org.espen.collect.android.storage.StorageSubdirectory
-import org.espen.collect.android.utilities.FileUtils
-import org.espen.collect.androidshared.bitmap.ImageFileUtils
+import org.odk.collect.android.storage.StoragePathProvider
+import org.odk.collect.android.storage.StorageSubdirectory
+import org.odk.collect.android.utilities.FileUtils
+import org.odk.collect.androidshared.bitmap.ImageFileUtils
+import org.odk.collect.qrcode.QRCodeCreator
 import org.odk.collect.qrcode.QRCodeDecoder
-import org.odk.collect.qrcode.QRCodeEncoder
 import timber.log.Timber
 import java.io.File
 import java.io.IOException
@@ -15,7 +15,7 @@ import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.util.Arrays
 
-class CachingQRCodeGenerator(private val qrCodeEncoder: QRCodeEncoder) : QRCodeGenerator {
+class CachingQRCodeGenerator(private val qrCodeCreator: QRCodeCreator) : QRCodeGenerator {
 
     @Throws(
         QRCodeDecoder.QRCodeInvalidException::class,
@@ -35,7 +35,7 @@ class CachingQRCodeGenerator(private val qrCodeEncoder: QRCodeEncoder) : QRCodeG
         var shouldWriteToDisk = true
 
         // check if settings directory exists, if not then create one
-        val writeDir = File(StoragePathProvider().getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.SETTINGS))
+        val writeDir = File(StoragePathProvider().getOdkDirPath(StorageSubdirectory.SETTINGS))
         if (!writeDir.exists()) {
             if (!writeDir.mkdirs()) {
                 Timber.e(Error("Error creating directory " + writeDir.absolutePath))
@@ -43,7 +43,7 @@ class CachingQRCodeGenerator(private val qrCodeEncoder: QRCodeEncoder) : QRCodeG
         }
         val mdCacheFile = File(md5CachePath)
         if (mdCacheFile.exists()) {
-            val cachedMessageDigest = org.espen.collect.android.utilities.FileUtils.read(mdCacheFile)
+            val cachedMessageDigest = FileUtils.read(mdCacheFile)
 
             /*
              * If the messageDigest generated from the preferences is equal to cachedMessageDigest
@@ -59,20 +59,20 @@ class CachingQRCodeGenerator(private val qrCodeEncoder: QRCodeEncoder) : QRCodeG
         if (shouldWriteToDisk) {
             Timber.i("Generating QRCode...")
             val time = System.currentTimeMillis()
-            val bmp = qrCodeEncoder.encode(preferencesString)
+            val bmp = qrCodeCreator.createEncoded(preferencesString)
             Timber.i("QR Code generation took : %d ms", System.currentTimeMillis() - time)
             Timber.i("Saving QR Code to disk... : %s", qRCodeFilepath)
             ImageFileUtils.saveBitmapToFile(bmp, qRCodeFilepath)
-            org.espen.collect.android.utilities.FileUtils.write(mdCacheFile, messageDigest)
+            FileUtils.write(mdCacheFile, messageDigest)
             Timber.i("Updated %s file contents", SETTINGS_MD5_FILE)
         }
         return qRCodeFilepath
     }
 
     private val qRCodeFilepath: String
-        get() = StoragePathProvider().getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.SETTINGS) + File.separator + "collect-settings.png"
+        get() = StoragePathProvider().getOdkDirPath(StorageSubdirectory.SETTINGS) + File.separator + "collect-settings.png"
     private val md5CachePath: String
-        get() = StoragePathProvider().getOdkDirPath(org.espen.collect.android.storage.StorageSubdirectory.SETTINGS) + File.separator + SETTINGS_MD5_FILE
+        get() = StoragePathProvider().getOdkDirPath(StorageSubdirectory.SETTINGS) + File.separator + SETTINGS_MD5_FILE
 
     companion object {
         private const val SETTINGS_MD5_FILE = ".collect-settings-hash"

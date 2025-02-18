@@ -1,4 +1,4 @@
-package org.espen.collect.android.audio;
+package org.odk.collect.android.audio;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 import com.visualizer.amplitude.AudioRecordView;
 
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.R;
-import org.espen.collect.android.databinding.WaveformLayoutBinding;
+import org.odk.collect.android.R;
+import org.odk.collect.android.databinding.WaveformLayoutBinding;
 
 import java.util.Random;
 

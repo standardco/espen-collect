@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.ui
+package org.odk.collect.androidshared.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory

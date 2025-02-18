@@ -1,8 +1,8 @@
-package org.espen.collect.android.notifications
+package org.odk.collect.android.notifications
 
-import org.espen.collect.android.formmanagement.FormDownloadException
-import org.espen.collect.android.formmanagement.ServerFormDetails
-import org.espen.collect.android.upload.FormUploadException
+import org.odk.collect.android.formmanagement.ServerFormDetails
+import org.odk.collect.android.formmanagement.download.FormDownloadException
+import org.odk.collect.android.upload.FormUploadException
 import org.odk.collect.forms.FormSourceException
 import org.odk.collect.forms.instances.Instance
 

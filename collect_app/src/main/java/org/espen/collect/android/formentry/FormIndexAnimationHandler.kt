@@ -1,4 +1,4 @@
-package org.espen.collect.android.formentry
+package org.odk.collect.android.formentry
 
 import org.javarosa.core.model.FormIndex
 
@@ -14,11 +14,7 @@ class FormIndexAnimationHandler(private val listener: Listener) {
 
     private var lastIndex: FormIndex? = null
 
-    fun handle(index: FormIndex?) {
-        if (index == null) {
-            return
-        }
-
+    fun handle(index: FormIndex) {
         if (lastIndex == null) {
             listener.onScreenRefresh()
         } else {

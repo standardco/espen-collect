@@ -1,8 +1,8 @@
-package org.espen.collect.android.preferences
+package org.odk.collect.android.preferences
 
 import com.google.android.gms.maps.GoogleMap
-import org.espen.collect.android.application.EspenCollect
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils
+import org.odk.collect.android.application.Collect
+import org.odk.collect.android.widgets.utilities.QuestionFontSizeUtils
 import org.odk.collect.settings.keys.ProjectKeys
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 
@@ -34,17 +34,14 @@ object Defaults {
             hashMap[ProjectKeys.KEY_METADATA_USERNAME] = ""
             hashMap[ProjectKeys.KEY_METADATA_PHONENUMBER] = ""
             hashMap[ProjectKeys.KEY_METADATA_EMAIL] = ""
-            // google_preferences.xml
-            hashMap[ProjectKeys.KEY_SELECTED_GOOGLE_ACCOUNT] = ""
-            hashMap[ProjectKeys.KEY_GOOGLE_SHEETS_URL] = ""
             // identity_preferences.xml
             hashMap[ProjectKeys.KEY_ANALYTICS] = true
             // server_preferences.xml
             hashMap[ProjectKeys.KEY_PROTOCOL] = ProjectKeys.PROTOCOL_SERVER
             // user_interface_preferences.xml
-            hashMap[ProjectKeys.KEY_APP_THEME] = org.espen.collect.android.application.EspenCollect.getInstance().getString(org.odk.collect.strings.R.string.app_theme_system)
+            hashMap[ProjectKeys.KEY_APP_THEME] = Collect.getInstance().getString(org.odk.collect.strings.R.string.app_theme_system)
             hashMap[ProjectKeys.KEY_APP_LANGUAGE] = ""
-            hashMap[ProjectKeys.KEY_FONT_SIZE] = org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils.DEFAULT_FONT_SIZE.toString()
+            hashMap[ProjectKeys.KEY_FONT_SIZE] = QuestionFontSizeUtils.DEFAULT_FONT_SIZE.toString()
             hashMap[ProjectKeys.KEY_NAVIGATION] = ProjectKeys.NAVIGATION_BOTH
             hashMap[ProjectKeys.KEY_EXTERNAL_APP_RECORDING] = false
             // map_preferences.xml
@@ -53,8 +50,6 @@ object Defaults {
             hashMap[ProjectKeys.KEY_USGS_MAP_STYLE] = "topographic"
             hashMap[ProjectKeys.KEY_GOOGLE_MAP_STYLE] = GoogleMap.MAP_TYPE_NORMAL.toString()
             hashMap[ProjectKeys.KEY_MAPBOX_MAP_STYLE] = "mapbox://styles/mapbox/streets-v11"
-            // experimental_preferences.xml
-            hashMap[ProjectKeys.KEY_PREDICATE_CACHING] = true
             return hashMap
         }
 

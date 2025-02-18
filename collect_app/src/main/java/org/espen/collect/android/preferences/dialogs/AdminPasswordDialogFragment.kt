@@ -1,4 +1,4 @@
-package org.espen.collect.android.preferences.dialogs
+package org.odk.collect.android.preferences.dialogs
 
 import android.app.Dialog
 import android.content.Context
@@ -10,12 +10,13 @@ import android.widget.CompoundButton
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.espen.collect.android.databinding.AdminPasswordDialogLayoutBinding
-import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.android.preferences.ProjectPreferencesViewModel
-import org.espen.collect.android.utilities.AdminPasswordProvider
-import org.espen.collect.android.utilities.SoftKeyboardController
-import org.espen.collect.androidshared.ui.ToastUtils
+import org.odk.collect.android.R
+import org.odk.collect.android.databinding.AdminPasswordDialogLayoutBinding
+import org.odk.collect.android.injection.DaggerUtils
+import org.odk.collect.android.preferences.ProjectPreferencesViewModel
+import org.odk.collect.android.utilities.AdminPasswordProvider
+import org.odk.collect.android.utilities.SoftKeyboardController
+import org.odk.collect.androidshared.ui.ToastUtils
 import javax.inject.Inject
 
 class AdminPasswordDialogFragment : DialogFragment() {
@@ -23,10 +24,10 @@ class AdminPasswordDialogFragment : DialogFragment() {
     lateinit var factory: ProjectPreferencesViewModel.Factory
 
     @Inject
-    lateinit var adminPasswordProvider: org.espen.collect.android.utilities.AdminPasswordProvider
+    lateinit var adminPasswordProvider: AdminPasswordProvider
 
     @Inject
-    lateinit var softKeyboardController: org.espen.collect.android.utilities.SoftKeyboardController
+    lateinit var softKeyboardController: SoftKeyboardController
 
     lateinit var binding: AdminPasswordDialogLayoutBinding
 
@@ -34,7 +35,7 @@ class AdminPasswordDialogFragment : DialogFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
         projectPreferencesViewModel = ViewModelProvider(requireActivity(), factory)[ProjectPreferencesViewModel::class.java]
     }
 

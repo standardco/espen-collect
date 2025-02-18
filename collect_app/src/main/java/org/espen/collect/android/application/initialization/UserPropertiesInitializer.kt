@@ -1,12 +1,12 @@
-package org.espen.collect.android.application.initialization
+package org.odk.collect.android.application.initialization
 
 import android.content.Context
 import org.odk.collect.analytics.Analytics
-import org.espen.collect.android.preferences.Defaults
-import org.espen.collect.android.preferences.utilities.FormUpdateMode
+import org.odk.collect.android.preferences.Defaults
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider
+import org.odk.collect.settings.enums.FormUpdateMode
 import org.odk.collect.settings.keys.ProjectKeys
 
 class UserPropertiesInitializer(
@@ -38,7 +38,7 @@ class UserPropertiesInitializer(
         val formUpdateMode = settings.getString(ProjectKeys.KEY_FORM_UPDATE_MODE)
 
         val notUsingDefaultServer = serverUrl != Defaults.unprotected[ProjectKeys.KEY_SERVER_URL]
-        val notUsingMatchExactly = formUpdateMode != org.espen.collect.android.preferences.utilities.FormUpdateMode.MATCH_EXACTLY.getValue(context)
+        val notUsingMatchExactly = formUpdateMode != FormUpdateMode.MATCH_EXACTLY.getValue(context)
 
         return notUsingDefaultServer && notUsingMatchExactly
     }

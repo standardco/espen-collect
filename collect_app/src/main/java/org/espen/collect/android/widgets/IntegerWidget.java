@@ -12,15 +12,15 @@
  * the License.
  */
 
-package org.espen.collect.android.widgets;
+package org.odk.collect.android.widgets;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
 import org.javarosa.core.model.data.IAnswerData;
-import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
+import org.odk.collect.android.formentry.questions.QuestionDetails;
+import org.odk.collect.android.utilities.Appearances;
+import org.odk.collect.android.widgets.utilities.StringWidgetUtils;
 
 /**
  * Widget that restricts values to integers.
@@ -30,9 +30,10 @@ public class IntegerWidget extends StringWidget {
 
     public IntegerWidget(Context context, QuestionDetails questionDetails) {
         super(context, questionDetails);
-        render();
 
-        StringWidgetUtils.adjustEditTextAnswerToIntegerWidget(answerText, questionDetails.getPrompt());
+        boolean useThousandSeparator = Appearances.useThousandSeparator(questionDetails.getPrompt());
+        Integer answer = StringWidgetUtils.getIntegerAnswerValueFromIAnswerData(questionDetails.getPrompt().getAnswerValue());
+        widgetAnswerText.setIntegerType(useThousandSeparator, answer);
     }
 
     @Override

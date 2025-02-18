@@ -1,9 +1,9 @@
-package org.espen.collect.android.utilities;
+package org.odk.collect.android.utilities;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
-import org.espen.collect.utilities.Result;
+import org.odk.collect.utilities.Result;
 
 import java.io.File;
 

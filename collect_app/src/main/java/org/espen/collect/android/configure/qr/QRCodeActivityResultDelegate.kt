@@ -1,12 +1,12 @@
-package org.espen.collect.android.configure.qr
+package org.odk.collect.android.configure.qr
 
 import android.app.Activity
 import android.content.Intent
 import android.widget.Toast
 import org.odk.collect.analytics.Analytics.Companion.log
-import org.espen.collect.android.activities.ActivityUtils
-import org.espen.collect.android.analytics.AnalyticsEvents
-import org.espen.collect.android.mainmenu.MainMenuActivity
+import org.odk.collect.android.activities.ActivityUtils
+import org.odk.collect.android.analytics.AnalyticsEvents
+import org.odk.collect.android.mainmenu.MainMenuActivity
 import org.odk.collect.projects.Project.Saved
 import org.odk.collect.qrcode.QRCodeDecoder
 import org.odk.collect.settings.ODKAppSettingsImporter
@@ -21,7 +21,7 @@ class QRCodeActivityResultDelegate(
     private val project: Saved
 ) {
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == QRCodeMenuDelegate.SELECT_PHOTO && resultCode == Activity.RESULT_OK && data != null) {
+        if (requestCode == QRCodeMenuProvider.SELECT_PHOTO && resultCode == Activity.RESULT_OK && data != null) {
             val imageUri = data.data
             if (imageUri != null) {
                 val imageStream: InputStream? = try {
@@ -37,7 +37,7 @@ class QRCodeActivityResultDelegate(
                         SettingsImportingResult.SUCCESS -> {
                             log(AnalyticsEvents.RECONFIGURE_PROJECT)
                             showToast(org.odk.collect.strings.R.string.successfully_imported_settings)
-                            org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(
+                            ActivityUtils.startActivityAndCloseAllOthers(
                                 activity,
                                 MainMenuActivity::class.java
                             )

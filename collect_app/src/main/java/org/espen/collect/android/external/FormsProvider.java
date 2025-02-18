@@ -12,28 +12,25 @@
  * the License.
  */
 
-package org.espen.collect.android.external;
+package org.odk.collect.android.external;
 
 import static android.provider.BaseColumns._ID;
-import static org.espen.collect.android.database.DatabaseObjectMapper.getFormFromCurrentCursorPosition;
-import static org.espen.collect.android.database.DatabaseObjectMapper.getFormFromValues;
-import static org.espen.collect.android.database.DatabaseObjectMapper.getValuesFromForm;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.AUTO_DELETE;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.AUTO_SEND;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.BASE64_RSA_PUBLIC_KEY;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.DATE;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.DELETED_DATE;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.DESCRIPTION;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.GEOMETRY_XPATH;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
-import static org.espen.collect.android.database.forms.DatabaseFormColumns.SUBMISSION_URI;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.AUTO_DELETE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.AUTO_SEND;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.BASE64_RSA_PUBLIC_KEY;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.DATE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.DELETED_DATE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.DESCRIPTION;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.DISPLAY_NAME;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_FILE_PATH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.FORM_MEDIA_PATH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.GEOMETRY_XPATH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.JRCACHE_FILE_PATH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_FORM_ID;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.JR_VERSION;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.LANGUAGE;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.MD5_HASH;
+import static org.odk.collect.android.database.forms.DatabaseFormColumns.SUBMISSION_URI;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -43,24 +40,18 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import org.espen.collect.android.analytics.AnalyticsEvents;
-import org.espen.collect.android.analytics.AnalyticsUtils;
-import org.espen.collect.android.dao.CursorLoaderFactory;
-import org.espen.collect.android.itemsets.FastExternalItemsetsRepository;
 import org.jetbrains.annotations.NotNull;
-import org.espen.collect.android.analytics.AnalyticsEvents;
-import org.espen.collect.android.analytics.AnalyticsUtils;
-import org.espen.collect.android.dao.CursorLoaderFactory;
-import org.espen.collect.android.database.forms.DatabaseFormsRepository;
-import org.espen.collect.android.formmanagement.LocalFormUseCases;
-import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.android.itemsets.FastExternalItemsetsRepository;
-import org.espen.collect.android.storage.StoragePathProvider;
-import org.espen.collect.android.storage.StorageSubdirectory;
-import org.espen.collect.android.utilities.ContentUriHelper;
-import org.espen.collect.android.utilities.FormsRepositoryProvider;
-import org.espen.collect.android.utilities.InstancesRepositoryProvider;
-import org.odk.collect.forms.Form;
+import org.odk.collect.android.analytics.AnalyticsEvents;
+import org.odk.collect.android.analytics.AnalyticsUtils;
+import org.odk.collect.android.dao.CursorLoaderFactory;
+import org.odk.collect.android.database.forms.DatabaseFormsRepository;
+import org.odk.collect.android.formmanagement.LocalFormUseCases;
+import org.odk.collect.android.injection.DaggerUtils;
+import org.odk.collect.android.itemsets.FastExternalItemsetsRepository;
+import org.odk.collect.android.storage.StoragePathProvider;
+import org.odk.collect.android.utilities.ContentUriHelper;
+import org.odk.collect.android.utilities.FormsRepositoryProvider;
+import org.odk.collect.android.utilities.InstancesRepositoryProvider;
 import org.odk.collect.forms.FormsRepository;
 import org.odk.collect.forms.instances.InstancesRepository;
 import org.odk.collect.projects.ProjectsRepository;
@@ -193,20 +184,7 @@ public class FormsProvider extends ContentProvider {
 
     @Override
     public synchronized Uri insert(@NonNull Uri uri, ContentValues initialValues) {
-        deferDaggerInit();
-
-        // Validate the requested uri
-        if (URI_MATCHER.match(uri) != FORMS) {
-            throw new IllegalArgumentException("Unknown URI " + uri);
-        }
-
-        String projectId = getProjectId(uri);
-        logServerEvent(projectId, AnalyticsEvents.FORMS_PROVIDER_INSERT);
-
-        String formsPath = storagePathProvider.getOdkDirPath(StorageSubdirectory.FORMS, projectId);
-        String cachePath = storagePathProvider.getOdkDirPath(StorageSubdirectory.CACHE, projectId);
-        Form form = getFormsRepository(projectId).save(getFormFromValues(initialValues, formsPath, cachePath));
-        return FormsContract.getUri(projectId, form.getDbId());
+        return null;
     }
 
     /**
@@ -224,7 +202,7 @@ public class FormsProvider extends ContentProvider {
         logServerEvent(projectId, AnalyticsEvents.FORMS_PROVIDER_DELETE);
 
         FormsRepository formsRepository = getFormsRepository(projectId);
-        InstancesRepository instancesRepository = instancesRepositoryProvider.get(projectId);
+        InstancesRepository instancesRepository = instancesRepositoryProvider.create(projectId);
 
         switch (URI_MATCHER.match(uri)) {
             case FORMS:
@@ -252,58 +230,12 @@ public class FormsProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String where, String[] whereArgs) {
-        deferDaggerInit();
-
-        String projectId = getProjectId(uri);
-        logServerEvent(projectId, AnalyticsEvents.FORMS_PROVIDER_UPDATE);
-
-        FormsRepository formsRepository = getFormsRepository(projectId);
-        String formsPath = storagePathProvider.getOdkDirPath(StorageSubdirectory.FORMS, projectId);
-        String cachePath = storagePathProvider.getOdkDirPath(StorageSubdirectory.CACHE, projectId);
-
-        int count;
-
-        switch (URI_MATCHER.match(uri)) {
-            case FORMS:
-                try (Cursor cursor = databaseQuery(projectId, null, where, whereArgs, null, null, null)) {
-                    while (cursor.moveToNext()) {
-                        Form form = getFormFromCurrentCursorPosition(cursor, formsPath, cachePath);
-                        ContentValues existingValues = getValuesFromForm(form, formsPath);
-                        existingValues.putAll(values);
-
-                        formsRepository.save(getFormFromValues(existingValues, formsPath, cachePath));
-                    }
-
-                    count = cursor.getCount();
-                }
-                break;
-
-            case FORM_ID:
-                Form form = formsRepository.get(ContentUriHelper.getIdFromUri(uri));
-                if (form != null) {
-                    ContentValues existingValues = getValuesFromForm(form, formsPath);
-                    existingValues.putAll(values);
-
-                    formsRepository.save(getFormFromValues(existingValues, formsPath, cachePath));
-                    count = 1;
-                } else {
-                    count = 0;
-                }
-
-                break;
-
-            default:
-                throw new IllegalArgumentException("Unknown URI " + uri);
-        }
-
-        getContext().getContentResolver().notifyChange(uri, null);
-
-        return count;
+        return 0;
     }
 
     @NotNull
     private FormsRepository getFormsRepository(String projectId) {
-        return formsRepositoryProvider.get(projectId);
+        return formsRepositoryProvider.create(projectId);
     }
 
     private String getProjectId(@NonNull Uri uri) {
