@@ -29,9 +29,9 @@ import org.espen.collect.android.database.forms.DatabaseFormColumns;
  */
 public final class FormsContract {
 
-    static final String AUTHORITY = "org.espen.collect.android.provider.odk.forms";
-    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.odk.form";
-    public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.odk.form";
+    static final String AUTHORITY = "com.espen.provider.odk.v2.forms";
+    public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.espen.form";
+    public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.espen.form";
 
     /**
      * The content:// style URL for accessing Forms.

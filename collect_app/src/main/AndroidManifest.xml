@@ -218,11 +218,11 @@ the specific language governing permissions and limitations under the License.
 
         <provider
             android:name=".external.FormsProvider"
-            android:authorities="org.espen.collect.android.provider.odk.forms"
+            android:authorities="com.espen.provider.odk.v2.forms"
             android:exported="true" />
         <provider
             android:name=".external.InstanceProvider"
-            android:authorities="org.espen.collect.android.provider.odk.instances"
+            android:authorities="com.espen.provider.odk.v2.instances"
             android:exported="true" />
 
         <activity-alias
@@ -244,7 +244,7 @@ the specific language governing permissions and limitations under the License.
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.dir/vnd.odk.instance" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.espen.instance" />
             </intent-filter>
         </activity-alias>
 
@@ -260,7 +260,7 @@ the specific language governing permissions and limitations under the License.
 
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:mimeType="vnd.android.cursor.dir/vnd.odk.form" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.espen.form" />
             </intent-filter>
         </activity-alias>
 
@@ -271,7 +271,7 @@ the specific language governing permissions and limitations under the License.
             <intent-filter>
                 <action android:name="org.espen.collect.android.FORM_DOWNLOAD" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.odk.form" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.espen.form" />
             </intent-filter>
         </activity-alias>
 
@@ -294,7 +294,7 @@ the specific language governing permissions and limitations under the License.
             <intent-filter>
                 <action android:name="org.espen.collect.android.INSTANCE_UPLOAD" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.dir/vnd.odk.instance" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.espen.instance" />
             </intent-filter>
         </activity-alias>
 
@@ -324,8 +324,8 @@ the specific language governing permissions and limitations under the License.
                 <action android:name="android.intent.action.EDIT" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.odk.form" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.odk.instance" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.espen.form" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.espen.instance" />
             </intent-filter>
         </activity>
 
