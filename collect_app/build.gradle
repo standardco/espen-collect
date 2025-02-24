@@ -231,6 +231,7 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':lookup')
     coreLibraryDesugaring Dependencies.desugar
 
     implementation project(':shared')

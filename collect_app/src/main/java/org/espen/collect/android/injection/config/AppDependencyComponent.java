@@ -2,6 +2,8 @@ package org.espen.collect.android.injection.config;
 
 import android.app.Application;
 
+import org.espen.collect.android.external.LookupProvider;
+import org.espen.collect.android.utilities.LookUpRepositoryProvider;
 import org.javarosa.core.reference.ReferenceManager;
 import org.espen.collect.android.activities.AboutActivity;
 import org.espen.collect.android.activities.AppListActivity;
@@ -27,6 +29,7 @@ import org.espen.collect.android.external.AndroidShortcutsActivity;
 import org.espen.collect.android.external.FormUriActivity;
 import org.espen.collect.android.external.FormsProvider;
 import org.espen.collect.android.external.InstanceProvider;
+import org.espen.collect.android.external.LookupProvider;
 import org.espen.collect.android.formentry.BackgroundAudioPermissionDialogFragment;
 import org.espen.collect.android.formentry.ODKView;
 import org.espen.collect.android.formentry.repeats.DeleteRepeatDialogFragment;
@@ -72,6 +75,7 @@ import org.espen.collect.android.tasks.MediaLoadingTask;
 import org.espen.collect.android.utilities.AuthDialogUtility;
 import org.espen.collect.android.utilities.FormsRepositoryProvider;
 import org.espen.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.utilities.LookUpRepositoryProvider;
 import org.espen.collect.android.utilities.SavepointsRepositoryProvider;
 import org.espen.collect.android.utilities.ThemeUtils;
 import org.espen.collect.android.widgets.QuestionWidget;
@@ -219,6 +223,8 @@ public interface AppDependencyComponent {
 
     void inject(InstanceProvider instanceProvider);
 
+    void inject(LookupProvider lookupProvider);
+
     void inject(BackgroundAudioPermissionDialogFragment backgroundAudioPermissionDialogFragment);
 
     void inject(ChangeAdminPasswordDialog changeAdminPasswordDialog);
@@ -256,7 +262,7 @@ public interface AppDependencyComponent {
     void inject(AppListActivity appListActivity);
 
     void inject(DownloadFormListTask downloadFormListTask);
-
+    void inject(LookUpRepositoryProvider lookUpRepositoryProvider);
     OpenRosaHttpInterface openRosaHttpInterface();
 
     ReferenceManager referenceManager();
@@ -276,7 +282,7 @@ public interface AppDependencyComponent {
     FormsRepositoryProvider formsRepositoryProvider();
 
     InstancesRepositoryProvider instancesRepositoryProvider();
-
+    LookUpRepositoryProvider lookupsRepositoryProvider();
     SavepointsRepositoryProvider savepointsRepositoryProvider();
 
     FormSourceProvider formSourceProvider();
@@ -306,4 +312,5 @@ public interface AppDependencyComponent {
     ProjectDependencyModuleFactory projectDependencyModuleFactory();
 
     ExternalWebPageHelper externalWebPageHelper();
+
 }

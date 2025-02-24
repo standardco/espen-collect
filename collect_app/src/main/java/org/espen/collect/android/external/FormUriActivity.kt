@@ -241,6 +241,7 @@ private class FormUriViewModel(
             }
         } ?: false
 
+        //return null
         return if (!isUriValid) {
             resources.getString(string.unrecognized_uri)
         } else {

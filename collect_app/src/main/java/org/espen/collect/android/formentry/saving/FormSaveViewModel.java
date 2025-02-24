@@ -39,6 +39,7 @@ import org.odk.collect.entities.storage.EntitiesRepository;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;
+import org.odk.collect.lookup.LookUpRepository;
 import org.odk.collect.forms.savepoints.SavepointsRepository;
 import org.odk.collect.material.MaterialProgressDialogFragment;
 import org.odk.collect.shared.strings.Md5;
@@ -88,6 +89,7 @@ public class FormSaveViewModel extends ViewModel implements MaterialProgressDial
     private final ProjectsDataService projectsDataService;
     private final EntitiesRepository entitiesRepository;
     private final InstancesRepository instancesRepository;
+    private final LookUpRepository lookupRepository;
     private final SavepointsRepository savepointsRepository;
     private Form form;
     private Instance instance;
@@ -97,7 +99,7 @@ public class FormSaveViewModel extends ViewModel implements MaterialProgressDial
     public FormSaveViewModel(SavedStateHandle stateHandle, Supplier<Long> clock, FormSaver formSaver,
                              MediaUtils mediaUtils, Scheduler scheduler, AudioRecorder audioRecorder,
                              ProjectsDataService projectsDataService, LiveData<FormSession> formSession,
-                             EntitiesRepository entitiesRepository, InstancesRepository instancesRepository,
+                             EntitiesRepository entitiesRepository, InstancesRepository instancesRepository, LookUpRepository lookupRepository,
                              SavepointsRepository savepointsRepository, InstancesDataService instancesDataService
     ) {
         this.stateHandle = stateHandle;
@@ -111,6 +113,7 @@ public class FormSaveViewModel extends ViewModel implements MaterialProgressDial
         this.instancesRepository = instancesRepository;
         this.savepointsRepository = savepointsRepository;
         this.instancesDataService = instancesDataService;
+        this.lookupRepository = lookupRepository;
 
         if (stateHandle.get(ORIGINAL_FILES) != null) {
             originalFiles = stateHandle.get(ORIGINAL_FILES);
@@ -249,7 +252,7 @@ public class FormSaveViewModel extends ViewModel implements MaterialProgressDial
                 handleTaskResult(saveToDiskResult, saveRequest);
                 clearMediaFiles();
             }
-        }, new ArrayList<>(originalFiles.values()), projectsDataService.getCurrentProject().getUuid(), entitiesRepository, instancesRepository).execute();
+        }, new ArrayList<>(originalFiles.values()), projectsDataService.getCurrentProject().getUuid(), entitiesRepository, instancesRepository, lookupRepository).execute();
     }
 
     private void handleTaskResult(SaveToDiskResult taskResult, SaveRequest saveRequest) {
@@ -514,9 +517,10 @@ public class FormSaveViewModel extends ViewModel implements MaterialProgressDial
         private final String currentProjectId;
         private final EntitiesRepository entitiesRepository;
         private final InstancesRepository instancesRepository;
+        private final LookUpRepository lookupRepository;
 
         SaveTask(SaveRequest saveRequest, FormSaver formSaver, FormController formController, MediaUtils mediaUtils,
-                 Listener listener, ArrayList<String> tempFiles, String currentProjectId, EntitiesRepository entitiesRepository, InstancesRepository instancesRepository) {
+                 Listener listener, ArrayList<String> tempFiles, String currentProjectId, EntitiesRepository entitiesRepository, InstancesRepository instancesRepository, LookUpRepository lookupRepository) {
             this.saveRequest = saveRequest;
             this.formSaver = formSaver;
             this.listener = listener;
@@ -526,6 +530,7 @@ public class FormSaveViewModel extends ViewModel implements MaterialProgressDial
             this.currentProjectId = currentProjectId;
             this.entitiesRepository = entitiesRepository;
             this.instancesRepository = instancesRepository;
+            this.lookupRepository = lookupRepository;
         }
 
         @Override
@@ -534,7 +539,7 @@ public class FormSaveViewModel extends ViewModel implements MaterialProgressDial
                     mediaUtils, saveRequest.shouldFinalize,
                     saveRequest.viewExiting, saveRequest.updatedSaveName,
                     this::publishProgress, tempFiles,
-                    currentProjectId, entitiesRepository, instancesRepository);
+                    currentProjectId, entitiesRepository, instancesRepository, lookupRepository);
         }
 
         @Override

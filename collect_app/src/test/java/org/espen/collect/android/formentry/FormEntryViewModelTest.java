@@ -36,6 +36,7 @@ import org.espen.collect.android.utilities.ChangeLocks;
 import org.odk.collect.androidshared.data.Consumable;
 import org.odk.collect.forms.FormsRepository;
 import org.odk.collect.formstest.InMemFormsRepository;
+import org.odk.collect.lookup.LookUpRepository;
 import org.odk.collect.shared.locks.BooleanChangeLock;
 import org.odk.collect.testshared.FakeScheduler;
 
@@ -54,6 +55,7 @@ public class FormEntryViewModelTest {
     private FakeScheduler scheduler;
     private final FormSessionRepository formSessionRepository = new InMemFormSessionRepository();
     private final FormsRepository formsRepository = new InMemFormsRepository();
+    private final LookUpRepository lookupRepository = null;
     private final ChangeLocks changeLocks = new ChangeLocks(new BooleanChangeLock(), new BooleanChangeLock());
 
     @Rule
@@ -68,7 +70,7 @@ public class FormEntryViewModelTest {
         scheduler = new FakeScheduler();
 
         formSessionRepository.set("blah", formController, mock());
-        viewModel = new FormEntryViewModel(() -> 0L, scheduler, formSessionRepository, "blah", formsRepository, changeLocks);
+        viewModel = new FormEntryViewModel(() -> 0L, scheduler, formSessionRepository, "blah", formsRepository, lookupRepository, changeLocks);
     }
 
     @Test

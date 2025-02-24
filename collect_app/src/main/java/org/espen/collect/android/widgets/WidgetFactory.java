@@ -43,6 +43,7 @@ import org.espen.collect.android.widgets.items.LikertWidget;
 import org.espen.collect.android.widgets.items.ListMultiWidget;
 import org.espen.collect.android.widgets.items.ListWidget;
 import org.espen.collect.android.widgets.items.RankingWidget;
+import org.espen.collect.android.widgets.items.LookUpWidget;
 import org.espen.collect.android.widgets.items.SelectMultiImageMapWidget;
 import org.espen.collect.android.widgets.items.SelectMultiMinimalWidget;
 import org.espen.collect.android.widgets.items.SelectMultiWidget;
@@ -185,6 +186,7 @@ public class WidgetFactory {
                         questionWidget = new BarcodeWidget(activity, questionDetails, waitingForDataRegistry, new CameraUtils());
                         break;
                     case Constants.DATATYPE_TEXT:
+                        boolean isLookUp = prompt.getBindAttributes().stream().filter(e-> e.getName().equals("db_get")).count() > 0;
                         String query = prompt.getQuestion().getAdditionalAttribute(null, "query");
                         if (query != null) {
                             questionWidget = getSelectOneWidget(appearance, questionDetails);
@@ -196,6 +198,8 @@ public class WidgetFactory {
                             questionWidget = new StringNumberWidget(activity, questionDetails);
                         } else if (appearance.equals(Appearances.URL)) {
                             questionWidget = new UrlWidget(activity, questionDetails, new ExternalWebPageHelper());
+                        } else if(isLookUp){
+                            questionWidget = new LookUpWidget(activity, questionDetails, false, formController, formEntryViewModel);
                         } else {
                             questionWidget = new StringWidget(activity, questionDetails);
                         }

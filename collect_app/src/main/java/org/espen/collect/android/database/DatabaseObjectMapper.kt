@@ -10,6 +10,8 @@ import org.odk.collect.forms.instances.Instance
 import org.odk.collect.shared.PathUtils.getAbsoluteFilePath
 import org.odk.collect.shared.PathUtils.getRelativeFilePath
 import java.lang.Boolean
+import org.espen.collect.android.database.lookups.DatabaseLookupColumns
+import org.odk.collect.lookup.LookUp
 
 object DatabaseObjectMapper {
 
@@ -200,5 +202,73 @@ object DatabaseObjectMapper {
         )
 
         return values
+    }
+
+    @JvmStatic
+    fun getValuesFromLookUp(lookup: LookUp, instancesPath: String): ContentValues {
+        val values = ContentValues()
+        values.put(BaseColumns._ID, lookup.dbId)
+        values.put(DatabaseLookupColumns.INSTANCE_PATH, getRelativeFilePath(instancesPath, lookup.instancePath))
+        values.put(DatabaseLookupColumns.COLUMN_1, lookup.column1)
+        values.put(DatabaseLookupColumns.COLUMN_2, lookup.column2)
+        values.put(DatabaseLookupColumns.COLUMN_3, lookup.column3)
+        values.put(DatabaseLookupColumns.COLUMN_4, lookup.column4)
+        values.put(DatabaseLookupColumns.COLUMN_5, lookup.column5)
+        values.put(DatabaseLookupColumns.COLUMN_6, lookup.column6)
+        values.put(DatabaseLookupColumns.COLUMN_7, lookup.column7)
+        values.put(DatabaseLookupColumns.COLUMN_8, lookup.column8)
+        values.put(DatabaseLookupColumns.COLUMN_9, lookup.column9)
+        values.put(DatabaseLookupColumns.COLUMN_10, lookup.column10)
+
+        return values
+    }
+
+    @JvmStatic
+    fun getLookUpFromCurrentCursorPosition(cursor: Cursor, instancesPath: String): LookUp? {
+        val dbId = cursor.getLong(cursor.getColumnIndex(BaseColumns._ID))
+        val instanceFilePathIndex = cursor.getColumnIndex(DatabaseLookupColumns.INSTANCE_PATH)
+        val column1Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_1)
+        val column2Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_2)
+        val column3Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_3)
+        val column4Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_4)
+        val column5Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_5)
+        val column6Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_6)
+        val column7Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_7)
+        val column8Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_8)
+        val column9Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_9)
+        val column10Index = cursor.getColumnIndex(DatabaseLookupColumns.COLUMN_10)
+        val look = LookUp();
+        look.setDBId(dbId);
+        look.instancePath = getAbsoluteFilePath( instancesPath, cursor.getString(instanceFilePathIndex) )
+        look.column1 = cursor.getString(column1Index);
+        look.column2 = cursor.getString(column2Index);
+        look.column3 = cursor.getString(column3Index);
+        look.column4 = cursor.getString(column4Index);
+        look.column5 = cursor.getString(column5Index);
+        look.column6 = cursor.getString(column6Index);
+        look.column7 = cursor.getString(column7Index);
+        look.column8 = cursor.getString(column8Index);
+        look.column9 = cursor.getString(column9Index);
+        look.column10 = cursor.getString(column10Index);
+
+        return look;
+    }
+
+    @JvmStatic
+    fun getLookUpFromValues(values: ContentValues): LookUp? {
+        val look = LookUp();
+        look.setDBId(values.getAsLong(BaseColumns._ID));
+        look.instancePath = values.getAsString(DatabaseLookupColumns.INSTANCE_PATH);
+        look.column1 = values.getAsString(DatabaseLookupColumns.COLUMN_1);
+        look.column2 = values.getAsString(DatabaseLookupColumns.COLUMN_2);
+        look.column3 = values.getAsString(DatabaseLookupColumns.COLUMN_3);
+        look.column4 = values.getAsString(DatabaseLookupColumns.COLUMN_4);
+        look.column5 = values.getAsString(DatabaseLookupColumns.COLUMN_5);
+        look.column6 = values.getAsString(DatabaseLookupColumns.COLUMN_6);
+        look.column7 = values.getAsString(DatabaseLookupColumns.COLUMN_7);
+        look.column8 = values.getAsString(DatabaseLookupColumns.COLUMN_8);
+        look.column9 = values.getAsString(DatabaseLookupColumns.COLUMN_9);
+        look.column10 = values.getAsString(DatabaseLookupColumns.COLUMN_10);
+        return look;
     }
 }

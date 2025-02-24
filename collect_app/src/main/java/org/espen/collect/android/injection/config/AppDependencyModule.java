@@ -15,6 +15,7 @@ import androidx.work.WorkManager;
 
 import com.google.gson.Gson;
 
+import org.espen.collect.android.utilities.LookUpRepositoryProvider;
 import org.javarosa.core.reference.ReferenceManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -454,7 +455,10 @@ public class AppDependencyModule {
     public InstancesRepositoryProvider providesInstancesRepositoryProvider(Context context, StoragePathProvider storagePathProvider) {
         return new InstancesRepositoryProvider(context, storagePathProvider);
     }
-
+    @Provides
+    public LookUpRepositoryProvider providesLookUpRepositoryProvider(Context context, StoragePathProvider storagePathProvider) {
+        return new LookUpRepositoryProvider(context, storagePathProvider);
+    }
     @Provides
     public SavepointsRepositoryProvider providesSavepointsRepositoryProvider(Context context, StoragePathProvider storagePathProvider) {
         return new SavepointsRepositoryProvider(context, storagePathProvider);

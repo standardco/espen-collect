@@ -7,5 +7,6 @@ data class StoragePaths(
     val cacheDir: String,
     val metaDir: String,
     val settingsDir: String,
-    val layersDir: String
+    val layersDir: String,
+    val lookupsDir: String
 )

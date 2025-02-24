@@ -38,6 +38,7 @@ import org.odk.collect.async.Cancellable;
 import org.odk.collect.async.Scheduler;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.FormsRepository;
+import org.odk.collect.lookup.LookUpRepository;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -72,6 +73,7 @@ public class FormEntryViewModel extends ViewModel implements SelectChoiceLoader 
 
     private final Cancellable formSessionObserver;
     private final FormsRepository formsRepository;
+    private final LookUpRepository lookUpRepository;
     private final ChangeLocks changeLocks;
 
     private final Map<FormIndex, List<SelectChoice>> choices = new HashMap<>();
@@ -79,7 +81,7 @@ public class FormEntryViewModel extends ViewModel implements SelectChoiceLoader 
     private final TrackableWorker worker;
 
     @SuppressWarnings("WeakerAccess")
-    public FormEntryViewModel(Supplier<Long> clock, Scheduler scheduler, FormSessionRepository formSessionRepository, String sessionId, FormsRepository formsRepository, ChangeLocks changeLocks) {
+    public FormEntryViewModel(Supplier<Long> clock, Scheduler scheduler, FormSessionRepository formSessionRepository, String sessionId, FormsRepository formsRepository, LookUpRepository lookUpRepository, ChangeLocks changeLocks) {
         this.clock = clock;
         this.formSessionRepository = formSessionRepository;
         worker = new TrackableWorker(scheduler);
@@ -93,6 +95,7 @@ public class FormEntryViewModel extends ViewModel implements SelectChoiceLoader 
             this.hasBackgroundRecording.setValue(hasBackgroundRecording);
         });
         this.formsRepository = formsRepository;
+        this.lookUpRepository = lookUpRepository;
         this.changeLocks = changeLocks;
     }
 
@@ -294,11 +297,11 @@ public class FormEntryViewModel extends ViewModel implements SelectChoiceLoader 
     public List<SelectChoice> loadSelectChoices(@NonNull FormEntryPrompt prompt) throws FileNotFoundException, XPathSyntaxException, ExternalDataException {
         List<SelectChoice> selectChoices = choices.get(prompt.getIndex());
 
-        if (selectChoices != null) {
+        if (selectChoices != null && !selectChoices.isEmpty()) {
             return selectChoices;
         } else {
             // Choice lists from some questions aren't preloaded yet
-            return SelectChoiceUtils.loadSelectChoices(prompt, formController);
+            return SelectChoiceUtils.loadSelectChoices(prompt, formController, lookUpRepository);
         }
     }
 

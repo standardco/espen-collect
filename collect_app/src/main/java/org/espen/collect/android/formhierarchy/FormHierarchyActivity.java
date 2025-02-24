@@ -36,6 +36,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import org.espen.collect.android.utilities.LookUpRepositoryProvider;
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.GroupDef;
 import org.javarosa.core.model.IFormElement;
@@ -190,6 +191,8 @@ public class FormHierarchyActivity extends LocalizedActivity implements DeleteRe
 
     @Inject
     public InstancesRepositoryProvider instancesRepositoryProvider;
+    @Inject
+    public LookUpRepositoryProvider lookUpRepositoryProvider;
 
     @Inject
     public FormsRepositoryProvider formsRepositoryProvider;
@@ -238,6 +241,7 @@ public class FormHierarchyActivity extends LocalizedActivity implements DeleteRe
                 autoSendSettingsProvider,
                 formsRepositoryProvider,
                 instancesRepositoryProvider,
+                lookUpRepositoryProvider,
                 savepointsRepositoryProvider,
                 new QRCodeCreatorImpl(),
                 new HtmlPrinter(),

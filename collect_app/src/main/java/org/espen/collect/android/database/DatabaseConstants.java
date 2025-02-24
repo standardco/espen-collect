@@ -17,6 +17,9 @@ public final class DatabaseConstants {
     // Please always test upgrades manually when you change this value
     public static final int SAVEPOINTS_DATABASE_VERSION = 1;
 
+    public static final String LOOKUP_DATABASE_NAME = "lookups.db";
+    public static final String LOOKUP_TABLE_NAME = "lookups";
+    public static final int LOOKUP_DATABASE_VERSION = 5;
     private DatabaseConstants() {
 
     }

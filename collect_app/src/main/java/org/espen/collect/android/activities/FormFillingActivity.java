@@ -156,6 +156,7 @@ import org.espen.collect.android.utilities.ControllableLifecyleOwner;
 import org.espen.collect.android.utilities.ExternalAppIntentProvider;
 import org.espen.collect.android.utilities.FormsRepositoryProvider;
 import org.espen.collect.android.utilities.InstancesRepositoryProvider;
+import org.espen.collect.android.utilities.LookUpRepositoryProvider;
 import org.espen.collect.android.utilities.MediaUtils;
 import org.espen.collect.android.utilities.SavepointsRepositoryProvider;
 import org.espen.collect.android.utilities.ScreenContext;
@@ -362,6 +363,8 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
 
     @Inject
     public InstancesRepositoryProvider instancesRepositoryProvider;
+    @Inject
+    public LookUpRepositoryProvider lookUpRepositoryProvider;
 
     @Inject
     public SavepointsRepositoryProvider savepointsRepositoryProvider;
@@ -434,6 +437,7 @@ public class FormFillingActivity extends LocalizedActivity implements AnimationL
                 autoSendSettingsProvider,
                 formsRepositoryProvider,
                 instancesRepositoryProvider,
+                lookUpRepositoryProvider,
                 savepointsRepositoryProvider,
                 new QRCodeCreatorImpl(),
                 new HtmlPrinter(),

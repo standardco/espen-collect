@@ -26,6 +26,7 @@ import org.espen.collect.android.utilities.ApplicationConstants
 import org.espen.collect.android.utilities.ChangeLockProvider
 import org.espen.collect.android.utilities.FormsRepositoryProvider
 import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.espen.collect.android.utilities.LookUpRepositoryProvider
 import org.espen.collect.android.utilities.MediaUtils
 import org.espen.collect.android.utilities.SavepointsRepositoryProvider
 import org.odk.collect.async.Scheduler
@@ -55,6 +56,7 @@ class FormEntryViewModelFactory(
     private val autoSendSettingsProvider: AutoSendSettingsProvider,
     private val formsRepositoryProvider: FormsRepositoryProvider,
     private val instancesRepositoryProvider: InstancesRepositoryProvider,
+    private val lookupRepositoryProvider: LookUpRepositoryProvider,
     private val savepointsRepositoryProvider: SavepointsRepositoryProvider,
     private val qrCodeCreator: QRCodeCreator,
     private val htmlPrinter: HtmlPrinter,
@@ -76,6 +78,7 @@ class FormEntryViewModelFactory(
                 formSessionRepository,
                 sessionId,
                 formsRepositoryProvider.create(projectId),
+                lookupRepositoryProvider.create(projectId),
                 changeLockProvider.create(projectId)
             )
 
@@ -91,8 +94,9 @@ class FormEntryViewModelFactory(
                     formSessionRepository.get(sessionId),
                     entitiesRepositoryProvider.create(projectId),
                     instancesRepositoryProvider.create(projectId),
+                    lookupRepositoryProvider.create(projectId),
                     savepointsRepositoryProvider.create(projectId),
-                    instancesDataService
+                    instancesDataService,
                 )
             }
 

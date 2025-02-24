@@ -15,6 +15,7 @@
 package org.espen.collect.android.tasks;
 
 import static org.espen.collect.android.analytics.AnalyticsEvents.ENCRYPT_SUBMISSION;
+import static org.espen.collect.android.database.DatabaseObjectMapper.getLookUpFromValues;
 import static org.odk.collect.strings.localization.LocalizedApplicationKt.getLocalizedString;
 
 import android.content.ContentValues;
@@ -23,12 +24,19 @@ import android.util.Pair;
 
 import androidx.annotation.NonNull;
 
+import org.espen.collect.android.database.lookups.DatabaseLookupColumns;
+import org.espen.collect.android.javarosawrapper.JavaRosaFormController;
+import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.condition.EvaluationContext;
 import org.javarosa.core.model.data.GeoPointData;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.instance.FormInstance;
 import org.javarosa.core.model.instance.TreeElement;
+import org.javarosa.core.model.instance.TreeReference;
 import org.javarosa.core.services.transport.payload.ByteArrayPayload;
+import org.javarosa.form.api.FormEntryController;
+import org.javarosa.form.api.FormEntryPrompt;
+import org.javarosa.model.xform.XPathReference;
 import org.javarosa.xpath.XPathException;
 import org.javarosa.xpath.XPathNodeset;
 import org.javarosa.xpath.XPathParseTool;
@@ -60,11 +68,16 @@ import org.odk.collect.entities.storage.EntitiesRepository;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;
+import org.odk.collect.lookup.LookUp;
+import org.odk.collect.lookup.LookUpRepository;
 import org.odk.collect.shared.files.FileExt;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 import timber.log.Timber;
 
@@ -81,6 +94,7 @@ public class SaveFormToDisk {
     private final FormController formController;
     private final MediaUtils mediaUtils;
     private final InstancesRepository instancesRepository;
+    private final LookUpRepository lookupRepository;
     private Uri uri;
     private String instanceName;
     private final ArrayList<String> tempFiles;
@@ -93,7 +107,7 @@ public class SaveFormToDisk {
     public static final int ENCRYPTION_ERROR = 505;
 
     public SaveFormToDisk(FormController formController, MediaUtils mediaUtils, boolean saveAndExit, boolean shouldFinalize, String updatedName,
-                          Uri uri, ArrayList<String> tempFiles, String currentProjectId, EntitiesRepository entitiesRepository,  InstancesRepository instancesRepository) {
+                          Uri uri, ArrayList<String> tempFiles, String currentProjectId, EntitiesRepository entitiesRepository,  InstancesRepository instancesRepository, LookUpRepository lookupRepository) {
         this.formController = formController;
         this.mediaUtils = mediaUtils;
         this.uri = uri;
@@ -104,6 +118,7 @@ public class SaveFormToDisk {
         this.currentProjectId = currentProjectId;
         this.entitiesRepository = entitiesRepository;
         this.instancesRepository = instancesRepository;
+        this.lookupRepository = lookupRepository;
     }
 
     @Nullable
@@ -130,6 +145,7 @@ public class SaveFormToDisk {
         if (shouldFinalize) {
             Instance instance = updateInstanceDatabase(true, true, validationResult);
             FormEntryUseCases.finalizeFormController(instance, formController, instancesRepository, entitiesRepository);
+            SaveToLookUp();
         }
 
         // close all open databases of external data.
@@ -487,5 +503,110 @@ public class SaveFormToDisk {
      */
     public static void writeFile(ByteArrayPayload payload, File file) throws IOException {
         FileExt.saveToFile(file, payload.getPayloadStream());
+    }
+
+
+    /**
+     * Save form lookup form information
+     */
+    private void SaveToLookUp(){
+        int event;
+        boolean success = true;
+        String mSaveError = "";
+        this.formController.jumpToIndex(FormIndex
+                .createBeginningOfFormIndex());
+        while ((event = formController.stepToNextEvent(JavaRosaFormController.STEP_OVER_GROUP)) != FormEntryController.EVENT_END_OF_FORM) {
+            if (event != FormEntryController.EVENT_QUESTION) {
+                continue;
+            } else {
+                List<TreeElement> attrs = formController.getQuestionPrompt().getBindAttributes();
+
+                // if we get an error looking up a nodeset on save, we save the
+                // form, but not the
+                // nodeset value to the db.
+                // the string widget shows you the error
+
+                HashMap<String, String> inserts = new HashMap<String, String>();
+
+                for (TreeElement te : attrs) {
+                    String value = null;
+                    String col = null;
+                    String node = null;
+                    if (te.getName() != null
+                            && te.getName().startsWith("db_add_col_")) {
+                        if (".".equalsIgnoreCase(te.getAttributeValue())) {
+                            // save the value of this node
+                            value = formController.getQuestionPrompt().getAnswerValue().getDisplayText();
+                        } else {
+                            node = te.getAttributeValue();
+                            // we're saving another node
+
+                            try {
+                                TreeReference th = XPathReference.getPathExpr(
+                                        node).getReference();
+                                FormIndex filter_answer = new FormIndex(1, th);
+                                FormEntryPrompt filter_prompt = formController.getQuestionPrompt(filter_answer);
+                                // I'm not sure I like this code, but not sure
+                                // how
+                                // else to do it. if we have an xpath reference
+                                // that references a node that doesn't exist,
+                                // everything gets created just fine, except
+                                // when you try to get the answer, it blows up
+                                // with
+                                // a null pointer.
+
+                                value = filter_prompt.getAnswerValue().getDisplayText();
+                            } catch (NullPointerException e) {
+                                e.printStackTrace();
+                                success = false;
+                                mSaveError = "Error getting value for node: " + node;
+                                break;
+                            } catch (RuntimeException e) {
+                                e.printStackTrace();
+                                success = false;
+                                mSaveError = "Error getting value for node: " + node;
+                                break;
+                            }
+                        }
+
+                        col = te.getName().substring("db_add_col_".length(),
+                                te.getName().length());
+
+                        try {
+                            int colNum = Integer.parseInt(col);
+                            if (colNum > 10) {
+                                success = false;
+                                mSaveError = "Error: col_" + col
+                                        + " does not exist";
+                                break;
+                            }
+                        } catch (RuntimeException e) {
+                            e.printStackTrace();
+                            success = false;
+                            mSaveError = "Error: col_" + col
+                                    + " does not exist";
+                            break;
+                        }
+
+                        inserts.put(col, value);
+
+                    }
+                }
+
+                if (success && inserts.size() > 0) {
+                    ContentValues cv = new ContentValues();
+                    Iterator<String> itr = inserts.keySet().iterator();
+                    while (itr.hasNext()) {
+                        String key = itr.next();
+                        cv.put("col_" + key, inserts.get(key));
+                    }
+                    String instancePath = formController.getInstanceFile().getAbsolutePath();
+                    cv.put(DatabaseLookupColumns.INSTANCE_PATH, instancePath);
+
+                    LookUp lookup = getLookUpFromValues(cv);
+                    lookupRepository.save(lookup);
+                }
+            }
+        }
     }
 }

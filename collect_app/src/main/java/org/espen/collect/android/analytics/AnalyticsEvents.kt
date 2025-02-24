@@ -87,6 +87,13 @@ object AnalyticsEvents {
 
     const val INSTANCE_PROVIDER_DELETE = "InstanceProviderDelete"
 
+    const val LOOKUP_PROVIDER_QUERY = "LookupProviderQuery"
+
+    const val LOOKUP_PROVIDER_INSERT = "LookupProviderInsert"
+
+    const val LOOKUP_PROVIDER_UPDATE = "LookupProviderUpdate"
+
+    const val LOOKUP_PROVIDER_DELETE = "LookupProviderDelete"
     /**
      * Tracks how often drafts that can't be bulk finalized are attempted to be
      */

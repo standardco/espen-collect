@@ -50,6 +50,7 @@ class StoragePathProvider(
             StorageSubdirectory.SHARED_LAYERS -> odkRootDirPath + File.separator + subdirectory.directoryName
             StorageSubdirectory.FORMS,
             StorageSubdirectory.INSTANCES,
+            StorageSubdirectory.LOOKUPS,
             StorageSubdirectory.CACHE,
             StorageSubdirectory.METADATA,
             StorageSubdirectory.LAYERS,
@@ -90,6 +91,7 @@ class StoragePathProvider(
             getOdkDirPath(StorageSubdirectory.CACHE, projectId),
             getOdkDirPath(StorageSubdirectory.METADATA, projectId),
             getOdkDirPath(StorageSubdirectory.SETTINGS, projectId),
+            getOdkDirPath(StorageSubdirectory.LOOKUPS, projectId),
             getOdkDirPath(StorageSubdirectory.LAYERS, projectId)
         )
     }

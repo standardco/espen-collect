@@ -11,6 +11,7 @@ import org.espen.collect.android.fastexternalitemset.ItemsetDbAdapter
 import org.espen.collect.android.fastexternalitemset.XPathParseTool
 import org.espen.collect.android.javarosawrapper.FormController
 import java.io.FileNotFoundException
+import org.odk.collect.lookup.LookUpRepository
 
 object SelectChoiceUtils {
 
@@ -24,6 +25,25 @@ object SelectChoiceUtils {
             isSearchPulldataItemsetUsed(prompt) -> readSearchPulldataItems(prompt, formController)
             else -> prompt.selectChoices ?: emptyList()
         }
+    }
+
+    @JvmStatic
+    @Throws(FileNotFoundException::class, XPathSyntaxException::class, org.espen.collect.android.exception.ExternalDataException::class)
+    fun loadSelectChoices(prompt: FormEntryPrompt, formController: FormController, lookupRepository: LookUpRepository): List<SelectChoice> {
+        return when {
+            isLookUpUsed(prompt) -> readLookupRepository(prompt, formController, lookupRepository)
+            isFastExternalItemsetUsed(prompt) -> readFastExternalItems(prompt, formController)
+            isSearchPulldataItemsetUsed(prompt) -> readSearchPulldataItems(prompt, formController)
+            else -> prompt.selectChoices
+        }
+    }
+
+    private fun readLookupRepository(prompt: FormEntryPrompt, formController: FormController, lookupRepository: LookUpRepository): List<SelectChoice> {
+        return ExternalDataUtil.populateLookupChoices(prompt,formController, lookupRepository, )
+    }
+
+    private fun isLookUpUsed(prompt: FormEntryPrompt): Boolean {
+        return prompt.bindAttributes.filter { e-> e.name.equals("db_get") }.isNotEmpty()
     }
 
     private fun isFastExternalItemsetUsed(prompt: FormEntryPrompt): Boolean {
