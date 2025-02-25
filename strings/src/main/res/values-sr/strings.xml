@@ -624,9 +624,9 @@
   <string name="tell_your_friends_msg">Da li tvoje kolege i dalje prikupljaju podatke na papiru? Podijeli ODK sa njima</string>
   <string name="leave_a_review">Napiši Play Store recenziju</string>
   <string name="leave_a_review_msg">Vaša (nadamo se pozitivna) recenzija povećava vidljivost aplikacije u Play Storu.</string>
-  <string name="odk_website">Posjeti ODK vebsajt</string>
-  <string name="odk_website_summary">ODK se koristi za prikupljanje podataka o društvenim stvarima u izazovnim situacijama.</string>
-  <string name="odk_forum">Pridruži se ODK forumu</string>
+  <string name="odk_website">Posjeti ESPEN vebsajt</string>
+  <string name="odk_website_summary">ESPEN se koristi za prikupljanje podataka o društvenim stvarima u izazovnim situacijama.</string>
+  <string name="odk_forum">Pridruži se ESPEN forumu</string>
   <string name="odk_forum_summary">Pridruži se forumu za podršku, traži opcije, ili doprinesi kodu/prevodu!</string>
   <string name="all_open_source_licenses">Otvori biblioteke/ licence koda</string>
   <string name="all_open_source_licenses_msg">Stojimo na ramenima velikana!</string>

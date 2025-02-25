@@ -834,9 +834,9 @@
   <string name="tell_your_friends_msg">Erfassen Ihre Kollegen Daten immer noch auf Papier? Empfehlen Sie Ihnen ODK Collect.</string>
   <string name="leave_a_review">Geben Sie eine Play Store Bewertung ab</string>
   <string name="leave_a_review_msg">Ihre (hoffentlich positive) Bewertung steigert die Bekanntheit der App im Play Store.</string>
-  <string name="odk_website">ODK-Webseite öffnen</string>
-  <string name="odk_website_summary">ODK wird benutzt um Daten für soziale Zwecke in herausfordernden Umgebungen zu sammeln.</string>
-  <string name="odk_forum">Dem ODK-Forum beitreten</string>
+  <string name="odk_website">ESPEN-Webseite öffnen</string>
+  <string name="odk_website_summary">ESPEN wird benutzt um Daten für soziale Zwecke in herausfordernden Umgebungen zu sammeln.</string>
+  <string name="odk_forum">Dem ESPEN-Forum beitreten</string>
   <string name="odk_forum_summary">Treten Sie dem Forum bei, um Hilfe zu bekommen, Funktionen vorzuschlagen, Code/Übersetzungen beizutragen!</string>
   <string name="all_open_source_licenses">Open Source Libraries/Lizenzen</string>
   <string name="all_open_source_licenses_msg">Wir stehen auf den Schultern von Riesen!</string>

@@ -746,9 +746,9 @@
   <string name="tell_your_friends_msg">هل ما زال زملائك يجمعون البيانات على الورق؟ شارك ODK Collect معهم.</string>
   <string name="leave_a_review">اترك تقييم في Play Store</string>
   <string name="leave_a_review_msg">تقييمك (الذي نأمل أن يكون إيجابيا) يزيد من رؤية التطبيق في Play Store.</string>
-  <string name="odk_website">زيارة موقع ODK</string>
+  <string name="odk_website">زيارة موقع ESPEN</string>
   <string name="odk_website_summary">يستخدم ODK لجمع البيانات من أجل الصالح الاجتماعي في البيئات الصعبة.</string>
-  <string name="odk_forum">انضم إلى منتدى ODK</string>
+  <string name="odk_forum">انضم إلى منتدى ESPEN</string>
   <string name="odk_forum_summary">انضم إلى المنتدى للحصول على الدعم وطلب الميزات والمساهمة بالكود / الترجمات!</string>
   <string name="all_open_source_licenses">مكتبات و تراخيص مفتوحة المصدر</string>
   <string name="all_open_source_licenses_msg">نقف على أكتاف العمالقة!</string>

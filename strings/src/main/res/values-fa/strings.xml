@@ -755,13 +755,13 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">در باره</string>
-  <string name="tell_your_friends">ODK Collect را به اشتراک بگذارید</string>
+  <string name="tell_your_friends">ESPEN Collect را به اشتراک بگذارید</string>
   <string name="tell_your_friends_msg">آیا همکاران شما هنوز در حال جمع آوری معلومات بر روی کاغذ هستند؟ ODK Collect را با آنها به اشتراک بگذارید.</string>
   <string name="leave_a_review">نظریه خود را راجع به Play Store بنویسید</string>
   <string name="leave_a_review_msg"> (امیدوارم) بررسی ما باعث افزایش دید برنامه در  Play Store می شود.</string>
-  <string name="odk_website">به وبسایت ODK مراجعه کنید</string>
-  <string name="odk_website_summary">ODK برای جمع آوری data برای منافع اجتماعی در محیط های چالش برانگیز استفاده می شود.</string>
-  <string name="odk_forum">با انجمن ODK یکجا شوید</string>
+  <string name="odk_website">به وبسایت ESPEN مراجعه کنید</string>
+  <string name="odk_website_summary">ESPEN برای جمع آوری data برای منافع اجتماعی در محیط های چالش برانگیز استفاده می شود.</string>
+  <string name="odk_forum">با انجمن ESPEN یکجا شوید</string>
   <string name="odk_forum_summary">برای دریافت کمک، درخواست ویژگی‌ها، مشارکت کد/ترجمه به انجمن بپیوندید!</string>
   <string name="all_open_source_licenses">منابع باز کتابخانه ها/مجوز ها</string>
   <string name="all_open_source_licenses_msg">ما روی شانه های غول ها ایستاده ایم!</string>

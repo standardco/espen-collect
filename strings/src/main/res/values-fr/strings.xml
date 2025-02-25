@@ -839,8 +839,8 @@
   <string name="leave_a_review">Laissez un avis sur Play Store</string>
   <string name="leave_a_review_msg">Votre avis (ce qu\'on espère est positif) augmente la visibilité de l\'application dans le Play Store.</string>
   <string name="odk_website">Visiter le site web de Open Data Kit</string>
-  <string name="odk_website_summary">ODK est utilisé pour collecter des données pour le bien commun dans des environnements contraignantes.</string>
-  <string name="odk_forum">Rejoindre le Forum ODK</string>
+  <string name="odk_website_summary">ESPEN est utilisé pour collecter des données pour le bien commun dans des environnements contraignantes.</string>
+  <string name="odk_forum">Rejoindre le Forum ESPEN</string>
   <string name="odk_forum_summary">Rejoignez le forum pour obtenir de l\'aide, demander des fonctionnalités, contribuer au code et aux traductions! </string>
   <string name="all_open_source_licenses">Licences et librairies open source</string>
   <string name="all_open_source_licenses_msg">Nous sommes debout sur les épaules de géants.</string>

@@ -695,9 +695,9 @@
   <string name="tell_your_friends_msg">あなたの同僚はまだ紙でデータを収集しているのですか? ODK Collect を彼らと共有しましょう。</string>
   <string name="leave_a_review">Play ストアにレビューを残す</string>
   <string name="leave_a_review_msg">あなたの (肯定的な) レビューが Play ストアでアプリの認知度を向上させてくれます</string>
-  <string name="odk_website">ODK ウェブサイトを訪問</string>
+  <string name="odk_website">ESPEN ウェブサイトを訪問</string>
   <string name="odk_website_summary">オープンデータキット (ODK) は、課題のある環境での社会的利益のためのデータを収集するために使用されます。</string>
-  <string name="odk_forum">ODK フォーラムに参加</string>
+  <string name="odk_forum">ESPEN フォーラムに参加</string>
   <string name="odk_forum_summary">フォーラムに参加して、サポートを受けたり、機能をリクエストしたり、コード/翻訳に貢献してください!</string>
   <string name="all_open_source_licenses">オープンソースライブラリー/ライセンス</string>
   <string name="all_open_source_licenses_msg">私たちは巨人の肩の上に立っています!</string>

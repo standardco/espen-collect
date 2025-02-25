@@ -834,9 +834,9 @@
   <string name="tell_your_friends_msg">Keräävätkö kollegasi vielä dataa paperilla? Jaa ODK Collect heidän kanssaan.</string>
   <string name="leave_a_review">Kirjoita Play Store -arvio</string>
   <string name="leave_a_review_msg">Sinun (toivottavasti myönteinen) arviosi lisää sovelluksen näkyvyyttä Play Store -kaupassa.</string>
-  <string name="odk_website">Käy ODK:n verkkosivulla</string>
-  <string name="odk_website_summary">ODK:ta käytetään vaativien olosuhteiden tiedonkeruuseen sosiaalisen hyvän tarkoituksissa.</string>
-  <string name="odk_forum">Liity ODK-foorumiin</string>
+  <string name="odk_website">Käy ESPEN:n verkkosivulla</string>
+  <string name="odk_website_summary">ESPEN:ta käytetään vaativien olosuhteiden tiedonkeruuseen sosiaalisen hyvän tarkoituksissa.</string>
+  <string name="odk_forum">Liity ESPEN-foorumiin</string>
   <string name="odk_forum_summary">Liity foorumiin saadaksesi tukea, pyytääksesi toimintoja, ja auttaaksesi koodaamisessa tai kääntämisessä!</string>
   <string name="all_open_source_licenses">Avoimen lähdekoodin kirjastot/lisenssit</string>
   <string name="all_open_source_licenses_msg">Seisomme jättiläisten harteilla!</string>

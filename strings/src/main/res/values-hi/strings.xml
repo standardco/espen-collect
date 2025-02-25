@@ -479,8 +479,8 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">बारे में </string>
-  <string name="odk_website">ODK वेबसाइट विजिट करें</string>
-  <string name="odk_forum">ODK फोरम ज्वाइन करें</string>
+  <string name="odk_website">ESPEN वेबसाइट विजिट करें</string>
+  <string name="odk_forum">ESPEN फोरम ज्वाइन करें</string>
   <!--##############################################
      # SETTINGS IMPORT
      ##############################################-->

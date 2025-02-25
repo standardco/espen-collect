@@ -404,8 +404,8 @@
      # ABOUT
      ##############################################-->
   <string name="about_preferences">ስለ</string>
-  <string name="odk_website">የODKን ድረ ገፅ ይጎብኙ</string>
-  <string name="odk_forum">የODKን መድረክ ይቀላቀሉ</string>
+  <string name="odk_website">የESPENን ድረ ገፅ ይጎብኙ</string>
+  <string name="odk_forum">የESPENን መድረክ ይቀላቀሉ</string>
   <!--##############################################
      # SETTINGS IMPORT
      ##############################################-->

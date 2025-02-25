@@ -706,9 +706,9 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="tell_your_friends_msg">Abo mukorana baracyakusanyiriza amakuru mu mpapuro? Bahe ODK collect</string>
   <string name="leave_a_review">Tanga igitekerezo cyawe muri play store</string>
   <string name="leave_a_review_msg">Igitekerezo cyawe(twizera cyiza) kiratuma application irushaho kugaragara cyane muri Play Store</string>
-  <string name="odk_website">Sura urubuga rwa ODK</string>
-  <string name="odk_website_summary">ODK ikoreshwa mugukusanya amakuru kubwimibereho myiza mubidukikije bifite ibibazo.</string>
-  <string name="odk_forum">Itabire ihuriro ry\'abakoresha ODK</string>
+  <string name="odk_website">Sura urubuga rwa ESPEN</string>
+  <string name="odk_website_summary">ESPEN ikoreshwa mugukusanya amakuru kubwimibereho myiza mubidukikije bifite ibibazo.</string>
+  <string name="odk_forum">Itabire ihuriro ry\'abakoresha ESPEN</string>
   <string name="odk_forum_summary">Injira ihuriro kugirango ubone ubufasha, gusaba ibiranga, gutanga umusanzu / ibisobanuro!</string>
   <string name="all_open_source_licenses">Gufungura amasomero yisoko / impushya</string>
   <string name="all_open_source_licenses_msg">Duhagaze ku bitugu by\'ibihangange!</string>

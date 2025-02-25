@@ -631,8 +631,8 @@
   <string name="tell_your_friends_msg">តើ​សហការី​របស់​អ្នក​នៅ​តែ​ប្រមូល​ទិន្នន័យ​នៅ​លើ​ក្រដាស​មែន​ទេ? ចែក​រំលែក ODK Collect ជាមួយពួកគេ។</string>
   <string name="leave_a_review">ទុកមតិនៅក្នុងហាង Play</string>
   <string name="leave_a_review_msg">ការ​ផ្តល់​មតិ​ (សង្ឃឹមថាជាវិជ្ជមាន) របស់​អ្នក​បង្កើន​ភាព​មើល​ឃើញ​នៃ​កម្មវិធី​នៅ​ក្នុង Play Store ។</string>
-  <string name="odk_website">ចូលទៅកាន់គេហទំព័រ ODK</string>
-  <string name="odk_website_summary">ODK បាន​ប្រើ​ប្រាស់​ដើម្បី​ប្រមូល​ទិន្នន័យសម្រាប់ភាពប្រសើរ​របស់​សង្គមនៅក្នុងបរិយាកាស​ប្រកួត​ប្រជែង​។</string>
+  <string name="odk_website">ចូលទៅកាន់គេហទំព័រ ESPEN</string>
+  <string name="odk_website_summary">ESPEN បាន​ប្រើ​ប្រាស់​ដើម្បី​ប្រមូល​ទិន្នន័យសម្រាប់ភាពប្រសើរ​របស់​សង្គមនៅក្នុងបរិយាកាស​ប្រកួត​ប្រជែង​។</string>
   <string name="odk_forum">ចូល​រួម​ជា​មួយ​វេទិកា ODK</string>
   <string name="odk_forum_summary">ចូលរួមវេទិកាដើម្បីទទួលបានការគាំទ្រ, លក្ខណៈពិសេសស្នើសុំ, រួមចំណែកកូដ / ការបកប្រែ!</string>
   <string name="all_open_source_licenses">ប្រភពបណ្ណាល័យបើកចំហ/អាជ្ញាបណ្ណ</string>

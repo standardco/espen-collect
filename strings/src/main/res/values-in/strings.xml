@@ -789,9 +789,9 @@
   <string name="tell_your_friends_msg">Apakah rekan Anda masih menggunakan kertas untuk pengumpulan data? Kabari mereka untuk menggunakan ODK Collect.</string>
   <string name="leave_a_review">Berikan ulasan di Play Store</string>
   <string name="leave_a_review_msg">Ulasan Anda (semoga positif) dapat mempromosikan aplikasi ODK di Play Store.</string>
-  <string name="odk_website">Kunjungi situs ODK </string>
-  <string name="odk_website_summary">ODK digunakan sebagai pengumpulan data untuk kepentingan sosial di lingkungan yang menantang.</string>
-  <string name="odk_forum">Gabung forum ODK</string>
+  <string name="odk_website">Kunjungi situs ESPEN </string>
+  <string name="odk_website_summary">ESPEN digunakan sebagai pengumpulan data untuk kepentingan sosial di lingkungan yang menantang.</string>
+  <string name="odk_forum">Gabung forum ESPEN</string>
   <string name="odk_forum_summary">Bergabung di Forum untuk mendapatkan bantuan, permintaan fitur, berkontribusi kode program/terjemahan!</string>
   <string name="all_open_source_licenses">Lisensi/pustaka sumber terbuka</string>
   <string name="all_open_source_licenses_msg">Kita menjadi besar karena berkolaborasi bersama!</string>

@@ -810,9 +810,9 @@
   <string name="tell_your_friends_msg">Seus colegas ainda estão coletando dados em papel? Compartilhe o ODK Collect com eles.</string>
   <string name="leave_a_review">Deixe um opinião sua na Play Store</string>
   <string name="leave_a_review_msg">A sua opinião (possivelmente positiva) aumenta a visibilidade da App na Play Store.</string>
-  <string name="odk_website">Visite o site ODK</string>
+  <string name="odk_website">Visite o site ESPEN</string>
   <string name="odk_website_summary">ODK é usado para coleta de dados pelo bem comum em ambientes desafiadores.</string>
-  <string name="odk_forum">Junte-se ao fórum ODK</string>
+  <string name="odk_forum">Junte-se ao fórum ESPEN</string>
   <string name="odk_forum_summary">Junte-se ao fórum para obter suporte, requisitar funcionalidades, contribuir com o código/traduções!</string>
   <string name="all_open_source_licenses">Bibliotecas/licenças open source</string>
   <string name="all_open_source_licenses_msg">Nós estamos nos ombros dos gigantes!</string>
