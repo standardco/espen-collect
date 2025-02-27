@@ -3,17 +3,18 @@ package org.espen.collect.android.widgets.utilities
 import android.app.Activity
 import android.content.Intent
 import org.javarosa.form.api.FormEntryPrompt
+import org.espen.collect.android.R
 import org.espen.collect.android.javarosawrapper.FormController
 import org.espen.collect.android.utilities.ExternalAppIntentProvider
-import org.espen.collect.androidshared.system.IntentLauncher
+import org.odk.collect.androidshared.system.IntentLauncher
 import java.io.Serializable
 import java.lang.Error
 import java.lang.Exception
 
 class StringRequesterImpl(
-        val intentLauncher: IntentLauncher,
-        val externalAppIntentProvider: org.espen.collect.android.utilities.ExternalAppIntentProvider,
-        private val formController: FormController
+    val intentLauncher: IntentLauncher,
+    val externalAppIntentProvider: ExternalAppIntentProvider,
+    private val formController: FormController
 ) : StringRequester {
 
     override fun launch(

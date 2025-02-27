@@ -1,11 +1,10 @@
 def configDir = "${project.rootDir}/config"
-def reportsDir = "${project.buildDir}/reports"
 
 //------------------------Checkstyle------------------------//
 
 apply plugin: 'checkstyle'
 
-checkstyle.toolVersion = '10.12.1'
+checkstyle.toolVersion = '10.17.0'
 
 tasks.register("checkstyle", Checkstyle) {
     configFile file("$configDir/checkstyle.xml")
@@ -24,7 +23,7 @@ tasks.register("checkstyle", Checkstyle) {
 apply plugin: 'pmd'
 
 pmd {
-    toolVersion = '6.55.0'
+    toolVersion = '7.3.0'
 }
 
 tasks.register("pmd", Pmd) {
@@ -39,11 +38,9 @@ tasks.register("pmd", Pmd) {
     reports {
         xml {
             enabled false
-            setDestination new File("$reportsDir/pmd/pmd.xml")
         }
         html {
             enabled true
-            setDestination new File("$reportsDir/pmd/pmd.html")
         }
     }
 }
@@ -53,5 +50,5 @@ tasks.register("pmd", Pmd) {
 apply plugin: "org.jlleitschuh.gradle.ktlint"
 
 ktlint {
-    disabledRules.set(["no-blank-lines-in-chained-method-calls"])
+    version = "1.3.1"
 }

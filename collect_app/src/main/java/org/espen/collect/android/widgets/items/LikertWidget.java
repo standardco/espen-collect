@@ -3,7 +3,6 @@ package org.espen.collect.android.widgets.items;
 import static android.widget.RelativeLayout.CENTER_HORIZONTAL;
 import static android.widget.RelativeLayout.CENTER_IN_PARENT;
 import static android.widget.RelativeLayout.TRUE;
-import static org.espen.collect.android.utilities.ViewUtils.dpFromPx;
 import static org.espen.collect.android.utilities.ViewUtils.pxFromDp;
 
 import android.annotation.SuppressLint;
@@ -19,11 +18,10 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.material.radiobutton.MaterialRadioButton;
 
-import org.espen.collect.android.externaldata.ExternalSelectChoice;
-import org.espen.collect.android.utilities.HtmlUtils;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectOneData;
@@ -31,12 +29,13 @@ import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryCaption;
-import org.espen.collect.android.externaldata.ExternalSelectChoice;
+import org.javarosa.form.api.FormEntryPrompt;
+import org.espen.collect.android.dynamicpreload.ExternalSelectChoice;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
 import org.espen.collect.android.utilities.HtmlUtils;
-import org.espen.collect.androidshared.bitmap.ImageFileUtils;
 import org.espen.collect.android.widgets.QuestionWidget;
 import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.odk.collect.androidshared.bitmap.ImageFileUtils;
 
 import java.io.File;
 import java.util.HashMap;
@@ -46,7 +45,6 @@ import timber.log.Timber;
 
 @SuppressLint("ViewConstructor")
 public class LikertWidget extends QuestionWidget {
-
     LinearLayout view;
     private RadioButton checkedButton;
     private final LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1);
@@ -60,16 +58,18 @@ public class LikertWidget extends QuestionWidget {
 
     public LikertWidget(Context context, QuestionDetails questionDetails, SelectChoiceLoader selectChoiceLoader) {
         super(context, questionDetails);
-        render();
-
         items = ItemsWidgetUtils.loadItemsAndHandleErrors(this, questionDetails.getPrompt(), selectChoiceLoader);
 
         setMainViewLayoutParameters();
         setStructures();
-
         setButtonListener();
         setSavedButton();
-        addAnswerView(view, dpFromPx(context, 10));
+        render();
+    }
+
+    @Override
+    protected View onCreateAnswerView(@NonNull Context context, @NonNull FormEntryPrompt prompt, int answerFontSize) {
+        return view;
     }
 
     public void setMainViewLayoutParameters() {

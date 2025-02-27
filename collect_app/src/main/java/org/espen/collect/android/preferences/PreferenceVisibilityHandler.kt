@@ -25,7 +25,7 @@ import org.odk.collect.settings.keys.ProtectedProjectKeys
 
 class PreferenceVisibilityHandler(
     private val settingsProvider: SettingsProvider,
-    private val versionInformation: org.espen.collect.android.version.VersionInformation
+    private val versionInformation: VersionInformation
 ) {
 
     fun updatePreferencesVisibility(preferenceScreen: PreferenceScreen, state: ProjectPreferencesViewModel.State) {

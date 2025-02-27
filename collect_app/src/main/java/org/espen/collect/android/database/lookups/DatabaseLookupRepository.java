@@ -6,11 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 
-import org.espen.collect.android.database.DatabaseConnection;
+import org.odk.collect.db.sqlite.DatabaseConnection;
 import org.espen.collect.android.database.DatabaseConstants;
 import org.espen.collect.android.database.DatabaseObjectMapper;
-import org.espen.collect.android.database.DatabaseConnection;
-import org.espen.collect.android.database.DatabaseConstants;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.lookup.LookUpRepository;
 import org.odk.collect.lookup.LookUp;
@@ -20,6 +18,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static android.provider.BaseColumns._ID;
+import static org.espen.collect.android.database.DatabaseConstants.FORMS_TABLE_NAME;
 import static org.espen.collect.android.database.DatabaseConstants.LOOKUP_TABLE_NAME;
 import static org.espen.collect.android.database.DatabaseObjectMapper.getLookUpFromCurrentCursorPosition;
 
@@ -147,11 +146,10 @@ public final class DatabaseLookupRepository implements LookUpRepository {
 
     @Override
     public void delete(Long id) {
-        databaseConnection.getWriteableDatabase().delete(
-                DatabaseConstants.LOOKUP_TABLE_NAME,
+        SQLiteDatabase writableDatabase = databaseConnection.getWritableDatabase();
+        writableDatabase.delete(DatabaseConstants.LOOKUP_TABLE_NAME,
                 _ID + "=?",
-                new String[]{String.valueOf(id)}
-        );
+                new String[]{String.valueOf(id)});
 
     }
 //
@@ -246,7 +244,8 @@ public final class DatabaseLookupRepository implements LookUpRepository {
     }
 
     private long insert(ContentValues values) {
-        return databaseConnection.getWriteableDatabase().insertOrThrow(
+        SQLiteDatabase writableDatabase = databaseConnection.getWritableDatabase();
+        return writableDatabase.insertOrThrow(
                 DatabaseConstants.LOOKUP_TABLE_NAME,
                 null,
                 values
@@ -254,7 +253,8 @@ public final class DatabaseLookupRepository implements LookUpRepository {
     }
 
     private void update(Long instanceId, ContentValues values) {
-        databaseConnection.getWriteableDatabase().update(
+        SQLiteDatabase writableDatabase = databaseConnection.getWritableDatabase();
+        writableDatabase.update(
                 DatabaseConstants.LOOKUP_TABLE_NAME,
                 values,
                 _ID + "=?",

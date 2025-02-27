@@ -64,6 +64,8 @@ def getVersionName = { ->
 def secrets = getSecrets()
 def googleMapsApiKey = secrets.getProperty('GOOGLE_MAPS_API_KEY', '')
 def mapboxAccessToken = secrets.getProperty('MAPBOX_ACCESS_TOKEN', '')
+def entitiesFilterTestProjectUrl = secrets.getProperty('ENTITIES_FILTER_TEST_PROJECT_URL', '')
+def entitiesFilterSearchTestProjectUrl = secrets.getProperty('ENTITIES_FILTER_SEARCH_TEST_PROJECT_URL', '')
 
 android {
     compileSdk Versions.android_compile_sdk
@@ -79,9 +81,9 @@ android {
         targetSdkVersion Versions.android_target_sdk
         versionCode LEGACY_BUILD_NUMBER_OFFSET + getMasterCommitCount()
         //versionName getVersionName()
-        versionName "v2023.1"
+        //https://github.com/getodk/collect/tree/v2024.3.6
+        versionName "v2024.3.6"
         testInstrumentationRunner('androidx.test.runner.AndroidJUnitRunner')
-        multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         archivesBaseName = 'collect'
     }
@@ -117,7 +119,7 @@ android {
             resValue("string", "mapbox_access_token", mapboxAccessToken)
         }
 
-        // Release build for the official ESPEN Collect app
+        // Release build for the official ODK Collect app
         odkCollectRelease {
             if (secrets.getProperty('RELEASE_STORE_FILE')) {
                 signingConfig signingConfigs.release
@@ -145,31 +147,30 @@ android {
             debuggable(true)
             resValue("string", "GOOGLE_MAPS_API_KEY", googleMapsApiKey)
             resValue("string", "mapbox_access_token", mapboxAccessToken)
+            buildConfigField("String", "ENTITIES_FILTER_TEST_PROJECT_URL", "\"$entitiesFilterTestProjectUrl\"")
+            buildConfigField("String", "ENTITIES_FILTER_SEARCH_TEST_PROJECT_URL", "\"$entitiesFilterSearchTestProjectUrl\"")
         }
     }
 
-    // https://stackoverflow.com/a/27119543/152938
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            outputFileName = new File(outputFileName.replace(".apk", "-${defaultConfig.versionName}.apk"))
-        }
-    }
-    testVariants.all { variant ->
-        variant.outputs.all { output ->
-            outputFileName = new File(outputFileName.replace(".apk", "-${defaultConfig.versionName}.apk"))
+    applicationVariants.configureEach { variant ->
+        if (variant.getName() == "selfSignedRelease" || variant.getName() == "odkCollectRelease") {
+            variant.outputs.configureEach { output ->
+                outputFileName = new File(outputFileName.replace("${variant.getName()}.apk", "${defaultConfig.versionName}.apk"))
+            }
         }
     }
 
     packaging {
         resources {
+            excludes += ['META-INF/ASL-2.0.txt', 'META-INF/LGPL-3.0.txt', 'org/bouncycastle/pqc/crypto/picnic/lowmcL5.bin.properties', 'org/bouncycastle/pqc/crypto/picnic/lowmcL3.bin.properties', 'org/bouncycastle/pqc/crypto/picnic/lowmcL1.bin.properties']
+
             // These library licenses will be referenced in-app
-            excludes += ['META-INF/ASL-2.0.txt', 'META-INF/LGPL-3.0.txt']
 
             // Pick first occurrence of any files that cause conflicts
             pickFirsts += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/services/com.fasterxml.jackson.core.JsonFactory', 'META-INF/services/com.fasterxml.jackson.core.ObjectCodec', 'META-INF/services/javax.ws.rs.ext.MessageBodyReader', 'META-INF/services/javax.ws.rs.ext.MessageBodyWriter', 'draftv4/schema', 'draftv3/schema']
         }
 
-        // To ensure that ESPEN Collect is installable on all devices, we don't use
+        // To ensure that ODK Collect is installable on all devices, we don't use
         // abiFilters to exclude any ABIs; but to keep the APK slim, we include
         // the Mapbox native library only for 32-bit and 64-bit ARM devices and
         // omit it for all X86 devices.
@@ -181,6 +182,9 @@ android {
             exclude 'lib/x86_64/libmapbox-common.so'
             exclude 'lib/x86_64/libc++_shared.so'
         }
+
+        /* Exclude large properties files used by BouncyCastle's Picnic implementation (which
+           Collect doesn't use). */
     }
 
     compileOptions {
@@ -227,7 +231,7 @@ configurations.all {
 }
 
 dependencies {
-    implementation project(path: ':lookup')
+    implementation project(':lookup')
     coreLibraryDesugaring Dependencies.desugar
 
     implementation project(':shared')
@@ -238,20 +242,20 @@ dependencies {
     implementation project(':material')
     implementation project(':async')
     implementation project(':analytics')
-    implementation project(':audioclips')
+    implementation project(':audio-clips')
     implementation project(':forms')
-    implementation project(':audiorecorder')
+    implementation project(':audio-recorder')
     implementation project(':projects')
     implementation project(':location')
     implementation project(':geo')
-    implementation project(':imageloader')
+    implementation project(':image-loader')
     implementation project(':errors')
     implementation project(':upgrade')
     implementation project(':permissions')
     implementation(project(':settings')) {
         exclude group: 'joda-time'
     }
-    implementation project(':externalapp')
+    implementation project(':external-app')
     implementation project(':maps')
     implementation project(':osmdroid')
     implementation project(':entities')
@@ -260,6 +264,11 @@ dependencies {
     implementation project(':qr-code')
     implementation project(':metadata')
     implementation project(':google-maps')
+    implementation project(':draw')
+    implementation project(':printer')
+    implementation project(':lists')
+    implementation project(':web-page')
+    implementation project(':db')
 
     if (getSecrets().getProperty('MAPBOX_DOWNLOADS_TOKEN', '') != '') {
         implementation project(':mapbox')
@@ -271,22 +280,17 @@ dependencies {
     implementation Dependencies.androidx_appcompat
     implementation Dependencies.androidx_work_runtime
 
-    implementation Dependencies.androidx_multidex
     implementation Dependencies.androidx_preference_ktx
     implementation Dependencies.androidx_fragment_ktx
 
-    implementation Dependencies.android_material
     implementation Dependencies.android_flexbox
 
-    implementation Dependencies.play_services_auth
     implementation Dependencies.play_services_maps
     implementation Dependencies.play_services_location
     implementation Dependencies.play_services_oss_licenses
 
     implementation Dependencies.firebase_analytics
     implementation Dependencies.firebase_crashlytics
-
-    implementation Dependencies.guava
 
     implementation Dependencies.squareup_okhttp
     implementation Dependencies.squareup_okhttp_tls
@@ -295,7 +299,6 @@ dependencies {
     implementation Dependencies.persian_joda_time
     implementation Dependencies.myanmar_calendar
     implementation Dependencies.bikram_sambat
-    implementation Dependencies.rarepebble_colorpicker
     implementation Dependencies.commons_io
     implementation (Dependencies.opencsv) {
         exclude group: 'commons-logging'
@@ -306,19 +309,7 @@ dependencies {
         exclude group: 'org.slf4j'
         exclude group: 'org.hamcrest', module: 'hamcrest-all'
     }
-    implementation(Dependencies.google_api_client_android) {
-        exclude group: 'org.apache.httpcomponents'
-        exclude group: 'com.google.guava'
-    }
-    implementation(Dependencies.google_api_services_drive) {
-        exclude group: 'org.apache.httpcomponents'
-        exclude group: 'com.google.guava'
-    }
-    implementation(Dependencies.google_api_services_sheets) {
-        exclude group: 'org.apache.httpcomponents'
-        exclude group: 'com.google.guava'
-    }
-
+    implementation Dependencies.gson
     implementation Dependencies.timber
     implementation Dependencies.slf4j_api
     implementation Dependencies.slf4j_timber
@@ -326,6 +317,8 @@ dependencies {
     implementation Dependencies.zxing_android_embedded
 
     implementation Dependencies.danlew_android_joda
+
+    implementation(Dependencies.jsoup)
 
     // Android Architecture Components:
     implementation Dependencies.androidx_lifecycle_runtime_ktx
@@ -351,7 +344,7 @@ dependencies {
 
     implementation Dependencies.splashscreen
 
-    testImplementation project(':formstest')
+    testImplementation project(':forms-test')
 
     // Testing-only dependencies
     testImplementation Dependencies.junit
@@ -359,7 +352,7 @@ dependencies {
     testImplementation Dependencies.mockito_kotlin
 
     testImplementation project(':androidtest')
-    testImplementation(project(path: ':testshared')) {
+    testImplementation(project(path: ':test-shared')) {
         exclude group: 'org.robolectric' // Some tests in `collect_app` don't work with newer Robolectric
     }
     testImplementation(project(":shadows"))
@@ -369,7 +362,6 @@ dependencies {
 
     testImplementation Dependencies.androidx_test_ext_junit
     testImplementation Dependencies.androidx_arch_core_testing
-    testImplementation Dependencies.robolectric_shadows_multidex
     testImplementation Dependencies.okhttp3_mockwebserver
     testImplementation Dependencies.squareup_okhttp_tls
 
@@ -382,6 +374,7 @@ dependencies {
     androidTestImplementation project(':androidtest')
     androidTestImplementation project(':test-forms')
 
+    androidTestImplementation Dependencies.caverock_androidsvg
     androidTestImplementation Dependencies.mockito_android
     androidTestImplementation Dependencies.androidx_test_ext_junit
     androidTestImplementation Dependencies.androidx_test_espresso_core
@@ -395,13 +388,14 @@ dependencies {
     androidTestImplementation Dependencies.androidx_work_testing
     androidTestImplementation Dependencies.uiautomator
 
-    debugImplementation project(':fragmentstest')
-    debugImplementation(project(':testshared')) {
+    debugImplementation project(':fragments-test')
+    debugImplementation(project(':test-shared',)) {
         exclude group: 'org.robolectric' // Some tests in `collect_app` don't work with newer Robolectric
     }
 
-    // Real LeakCanary for debug builds only: notifications, analysis, etc
+    // Real LeakCanary for debug and selfSigned builds only: notifications, analysis, etc
     debugImplementation Dependencies.leakcanary
+    selfSignedReleaseImplementation Dependencies.leakcanary
 }
 
 // Must be at bottom to prevent dependency collisions

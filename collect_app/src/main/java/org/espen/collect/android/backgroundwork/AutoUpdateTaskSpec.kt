@@ -17,11 +17,10 @@ package org.espen.collect.android.backgroundwork
 
 import android.content.Context
 import androidx.work.BackoffPolicy
-import androidx.work.WorkerParameters
+import org.odk.collect.analytics.Analytics
 import org.espen.collect.android.formmanagement.FormsDataService
 import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.async.TaskSpec
-import org.odk.collect.async.WorkerAdapter
 import java.util.function.Supplier
 import javax.inject.Inject
 
@@ -34,7 +33,7 @@ class AutoUpdateTaskSpec : TaskSpec {
     override val backoffDelay: Long? = null
 
     override fun getTask(context: Context, inputData: Map<String, String>, isLastUniqueExecution: Boolean): Supplier<Boolean> {
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
         return Supplier {
             val projectId = inputData[TaskData.DATA_PROJECT_ID]
             if (projectId != null) {
@@ -46,10 +45,7 @@ class AutoUpdateTaskSpec : TaskSpec {
         }
     }
 
-    override fun getWorkManagerAdapter(): Class<out WorkerAdapter> {
-        return Adapter::class.java
+    override fun onException(exception: Throwable) {
+        Analytics.logNonFatal(exception)
     }
-
-    class Adapter(context: Context, workerParams: WorkerParameters) :
-        WorkerAdapter(AutoUpdateTaskSpec(), context, workerParams)
 }

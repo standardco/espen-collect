@@ -16,7 +16,6 @@ android {
 
     defaultConfig {
         minSdk = Versions.android_min_sdk
-        targetSdk = Versions.android_target_sdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -57,7 +56,6 @@ dependencies {
     implementation(project(":icons"))
 
     implementation(Dependencies.androidx_preference_ktx)
-    implementation(Dependencies.guava)
     implementation(Dependencies.play_services_maps)
     implementation(Dependencies.play_services_location)
     implementation(Dependencies.timber)

@@ -14,8 +14,6 @@
 
 package org.espen.collect.android.listeners;
 
-import org.espen.collect.android.tasks.FormLoaderTask;
-import org.espen.collect.android.tasks.ProgressNotifier;
 import org.javarosa.core.model.FormDef;
 import org.espen.collect.android.tasks.FormLoaderTask;
 import org.espen.collect.android.tasks.ProgressNotifier;

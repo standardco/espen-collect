@@ -5,8 +5,6 @@ import android.content.Context;
 import android.util.TypedValue;
 import android.view.View;
 
-import org.espen.collect.android.activities.FormFillingActivity;
-import org.espen.collect.android.widgets.utilities.RangeWidgetUtils;
 import org.javarosa.core.model.RangeQuestion;
 import org.javarosa.core.model.data.DecimalData;
 import org.javarosa.core.model.data.IAnswerData;
@@ -35,11 +33,10 @@ public class RangePickerDecimalWidget extends QuestionWidget {
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = RangePickerWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
 
         binding.widgetAnswerText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, answerFontSize);
-        binding.widgetButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
 
         setUpWidgetParameters();
         displayedValuesForNumberPicker = RangePickerWidgetUtils.getNumbersFromRangeAsc(
@@ -89,5 +86,6 @@ public class RangePickerDecimalWidget extends QuestionWidget {
 
         binding.widgetAnswerText.setText(displayedValuesForNumberPicker[value]);
         binding.widgetButton.setText(org.odk.collect.strings.R.string.edit_value);
+        widgetValueChanged();
     }
 }

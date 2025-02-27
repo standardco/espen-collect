@@ -1,11 +1,15 @@
-package org.espen.collect.androidshared.data
+package org.odk.collect.androidshared.data
 
 import android.app.Activity
 import android.app.Application
 import android.app.Service
 import android.content.Context
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /**
  * [AppState] can be used as a shared store of state that lives at an "app"/"in-memory" level
@@ -41,11 +45,33 @@ class AppState {
 
     @Suppress("UNCHECKED_CAST")
     fun <T> get(key: String): T? {
-        return map.get(key) as T?
+        return map[key] as T?
+    }
+
+    fun <T> getLive(key: String, default: T): LiveData<T> {
+        return get(key, MutableLiveData(default))
+    }
+
+    fun <T> getFlow(key: String, default: T): Flow<T> {
+        return get(key, MutableStateFlow(default))
     }
 
     fun set(key: String, value: Any?) {
         map[key] = value
+    }
+
+    fun <T> setLive(key: String, value: T?) {
+        get(key, MutableLiveData<T>()).postValue(value)
+    }
+
+    fun <T> setFlow(key: String, value: T) {
+        get<MutableStateFlow<T>>(key).let {
+            if (it != null) {
+                it.value = value
+            } else {
+                map[key] = MutableStateFlow(value)
+            }
+        }
     }
 
     fun clear() {

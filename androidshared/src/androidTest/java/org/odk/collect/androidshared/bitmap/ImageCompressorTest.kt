@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.androidshared.bitmap
+package org.odk.collect.androidshared.bitmap
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -153,7 +153,6 @@ class ImageCompressorTest {
             ExifInterface.TAG_GPS_SATELLITES to "8",
             ExifInterface.TAG_GPS_STATUS to "A",
             ExifInterface.TAG_ORIENTATION to "1",
-
             // unsupported exif tags
             ExifInterface.TAG_THUMBNAIL_IMAGE_LENGTH to "5",
             ExifInterface.TAG_DNG_VERSION to "100"

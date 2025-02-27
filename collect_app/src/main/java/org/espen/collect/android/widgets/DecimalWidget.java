@@ -17,9 +17,9 @@ package org.espen.collect.android.widgets;
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
 import org.javarosa.core.model.data.IAnswerData;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
+import org.espen.collect.android.utilities.Appearances;
 import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
 
 /**
@@ -30,9 +30,10 @@ public class DecimalWidget extends StringWidget {
 
     public DecimalWidget(Context context, QuestionDetails questionDetails) {
         super(context, questionDetails);
-        render();
 
-        StringWidgetUtils.adjustEditTextAnswerToDecimalWidget(answerText, questionDetails.getPrompt());
+        boolean useThousandSeparator = Appearances.useThousandSeparator(questionDetails.getPrompt());
+        Double answer = StringWidgetUtils.getDoubleAnswerValueFromIAnswerData(questionDetails.getPrompt().getAnswerValue());
+        widgetAnswerText.setDecimalType(useThousandSeparator, answer);
     }
 
     @Override

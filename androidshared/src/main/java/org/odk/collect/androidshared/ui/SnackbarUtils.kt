@@ -11,7 +11,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package org.espen.collect.androidshared.ui
+package org.odk.collect.androidshared.ui
 
 import android.view.View
 import android.view.ViewGroup
@@ -19,8 +19,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
+import org.odk.collect.androidshared.data.Consumable
 
 /**
  * Convenience wrapper around Android's [Snackbar] API.
@@ -38,6 +40,11 @@ object SnackbarUtils {
         displayDismissButton: Boolean = false
     ) {
         return showSnackbar(parentView, message, 3500, anchorView, action, displayDismissButton)
+    }
+
+    @JvmStatic
+    fun showLongSnackbar(parentView: View, snackbarDetails: SnackbarDetails) {
+        showLongSnackbar(parentView, snackbarDetails.text, action = snackbarDetails.action)
     }
 
     @JvmStatic
@@ -74,7 +81,8 @@ object SnackbarUtils {
 
         lastSnackbar?.dismiss()
         lastSnackbar = Snackbar.make(parentView, message.trim(), duration).apply {
-            val textView = view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+            val textView =
+                view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
             textView.isSingleLine = false
 
             if (anchorView?.visibility != View.GONE) {
@@ -84,11 +92,12 @@ object SnackbarUtils {
             if (displayDismissButton) {
                 view.findViewById<Button>(com.google.android.material.R.id.snackbar_action).let {
                     val dismissButton = ImageView(view.context).apply {
-                        setImageResource(org.espen.collect.androidshared.R.drawable.ic_close_24)
+                        setImageResource(org.odk.collect.androidshared.R.drawable.ic_close_24)
                         setOnClickListener {
                             dismiss()
                         }
-                        contentDescription = context.getString(org.odk.collect.strings.R.string.close_snackbar)
+                        contentDescription =
+                            context.getString(org.odk.collect.strings.R.string.close_snackbar)
                     }
 
                     val params = LinearLayout.LayoutParams(
@@ -116,8 +125,23 @@ object SnackbarUtils {
         lastSnackbar?.show()
     }
 
-    data class Action(
+    data class SnackbarDetails @JvmOverloads constructor(
         val text: String,
-        val listener: () -> Unit
+        val action: Action? = null
     )
+
+    data class Action(val text: String, val listener: () -> Unit)
+
+    abstract class SnackbarPresenterObserver<T : Any?>(private val parentView: View) :
+        Observer<Consumable<T>?> {
+
+        abstract fun getSnackbarDetails(value: T): SnackbarDetails
+
+        override fun onChanged(consumable: Consumable<T>?) {
+            if (consumable != null && !consumable.isConsumed()) {
+                showLongSnackbar(parentView, getSnackbarDetails(consumable.value))
+                consumable.consume()
+            }
+        }
+    }
 }

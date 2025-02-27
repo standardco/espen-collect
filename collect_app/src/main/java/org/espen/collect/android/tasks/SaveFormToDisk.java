@@ -24,6 +24,8 @@ import android.util.Pair;
 
 import androidx.annotation.NonNull;
 
+import org.espen.collect.android.database.lookups.DatabaseLookupColumns;
+import org.espen.collect.android.javarosawrapper.JavaRosaFormController;
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.condition.EvaluationContext;
 import org.javarosa.core.model.data.GeoPointData;
@@ -45,15 +47,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.odk.collect.analytics.Analytics;
-import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.application.Collect;
 import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
-import org.espen.collect.android.database.lookups.DatabaseLookupColumns;
 import org.espen.collect.android.exception.EncryptionException;
 import org.espen.collect.android.external.InstancesContract;
+import org.espen.collect.android.formentry.FormEntryUseCases;
 import org.espen.collect.android.formentry.saving.FormSaver;
 import org.espen.collect.android.javarosawrapper.FailedValidationResult;
 import org.espen.collect.android.javarosawrapper.FormController;
-import org.espen.collect.android.javarosawrapper.JavaRosaFormController;
 import org.espen.collect.android.javarosawrapper.ValidationResult;
 import org.espen.collect.android.storage.StoragePathProvider;
 import org.espen.collect.android.storage.StorageSubdirectory;
@@ -63,17 +64,16 @@ import org.espen.collect.android.utilities.EncryptionUtils.EncryptedFormInformat
 import org.espen.collect.android.utilities.FileUtils;
 import org.espen.collect.android.utilities.FormsRepositoryProvider;
 import org.espen.collect.android.utilities.MediaUtils;
-import org.odk.collect.entities.EntitiesRepository;
+import org.odk.collect.entities.storage.EntitiesRepository;
 import org.odk.collect.forms.Form;
 import org.odk.collect.forms.instances.Instance;
 import org.odk.collect.forms.instances.InstancesRepository;
 import org.odk.collect.lookup.LookUp;
 import org.odk.collect.lookup.LookUpRepository;
+import org.odk.collect.shared.files.FileExt;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -94,12 +94,12 @@ public class SaveFormToDisk {
     private final FormController formController;
     private final MediaUtils mediaUtils;
     private final InstancesRepository instancesRepository;
+    private final LookUpRepository lookupRepository;
     private Uri uri;
     private String instanceName;
     private final ArrayList<String> tempFiles;
     private final String currentProjectId;
     private final EntitiesRepository entitiesRepository;
-    private final LookUpRepository lookupRepository;
 
     public static final int SAVED = 500;
     public static final int SAVE_ERROR = 501;
@@ -125,10 +125,12 @@ public class SaveFormToDisk {
     public SaveToDiskResult saveForm(FormSaver.ProgressListener progressListener) {
         SaveToDiskResult saveToDiskResult = new SaveToDiskResult();
 
-        progressListener.onProgressUpdate(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_validating_message));
+        progressListener.onProgressUpdate(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_validating_message));
+
+        ValidationResult validationResult;
         try {
-            ValidationResult validationResult = formController.validateAnswers(shouldFinalize);
-            if (validationResult instanceof FailedValidationResult) {
+            validationResult = formController.validateAnswers(shouldFinalize);
+            if (shouldFinalize && validationResult instanceof FailedValidationResult) {
                 // validation failed, pass specific failure
                 saveToDiskResult.setSaveResult(((FailedValidationResult) validationResult).getStatus(), shouldFinalize);
                 return saveToDiskResult;
@@ -141,13 +143,13 @@ public class SaveFormToDisk {
         }
 
         if (shouldFinalize) {
-            formController.finalizeForm();
-            formController.getEntities().forEach(entitiesRepository::save);
+            Instance instance = updateInstanceDatabase(true, true, validationResult);
+            FormEntryUseCases.finalizeFormController(instance, formController, instancesRepository, entitiesRepository);
             SaveToLookUp();
         }
 
         // close all open databases of external data.
-        EspenCollect.getInstance().getExternalDataManager().close();
+        Collect.getInstance().getExternalDataManager().close();
 
         // if there is a meta/instanceName field, be sure we are using the latest value
         // just in case the validate somehow triggered an update.
@@ -157,15 +159,14 @@ public class SaveFormToDisk {
         }
 
         try {
-            Instance instance = exportData(shouldFinalize, progressListener);
+            Instance instance = exportData(shouldFinalize, progressListener, validationResult);
 
             if (formController.getInstanceFile() != null) {
-                removeSavepointFiles(formController.getInstanceFile().getName());
+                removeIndexFile(formController.getInstanceFile().getName());
             }
 
             saveToDiskResult.setSaveResult(saveAndExit ? SAVED_AND_EXIT : SAVED, shouldFinalize);
             saveToDiskResult.setInstance(instance);
-
         } catch (EncryptionException e) {
             saveToDiskResult.setSaveErrorMessage(e.getMessage());
             saveToDiskResult.setSaveResult(ENCRYPTION_ERROR, shouldFinalize);
@@ -190,7 +191,7 @@ public class SaveFormToDisk {
      * Post-condition: the uri field is set to the URI of the instance database row that matches
      * the instance currently managed by the {@link FormController}.
      */
-    private Instance updateInstanceDatabase(boolean incomplete, boolean canEditAfterCompleted) {
+    private Instance updateInstanceDatabase(boolean incomplete, boolean canEditAfterCompleted, ValidationResult validationResult) {
         FormInstance formInstance = formController.getFormDef().getInstance();
 
         String instancePath = formController.getInstanceFile().getAbsolutePath();
@@ -208,7 +209,13 @@ public class SaveFormToDisk {
             instanceBuilder.displayName(instanceName);
         }
 
-        if (incomplete || !shouldFinalize) {
+        if (!shouldFinalize) {
+            if (validationResult instanceof FailedValidationResult) {
+                instanceBuilder.status(Instance.STATUS_INVALID);
+            } else {
+                instanceBuilder.status(Instance.STATUS_VALID);
+            }
+        } else if (incomplete) {
             instanceBuilder.status(Instance.STATUS_INCOMPLETE);
         } else {
             instanceBuilder.status(Instance.STATUS_COMPLETE);
@@ -228,7 +235,7 @@ public class SaveFormToDisk {
             uri = InstancesContract.getUri(currentProjectId, newInstance.getDbId());
         } else {
             Timber.i("No instance found, creating");
-            Form form = new FormsRepositoryProvider(EspenCollect.getInstance()).get().get(ContentUriHelper.getIdFromUri(uri));
+            Form form = new FormsRepositoryProvider(Collect.getInstance()).create().get(ContentUriHelper.getIdFromUri(uri));
 
             // add missing fields into values
             instanceBuilder.instanceFilePath(instancePath);
@@ -321,14 +328,6 @@ public class SaveFormToDisk {
     }
 
     /**
-     * Return the savepoint file for a given instance.
-     */
-    static File getSavepointFile(String instanceName) {
-        File tempDir = new File(new StoragePathProvider().getOdkDirPath(StorageSubdirectory.CACHE));
-        return new File(tempDir, instanceName + ".save");
-    }
-
-    /**
      * Return the formIndex file for a given instance.
      */
     public static File getFormIndexFile(String instanceName) {
@@ -336,10 +335,8 @@ public class SaveFormToDisk {
         return new File(tempDir, instanceName + ".index");
     }
 
-    public static void removeSavepointFiles(String instanceName) {
-        File savepointFile = getSavepointFile(instanceName);
+    public static void removeIndexFile(String instanceName) {
         File formIndexFile = getFormIndexFile(instanceName);
-        FileUtils.deleteAndReport(savepointFile);
         FileUtils.deleteAndReport(formIndexFile);
     }
 
@@ -348,30 +345,28 @@ public class SaveFormToDisk {
      * In theory we don't have to write to disk, and this is where you'd add
      * other methods.
      */
-    private Instance exportData(boolean markCompleted, FormSaver.ProgressListener progressListener) throws IOException, EncryptionException {
-        progressListener.onProgressUpdate(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_collecting_message));
+    private Instance exportData(boolean markCompleted, FormSaver.ProgressListener progressListener, ValidationResult validationResult) throws IOException, EncryptionException {
+        progressListener.onProgressUpdate(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_collecting_message));
 
         ByteArrayPayload payload = formController.getFilledInFormXml();
         // write out xml
-        String instancePath = formController.getInstanceFile().getAbsolutePath();
-
         for (String fileName : tempFiles) {
             mediaUtils.deleteMediaFile(fileName);
         }
 
-        progressListener.onProgressUpdate(getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_saving_message));
+        progressListener.onProgressUpdate(getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_saving_message));
 
-        writeFile(payload, instancePath);
+        writeFile(payload, formController.getInstanceFile());
 
         // Write last-saved instance
         String lastSavedPath = formController.getLastSavedPath();
-        writeFile(payload, lastSavedPath);
+        writeFile(payload, new File(lastSavedPath));
 
         // update the uri. We have exported the reloadable instance, so update status...
         // Since we saved a reloadable instance, it is flagged as re-openable so that if any error
         // occurs during the packaging of the data for the server fails (e.g., encryption),
         // we can still reopen the filled-out form and re-save it at a later time.
-        Instance instance = updateInstanceDatabase(true, true);
+        Instance instance = updateInstanceDatabase(true, true, validationResult);
 
         if (markCompleted) {
             // now see if the packaging of the data for the server would make it
@@ -391,9 +386,9 @@ public class SaveFormToDisk {
             // write out submission.xml -- the data to actually submit to aggregate
 
             progressListener.onProgressUpdate(
-                    getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_finalizing_message));
+                    getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_finalizing_message));
 
-            writeFile(payload, submissionXml.getAbsolutePath());
+            writeFile(payload, submissionXml);
 
             // see if the form is encrypted and we can encrypt it...
             EncryptedFormInformation formInfo = EncryptionUtils.getEncryptedFormInformation(uri, formController.getSubmissionMetadata());
@@ -403,7 +398,7 @@ public class SaveFormToDisk {
                 // and encrypt the submission (this is a one-way operation)...
 
                 progressListener.onProgressUpdate(
-                        getLocalizedString(EspenCollect.getInstance(), org.odk.collect.strings.R.string.survey_saving_encrypting_message));
+                        getLocalizedString(Collect.getInstance(), org.odk.collect.strings.R.string.survey_saving_encrypting_message));
 
                 EncryptionUtils.generateEncryptedSubmission(instanceXml, submissionXml, formInfo);
                 isEncrypted = true;
@@ -422,7 +417,7 @@ public class SaveFormToDisk {
             // 2. Overwrite the instanceXml with the submission.xml
             //    and remove the plaintext attachments if encrypting
 
-            instance = updateInstanceDatabase(false, canEditAfterCompleted);
+            instance = updateInstanceDatabase(false, canEditAfterCompleted, validationResult);
 
             if (!canEditAfterCompleted) {
                 manageFilesAfterSavingEncryptedForm(instanceXml, submissionXml);
@@ -468,7 +463,7 @@ public class SaveFormToDisk {
      * that the instance with the given uri is an instance of.
      */
     private static String getGeometryXpathForInstance(Instance instance) {
-        Form form = new FormsRepositoryProvider(EspenCollect.getInstance()).get().getLatestByFormIdAndVersion(instance.getFormId(), instance.getFormVersion());
+        Form form = new FormsRepositoryProvider(Collect.getInstance()).create().getLatestByFormIdAndVersion(instance.getFormId(), instance.getFormVersion());
         if (form != null) {
             return form.getGeometryXpath();
         } else {
@@ -506,38 +501,10 @@ public class SaveFormToDisk {
     /**
      * Writes payload contents to the disk.
      */
-    static void writeFile(ByteArrayPayload payload, String path) throws IOException {
-        File file = new File(path);
-        if (file.exists() && !file.delete()) {
-            throw new IOException("Cannot overwrite " + path + ". Perhaps the file is locked?");
-        }
-
-        // create data stream
-        InputStream is = payload.getPayloadStream();
-        int len = (int) payload.getLength();
-
-        // read from data stream
-        byte[] data = new byte[len];
-        int read = is.read(data, 0, len);
-        if (read > 0) {
-            // Make sure the directory path to this file exists.
-            file.getParentFile().mkdirs();
-            // write xml file
-            RandomAccessFile randomAccessFile = null;
-            try {
-                randomAccessFile = new RandomAccessFile(file, "rws");
-                randomAccessFile.write(data);
-            } finally {
-                if (randomAccessFile != null) {
-                    try {
-                        randomAccessFile.close();
-                    } catch (IOException e) {
-                        Timber.e(e, "Error closing RandomAccessFile: %s", path);
-                    }
-                }
-            }
-        }
+    public static void writeFile(ByteArrayPayload payload, File file) throws IOException {
+        FileExt.saveToFile(file, payload.getPayloadStream());
     }
+
 
     /**
      * Save form lookup form information
@@ -638,8 +605,6 @@ public class SaveFormToDisk {
 
                     LookUp lookup = getLookUpFromValues(cv);
                     lookupRepository.save(lookup);
-
-                    //EspenCollect.getInstance().getContentResolver().insert(LookupContract.getUri(currentProjectId), cv);
                 }
             }
         }

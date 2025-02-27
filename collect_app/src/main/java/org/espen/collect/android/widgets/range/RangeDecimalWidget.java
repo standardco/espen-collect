@@ -18,14 +18,15 @@ package org.espen.collect.android.widgets.range;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.material.color.MaterialColors;
 import com.google.android.material.slider.Slider;
 
-import org.espen.collect.android.widgets.utilities.RangeWidgetUtils;
 import org.javarosa.core.model.data.DecimalData;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.form.api.FormEntryPrompt;
@@ -41,7 +42,9 @@ public class RangeDecimalWidget extends QuestionWidget implements Slider.OnChang
     TrackingTouchSlider slider;
     TextView currentValue;
 
-    private int visibleThumbRadius;
+    private ColorStateList defaultTickActiveTintList;
+    private int defaultThumbWidth;
+    private int defaultThumbTrackGapSize;
 
     public RangeDecimalWidget(Context context, QuestionDetails prompt) {
         super(context, prompt);
@@ -49,12 +52,15 @@ public class RangeDecimalWidget extends QuestionWidget implements Slider.OnChang
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         RangeWidgetUtils.RangeWidgetLayoutElements layoutElements = RangeWidgetUtils.setUpLayoutElements(context, prompt);
         slider = layoutElements.getSlider();
         currentValue = layoutElements.getCurrentValue();
 
-        visibleThumbRadius = slider.getThumbRadius();
+        defaultTickActiveTintList = slider.getTickActiveTintList();
+        defaultThumbWidth = slider.getThumbWidth();
+        defaultThumbTrackGapSize = slider.getThumbTrackGapSize();
+
         setUpActualValueLabel(RangeWidgetUtils.setUpSlider(prompt, slider, false));
 
         if (slider.isEnabled()) {
@@ -88,7 +94,7 @@ public class RangeDecimalWidget extends QuestionWidget implements Slider.OnChang
     @Override
     public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
         if (fromUser) {
-            BigDecimal actualValue = RangeWidgetUtils.getActualValue(getFormEntryPrompt(), slider, value);
+            BigDecimal actualValue = RangeWidgetUtils.getActualValue(getFormEntryPrompt(), value);
             setUpActualValueLabel(actualValue);
             widgetValueChanged();
         }
@@ -97,10 +103,14 @@ public class RangeDecimalWidget extends QuestionWidget implements Slider.OnChang
     private void setUpActualValueLabel(BigDecimal actualValue) {
         if (actualValue != null) {
             currentValue.setText(String.valueOf(actualValue.doubleValue()));
-            slider.setThumbRadius(visibleThumbRadius);
+            slider.setTickActiveTintList(defaultTickActiveTintList);
+            slider.setThumbWidth(defaultThumbWidth);
+            slider.setThumbTrackGapSize(defaultThumbTrackGapSize);
         } else {
             slider.setValue(slider.getValueFrom());
-            slider.setThumbRadius(0);
+            slider.setTickActiveTintList(ColorStateList.valueOf(MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimary)));
+            slider.setThumbWidth(0);
+            slider.setThumbTrackGapSize(0);
             currentValue.setText("");
         }
     }

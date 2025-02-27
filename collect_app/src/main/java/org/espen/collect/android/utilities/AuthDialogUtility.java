@@ -25,10 +25,8 @@ import android.widget.EditText;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.application.EspenCollect;
-import org.espen.collect.android.preferences.dialogs.ServerAuthDialogFragment;
 import org.espen.collect.android.R;
-import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.application.Collect;
 import org.espen.collect.android.preferences.dialogs.ServerAuthDialogFragment;
 import org.odk.collect.metadata.PropertyManager;
 
@@ -51,7 +49,7 @@ public class AuthDialogUtility {
     PropertyManager propertyManager;
 
     public AuthDialogUtility() {
-        EspenCollect.getInstance().getComponent().inject(this);
+        Collect.getInstance().getComponent().inject(this);
     }
 
     /**

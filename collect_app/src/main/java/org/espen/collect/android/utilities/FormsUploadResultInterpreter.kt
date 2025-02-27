@@ -1,6 +1,7 @@
 package org.espen.collect.android.utilities
 
 import android.content.Context
+import org.espen.collect.android.R
 import org.espen.collect.android.upload.FormUploadException
 import org.odk.collect.errors.ErrorItem
 import org.odk.collect.forms.instances.Instance

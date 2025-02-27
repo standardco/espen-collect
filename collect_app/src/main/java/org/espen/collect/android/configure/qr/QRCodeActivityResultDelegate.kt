@@ -21,7 +21,7 @@ class QRCodeActivityResultDelegate(
     private val project: Saved
 ) {
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == QRCodeMenuDelegate.SELECT_PHOTO && resultCode == Activity.RESULT_OK && data != null) {
+        if (requestCode == QRCodeMenuProvider.SELECT_PHOTO && resultCode == Activity.RESULT_OK && data != null) {
             val imageUri = data.data
             if (imageUri != null) {
                 val imageStream: InputStream? = try {
@@ -37,7 +37,7 @@ class QRCodeActivityResultDelegate(
                         SettingsImportingResult.SUCCESS -> {
                             log(AnalyticsEvents.RECONFIGURE_PROJECT)
                             showToast(org.odk.collect.strings.R.string.successfully_imported_settings)
-                            org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(
+                            ActivityUtils.startActivityAndCloseAllOthers(
                                 activity,
                                 MainMenuActivity::class.java
                             )

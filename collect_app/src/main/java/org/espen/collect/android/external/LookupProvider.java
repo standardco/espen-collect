@@ -38,14 +38,10 @@ import org.espen.collect.android.database.DatabaseObjectMapper;
 import org.espen.collect.android.database.lookups.DatabaseLookupRepository;
 import org.espen.collect.android.utilities.FormsRepositoryProvider;
 import org.espen.collect.android.utilities.LookUpRepositoryProvider;
-import org.espen.collect.android.analytics.AnalyticsEvents;
-import org.espen.collect.android.analytics.AnalyticsUtils;
-import org.espen.collect.android.dao.CursorLoaderFactory;
 import org.espen.collect.android.database.lookups.DatabaseLookupRepository;
 import org.espen.collect.android.injection.DaggerUtils;
 import org.espen.collect.android.storage.StoragePathProvider;
 import org.espen.collect.android.storage.StorageSubdirectory;
-import org.espen.collect.android.utilities.FormsRepositoryProvider;
 import org.espen.collect.android.utilities.LookUpRepositoryProvider;
 import org.odk.collect.lookup.LookUp;
 import org.odk.collect.lookup.LookUpRepository;
@@ -133,7 +129,7 @@ public class LookupProvider extends ContentProvider {
             throw new IllegalArgumentException("Unknown URI " + uri);
         }
         LookUp lookup = DatabaseObjectMapper.getLookUpFromValues(initialValues);
-        lookupsRepositoryProvider.get(projectId).save(lookup);
+        lookupsRepositoryProvider.create(projectId).save(lookup);
         return LookupContract.getUri(projectId, lookup.getDbId());
     }
 
@@ -151,8 +147,7 @@ public class LookupProvider extends ContentProvider {
                 try (Cursor cursor = dbQuery(projectId, new String[]{_ID}, where, whereArgs, null)) {
                     while (cursor.moveToNext()) {
                         long id = cursor.getLong(cursor.getColumnIndex(_ID));
-                        lookupsRepositoryProvider.get(projectId).delete(id);
-                        //new InstanceDeleter(lookupsRepositoryProvider.get(projectId), formsRepositoryProvider.get(projectId)).delete(id);
+                        lookupsRepositoryProvider.create(projectId).delete(id);
                     }
 
                     count = cursor.getCount();
@@ -175,7 +170,7 @@ public class LookupProvider extends ContentProvider {
         String projectId = getProjectId(uri);
         logServerEvent(projectId, AnalyticsEvents.LOOKUP_PROVIDER_UPDATE);
 
-        LookUpRepository instancesRepository = lookupsRepositoryProvider.get(projectId);
+        LookUpRepository instancesRepository = lookupsRepositoryProvider.create(projectId);
         String instancesPath = storagePathProvider.getOdkDirPath(StorageSubdirectory.LOOKUPS, projectId);
 
         int count;
@@ -204,7 +199,7 @@ public class LookupProvider extends ContentProvider {
         return count;
     }
     private Cursor dbQuery(String projectId, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        return ((DatabaseLookupRepository) lookupsRepositoryProvider.get(projectId)).rawQuery(projection, selection, selectionArgs, sortOrder, null);
+        return ((DatabaseLookupRepository) lookupsRepositoryProvider.create(projectId)).rawQuery(projection, selection, selectionArgs, sortOrder, null);
     }
 
     private String getProjectId(@NonNull Uri uri) {

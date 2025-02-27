@@ -4,20 +4,10 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.media.MediaMetadataRetriever;
-import android.util.TypedValue;
 import android.view.View;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.audio.AudioControllerView;
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.FileUtils;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.interfaces.FileWidget;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.AudioPlayer;
-import org.espen.collect.android.widgets.utilities.FileRequester;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
@@ -32,7 +22,7 @@ import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
 import org.espen.collect.android.widgets.utilities.AudioPlayer;
 import org.espen.collect.android.widgets.utilities.FileRequester;
 import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
-import org.espen.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.audioclips.Clip;
 
 import java.io.File;
@@ -66,12 +56,10 @@ public class ExAudioWidget extends QuestionWidget implements FileWidget, WidgetD
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         setupAnswerFile(prompt.getAnswerText());
 
         binding = ExAudioWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
-
-        binding.launchExternalAppButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
         binding.launchExternalAppButton.setOnClickListener(view -> launchExternalApp());
 
         return binding.getRoot();

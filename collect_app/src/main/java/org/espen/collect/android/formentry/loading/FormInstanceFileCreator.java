@@ -3,9 +3,6 @@ package org.espen.collect.android.formentry.loading;
 import org.espen.collect.android.storage.StoragePathProvider;
 import org.espen.collect.android.storage.StorageSubdirectory;
 import org.espen.collect.android.utilities.FileUtils;
-import org.espen.collect.android.storage.StoragePathProvider;
-import org.espen.collect.android.storage.StorageSubdirectory;
-import org.espen.collect.android.utilities.FileUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;

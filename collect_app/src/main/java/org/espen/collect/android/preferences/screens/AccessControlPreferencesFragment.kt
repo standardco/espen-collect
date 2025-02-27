@@ -3,10 +3,10 @@ package org.espen.collect.android.preferences.screens
 import android.os.Bundle
 import androidx.preference.Preference
 import org.espen.collect.android.R
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 
 class AccessControlPreferencesFragment :
-    org.espen.collect.android.preferences.screens.BaseAdminPreferencesFragment(),
+    BaseAdminPreferencesFragment(),
     Preference.OnPreferenceClickListener {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -22,7 +22,7 @@ class AccessControlPreferencesFragment :
         if (MultiClickGuard.allowClick(javaClass.name)) {
             when (preference.key) {
                 MAIN_MENU_KEY -> displayPreferences(MainMenuAccessPreferencesFragment())
-                USER_SETTINGS_KEY -> displayPreferences(org.espen.collect.android.preferences.screens.UserSettingsAccessPreferencesFragment())
+                USER_SETTINGS_KEY -> displayPreferences(UserSettingsAccessPreferencesFragment())
                 FORM_ENTRY_KEY -> displayPreferences(FormEntryAccessPreferencesFragment())
             }
             return true

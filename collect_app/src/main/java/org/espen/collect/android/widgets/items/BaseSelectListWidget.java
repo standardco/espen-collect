@@ -10,12 +10,6 @@ import android.view.View;
 import androidx.activity.ComponentActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.espen.collect.android.adapters.AbstractSelectListAdapter;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
-import org.espen.collect.android.widgets.utilities.SearchQueryViewModel;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.espen.collect.android.adapters.AbstractSelectListAdapter;
@@ -23,10 +17,10 @@ import org.espen.collect.android.databinding.SelectListWidgetAnswerBinding;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
 import org.espen.collect.android.listeners.SelectItemClickListener;
 import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.espen.collect.android.widgets.QuestionWidget;
 import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
 import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.espen.collect.android.widgets.utilities.SearchQueryViewModel;
 
 import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayableAudioURI;
@@ -54,7 +48,7 @@ public abstract class BaseSelectListWidget extends QuestionWidget implements Mul
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = SelectListWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
         return binding.getRoot();
     }

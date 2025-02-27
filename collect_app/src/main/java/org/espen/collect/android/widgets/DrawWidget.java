@@ -15,25 +15,17 @@
 package org.espen.collect.android.widgets;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Button;
-
-import org.espen.collect.android.draw.DrawActivity;
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.interfaces.ButtonClickListener;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
-import org.espen.collect.android.draw.DrawActivity;
+import android.view.View;
+import org.javarosa.form.api.FormEntryPrompt;
+import org.espen.collect.android.databinding.DrawWidgetBinding;
+import org.odk.collect.draw.DrawActivity;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.formentry.questions.WidgetViewUtils;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.interfaces.ButtonClickListener;
 import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
-import static org.espen.collect.android.formentry.questions.WidgetViewUtils.createSimpleButton;
 import static org.espen.collect.android.utilities.ApplicationConstants.RequestCodes;
 
 /**
@@ -42,28 +34,31 @@ import static org.espen.collect.android.utilities.ApplicationConstants.RequestCo
  * @author BehrAtherton@gmail.com
  */
 @SuppressLint("ViewConstructor")
-public class DrawWidget extends BaseImageWidget implements ButtonClickListener {
-
-    Button drawButton;
+public class DrawWidget extends BaseImageWidget {
+    DrawWidgetBinding binding;
 
     public DrawWidget(Context context, QuestionDetails prompt, QuestionMediaManager questionMediaManager, WaitingForDataRegistry waitingForDataRegistry, String tmpImageFilePath) {
         super(context, prompt, questionMediaManager, waitingForDataRegistry, tmpImageFilePath);
-        render();
+        imageClickHandler = new DrawImageClickHandler(DrawActivity.OPTION_DRAW, RequestCodes.DRAW_IMAGE, org.odk.collect.strings.R.string.draw_image);
 
-        imageClickHandler = new DrawImageClickHandler(DrawActivity.OPTION_DRAW, ApplicationConstants.RequestCodes.DRAW_IMAGE, org.odk.collect.strings.R.string.draw_image);
-        setUpLayout();
+        render();
         updateAnswer();
-        addAnswerView(answerLayout, WidgetViewUtils.getStandardMargin(context));
     }
 
     @Override
-    protected void setUpLayout() {
-        super.setUpLayout();
-        drawButton = createSimpleButton(getContext(), questionDetails.isReadOnly(), getContext().getString(org.odk.collect.strings.R.string.draw_image), QuestionFontSizeUtils.getFontSize(settings, QuestionFontSizeUtils.FontSize.LABEL_LARGE), this);
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
+        binding = DrawWidgetBinding.inflate(((Activity) context).getLayoutInflater());
+        binding.drawButton.setOnClickListener(v -> imageClickHandler.clickImage("drawButton"));
+        binding.image.setOnClickListener(v -> imageClickHandler.clickImage("viewImage"));
 
-        answerLayout.addView(drawButton);
-        answerLayout.addView(errorTextView);
-        answerLayout.addView(imageView);
+        if (questionDetails.isReadOnly()) {
+            binding.drawButton.setVisibility(View.GONE);
+        }
+
+        errorTextView = binding.errorMessage;
+        imageView = binding.image;
+
+        return binding.getRoot();
     }
 
     @Override
@@ -79,24 +74,18 @@ public class DrawWidget extends BaseImageWidget implements ButtonClickListener {
     @Override
     public void clearAnswer() {
         super.clearAnswer();
-        // reset buttons
-        drawButton.setText(getContext().getString(org.odk.collect.strings.R.string.draw_image));
+        binding.drawButton.setText(getContext().getString(org.odk.collect.strings.R.string.draw_image));
     }
 
     @Override
     public void setOnLongClickListener(OnLongClickListener l) {
-        drawButton.setOnLongClickListener(l);
+        binding.drawButton.setOnLongClickListener(l);
         super.setOnLongClickListener(l);
     }
 
     @Override
     public void cancelLongPress() {
         super.cancelLongPress();
-        drawButton.cancelLongPress();
-    }
-
-    @Override
-    public void onButtonClick(int buttonId) {
-        imageClickHandler.clickImage("drawButton");
+        binding.drawButton.cancelLongPress();
     }
 }

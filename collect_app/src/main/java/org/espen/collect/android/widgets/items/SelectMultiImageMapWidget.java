@@ -20,8 +20,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.webkit.WebView;
 
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectMultiData;
 import org.javarosa.core.model.data.helper.Selection;

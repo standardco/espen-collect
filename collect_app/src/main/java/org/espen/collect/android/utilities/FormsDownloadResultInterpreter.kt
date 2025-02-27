@@ -1,9 +1,9 @@
 package org.espen.collect.android.utilities
 
 import android.content.Context
-import org.espen.collect.android.formmanagement.FormDownloadException
-import org.espen.collect.android.formmanagement.FormDownloadExceptionMapper
 import org.espen.collect.android.formmanagement.ServerFormDetails
+import org.espen.collect.android.formmanagement.download.FormDownloadException
+import org.espen.collect.android.formmanagement.download.FormDownloadExceptionMapper
 import org.odk.collect.errors.ErrorItem
 import org.odk.collect.strings.localization.getLocalizedString
 

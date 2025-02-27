@@ -10,11 +10,12 @@ import android.widget.CompoundButton
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.espen.collect.android.R
 import org.espen.collect.android.databinding.PasswordDialogLayoutBinding
 import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.preferences.ProjectPreferencesViewModel
 import org.espen.collect.android.utilities.SoftKeyboardController
-import org.espen.collect.androidshared.ui.ToastUtils
+import org.odk.collect.androidshared.ui.ToastUtils
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProtectedProjectKeys
 import javax.inject.Inject
@@ -27,7 +28,7 @@ class ChangeAdminPasswordDialog : DialogFragment() {
     lateinit var settingsProvider: SettingsProvider
 
     @Inject
-    lateinit var softKeyboardController: org.espen.collect.android.utilities.SoftKeyboardController
+    lateinit var softKeyboardController: SoftKeyboardController
 
     lateinit var binding: PasswordDialogLayoutBinding
 
@@ -35,7 +36,7 @@ class ChangeAdminPasswordDialog : DialogFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
         projectPreferencesViewModel = ViewModelProvider(requireActivity(), factory)[ProjectPreferencesViewModel::class.java]
     }
 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:oat="http://schema.getodk.org/odkAndroidTools">
   <!--Text for the topmost button on the main screen. It should be short and action-oriented.-->
   <!--Text for an action button on the main screen.-->
   <!--Text for an action button on the main screen.-->
@@ -36,20 +36,15 @@
   <string name="filter_the_list">Hisha urutonde</string>
   <!--Displayed in search boxes for form lists or question types that involve search-->
   <string name="search">Shakisha</string>
-  <string name="no_items_display">Ntibibashije kuboneka</string>
-  <string name="no_items_display_forms">Ntakintu byerekana./n/n gerageza gushaka kandi wuzuzuze form iriho ubusa. </string>
-  <string name="no_items_display_sent_forms">Ntakibashije kugaragara.\n\n gerageza wohereze form zarangiye mbere yuko zisuzumwa.</string>
   <string name="not_granted_permission">Igikorwa mugerageza gutangira kirasaba uruhushya, kandi ntirwatanzwe</string>
   <string name="storage_runtime_permission_denied_title">Uburenganzira ku bubiko</string>
   <string name="storage_runtime_permission_denied_desc">Udafite ubwo burenganzira Collect ntabwo ishobora kwemera form cg ibike amakuru. Ongera ufungure iyo application mugihe ufite ubwo burenganzira</string>
   <string name="location_runtime_permissions_denied_title">Uburenganzira bwokwerekana location </string>
-  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ESPEN Collect only captures location if the precise location permission is granted.-->
+  <!--Starting in Android 12, Android makes it possible to give precise or approximate location permissions to an application. ODK Collect only captures location if the precise location permission is granted.-->
   <string name="camera_runtime_permission_denied_title">Ha uruhushya Camera</string>
   <string name="camera_runtime_permission_denied_desc">Utatanze uruhushya porogaramu ntibasha gukoresha Camera bityo ongera kugerageza nyuma yuko uhaye uruhushya porogaramu</string>
   <string name="record_audio_runtime_permission_denied_title">Rikodinga uburenganzira bwa odiyo </string>
   <string name="record_audio_runtime_permission_denied_desc">Udafite uburenganzira Collect ntishobora kwemera konte. Mwakongera igihe mwaba mubonye ubwo burenganzira. </string>
-  <string name="get_accounts_runtime_permission_denied_title">Kubona uburenganzira kuri konte </string>
-  <string name="get_accounts_runtime_permission_denied_desc">Udafite uburenganzira Collect ntishobora kwemera konte. Wongere igihe uzaba wahawe ubwo burenganzira </string>
   <!--##############################################
     # FILL BLANK FORM
     ##############################################-->
@@ -125,10 +120,7 @@
   <string name="phone_does_not_support_rsa">Tabuleti ntishoboye kurangiza iki gikorwa</string>
   <string name="invalid_rsa_public_key">Imibare yatanzwe siyo</string>
   <string name="encryption_error_message">Ifishi ntiyigeze yemezwa yuko yarangiye 1%s</string>
-  <!--Displayed when form filling is attempted to be launched by intent but the intent URI is incorrect-->
-  <string name="bad_uri">Link uriho siyo: %s</string>
-  <!--Displayed when form filling is attempted to be launched by intent but the intent URI mime type is unknown-->
-  <string name="unrecognized_uri">Link uriho ntibashije kuboneka %s</string>
+  <!--Displayed when an attempt is made to start form filling, but the form is broken-->
   <!--Text displayed when audio recording fails to start-->
   <string name="start_recording_failed">Kurikodinga byanze</string>
   <!--Text displayed when user tries to start recording while the mic is already in use-->
@@ -137,8 +129,6 @@
   <string name="answer_file_copy_failed_message">Aya makuru ntashoboye gushyirwa mu ifishi ariko ushobora kuyasanga 1%1$s </string>
   <!--Text displayed in the audio bar when background audio recording is explicitly disabled from the options menu. Should be as short as possible. The inserted string is ⋮ which indicates the options menu.-->
   <string name="recording_disabled">Gufata amajwi byahagaritse. biraza gukunda muri 1%s</string>
-  <!--Error displayed when opened filled form has been deleted on disk-->
-  <string name="instance_deleted_message">Inyandiko shingiro yujujwe yarasibwe.</string>
   <!--Error displayed when something bad happens during updating widgets in a field-list group-->
   <string name="update_widgets_error">Habaye ikosa mw\'ivugurura ry\'indangagaciro. Ibi ubusanzwe biterwa no kuba habayeimibarire idakwiye mu kubaka i fishi.\n\n
 N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</string>
@@ -150,8 +140,7 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="activity_not_found">Nta gikorwa kigaragaraga gishakirwa igisubizo 1%s</string>
   <string name="no_app">Ibyo mwasabye ntibiboneka. Nimubyandikemo bisanzwe</string>
   <string name="null_intent_value">Ntabwo habashije kuboneka amakuru mwifuzaga </string>
-  <string name="launch_printer">Tangira Gucapa</string>
-  <string name="no_printer">Imashini icapa wahisemo ntiwemerewe kuyikoresha aka kanya. yinsitare ubone kuyikoresha</string>
+  <!--Text on button that is part of print questions. Tapping the button prints the value of the question.-->
   <string name="open_url">Fungura Url</string>
   <string name="capture_osm">Tangiza OpenMapKit </string>
   <string name="recapture_osm">Subiramo ibyagaragajwe kuri OSM.</string>
@@ -196,8 +185,8 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="pause_recording">Hagarika </string>
   <!--Description text for button that that resumes recording sound-->
   <string name="resume_recording">Komeza</string>
-  <!--Text next to checkbox to allow the user to toggle audio recording on and off-->
-  <string name="record_audio">Fata amajwi</string>
+  <!--Displayed in the form filling menu when a form has background audio recording enabled-->
+  <!--Displayed in the form filling menu when a form has background audio recording disabled-->
   <string name="background_audio_permission_explanation">Ubu buryo bubika amajwi kuri iyi gahunda. Ugomba gufungura insakazamajwi yawe, iyo utabikoze iyi gahunda ntifunguka.</string>
   <!--Text asking the user to confirm whether they want to stop recording or not (which deletes the recording file)-->
   <string name="stop_recording_confirmation">Ubu buryo busaba kubika amajwi kuri iyi gahunda. Kutayikoresha bihagarika kubika amajwi kandi bigahanagura n\'ayarariho. Urashaka gukomeza?</string>
@@ -309,6 +298,18 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="persian_month_10">Dey</string>
   <string name="persian_month_11">Bahman</string>
   <string name="persian_month_12">Esfand</string>
+  <!--1st month in the Buddhist calendar-->
+  <!--2nd month in the Buddhist calendar-->
+  <!--3rd month in the Buddhist calendar-->
+  <!--4th month in the Buddhist calendar-->
+  <!--5th month in the Buddhist calendar-->
+  <!--6th month in the Buddhist calendar-->
+  <!--7th month in the Buddhist calendar-->
+  <!--8th month in the Buddhist calendar-->
+  <!--9th month in the Buddhist calendar-->
+  <!--10th month in the Buddhist calendar-->
+  <!--11th month in the Buddhist calendar-->
+  <!--12th month in the Buddhist calendar-->
   <!--Displays dates in specialized calendars with the Gregorian dates in parentheses. This is translated so right-to-left languages can specify the correct order-->
   <string name="custom_date">\"1%1$s\" (\"2%2$s\")</string>
   <!--Displayed when a form media file such as an image for a question label or an audio file for a choice is invalid-->
@@ -341,7 +342,6 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="openmap_usgs_topo">USGS National Map Topo</string>
   <string name="openmap_usgs_sat">USGS National Map Hybrid</string>
   <string name="openmap_usgs_img">USGS National Map Imagery</string>
-  <string name="openmap_stamen_terrain">Stamen Terrain</string>
   <string name="openmap_cartodb_positron">CartoDB Position</string>
   <string name="openmap_cartodb_darkmatter">CartoDB Dark Matter</string>
   <string name="basemap">Indangamimerere igaragaza amakuru.</string>
@@ -358,31 +358,35 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="google_play_services_error_occured">Ntibishoka ko ukoresha ikarita iranga ahantu.Reba ko waba ufite google play muri telefone yawe</string>
   <string name="carto_map_style_positron">Utunyangingo.</string>
   <string name="carto_map_style_dark_matter">Ibibazo bidasobanutse cg byijimye.</string>
-  <string name="reference_layer">Indangakitegererezo.</string>
-  <string name="layer_data_file">Ububiko bw\'amakuru shingiro.</string>
-  <string name="view_change_location">Kora igenzura cyangwa uhindure ujye ahandi</string>
-  <string name="change_location">Hindura ujye ahandi</string>
+  <!--Title for the offline layer section of settings-->
+  <!--Label for the offline layer setting-->
+  <!--Title for the screen that allows the user to select a offline layer for maps-->
+  <!--Description of how to add offline layers to the project-->
+  <!--Text of button user can press to get help when setting up Offline Layers-->
+  <!--Text for button that lets the user select a offline layer on their device to add-->
+  <!--Text for button that lets the user delete a offline layer-->
+  <!--Text for title displayed in a dialog to inform that some/all the selected files are not MBTiles and they can't be imported-->
+  <!--Text for message displayed in a dialog to inform that all the selected files are not MBTiles and they can't be imported-->
+  <!--Text for message displayed in a dialog to inform that some of the selected files are not MBTiles and they can't be imported-->
+  <!--Text for title above list of layers-->
+  <!--Text for title and subtitle above options for how the layer can be access-->
+  <!--Text for option where layer should be available to all projects-->
+  <!--Text for option where layer should be available to the current project only-->
+  <!--Text for message displayed in a dialog to confirm that the layer should be deleted. The placeholder is the name of the layer as displayed in the list-->
   <string name="record_geopoint">Irabika amakuru</string>
   <string name="location_accuracy">Birizewe: %1$s m</string>
   <string name="location_provider">Igitanga aho uri ubu: %s</string>
-  <string name="get_location">Fata amakuru y\'ahantu</string>
   <string name="provider_disabled_error">Ihangane, ibituma amakuru y\'ahantu afatwa birafunze</string>
   <string name="gps_result">Ubujy\'ejuru: %1$s \nUmurambararo: %2$s \nUbutumburuke: %3$s m\n Byizewe: %4$s m</string>
   <string name="google_play_services_not_available">Iyi form irashaka kugenzura aho uherereye, ariko Google Play Services ntabwo iboneka</string>
   <string name="location_providers_disabled_dialog_message">Iyi nyandiko shingiro irashaka kugenzura aho uherereye, ariko banyirigikorwa baho ntabwo bemejwe. Usabwa kwemeza igenamiterere ya Android.</string>
   <!--Action to go to Android settings. Displayed when location providers are disabled.-->
   <string name="go_to_settings">Jya mu igenamiterere</string>
-  <!--Label for a menu item that can be toggled to turn background location tracking on and off during form filling-->
-  <string name="track_location">Kugenzu Icyerezo </string>
+  <!--Displayed in the form filling menu when a form has background location enabled-->
+  <!--Displayed in the form filling menu when a form has background location disabled-->
   <string name="background_location_disabled">Iyi form ishaka kwerekana aho uherereye ariko ntiwabifunguye. Yishyireho 1%1$s murutonde ruri hejuru.</string>
   <string name="background_location_enabled">Iyi form iri kwerekana aho uherereye.Ushobobora kubihagarika muri 1%1$s unyuze ku rutonde ruri hejuru aha</string>
   <!--Text of an option available when filling out a form. Tapping this option checks the form for constraint or required violations and navigates the user back to the first field with an error.-->
-  <string name="get_point">Reba amakuru y\'ahantu</string>
-  <string name="geopoint_view_read_only">Reba amakuru y\'ahantu</string>
-  <string name="geoshape_view_read_only">Garagaza imiterere yahantu.</string>
-  <string name="geotrace_view_read_only">Garagaza ikimenyetso kiranga ahantu.</string>
-  <string name="get_shape">Tangira cg Shushanya imiterere yahantu.</string>
-  <string name="get_trace">Tangira cg Shakisha ibimenyetso biranga ahantu.</string>
   <!--%1$s is the time taken so far in hh:mm:ss-->
   <!--%1$s is the accuracy required for a point to be automatically saved-->
   <!--%1$s is the number of satellites being used to get location-->
@@ -441,13 +445,10 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="geopoint_instruction">Kanda umare umwanya kugirango ushyiremo mark cg ukore kuri buto ya marker</string>
   <string name="geopoint_no_draggable_instruction">Kanda hano wemeze.</string>
   <string name="discard">Kuraho cg Jugunya.</string>
-  <string name="geoshape_view_change_location">Garagaza cg Uhindure imiterere yahantu.</string>
-  <string name="geotrace_view_change_location">Garagaza cg Uhindure ikimenyetso ndangahantu.</string>
   <!--Name of an action button-->
   <string name="view_data">Reba Form Wabitse </string>
   <!--Name for the location tracking notifications. Will be seen in Android settings.-->
   <!--Title for notification that lets user know their location is currently being tracked-->
-  <!--Text of button user can press to get help when setting up Reference Layers-->
   <!--Description for button that zooms to the user's current location on a map-->
   <!--Description for button that zooms a map so that it shows all items-->
   <!--Description for button that pauses automatic location recording-->
@@ -469,15 +470,13 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="change_view">Hindura uko bigaragara </string>
   <string name="show_sent_and_unsent_forms">Erekana Form zagiye na form zitagiye</string>
   <string name="show_unsent_forms">Erekana form zitagiye</string>
-  <string name="media_upload_error">Mugukurura amajwi ntaboneke mu bubiko, ntabwo abarimo ku: %1$s</string>
   <string name="send_in_progress">Ohereza ibyagaragajwe bitaremezwa, hita wongera ugerageze.</string>
-  <string name="odk_permissions_fail">ODK ihita yohereza ibitemejwe, izere neza niba wemeje ibisabwa byose.</string>
   <!--##############################################
     # GET BLANK FORM
     ##############################################-->
   <string name="refresh">Rifureshinga </string>
   <string name="download">Byatoranijwe</string>
-    <string name="downloading_data">Kwihuza na Server </string>
+  <string name="downloading_data">Kwihuza na Server </string>
   <string name="fetching_file">Akira %1$s.\n\n y\'inyandiko shingiro %2$s ya %3$s inyandiko shingiro (zose).</string>
   <string name="form_download_progress">%1$s. Akira ububiko bw\'amajwi: %2$s ya %3$s</string>
   <string name="version">Urutonde rw\'ibibazo/form(ariko biteganywa kugenda z\'ihabwa nimero bitewe n\' impinduka ikozwe ho nyuma y\'uko yahawe aba atanga amakuru)</string>
@@ -514,11 +513,8 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="delete_file">Siba icyo utoranije</string>
   <string name="delete_no">Ntubisibe</string>
   <string name="delete_yes">Siba ifishi</string>
-  <string name="file_deleted_error">Ihangane, %1$s muri %2$s z\' Ifishi wahisemo ntizabashije gusibwa.</string>
   <string name="form_delete_message">Ifishi wahisemo ziri gusibwa</string>
-  <string name="deleting_form_dialog_update_message">Ifishi zimaze gusibwa ni %1$d muri %2$d</string>
   <string name="file_deleted_ok">Ifishi %s zamaze gusibwa</string>
-  <string name="file_delete_in_progress">Ihangane, Igikorwa cyo gusiba ifishi kiracyari gukorwa</string>
   <!--##############################################
     # UNPROTECTED SETTINGS
     ##############################################-->
@@ -554,7 +550,6 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <!--Subtext of a settings section-->
   <string name="server_preferences">Igenamiterere ya musakaza</string>
   <!--Label for server type setting-->
-  <string name="type">Ubwoko</string>
   <string name="server_url">URL</string>
   <!--Title of dialog for configuring server URL-->
   <string name="change_server_url">Server URL</string>
@@ -565,12 +560,6 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="change_password">Ijambo banga rya ODK</string>
   <string name="password_error_whitespace">Mu ijambobanga ahantu hariho ubusa ntibyemewe </string>
   <string name="username_error_whitespace">Kuzuza ahantu hariho ubusa ntabwo byemewe mu izina ugomba gukoresha </string>
-  <string name="server_platform_google_sheets">Google Drive, Google Sheets</string>
-  <string name="selected_google_account_text">Konte kuri Google</string>
-  <!--To use Google Drive, forms must set a submission URL. If they don't, this URL will be used.-->
-  <string name="google_sheets_url">Linki y\'ububiko bw\'ibyoherejwe bitagira linki</string>
-  <!--Description for Fallback submission URL setting-->
-  <string name="google_sheets_url_hint">Inyandiko shingiro igaragaza URL ngenderwaho. Iyo itabikora, iyo URL izakoreshwa.</string>
   <string name="app_theme">Isanganyamatsiko</string>
   <string name="theme_light">Urumuri rw\'insanganyamatsiko.</string>
   <string name="theme_dark">Umwijima w\'isanganyamatsiko.</string>
@@ -666,6 +655,7 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="preference_not_available">Ntabwo bihari </string>
   <!--Label for an item displayed in the project settings menu to unlock settings-->
   <!--Label for an item displayed in the project settings menu to indicate that settings are unlocked-->
+  <!--Summary on setting that's currently not available because the user has entered settings from form entry-->
   <!--##############################################
      # PROTECTED SETTINGS
      ##############################################-->
@@ -709,34 +699,16 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="moving_backwards_enabled_title">Gusubira inyuma byemejwe</string>
   <!--Protected setting. When enabled, users are allowed to save forms while filling them. When disabled, users are only allowed to save forms when they reach their end-->
   <!--##############################################
-     # GOOGLE DRIVE, GOOGLE SHEETS
-     ##############################################-->
-  <!--Title of the screen that lists forms in user's Google Drive-->
-  <!--Title of the screen that lists forms shared with Google Drive user-->
-  <!--Button for navigating across Google Drive folders-->
-  <string name="google_auth_io_exception_msg">Ntabwo ushobora guhamaraga API. Niba ukurikize uko ahantu hateye, usabwa gusubira kumushinga wa readme cg somiwanjye</string>
-  <string name="no_google_account">Ntago wahisemo email</string>
-  <string name="invalid_sheet_id">Indangarupapurombare itemejwe: %1$s</string>
-  <string name="missing_submission_url">Haraburamo kohereza URL</string>
-  <string name="google_sheets_access_denied">Ntibikunda kuyinjiramo.Wareba niba nyiri form yaguhaye uburenganzira bwo kuyinjiramo no kuba haricyo wahindura.</string>
-  <string name="google_sheets_missing_columns">Haraburamo utuyira mu rupapurombare rukurikira: %1$s</string>
-  <string name="google_sheets_encrypted_message">Forms zifungurwa n\'ijambo banga ntago zemewe koherezwa muri Google Sheets</string>
-  <string name="missing_google_account_dialog_desc">Kugirango wohereza inyandiko shingiro ukoresheje urupapurombara rwa Google  ugomba kubanza gushyiramo email yawe muri Musakaza ry\'igenamiterere </string>
-  <!--Text shown in dialog when a Google Sheets form upload was canceled before completion-->
-  <string name="instance_upload_cancelled">Inzego ngenderwaho zitakunze mwiyoherezwa.</string>
-  <string name="no_columns_to_upload">Nta tuyira twabonetse mu iyoherezwa ryinyandiko shingiro.</string>
-  <string name="missing_google_account_dialog_title">Konti ya google ntiyahinduwe</string>
-  <!--##############################################
      # ABOUT
      ##############################################-->
   <string name="about_preferences">Kuri</string>
-  <string name="tell_your_friends">Gusangiza ESPEN Collect</string>
-  <string name="tell_your_friends_msg">Abo mukorana baracyakusanyiriza amakuru mu mpapuro? Bahe ESPEN Collect</string>
+  <string name="tell_your_friends">Gusangiza ODK Collect</string>
+  <string name="tell_your_friends_msg">Abo mukorana baracyakusanyiriza amakuru mu mpapuro? Bahe ODK collect</string>
   <string name="leave_a_review">Tanga igitekerezo cyawe muri play store</string>
   <string name="leave_a_review_msg">Igitekerezo cyawe(twizera cyiza) kiratuma application irushaho kugaragara cyane muri Play Store</string>
-  <string name="odk_website">Sura urubuga rwa ODK</string>
-  <string name="odk_website_summary">ODK ikoreshwa mugukusanya amakuru kubwimibereho myiza mubidukikije bifite ibibazo.</string>
-  <string name="odk_forum">Itabire ihuriro ry\'abakoresha ODK</string>
+  <string name="odk_website">Sura urubuga rwa ESPEN</string>
+  <string name="odk_website_summary">ESPEN ikoreshwa mugukusanya amakuru kubwimibereho myiza mubidukikije bifite ibibazo.</string>
+  <string name="odk_forum">Itabire ihuriro ry\'abakoresha ESPEN</string>
   <string name="odk_forum_summary">Injira ihuriro kugirango ubone ubufasha, gusaba ibiranga, gutanga umusanzu / ibisobanuro!</string>
   <string name="all_open_source_licenses">Gufungura amasomero yisoko / impushya</string>
   <string name="all_open_source_licenses_msg">Duhagaze ku bitugu by\'ibihangange!</string>
@@ -781,8 +753,6 @@ N\'ukomea guhura n\'iki kibazo, wakigeza kuwa gusabye gukusanya  amakuru.</strin
   <string name="fs_create_media_folder_error">Ntabubiko mbumbe bubasha gukorwa \' %s \'.</string>
   <string name="fs_file_copy_error">Wikora copy ya %1$s kuri %2$s .
 Impamvu: %3$s</string>
-  <string name="survey_multiple_forms_error">Wa downloadinze form 2 zitandukanye ariko zihuje amakuru.
-Birashoboka ko ari zimwe zashyizwemo mubihe bitandukanye cgw ziturutse ahatandukanye. Nimba ariko bimeze, siba imwe.</string>
   <string name="select_odk_shortcut">Hitamo inzira z\'ubusamo za ODK</string>
   <string name="background_audio_help">Iyi fomu yandika amajwi ya mikoro yigikoresho cyawe. \ n\n Ushobora gukoresha igipimo cyerekana amajwi kugirango umenye neza ko mikoro yegeranye bihagije nijwi ukeneye gufata amajwi. n\n\ Guhagarika gufata amajwi nyamuneka sohoka muri iyi fomu.n\n\ Kubindi bisobanuro nyamuneka hamagara umuntu wagusabye gukusanya amakuru.</string>
   <!--##############################################
@@ -827,15 +797,33 @@ Birashoboka ko ari zimwe zashyizwemo mubihe bitandukanye cgw ziturutse ahatanduk
   <!--Preceded by "Don't have a project yet?" question-->
   <string name="try_demo">Gerageza kubyerekana</string>
   <string name="scan_configuration_qr_code">Umubarendangabanga wemejwe kuri QR</string>
-  <!--Error shown when a user tries to open a form that's in a different project-->
-  <!--Error shown when a user tries to open a form when there are no projects-->
   <!--##############################################
     # Errors
     ##############################################-->
   <!--##############################################
+    # Form opening errors
+    ##############################################-->
+  <!--Error shown when a user tries to open a form that's in a different project-->
+  <!--Error shown when a user tries to open a form when there are no projects-->
+  <!--Displayed when form filling is attempted to be launched by intent but the intent URI mime type is unknown-->
+  <string name="unrecognized_uri">Link uriho ntibashije kuboneka %s</string>
+  <!--Displayed when form filling is attempted to be launched by intent but the intent URI is incorrect-->
+  <string name="bad_uri">Link uriho siyo: %s</string>
+  <!--Error displayed when opened filled form has been deleted on disk-->
+  <string name="instance_deleted_message">Inyandiko shingiro yujujwe yarasibwe.</string>
+  <!--Error shown when a user tries to edit a form but there is no corresponding blank form-->
+  <!--Error shown when a user tries to open a form but there is more than one form with the same form ID-->
+  <string name="survey_multiple_forms_error">Wa downloadinze form 2 zitandukanye ariko zihuje amakuru.
+Birashoboka ko ari zimwe zashyizwemo mubihe bitandukanye cgw ziturutse ahatandukanye. Nimba ariko bimeze, siba imwe.</string>
+  <!--Error shown when a user tries to open a form when forms update is being applied in the background-->
+  <!--##############################################
     # Permissions
     ##############################################-->
   <!--An entity is any person, place or thing that a form can be about. This title appears on an experimental settings screen to view entities managed in the current project.-->
+  <!--Title for setting that controls whether local entity features are enabled or not-->
+  <!--Text for button that leads to browser for the user to view and manage entity lists-->
+  <!--Label for entity that has been created offline and is not on the server yet-->
+  <!--Error message displayed when a user opens a form with an unrecognized entity version-->
   <!--##############################################
     # Crash handling
     ##############################################-->
@@ -847,8 +835,55 @@ Birashoboka ko ari zimwe zashyizwemo mubihe bitandukanye cgw ziturutse ahatanduk
     ##############################################-->
   <!--Section title in settings-->
   <!--Option provided in the Developer tools settings to force an application crash-->
-  <!--An uncaught exception is an exception that is not handled by ESPEN Collect and so will force the application to close-->
+  <!--An uncaught exception is an exception that is not handled by ODK Collect and so will force the application to close-->
   <!--##############################################
     # Form saved Snackbar
     ##############################################-->
+  <!--##############################################
+    # Forms ready to send banner
+    ##############################################-->
+  <!--Message showed on main menu to inform users that the ability to edit finalized forms is going away-->
+  <!--Label for Drafts list option that attempts to finalize all the drafts the user is currently looking at. Finalizing a draft locks it so it can't be edited and makes it eligible for autosend-->
+  <!--Dialog title that asks if the user wants to finalize all drafts-->
+  <!--Explanation for how bulk finalize works shown in a dialog before the user confirms if they want to proceed or cancel-->
+  <!--Message shown after bulk finalization when finalizing all drafts has succeeded-->
+  <!--Message shown after bulk finalization when no drafts finalized successfully-->
+  <!--Message shown after bulk finalization when some drafts finalize successfully and others fail-->
+  <!--Message shown when some drafts finalize successfully but others need to be finalized manually-->
+  <!--Displayed above a draft that has constraints that aren't met or required questions that aren't answered or both. Should match the wording for the 'Check for errors' feature.-->
+  <!--Displayed above a draft that has no constraint violations and in which all required questions have been answered. Should match the wording for the 'Check for errors' feature.-->
+  <!--Title of section of features that the user can uncheck to hide from the Drafts screen-->
+  <!--Title for dialog explaining the drafts marked with "Error" shown to the user the first time they view the Drafts screen-->
+  <!--Message for dialog explaining the drafts marked with "Error" shown to the user the first time they view the Drafts screen-->
+  <!--Message displayed when the list of questions is empty-->
+  <!--Message displayed when the list of blank forms is empty-->
+  <!--Subtext displayed when the list of blank forms is empty-->
+  <!--Message displayed when the list of drafts is empty-->
+  <!--Subtext displayed when the list of drafts is empty-->
+  <!--Message displayed when the list of ready to send forms is empty-->
+  <!--Subtext displayed when the list of ready to send forms is empty-->
+  <!--Message displayed when the list of sent forms is empty-->
+  <!--Subtext of message displayed when the list of sent forms is empty-->
+  <!--Message displayed when the list of forms to download is empty-->
+  <!--Message displayed when the list of forms to delete is empty-->
+  <!--Subtext displayed when the list of blank forms to delete is empty-->
+  <!--Subtext displayed when the list of filled forms to delete is empty-->
+  <!--##############################################
+    # Savepoint recovery dialog
+    ##############################################-->
+  <!--Title displayed in a dialog before starting a form if there is a work to recover-->
+  <!--Message displayed in a dialog before starting a form if there is a work to recover-->
+  <!--Text for the button that accepts the recovery of the work-->
+  <!--Text for the button that declines the recovery of the work-->
+  <string name="do_not_recover">Kuraho cg Jugunya.</string>
+  <!--Text for the button that initiates getting user location-->
+  <!--Text for the button that displays a map for viewing or changing an already existing location-->
+  <!--Text for the button that displays a map for viewing an already existing location-->
+  <!--Text for the button that initiates getting user location when one is already present-->
+  <!--Text for the button that displays a map for getting a new line-->
+  <!--Text for the button that displays a map for viewing or changing an already existing line-->
+  <!--Text for the button that displays a map for viewing an already existing line-->
+  <!--Text for the button that displays a map for getting a new polygon-->
+  <!--Text for the button that displays a map for viewing or changing an already existing polygon-->
+  <!--Text for the button that displays a map for viewing an already existing polygon-->
 </resources>

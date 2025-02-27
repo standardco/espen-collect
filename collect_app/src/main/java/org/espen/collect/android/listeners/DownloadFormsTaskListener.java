@@ -14,7 +14,7 @@
 
 package org.espen.collect.android.listeners;
 
-import org.espen.collect.android.formmanagement.FormDownloadException;
+import org.espen.collect.android.formmanagement.download.FormDownloadException;
 import org.espen.collect.android.formmanagement.ServerFormDetails;
 
 import java.util.Map;

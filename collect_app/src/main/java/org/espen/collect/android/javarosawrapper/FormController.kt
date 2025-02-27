@@ -9,10 +9,9 @@ import org.javarosa.form.api.FormEntryCaption
 import org.javarosa.form.api.FormEntryPrompt
 import org.espen.collect.android.exception.JavaRosaException
 import org.espen.collect.android.formentry.audit.AuditEventLogger
-import org.odk.collect.entities.Entity
+import org.odk.collect.entities.javarosa.finalization.EntitiesExtra
 import java.io.File
 import java.io.IOException
-import java.util.stream.Stream
 
 interface FormController {
     fun getFormDef(): FormDef?
@@ -31,7 +30,7 @@ interface FormController {
 
     fun setIndexWaitingForData(index: FormIndex?)
 
-    fun getAuditEventLogger(): org.espen.collect.android.formentry.audit.AuditEventLogger?
+    fun getAuditEventLogger(): AuditEventLogger?
 
     fun isEditing(): Boolean
 
@@ -127,7 +126,7 @@ interface FormController {
     /**
      * Attempts to save answer into the given FormIndex into the data model.
      */
-    @Throws(org.espen.collect.android.exception.JavaRosaException::class)
+    @Throws(JavaRosaException::class)
     fun answerQuestion(index: FormIndex?, data: IAnswerData?): Int
 
     /**
@@ -138,8 +137,8 @@ interface FormController {
      * @return ANSWER_OK and leave index unchanged or change index to bad value and return error
      * type.
      */
-    @Throws(org.espen.collect.android.exception.JavaRosaException::class)
-    fun validateAnswers(markCompleted: Boolean): ValidationResult
+    @Throws(JavaRosaException::class)
+    fun validateAnswers(moveToInvalidIndex: Boolean): ValidationResult
 
     /**
      * saveAnswer attempts to save the current answer into the data model without doing any
@@ -149,7 +148,7 @@ interface FormController {
      *
      * @return true if saved successfully, false otherwise.
      */
-    @Throws(org.espen.collect.android.exception.JavaRosaException::class)
+    @Throws(JavaRosaException::class)
     fun saveAnswer(index: FormIndex?, data: IAnswerData?): Boolean
 
     /**
@@ -185,7 +184,7 @@ interface FormController {
      * is itself within a field-list, move upward to the group or repeat defining that
      * field-list.
      */
-    @Throws(org.espen.collect.android.exception.JavaRosaException::class)
+    @Throws(JavaRosaException::class)
     fun stepToPreviousScreenEvent(): Int
 
     /**
@@ -194,7 +193,7 @@ interface FormController {
      * If we enter a group or repeat, return that if it is a field-list definition.
      * Otherwise, descend into the group or repeat searching for the first question.
      */
-    @Throws(org.espen.collect.android.exception.JavaRosaException::class)
+    @Throws(JavaRosaException::class)
     fun stepToNextScreenEvent(): Int
 
     /**
@@ -214,13 +213,13 @@ interface FormController {
      */
     fun isDisplayableGroup(index: FormIndex?): Boolean
 
-    @Throws(org.espen.collect.android.exception.JavaRosaException::class)
+    @Throws(JavaRosaException::class)
     fun saveOneScreenAnswer(index: FormIndex?, data: IAnswerData?, evaluateConstraints: Boolean): ValidationResult
 
     /**
      * @return FailedConstraint of first failed constraint or null if all questions were saved.
      */
-    @Throws(org.espen.collect.android.exception.JavaRosaException::class)
+    @Throws(JavaRosaException::class)
     fun saveAllScreenAnswers(answers: HashMap<FormIndex, IAnswerData>?, evaluateConstraints: Boolean): ValidationResult
 
     /**
@@ -275,6 +274,8 @@ interface FormController {
      */
     fun indexContainsRepeatableGroup(): Boolean
 
+    fun indexContainsRepeatableGroup(formIndex: FormIndex?): Boolean
+
     /**
      * The count of the closest group that repeats or -1.
      */
@@ -307,7 +308,7 @@ interface FormController {
      * enables a filled-in form to be re-opened and edited.
      */
     @Throws(IOException::class)
-    fun getFilledInFormXml(): ByteArrayPayload?
+    fun getFilledInFormXml(): ByteArrayPayload
 
     /**
      * Extract the portion of the form that should be uploaded to the server.
@@ -318,7 +319,7 @@ interface FormController {
     /**
      * Get the OpenRosa required metadata of the portion of the form beng submitted
      */
-    fun getSubmissionMetadata(): org.espen.collect.android.javarosawrapper.InstanceMetadata?
+    fun getSubmissionMetadata(): InstanceMetadata?
 
     /**
      * Returns true if the current form definition audits user location in the background.
@@ -333,5 +334,5 @@ interface FormController {
 
     fun getAnswer(treeReference: TreeReference?): IAnswerData?
 
-    fun getEntities(): Stream<Entity>
+    fun getEntities(): EntitiesExtra?
 }

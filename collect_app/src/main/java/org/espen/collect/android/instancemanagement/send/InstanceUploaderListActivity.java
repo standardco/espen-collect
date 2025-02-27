@@ -20,8 +20,7 @@ import static org.espen.collect.android.utilities.ApplicationConstants.SortingOr
 import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_DESC;
 import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_ASC;
 import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_NAME_DESC;
-import static org.espen.collect.androidshared.ui.MultiSelectViewModelKt.updateSelectAll;
-import static org.odk.collect.settings.keys.ProjectKeys.KEY_PROTOCOL;
+import static org.odk.collect.lists.selects.MultiSelectViewModelKt.updateSelectAll;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -33,7 +32,6 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -49,19 +47,6 @@ import androidx.work.WorkManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.activities.AppListActivity;
-import org.espen.collect.android.activities.FormFillingActivity;
-import org.espen.collect.android.adapters.InstanceUploaderAdapter;
-import org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler;
-import org.espen.collect.android.dao.CursorLoaderFactory;
-import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
-import org.espen.collect.android.formlists.sorting.FormListSortingBottomSheetDialog;
-import org.espen.collect.android.formlists.sorting.FormListSortingOption;
-import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.android.mainmenu.MainMenuActivity;
-import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity;
-import org.espen.collect.android.projects.ProjectsDataService;
-import org.espen.collect.android.utilities.ApplicationConstants;
 import org.espen.collect.android.R;
 import org.espen.collect.android.activities.FormFillingActivity;
 import org.espen.collect.android.adapters.InstanceUploaderAdapter;
@@ -73,16 +58,16 @@ import org.espen.collect.android.databinding.InstanceUploaderListBinding;
 import org.espen.collect.android.formlists.sorting.FormListSortingBottomSheetDialog;
 import org.espen.collect.android.formlists.sorting.FormListSortingOption;
 import org.espen.collect.android.formmanagement.FormFillingIntentFactory;
-import org.espen.collect.android.gdrive.GoogleSheetsUploaderActivity;
 import org.espen.collect.android.injection.DaggerUtils;
 import org.espen.collect.android.mainmenu.MainMenuActivity;
 import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity;
 import org.espen.collect.android.projects.ProjectsDataService;
-import org.espen.collect.androidshared.system.PlayServicesChecker;
-import org.espen.collect.androidshared.network.NetworkStateProvider;
-import org.espen.collect.androidshared.ui.MultiSelectViewModel;
-import org.espen.collect.androidshared.ui.ToastUtils;
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
+import org.odk.collect.androidshared.ui.MenuExtKt;
+import org.odk.collect.androidshared.ui.ObviousProgressBar;
+import org.odk.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
+import org.odk.collect.async.network.NetworkStateProvider;
+import org.odk.collect.lists.selects.MultiSelectViewModel;
 import org.odk.collect.settings.SettingsProvider;
 import org.odk.collect.settings.keys.ProjectKeys;
 import org.odk.collect.strings.localization.LocalizedActivity;
@@ -90,6 +75,7 @@ import org.odk.collect.strings.localization.LocalizedActivity;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -106,7 +92,6 @@ import timber.log.Timber;
 public class InstanceUploaderListActivity extends LocalizedActivity implements
         OnLongClickListener, AdapterView.OnItemClickListener, LoaderManager.LoaderCallbacks<Cursor> {
     private static final String SHOW_ALL_MODE = "showAllMode";
-    private static final String INSTANCE_UPLOADER_LIST_SORTING_ORDER = "instanceUploaderListSortingOrder";
 
     private static final String IS_SEARCH_BOX_SHOWN = "isSearchBoxShown";
     private static final String SEARCH_TEXT = "searchText";
@@ -140,10 +125,10 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
     private InstanceUploaderAdapter listAdapter;
     private Integer selectedSortingOrder;
     private List<FormListSortingOption> sortingOptions;
-    private ProgressBar progressBar;
+    private ObviousProgressBar progressBar;
     private String filterText;
 
-    private MultiSelectViewModel multiSelectViewModel;
+    private MultiSelectViewModel<Object> multiSelectViewModel;
     private ReadyToSendViewModel readyToSendViewModel;
     private boolean allSelected;
 
@@ -168,8 +153,7 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
         multiSelectViewModel.getSelected().observe(this, ids -> {
             binding.uploadButton.setEnabled(!ids.isEmpty());
             allSelected = updateSelectAll(binding.toggleButton, listAdapter.getCount(), ids.size());
-
-            listAdapter.setSelected(ids);
+            listAdapter.setSelected(ids.stream().map(Long::valueOf).collect(Collectors.toSet()));
         });
         readyToSendViewModel = new ViewModelProvider(this, factory).get(ReadyToSendViewModel.class);
         readyToSendViewModel.getData().observe(this, data -> binding.readyToSendBanner.setData(data));
@@ -195,7 +179,7 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
             return;
         }
 
-        Set<Long> selectedItems = multiSelectViewModel.getSelected().getValue();
+        Set<Long> selectedItems = multiSelectViewModel.getSelected().getValue().stream().map(Long::valueOf).collect(Collectors.toSet());
         if (!selectedItems.isEmpty()) {
             binding.uploadButton.setEnabled(false);
 
@@ -211,16 +195,16 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
     public void setContentView(View view) {
         super.setContentView(view);
 
-        listView = findViewById(android.R.id.list);
+        listView = findViewById(R.id.scrollable_container);
         listView.setOnItemClickListener((AdapterView.OnItemClickListener) this);
         listView.setEmptyView(findViewById(android.R.id.empty));
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(org.odk.collect.androidshared.R.id.progressBar);
 
         // Use the nicer-looking drawable with Material Design insets.
-        listView.setDivider(ContextCompat.getDrawable(this, R.drawable.list_item_divider));
+        listView.setDivider(ContextCompat.getDrawable(this, org.odk.collect.androidshared.R.drawable.list_item_divider));
         listView.setDividerHeight(1);
 
-        setSupportActionBar(findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(org.odk.collect.androidshared.R.id.toolbar));
 
         init();
     }
@@ -232,7 +216,7 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
         binding.toggleButton.setOnClickListener(v -> {
             if (!allSelected) {
                 for (int i = 0; i < listView.getCount(); i++) {
-                    multiSelectViewModel.select(listView.getItemIdAtPosition(i));
+                    multiSelectViewModel.select(String.valueOf(listView.getItemIdAtPosition(i)));
                 }
             } else {
                 multiSelectViewModel.unselectAll();
@@ -261,7 +245,7 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
                 )
         );
 
-        getSupportLoaderManager().initLoader(AppListActivity.LOADER_ID, null, this);
+        getSupportLoaderManager().initLoader(LOADER_ID, null, this);
 
         // Start observer that sets autoSendOngoing field based on AutoSendWorker status
         updateAutoSendStatus();
@@ -296,31 +280,18 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
     }
 
     private void uploadSelectedFiles(long[] instanceIds) {
-        String server = settingsProvider.getUnprotectedSettings().getString(KEY_PROTOCOL);
-
-        if (server.equalsIgnoreCase(ProjectKeys.PROTOCOL_GOOGLE_SHEETS)) {
-            // if it's Sheets, start the Sheets uploader
-            // first make sure we have a google account selected
-            if (new PlayServicesChecker().isGooglePlayServicesAvailable(this)) {
-                Intent i = new Intent(this, GoogleSheetsUploaderActivity.class);
-                i.putExtra(FormFillingActivity.KEY_INSTANCES, instanceIds);
-                startActivityForResult(i, INSTANCE_UPLOADER);
-            } else {
-                new PlayServicesChecker().showGooglePlayServicesAvailabilityErrorDialog(this);
-            }
-        } else {
-            // otherwise, do the normal aggregate/other thing.
-            Intent i = new Intent(this, InstanceUploaderActivity.class);
-            i.putExtra(FormFillingActivity.KEY_INSTANCES, instanceIds);
-            startActivityForResult(i, INSTANCE_UPLOADER);
-        }
+        Intent i = new Intent(this, InstanceUploaderActivity.class);
+        i.putExtra(FormFillingActivity.KEY_INSTANCES, instanceIds);
+        startActivityForResult(i, INSTANCE_UPLOADER);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.instance_uploader_menu, menu);
 
-        getMenuInflater().inflate(R.menu.form_list_menu, menu);
+        getMenuInflater().inflate(R.menu.blank_form_list_menu, menu);
+        MenuExtKt.enableIconsVisibility(menu);
+
         final MenuItem sortItem = menu.findItem(R.id.menu_sort);
         final MenuItem searchItem = menu.findItem(R.id.menu_filter);
         searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
@@ -376,10 +347,6 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
             return true;
         } else if (item.getItemId() == R.id.menu_change_view) {
             showSentAndUnsentChoices();
-            return true;
-        }
-
-        if (!MultiClickGuard.allowClick(getClass().getName())) {
             return true;
         }
 
@@ -454,18 +421,18 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
 
     private void setupAdapter() {
         listAdapter = new InstanceUploaderAdapter(this, null, dbId -> {
-            multiSelectViewModel.toggle(dbId);
+            multiSelectViewModel.toggle(dbId.toString());
         });
 
         listView.setAdapter(listAdapter);
     }
 
     private String getSortingOrderKey() {
-        return INSTANCE_UPLOADER_LIST_SORTING_ORDER;
+        return ProjectKeys.KEY_SAVED_FORM_SORT_ORDER;
     }
 
     private void updateAdapter() {
-        getSupportLoaderManager().restartLoader(AppListActivity.LOADER_ID, null, this);
+        getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
     }
 
     @NonNull
@@ -483,7 +450,7 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         hideProgressBarAndAllow();
         listAdapter.changeCursor(cursor);
-        AppListActivity.toggleButtonLabel(findViewById(R.id.toggle_button), listView);
+        toggleButtonLabel(findViewById(R.id.toggle_button), listView);
 
         if (listAdapter.isEmpty()) {
             findViewById(R.id.buttonholder).setVisibility(View.GONE);
@@ -539,16 +506,16 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
     private String getSortingOrder() {
         String sortingOrder = DatabaseInstanceColumns.DISPLAY_NAME + " COLLATE NOCASE ASC, " + DatabaseInstanceColumns.STATUS + " DESC";
         switch (getSelectedSortingOrder()) {
-            case ApplicationConstants.SortingOrder.BY_NAME_ASC:
+            case BY_NAME_ASC:
                 sortingOrder = DatabaseInstanceColumns.DISPLAY_NAME + " COLLATE NOCASE ASC, " + DatabaseInstanceColumns.STATUS + " DESC";
                 break;
-            case ApplicationConstants.SortingOrder.BY_NAME_DESC:
+            case BY_NAME_DESC:
                 sortingOrder = DatabaseInstanceColumns.DISPLAY_NAME + " COLLATE NOCASE DESC, " + DatabaseInstanceColumns.STATUS + " DESC";
                 break;
-            case ApplicationConstants.SortingOrder.BY_DATE_ASC:
+            case BY_DATE_ASC:
                 sortingOrder = DatabaseInstanceColumns.LAST_STATUS_CHANGE_DATE + " ASC";
                 break;
-            case ApplicationConstants.SortingOrder.BY_DATE_DESC:
+            case BY_DATE_DESC:
                 sortingOrder = DatabaseInstanceColumns.LAST_STATUS_CHANGE_DATE + " DESC";
                 break;
         }
@@ -567,7 +534,7 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
     }
 
     private void showProgressBar() {
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.show();
     }
 
     private void hideProgressBarAndAllow() {
@@ -575,7 +542,7 @@ public class InstanceUploaderListActivity extends LocalizedActivity implements
     }
 
     private void hideProgressBar() {
-        progressBar.setVisibility(View.GONE);
+        progressBar.hide();
     }
 
     private CharSequence getFilterText() {

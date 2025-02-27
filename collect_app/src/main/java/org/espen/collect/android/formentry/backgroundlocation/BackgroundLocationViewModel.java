@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 
 import org.espen.collect.android.activities.FormFillingActivity;
-import org.espen.collect.android.activities.FormFillingActivity;
 import org.odk.collect.shared.settings.Settings;
 
 /**

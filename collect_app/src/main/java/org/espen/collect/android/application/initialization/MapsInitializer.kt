@@ -14,7 +14,7 @@ import javax.inject.Inject
 class MapsInitializer @Inject constructor(
     private val context: Context,
     private val settingsProvider: SettingsProvider,
-    private val userAgentProvider: org.espen.collect.utilities.UserAgentProvider
+    private val userAgentProvider: UserAgentProvider
 ) {
 
     fun initialize() {
@@ -26,8 +26,8 @@ class MapsInitializer @Inject constructor(
     }
 
     private fun resetToAvailableFramework() {
-        org.espen.collect.android.geo.MapConfiguratorProvider.initOptions(context)
-        val availableBaseMaps = org.espen.collect.android.geo.MapConfiguratorProvider.getIds()
+        MapConfiguratorProvider.initOptions(context)
+        val availableBaseMaps = MapConfiguratorProvider.getIds()
         val baseMapSetting =
             settingsProvider.getUnprotectedSettings().getString(ProjectKeys.KEY_BASEMAP_SOURCE)
         if (!availableBaseMaps.contains(baseMapSetting)) {

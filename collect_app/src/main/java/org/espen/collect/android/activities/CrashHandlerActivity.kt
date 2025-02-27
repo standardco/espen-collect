@@ -13,7 +13,7 @@ class CrashHandlerActivity : LocalizedActivity() {
 
         val crashHandler = CrashHandler.getInstance(this)!!
         val crashView = crashHandler.getCrashView(this) {
-            org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(this, MainMenuActivity::class.java)
+            ActivityUtils.startActivityAndCloseAllOthers(this, MainMenuActivity::class.java)
         }
 
         if (crashView != null) {

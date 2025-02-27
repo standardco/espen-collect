@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.androidshared.utils
+package org.odk.collect.androidshared.utils
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import junit.framework.TestCase.assertFalse

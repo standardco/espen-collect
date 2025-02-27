@@ -43,7 +43,7 @@ public class TriggerWidget extends QuestionWidget {
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerTextSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerTextSize) {
         ViewGroup answerView = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.trigger_widget_answer, null);
 
         triggerButton = answerView.findViewById(R.id.check_box);
@@ -51,7 +51,7 @@ public class TriggerWidget extends QuestionWidget {
         triggerButton.setEnabled(!prompt.isReadOnly());
         triggerButton.setChecked(OK_TEXT.equals(prompt.getAnswerText()));
         triggerButton.setOnCheckedChangeListener((buttonView, isChecked) -> widgetValueChanged());
-        triggerButton.setId(generateViewId());
+        triggerButton.setId(View.generateViewId());
 
         return answerView;
     }

@@ -78,18 +78,10 @@ public class ApplicationConstants {
         public static final int EX_AUDIO_CHOOSER  = 26;
         public static final int CHANGE_SETTINGS = 27;
         public static final int MEDIA_FILE_PATH = 28;
-
-        public static final int FORMS_UPLOADED_NOTIFICATION = 97;
-        public static final int FORMS_DOWNLOADED_NOTIFICATION = 98;
-        public static final int FORM_UPDATES_AVAILABLE_NOTIFICATION = 99;
     }
 
     public abstract static class Namespaces {
         public static final String XML_OPENROSA_NAMESPACE = "http://openrosa.org/xforms";
         public static final String XML_OPENDATAKIT_NAMESPACE = "http://www.opendatakit.org/xforms";
-    }
-
-    public enum ScreenName {
-        MAIN_MENU
     }
 }

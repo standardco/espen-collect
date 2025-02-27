@@ -26,8 +26,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 
-import org.espen.collect.android.utilities.HtmlUtils;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.InvalidReferenceException;
@@ -113,6 +111,7 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
     public void clearAnswer() {
         selections.clear();
         binding.imageMap.loadUrl("javascript:clearAreas()");
+        binding.selectedElements.setVisibility(GONE);
         widgetValueChanged();
     }
 
@@ -122,9 +121,10 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = SelectImageMapWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
         binding.selectedElements.setTextSize(TypedValue.COMPLEX_UNIT_DIP, answerFontSize);
+        binding.selectedElements.setVisibility(binding.selectedElements.getText().toString().isBlank() ? GONE : VISIBLE);
         return binding.getRoot();
     }
 
@@ -168,7 +168,7 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
         if (selectChoice != null) {
             selections.add(new Selection(selectChoice));
         }
-        widgetValueChanged();
+        ((Activity) getContext()).runOnUiThread(this::widgetValueChanged);
     }
 
     private void unselectArea(String areaId) {
@@ -181,7 +181,7 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
         }
 
         selections.remove(selectionToRemove);
-        widgetValueChanged();
+        ((Activity) getContext()).runOnUiThread(this::widgetValueChanged);
     }
 
     private void notifyChanges() {
@@ -268,8 +268,10 @@ public abstract class SelectImageMapWidget extends QuestionWidget {
             }
         }
 
-        ((Activity) getContext()).runOnUiThread(() ->
-                binding.selectedElements.setText(HtmlUtils.textToHtml(stringBuilder.toString())));
+        ((Activity) getContext()).runOnUiThread(() -> {
+            binding.selectedElements.setText(HtmlUtils.textToHtml(stringBuilder.toString()));
+            binding.selectedElements.setVisibility(binding.selectedElements.getText().toString().isBlank() ? GONE : VISIBLE);
+        });
     }
 
     protected abstract void highlightSelections(WebView view);

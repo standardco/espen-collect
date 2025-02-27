@@ -6,8 +6,9 @@ import org.kxml2.kdom.Element
 import org.odk.collect.forms.FormListItem
 import org.odk.collect.forms.MediaFile
 import org.odk.collect.shared.strings.StringUtils.isBlank
+import java.io.File
 
-class OpenRosaResponseParserImpl : org.espen.collect.android.openrosa.OpenRosaResponseParser {
+class OpenRosaResponseParserImpl : OpenRosaResponseParser {
 
     override fun parseFormList(document: Document): List<FormListItem>? {
         // Attempt OpenRosa 1.0 parsing
@@ -154,6 +155,8 @@ class OpenRosaResponseParserImpl : org.espen.collect.android.openrosa.OpenRosaRe
                 continue
             }
 
+            val type = mediaFileElement.getAttributeValue(null, "type")
+
             val name = mediaFileElement.name
             if (name.equals("mediaFile", ignoreCase = true)) {
                 var filename: String? = null
@@ -179,6 +182,9 @@ class OpenRosaResponseParserImpl : org.espen.collect.android.openrosa.OpenRosaRe
                             if (filename != null && filename.isEmpty()) {
                                 filename = null
                             }
+                            if (filename != null) {
+                                filename = File(filename).name
+                            }
                         }
                         "hash" -> {
                             hash = XFormParser.getXMLText(child, true)
@@ -201,7 +207,7 @@ class OpenRosaResponseParserImpl : org.espen.collect.android.openrosa.OpenRosaRe
                     return null
                 }
 
-                files.add(MediaFile(filename, hash, downloadUrl))
+                files.add(MediaFile(filename, hash, downloadUrl, type == "entityList"))
             }
         }
         return files

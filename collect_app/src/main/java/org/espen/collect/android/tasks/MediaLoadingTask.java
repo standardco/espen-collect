@@ -6,14 +6,14 @@ import android.net.Uri;
 import android.os.AsyncTask;
 
 import org.espen.collect.android.activities.FormFillingActivity;
-import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.application.Collect;
 import org.espen.collect.android.injection.DaggerUtils;
 import org.espen.collect.android.utilities.ContentUriHelper;
 import org.espen.collect.android.utilities.FileUtils;
 import org.espen.collect.android.utilities.ImageCompressionController;
 import org.espen.collect.android.widgets.BaseImageWidget;
 import org.espen.collect.android.widgets.QuestionWidget;
-import org.espen.collect.androidshared.ui.DialogFragmentUtils;
+import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 import org.odk.collect.settings.SettingsProvider;
 
 import java.io.File;
@@ -48,7 +48,7 @@ public class MediaLoadingTask extends AsyncTask<Uri, Void, File> {
             String extension = ContentUriHelper.getFileExtensionFromUri(uris[0]);
 
             File newFile = FileUtils.createDestinationMediaFile(instanceFile.getParent(), extension);
-            FileUtils.saveAnswerFileFromUri(uris[0], newFile, EspenCollect.getInstance());
+            FileUtils.saveAnswerFileFromUri(uris[0], newFile, Collect.getInstance());
             QuestionWidget questionWidget = formFillingActivity.get().getWidgetWaitingForBinaryData();
 
             // apply image conversion if the widget is an image widget

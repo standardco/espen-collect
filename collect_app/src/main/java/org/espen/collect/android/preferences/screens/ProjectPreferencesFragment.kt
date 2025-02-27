@@ -23,23 +23,24 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.preference.Preference
 import org.espen.collect.android.R
 import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.preferences.ProjectPreferencesViewModel
 import org.espen.collect.android.preferences.dialogs.AdminPasswordDialogFragment
 import org.espen.collect.android.preferences.dialogs.ChangeAdminPasswordDialog
-import org.espen.collect.androidshared.data.Consumable
-import org.espen.collect.androidshared.ui.DialogFragmentUtils
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard
+import org.odk.collect.androidshared.data.Consumable
+import org.odk.collect.androidshared.ui.DialogFragmentUtils
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 
-class ProjectPreferencesFragment :
-    org.espen.collect.android.preferences.screens.BaseProjectPreferencesFragment(),
+class ProjectPreferencesFragment(private val inFormEntry: Boolean) :
+    BaseProjectPreferencesFragment(),
     Preference.OnPreferenceClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
 
         projectPreferencesViewModel.state.observe(
             this,
@@ -66,20 +67,31 @@ class ProjectPreferencesFragment :
         findPreference<Preference>(EXPERIMENTAL_PREFERENCE_KEY)!!.onPreferenceClickListener = this
         findPreference<Preference>(UNLOCK_PROTECTED_SETTINGS_PREFERENCE_KEY)!!.onPreferenceClickListener = this
         findPreference<Preference>(CHANGE_ADMIN_PASSWORD_PREFERENCE_KEY)!!.onPreferenceClickListener = this
-        findPreference<Preference>(PROJECT_MANAGEMENT_PREFERENCE_KEY)!!.onPreferenceClickListener = this
         findPreference<Preference>(ACCESS_CONTROL_PREFERENCE_KEY)!!.onPreferenceClickListener = this
+        findPreference<Preference>(PROJECT_MANAGEMENT_PREFERENCE_KEY)!!.also {
+            it.onPreferenceClickListener = this
+            if (inFormEntry) {
+                it.isEnabled = false
+                it.setSummary(org.odk.collect.strings.R.string.setting_not_available_during_form_entry)
+            }
+        }
     }
 
     override fun onPreferenceClick(preference: Preference): Boolean {
         if (MultiClickGuard.allowClick(javaClass.name)) {
             when (preference.key) {
-                PROTOCOL_PREFERENCE_KEY -> displayPreferences(org.espen.collect.android.preferences.screens.ServerPreferencesFragment())
+                PROTOCOL_PREFERENCE_KEY -> displayPreferences(ServerPreferencesFragment())
                 PROJECT_DISPLAY_PREFERENCE_KEY -> displayPreferences(ProjectDisplayPreferencesFragment())
-                USER_INTERFACE_PREFERENCE_KEY -> displayPreferences(org.espen.collect.android.preferences.screens.UserInterfacePreferencesFragment())
+                USER_INTERFACE_PREFERENCE_KEY -> {
+                    val fragment = UserInterfacePreferencesFragment()
+                    fragment.arguments =
+                        bundleOf(UserInterfacePreferencesFragment.ARG_IN_FORM_ENTRY to inFormEntry)
+                    displayPreferences(fragment)
+                }
                 MAPS_PREFERENCE_KEY -> displayPreferences(MapsPreferencesFragment())
-                FORM_MANAGEMENT_PREFERENCE_KEY -> displayPreferences(org.espen.collect.android.preferences.screens.FormManagementPreferencesFragment())
+                FORM_MANAGEMENT_PREFERENCE_KEY -> displayPreferences(FormManagementPreferencesFragment())
                 USER_AND_DEVICE_IDENTITY_PREFERENCE_KEY -> displayPreferences(IdentityPreferencesFragment())
-                EXPERIMENTAL_PREFERENCE_KEY -> displayPreferences(org.espen.collect.android.preferences.screens.ExperimentalPreferencesFragment())
+                EXPERIMENTAL_PREFERENCE_KEY -> displayPreferences(ExperimentalPreferencesFragment())
                 UNLOCK_PROTECTED_SETTINGS_PREFERENCE_KEY -> DialogFragmentUtils.showIfNotShowing(
                     AdminPasswordDialogFragment::class.java,
                     requireActivity().supportFragmentManager

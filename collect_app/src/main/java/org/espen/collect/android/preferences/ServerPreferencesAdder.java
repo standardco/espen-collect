@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import androidx.preference.PreferenceFragmentCompat;
 
-import org.espen.collect.android.preferences.screens.ServerPreferencesFragment;
 import org.espen.collect.android.R;
 import org.espen.collect.android.preferences.screens.ServerPreferencesFragment;
 

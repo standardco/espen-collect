@@ -1,9 +1,10 @@
-package org.espen.collect.androidshared.ui
+package org.odk.collect.androidshared.ui
 
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import timber.log.Timber
+import kotlin.reflect.KClass
 
 object DialogFragmentUtils {
 
@@ -85,5 +86,9 @@ object DialogFragmentUtils {
                 Timber.w(e)
             }
         }
+    }
+
+    fun <T : DialogFragment> FragmentManager.showIfNotShowing(dialogClass: KClass<T>) {
+        showIfNotShowing(dialogClass.java, this)
     }
 }

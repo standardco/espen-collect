@@ -1,4 +1,4 @@
-# Contributing code to ESPEN Collect
+# Contributing code to ODK Collect
 
 This is a living document. If you see something that could be improved, edit this document and submit a pull request following the instructions below!
 
@@ -11,7 +11,7 @@ This is a living document. If you see something that could be improved, edit thi
 
 ## Submitting a pull request
 
-To contribute code to ESPEN Collect, you will need to open a [pull request](https://help.github.com/articles/about-pull-requests/) which will be reviewed by the community and then merged into the core project. Generally, a pull request is submitted when a unit of work is considered complete but it can sometimes be helpful to share ideas through a work in progress (WIP) pull request ([learn more](#work-in-progress-pull-requests)).
+To contribute code to ODK Collect, you will need to open a [pull request](https://help.github.com/articles/about-pull-requests/) which will be reviewed by the community and then merged into the core project. Generally, a pull request is submitted when a unit of work is considered complete but it can sometimes be helpful to share ideas through a work in progress (WIP) pull request ([learn more](#work-in-progress-pull-requests)).
 
 1. Read our ["state of the union"](STATE.md) to get a quick understanding of the codebase and its history. The "Where we're going" section may suggest efforts you can get involved in if you are having a hard time finding ways to contribute.
 
@@ -41,9 +41,9 @@ To contribute code to ESPEN Collect, you will need to open a [pull request](http
 
         git push
 
-1. Once you have completed your code changes, verify that you have followed the [style guidelines](https://github.com/getodk/collect/blob/master/CONTRIBUTING.md#style-guidelines).
+1. Once you have completed your code changes, verify that you have followed the [style guidelines](CODE-GUIDELINES.md).
 
-1. When your changes are ready to be added to the core ESPEN Collect project, [open a pull request](https://help.github.com/articles/creating-a-pull-request/). Make sure to set the base fork to `getodk/collect`. Describe your changes in the comment, refer to any relevant issues using [keywords for closing issues](https://help.github.com/articles/closing-issues-via-commit-messages/) and tag any person you think might need to know about the changes.
+1. When your changes are ready to be added to the core ODK Collect project, [open a pull request](https://help.github.com/articles/creating-a-pull-request/). Make sure to set the base fork to `getodk/collect`. Describe your changes in the comment, refer to any relevant issues using [keywords for closing issues](https://help.github.com/articles/closing-issues-via-commit-messages/) and tag any person you think might need to know about the changes.
 
 1. Pull requests will be reviewed when committers have time. If you haven't received a review in 10 days, you may notify committers by putting `@getodk/collect` in a comment.
 
@@ -81,13 +81,11 @@ We encourage everyone to participate in the review process to get familiar with 
 - Is the code easy to understand and to maintain?
 - Is there sufficient detail to inform any changes to documentation?
 
-A maintainer does a thorough code review and when satisfied with the code, accepts and may label the pull request as `needs testing` to indicate the need for a manual [black-box testing](https://en.wikipedia.org/wiki/Black-box_testing) pass. A pull request may have `needs testing` removed and added again several times until the behavior is thoroughly verified. Once the behavior has been verified, the pull request is labelled as `behavior verified`.
+A maintainer does a thorough code review and when satisfied with the code, accepts and merges. Typically, manual testing is a requirement and then the needs testing label should be added after merging. Only in rare cases do we merge pull requests that are deemed safe enough to skip additional testing.
 
 ## Merging pull requests
 
-Pull requests can be merged by maintainers once they are accepted or once they have been accepted and have been labelled as `behavior verified` unless:
-
-* [CI](https://app.circleci.com/pipelines/github/getodk/collect) is currently failing
+Pull requests can be merged by maintainers once they are accepted unless [CI](https://app.circleci.com/pipelines/github/getodk/collect) is currently failing.
 
 If a PR is being merged to a release branch rather than `master`, any strings added as part of the changes should also be added to `master` (with `tools:ignore="UnusedResources"`) as a follow-up PR so that they can be translated.
 

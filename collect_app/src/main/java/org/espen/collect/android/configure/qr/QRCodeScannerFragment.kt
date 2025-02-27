@@ -11,8 +11,8 @@ import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.mainmenu.MainMenuActivity
 import org.espen.collect.android.projects.ProjectsDataService
 import org.espen.collect.android.storage.StoragePathProvider
-import org.espen.collect.androidshared.ui.ToastUtils.showLongToast
-import org.espen.collect.androidshared.utils.CompressionUtils
+import org.odk.collect.androidshared.ui.ToastUtils.showLongToast
+import org.odk.collect.androidshared.utils.CompressionUtils
 import org.odk.collect.settings.ODKAppSettingsImporter
 import org.odk.collect.settings.importing.SettingsImportingResult
 import java.io.File
@@ -20,7 +20,7 @@ import java.io.IOException
 import java.util.zip.DataFormatException
 import javax.inject.Inject
 
-class QRCodeScannerFragment : org.espen.collect.android.fragments.BarCodeScannerFragment() {
+class QRCodeScannerFragment : BarCodeScannerFragment() {
 
     @Inject
     lateinit var settingsImporter: ODKAppSettingsImporter
@@ -33,7 +33,7 @@ class QRCodeScannerFragment : org.espen.collect.android.fragments.BarCodeScanner
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
     }
 
     @Throws(IOException::class, DataFormatException::class)
@@ -59,7 +59,7 @@ class QRCodeScannerFragment : org.espen.collect.android.fragments.BarCodeScanner
                     requireContext(),
                     getString(org.odk.collect.strings.R.string.successfully_imported_settings)
                 )
-                org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(
+                ActivityUtils.startActivityAndCloseAllOthers(
                     requireActivity(),
                     MainMenuActivity::class.java
                 )

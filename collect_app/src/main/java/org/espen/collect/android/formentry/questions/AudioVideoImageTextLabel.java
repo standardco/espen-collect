@@ -31,12 +31,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 
-import org.espen.collect.android.audio.AudioHelper;
-import org.espen.collect.android.listeners.SelectItemClickListener;
-import org.espen.collect.android.utilities.FormEntryPromptUtils;
-import org.espen.collect.android.utilities.MediaUtils;
-import org.espen.collect.android.utilities.ScreenContext;
-import org.espen.collect.android.utilities.ThemeUtils;
 import org.espen.collect.android.R;
 import org.espen.collect.android.audio.AudioHelper;
 import org.espen.collect.android.databinding.AudioVideoImageTextLabelBinding;
@@ -44,7 +38,6 @@ import org.espen.collect.android.listeners.SelectItemClickListener;
 import org.espen.collect.android.utilities.FormEntryPromptUtils;
 import org.espen.collect.android.utilities.MediaUtils;
 import org.espen.collect.android.utilities.ScreenContext;
-import org.espen.collect.android.utilities.ThemeUtils;
 import org.odk.collect.audioclips.Clip;
 import org.odk.collect.imageloader.ImageLoader;
 
@@ -60,7 +53,6 @@ public class AudioVideoImageTextLabel extends RelativeLayout implements View.OnC
     private TextView textLabel;
     private int originalTextColor;
     private int playTextColor = Color.BLUE;
-    private CharSequence questionText;
     private SelectItemClickListener listener;
     private File videoFile;
     private File bigImageFile;
@@ -79,8 +71,6 @@ public class AudioVideoImageTextLabel extends RelativeLayout implements View.OnC
     }
 
     public void setTextView(TextView questionText) {
-        this.questionText = questionText.getText();
-
         textLabel = questionText;
         textLabel.setId(R.id.text_label);
         textLabel.setOnClickListener(v -> {
@@ -94,8 +84,6 @@ public class AudioVideoImageTextLabel extends RelativeLayout implements View.OnC
     }
 
     public void setText(String questionText, boolean isRequiredQuestion, float fontSize) {
-        this.questionText = questionText;
-
         if (questionText != null && !questionText.isEmpty()) {
             textLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, fontSize);
             textLabel.setText(FormEntryPromptUtils.styledQuestionText(questionText, isRequiredQuestion));
@@ -139,7 +127,6 @@ public class AudioVideoImageTextLabel extends RelativeLayout implements View.OnC
 
     public void setPlayTextColor(int textColor) {
         playTextColor = textColor;
-        binding.audioButton.setColors(new ThemeUtils(getContext()).getColorOnSurface(), playTextColor);
     }
 
     public void setMediaUtils(MediaUtils mediaUtils) {
@@ -224,8 +211,6 @@ public class AudioVideoImageTextLabel extends RelativeLayout implements View.OnC
                 textLabel.setTextColor(playTextColor);
             } else {
                 textLabel.setTextColor(originalTextColor);
-                // then set the text to our original (brings back any html formatting)
-                textLabel.setText(questionText);
             }
         });
     }

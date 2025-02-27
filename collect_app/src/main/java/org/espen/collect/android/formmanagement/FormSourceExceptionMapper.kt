@@ -1,6 +1,7 @@
 package org.espen.collect.android.formmanagement
 
 import android.content.Context
+import org.espen.collect.android.R
 import org.odk.collect.forms.FormSourceException
 import org.odk.collect.strings.localization.getLocalizedString
 

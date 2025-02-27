@@ -24,7 +24,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.espen.collect.android.activities.FormDownloadListActivity;
 import org.espen.collect.android.R;
 import org.espen.collect.android.formmanagement.ServerFormDetails;
 
@@ -74,10 +73,10 @@ public class FormDownloadListAdapter extends ArrayAdapter {
         }
 
         final HashMap<String, String> formAtPosition = filteredFormList.get(position);
-        final String formIDAtPosition = formAtPosition.get(FormDownloadListActivity.FORM_ID_KEY);
+        final String formIDAtPosition = formAtPosition.get(FORM_ID_KEY);
 
-        holder.formTitle.setText(formAtPosition.get(FormDownloadListActivity.FORMNAME));
-        holder.formSubtitle.setText(formAtPosition.get(FormDownloadListActivity.FORMID_DISPLAY));
+        holder.formTitle.setText(formAtPosition.get(FORMNAME));
+        holder.formSubtitle.setText(formAtPosition.get(FORMID_DISPLAY));
 
         if (formIdsToDetails.get(formIDAtPosition) != null
                 && formIdsToDetails.get(formIDAtPosition).isUpdated()) {

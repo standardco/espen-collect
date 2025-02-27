@@ -5,8 +5,6 @@ import android.media.MediaPlayer;
 
 import org.espen.collect.android.audio.AudioHelper;
 import org.espen.collect.android.utilities.ScreenContext;
-import org.espen.collect.android.audio.AudioHelper;
-import org.espen.collect.android.utilities.ScreenContext;
 import org.odk.collect.async.Scheduler;
 
 import java.util.function.Supplier;

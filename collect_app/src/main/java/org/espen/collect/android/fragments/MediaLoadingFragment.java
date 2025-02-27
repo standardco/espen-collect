@@ -7,8 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import org.espen.collect.android.activities.FormFillingActivity;
-import org.espen.collect.android.tasks.MediaLoadingTask;
 import org.jetbrains.annotations.NotNull;
 import org.espen.collect.android.activities.FormFillingActivity;
 import org.espen.collect.android.javarosawrapper.FormController;

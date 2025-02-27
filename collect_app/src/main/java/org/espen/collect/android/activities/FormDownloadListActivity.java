@@ -34,26 +34,22 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.activities.viewmodels.FormDownloadListViewModel;
-import org.espen.collect.android.openrosa.HttpCredentialsInterface;
-import org.espen.collect.android.tasks.DownloadFormListTask;
-import org.espen.collect.android.tasks.DownloadFormsTask;
 import org.espen.collect.android.R;
 import org.espen.collect.android.activities.viewmodels.FormDownloadListViewModel;
 import org.espen.collect.android.adapters.FormDownloadListAdapter;
 import org.espen.collect.android.formentry.RefreshFormListDialogFragment;
 import org.espen.collect.android.formlists.sorting.FormListSortingOption;
-import org.espen.collect.android.formmanagement.FormDownloadException;
-import org.espen.collect.android.formmanagement.FormDownloader;
 import org.espen.collect.android.formmanagement.FormSourceExceptionMapper;
+import org.espen.collect.android.formmanagement.FormsDataService;
 import org.espen.collect.android.formmanagement.ServerFormDetails;
 import org.espen.collect.android.formmanagement.ServerFormsDetailsFetcher;
+import org.espen.collect.android.formmanagement.download.FormDownloadException;
 import org.espen.collect.android.fragments.dialogs.FormsDownloadResultDialog;
 import org.espen.collect.android.injection.DaggerUtils;
 import org.espen.collect.android.listeners.DownloadFormsTaskListener;
 import org.espen.collect.android.listeners.FormListDownloaderListener;
-import org.espen.collect.androidshared.network.NetworkStateProvider;
 import org.espen.collect.android.openrosa.HttpCredentialsInterface;
+import org.espen.collect.android.projects.ProjectsDataService;
 import org.espen.collect.android.tasks.DownloadFormListTask;
 import org.espen.collect.android.tasks.DownloadFormsTask;
 import org.espen.collect.android.utilities.ApplicationConstants;
@@ -61,8 +57,9 @@ import org.espen.collect.android.utilities.AuthDialogUtility;
 import org.espen.collect.android.utilities.DialogUtils;
 import org.espen.collect.android.utilities.WebCredentialsUtils;
 import org.espen.collect.android.views.DayNightProgressDialog;
-import org.espen.collect.androidshared.ui.DialogFragmentUtils;
-import org.espen.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.async.network.NetworkStateProvider;
+import org.odk.collect.androidshared.ui.DialogFragmentUtils;
+import org.odk.collect.androidshared.ui.ToastUtils;
 import org.odk.collect.forms.FormSourceException;
 
 import java.io.Serializable;
@@ -87,7 +84,7 @@ import timber.log.Timber;
  * 401
  * and you'll have to hit 'refresh' where it will ask for credentials again. Technically a server
  * could point at other servers requiring authentication to download the forms, but the current
- * implementation in EspenCollect doesn't allow for that. Mostly this is just because it's a pain in the
+ * implementation in Collect doesn't allow for that. Mostly this is just because it's a pain in the
  * butt to keep track of which forms we've downloaded and where we're needing to authenticate. I
  * think we do something similar in the instanceuploader task/activity, so should change the
  * implementation eventually.
@@ -99,8 +96,6 @@ public class FormDownloadListActivity extends FormListActivity implements FormLi
         AdapterView.OnItemClickListener, RefreshFormListDialogFragment.RefreshFormListDialogFragmentListener,
         FormsDownloadResultDialog.FormDownloadResultDialogListener {
     private static final String FORM_DOWNLOAD_LIST_SORTING_ORDER = "formDownloadListSortingOrder";
-
-    public static final String DISPLAY_ONLY_UPDATED_FORMS = "displayOnlyUpdatedForms";
     private static final String BUNDLE_SELECTED_COUNT = "selectedcount";
 
     public static final String FORMNAME = "formname";
@@ -122,8 +117,6 @@ public class FormDownloadListActivity extends FormListActivity implements FormLi
 
     private static final boolean DO_NOT_EXIT = false;
 
-    private boolean displayOnlyUpdatedForms;
-
     private FormDownloadListViewModel viewModel;
 
     @Inject
@@ -136,7 +129,10 @@ public class FormDownloadListActivity extends FormListActivity implements FormLi
     NetworkStateProvider connectivityProvider;
 
     @Inject
-    FormDownloader formDownloader;
+    FormsDataService formsDataService;
+
+    @Inject
+    ProjectsDataService projectsDataService;
 
     @SuppressWarnings("unchecked")
     @Override
@@ -156,10 +152,6 @@ public class FormDownloadListActivity extends FormListActivity implements FormLi
     private void init(Bundle savedInstanceState) {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            if (bundle.containsKey(DISPLAY_ONLY_UPDATED_FORMS)) {
-                displayOnlyUpdatedForms = (boolean) bundle.get(DISPLAY_ONLY_UPDATED_FORMS);
-            }
-
             if (bundle.containsKey(ApplicationConstants.BundleKeys.FORM_IDS)) {
                 viewModel.setDownloadOnlyMode(true);
                 viewModel.setFormIdsToDownload(bundle.getStringArray(ApplicationConstants.BundleKeys.FORM_IDS));
@@ -407,7 +399,7 @@ public class FormDownloadListActivity extends FormListActivity implements FormLi
             // show dialog box
             DialogFragmentUtils.showIfNotShowing(RefreshFormListDialogFragment.class, getSupportFragmentManager());
 
-            downloadFormsTask = new DownloadFormsTask(formDownloader);
+            downloadFormsTask = new DownloadFormsTask(projectsDataService.getCurrentProject().getUuid(), formsDataService);
             downloadFormsTask.setDownloaderListener(this);
 
             if (viewModel.getUrl() != null) {
@@ -511,30 +503,28 @@ public class FormDownloadListActivity extends FormListActivity implements FormLi
                 String formDetailsKey = ids.get(i);
                 ServerFormDetails details = viewModel.getFormDetailsByFormId().get(formDetailsKey);
 
-                if (!displayOnlyUpdatedForms || details.isUpdated()) {
-                    HashMap<String, String> item = new HashMap<>();
-                    item.put(FORMNAME, details.getFormName());
-                    item.put(FORMID_DISPLAY,
-                            ((details.getFormVersion() == null) ? "" : (getString(org.odk.collect.strings.R.string.version) + " "
-                                    + details.getFormVersion() + " ")) + "ID: " + details.getFormId());
-                    item.put(FORMDETAIL_KEY, formDetailsKey);
-                    item.put(FORM_ID_KEY, details.getFormId());
-                    item.put(FORM_VERSION_KEY, details.getFormVersion());
+                HashMap<String, String> item = new HashMap<>();
+                item.put(FORMNAME, details.getFormName());
+                item.put(FORMID_DISPLAY,
+                        ((details.getFormVersion() == null) ? "" : (getString(org.odk.collect.strings.R.string.version) + " "
+                                + details.getFormVersion() + " ")) + "ID: " + details.getFormId());
+                item.put(FORMDETAIL_KEY, formDetailsKey);
+                item.put(FORM_ID_KEY, details.getFormId());
+                item.put(FORM_VERSION_KEY, details.getFormVersion());
 
-                    // Insert the new form in alphabetical order.
-                    if (viewModel.getFormList().isEmpty()) {
-                        viewModel.addForm(item);
-                    } else {
-                        int j;
-                        for (j = 0; j < viewModel.getFormList().size(); j++) {
-                            HashMap<String, String> compareMe = viewModel.getFormList().get(j);
-                            String name = compareMe.get(FORMNAME);
-                            if (name.compareTo(viewModel.getFormDetailsByFormId().get(ids.get(i)).getFormName()) > 0) {
-                                break;
-                            }
+                // Insert the new form in alphabetical order.
+                if (viewModel.getFormList().isEmpty()) {
+                    viewModel.addForm(item);
+                } else {
+                    int j;
+                    for (j = 0; j < viewModel.getFormList().size(); j++) {
+                        HashMap<String, String> compareMe = viewModel.getFormList().get(j);
+                        String name = compareMe.get(FORMNAME);
+                        if (name.compareTo(viewModel.getFormDetailsByFormId().get(ids.get(i)).getFormName()) > 0) {
+                            break;
                         }
-                        viewModel.addForm(j, item);
                     }
+                    viewModel.addForm(j, item);
                 }
             }
 

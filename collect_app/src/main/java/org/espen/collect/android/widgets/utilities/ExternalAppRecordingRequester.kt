@@ -5,17 +5,18 @@ import android.content.Intent
 import android.provider.MediaStore
 import android.widget.Toast
 import org.javarosa.form.api.FormEntryPrompt
+import org.espen.collect.android.R
 import org.espen.collect.android.utilities.ApplicationConstants
-import org.espen.collect.androidshared.system.IntentLauncher
+import org.odk.collect.androidshared.system.IntentLauncher
 import org.odk.collect.permissions.PermissionListener
 import org.odk.collect.permissions.PermissionsProvider
 
 class ExternalAppRecordingRequester(
-        private val activity: Activity,
-        private val intentLauncher: IntentLauncher,
-        private val waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry,
-        private val permissionsProvider: PermissionsProvider
-) : org.espen.collect.android.widgets.utilities.RecordingRequester {
+    private val activity: Activity,
+    private val intentLauncher: IntentLauncher,
+    private val waitingForDataRegistry: WaitingForDataRegistry,
+    private val permissionsProvider: PermissionsProvider
+) : RecordingRequester {
 
     override fun requestRecording(prompt: FormEntryPrompt) {
         permissionsProvider.requestRecordAudioPermission(
@@ -31,7 +32,7 @@ class ExternalAppRecordingRequester(
                     intentLauncher.launchForResult(
                         activity,
                         intent,
-                        org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.AUDIO_CAPTURE
+                        ApplicationConstants.RequestCodes.AUDIO_CAPTURE
                     ) {
                         Toast.makeText(
                             activity,

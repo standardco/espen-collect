@@ -10,7 +10,7 @@ import androidx.preference.PreferenceFragmentCompat
 import org.espen.collect.android.R
 import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.projects.ProjectsDataService
-import org.espen.collect.androidshared.utils.AppBarUtils
+import org.odk.collect.androidshared.utils.AppBarUtils
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.importing.SettingsChangeHandler
 import org.odk.collect.shared.settings.Settings.OnSettingChangeListener
@@ -28,7 +28,7 @@ abstract class BasePreferencesFragment : PreferenceFragmentCompat(), OnSettingCh
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
     }
 
     override fun onDisplayPreferenceDialog(preference: Preference) {

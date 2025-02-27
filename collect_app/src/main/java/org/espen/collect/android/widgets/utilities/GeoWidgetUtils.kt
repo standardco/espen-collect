@@ -2,6 +2,7 @@ package org.espen.collect.android.widgets.utilities
 
 import android.content.Context
 import android.location.Location
+import org.espen.collect.android.R
 import org.odk.collect.maps.MapPoint
 import org.odk.collect.shared.strings.StringUtils.removeEnd
 import timber.log.Timber

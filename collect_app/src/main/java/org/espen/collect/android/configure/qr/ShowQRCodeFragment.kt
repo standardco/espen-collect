@@ -23,6 +23,7 @@ import androidx.appcompat.widget.AppCompatCheckedTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.espen.collect.android.R
 import org.espen.collect.android.databinding.ShowQrcodeFragmentBinding
 import org.espen.collect.android.injection.DaggerUtils
 import org.odk.collect.async.Scheduler
@@ -87,7 +88,7 @@ class ShowQRCodeFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
 
         qrCodeViewModel = ViewModelProvider(
             requireActivity(),

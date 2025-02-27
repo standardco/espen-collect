@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/image"
@@ -31,7 +32,7 @@
         android:id="@+id/form_version"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_extra_small"
+        android:layout_marginTop="@dimen/margin_extra_extra_small"
         android:textAppearance="@style/TextAppearance.Collect.Body2.MediumEmphasis"
         app:layout_constraintEnd_toEndOf="@+id/form_title"
         app:layout_constraintStart_toStartOf="@+id/form_title"
@@ -52,7 +53,7 @@
         android:id="@+id/form_history"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_extra_small"
+        android:layout_marginTop="@dimen/margin_extra_extra_small"
         android:layout_marginBottom="@dimen/margin_standard"
         android:textAppearance="@style/TextAppearance.Collect.Body2.MediumEmphasis"
         app:layout_constraintBottom_toBottomOf="parent"

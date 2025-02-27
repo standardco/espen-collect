@@ -1,4 +1,4 @@
-package org.espen.collect.androidshared.ui
+package org.odk.collect.androidshared.ui
 
 import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.rules.ActivityScenarioRule

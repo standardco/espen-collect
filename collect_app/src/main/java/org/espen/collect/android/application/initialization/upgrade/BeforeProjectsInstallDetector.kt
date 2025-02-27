@@ -8,7 +8,7 @@ import org.odk.collect.upgrade.InstallDetector
 import java.io.File
 
 /**
- * Implementation of [InstallDetector] that looks for signs that a version of EspenCollect
+ * Implementation of [InstallDetector] that looks for signs that a version of Collect
  * is installed from before Projects were introduced (< v2021.2). [AppUpgrader] was
  * introduced in that release as well so it and versions after it can use [AppUpgrader]'s
  * built in version tracking.
@@ -17,7 +17,7 @@ class BeforeProjectsInstallDetector(private val context: Context) : InstallDetec
 
     override fun installDetected(): Boolean {
         val legacyMetadataDir = File(context.getExternalFilesDir(null), "metadata")
-        val hasLegacyMetadata = org.espen.collect.android.utilities.FileUtils.listFiles(legacyMetadataDir).isNotEmpty()
+        val hasLegacyMetadata = FileUtils.listFiles(legacyMetadataDir).isNotEmpty()
 
         val hasLegacyGeneralPrefs =
             PreferenceManager.getDefaultSharedPreferences(context).all.isNotEmpty()

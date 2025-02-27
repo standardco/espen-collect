@@ -7,7 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.espen.collect.androidshared.bitmap.ImageFileUtils
+import org.espen.collect.android.R
+import org.odk.collect.androidshared.bitmap.ImageFileUtils
 import org.odk.collect.async.Scheduler
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys

@@ -19,7 +19,6 @@ package org.espen.collect.android.formentry;
 import android.content.Context;
 
 import org.espen.collect.android.formentry.saving.SaveFormProgressDialogFragment;
-import org.espen.collect.android.formentry.saving.SaveFormProgressDialogFragment;
 import org.odk.collect.material.MaterialProgressDialogFragment;
 
 public class FormLoadingDialogFragment extends MaterialProgressDialogFragment {

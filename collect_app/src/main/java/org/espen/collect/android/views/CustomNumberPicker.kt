@@ -41,7 +41,7 @@ class CustomNumberPicker(context: Context, attrs: AttributeSet) : NumberPicker(c
 
     private fun updateView(view: View) {
         if (view is EditText) {
-            view.textSize = org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils.getQuestionFontSize().toFloat()
+            view.textSize = QuestionFontSizeUtils.getQuestionFontSize().toFloat()
         }
     }
 }

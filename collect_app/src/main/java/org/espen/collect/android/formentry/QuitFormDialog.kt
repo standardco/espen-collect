@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import org.espen.collect.android.R
 import org.espen.collect.android.databinding.QuitFormDialogLayoutBinding
 import org.espen.collect.android.formentry.saving.FormSaveViewModel
 import org.odk.collect.settings.SettingsProvider
@@ -15,11 +16,11 @@ object QuitFormDialog {
 
     @JvmStatic
     fun show(
-            activity: Activity,
-            formSaveViewModel: org.espen.collect.android.formentry.saving.FormSaveViewModel,
-            formEntryViewModel: org.espen.collect.android.formentry.FormEntryViewModel,
-            settingsProvider: SettingsProvider,
-            onSaveChangesClicked: Runnable?
+        activity: Activity,
+        formSaveViewModel: FormSaveViewModel,
+        formEntryViewModel: FormEntryViewModel,
+        settingsProvider: SettingsProvider,
+        onSaveChangesClicked: Runnable?
     ): AlertDialog {
         return create(
             activity,
@@ -33,11 +34,11 @@ object QuitFormDialog {
     }
 
     private fun create(
-            activity: Activity,
-            formSaveViewModel: org.espen.collect.android.formentry.saving.FormSaveViewModel,
-            formEntryViewModel: org.espen.collect.android.formentry.FormEntryViewModel,
-            settingsProvider: SettingsProvider,
-            onSaveChangesClicked: Runnable?
+        activity: Activity,
+        formSaveViewModel: FormSaveViewModel,
+        formEntryViewModel: FormEntryViewModel,
+        settingsProvider: SettingsProvider,
+        onSaveChangesClicked: Runnable?
     ): AlertDialog {
         val saveAsDraft = settingsProvider.getProtectedSettings()
             .getBoolean(ProtectedProjectKeys.KEY_SAVE_MID)

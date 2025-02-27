@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.espen.collect.androidshared.utils;
+package org.odk.collect.androidshared.utils;
 
 import android.content.Context;
 import android.content.res.Configuration;

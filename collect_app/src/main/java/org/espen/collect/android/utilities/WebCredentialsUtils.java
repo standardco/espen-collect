@@ -6,8 +6,6 @@ import androidx.annotation.NonNull;
 
 import org.espen.collect.android.openrosa.HttpCredentials;
 import org.espen.collect.android.openrosa.HttpCredentialsInterface;
-import org.espen.collect.android.openrosa.HttpCredentials;
-import org.espen.collect.android.openrosa.HttpCredentialsInterface;
 import org.odk.collect.metadata.PropertyManager;
 import org.odk.collect.settings.keys.ProjectKeys;
 import org.odk.collect.shared.settings.Settings;
@@ -66,7 +64,7 @@ public class WebCredentialsUtils {
         }
     }
 
-    static void clearAllCredentials() {
+    public static void clearAllCredentials() {
         HOST_CREDENTIALS.clear();
     }
 

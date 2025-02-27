@@ -3,11 +3,9 @@ package org.espen.collect.android.database.lookups;
 import android.database.sqlite.SQLiteDatabase;
 
 import org.espen.collect.android.database.DatabaseConstants;
-import org.espen.collect.android.database.DatabaseMigrator;
+import org.odk.collect.db.sqlite.DatabaseMigrator;
 import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
-import org.espen.collect.android.database.DatabaseMigrator;
-import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
-import org.espen.collect.android.utilities.SQLiteUtils;
+import org.odk.collect.db.sqlite.SQLiteUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -89,15 +87,15 @@ public class LookupDatabaseMigrator implements DatabaseMigrator {
      * @param relevantColumns       the columns relevant to the current version
      * @param temporaryTableName    the name of the temporary table to use and then drop
      */
-    private void dropObsoleteColumns(SQLiteDatabase db, String[] relevantColumns, String temporaryTableName) {
-        List<String> columns = SQLiteUtils.getColumnNames(db, DatabaseConstants.LOOKUP_TABLE_NAME);
-        columns.retainAll(Arrays.asList(relevantColumns));
-        String[] columnsToKeep = columns.toArray(new String[0]);
-
-        SQLiteUtils.copyRows(db, DatabaseConstants.LOOKUP_TABLE_NAME, columnsToKeep, temporaryTableName);
-        SQLiteUtils.dropTable(db, DatabaseConstants.LOOKUP_TABLE_NAME);
-        SQLiteUtils.renameTable(db, temporaryTableName, DatabaseConstants.LOOKUP_TABLE_NAME);
-    }
+//    private void dropObsoleteColumns(SQLiteDatabase db, String[] relevantColumns, String temporaryTableName) {
+//        List<String> columns = SQLiteUtils.getColumnNames(db, DatabaseConstants.LOOKUP_TABLE_NAME);
+//        columns.retainAll(Arrays.asList(relevantColumns));
+//        String[] columnsToKeep = columns.toArray(new String[0]);
+//
+//        SQLiteUtils.copyRows(db, DatabaseConstants.LOOKUP_TABLE_NAME, columnsToKeep, temporaryTableName);
+//        SQLiteUtils.dropTable(db, DatabaseConstants.LOOKUP_TABLE_NAME);
+//        SQLiteUtils.renameTable(db, temporaryTableName, DatabaseConstants.LOOKUP_TABLE_NAME);
+//    }
 
     private void createInstancesTableV5(SQLiteDatabase db, String name) {
 //        db.execSQL("CREATE TABLE IF NOT EXISTS " + name + " ("

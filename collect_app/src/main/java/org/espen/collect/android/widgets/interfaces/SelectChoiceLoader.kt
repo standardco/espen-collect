@@ -8,6 +8,6 @@ import java.io.FileNotFoundException
 
 interface SelectChoiceLoader {
 
-    @Throws(FileNotFoundException::class, XPathSyntaxException::class, org.espen.collect.android.exception.ExternalDataException::class)
+    @Throws(FileNotFoundException::class, XPathSyntaxException::class, ExternalDataException::class)
     fun loadSelectChoices(prompt: FormEntryPrompt): List<SelectChoice>
 }

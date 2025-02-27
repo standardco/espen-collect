@@ -4,19 +4,21 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.espen.collect.android.R
 import org.espen.collect.android.activities.FormMapActivity
 import org.espen.collect.android.formmanagement.FormFillingIntentFactory
 import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.preferences.dialogs.ServerAuthDialogFragment
-import org.espen.collect.androidshared.network.NetworkStateProvider
-import org.espen.collect.androidshared.ui.DialogFragmentUtils
-import org.espen.collect.androidshared.ui.SnackbarUtils
+import org.odk.collect.androidshared.ui.DialogFragmentUtils
+import org.odk.collect.androidshared.ui.ObviousProgressBar
+import org.odk.collect.androidshared.ui.SnackbarUtils
+import org.odk.collect.async.network.NetworkStateProvider
+import org.odk.collect.lists.EmptyListView
+import org.odk.collect.lists.RecyclerViewUtils
 import org.odk.collect.permissions.PermissionListener
 import org.odk.collect.permissions.PermissionsProvider
 import org.odk.collect.strings.localization.LocalizedActivity
@@ -45,15 +47,18 @@ class BlankFormListActivity : LocalizedActivity(), OnFormItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(this).inject(this)
+        DaggerUtils.getComponent(this).inject(this)
         setContentView(R.layout.activity_blank_form_list)
         title = getString(org.odk.collect.strings.R.string.enter_data)
-        setSupportActionBar(findViewById(R.id.toolbar))
+        setSupportActionBar(findViewById(org.odk.collect.androidshared.R.id.toolbar))
 
         val menuProvider = BlankFormListMenuProvider(this, viewModel, networkStateProvider)
         addMenuProvider(menuProvider, this)
 
-        findViewById<RecyclerView>(R.id.form_list).adapter = adapter
+        val list = findViewById<RecyclerView>(R.id.form_list)
+        list.layoutManager = LinearLayoutManager(this)
+        list.addItemDecoration(RecyclerViewUtils.verticalLineDivider(this))
+        list.adapter = adapter
 
         initObservers()
     }
@@ -86,8 +91,11 @@ class BlankFormListActivity : LocalizedActivity(), OnFormItemClickListener {
 
     private fun initObservers() {
         viewModel.isLoading.observe(this) { isLoading ->
-            findViewById<ProgressBar>(R.id.progressBar).visibility =
-                if (isLoading) View.VISIBLE else View.GONE
+            if (isLoading) {
+                findViewById<ObviousProgressBar>(org.odk.collect.androidshared.R.id.progressBar).show()
+            } else {
+                findViewById<ObviousProgressBar>(org.odk.collect.androidshared.R.id.progressBar).hide()
+            }
         }
 
         viewModel.syncResult.observe(this) { result ->
@@ -100,7 +108,7 @@ class BlankFormListActivity : LocalizedActivity(), OnFormItemClickListener {
             findViewById<RecyclerView>(R.id.form_list).visibility =
                 if (forms.isEmpty()) View.GONE else View.VISIBLE
 
-            findViewById<TextView>(R.id.empty_list_message).visibility =
+            findViewById<EmptyListView>(R.id.empty_list_message).visibility =
                 if (forms.isEmpty()) View.VISIBLE else View.GONE
 
             adapter.setData(forms)
@@ -109,12 +117,12 @@ class BlankFormListActivity : LocalizedActivity(), OnFormItemClickListener {
         viewModel.isAuthenticationRequired().observe(this) { authenticationRequired ->
             if (authenticationRequired) {
                 DialogFragmentUtils.showIfNotShowing(
-                    org.espen.collect.android.preferences.dialogs.ServerAuthDialogFragment::class.java,
+                    ServerAuthDialogFragment::class.java,
                     supportFragmentManager
                 )
             } else {
                 DialogFragmentUtils.dismissDialog(
-                    org.espen.collect.android.preferences.dialogs.ServerAuthDialogFragment::class.java,
+                    ServerAuthDialogFragment::class.java,
                     supportFragmentManager
                 )
             }

@@ -9,10 +9,6 @@ object ProjectKeys {
     const val KEY_USERNAME = "username"
     const val KEY_PASSWORD = "password"
 
-    // google_preferences.xml
-    const val KEY_SELECTED_GOOGLE_ACCOUNT = "selected_google_account"
-    const val KEY_GOOGLE_SHEETS_URL = "google_sheets_url"
-
     // user_interface_preferences.xml
     const val KEY_APP_THEME = "appTheme"
     const val KEY_APP_LANGUAGE = "app_language"
@@ -54,9 +50,6 @@ object ProjectKeys {
     const val KEY_BACKGROUND_LOCATION = "background_location"
     const val KEY_BACKGROUND_RECORDING = "background_recording"
 
-    // experimental_preferences.xml
-    const val KEY_PREDICATE_CACHING = "predicate_caching"
-
     // values
     const val PROTOCOL_SERVER = "odk_default"
     const val PROTOCOL_GOOGLE_SHEETS = "google_sheets"
@@ -73,6 +66,9 @@ object ProjectKeys {
     const val BASEMAP_SOURCE_MAPBOX = "mapbox"
     const val BASEMAP_SOURCE_OSM = "osm"
     const val BASEMAP_SOURCE_USGS = "usgs"
-    const val BASEMAP_SOURCE_STAMEN = "stamen"
     const val BASEMAP_SOURCE_CARTO = "carto"
+
+    // remembered defaults
+    const val KEY_SAVED_FORM_SORT_ORDER = "instanceUploaderListSortingOrder"
+    const val KEY_BLANK_FORM_SORT_ORDER = "formChooserListSortingOrder"
 }

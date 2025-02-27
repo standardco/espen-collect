@@ -21,13 +21,6 @@ import static org.espen.collect.android.utilities.ApplicationConstants.Namespace
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.espen.collect.android.exception.JavaRosaException;
-import org.espen.collect.android.externaldata.ExternalDataUtil;
-import org.espen.collect.android.formentry.audit.AsyncTaskAuditEventWriter;
-import org.espen.collect.android.formentry.audit.AuditEventLogger;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.FileUtils;
 import org.javarosa.core.model.FormDef;
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.GroupDef;
@@ -44,7 +37,6 @@ import org.javarosa.core.model.instance.FormInstance;
 import org.javarosa.core.model.instance.TreeElement;
 import org.javarosa.core.model.instance.TreeReference;
 import org.javarosa.core.services.transport.payload.ByteArrayPayload;
-import org.javarosa.entities.internal.Entities;
 import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryController;
 import org.javarosa.form.api.FormEntryModel;
@@ -54,14 +46,14 @@ import org.javarosa.model.xform.XPathReference;
 import org.javarosa.xform.parse.XFormParser;
 import org.javarosa.xpath.XPathParseTool;
 import org.javarosa.xpath.expr.XPathExpression;
+import org.espen.collect.android.dynamicpreload.ExternalDataUtil;
 import org.espen.collect.android.exception.JavaRosaException;
-import org.espen.collect.android.externaldata.ExternalDataUtil;
 import org.espen.collect.android.formentry.audit.AsyncTaskAuditEventWriter;
 import org.espen.collect.android.formentry.audit.AuditConfig;
 import org.espen.collect.android.formentry.audit.AuditEventLogger;
 import org.espen.collect.android.utilities.Appearances;
 import org.espen.collect.android.utilities.FileUtils;
-import org.odk.collect.entities.Entity;
+import org.odk.collect.entities.javarosa.finalization.EntitiesExtra;
 
 import java.io.File;
 import java.io.IOException;
@@ -69,7 +61,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Stream;
 
 import timber.log.Timber;
 
@@ -402,20 +393,42 @@ public class JavaRosaFormController implements FormController {
         }
     }
 
-    public ValidationResult validateAnswers(boolean markCompleted) throws JavaRosaException {
+    public ValidationResult validateAnswers(boolean moveToInvalidIndex) throws JavaRosaException {
         try {
-            ValidateOutcome validateOutcome = getFormDef().validate(markCompleted);
+            ValidateOutcome validateOutcome = getFormDef().validate();
             if (validateOutcome != null) {
-                this.jumpToIndex(validateOutcome.failedPrompt);
-                if (indexIsInFieldList()) {
-                    stepToPreviousScreenEvent();
+                if (moveToInvalidIndex) {
+                    this.jumpToIndex(validateOutcome.failedPrompt);
+                    if (indexIsInFieldList()) {
+                        stepToPreviousScreenEvent();
+                    }
                 }
-                return new FailedValidationResult(validateOutcome.failedPrompt, validateOutcome.outcome);
+                return getFailedValidationResult(validateOutcome.failedPrompt, validateOutcome.outcome);
             }
             return SuccessValidationResult.INSTANCE;
         } catch (RuntimeException e) {
             throw new JavaRosaException(e);
         }
+    }
+
+    private ValidationResult getFailedValidationResult(FormIndex index, int status) {
+        ValidationResult validationResult = null;
+
+        String errorMessage;
+        if (status == FormEntryController.ANSWER_CONSTRAINT_VIOLATED) {
+            errorMessage = getQuestionPromptConstraintText(index);
+            if (errorMessage == null) {
+                errorMessage = getQuestionPrompt(index).getSpecialFormQuestionText("constraintMsg");
+            }
+            validationResult = new FailedValidationResult(index, status, errorMessage, org.odk.collect.strings.R.string.invalid_answer_error);
+        } else if (status == FormEntryController.ANSWER_REQUIRED_BUT_EMPTY) {
+            errorMessage = getQuestionPromptRequiredText(index);
+            if (errorMessage == null) {
+                errorMessage = getQuestionPrompt(index).getSpecialFormQuestionText("requiredMsg");
+            }
+            validationResult = new FailedValidationResult(index, status, errorMessage, org.odk.collect.strings.R.string.required_answer_error);
+        }
+        return validationResult;
     }
 
     public boolean saveAnswer(FormIndex index, IAnswerData data) throws JavaRosaException {
@@ -548,20 +561,20 @@ public class JavaRosaFormController implements FormController {
 
         // Step out once to begin with if we're coming from a question.
         if (getEvent() == FormEntryController.EVENT_QUESTION) {
-            index = FormIndexUtils.getPreviousLevel(index);
+            index = getPreviousLevel(index);
         }
 
         // Save where we started from.
         FormIndex startIndex = index;
 
         // Step out once more no matter what.
-        index = FormIndexUtils.getPreviousLevel(index);
+        index = getPreviousLevel(index);
 
         // Step out of any group indexes that are present, unless they're visible.
         while (index != null
                 && getEvent(index) == FormEntryController.EVENT_GROUP
                 && !isDisplayableGroup(index)) {
-            index = FormIndexUtils.getPreviousLevel(index);
+            index = getPreviousLevel(index);
         }
 
         if (index == null) {
@@ -574,7 +587,7 @@ public class JavaRosaFormController implements FormController {
                 // We were at a question, so stepping back brought us to either:
                 // The beginning, or the start of a displayable group. So we need to step
                 // out again to go past the group.
-                index = FormIndexUtils.getPreviousLevel(index);
+                index = getPreviousLevel(index);
                 if (index == null) {
                     jumpToIndex(FormIndex.createBeginningOfFormIndex());
                 } else {
@@ -640,7 +653,7 @@ public class JavaRosaFormController implements FormController {
             if (evaluateConstraints) {
                 int saveStatus = answerQuestion(index, answer);
                 if (saveStatus != FormEntryController.ANSWER_OK) {
-                    return new FailedValidationResult(index, saveStatus);
+                    return getFailedValidationResult(index, saveStatus);
                 }
             } else {
                 saveAnswer(index, answer);
@@ -711,7 +724,7 @@ public class JavaRosaFormController implements FormController {
     }
 
     public void jumpToNewRepeatPrompt() {
-        FormIndex repeatGroupIndex = FormIndexUtils.getRepeatGroupIndex(getFormIndex(), getFormDef());
+        FormIndex repeatGroupIndex = getRepeatGroupIndex(getFormIndex(), getFormDef());
         Integer depth = repeatGroupIndex.getDepth();
         Integer promptDepth = null;
 
@@ -889,7 +902,11 @@ public class JavaRosaFormController implements FormController {
     }
 
     public boolean indexContainsRepeatableGroup() {
-        FormEntryCaption[] groups = getCaptionHierarchy();
+        return indexContainsRepeatableGroup(getFormIndex());
+    }
+
+    public boolean indexContainsRepeatableGroup(FormIndex formIndex) {
+        FormEntryCaption[] groups = getCaptionHierarchy(formIndex);
         if (groups.length == 0) {
             return false;
         }
@@ -1053,12 +1070,12 @@ public class JavaRosaFormController implements FormController {
 
                 TreeElement auditElement = v.get(0);
 
-                String locationPriority = auditElement.getBindAttributeValue(ApplicationConstants.Namespaces.XML_OPENDATAKIT_NAMESPACE, "location-priority");
-                String locationMinInterval = auditElement.getBindAttributeValue(ApplicationConstants.Namespaces.XML_OPENDATAKIT_NAMESPACE, "location-min-interval");
-                String locationMaxAge = auditElement.getBindAttributeValue(ApplicationConstants.Namespaces.XML_OPENDATAKIT_NAMESPACE, "location-max-age");
-                boolean isTrackingChangesEnabled = Boolean.parseBoolean(auditElement.getBindAttributeValue(ApplicationConstants.Namespaces.XML_OPENDATAKIT_NAMESPACE, "track-changes"));
-                boolean isIdentifyUserEnabled = Boolean.parseBoolean(auditElement.getBindAttributeValue(ApplicationConstants.Namespaces.XML_OPENDATAKIT_NAMESPACE, "identify-user"));
-                String trackChangesReason = auditElement.getBindAttributeValue(ApplicationConstants.Namespaces.XML_OPENDATAKIT_NAMESPACE, "track-changes-reasons");
+                String locationPriority = auditElement.getBindAttributeValue(XML_OPENDATAKIT_NAMESPACE, "location-priority");
+                String locationMinInterval = auditElement.getBindAttributeValue(XML_OPENDATAKIT_NAMESPACE, "location-min-interval");
+                String locationMaxAge = auditElement.getBindAttributeValue(XML_OPENDATAKIT_NAMESPACE, "location-max-age");
+                boolean isTrackingChangesEnabled = Boolean.parseBoolean(auditElement.getBindAttributeValue(XML_OPENDATAKIT_NAMESPACE, "track-changes"));
+                boolean isIdentifyUserEnabled = Boolean.parseBoolean(auditElement.getBindAttributeValue(XML_OPENDATAKIT_NAMESPACE, "identify-user"));
+                String trackChangesReason = auditElement.getBindAttributeValue(XML_OPENDATAKIT_NAMESPACE, "track-changes-reasons");
 
                 auditConfig = new AuditConfig.Builder()
                         .setMode(locationPriority)
@@ -1092,8 +1109,7 @@ public class JavaRosaFormController implements FormController {
         return getFormDef().getMainInstance().resolveReference(treeReference).getValue();
     }
 
-    public Stream<Entity> getEntities() {
-        Entities extra = formEntryController.getModel().getExtras().get(Entities.class);
-        return extra.getEntities().stream().map(entity -> new Entity(entity.dataset, entity.properties));
+    public EntitiesExtra getEntities() {
+        return formEntryController.getModel().getExtras().get(EntitiesExtra.class);
     }
 }

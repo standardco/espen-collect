@@ -14,7 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import org.espen.collect.android.injection.DaggerUtils;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.MicInUseException;
-import org.espen.collect.androidshared.data.Consumable;
+import org.odk.collect.androidshared.data.Consumable;
 
 import javax.inject.Inject;
 

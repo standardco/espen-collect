@@ -4,6 +4,33 @@ import org.odk.collect.shared.strings.RandomString
 import java.io.File
 
 object TempFiles {
+    @JvmStatic
+    @JvmOverloads
+    fun createTempFileWithName(name: String, extension: String = ""): File {
+        val tmpDir = getTempDir()
+        return File(tmpDir, name + extension).also {
+            it.createNewFile()
+            it.deleteOnExit()
+        }
+    }
+
+    @JvmStatic
+    fun createTempFile(): File {
+        val tmpDir = getTempDir()
+        return File(tmpDir, getRandomName(tmpDir)).also {
+            it.createNewFile()
+            it.deleteOnExit()
+        }
+    }
+
+    @JvmStatic
+    fun createTempFile(extension: String): File {
+        val tmpDir = getTempDir()
+        return File(tmpDir, getRandomName(tmpDir) + extension).also {
+            it.createNewFile()
+            it.deleteOnExit()
+        }
+    }
 
     @JvmStatic
     fun createTempFile(name: String, extension: String): File {
@@ -66,7 +93,7 @@ object TempFiles {
     }
 
     private fun getTempDir(): File {
-        val tmpDir = File(System.getProperty("java.io.tmpdir", "."), " org.odk.collect.shared.TempFiles")
+        val tmpDir = File(System.getProperty("java.io.tmpdir", "."), "org.odk.collect.shared.TempFiles")
         if (!tmpDir.exists()) {
             tmpDir.mkdir()
         }

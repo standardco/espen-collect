@@ -14,16 +14,21 @@ import org.javarosa.core.model.data.helper.Selection
 import org.javarosa.form.api.FormEntryPrompt
 import org.espen.collect.android.databinding.SelectOneFromMapWidgetAnswerBinding
 import org.espen.collect.android.formentry.questions.QuestionDetails
+import org.espen.collect.android.listeners.AdvanceToNextListener
 import org.espen.collect.android.widgets.QuestionWidget
 import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver
 import org.espen.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_FORM_INDEX
 import org.espen.collect.android.widgets.items.SelectOneFromMapDialogFragment.Companion.ARG_SELECTED_INDEX
-import org.espen.collect.androidshared.ui.DialogFragmentUtils
+import org.odk.collect.androidshared.ui.DialogFragmentUtils
 import org.odk.collect.permissions.PermissionListener
 
 @SuppressLint("ViewConstructor")
-class SelectOneFromMapWidget(context: Context, questionDetails: org.espen.collect.android.formentry.questions.QuestionDetails) :
-    org.espen.collect.android.widgets.QuestionWidget(context, questionDetails), org.espen.collect.android.widgets.interfaces.WidgetDataReceiver {
+class SelectOneFromMapWidget(
+    context: Context,
+    questionDetails: QuestionDetails,
+    private val autoAdvance: Boolean,
+    private val autoAdvanceListener: AdvanceToNextListener
+) : QuestionWidget(context, questionDetails), WidgetDataReceiver {
 
     init {
         render()
@@ -35,12 +40,10 @@ class SelectOneFromMapWidget(context: Context, questionDetails: org.espen.collec
     override fun onCreateAnswerView(
         context: Context,
         prompt: FormEntryPrompt,
-        answerFontSize: Int,
-        controlFontSize: Int
+        answerFontSize: Int
     ): View {
         binding = SelectOneFromMapWidgetAnswerBinding.inflate(LayoutInflater.from(context))
 
-        binding.button.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize.toFloat())
         binding.button.setOnClickListener {
             permissionsProvider.requestEnabledLocationPermissions(
                 context as Activity,
@@ -81,6 +84,9 @@ class SelectOneFromMapWidget(context: Context, questionDetails: org.espen.collec
     override fun setData(answer: Any?) {
         updateAnswer(answer as SelectOneData)
         widgetValueChanged()
+        if (autoAdvance) {
+            autoAdvanceListener.advance()
+        }
     }
 
     private fun updateAnswer(answer: SelectOneData?) {
@@ -91,6 +97,11 @@ class SelectOneFromMapWidget(context: Context, questionDetails: org.espen.collec
             formEntryPrompt.getSelectChoiceText(choice)
         } else {
             ""
+        }
+        if (binding.answer.text.isBlank()) {
+            binding.answer.visibility = GONE
+        } else {
+            binding.answer.visibility = VISIBLE
         }
     }
 }

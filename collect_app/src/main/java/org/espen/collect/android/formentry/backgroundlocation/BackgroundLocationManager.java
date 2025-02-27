@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.location.LocationListener;
 
-import org.espen.collect.android.logic.actions.setgeopoint.CollectSetGeopointAction;
 import org.odk.collect.location.LocationClient;
 import org.espen.collect.android.formentry.audit.AuditConfig;
 import org.espen.collect.android.formentry.audit.AuditEvent;

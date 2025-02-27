@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import org.espen.collect.android.javarosawrapper.FormController;
-import org.espen.collect.android.javarosawrapper.FormController;
 
 public class IdentityPromptViewModel extends ViewModel {
 

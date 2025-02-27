@@ -15,7 +15,6 @@
 package org.espen.collect.android.widgets.interfaces;
 
 import org.espen.collect.android.activities.FormFillingActivity;
-import org.espen.collect.android.activities.FormFillingActivity;
 
 public interface WidgetDataReceiver {
     /**

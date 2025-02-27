@@ -1,7 +1,7 @@
 package org.espen.collect.android.injection.config;
 
 import static androidx.core.content.FileProvider.getUriForFile;
-import static org.espen.collect.androidshared.data.AppStateKt.getState;
+import static org.odk.collect.androidshared.data.AppStateKt.getState;
 import static org.odk.collect.settings.keys.MetaKeys.KEY_INSTALL_ID;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -13,64 +13,9 @@ import android.webkit.MimeTypeMap;
 
 import androidx.work.WorkManager;
 
-import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
-import com.google.api.client.util.ExponentialBackOff;
-import com.google.api.services.drive.DriveScopes;
 import com.google.gson.Gson;
 
-import org.espen.collect.android.application.CollectSettingsChangeHandler;
-import org.espen.collect.android.application.MapboxClassInstanceCreator;
-import org.espen.collect.android.application.initialization.AnalyticsInitializer;
-import org.espen.collect.android.application.initialization.ApplicationInitializer;
-import org.espen.collect.android.application.initialization.ExistingProjectMigrator;
-import org.espen.collect.android.application.initialization.ExistingSettingsMigrator;
-import org.espen.collect.android.application.initialization.FormUpdatesUpgrade;
-import org.espen.collect.android.application.initialization.GoogleDriveProjectsDeleter;
-import org.espen.collect.android.application.initialization.MapsInitializer;
-import org.espen.collect.android.application.initialization.upgrade.UpgradeInitializer;
-import org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler;
-import org.espen.collect.android.backgroundwork.FormUpdateScheduler;
-import org.espen.collect.android.configure.qr.AppConfigurationGenerator;
-import org.espen.collect.android.configure.qr.CachingQRCodeGenerator;
-import org.espen.collect.android.configure.qr.QRCodeGenerator;
-import org.espen.collect.android.database.itemsets.DatabaseFastExternalItemsetsRepository;
-import org.espen.collect.android.draw.PenColorPickerViewModel;
-import org.espen.collect.android.entities.EntitiesRepositoryProvider;
-import org.espen.collect.android.geo.MapFragmentFactoryImpl;
-import org.espen.collect.android.itemsets.FastExternalItemsetsRepository;
-import org.espen.collect.android.mainmenu.MainMenuViewModelFactory;
-import org.espen.collect.android.notifications.NotificationManagerNotifier;
-import org.espen.collect.android.notifications.Notifier;
-import org.espen.collect.android.openrosa.CollectThenSystemContentTypeMapper;
-import org.espen.collect.android.openrosa.OpenRosaHttpInterface;
-import org.espen.collect.android.openrosa.okhttp.OkHttpConnection;
-import org.espen.collect.android.openrosa.okhttp.OkHttpOpenRosaServerClientProvider;
-import org.espen.collect.android.preferences.Defaults;
-import org.espen.collect.android.preferences.PreferenceVisibilityHandler;
-import org.espen.collect.android.preferences.ProjectPreferencesViewModel;
-import org.espen.collect.android.preferences.source.SettingsStore;
-import org.espen.collect.android.preferences.source.SharedPreferencesSettingsProvider;
-import org.espen.collect.android.projects.ProjectCreator;
-import org.espen.collect.android.projects.ProjectDeleter;
-import org.espen.collect.android.projects.ProjectDependencyProviderFactory;
-import org.espen.collect.android.projects.ProjectsDataService;
-import org.espen.collect.android.tasks.FormLoaderTask;
-import org.espen.collect.android.utilities.AdminPasswordProvider;
-import org.espen.collect.android.utilities.AndroidUserAgent;
-import org.espen.collect.android.utilities.ChangeLockProvider;
-import org.espen.collect.android.utilities.CodeCaptureManagerFactory;
-import org.espen.collect.android.utilities.ContentUriProvider;
-import org.espen.collect.android.utilities.ExternalAppIntentProvider;
-import org.espen.collect.android.utilities.ExternalWebPageHelper;
-import org.espen.collect.android.utilities.FileProvider;
-import org.espen.collect.android.utilities.FormsRepositoryProvider;
-import org.espen.collect.android.utilities.ImageCompressionController;
-import org.espen.collect.android.utilities.InstancesRepositoryProvider;
 import org.espen.collect.android.utilities.LookUpRepositoryProvider;
-import org.espen.collect.android.utilities.MediaUtils;
-import org.espen.collect.android.utilities.ProjectResetter;
-import org.espen.collect.android.utilities.SoftKeyboardController;
-import org.espen.collect.android.utilities.WebCredentialsUtils;
 import org.javarosa.core.reference.ReferenceManager;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -83,11 +28,13 @@ import org.espen.collect.android.application.CollectSettingsChangeHandler;
 import org.espen.collect.android.application.MapboxClassInstanceCreator;
 import org.espen.collect.android.application.initialization.AnalyticsInitializer;
 import org.espen.collect.android.application.initialization.ApplicationInitializer;
+import org.espen.collect.android.application.initialization.CachedFormsCleaner;
 import org.espen.collect.android.application.initialization.ExistingProjectMigrator;
 import org.espen.collect.android.application.initialization.ExistingSettingsMigrator;
-import org.espen.collect.android.application.initialization.FormUpdatesUpgrade;
 import org.espen.collect.android.application.initialization.GoogleDriveProjectsDeleter;
 import org.espen.collect.android.application.initialization.MapsInitializer;
+import org.espen.collect.android.application.initialization.SavepointsImporter;
+import org.espen.collect.android.application.initialization.ScheduledWorkUpgrade;
 import org.espen.collect.android.application.initialization.upgrade.UpgradeInitializer;
 import org.espen.collect.android.backgroundwork.FormUpdateAndInstanceSubmitScheduler;
 import org.espen.collect.android.backgroundwork.FormUpdateScheduler;
@@ -96,29 +43,21 @@ import org.espen.collect.android.configure.qr.AppConfigurationGenerator;
 import org.espen.collect.android.configure.qr.CachingQRCodeGenerator;
 import org.espen.collect.android.configure.qr.QRCodeGenerator;
 import org.espen.collect.android.database.itemsets.DatabaseFastExternalItemsetsRepository;
-import org.espen.collect.android.draw.PenColorPickerViewModel;
 import org.espen.collect.android.entities.EntitiesRepositoryProvider;
+import org.espen.collect.android.external.InstancesContract;
 import org.espen.collect.android.formentry.AppStateFormSessionRepository;
 import org.espen.collect.android.formentry.FormSessionRepository;
 import org.espen.collect.android.formentry.media.AudioHelperFactory;
 import org.espen.collect.android.formentry.media.ScreenContextAudioHelperFactory;
 import org.espen.collect.android.formlists.blankformlist.BlankFormListViewModel;
 import org.espen.collect.android.formmanagement.CollectFormEntryControllerFactory;
-import org.espen.collect.android.formmanagement.FormDownloader;
-import org.espen.collect.android.formmanagement.FormMetadataParser;
 import org.espen.collect.android.formmanagement.FormSourceProvider;
 import org.espen.collect.android.formmanagement.FormsDataService;
-import org.espen.collect.android.formmanagement.InstancesAppState;
-import org.espen.collect.android.formmanagement.ServerFormDownloader;
 import org.espen.collect.android.formmanagement.ServerFormsDetailsFetcher;
-import org.espen.collect.android.gdrive.GoogleAccountCredentialGoogleAccountPicker;
-import org.espen.collect.android.gdrive.GoogleAccountPicker;
-import org.espen.collect.android.gdrive.GoogleAccountsManager;
-import org.espen.collect.android.gdrive.GoogleApiProvider;
+import org.espen.collect.android.geo.MapConfiguratorProvider;
 import org.espen.collect.android.geo.MapFragmentFactoryImpl;
+import org.espen.collect.android.instancemanagement.InstancesDataService;
 import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider;
-import org.espen.collect.android.instancemanagement.autosend.InstanceAutoSendFetcher;
-import org.espen.collect.android.instancemanagement.autosend.InstanceAutoSender;
 import org.espen.collect.android.instancemanagement.send.ReadyToSendViewModel;
 import org.espen.collect.android.itemsets.FastExternalItemsetsRepository;
 import org.espen.collect.android.mainmenu.MainMenuViewModelFactory;
@@ -131,12 +70,11 @@ import org.espen.collect.android.openrosa.okhttp.OkHttpOpenRosaServerClientProvi
 import org.espen.collect.android.preferences.Defaults;
 import org.espen.collect.android.preferences.PreferenceVisibilityHandler;
 import org.espen.collect.android.preferences.ProjectPreferencesViewModel;
-import org.espen.collect.android.preferences.source.SettingsStore;
 import org.espen.collect.android.preferences.source.SharedPreferencesSettingsProvider;
-import org.espen.collect.android.projects.ProjectsDataService;
 import org.espen.collect.android.projects.ProjectCreator;
 import org.espen.collect.android.projects.ProjectDeleter;
-import org.espen.collect.android.projects.ProjectDependencyProviderFactory;
+import org.espen.collect.android.projects.ProjectResetter;
+import org.espen.collect.android.projects.ProjectsDataService;
 import org.espen.collect.android.storage.StoragePathProvider;
 import org.espen.collect.android.storage.StorageSubdirectory;
 import org.espen.collect.android.tasks.FormLoaderTask;
@@ -146,28 +84,27 @@ import org.espen.collect.android.utilities.ChangeLockProvider;
 import org.espen.collect.android.utilities.CodeCaptureManagerFactory;
 import org.espen.collect.android.utilities.ContentUriProvider;
 import org.espen.collect.android.utilities.ExternalAppIntentProvider;
-import org.espen.collect.android.utilities.ExternalWebPageHelper;
 import org.espen.collect.android.utilities.FileProvider;
 import org.espen.collect.android.utilities.FormsRepositoryProvider;
 import org.espen.collect.android.utilities.ImageCompressionController;
 import org.espen.collect.android.utilities.InstancesRepositoryProvider;
-import org.espen.collect.android.utilities.LookUpRepositoryProvider;
 import org.espen.collect.android.utilities.MediaUtils;
-import org.espen.collect.android.utilities.ProjectResetter;
+import org.espen.collect.android.utilities.SavepointsRepositoryProvider;
 import org.espen.collect.android.utilities.SoftKeyboardController;
 import org.espen.collect.android.utilities.WebCredentialsUtils;
 import org.espen.collect.android.version.VersionInformation;
 import org.espen.collect.android.views.BarcodeViewDecoder;
-import org.espen.collect.androidshared.bitmap.ImageCompressor;
-import org.espen.collect.androidshared.network.ConnectivityProvider;
-import org.espen.collect.androidshared.network.NetworkStateProvider;
-import org.espen.collect.androidshared.system.IntentLauncher;
-import org.espen.collect.androidshared.system.IntentLauncherImpl;
-import org.espen.collect.androidshared.utils.ScreenUtils;
+import org.odk.collect.androidshared.bitmap.ImageCompressor;
+import org.odk.collect.androidshared.system.IntentLauncher;
+import org.odk.collect.androidshared.system.IntentLauncherImpl;
+import org.odk.collect.androidshared.utils.ScreenUtils;
 import org.odk.collect.async.CoroutineAndWorkManagerScheduler;
 import org.odk.collect.async.Scheduler;
+import org.odk.collect.async.network.ConnectivityProvider;
+import org.odk.collect.async.network.NetworkStateProvider;
 import org.odk.collect.audiorecorder.recording.AudioRecorder;
 import org.odk.collect.audiorecorder.recording.AudioRecorderFactory;
+import org.odk.collect.entities.storage.EntitiesRepository;
 import org.odk.collect.forms.FormsRepository;
 import org.odk.collect.imageloader.GlideImageLoader;
 import org.odk.collect.imageloader.ImageLoader;
@@ -183,11 +120,12 @@ import org.odk.collect.metadata.SettingsInstallIDProvider;
 import org.odk.collect.permissions.ContextCompatPermissionChecker;
 import org.odk.collect.permissions.PermissionsChecker;
 import org.odk.collect.permissions.PermissionsProvider;
+import org.odk.collect.projects.Project;
 import org.odk.collect.projects.ProjectsRepository;
 import org.odk.collect.projects.SharedPreferencesProjectsRepository;
+import org.odk.collect.qrcode.QRCodeCreatorImpl;
 import org.odk.collect.qrcode.QRCodeDecoder;
 import org.odk.collect.qrcode.QRCodeDecoderImpl;
-import org.odk.collect.qrcode.QRCodeEncoderImpl;
 import org.odk.collect.settings.ODKAppSettingsImporter;
 import org.odk.collect.settings.ODKAppSettingsMigrator;
 import org.odk.collect.settings.SettingsProvider;
@@ -198,6 +136,7 @@ import org.odk.collect.settings.keys.MetaKeys;
 import org.odk.collect.settings.keys.ProjectKeys;
 import org.odk.collect.shared.strings.UUIDGenerator;
 import org.espen.collect.utilities.UserAgentProvider;
+import org.odk.collect.webpage.ExternalWebPageHelper;
 
 import java.io.File;
 
@@ -206,6 +145,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function0;
 import okhttp3.OkHttpClient;
 
 /**
@@ -246,11 +187,6 @@ public class AppDependencyModule {
     @Provides
     WebCredentialsUtils provideWebCredentials(SettingsProvider settingsProvider) {
         return new WebCredentialsUtils(settingsProvider.getUnprotectedSettings());
-    }
-
-    @Provides
-    public FormDownloader providesFormDownloader(FormSourceProvider formSourceProvider, FormsRepositoryProvider formsRepositoryProvider, StoragePathProvider storagePathProvider) {
-        return new ServerFormDownloader(formSourceProvider.get(), formsRepositoryProvider.get(), new File(storagePathProvider.getOdkDirPath(StorageSubdirectory.CACHE)), storagePathProvider.getOdkDirPath(StorageSubdirectory.FORMS), new FormMetadataParser(), System::currentTimeMillis);
     }
 
     @Provides
@@ -323,8 +259,8 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public QRCodeGenerator providesQRCodeGenerator(Context context) {
-        return new CachingQRCodeGenerator(new QRCodeEncoderImpl());
+    public QRCodeGenerator providesQRCodeGenerator() {
+        return new CachingQRCodeGenerator(new QRCodeCreatorImpl());
     }
 
     @Provides
@@ -399,9 +335,10 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public ServerFormsDetailsFetcher providesServerFormDetailsFetcher(FormsRepositoryProvider formsRepositoryProvider, FormSourceProvider formSourceProvider) {
-        FormsRepository formsRepository = formsRepositoryProvider.get();
-        return new ServerFormsDetailsFetcher(formsRepository, formSourceProvider.get());
+    public ServerFormsDetailsFetcher providesServerFormDetailsFetcher(FormsRepositoryProvider formsRepositoryProvider, FormSourceProvider formSourceProvider, ProjectsDataService projectsDataService) {
+        Project.Saved currentProject = projectsDataService.getCurrentProject();
+        FormsRepository formsRepository = formsRepositoryProvider.create(currentProject.getUuid());
+        return new ServerFormsDetailsFetcher(formsRepository, formSourceProvider.create(currentProject.getUuid()));
     }
 
     @Provides
@@ -416,18 +353,6 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public GoogleApiProvider providesGoogleApiProvider(Context context) {
-        return new GoogleApiProvider(context);
-    }
-
-    @Provides
-    public GoogleAccountPicker providesGoogleAccountPicker(Context context) {
-        return new GoogleAccountCredentialGoogleAccountPicker(GoogleAccountCredential
-                .usingOAuth2(context, singletonList(DriveScopes.DRIVE))
-                .setBackOff(new ExponentialBackOff()));
-    }
-
-    @Provides
     ScreenUtils providesScreenUtils(Context context) {
         return new ScreenUtils(context);
     }
@@ -438,14 +363,13 @@ public class AppDependencyModule {
     }
 
     @Provides
-    @Singleton
-    public EntitiesRepositoryProvider provideEntitiesRepositoryProvider(Application application) {
-        return new EntitiesRepositoryProvider(application);
+    public EntitiesRepositoryProvider provideEntitiesRepositoryProvider(Context context, StoragePathProvider storagePathProvider) {
+        return new EntitiesRepositoryProvider(context, storagePathProvider);
     }
 
     @Provides
     public SoftKeyboardController provideSoftKeyboardController() {
-        return new SoftKeyboardController();
+        return SoftKeyboardController.INSTANCE;
     }
 
     @Provides
@@ -468,18 +392,6 @@ public class AppDependencyModule {
     @Provides
     public FormSessionRepository providesFormSessionStore(Application application) {
         return new AppStateFormSessionRepository(application);
-    }
-
-    @Provides
-    @Named("GENERAL_SETTINGS_STORE")
-    public SettingsStore providesGeneralSettingsStore(SettingsProvider settingsProvider) {
-        return new SettingsStore(settingsProvider.getUnprotectedSettings());
-    }
-
-    @Provides
-    @Named("ADMIN_SETTINGS_STORE")
-    public SettingsStore providesAdminSettingsStore(SettingsProvider settingsProvider) {
-        return new SettingsStore(settingsProvider.getProtectedSettings());
     }
 
     @Provides
@@ -511,9 +423,17 @@ public class AppDependencyModule {
     }
 
     @Provides
-    @Singleton
-    public InstancesAppState providesInstancesAppState(Application application, InstancesRepositoryProvider instancesRepositoryProvider, ProjectsDataService projectsDataService) {
-        return new InstancesAppState(application, instancesRepositoryProvider, projectsDataService);
+    public InstancesDataService providesInstancesDataService(Application application, ProjectsDataService projectsDataService, InstanceSubmitScheduler instanceSubmitScheduler, ProjectDependencyModuleFactory projectsDependencyProviderFactory, Notifier notifier, PropertyManager propertyManager, OpenRosaHttpInterface httpInterface) {
+        Function0<Unit> onUpdate = () -> {
+            application.getContentResolver().notifyChange(
+                    InstancesContract.getUri(projectsDataService.getCurrentProject().getUuid()),
+                    null
+            );
+
+            return null;
+        };
+
+        return new InstancesDataService(getState(application), instanceSubmitScheduler, projectsDependencyProviderFactory, notifier, propertyManager, httpInterface, onUpdate);
     }
 
     @Provides
@@ -540,23 +460,28 @@ public class AppDependencyModule {
         return new LookUpRepositoryProvider(context, storagePathProvider);
     }
     @Provides
+    public SavepointsRepositoryProvider providesSavepointsRepositoryProvider(Context context, StoragePathProvider storagePathProvider) {
+        return new SavepointsRepositoryProvider(context, storagePathProvider);
+    }
+
+    @Provides
     public ProjectPreferencesViewModel.Factory providesProjectPreferencesViewModel(AdminPasswordProvider adminPasswordProvider) {
         return new ProjectPreferencesViewModel.Factory(adminPasswordProvider);
     }
 
     @Provides
     public ReadyToSendViewModel.Factory providesReadyToSendViewModel(InstancesRepositoryProvider instancesRepositoryProvider, Scheduler scheduler) {
-        return new ReadyToSendViewModel.Factory(instancesRepositoryProvider.get(), scheduler, System::currentTimeMillis);
+        return new ReadyToSendViewModel.Factory(instancesRepositoryProvider.create(), scheduler, System::currentTimeMillis);
     }
 
     @Provides
     public MainMenuViewModelFactory providesMainMenuViewModelFactory(VersionInformation versionInformation, Application application,
-                                                                     SettingsProvider settingsProvider, InstancesAppState instancesAppState,
+                                                                     SettingsProvider settingsProvider, InstancesDataService instancesDataService,
                                                                      Scheduler scheduler, ProjectsDataService projectsDataService,
                                                                      AnalyticsInitializer analyticsInitializer, PermissionsChecker permissionChecker,
                                                                      FormsRepositoryProvider formsRepositoryProvider, InstancesRepositoryProvider instancesRepositoryProvider,
                                                                      AutoSendSettingsProvider autoSendSettingsProvider) {
-        return new MainMenuViewModelFactory(versionInformation, application, settingsProvider, instancesAppState, scheduler, projectsDataService, analyticsInitializer, permissionChecker, formsRepositoryProvider, instancesRepositoryProvider, autoSendSettingsProvider);
+        return new MainMenuViewModelFactory(versionInformation, application, settingsProvider, instancesDataService, scheduler, projectsDataService, permissionChecker, formsRepositoryProvider, instancesRepositoryProvider, autoSendSettingsProvider);
     }
 
     @Provides
@@ -566,23 +491,17 @@ public class AppDependencyModule {
 
     @Provides
     public FormSourceProvider providesFormSourceProvider(SettingsProvider settingsProvider, OpenRosaHttpInterface openRosaHttpInterface) {
-        return new FormSourceProvider(settingsProvider, openRosaHttpInterface);
+        return new FormSourceProvider(settingsProvider::getUnprotectedSettings, openRosaHttpInterface);
     }
 
     @Provides
-    public FormsDataService providesFormsUpdater(Application application, Notifier notifier, ProjectDependencyProviderFactory projectDependencyProviderFactory) {
-        return new FormsDataService(getState(application), notifier, projectDependencyProviderFactory, System::currentTimeMillis);
+    public FormsDataService providesFormsUpdater(Application application, Notifier notifier, ProjectDependencyModuleFactory projectDependencyModuleFactory) {
+        return new FormsDataService(getState(application), notifier, projectDependencyModuleFactory, System::currentTimeMillis);
     }
 
     @Provides
-    public InstanceAutoSender providesInstanceAutoSender(AutoSendSettingsProvider autoSendSettingsProvider, Context context, Notifier notifier, GoogleAccountsManager googleAccountsManager, GoogleApiProvider googleApiProvider, PermissionsProvider permissionsProvider, InstancesAppState instancesAppState, PropertyManager propertyManager) {
-        InstanceAutoSendFetcher instanceAutoSendFetcher = new InstanceAutoSendFetcher(autoSendSettingsProvider);
-        return new InstanceAutoSender(instanceAutoSendFetcher, context, notifier, googleAccountsManager, googleApiProvider, permissionsProvider, instancesAppState, propertyManager);
-    }
-
-    @Provides
-    public AutoSendSettingsProvider providesAutoSendSettingsProvider(NetworkStateProvider networkStateProvider, SettingsProvider settingsProvider) {
-        return new AutoSendSettingsProvider(networkStateProvider, settingsProvider);
+    public AutoSendSettingsProvider providesAutoSendSettingsProvider(Application application, SettingsProvider settingsProvider, NetworkStateProvider networkStateProvider) {
+        return new AutoSendSettingsProvider(application, networkStateProvider, settingsProvider);
     }
 
     @Provides
@@ -596,8 +515,8 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public FormUpdatesUpgrade providesFormUpdatesUpgrader(Scheduler scheduler, ProjectsRepository projectsRepository, FormUpdateScheduler formUpdateScheduler) {
-        return new FormUpdatesUpgrade(scheduler, projectsRepository, formUpdateScheduler);
+    public ScheduledWorkUpgrade providesFormUpdatesUpgrader(Scheduler scheduler, ProjectsRepository projectsRepository, FormUpdateScheduler formUpdateScheduler, InstanceSubmitScheduler instanceSubmitScheduler) {
+        return new ScheduledWorkUpgrade(scheduler, projectsRepository, formUpdateScheduler, instanceSubmitScheduler);
     }
 
     @Provides
@@ -611,20 +530,22 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public UpgradeInitializer providesUpgradeInitializer(Context context, SettingsProvider settingsProvider, ExistingProjectMigrator existingProjectMigrator, ExistingSettingsMigrator existingSettingsMigrator, FormUpdatesUpgrade formUpdatesUpgrade, GoogleDriveProjectsDeleter googleDriveProjectsDeleter) {
+    public UpgradeInitializer providesUpgradeInitializer(Context context, SettingsProvider settingsProvider, ExistingProjectMigrator existingProjectMigrator, ExistingSettingsMigrator existingSettingsMigrator, ScheduledWorkUpgrade scheduledWorkUpgrade, GoogleDriveProjectsDeleter googleDriveProjectsDeleter, ProjectsRepository projectsRepository, ProjectDependencyModuleFactory projectDependencyModuleFactory) {
         return new UpgradeInitializer(
                 context,
                 settingsProvider,
                 existingProjectMigrator,
                 existingSettingsMigrator,
-                formUpdatesUpgrade,
-                googleDriveProjectsDeleter
+                scheduledWorkUpgrade,
+                googleDriveProjectsDeleter,
+                new SavepointsImporter(projectsRepository, projectDependencyModuleFactory),
+                new CachedFormsCleaner(projectsRepository, projectDependencyModuleFactory)
         );
     }
 
     @Provides
-    public ApplicationInitializer providesApplicationInitializer(Application context, UserAgentProvider userAgentProvider, PropertyManager propertyManager, Analytics analytics, UpgradeInitializer upgradeInitializer, AnalyticsInitializer analyticsInitializer, ProjectsRepository projectsRepository, SettingsProvider settingsProvider, MapsInitializer mapsInitializer) {
-        return new ApplicationInitializer(context, propertyManager, analytics, upgradeInitializer, analyticsInitializer, mapsInitializer, projectsRepository, settingsProvider);
+    public ApplicationInitializer providesApplicationInitializer(Application context, PropertyManager propertyManager, Analytics analytics, UpgradeInitializer upgradeInitializer, AnalyticsInitializer analyticsInitializer, ProjectsRepository projectsRepository, SettingsProvider settingsProvider, MapsInitializer mapsInitializer, EntitiesRepositoryProvider entitiesRepositoryProvider, ProjectsDataService projectsDataService) {
+        return new ApplicationInitializer(context, propertyManager, analytics, upgradeInitializer, analyticsInitializer, mapsInitializer, projectsRepository, settingsProvider, entitiesRepositoryProvider, projectsDataService);
     }
 
     @Provides
@@ -633,8 +554,8 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public ProjectResetter providesProjectResetter(StoragePathProvider storagePathProvider, PropertyManager propertyManager, SettingsProvider settingsProvider, InstancesRepositoryProvider instancesRepositoryProvider, FormsRepositoryProvider formsRepositoryProvider) {
-        return new ProjectResetter(storagePathProvider, propertyManager, settingsProvider, instancesRepositoryProvider, formsRepositoryProvider);
+    public ProjectResetter providesProjectResetter(StoragePathProvider storagePathProvider, PropertyManager propertyManager, SettingsProvider settingsProvider, FormsRepositoryProvider formsRepositoryProvider, SavepointsRepositoryProvider savepointsRepositoryProvider, InstancesDataService instancesDataService, ProjectsDataService projectsDataService) {
+        return new ProjectResetter(storagePathProvider, propertyManager, settingsProvider, formsRepositoryProvider, savepointsRepositoryProvider, instancesDataService, projectsDataService.getCurrentProject().getUuid());
     }
 
     @Provides
@@ -643,10 +564,13 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public ReferenceLayerRepository providesReferenceLayerRepository(StoragePathProvider storagePathProvider) {
+    public ReferenceLayerRepository providesReferenceLayerRepository(StoragePathProvider storagePathProvider, SettingsProvider settingsProvider) {
         return new DirectoryReferenceLayerRepository(
+                storagePathProvider.getOdkDirPath(StorageSubdirectory.SHARED_LAYERS),
                 storagePathProvider.getOdkDirPath(StorageSubdirectory.LAYERS),
-                storagePathProvider.getOdkDirPath(StorageSubdirectory.SHARED_LAYERS)
+                () -> MapConfiguratorProvider.getConfigurator(
+                        settingsProvider.getUnprotectedSettings().getString(ProjectKeys.KEY_BASEMAP_SOURCE)
+                )
         );
     }
 
@@ -682,18 +606,8 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public PenColorPickerViewModel.Factory providesPenColorPickerViewModel(SettingsProvider settingsProvider) {
-        return new PenColorPickerViewModel.Factory(settingsProvider.getMetaSettings());
-    }
-
-    @Provides
-    public ProjectDependencyProviderFactory providesProjectDependencyProviderFactory(SettingsProvider settingsProvider, FormsRepositoryProvider formsRepositoryProvider, InstancesRepositoryProvider instancesRepositoryProvider, LookUpRepositoryProvider lookupRepositoryProvider, StoragePathProvider storagePathProvider, ChangeLockProvider changeLockProvider, FormSourceProvider formSourceProvider) {
-        return new ProjectDependencyProviderFactory(settingsProvider, formsRepositoryProvider, instancesRepositoryProvider, lookupRepositoryProvider, storagePathProvider, changeLockProvider, formSourceProvider);
-    }
-
-    @Provides
     public BlankFormListViewModel.Factory providesBlankFormListViewModel(FormsRepositoryProvider formsRepositoryProvider, InstancesRepositoryProvider instancesRepositoryProvider, Application application, FormsDataService formsDataService, Scheduler scheduler, SettingsProvider settingsProvider, ChangeLockProvider changeLockProvider, ProjectsDataService projectsDataService) {
-        return new BlankFormListViewModel.Factory(instancesRepositoryProvider.get(), application, formsDataService, scheduler, settingsProvider.getUnprotectedSettings(), projectsDataService.getCurrentProject().getUuid());
+        return new BlankFormListViewModel.Factory(instancesRepositoryProvider.create(), application, formsDataService, scheduler, settingsProvider.getUnprotectedSettings(), projectsDataService.getCurrentProject().getUuid());
     }
 
     @Provides
@@ -703,7 +617,9 @@ public class AppDependencyModule {
     }
 
     @Provides
-    public FormLoaderTask.FormEntryControllerFactory formEntryControllerFactory(SettingsProvider settingsProvider) {
-        return new CollectFormEntryControllerFactory(settingsProvider.getUnprotectedSettings());
+    public FormLoaderTask.FormEntryControllerFactory formEntryControllerFactory(ProjectsDataService projectsDataService, EntitiesRepositoryProvider entitiesRepositoryProvider, SettingsProvider settingsProvider) {
+        String projectId = projectsDataService.getCurrentProject().getUuid();
+        EntitiesRepository entitiesRepository = entitiesRepositoryProvider.create(projectId);
+        return new CollectFormEntryControllerFactory(entitiesRepository, settingsProvider.getUnprotectedSettings(projectId));
     }
 }

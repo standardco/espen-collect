@@ -17,8 +17,8 @@ import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.mainmenu.CurrentProjectViewModel
 import org.espen.collect.android.mainmenu.MainMenuActivity
 import org.espen.collect.android.preferences.screens.ProjectPreferencesActivity
-import org.espen.collect.androidshared.ui.DialogFragmentUtils
-import org.espen.collect.androidshared.ui.ToastUtils
+import org.odk.collect.androidshared.ui.DialogFragmentUtils
+import org.odk.collect.androidshared.ui.ToastUtils
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider
@@ -38,23 +38,22 @@ class ProjectSettingsDialog(private val viewModelFactory: ViewModelProvider.Fact
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
 
         currentProjectViewModel = ViewModelProvider(
             requireActivity(),
             viewModelFactory
         )[CurrentProjectViewModel::class.java]
+        currentProjectViewModel.refresh()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = ProjectSettingsDialogLayoutBinding.inflate(LayoutInflater.from(context))
 
-        currentProjectViewModel.currentProject.observe(this) { project ->
-            binding.currentProject.setupView(project, settingsProvider.getUnprotectedSettings())
-            binding.currentProject.contentDescription =
-                getString(org.odk.collect.strings.R.string.using_project, project.name)
-            inflateListOfInActiveProjects(requireContext(), project)
-        }
+        val project = currentProjectViewModel.currentProject.value
+        binding.currentProject.setupView(project, settingsProvider.getUnprotectedSettings())
+        binding.currentProject.contentDescription = getString(org.odk.collect.strings.R.string.using_project, project.name)
+        inflateListOfInActiveProjects(requireContext(), project)
 
         binding.closeIcon.setOnClickListener {
             dismiss()
@@ -108,7 +107,7 @@ class ProjectSettingsDialog(private val viewModelFactory: ViewModelProvider.Fact
     private fun switchProject(project: Project.Saved) {
         currentProjectViewModel.setCurrentProject(project)
 
-        org.espen.collect.android.activities.ActivityUtils.startActivityAndCloseAllOthers(requireActivity(), MainMenuActivity::class.java)
+        ActivityUtils.startActivityAndCloseAllOthers(requireActivity(), MainMenuActivity::class.java)
         ToastUtils.showLongToast(
             requireContext(),
             getString(org.odk.collect.strings.R.string.switched_project, project.name)

@@ -1,6 +1,5 @@
 package org.espen.collect.android.formentry.questions;
 
-import org.espen.collect.android.widgets.QuestionWidget;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.espen.collect.android.widgets.QuestionWidget;
 

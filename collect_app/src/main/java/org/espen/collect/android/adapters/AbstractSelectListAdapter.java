@@ -30,8 +30,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.espen.collect.android.audio.AudioHelper;
-import org.espen.collect.android.externaldata.ExternalSelectChoice;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.InvalidReferenceException;
@@ -40,13 +38,13 @@ import org.javarosa.form.api.FormEntryCaption;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.espen.collect.android.R;
 import org.espen.collect.android.audio.AudioHelper;
-import org.espen.collect.android.externaldata.ExternalSelectChoice;
+import org.espen.collect.android.dynamicpreload.ExternalSelectChoice;
 import org.espen.collect.android.formentry.questions.AudioVideoImageTextLabel;
 import org.espen.collect.android.formentry.questions.NoButtonsItem;
 import org.espen.collect.android.utilities.MediaUtils;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.espen.collect.android.utilities.HtmlUtils;
 import org.espen.collect.android.utilities.Appearances;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.odk.collect.audioclips.Clip;
 import org.odk.collect.imageloader.GlideImageLoader;
 

@@ -7,9 +7,9 @@ import org.espen.collect.android.javarosawrapper.RepeatsInFieldListException
 object AuditUtils {
     @JvmStatic
     fun logCurrentScreen(
-            formController: FormController,
-            auditEventLogger: org.espen.collect.android.formentry.audit.AuditEventLogger,
-            currentTime: Long
+        formController: FormController,
+        auditEventLogger: AuditEventLogger,
+        currentTime: Long
     ) {
         if (formController.getEvent() == FormEntryController.EVENT_QUESTION ||
             formController.getEvent() == FormEntryController.EVENT_GROUP ||
@@ -25,7 +25,7 @@ object AuditUtils {
                         }
 
                     auditEventLogger.logEvent(
-                        org.espen.collect.android.formentry.audit.AuditEvent.AuditEventType.QUESTION,
+                        AuditEvent.AuditEventType.QUESTION,
                         question.index,
                         true,
                         answer,

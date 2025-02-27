@@ -23,11 +23,6 @@ import android.content.Context;
 import android.util.TypedValue;
 import android.view.View;
 
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.interfaces.FileWidget;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.espen.collect.android.databinding.ArbitraryFileWidgetAnswerBinding;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
@@ -50,11 +45,10 @@ public class ArbitraryFileWidget extends BaseArbitraryFileWidget implements File
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = ArbitraryFileWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
         setupAnswerFile(prompt.getAnswerText());
 
-        binding.arbitraryFileButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
         binding.arbitraryFileAnswerText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, answerFontSize);
 
         binding.arbitraryFileButton.setVisibility(questionDetails.isReadOnly() ? GONE : VISIBLE);

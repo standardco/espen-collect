@@ -4,9 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import org.espen.collect.android.adapters.SelectOneListAdapter;
-import org.espen.collect.android.listeners.SelectItemClickListener;
-import org.espen.collect.android.utilities.MediaUtils;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.reference.ReferenceManager;
 import org.javarosa.form.api.FormEntryPrompt;

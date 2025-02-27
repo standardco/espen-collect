@@ -11,8 +11,8 @@ import androidx.startup.AppInitializer
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
 import com.mapbox.maps.loader.MapboxMapsInitializer
-import org.espen.collect.androidshared.data.getState
-import org.espen.collect.androidshared.network.NetworkStateProvider
+import org.odk.collect.androidshared.data.getState
+import org.odk.collect.async.network.NetworkStateProvider
 import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.MetaKeys
 import org.odk.collect.shared.injection.ObjectProviderHost

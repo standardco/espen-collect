@@ -25,7 +25,7 @@ import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.projects.ProjectsDataService
 import org.espen.collect.android.utilities.FormsRepositoryProvider
 import org.espen.collect.android.utilities.InstancesRepositoryProvider
-import org.espen.collect.androidshared.ui.FragmentFactoryBuilder
+import org.odk.collect.androidshared.ui.FragmentFactoryBuilder
 import org.odk.collect.async.Scheduler
 import org.odk.collect.geo.selection.SelectionMapFragment
 import org.odk.collect.settings.SettingsProvider
@@ -60,8 +60,8 @@ class FormMapActivity : LocalizedActivity() {
                 return FormMapViewModel(
                     resources,
                     formId,
-                    formsRepositoryProvider.get(),
-                    instancesRepositoryProvider.get(),
+                    formsRepositoryProvider.create(),
+                    instancesRepositoryProvider.create(),
                     settingsProvider,
                     scheduler
                 ) as T
@@ -70,7 +70,7 @@ class FormMapActivity : LocalizedActivity() {
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
-        org.espen.collect.android.injection.DaggerUtils.getComponent(this).inject(this)
+        DaggerUtils.getComponent(this).inject(this)
         supportFragmentManager.fragmentFactory = FragmentFactoryBuilder()
             .forClass(SelectionMapFragment::class.java) {
                 SelectionMapFragment(
@@ -90,7 +90,7 @@ class FormMapActivity : LocalizedActivity() {
                 val instanceId = result.getLong(SelectionMapFragment.RESULT_SELECTED_ITEM)
                 startActivity(FormFillingIntentFactory.editInstanceIntent(this, projectsDataService.getCurrentProject().uuid, instanceId))
             } else if (result.containsKey(SelectionMapFragment.RESULT_CREATE_NEW_ITEM)) {
-                startActivity(FormFillingIntentFactory.newInstanceIntent(this, org.espen.collect.android.external.FormsContract.getUri(projectsDataService.getCurrentProject().uuid, formId)))
+                startActivity(FormFillingIntentFactory.newInstanceIntent(this, FormsContract.getUri(projectsDataService.getCurrentProject().uuid, formId)))
             }
         }
     }

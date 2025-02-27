@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import org.espen.collect.android.javarosawrapper.FormController
-import org.espen.collect.androidshared.data.getState
+import org.odk.collect.androidshared.data.getState
 import org.odk.collect.forms.Form
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.shared.strings.UUIDGenerator
@@ -19,6 +19,8 @@ interface FormSessionRepository {
     }
 
     fun set(id: String, formController: FormController, form: Form, instance: Instance?)
+
+    fun update(id: String, instance: Instance?)
 }
 
 class AppStateFormSessionRepository(application: Application) : FormSessionRepository {
@@ -37,8 +39,20 @@ class AppStateFormSessionRepository(application: Application) : FormSessionRepos
         getLiveData(id).value = FormSession(formController, form, instance)
     }
 
+    override fun update(id: String, instance: Instance?) {
+        val liveData = getLiveData(id)
+        liveData.value?.let {
+            liveData.value = it.copy(instance = instance)
+        }
+    }
+
+    /**
+     * Ensure the object gets completely removed. Simply nullifying it might cause memory leaks.
+     * See: https://github.com/getodk/collect/issues/5777
+     */
     override fun clear(id: String) {
         getLiveData(id).value = null
+        appState.clear(getKey(id))
     }
 
     private fun getLiveData(id: String) =

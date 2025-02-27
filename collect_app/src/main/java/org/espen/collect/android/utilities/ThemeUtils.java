@@ -19,7 +19,7 @@ import static android.content.res.Configuration.UI_MODE_NIGHT_YES;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
-import static org.espen.collect.androidshared.system.ContextUtils.getThemeAttributeValue;
+import static org.odk.collect.androidshared.system.ContextUtils.getThemeAttributeValue;
 
 import android.content.Context;
 
@@ -37,7 +37,7 @@ import javax.inject.Inject;
 
 /**
  * @deprecated Use
- * {@link org.espen.collect.androidshared.system.ContextUtils#getThemeAttributeValue(Context, int)}
+ * {@link org.odk.collect.androidshared.system.ContextUtils#getThemeAttributeValue(Context, int)}
  * intead.
  */
 @Deprecated
@@ -123,42 +123,12 @@ public final class ThemeUtils {
     }
 
     @ColorInt
-    public int getColorOnSurfaceLowEmphasis() {
-        return context.getResources().getColor(org.espen.collect.androidshared.R.color.color_on_surface_low_emphasis);
-    }
-
-    @ColorInt
     public int getAccentColor() {
         return getThemeAttributeValue(context, com.google.android.material.R.attr.colorAccent);
     }
 
     @ColorInt
-    public int getIconColor() {
-        return getThemeAttributeValue(context, com.google.android.material.R.attr.colorOnSurface);
-    }
-
-    @ColorInt
     public int getColorPrimary() {
         return getThemeAttributeValue(context, com.google.android.material.R.attr.colorPrimary);
-    }
-
-    @ColorInt
-    public int getColorOnPrimary() {
-        return getThemeAttributeValue(context, com.google.android.material.R.attr.colorOnPrimary);
-    }
-
-    @ColorInt
-    public int getColorSecondary() {
-        return getThemeAttributeValue(context, com.google.android.material.R.attr.colorSecondary);
-    }
-
-    @ColorInt
-    public int getColorError() {
-        return getThemeAttributeValue(context, com.google.android.material.R.attr.colorError);
-    }
-
-    @ColorInt
-    public int getColorPrimaryDark() {
-        return getThemeAttributeValue(context, com.google.android.material.R.attr.colorPrimaryDark);
     }
 }

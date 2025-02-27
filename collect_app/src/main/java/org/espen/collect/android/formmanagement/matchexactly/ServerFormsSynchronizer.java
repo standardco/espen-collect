@@ -1,8 +1,8 @@
 package org.espen.collect.android.formmanagement.matchexactly;
 
 import org.espen.collect.android.formmanagement.LocalFormUseCases;
-import org.espen.collect.android.formmanagement.FormDownloadException;
-import org.espen.collect.android.formmanagement.FormDownloader;
+import org.espen.collect.android.formmanagement.download.FormDownloadException;
+import org.espen.collect.android.formmanagement.download.FormDownloader;
 import org.espen.collect.android.formmanagement.ServerFormDetails;
 import org.espen.collect.android.formmanagement.ServerFormsDetailsFetcher;
 import org.odk.collect.forms.Form;

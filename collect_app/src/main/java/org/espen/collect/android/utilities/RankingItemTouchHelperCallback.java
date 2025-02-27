@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.ItemTouchHelper;
 
 import org.espen.collect.android.adapters.RankingListAdapter;
-import org.espen.collect.android.adapters.RankingListAdapter;
 
 public class RankingItemTouchHelperCallback extends ItemTouchHelper.Callback {
 

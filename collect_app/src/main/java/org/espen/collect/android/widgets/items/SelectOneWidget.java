@@ -22,12 +22,6 @@ import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
 
-import org.espen.collect.android.adapters.AbstractSelectListAdapter;
-import org.espen.collect.android.adapters.SelectOneListAdapter;
-import org.espen.collect.android.exception.JavaRosaException;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.utilities.SelectOneWidgetUtils;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.javarosa.core.model.FormIndex;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectOneData;

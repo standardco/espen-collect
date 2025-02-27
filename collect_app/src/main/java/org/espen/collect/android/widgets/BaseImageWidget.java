@@ -16,8 +16,6 @@
 
 package org.espen.collect.android.widgets;
 
-import static org.espen.collect.android.formentry.questions.WidgetViewUtils.createAnswerImageView;
-
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -32,23 +30,17 @@ import android.widget.Toast;
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 
-import org.espen.collect.android.draw.DrawActivity;
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.interfaces.FileWidget;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.core.reference.InvalidReferenceException;
-import org.espen.collect.android.draw.DrawActivity;
+import org.odk.collect.draw.DrawActivity;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
 import org.espen.collect.android.utilities.ApplicationConstants;
 import org.espen.collect.android.utilities.QuestionMediaManager;
 import org.espen.collect.android.widgets.interfaces.FileWidget;
 import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
 import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard;
 import org.odk.collect.imageloader.GlideImageLoader;
 
 import java.io.File;
@@ -75,6 +67,8 @@ public abstract class BaseImageWidget extends QuestionWidget implements FileWidg
         this.questionMediaManager = questionMediaManager;
         this.waitingForDataRegistry = waitingForDataRegistry;
         this.tmpImageFilePath = tmpImageFilePath;
+
+        binaryName = getFormEntryPrompt().getAnswerText();
     }
 
     @Override
@@ -86,8 +80,8 @@ public abstract class BaseImageWidget extends QuestionWidget implements FileWidg
     public void clearAnswer() {
         deleteFile();
         imageView.setImageDrawable(null);
-        imageView.setVisibility(GONE);
-        errorTextView.setVisibility(GONE);
+        imageView.setVisibility(View.GONE);
+        errorTextView.setVisibility(View.GONE);
         widgetValueChanged();
     }
 
@@ -134,18 +128,18 @@ public abstract class BaseImageWidget extends QuestionWidget implements FileWidg
     }
 
     protected void updateAnswer() {
-        imageView.setVisibility(GONE);
-        errorTextView.setVisibility(GONE);
+        imageView.setVisibility(View.GONE);
+        errorTextView.setVisibility(View.GONE);
 
         if (binaryName != null) {
             File f = getFile();
             if (f != null && f.exists()) {
-                imageView.setVisibility(VISIBLE);
+                imageView.setVisibility(View.VISIBLE);
                 imageLoader.loadImage(imageView, f, ImageView.ScaleType.FIT_CENTER, new GlideImageLoader.ImageLoaderCallback() {
                     @Override
                     public void onLoadFailed() {
-                        imageView.setVisibility(GONE);
-                        errorTextView.setVisibility(VISIBLE);
+                        imageView.setVisibility(View.GONE);
+                        errorTextView.setVisibility(View.VISIBLE);
                     }
 
                     @Override
@@ -154,24 +148,6 @@ public abstract class BaseImageWidget extends QuestionWidget implements FileWidg
                 });
             }
         }
-    }
-
-    protected void setUpLayout() {
-        errorTextView = new TextView(getContext());
-        errorTextView.setId(generateViewId());
-        errorTextView.setText(org.odk.collect.strings.R.string.selected_invalid_image);
-
-        answerLayout = new LinearLayout(getContext());
-        answerLayout.setOrientation(LinearLayout.VERTICAL);
-
-        binaryName = getFormEntryPrompt().getAnswerText();
-
-        imageView = createAnswerImageView(getContext());
-        imageView.setOnClickListener(v -> {
-            if (imageClickHandler != null) {
-                imageClickHandler.clickImage("viewImage");
-            }
-        });
     }
 
     /**

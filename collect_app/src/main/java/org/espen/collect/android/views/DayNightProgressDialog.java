@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 
 import org.espen.collect.android.utilities.ThemeUtils;
-import org.espen.collect.android.utilities.ThemeUtils;
 import org.odk.collect.material.MaterialProgressDialogFragment;
 
 /**

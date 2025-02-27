@@ -6,7 +6,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Lists;
 
-import org.espen.collect.android.utilities.UnderlyingValuesConcat;
 import org.javarosa.core.model.SelectChoice;
 import org.espen.collect.android.utilities.UnderlyingValuesConcat;
 import org.espen.collect.android.widgets.QuestionWidget;

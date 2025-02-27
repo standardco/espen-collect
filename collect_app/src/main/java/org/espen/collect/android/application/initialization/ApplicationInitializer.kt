@@ -4,19 +4,12 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.startup.AppInitializer
 import net.danlew.android.joda.JodaTimeInitializer
-import org.javarosa.core.model.CoreModelModule
-import org.javarosa.core.services.PrototypeManager
-import org.javarosa.core.util.JavaRosaCoreModule
-import org.javarosa.entities.EntityXFormParserFactory
-import org.javarosa.model.xform.XFormsModule
-import org.javarosa.xform.parse.XFormParser
-import org.javarosa.xform.parse.XFormParserFactory
-import org.javarosa.xform.util.XFormUtils
 import org.odk.collect.analytics.Analytics
 import org.espen.collect.android.BuildConfig
-import org.espen.collect.android.application.EspenCollect
+import org.espen.collect.android.application.Collect
 import org.espen.collect.android.application.initialization.upgrade.UpgradeInitializer
-import org.espen.collect.android.logic.actions.setgeopoint.CollectSetGeopointActionHandler
+import org.espen.collect.android.entities.EntitiesRepositoryProvider
+import org.espen.collect.android.projects.ProjectsDataService
 import org.odk.collect.metadata.PropertyManager
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider
@@ -31,7 +24,9 @@ class ApplicationInitializer(
     private val analyticsInitializer: AnalyticsInitializer,
     private val mapsInitializer: MapsInitializer,
     private val projectsRepository: ProjectsRepository,
-    private val settingsProvider: SettingsProvider
+    private val settingsProvider: SettingsProvider,
+    private val entitiesRepositoryProvider: EntitiesRepositoryProvider,
+    private val projectsDataService: ProjectsDataService
 ) {
     fun initialize() {
         initializeLocale()
@@ -49,38 +44,18 @@ class ApplicationInitializer(
             context
         ).initialize()
         mapsInitializer.initialize()
+        JavaRosaInitializer(propertyManager, projectsDataService, entitiesRepositoryProvider, settingsProvider).initialize()
+        SystemThemeMismatchFixInitializer(context).initialize()
     }
 
     private fun initializeFrameworks() {
         initializeLogging()
         AppInitializer.getInstance(context).initializeComponent(JodaTimeInitializer::class.java)
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        initializeJavaRosa()
     }
 
     private fun initializeLocale() {
-        org.espen.collect.android.application.EspenCollect.defaultSysLanguage = Locale.getDefault().language
-    }
-
-    private fun initializeJavaRosa() {
-        propertyManager.reload()
-        org.javarosa.core.services.PropertyManager
-            .setPropertyManager(propertyManager)
-
-        // Register prototypes for classes that FormDef uses
-        PrototypeManager.registerPrototypes(JavaRosaCoreModule.classNames)
-        PrototypeManager.registerPrototypes(CoreModelModule.classNames)
-        XFormsModule().registerModule()
-
-        // When registering prototypes from EspenCollect, a proguard exception also needs to be added
-        PrototypeManager.registerPrototype("org.espen.collect.android.logic.actions.setgeopoint.CollectSetGeopointAction")
-        XFormParser.registerActionHandler(
-            org.espen.collect.android.logic.actions.setgeopoint.CollectSetGeopointActionHandler.ELEMENT_NAME,
-                org.espen.collect.android.logic.actions.setgeopoint.CollectSetGeopointActionHandler()
-        )
-
-        // Configure default parser factory
-        XFormUtils.setXFormParserFactory(EntityXFormParserFactory(XFormParserFactory()))
+        Collect.defaultSysLanguage = Locale.getDefault().language
     }
 
     private fun initializeLogging() {

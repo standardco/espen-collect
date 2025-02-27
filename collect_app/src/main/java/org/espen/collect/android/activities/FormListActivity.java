@@ -1,7 +1,6 @@
 package org.espen.collect.android.activities;
 
 import org.espen.collect.android.database.forms.DatabaseFormColumns;
-import org.espen.collect.android.database.forms.DatabaseFormColumns;
 
 import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_ASC;
 import static org.espen.collect.android.utilities.ApplicationConstants.SortingOrder.BY_DATE_DESC;

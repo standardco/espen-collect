@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.espen.collect.androidshared.utils
+package org.odk.collect.androidshared.utils
 
 import android.util.Patterns
 import android.webkit.URLUtil
@@ -23,9 +23,9 @@ object Validator {
     /*
     There are lots of ways to validate email addresses and it's hard to find one perfect.
     That's why we use here a very simple approach just to confirm that passed string contains:
-        *any number of characters before @ (at least one)
-        *one @ char
-        *any number of characters after @ (at least one)
+        -any number of characters before @ (at least one)
+        -one @ char
+        -any number of characters after @ (at least one)
      */
     @JvmStatic
     fun isEmailAddressValid(emailAddress: String): Boolean {

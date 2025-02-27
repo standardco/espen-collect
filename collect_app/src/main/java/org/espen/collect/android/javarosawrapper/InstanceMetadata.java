@@ -1,6 +1,5 @@
 package org.espen.collect.android.javarosawrapper;
 
-import org.espen.collect.android.utilities.FormNameUtils;
 import org.espen.collect.android.formentry.audit.AuditConfig;
 import org.espen.collect.android.utilities.FormNameUtils;
 

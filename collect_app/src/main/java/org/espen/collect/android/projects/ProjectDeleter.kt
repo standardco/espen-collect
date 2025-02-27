@@ -2,10 +2,10 @@ package org.espen.collect.android.projects
 
 import org.espen.collect.android.backgroundwork.FormUpdateScheduler
 import org.espen.collect.android.backgroundwork.InstanceSubmitScheduler
-import org.espen.collect.android.database.DatabaseConnection
 import org.espen.collect.android.storage.StoragePathProvider
 import org.espen.collect.android.utilities.ChangeLockProvider
 import org.espen.collect.android.utilities.InstancesRepositoryProvider
+import org.odk.collect.db.sqlite.DatabaseConnection
 import org.odk.collect.forms.instances.Instance
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository
@@ -13,14 +13,14 @@ import org.odk.collect.settings.SettingsProvider
 import java.io.File
 
 class ProjectDeleter(
-        private val projectsRepository: ProjectsRepository,
-        private val projectsDataService: ProjectsDataService,
-        private val formUpdateScheduler: org.espen.collect.android.backgroundwork.FormUpdateScheduler,
-        private val instanceSubmitScheduler: org.espen.collect.android.backgroundwork.InstanceSubmitScheduler,
-        private val instancesRepositoryProvider: InstancesRepositoryProvider,
-        private val storagePathProvider: StoragePathProvider,
-        private val changeLockProvider: ChangeLockProvider,
-        private val settingsProvider: SettingsProvider
+    private val projectsRepository: ProjectsRepository,
+    private val projectsDataService: ProjectsDataService,
+    private val formUpdateScheduler: FormUpdateScheduler,
+    private val instanceSubmitScheduler: InstanceSubmitScheduler,
+    private val instancesRepositoryProvider: InstancesRepositoryProvider,
+    private val storagePathProvider: StoragePathProvider,
+    private val changeLockProvider: ChangeLockProvider,
+    private val settingsProvider: SettingsProvider
 ) {
     fun deleteProject(projectId: String = projectsDataService.getCurrentProject().uuid): DeleteProjectResult {
         return when {
@@ -31,8 +31,10 @@ class ProjectDeleter(
     }
 
     private fun unsentInstancesDetected(projectId: String): Boolean {
-        return instancesRepositoryProvider.get(projectId).getAllByStatus(
+        return instancesRepositoryProvider.create(projectId).getAllByStatus(
             Instance.STATUS_INCOMPLETE,
+            Instance.STATUS_INVALID,
+            Instance.STATUS_VALID,
             Instance.STATUS_COMPLETE,
             Instance.STATUS_SUBMISSION_FAILED
         ).isNotEmpty()

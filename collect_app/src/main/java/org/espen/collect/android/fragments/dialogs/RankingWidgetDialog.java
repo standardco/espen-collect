@@ -38,11 +38,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.adapters.RankingListAdapter;
-import org.espen.collect.android.fragments.viewmodels.RankingViewModel;
-import org.espen.collect.android.utilities.RankingItemTouchHelperCallback;
-import org.espen.collect.android.utilities.ViewUtils;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.jetbrains.annotations.NotNull;
@@ -106,8 +101,8 @@ public class RankingWidgetDialog extends DialogFragment {
 
         float standardMargin = requireContext()
                 .getResources()
-                .getDimension(org.espen.collect.androidshared.R.dimen.margin_standard);
-        int standardMarginPx = ViewUtils.pxFromDp(requireContext(), standardMargin);
+                .getDimension(org.odk.collect.androidshared.R.dimen.margin_standard);
+        int standardMarginPx = pxFromDp(requireContext(), standardMargin);
         rankingLayout.setPadding(standardMarginPx, standardMarginPx, standardMarginPx, standardMarginPx);
 
         NestedScrollView scrollView = new NestedScrollView(getContext());

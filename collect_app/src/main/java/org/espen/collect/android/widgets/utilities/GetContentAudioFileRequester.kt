@@ -4,14 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import android.widget.Toast
 import org.javarosa.form.api.FormEntryPrompt
+import org.espen.collect.android.R
 import org.espen.collect.android.utilities.ApplicationConstants
-import org.espen.collect.androidshared.system.IntentLauncher
+import org.odk.collect.androidshared.system.IntentLauncher
 
 class GetContentAudioFileRequester(
     private val activity: Activity,
     private val intentLauncher: IntentLauncher,
-    private val waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
-) : org.espen.collect.android.widgets.utilities.AudioFileRequester {
+    private val waitingForDataRegistry: WaitingForDataRegistry
+) : AudioFileRequester {
 
     override fun requestFile(prompt: FormEntryPrompt) {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -20,7 +21,7 @@ class GetContentAudioFileRequester(
         intentLauncher.launchForResult(
             activity,
             intent,
-            org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.AUDIO_CHOOSER
+            ApplicationConstants.RequestCodes.AUDIO_CHOOSER
         ) {
             Toast.makeText(
                 activity,

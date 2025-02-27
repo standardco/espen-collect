@@ -19,7 +19,7 @@ import android.os.AsyncTask;
 
 import androidx.core.util.Pair;
 
-import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.application.Collect;
 import org.espen.collect.android.formmanagement.FormsDataService;
 import org.espen.collect.android.formmanagement.ServerFormDetails;
 import org.espen.collect.android.formmanagement.ServerFormsDetailsFetcher;
@@ -63,7 +63,7 @@ public class DownloadFormListTask extends AsyncTask<Void, String, Pair<List<Serv
 
     public DownloadFormListTask(ServerFormsDetailsFetcher serverFormsDetailsFetcher) {
         this.serverFormsDetailsFetcher = serverFormsDetailsFetcher;
-        DaggerUtils.getComponent(EspenCollect.getInstance()).inject(this);
+        DaggerUtils.getComponent(Collect.getInstance()).inject(this);
     }
 
     @Override

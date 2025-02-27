@@ -4,7 +4,6 @@ import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_CARTO;
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_GOOGLE;
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_MAPBOX;
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_OSM;
-import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_STAMEN;
 import static org.odk.collect.settings.keys.ProjectKeys.BASEMAP_SOURCE_USGS;
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_BASEMAP_SOURCE;
 import static org.odk.collect.settings.keys.ProjectKeys.KEY_CARTO_MAP_STYLE;
@@ -18,7 +17,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.maps.GoogleMap;
 
-import org.espen.collect.android.application.EspenCollect;
+import org.espen.collect.android.application.Collect;
 import org.espen.collect.android.application.MapboxClassInstanceCreator;
 import org.odk.collect.googlemaps.GoogleMapConfigurator;
 import org.odk.collect.googlemaps.GoogleMapConfigurator.GoogleMapTypeOption;
@@ -38,7 +37,6 @@ public class MapConfiguratorProvider {
     private static final String OSM_COPYRIGHT = "© OpenStreetMap contributors";
     private static final String CARTO_COPYRIGHT = "© CARTO";
     private static final String CARTO_ATTRIBUTION = OSM_COPYRIGHT + ", " + CARTO_COPYRIGHT;
-    private static final String STAMEN_ATTRIBUTION = "Map tiles by Stamen Design, under CC BY 3.0.\nData by OpenStreetMap, under ODbL.";
     private static final String USGS_ATTRIBUTION = "Map services and data available from U.S. Geological Survey,\nNational Geospatial Program.";
 
     private MapConfiguratorProvider() {
@@ -81,9 +79,7 @@ public class MapConfiguratorProvider {
                 new OsmDroidMapConfigurator(
                         new WebMapService(
                                 "Mapnik", 0, 19, 256, OSM_COPYRIGHT,
-                                "http://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                                "http://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                                "http://c.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
                         )
                 )
         ));
@@ -102,14 +98,6 @@ public class MapConfiguratorProvider {
                                 getLocalizedString(getApplication(), org.odk.collect.strings.R.string.openmap_usgs_img), 0, 18, 256, USGS_ATTRIBUTION,
                                 USGS_URL_BASE + "/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}"
                         ))
-                )
-        ));
-        sourceOptions.add(new SourceOption(BASEMAP_SOURCE_STAMEN, org.odk.collect.strings.R.string.basemap_source_stamen,
-                new OsmDroidMapConfigurator(
-                        new WebMapService(
-                                getLocalizedString(getApplication(), org.odk.collect.strings.R.string.openmap_stamen_terrain), 0, 18, 256, STAMEN_ATTRIBUTION,
-                                "http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg"
-                        )
                 )
         ));
         sourceOptions.add(new SourceOption(BASEMAP_SOURCE_CARTO, org.odk.collect.strings.R.string.basemap_source_carto,
@@ -182,8 +170,8 @@ public class MapConfiguratorProvider {
         return sourceOptions[0];
     }
 
-    private static EspenCollect getApplication() {
-        return EspenCollect.getInstance();
+    private static Collect getApplication() {
+        return Collect.getInstance();
     }
 
     private static class SourceOption {

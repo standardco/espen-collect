@@ -7,11 +7,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.espen.collect.android.logic.DatePickerDetails;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
-import org.espen.collect.android.logic.DatePickerDetails;
-import org.espen.collect.android.utilities.DateTimeUtils;
+import org.espen.collect.android.widgets.datetime.DatePickerDetails;
+import org.espen.collect.android.widgets.datetime.DateTimeUtils;
 
 public class DateTimeViewModel extends ViewModel {
     private final MutableLiveData<LocalDateTime> selectedDate = new MutableLiveData<>();

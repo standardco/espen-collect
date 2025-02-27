@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import org.espen.collect.android.injection.DaggerUtils;
 import org.espen.collect.android.formentry.FormEntryViewModel;
 import org.espen.collect.android.formentry.audit.AuditEvent;
 import org.espen.collect.android.injection.DaggerUtils;

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.hamcrest.MatcherAssert.assertThat
@@ -12,14 +13,12 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.kotlin.any
 import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
-import org.espen.collect.androidshared.livedata.MutableNonNullLiveData
-import org.espen.collect.androidtest.ActivityScenarioExtensions.isFinishing
-import org.espen.collect.androidtest.ActivityScenarioLauncherRule
+import org.odk.collect.androidshared.livedata.MutableNonNullLiveData
+import org.odk.collect.androidtest.ActivityScenarioExtensions.isFinishing
+import org.odk.collect.androidtest.ActivityScenarioLauncherRule
 import org.odk.collect.externalapp.ExternalAppUtils
 import org.odk.collect.geo.Constants.EXTRA_RETAIN_MOCK_ACCURACY
 import org.odk.collect.geo.DaggerGeoDependencyComponent
@@ -54,8 +53,11 @@ class GeoPointActivityTest {
                 override fun providesScheduler() = scheduler
 
                 override fun providesGeoPointViewModelFactory(application: Application) =
-                    mock<GeoPointViewModelFactory> {
-                        on { create(eq(GeoPointViewModel::class.java), any()) } doReturn viewModel
+                    object : GeoPointViewModelFactory {
+                        @Suppress("UNCHECKED_CAST")
+                        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                            return viewModel as T
+                        }
                     }
             })
             .build()

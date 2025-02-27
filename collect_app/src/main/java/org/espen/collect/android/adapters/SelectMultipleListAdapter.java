@@ -26,7 +26,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.core.content.ContextCompat;
 
-import org.espen.collect.android.audio.AudioHelper;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.ReferenceManager;
@@ -137,6 +136,10 @@ public class SelectMultipleListAdapter extends AbstractSelectListAdapter {
                 view.setBackground(ContextCompat.getDrawable(view.getContext(), R.drawable.select_item_border));
             }
             playAudio(selection.choice);
+        }
+
+        if (listener != null) {
+            listener.onItemClicked();
         }
     }
 

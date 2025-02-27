@@ -9,7 +9,6 @@ public enum StorageSubdirectory {
     SETTINGS("settings"),
     PROJECTS("projects"),
     SHARED_LAYERS("layers"),
-
     LOOKUPS("lookups");
     private final String directoryName;
 

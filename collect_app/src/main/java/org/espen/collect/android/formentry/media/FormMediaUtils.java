@@ -4,7 +4,6 @@ import android.graphics.Color;
 
 import androidx.annotation.Nullable;
 
-import org.espen.collect.android.utilities.ThemeUtils;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.reference.InvalidReferenceException;
 import org.javarosa.core.reference.ReferenceManager;

@@ -1,33 +1,49 @@
 package org.espen.collect.android.external
 
+import android.content.ContentResolver
 import android.content.Intent
+import android.content.res.Resources
+import android.net.Uri
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.CreationExtras
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.odk.collect.analytics.Analytics
+import org.espen.collect.android.R
 import org.espen.collect.android.activities.FormFillingActivity
 import org.espen.collect.android.analytics.AnalyticsEvents
 import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.instancemanagement.InstanceDeleter
 import org.espen.collect.android.instancemanagement.canBeEdited
 import org.espen.collect.android.projects.ProjectsDataService
+import org.espen.collect.android.savepoints.SavepointUseCases
 import org.espen.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.utilities.ChangeLockProvider
 import org.espen.collect.android.utilities.ContentUriHelper
 import org.espen.collect.android.utilities.FormsRepositoryProvider
 import org.espen.collect.android.utilities.InstancesRepositoryProvider
-import org.odk.collect.forms.Form
+import org.espen.collect.android.utilities.SavepointsRepositoryProvider
+import org.odk.collect.async.Scheduler
+import org.odk.collect.forms.savepoints.Savepoint
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.settings.SettingsProvider
-import org.odk.collect.settings.keys.ProjectKeys
+import org.odk.collect.strings.R.string
+import org.odk.collect.strings.localization.LocalizedActivity
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Locale
 import javax.inject.Inject
 
 /**
  * This class serves as a firewall for starting form filling. It should be used to do that
  * rather than [FormFillingActivity] directly as it ensures that the required data is valid.
  */
-class FormUriActivity : ComponentActivity() {
+class FormUriActivity : LocalizedActivity() {
 
     @Inject
     lateinit var projectsDataService: ProjectsDataService
@@ -42,7 +58,16 @@ class FormUriActivity : ComponentActivity() {
     lateinit var instanceRepositoryProvider: InstancesRepositoryProvider
 
     @Inject
+    lateinit var savepointsRepositoryProvider: SavepointsRepositoryProvider
+
+    @Inject
     lateinit var settingsProvider: SettingsProvider
+
+    @Inject
+    lateinit var scheduler: Scheduler
+
+    @Inject
+    lateinit var changeLockProvider: ChangeLockProvider
 
     private var formFillingAlreadyStarted = false
 
@@ -52,184 +77,84 @@ class FormUriActivity : ComponentActivity() {
             finish()
         }
 
+    private val formUriViewModel by viewModels<FormUriViewModel> {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
+                return FormUriViewModel(
+                    intent,
+                    scheduler,
+                    projectsRepository,
+                    projectsDataService,
+                    contentResolver,
+                    formsRepositoryProvider,
+                    instanceRepositoryProvider,
+                    settingsProvider,
+                    savepointsRepositoryProvider,
+                    changeLockProvider,
+                    resources
+                ) as T
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(this).inject(this)
+        DaggerUtils.getComponent(this).inject(this)
+        setContentView(R.layout.circular_progress_indicator)
 
-        when {
-            !assertProjectListNotEmpty() -> Unit
-            !assertCurrentProjectUsed() -> Unit
-            !assertValidUri() -> Unit
-            !assertFormExists() -> Unit
-            !assertNotNewFormInGoogleDriveProject() -> Unit
-            !assertFormNotEncrypted() -> Unit
-            !assertFormFillingNotAlreadyStarted(savedInstanceState) -> Unit
-            else -> startForm()
+        if (savedInstanceState?.getBoolean(FORM_FILLING_ALREADY_STARTED) == true) {
+            return
         }
-    }
 
-    private fun assertProjectListNotEmpty(): Boolean {
-        val projects = projectsRepository.getAll()
-        return if (projects.isEmpty()) {
-            displayErrorDialog(getString(org.odk.collect.strings.R.string.app_not_configured))
-            false
-        } else {
-            true
-        }
-    }
-
-    private fun assertCurrentProjectUsed(): Boolean {
-        val projects = projectsRepository.getAll()
-        val firstProject = projects.first()
-        val uriProjectId = intent.data?.getQueryParameter("projectId")
-        val projectId = uriProjectId ?: firstProject.uuid
-
-        return if (projectId != projectsDataService.getCurrentProject().uuid) {
-            displayErrorDialog(getString(org.odk.collect.strings.R.string.wrong_project_selected_for_form))
-            false
-        } else {
-            true
-        }
-    }
-
-    private fun assertNotNewFormInGoogleDriveProject(): Boolean {
-        val uri = intent.data!!
-        val uriMimeType = contentResolver.getType(uri)
-        return if (uriMimeType == org.espen.collect.android.external.InstancesContract.CONTENT_ITEM_TYPE) {
-            true
-        } else {
-            val unprotectedSettings = settingsProvider.getUnprotectedSettings()
-            val protocol = unprotectedSettings.getString(ProjectKeys.KEY_PROTOCOL)
-            if (ProjectKeys.PROTOCOL_GOOGLE_SHEETS == protocol) {
-                displayErrorDialog(getString(org.odk.collect.strings.R.string.cannot_start_new_forms_in_google_drive_projects))
-                false
-            } else {
-                true
+        formUriViewModel.formInspectionResult.observe(this) {
+            when (it) {
+                is FormInspectionResult.Error -> displayErrorDialog(it.error)
+                is FormInspectionResult.Savepoint -> displaySavePointRecoveryDialog(it.savepoint)
+                is FormInspectionResult.Valid -> startForm(intent.data!!)
             }
         }
     }
 
-    private fun assertValidUri(): Boolean {
-        val isUriValid = intent.data?.let {
-            val uriMimeType = contentResolver.getType(it)
-            if (uriMimeType == null) {
-                return@let false
-            } else {
-                return@let uriMimeType == org.espen.collect.android.external.FormsContract.CONTENT_ITEM_TYPE || uriMimeType == org.espen.collect.android.external.InstancesContract.CONTENT_ITEM_TYPE
-            }
-        } ?: false
-
-        return if (!isUriValid) {
-            displayErrorDialog(getString(org.odk.collect.strings.R.string.unrecognized_uri))
-            false
-        } else {
-            true
-        }
-    }
-
-    private fun assertFormExists(): Boolean {
-        val uri = intent.data!!
-        val uriMimeType = contentResolver.getType(uri)
-
-        val doesFormExist = if (uriMimeType == org.espen.collect.android.external.FormsContract.CONTENT_ITEM_TYPE) {
-            formsRepositoryProvider.get().get(ContentUriHelper.getIdFromUri(uri))?.let {
-                File(it.formFilePath).exists()
-            } ?: false
-        } else {
-            instanceRepositoryProvider.get().get(ContentUriHelper.getIdFromUri(uri))?.let {
-                if (!File(it.instanceFilePath).exists()) {
-                    Analytics.log(AnalyticsEvents.OPEN_DELETED_INSTANCE)
-                    InstanceDeleter(instanceRepositoryProvider.get(), formsRepositoryProvider.get()).delete(it.dbId)
-                    displayErrorDialog(getString(org.odk.collect.strings.R.string.instance_deleted_message))
-                    return false
+    private fun displaySavePointRecoveryDialog(savepoint: Savepoint) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(string.savepoint_recovery_dialog_title)
+            .setMessage(SimpleDateFormat(getString(string.savepoint_recovery_dialog_message), Locale.getDefault()).format(File(savepoint.savepointFilePath).lastModified()))
+            .setPositiveButton(string.recover) { _, _ ->
+                val uri = intent.data!!
+                val uriMimeType = contentResolver.getType(uri)!!
+                if (uriMimeType == FormsContract.CONTENT_ITEM_TYPE) {
+                    startForm(FormsContract.getUri(projectsDataService.getCurrentProject().uuid, savepoint.formDbId))
+                } else {
+                    startForm(intent.data!!)
                 }
-
-                val candidateForms = formsRepositoryProvider.get().getAllByFormIdAndVersion(it.formId, it.formVersion)
-
-                if (candidateForms.isEmpty()) {
-                    val version = if (it.formVersion == null) {
-                        ""
-                    } else {
-                        "\n${getString(org.odk.collect.strings.R.string.version)} ${it.formVersion}"
-                    }
-
-                    displayErrorDialog(getString(org.odk.collect.strings.R.string.parent_form_not_present, "${it.formId}$version"))
-                    return false
-                } else if (candidateForms.count { form: Form -> !form.isDeleted } > 1) {
-                    displayErrorDialog(getString(org.odk.collect.strings.R.string.survey_multiple_forms_error))
-                    return false
-                }
-
-                true
-            } ?: false
-        }
-
-        return if (!doesFormExist) {
-            displayErrorDialog(getString(org.odk.collect.strings.R.string.bad_uri))
-            false
-        } else {
-            true
-        }
-    }
-
-    private fun assertFormNotEncrypted(): Boolean {
-        val uri = intent.data!!
-        val uriMimeType = contentResolver.getType(uri)
-
-        return if (uriMimeType == org.espen.collect.android.external.InstancesContract.CONTENT_ITEM_TYPE) {
-            val instance = instanceRepositoryProvider.get().get(ContentUriHelper.getIdFromUri(uri))
-            if (instance!!.canEditWhenComplete()) {
-                true
-            } else {
-                displayErrorDialog(getString(org.odk.collect.strings.R.string.encrypted_form))
-                false
             }
-        } else {
-            true
-        }
+            .setNegativeButton(string.do_not_recover) { _, _ ->
+                formUriViewModel.deleteSavepoint(savepoint)
+            }
+            .setOnCancelListener { finish() }
+            .create()
+            .show()
     }
 
-    private fun assertFormFillingNotAlreadyStarted(savedInstanceState: Bundle?): Boolean {
-        if (savedInstanceState != null) {
-            formFillingAlreadyStarted = savedInstanceState.getBoolean(FORM_FILLING_ALREADY_STARTED)
-        }
-        return !formFillingAlreadyStarted
-    }
-
-    private fun startForm() {
+    private fun startForm(uri: Uri) {
         formFillingAlreadyStarted = true
         openForm.launch(
-            Intent(this, org.espen.collect.android.activities.FormFillingActivity::class.java).apply {
+            Intent(this, FormFillingActivity::class.java).apply {
                 action = intent.action
-                data = intent.data
+                data = uri
                 intent.extras?.let { sourceExtras -> putExtras(sourceExtras) }
-                if (!canFormBeEdited()) {
-                    putExtra(org.espen.collect.android.utilities.ApplicationConstants.BundleKeys.FORM_MODE, org.espen.collect.android.utilities.ApplicationConstants.FormModes.VIEW_SENT)
-                }
             }
         )
     }
 
     private fun displayErrorDialog(message: String) {
         MaterialAlertDialogBuilder(this)
+            .setTitle(string.form_cannot_be_used)
             .setMessage(message)
-            .setPositiveButton(org.odk.collect.strings.R.string.ok) { _, _ -> finish() }
+            .setPositiveButton(string.ok) { _, _ -> finish() }
+            .setOnCancelListener { finish() }
             .create()
             .show()
-    }
-
-    private fun canFormBeEdited(): Boolean {
-        val uri = intent.data!!
-        val uriMimeType = contentResolver.getType(uri)
-
-        val formEditingEnabled = if (uriMimeType == org.espen.collect.android.external.InstancesContract.CONTENT_ITEM_TYPE) {
-            val instance = instanceRepositoryProvider.get().get(ContentUriHelper.getIdFromUri(uri))
-            instance!!.canBeEdited(settingsProvider)
-        } else {
-            true
-        }
-
-        return formEditingEnabled
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -240,4 +165,234 @@ class FormUriActivity : ComponentActivity() {
     companion object {
         private const val FORM_FILLING_ALREADY_STARTED = "FORM_FILLING_ALREADY_STARTED"
     }
+}
+
+private class FormUriViewModel(
+    private val intent: Intent,
+    private val scheduler: Scheduler,
+    private val projectsRepository: ProjectsRepository,
+    private val projectsDataService: ProjectsDataService,
+    private val contentResolver: ContentResolver,
+    private val formsRepositoryProvider: FormsRepositoryProvider,
+    private val instancesRepositoryProvider: InstancesRepositoryProvider,
+    private val settingsProvider: SettingsProvider,
+    private val savepointsRepositoryProvider: SavepointsRepositoryProvider,
+    private val changeLockProvider: ChangeLockProvider,
+    private val resources: Resources
+) : ViewModel() {
+    private val uri: Uri? = intent.data
+
+    private val _formInspectionResult = MutableLiveData<FormInspectionResult>()
+    val formInspectionResult: LiveData<FormInspectionResult> = _formInspectionResult
+
+    init {
+        scheduler.immediate(
+            background = {
+                val error = assertProjectListNotEmpty()
+                    ?: assertCurrentProjectUsed()
+                    ?: assertValidUri()
+                    ?: assertFormExists()
+                    ?: assertFormNotEncrypted()
+                    ?: assertNonEditableFormsAreStartedWithCorrectMode()
+                    ?: assertDoesNotUseEntitiesOrFormsUpdateNotInProgress()
+                if (error != null) {
+                    FormInspectionResult.Error(error)
+                } else {
+                    getSavePoint()?.let {
+                        FormInspectionResult.Savepoint(it)
+                    } ?: FormInspectionResult.Valid
+                }
+            },
+            foreground = {
+                _formInspectionResult.value = it
+            }
+        )
+    }
+
+    private fun assertProjectListNotEmpty(): String? {
+        val projects = projectsRepository.getAll()
+        return if (projects.isEmpty()) {
+            resources.getString(string.app_not_configured)
+        } else {
+            null
+        }
+    }
+
+    private fun assertCurrentProjectUsed(): String? {
+        val projects = projectsRepository.getAll()
+        val firstProject = projects.first()
+        val uriProjectId = uri?.getQueryParameter("projectId")
+        val projectId = uriProjectId ?: firstProject.uuid
+
+        return if (projectId != projectsDataService.getCurrentProject().uuid) {
+            resources.getString(string.wrong_project_selected_for_form)
+        } else {
+            null
+        }
+    }
+
+    private fun assertValidUri(): String? {
+        val isUriValid = uri?.let {
+            val uriMimeType = contentResolver.getType(it)
+            if (uriMimeType == null) {
+                false
+            } else {
+                uriMimeType == FormsContract.CONTENT_ITEM_TYPE || uriMimeType == InstancesContract.CONTENT_ITEM_TYPE
+            }
+        } ?: false
+
+        //return null
+        return if (!isUriValid) {
+            resources.getString(string.unrecognized_uri)
+        } else {
+            null
+        }
+    }
+
+    private fun assertFormExists(): String? {
+        val uriMimeType = contentResolver.getType(uri!!)
+
+        return if (uriMimeType == FormsContract.CONTENT_ITEM_TYPE) {
+            val formExists =
+                formsRepositoryProvider.create().get(ContentUriHelper.getIdFromUri(uri))?.let {
+                    File(it.formFilePath).exists()
+                } ?: false
+
+            if (formExists) {
+                null
+            } else {
+                resources.getString(string.bad_uri)
+            }
+        } else {
+            val instance = instancesRepositoryProvider.create().get(ContentUriHelper.getIdFromUri(uri))
+            if (instance == null) {
+                resources.getString(string.bad_uri)
+            } else if (!File(instance.instanceFilePath).exists()) {
+                Analytics.log(AnalyticsEvents.OPEN_DELETED_INSTANCE)
+                InstanceDeleter(
+                    instancesRepositoryProvider.create(),
+                    formsRepositoryProvider.create()
+                ).delete(instance.dbId)
+                resources.getString(string.instance_deleted_message)
+            } else {
+                val candidateForms = formsRepositoryProvider.create()
+                    .getAllByFormIdAndVersion(instance.formId, instance.formVersion)
+
+                if (candidateForms.isEmpty()) {
+                    val version = if (instance.formVersion == null) {
+                        ""
+                    } else {
+                        "\n${resources.getString(string.version)} ${instance.formVersion}"
+                    }
+
+                    resources.getString(string.parent_form_not_present, "${instance.formId}$version")
+                } else if (candidateForms.filter { !it.isDeleted }.size > 1) {
+                    resources.getString(string.survey_multiple_forms_error)
+                } else {
+                    null
+                }
+            }
+        }
+    }
+
+    private fun assertFormNotEncrypted(): String? {
+        val uriMimeType = contentResolver.getType(uri!!)
+
+        return if (uriMimeType == InstancesContract.CONTENT_ITEM_TYPE) {
+            val instance = instancesRepositoryProvider.create().get(ContentUriHelper.getIdFromUri(uri))
+            if (instance!!.canEditWhenComplete()) {
+                null
+            } else {
+                resources.getString(string.encrypted_form)
+            }
+        } else {
+            null
+        }
+    }
+
+    private fun assertNonEditableFormsAreStartedWithCorrectMode(): String? {
+        if (!canFormBeEdited()) {
+            intent.putExtra(
+                ApplicationConstants.BundleKeys.FORM_MODE,
+                ApplicationConstants.FormModes.VIEW_SENT
+            )
+        }
+        return null
+    }
+
+    private fun assertDoesNotUseEntitiesOrFormsUpdateNotInProgress(): String? {
+        val uriMimeType = contentResolver.getType(uri!!)
+        val projectId = projectsDataService.getCurrentProject().uuid
+
+        if (intent.extras?.getString(ApplicationConstants.BundleKeys.FORM_MODE) == ApplicationConstants.FormModes.VIEW_SENT) {
+            return null
+        }
+
+        val usesEntities = if (uriMimeType == FormsContract.CONTENT_ITEM_TYPE) {
+            val form = formsRepositoryProvider.create().get(ContentUriHelper.getIdFromUri(uri))!!
+            form.usesEntities()
+        } else {
+            val instance = instancesRepositoryProvider.create().get(ContentUriHelper.getIdFromUri(uri))!!
+            val form = formsRepositoryProvider.create().getAllByFormIdAndVersion(instance.formId, instance.formVersion).first()
+            form.usesEntities()
+        }
+
+        if (usesEntities) {
+            val formsLock = changeLockProvider.create(projectId).formsLock
+            val isLocAcquired = formsLock.tryLock()
+
+            return if (isLocAcquired) {
+                null
+            } else {
+                resources.getString(string.cannot_open_form_because_of_forms_update)
+            }
+        } else {
+            return null
+        }
+    }
+
+    private fun getSavePoint(): Savepoint? {
+        val uriMimeType = contentResolver.getType(uri!!)!!
+
+        return SavepointUseCases.getSavepoint(
+            uri,
+            uriMimeType,
+            formsRepositoryProvider.create(),
+            instancesRepositoryProvider.create(),
+            savepointsRepositoryProvider.create()
+        )
+    }
+
+    fun deleteSavepoint(savepoint: Savepoint) {
+        scheduler.immediate(
+            background = {
+                if (savepoint.instanceDbId == null) {
+                    File(savepoint.instanceFilePath).parentFile?.deleteRecursively()
+                }
+                savepointsRepositoryProvider.create().delete(savepoint.formDbId, savepoint.instanceDbId)
+            },
+            foreground = {
+                _formInspectionResult.value = FormInspectionResult.Valid
+            }
+        )
+    }
+
+    private fun canFormBeEdited(): Boolean {
+        val uriMimeType = contentResolver.getType(uri!!)
+
+        val formEditingEnabled = if (uriMimeType == InstancesContract.CONTENT_ITEM_TYPE) {
+            val instance = instancesRepositoryProvider.create().get(ContentUriHelper.getIdFromUri(uri))
+            instance!!.canBeEdited(settingsProvider)
+        } else {
+            true
+        }
+
+        return formEditingEnabled
+    }
+}
+
+private sealed class FormInspectionResult {
+    data class Error(val error: String) : FormInspectionResult()
+    data class Savepoint(val savepoint: org.odk.collect.forms.savepoints.Savepoint) : FormInspectionResult()
+    data object Valid : FormInspectionResult()
 }

@@ -7,18 +7,18 @@ interface GeoDataRequester {
     fun requestGeoPoint(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     )
 
     fun requestGeoShape(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     )
 
     fun requestGeoTrace(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     )
 }

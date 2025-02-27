@@ -6,9 +6,9 @@ import org.odk.collect.settings.SettingsProvider
 import org.odk.collect.settings.keys.ProjectKeys
 
 class AnalyticsInitializer(
-        private val analytics: Analytics,
-        private val versionInformation: org.espen.collect.android.version.VersionInformation,
-        private val settingsProvider: SettingsProvider
+    private val analytics: Analytics,
+    private val versionInformation: VersionInformation,
+    private val settingsProvider: SettingsProvider
 ) {
 
     fun initialize() {

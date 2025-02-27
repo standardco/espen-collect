@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import org.espen.collect.android.utilities.AdminPasswordProvider
-import org.espen.collect.androidshared.data.Consumable
+import org.odk.collect.androidshared.data.Consumable
 
-class ProjectPreferencesViewModel(adminPasswordProvider: org.espen.collect.android.utilities.AdminPasswordProvider) : ViewModel() {
+class ProjectPreferencesViewModel(adminPasswordProvider: AdminPasswordProvider) : ViewModel() {
     enum class State {
         LOCKED, // Admin password is set but not entered
         UNLOCKED, // Admin password is set and entered
@@ -43,7 +43,7 @@ class ProjectPreferencesViewModel(adminPasswordProvider: org.espen.collect.andro
         _state.value = Consumable(State.NOT_PROTECTED)
     }
 
-    open class Factory(private val adminPasswordProvider: org.espen.collect.android.utilities.AdminPasswordProvider) : ViewModelProvider.Factory {
+    open class Factory(private val adminPasswordProvider: AdminPasswordProvider) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return ProjectPreferencesViewModel(adminPasswordProvider) as T
         }

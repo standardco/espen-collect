@@ -43,7 +43,7 @@ object FormFillingIntentFactory {
     ): Intent {
         return Intent(context, clazz.java).also {
             it.action = Intent.ACTION_EDIT
-            it.data = org.espen.collect.android.external.InstancesContract.getUri(projectId, instanceId)
+            it.data = InstancesContract.getUri(projectId, instanceId)
         }
     }
 }

@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import org.jetbrains.annotations.NotNull;
 import org.espen.collect.android.R;
-import org.espen.collect.androidshared.ui.ToastUtils;
-import org.odk.collect.entities.EntityBrowserActivity;
+import org.odk.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.entities.browser.EntityBrowserActivity;
 
 public class ExperimentalPreferencesFragment extends BaseProjectPreferencesFragment {
 

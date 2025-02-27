@@ -5,12 +5,6 @@ import static org.espen.collect.android.formentry.media.FormMediaUtils.getPlayCo
 import android.annotation.SuppressLint;
 import android.content.Context;
 
-import org.espen.collect.android.activities.FormFillingActivity;
-import org.espen.collect.android.utilities.Appearances;
-import org.espen.collect.android.utilities.HtmlUtils;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
-import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.SelectMultiData;
 import org.javarosa.core.model.data.helper.Selection;
@@ -23,7 +17,7 @@ import org.espen.collect.android.utilities.HtmlUtils;
 import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.espen.collect.android.widgets.warnings.SpacesInUnderlyingValuesWarning;
-import org.espen.collect.androidshared.ui.DialogFragmentUtils;
+import org.odk.collect.androidshared.ui.DialogFragmentUtils;
 
 import java.util.ArrayList;
 import java.util.List;

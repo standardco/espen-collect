@@ -12,23 +12,30 @@ import org.espen.collect.android.formentry.BackgroundAudioViewModel.RecordAudioA
 import org.espen.collect.android.formentry.FormEndViewModel
 import org.espen.collect.android.formentry.FormEntryViewModel
 import org.espen.collect.android.formentry.FormSessionRepository
+import org.espen.collect.android.formentry.PrinterWidgetViewModel
 import org.espen.collect.android.formentry.audit.IdentityPromptViewModel
 import org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationHelper
 import org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationManager
 import org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel
 import org.espen.collect.android.formentry.saving.DiskFormSaver
 import org.espen.collect.android.formentry.saving.FormSaveViewModel
+import org.espen.collect.android.instancemanagement.InstancesDataService
 import org.espen.collect.android.instancemanagement.autosend.AutoSendSettingsProvider
 import org.espen.collect.android.projects.ProjectsDataService
 import org.espen.collect.android.utilities.ApplicationConstants
+import org.espen.collect.android.utilities.ChangeLockProvider
+import org.espen.collect.android.utilities.FormsRepositoryProvider
 import org.espen.collect.android.utilities.InstancesRepositoryProvider
 import org.espen.collect.android.utilities.LookUpRepositoryProvider
 import org.espen.collect.android.utilities.MediaUtils
+import org.espen.collect.android.utilities.SavepointsRepositoryProvider
 import org.odk.collect.async.Scheduler
 import org.odk.collect.audiorecorder.recording.AudioRecorder
 import org.odk.collect.location.LocationClient
 import org.odk.collect.permissions.PermissionsChecker
 import org.odk.collect.permissions.PermissionsProvider
+import org.odk.collect.printer.HtmlPrinter
+import org.odk.collect.qrcode.QRCodeCreator
 import org.odk.collect.settings.SettingsProvider
 import java.util.function.BiConsumer
 
@@ -47,9 +54,14 @@ class FormEntryViewModelFactory(
     private val fusedLocationClient: LocationClient,
     private val permissionsProvider: PermissionsProvider,
     private val autoSendSettingsProvider: AutoSendSettingsProvider,
+    private val formsRepositoryProvider: FormsRepositoryProvider,
     private val instancesRepositoryProvider: InstancesRepositoryProvider,
     private val lookupRepositoryProvider: LookUpRepositoryProvider,
-
+    private val savepointsRepositoryProvider: SavepointsRepositoryProvider,
+    private val qrCodeCreator: QRCodeCreator,
+    private val htmlPrinter: HtmlPrinter,
+    private val instancesDataService: InstancesDataService,
+    private val changeLockProvider: ChangeLockProvider
 ) : AbstractSavedStateViewModelFactory(owner, null) {
 
     override fun <T : ViewModel> create(
@@ -60,33 +72,37 @@ class FormEntryViewModelFactory(
         val projectId = projectsDataService.getCurrentProject().uuid
 
         return when (modelClass) {
-            org.espen.collect.android.formentry.FormEntryViewModel::class.java -> org.espen.collect.android.formentry.FormEntryViewModel(
-                    System::currentTimeMillis,
-                    scheduler,
-                    formSessionRepository,
-                    lookupRepositoryProvider.get(projectId),
-                    sessionId
+            FormEntryViewModel::class.java -> FormEntryViewModel(
+                System::currentTimeMillis,
+                scheduler,
+                formSessionRepository,
+                sessionId,
+                formsRepositoryProvider.create(projectId),
+                lookupRepositoryProvider.create(projectId),
+                changeLockProvider.create(projectId)
             )
 
-            org.espen.collect.android.formentry.saving.FormSaveViewModel::class.java -> {
-                org.espen.collect.android.formentry.saving.FormSaveViewModel(
-                        handle,
-                        System::currentTimeMillis,
-                        org.espen.collect.android.formentry.saving.DiskFormSaver(),
-                        mediaUtils,
-                        scheduler,
-                        audioRecorder,
-                        projectsDataService,
-                        formSessionRepository.get(sessionId),
-                        entitiesRepositoryProvider.get(projectId),
-                        instancesRepositoryProvider.get(projectId),
-                        lookupRepositoryProvider.get(projectId)
+            FormSaveViewModel::class.java -> {
+                FormSaveViewModel(
+                    handle,
+                    System::currentTimeMillis,
+                    DiskFormSaver(),
+                    mediaUtils,
+                    scheduler,
+                    audioRecorder,
+                    projectsDataService,
+                    formSessionRepository.get(sessionId),
+                    entitiesRepositoryProvider.create(projectId),
+                    instancesRepositoryProvider.create(projectId),
+                    lookupRepositoryProvider.create(projectId),
+                    savepointsRepositoryProvider.create(projectId),
+                    instancesDataService,
                 )
             }
 
-            org.espen.collect.android.formentry.BackgroundAudioViewModel::class.java -> {
+            BackgroundAudioViewModel::class.java -> {
                 val recordAudioActionRegistry =
-                    if (mode == org.espen.collect.android.utilities.ApplicationConstants.FormModes.VIEW_SENT) {
+                    if (mode == ApplicationConstants.FormModes.VIEW_SENT) {
                         object : RecordAudioActionRegistry {
                             override fun register(listener: BiConsumer<TreeReference, String?>) {}
                             override fun unregister() {}
@@ -105,31 +121,31 @@ class FormEntryViewModelFactory(
                         }
                     }
 
-                org.espen.collect.android.formentry.BackgroundAudioViewModel(
-                        audioRecorder,
+                BackgroundAudioViewModel(
+                    audioRecorder,
+                    settingsProvider.getUnprotectedSettings(),
+                    recordAudioActionRegistry,
+                    permissionsChecker,
+                    System::currentTimeMillis,
+                    formSessionRepository.get(sessionId)
+                )
+            }
+
+            BackgroundLocationViewModel::class.java -> {
+                val locationManager = BackgroundLocationManager(
+                    fusedLocationClient,
+                    BackgroundLocationHelper(
+                        permissionsProvider,
                         settingsProvider.getUnprotectedSettings(),
-                        recordAudioActionRegistry,
-                        permissionsChecker,
-                        System::currentTimeMillis,
-                        formSessionRepository.get(sessionId)
-                )
-            }
-
-            org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel::class.java -> {
-                val locationManager = org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationManager(
-                        fusedLocationClient,
-                        org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationHelper(
-                                permissionsProvider,
-                                settingsProvider.getUnprotectedSettings()
-                        ) {
-                            formSessionRepository.get(sessionId).value?.formController
-                        }
+                        formSessionRepository,
+                        sessionId
+                    )
                 )
 
-                org.espen.collect.android.formentry.backgroundlocation.BackgroundLocationViewModel(locationManager)
+                BackgroundLocationViewModel(locationManager)
             }
 
-            org.espen.collect.android.formentry.audit.IdentityPromptViewModel::class.java -> org.espen.collect.android.formentry.audit.IdentityPromptViewModel()
+            IdentityPromptViewModel::class.java -> IdentityPromptViewModel()
 
             FormEndViewModel::class.java -> FormEndViewModel(
                 formSessionRepository,
@@ -137,6 +153,8 @@ class FormEntryViewModelFactory(
                 settingsProvider,
                 autoSendSettingsProvider
             )
+
+            PrinterWidgetViewModel::class.java -> PrinterWidgetViewModel(scheduler, qrCodeCreator, htmlPrinter)
 
             else -> throw IllegalArgumentException()
         } as T

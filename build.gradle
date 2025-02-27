@@ -1,9 +1,6 @@
 import dependencies.Versions
 apply from: 'secrets.gradle'
 
-// Plugin for detecting outdated dependencies. Run './gradlew dependencyUpdates' to generate a report.
-apply plugin: "com.github.ben-manes.versions"
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -16,13 +13,12 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.0.2'
-        classpath 'com.google.gms:google-services:4.3.15'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.6'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.22"
-        classpath "org.jlleitschuh.gradle:ktlint-gradle:11.4.2"
-        classpath "com.github.ben-manes:gradle-versions-plugin:0.47.0"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.6.0"
+        classpath 'com.android.tools.build:gradle:8.8.1'
+        classpath 'com.google.gms:google-services:4.4.2'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:12.1.1"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.7.7"
         classpath "com.google.android.gms:oss-licenses-plugin:0.10.6"
     }
 }
@@ -78,29 +74,6 @@ task checkCode(type: GradleBuild) {
     tasks = ['pmd', 'ktlintCheck', 'checkstyle', 'lintDebug']
 }
 
-task checkTests(type: GradleBuild) {
-    tasks = ['testDebugUnitTest', 'connectedDebugAndroidTest']
-}
-
-task checkAll(type: GradleBuild) {
-    tasks = ['checkCode', 'checkTests']
-}
-
-task checkFeature(type: GradleBuild) {
-    tasks = ["connectedDebugAndroidTest"]
-    startParameter.projectProperties = ["android.testInstrumentationRunnerArguments.package": "org.espen.collect.android.feature"]
-}
-
-task checkRegression(type: GradleBuild) {
-    tasks = ["connectedDebugAndroidTest"]
-    startParameter.projectProperties = ["android.testInstrumentationRunnerArguments.package": "org.espen.collect.android.regression"]
-}
-
-task checkInstrumented(type: GradleBuild) {
-    tasks = ["connectedDebugAndroidTest"]
-    startParameter.projectProperties = ["android.testInstrumentationRunnerArguments.package": "org.espen.collect.android.instrumented"]
-}
-
 // Create local Maven repo from cached Gradle dependencies
 task cacheToMavenLocal(type: Sync) {
     from new File(gradle.gradleUserHomeDir, 'caches/modules-2/files-2.1')
@@ -118,4 +91,28 @@ task cacheToMavenLocal(type: Sync) {
     }
 
     includeEmptyDirs false
+}
+
+tasks.register('testLab') {
+    dependsOn "collect_app:assembleDebug", "collect_app:assembleDebugAndroidTest"
+    doLast {
+        exec {
+            executable 'gcloud'
+            args('beta', 'firebase', 'test', 'android', 'run',
+                    '--type', 'instrumentation',
+                    '--num-uniform-shards=25',
+                    '--app', 'collect_app/build/outputs/apk/debug/ODK-Collect-debug.apk',
+                    '--test', 'collect_app/build/outputs/apk/androidTest/debug/ODK-Collect-debug-androidTest.apk',
+                    '--device', 'model=MediumPhone.arm,version=34,locale=en,orientation=portrait',
+                    '--timeout', '10m',
+                    '--directories-to-pull', '/sdcard',
+                    '--test-targets', "notPackage org.espen.collect.android.regression",
+                    '--test-targets', "notPackage org.espen.collect.android.benchmark"
+            )
+        }
+    }
+}
+
+tasks.register('releaseCheck') {
+    dependsOn "testLab", "collect_app:assembleOdkCollectRelease"
 }

@@ -1,6 +1,6 @@
 shared:test
 androidshared:testDebug
-formstest:test
+forms-test:test
 async:testDebug
 strings:testDebug
 audioclips:testDebug

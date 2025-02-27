@@ -21,17 +21,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.espen.collect.android.R
-import org.espen.collect.android.analytics.AnalyticsEvents
-import org.espen.collect.android.analytics.AnalyticsUtils
 import org.espen.collect.android.formlists.blankformlist.BlankFormListItem
 import org.espen.collect.android.formlists.blankformlist.BlankFormListViewModel
 import org.espen.collect.android.injection.DaggerUtils
-import org.espen.collect.androidshared.livedata.LiveDataUtils
+import org.odk.collect.androidshared.livedata.LiveDataUtils
 import org.odk.collect.settings.SettingsProvider
 import javax.inject.Inject
 
 /**
- * Allows the user to create desktop shortcuts to any form currently available to EspenCollect
+ * Allows the user to create desktop shortcuts to any form currently available to Collect
  */
 class AndroidShortcutsActivity : AppCompatActivity() {
     @Inject
@@ -44,7 +42,7 @@ class AndroidShortcutsActivity : AppCompatActivity() {
 
     public override fun onCreate(bundle: Bundle?) {
         super.onCreate(bundle)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(this).inject(this)
+        DaggerUtils.getComponent(this).inject(this)
 
         LiveDataUtils.observeUntilNotNull(viewModel.formsToDisplay) { forms ->
             showFormListDialog(forms)
@@ -59,10 +57,6 @@ class AndroidShortcutsActivity : AppCompatActivity() {
                     .map { it.formName }
                     .toTypedArray()
             ) { _: DialogInterface?, item: Int ->
-                AnalyticsUtils.logServerEvent(
-                    AnalyticsEvents.CREATE_SHORTCUT,
-                    settingsProvider.getUnprotectedSettings()
-                )
                 val intent = getShortcutIntent(blankFormListItems, item)
                 setResult(RESULT_OK, intent)
                 finish()

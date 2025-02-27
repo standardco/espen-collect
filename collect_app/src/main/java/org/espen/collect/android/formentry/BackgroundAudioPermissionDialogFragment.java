@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.android.injection.DaggerUtils;
 import org.odk.collect.permissions.PermissionListener;
 import org.odk.collect.permissions.PermissionsProvider;
 

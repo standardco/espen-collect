@@ -22,21 +22,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.util.TypedValue;
 import android.view.View;
-import android.widget.EditText;
 
-import org.espen.collect.android.activities.BearingActivity;
-import org.espen.collect.android.utilities.ApplicationConstants;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
+import androidx.core.content.ContextCompat;
+
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.javarosa.form.api.FormEntryPrompt;
+import org.espen.collect.android.R;
 import org.espen.collect.android.activities.BearingActivity;
 import org.espen.collect.android.databinding.BearingWidgetAnswerBinding;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.androidshared.ui.ToastUtils;
+import org.espen.collect.android.widgets.utilities.StringWidgetUtils;
+import org.odk.collect.androidshared.ui.ToastUtils;
 import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
 import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
@@ -59,22 +57,22 @@ public class BearingWidget extends QuestionWidget implements WidgetDataReceiver 
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = BearingWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
 
         if (prompt.isReadOnly()) {
             binding.bearingButton.setVisibility(GONE);
         } else {
-            binding.bearingButton.setTextSize(TypedValue.COMPLEX_UNIT_DIP, controlFontSize);
             binding.bearingButton.setOnClickListener(v -> onButtonClick());
         }
-        binding.answerText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, answerFontSize);
-        binding.answerText.setBackground(null);
+        binding.widgetAnswerText.init(answerFontSize, true, null, false, this::widgetValueChanged);
+        Double answer = StringWidgetUtils.getDoubleAnswerValueFromIAnswerData(questionDetails.getPrompt().getAnswerValue());
+        binding.widgetAnswerText.setDecimalType(false, answer);
 
         String answerText = prompt.getAnswerText();
+        binding.widgetAnswerText.setAnswer(answerText);
         if (answerText != null && !answerText.isEmpty()) {
             binding.bearingButton.setText(getContext().getString(org.odk.collect.strings.R.string.replace_bearing));
-            binding.answerText.setText(answerText);
         }
 
         return binding.getRoot();
@@ -82,35 +80,33 @@ public class BearingWidget extends QuestionWidget implements WidgetDataReceiver 
 
     @Override
     public void clearAnswer() {
-        binding.answerText.setText(null);
         binding.bearingButton.setText(getContext().getString(org.odk.collect.strings.R.string.get_bearing));
-        widgetValueChanged();
+        binding.widgetAnswerText.setAnswer(null);
     }
 
     @Override
     public IAnswerData getAnswer() {
-        String answerText = binding.answerText.getText().toString();
+        String answerText = binding.widgetAnswerText.getAnswer();
         return answerText.isEmpty() ? null : new StringData(answerText);
     }
 
     @Override
     public void setData(Object answer) {
-        binding.answerText.setText((String) answer);
+        binding.widgetAnswerText.setAnswer((String) answer);
         binding.bearingButton.setText(getContext().getString(org.odk.collect.strings.R.string.replace_bearing));
-        widgetValueChanged();
     }
 
     @Override
     public void setOnLongClickListener(OnLongClickListener l) {
         binding.bearingButton.setOnLongClickListener(l);
-        binding.answerText.setOnLongClickListener(l);
+        binding.widgetAnswerText.setOnLongClickListener(l);
     }
 
     @Override
     public void cancelLongPress() {
         super.cancelLongPress();
         binding.bearingButton.cancelLongPress();
-        binding.answerText.cancelLongPress();
+        binding.widgetAnswerText.cancelLongPress();
     }
 
     private boolean areSensorsAvailable() {
@@ -121,18 +117,32 @@ public class BearingWidget extends QuestionWidget implements WidgetDataReceiver 
     private void onButtonClick() {
         if (areSensorsAvailable()) {
             Intent intent = new Intent(getContext(), BearingActivity.class);
-            ((Activity) getContext()).startActivityForResult(intent, ApplicationConstants.RequestCodes.BEARING_CAPTURE);
+            ((Activity) getContext()).startActivityForResult(intent, RequestCodes.BEARING_CAPTURE);
 
             waitingForDataRegistry.waitForData(getFormEntryPrompt().getIndex());
         } else {
             ToastUtils.showLongToast(getContext(), org.odk.collect.strings.R.string.bearing_lack_of_sensors);
 
             binding.bearingButton.setEnabled(false);
+            binding.widgetAnswerText.updateState(false);
+        }
+    }
 
-            binding.answerText.setBackground(new EditText(getContext()).getBackground());
-            binding.answerText.setFocusable(true);
-            binding.answerText.setFocusableInTouchMode(true);
-            binding.answerText.requestFocus();
+    @Override
+    public void hideError() {
+        super.hideError();
+        binding.widgetAnswerText.setError(null);
+    }
+
+    @Override
+    public void displayError(String errorMessage) {
+        hideError();
+
+        if (binding.widgetAnswerText.isEditableState()) {
+            binding.widgetAnswerText.setError(errorMessage);
+            setBackground(ContextCompat.getDrawable(getContext(), R.drawable.question_with_error_border));
+        } else {
+            super.displayError(errorMessage);
         }
     }
 }

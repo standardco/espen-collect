@@ -29,5 +29,5 @@ fun Form.toBlankFormListItem(projectId: String, instancesRepository: InstancesRe
         .filter { it.formVersion == this.version }
         .maxByOrNull { it.lastStatusChangeDate }?.lastStatusChangeDate ?: 0L,
     dateOfLastDetectedAttachmentsUpdate = this.lastDetectedAttachmentsUpdateDate,
-    contentUri = org.espen.collect.android.external.FormsContract.getUri(projectId, this.dbId)
+    contentUri = FormsContract.getUri(projectId, this.dbId)
 )

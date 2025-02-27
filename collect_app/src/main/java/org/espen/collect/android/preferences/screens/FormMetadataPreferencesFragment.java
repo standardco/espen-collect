@@ -18,8 +18,8 @@ import androidx.preference.Preference;
 import org.jetbrains.annotations.NotNull;
 import org.espen.collect.android.R;
 import org.espen.collect.android.injection.DaggerUtils;
-import org.espen.collect.androidshared.ui.ToastUtils;
-import org.espen.collect.androidshared.utils.Validator;
+import org.odk.collect.androidshared.ui.ToastUtils;
+import org.odk.collect.androidshared.utils.Validator;
 import org.odk.collect.metadata.PropertyManager;
 
 import javax.inject.Inject;

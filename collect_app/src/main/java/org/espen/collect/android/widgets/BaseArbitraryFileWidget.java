@@ -2,10 +2,6 @@ package org.espen.collect.android.widgets;
 
 import android.content.Context;
 
-import org.espen.collect.android.utilities.QuestionMediaManager;
-import org.espen.collect.android.widgets.interfaces.FileWidget;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.core.model.data.IAnswerData;
 import org.javarosa.core.model.data.StringData;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
@@ -18,7 +14,7 @@ import java.io.File;
 
 import timber.log.Timber;
 
-public abstract class BaseArbitraryFileWidget extends QuestionWidget implements FileWidget, WidgetDataReceiver {
+public abstract class BaseArbitraryFileWidget extends QuestionWidget implements FileWidget, WidgetDataReceiver  {
     private final QuestionMediaManager questionMediaManager;
     protected final WaitingForDataRegistry waitingForDataRegistry;
 

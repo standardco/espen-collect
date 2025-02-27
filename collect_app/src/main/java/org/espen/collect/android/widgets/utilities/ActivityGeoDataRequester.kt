@@ -26,7 +26,7 @@ class ActivityGeoDataRequester(
     override fun requestGeoPoint(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     ) {
         permissionsProvider.requestEnabledLocationPermissions(
             activity,
@@ -44,9 +44,9 @@ class ActivityGeoDataRequester(
                         }
 
                         val accuracyThreshold =
-                            org.espen.collect.android.utilities.FormEntryPromptUtils.getBodyAttribute(prompt, "accuracyThreshold")
+                            FormEntryPromptUtils.getAdditionalAttribute(prompt, "accuracyThreshold")
                         val unacceptableAccuracyThreshold =
-                            org.espen.collect.android.utilities.FormEntryPromptUtils.getBodyAttribute(
+                            FormEntryPromptUtils.getAdditionalAttribute(
                                 prompt,
                                 "unacceptableAccuracyThreshold"
                             )
@@ -76,7 +76,7 @@ class ActivityGeoDataRequester(
 
                     activity.startActivityForResult(
                         intent,
-                        org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.LOCATION_CAPTURE
+                        ApplicationConstants.RequestCodes.LOCATION_CAPTURE
                     )
                 }
             }
@@ -86,7 +86,7 @@ class ActivityGeoDataRequester(
     override fun requestGeoShape(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     ) {
         permissionsProvider.requestEnabledLocationPermissions(
             activity,
@@ -109,7 +109,7 @@ class ActivityGeoDataRequester(
 
                     activity.startActivityForResult(
                         intent,
-                        org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.GEOSHAPE_CAPTURE
+                        ApplicationConstants.RequestCodes.GEOSHAPE_CAPTURE
                     )
                 }
             }
@@ -119,7 +119,7 @@ class ActivityGeoDataRequester(
     override fun requestGeoTrace(
         prompt: FormEntryPrompt,
         answerText: String?,
-        waitingForDataRegistry: org.espen.collect.android.widgets.utilities.WaitingForDataRegistry
+        waitingForDataRegistry: WaitingForDataRegistry
     ) {
         permissionsProvider.requestEnabledLocationPermissions(
             activity,
@@ -142,7 +142,7 @@ class ActivityGeoDataRequester(
 
                     activity.startActivityForResult(
                         intent,
-                        org.espen.collect.android.utilities.ApplicationConstants.RequestCodes.GEOTRACE_CAPTURE
+                        ApplicationConstants.RequestCodes.GEOTRACE_CAPTURE
                     )
                 }
             }
@@ -151,7 +151,7 @@ class ActivityGeoDataRequester(
 
     private fun getAllowMockAccuracy(prompt: FormEntryPrompt): Boolean {
         return parseBoolean(
-            org.espen.collect.android.utilities.FormEntryPromptUtils.getBindAttribute(
+            FormEntryPromptUtils.getBindAttribute(
                 prompt,
                 "allow-mock-accuracy"
             )

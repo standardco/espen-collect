@@ -26,7 +26,6 @@ import android.widget.RadioButton;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import org.espen.collect.android.audio.AudioHelper;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.core.model.data.helper.Selection;
 import org.javarosa.core.reference.ReferenceManager;

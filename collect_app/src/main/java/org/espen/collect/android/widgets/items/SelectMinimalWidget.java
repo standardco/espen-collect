@@ -4,20 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
-import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
-import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
-import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
-import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 import org.javarosa.core.model.SelectChoice;
 import org.javarosa.form.api.FormEntryPrompt;
 import org.espen.collect.android.databinding.SelectMinimalWidgetAnswerBinding;
 import org.espen.collect.android.formentry.questions.QuestionDetails;
-import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.espen.collect.android.widgets.QuestionWidget;
 import org.espen.collect.android.widgets.interfaces.MultiChoiceWidget;
 import org.espen.collect.android.widgets.interfaces.SelectChoiceLoader;
 import org.espen.collect.android.widgets.interfaces.WidgetDataReceiver;
+import org.espen.collect.android.widgets.utilities.QuestionFontSizeUtils;
 import org.espen.collect.android.widgets.utilities.WaitingForDataRegistry;
 
 import java.util.List;
@@ -36,7 +31,7 @@ public abstract class SelectMinimalWidget extends QuestionWidget implements Widg
     }
 
     @Override
-    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize, int controlFontSize) {
+    protected View onCreateAnswerView(Context context, FormEntryPrompt prompt, int answerFontSize) {
         binding = SelectMinimalWidgetAnswerBinding.inflate(((Activity) context).getLayoutInflater());
         binding.answer.setTextSize(QuestionFontSizeUtils.getQuestionFontSize());
         if (prompt.isReadOnly()) {

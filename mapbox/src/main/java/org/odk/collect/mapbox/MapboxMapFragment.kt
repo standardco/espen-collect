@@ -44,12 +44,12 @@ import com.mapbox.maps.plugin.gestures.OnMapLongClickListener
 import com.mapbox.maps.plugin.gestures.addOnMapClickListener
 import com.mapbox.maps.plugin.gestures.addOnMapLongClickListener
 import com.mapbox.maps.plugin.locationcomponent.location
-import com.mapbox.maps.plugin.scalebar.scalebar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.espen.collect.androidshared.utils.ScreenUtils
+import org.odk.collect.androidshared.utils.ScreenUtils
 import org.odk.collect.location.LocationClient
 import org.odk.collect.location.LocationClient.LocationClientListener
+import org.odk.collect.maps.LineDescription
 import org.odk.collect.maps.MapFragment
 import org.odk.collect.maps.MapFragment.ErrorListener
 import org.odk.collect.maps.MapFragment.FeatureListener
@@ -57,6 +57,7 @@ import org.odk.collect.maps.MapFragment.PointListener
 import org.odk.collect.maps.MapFragment.ReadyListener
 import org.odk.collect.maps.MapFragmentDelegate
 import org.odk.collect.maps.MapPoint
+import org.odk.collect.maps.PolygonDescription
 import org.odk.collect.maps.layers.MapFragmentReferenceLayerUtils.getReferenceLayerFile
 import org.odk.collect.maps.layers.MbtilesFile
 import org.odk.collect.maps.layers.ReferenceLayerRepository
@@ -150,7 +151,6 @@ class MapboxMapFragment :
         savedInstanceState: Bundle?
     ): View {
         mapView = MapView(inflater.context).apply {
-            scalebar.enabled = false
             compass.position = Gravity.TOP or Gravity.START
             compass.marginTop = 36f
             compass.marginBottom = 36f
@@ -336,9 +336,9 @@ class MapboxMapFragment :
         }
     }
 
-    override fun addPolyLine(points: MutableIterable<MapPoint>, closed: Boolean, draggable: Boolean): Int {
+    override fun addPolyLine(lineDescription: LineDescription): Int {
         val featureId = nextFeatureId++
-        if (draggable) {
+        if (lineDescription.draggable) {
             features[featureId] = DynamicPolyLineFeature(
                 requireContext(),
                 pointAnnotationManager,
@@ -346,28 +346,24 @@ class MapboxMapFragment :
                 featureId,
                 featureClickListener,
                 featureDragEndListener,
-                closed,
-                points
+                lineDescription
             )
         } else {
             features[featureId] = StaticPolyLineFeature(
-                requireContext(),
                 polylineAnnotationManager,
                 featureId,
                 featureClickListener,
-                closed,
-                points
+                lineDescription
             )
         }
         return featureId
     }
 
-    override fun addPolygon(points: MutableIterable<MapPoint>): Int {
+    override fun addPolygon(polygonDescription: PolygonDescription): Int {
         val featureId = nextFeatureId++
         features[featureId] = StaticPolygonFeature(
-            requireContext(),
             mapView.annotations.createPolygonAnnotationManager(),
-            points,
+            polygonDescription,
             featureClickListener,
             featureId
         )
@@ -391,8 +387,8 @@ class MapboxMapFragment :
 
     override fun getPolyLinePoints(featureId: Int): List<MapPoint> {
         val feature = features[featureId]
-        return if (feature is DynamicPolyLineFeature) {
-            feature.mapPoints
+        return if (feature is LineFeature) {
+            feature.points
         } else {
             emptyList()
         }
@@ -583,7 +579,7 @@ class MapboxMapFragment :
                 tileSet.minZoom(mbtiles.getMetadata("minzoom").toInt())
                 tileSet.maxZoom(mbtiles.getMetadata("maxzoom").toInt())
             } catch (e: NumberFormatException) {
-                /* ignore */
+                // ignore
             }
             var parts = mbtiles.getMetadata("center").split(",").toTypedArray()
             if (parts.size == 3) { // latitude, longitude, zoom
@@ -596,7 +592,7 @@ class MapboxMapFragment :
                         )
                     )
                 } catch (e: NumberFormatException) {
-                    /* ignore */
+                    // ignore
                 }
             }
             parts = mbtiles.getMetadata("bounds").split(",").toTypedArray()
@@ -611,7 +607,7 @@ class MapboxMapFragment :
                         )
                     )
                 } catch (e: NumberFormatException) {
-                    /* ignore */
+                    // ignore
                 }
             }
         } catch (e: MbtilesFile.MbtilesException) {

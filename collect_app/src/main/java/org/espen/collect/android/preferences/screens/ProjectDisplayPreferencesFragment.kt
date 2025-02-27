@@ -17,11 +17,11 @@ import org.espen.collect.android.injection.DaggerUtils
 import org.espen.collect.android.projects.ProjectsDataService
 import org.espen.collect.android.storage.StoragePathProvider
 import org.espen.collect.android.utilities.FileUtils
-import org.espen.collect.androidshared.ColorPickerDialog
-import org.espen.collect.androidshared.ColorPickerViewModel
-import org.espen.collect.androidshared.ui.DialogFragmentUtils
-import org.espen.collect.androidshared.ui.OneSignTextWatcher
-import org.espen.collect.androidshared.ui.multiclicksafe.MultiClickGuard
+import org.odk.collect.androidshared.ColorPickerDialog
+import org.odk.collect.androidshared.ColorPickerViewModel
+import org.odk.collect.androidshared.ui.DialogFragmentUtils
+import org.odk.collect.androidshared.ui.OneSignTextWatcher
+import org.odk.collect.androidshared.ui.multiclicksafe.MultiClickGuard
 import org.odk.collect.projects.Project
 import org.odk.collect.projects.ProjectsRepository
 import org.odk.collect.shared.PathUtils
@@ -30,7 +30,7 @@ import java.io.File
 import javax.inject.Inject
 
 class ProjectDisplayPreferencesFragment :
-    org.espen.collect.android.preferences.screens.BaseAdminPreferencesFragment(), Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener {
+    BaseAdminPreferencesFragment(), Preference.OnPreferenceClickListener, Preference.OnPreferenceChangeListener {
 
     @Inject
     lateinit var projectsRepository: ProjectsRepository
@@ -40,7 +40,7 @@ class ProjectDisplayPreferencesFragment :
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        org.espen.collect.android.injection.DaggerUtils.getComponent(context).inject(this)
+        DaggerUtils.getComponent(context).inject(this)
         val colorPickerViewModel = ViewModelProvider(requireActivity()).get(
             ColorPickerViewModel::class.java
         )
@@ -152,7 +152,7 @@ class ProjectDisplayPreferencesFragment :
                 } catch (e: Exception) {
                     Timber.e(
                         Error(
-                            org.espen.collect.android.utilities.FileUtils.getFilenameError(
+                            FileUtils.getFilenameError(
                                 name
                             )
                         )
@@ -165,7 +165,7 @@ class ProjectDisplayPreferencesFragment :
                 } catch (e: Exception) {
                     Timber.e(
                         Error(
-                            org.espen.collect.android.utilities.FileUtils.getFilenameError(
+                            FileUtils.getFilenameError(
                                 newValue as String
                             )
                         )

@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
+import org.espen.collect.android.R
 import org.espen.collect.android.databinding.SortItemLayoutBinding
-import org.espen.collect.androidshared.system.ContextUtils.getThemeAttributeValue
+import org.odk.collect.androidshared.system.ContextUtils.getThemeAttributeValue
 import java.util.function.Consumer
 
 class FormListSortingAdapter(
