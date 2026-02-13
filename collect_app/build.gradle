@@ -79,10 +79,12 @@ android {
         applicationId('org.espen.collect.android')
         minSdkVersion Versions.android_min_sdk
         targetSdkVersion Versions.android_target_sdk
-        versionCode LEGACY_BUILD_NUMBER_OFFSET + getMasterCommitCount()
+        versionCode 4726
+        //versionCode LEGACY_BUILD_NUMBER_OFFSET + getMasterCommitCount()
         //versionName getVersionName()
         //https://github.com/getodk/collect/tree/v2024.3.6
-        versionName "v2024.3.6"
+        //versionName "v2024.3.6"
+        versionName "v2024.3.9"
         testInstrumentationRunner('androidx.test.runner.AndroidJUnitRunner')
         vectorDrawables.useSupportLibrary = true
         archivesBaseName = 'collect'
@@ -276,6 +278,7 @@ dependencies {
 
     implementation Dependencies.androidx_startup
     implementation Dependencies.androidx_core_ktx
+    implementation Dependencies.androidx_activity
     implementation Dependencies.androidx_browser
     implementation Dependencies.androidx_appcompat
     implementation Dependencies.androidx_work_runtime
