@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llParent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <include layout="@layout/app_bar_layout" />
 
@@ -46,7 +47,9 @@
             style="@style/Widget.AndroidShared.ButtonBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:fitsSystemWindows="true"
+            >
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/form_back_button"
