@@ -79,13 +79,23 @@ android {
         applicationId('org.espen.collect.android')
         minSdkVersion Versions.android_min_sdk
         targetSdkVersion Versions.android_target_sdk
-        versionCode LEGACY_BUILD_NUMBER_OFFSET + getMasterCommitCount()
+        versionCode 4729
+        //versionCode LEGACY_BUILD_NUMBER_OFFSET + getMasterCommitCount()
         //versionName getVersionName()
         //https://github.com/getodk/collect/tree/v2024.3.6
-        versionName "v2024.3.6"
+        //versionName "v2024.3.6"
+        versionName "v2024.3.93"
         testInstrumentationRunner('androidx.test.runner.AndroidJUnitRunner')
         vectorDrawables.useSupportLibrary = true
         archivesBaseName = 'collect'
+        externalNativeBuild {
+            // For ndk-build, instead use the ndkBuild block.
+            externalNativeBuild {
+                cmake {
+                    arguments "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON", "-DOTHER_CMAKE_ARG=VALUE"
+                }
+            }
+        }
     }
 
     signingConfigs {
@@ -161,6 +171,8 @@ android {
     }
 
     packaging {
+        jniLibs.useLegacyPackaging = true
+
         resources {
             excludes += ['META-INF/ASL-2.0.txt', 'META-INF/LGPL-3.0.txt', 'org/bouncycastle/pqc/crypto/picnic/lowmcL5.bin.properties', 'org/bouncycastle/pqc/crypto/picnic/lowmcL3.bin.properties', 'org/bouncycastle/pqc/crypto/picnic/lowmcL1.bin.properties']
 
@@ -276,6 +288,7 @@ dependencies {
 
     implementation Dependencies.androidx_startup
     implementation Dependencies.androidx_core_ktx
+    implementation Dependencies.androidx_activity
     implementation Dependencies.androidx_browser
     implementation Dependencies.androidx_appcompat
     implementation Dependencies.androidx_work_runtime

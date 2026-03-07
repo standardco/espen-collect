@@ -29,8 +29,12 @@ import android.widget.ListView;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
+import androidx.activity.EdgeToEdge;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
 import androidx.core.view.MenuItemCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import org.espen.collect.android.R;
 import org.espen.collect.android.database.instances.DatabaseInstanceColumns;
@@ -77,6 +81,7 @@ public abstract class AppListActivity extends LocalizedActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DaggerUtils.getComponent(this).inject(this);
+        EdgeToEdge.enable(this);
     }
 
     // toggles to all checked or all unchecked
@@ -141,6 +146,22 @@ public abstract class AppListActivity extends LocalizedActivity {
         listView.setDividerHeight(1);
 
         setSupportActionBar(findViewById(org.odk.collect.androidshared.R.id.toolbar));
+
+        // Handle bottom navigation bar inset for edge-to-edge
+        View buttonHolder = findViewById(R.id.buttonholder);
+        if (buttonHolder != null) {
+            int originalBottomPadding = buttonHolder.getPaddingBottom();
+            ViewCompat.setOnApplyWindowInsetsListener(buttonHolder, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(
+                        v.getPaddingLeft(),
+                        v.getPaddingTop(),
+                        v.getPaddingRight(),
+                        originalBottomPadding + systemBars.bottom
+                );
+                return insets;
+            });
+        }
     }
 
     @Override

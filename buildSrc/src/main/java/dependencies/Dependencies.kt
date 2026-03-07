@@ -8,6 +8,7 @@ object Dependencies {
     const val androidx_lifecycle_livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     const val androidx_lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     const val androidx_core_ktx = "androidx.core:core-ktx:1.13.1"
+    const val androidx_activity = "androidx.activity:activity:1.9.3"
     const val androidx_browser = "androidx.browser:browser:1.8.0"
     const val androidx_recyclerview = "androidx.recyclerview:recyclerview:1.3.2"
     const val androidx_navigation_fragment_ktx = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"

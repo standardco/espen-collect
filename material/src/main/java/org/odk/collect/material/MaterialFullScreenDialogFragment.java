@@ -9,6 +9,9 @@ import androidx.activity.ComponentDialog;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.DialogFragment;
 
 /**
@@ -33,6 +36,16 @@ public abstract class MaterialFullScreenDialogFragment extends DialogFragment {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
             dialog.getWindow().setLayout(width, height);
+
+            // Handle bottom navigation bar inset for edge-to-edge
+            View contentView = dialog.getWindow().findViewById(android.R.id.content);
+            if (contentView != null) {
+                ViewCompat.setOnApplyWindowInsetsListener(contentView, (v, insets) -> {
+                    Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                    v.setPadding(0, 0, 0, systemBars.bottom);
+                    return insets;
+                });
+            }
 
             if (shouldShowSoftKeyboard()) {
                 // Make sure soft keyboard shows for focused field - annoyingly needed
