@@ -79,7 +79,7 @@ android {
         applicationId('org.espen.collect.android')
         minSdkVersion Versions.android_min_sdk
         targetSdkVersion Versions.android_target_sdk
-        versionCode 4729
+        versionCode 4730
         //versionCode LEGACY_BUILD_NUMBER_OFFSET + getMasterCommitCount()
         //versionName getVersionName()
         //https://github.com/getodk/collect/tree/v2024.3.6
